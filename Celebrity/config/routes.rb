@@ -14,5 +14,6 @@ Rails.application.routes.draw do
   get 'signup' => 'static_pages#signup'
   get 'logout' => 'static_pages#logout'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root 'application#hello'
+  root 'static_pages#home'
+  
 end
