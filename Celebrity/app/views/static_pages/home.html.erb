@@ -1,49 +1,22 @@
- <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap</title>
-    <!-- Bootstrap -->
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+ <div class="main-wrapper container">
   <div class="row">
-    <aside class="col-md-4">
-      <section class="user_info">
-      </section>
-      <section class="stats">
-      </section>
-      <section class="micropost_form">
-      </section>
-    </aside>
+    <div class="col-sm-9">
+      <p class="text-center"><iframe width="560" height="315" src="https://www.youtube.com/embed/lj_PJMauzNU?list=UUV_bOyaNKyzKX6fnRlcu4UA" 
+            frameborder="0" allowfullscreen></iframe>
+      </p>
+      <p class="text-center">プログラミングを学んでフリーランスを目指しましょう</p>
+      <div class="field">
+    <textarea placeholder="Compose new micropost..." name="micropost[content]" id="micropost_content">
+</textarea>
   </div>
-<% else %>
-
- <body>
-        <!-- 4列をサイドメニューに割り当て -->
-        <div class="col-md-4, pull-right">
-         <ul class="nav nav-pills nav-stacked">
-             <br></br>
-             <br></br>
-             <br></br>
-            <li class="active">ページリンク</a></li>
-            <li><a href="/static_pages/home">はじめに</a></li>
-            <li><%= link_to "フリーとは", signup_path %></li>
-            <li><%= link_to "progate", contact_path %></li>
-            <li><%= link_to "railsチュートリアル", login_path %></li>
-            <li><a href="/static_pages/qa">railsチュートリアル：よくある質問</a></li>
-         </ul>
-        </div>
-        <div class="container">
-        <div class="row" align="right">
-            <br></br>
-            <br></br>
-         <p class="text-left">はじめての方はこちら</p>
-         <p align="left"><iframe width="560" height="315" src="https://www.youtube.com/embed/lj_PJMauzNU?list=UUV_bOyaNKyzKX6fnRlcu4UA" frameborder="0" allowfullscreen></iframe>
-         </p>
-         <p class="text-left">プログラミングを学んでフリーランスを目指しましょう</p>
-      </div> 
-    </div>
+  <input type="submit" name="commit" value="Post" class="btn btn-primary" />
+      <p class="text-center">
+        <%= link_to "さあ、プログラミングを始めよう！", progate_path, class: "btn btn-lg btn-primary" %>
+      </p>
+    </div> 
     
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
- </body>
- <div class="center">
-  <%= link_to "さあ、プログラミングを始めよう！", contact_path, class: "btn btn-lg btn-primary" %>
+    <%= render 'layouts/aside' %>
+
   </div>
+ </div>
+  

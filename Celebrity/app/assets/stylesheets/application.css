@@ -13,3 +13,40 @@
  *= require_tree .
  *= require_self
  */
+
+.body-wrapper, .navbar-wrapper{
+  width: 970px;
+  margin: 0 auto;
+}
+
+.body-wrapper{
+  margin-top: 20px;
+}
+
+
+.top-pic-wrapper{
+ background-color: gray;
+ margin-top: 40px;
+ margin-bottom: 40px;
+}
+
+.top-phrase{
+  font-size: large;
+  line-height: 3em;
+  color: #F8C810;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #FFFFFF;
+}
+
+@media (min-width: 992px) {
+    .container {
+        width: 970px;
+    }
+}
+
+/* modal */
+textarea.form-control {
+    height: 30em;
+}
