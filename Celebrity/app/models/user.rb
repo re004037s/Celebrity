@@ -11,4 +11,12 @@ class User < ApplicationRecord
     has_secure_password
     validates :password, presence: true, length: { minimum: 6 }
     
+    has_one :html_css_status
+    has_one :javascript_status
+    has_one :ruby_status
+    has_one :rubyonrails_status
+    has_one :railstutorial_status
+    
+    has_many :views
+    has_many :movies, through: :views
 end
