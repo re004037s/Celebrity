@@ -1,21 +1,28 @@
-
-  <div class="col-md-4, pull-right">
-         <ul class="nav nav-pills nav-stacked">
-             <br></br>
-             <br></br>
-             <br></br>
-            <li class="active">ページリンク</a></li>
-            <li><a href="/static_pages/home">はじめに</a></li>
-            <li><%= link_to "フリーとは", signup_path %></li>
-            <li><%= link_to "progate", contact_path %></li>
-            <li><%= link_to "railsチュートリアル", login_path %></li>
-            <li><a href="/static_pages/qa">railsチュートリアル：よくある質問</a></li>
-         </ul>
-        </div>
-        <div class="container">
-        <div class="row" align="right">
-            <br></br>
-            <br></br>
-<h2>フリーとは</h2>
-<p align="left"><iframe width="560" height="315" src="https://www.youtube.com/embed/lwrrQKRllRs" frameborder="0" allowfullscreen></iframe>
-            </p>
+ <div class="main-wrapper container">
+  <div class="row">
+    <div class="col-sm-9">
+      <h1>Sign up</h1>
+			  <div class="col-md-8 col-md-offset-2">
+			    <%= form_for(:user, url: signup_path ) do |f| %>
+            <%= f.label :name, "氏名" %>
+            <%= f.text_field :name, class: 'form-control' %>
+      
+            <%= f.label :nickname, "ニックネーム" %>
+            <%= f.text_field :name, class: 'form-control'%>
+      
+            <%= f.label :email %>
+            <%= f.email_field :email, class: 'form-control' %>
+      
+            <%= f.label :password %>
+            <%= f.password_field :password, class: 'form-control'  %>
+      
+            <%= f.label :password_confirmation, "Confirmation" %>
+            <%= f.password_field :password_confirmation, class: 'form-control'  %>
+      
+            <%= f.submit "Create my account", class: "btn btn-primary" %>
+          <% end %>
+		    </div>
+      </div> 
+    <%= render 'layouts/aside' %>
+  </div>
+ </div>
