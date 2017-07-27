@@ -1,80 +1,111 @@
-<div class="position: fixed;">
-  <div class="col-md-4, pull-right">
-         <ul class="nav nav-pills nav-stacked">
-             <br></br>
-            <br></br>
-            <br></br>
-            <li class="active">ページリンク</a></li>
-            <li><a href="/static_pages/home">はじめに</a></li>
-            <li><%= link_to "フリーとは", signup_path %></li>
-            <li><%= link_to "progate", contact_path %></li>
-            <li><%= link_to "railsチュートリアル", login_path %></li>
-            <li><a href="/static_pages/qa">railsチュートリアル：よくある質問</a></li>
-         </ul>
-    </div>
-</div>
-        <div class="container">
-        <div class="row" align="right">
-            <br></br>
-            <br></br>
-<h2>よくある質問</h2>
-<a class="btn btn-default" data-toggle="collapse" href="#collapseExample">
-	Q1:rails serverが起動できません
-</a>
-<div class="collapse" id="collapseExample">
-	<div class="well">
-		A:カレントディレクトリを確認してみましょう
-	</div>
-</div>
-<h2>Q1:rails serverが起動できません</h2>
-<h2>A:カレントディレクトリを確認してみましょう</h2>
-<h2>Q1:rails serverが起動できません</h2>
-<h2>A:カレントディレクトリを確認してみましょう</h2>
-<h2>Q1:rails serverが起動できません</h2>
-<h2>A:カレントディレクトリを確認してみましょう</h2>
-<h2>Q1:rails serverが起動できません</h2>
-<h2>A:カレントディレクトリを確認してみましょう</h2>
-<h2>Q1:rails serverが起動できません</h2>
-<h2>A:カレントディレクトリを確認してみましょう</h2>
-<h2>Q1:rails serverが起動できません</h2>
-<h2>A:カレントディレクトリを確認してみましょう</h2>
-<h2>Q1:rails serverが起動できません</h2>
-<h2>A:カレントディレクトリを確認してみましょう</h2>
-<h2>Q1:rails serverが起動できません</h2>
-<h2>A:カレントディレクトリを確認してみましょう</h2>
-<h2>Q1:rails serverが起動できません</h2>
-<h2>A:カレントディレクトリを確認してみましょう</h2>
-<h2>Q1:rails serverが起動できません</h2>
-<h2>A:カレントディレクトリを確認してみましょう</h2>
-<h2>Q1:rails serverが起動できません</h2>
-<h2>A:カレントディレクトリを確認してみましょう</h2>
-<h2>Q1:rails serverが起動できません</h2>
-<h2>A:カレントディレクトリを確認してみましょう</h2>
-</div>
-</div>
-<script>
-  (function(window, $) {
-    'use strict';
-    $(function() {
-      // スクロール位置と連動させない場合は不要(scrollspy用)
-      $(document.body).scrollspy({ target: '.algo13-sidebar' });
-
-      // スクロール位置と連動させない場合は不要(scrollspy用)
-      $(window).on('load', function() { $(document.body).scrollspy('refresh') });
-
-      // 固定サイドバーのスクロール追従開始＆終了位置の設定(affix用)
-      setTimeout(function() {
-        $('.algo13-sidebar').affix({
-          offset: {
-            top: function() {
-              return (this.top = $('header').outerHeight(true));
-            },
-            bottom: function() {
-              return (this.bottom = $('footer').outerHeight(true));
-            }
-          }
-        })
-      }, 100);
-    });
-  })(window, jQuery);
-  </script>
+ <div class="main-wrapper container">
+  <div class="row">
+    <div class="col-sm-9">
+      <p>よくある質問</p>
+      <!--　QA bootstrap アコーディオン -->
+      <div class="panel-group" id="sampleAccordion">
+      	<div class="panel panel-default">
+      		<div class="panel-heading">
+      			<h3 class="panel-title">
+      				<a style="display:block" data-toggle="collapse" data-parent="#sampleAccordion" href="#sampleAccordionCollapse1">
+      					タイトルＡ
+      				</a>
+      			</h3>
+      		</div>
+      		<div id="sampleAccordionCollapse1" class="panel-collapse collapse in">
+      			<div class="panel-body">
+      				タイトルＡのコンテンツ
+      			</div>
+      		</div>
+      	</div>
+      	<div class="panel panel-default">
+      		<div class="panel-heading">
+      			<h3 class="panel-title">
+      				<a style="display:block" data-toggle="collapse" data-parent="#sampleAccordion" href="#sampleAccordionCollapse2">
+      					タイトルＢ
+      				</a>
+      			</h3>
+      		</div>
+      		<div id="sampleAccordionCollapse2" class="panel-collapse collapse">
+      			<div class="panel-body">
+      				タイトルＢのコンテンツ
+      			</div>
+      		</div>
+      	</div>
+      	<div class="panel panel-default">
+      		<div class="panel-heading">
+      			<h3 class="panel-title">
+      				<a style="display:block" data-toggle="collapse" data-parent="#sampleAccordion" href="#sampleAccordionCollapse3">
+      					タイトルＣ
+      				</a>
+      			</h3>
+      		</div>
+      		<div id="sampleAccordionCollapse3" class="panel-collapse collapse">
+      			<div class="panel-body">
+      				タイトルＣのコンテンツ
+      			</div>
+      		</div>
+      	</div>
+      	
+      	<div class="panel panel-default">
+      		<div class="panel-heading">
+      			<h3 class="panel-title">
+      				<a style="display:block" data-toggle="collapse" data-parent="#sampleAccordion" href="#sampleAccordionCollapse4">
+      					タイトルD
+      				</a>
+      			</h3>
+      		</div>
+      		<div id="sampleAccordionCollapse4" class="panel-collapse collapse">
+      			<div class="panel-body">
+      				タイトルDのコンテンツ
+      			</div>
+      		</div>
+      	</div>
+      	<div class="panel panel-default">
+      		<div class="panel-heading">
+      			<h3 class="panel-title">
+      				<a style="display:block" data-toggle="collapse" data-parent="#sampleAccordion" href="#sampleAccordionCollapse5">
+      					タイトルE
+      				</a>
+      			</h3>
+      		</div>
+      		<div id="sampleAccordionCollapse5" class="panel-collapse collapse">
+      			<div class="panel-body">
+      				タイトルEのコンテンツ
+      			</div>
+      		</div>
+      	</div>
+      	<div class="panel panel-default">
+      		<div class="panel-heading">
+      			<h3 class="panel-title">
+      				<a style="display:block" data-toggle="collapse" data-parent="#sampleAccordion" href="#sampleAccordionCollapse6">
+      					タイトルF
+      				</a>
+      			</h3>
+      		</div>
+      		<div id="sampleAccordionCollapse6" class="panel-collapse collapse">
+      			<div class="panel-body">
+      				タイトルFのコンテンツ
+      			</div>
+      		</div>
+      	</div>
+      	<div class="panel panel-default">
+      		<div class="panel-heading">
+      			<h3 class="panel-title">
+      				<a style="display:block" data-toggle="collapse" data-parent="#sampleAccordion" href="#sampleAccordionCollapse7">
+      					タイトルG
+      				</a>
+      			</h3>
+      		</div>
+      		<div id="sampleAccordionCollapse7" class="panel-collapse collapse">
+      			<div class="panel-body">
+      				タイトルGのコンテンツ
+      			</div>
+      		</div>
+      	</div>
+      </div>
+      <!-- end -->
+    </div> 
+    <%= render 'layouts/aside' %>
+  </div>
+ </div>

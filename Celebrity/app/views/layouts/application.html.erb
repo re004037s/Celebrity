@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>仮のタイトル</title>
+    <title>セレブエンジニア</title>
     <%= csrf_meta_tags %>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,7 +9,6 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
     <%= render 'layouts/navbar' %>
     <div class="body-wrapper">
@@ -21,26 +20,5 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    
-    <script>
-      $('#exampleModal').on('show.bs.modal', function (event) {
-        var button = $(event.relatedTarget) //モーダルを呼び出すときに使われたボタンを取得
-        var recipient = button.data('whatever') //data-whatever の値を取得
-      
-        //Ajaxの処理はここに
-      
-        var modal = $(this)  //モーダルを取得
-        modal.find('.modal-title').text('New message of ' + recipient) //モーダルのタイトルに値を表示
-        modal.find('.modal-body input#recipient-name').val(recipient) //inputタグにも表示
-        
-        //Ajaxの処理はここに
-        
-      })
-    </script>
-    
-    <!-- modal vaalidation-->
-    <script>
-      
-    </script>
   </body>
 </html>

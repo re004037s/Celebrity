@@ -8,13 +8,15 @@
           <span class="icon-bar"></span>
         </button>
       </div>
-   
       <div id="gnavi" class="collapse navbar-collapse">
-        <span class="top-phrase">セレブエンジニアリングサロン</span>
+        <!--<a href=""><span class="top-phrase">セレブエンジニアリングサロン</span></a>-->
+        <%= link_to "セレブエンジニアリングサロン", static_pages_home_path, :class => "top-phrase" %>
         <ul class="nav navbar-nav navbar-right">
           <li><%= link_to "ユーザー一覧", help_path %></li>
           <li><%= link_to "Mypage", about_path %></li>
-          <li><%= link_to "logout", root_path %></li>
+          <li><%= link_to "signup", signup_path %></li>
+          <li><%= link_to "login", login_path %></li>
+          <li><%= link_to "logout", static_pages_home_path %></li>
         </ul>
       </div>
     </div>
