@@ -2,7 +2,7 @@
   <%= f.text_area :感想,:id => "Tobj1", :size=>"7x7", :maxlength => "500",
       :placeholder => "100-500文字で入力してください", required: true, :onchange => "Limit(event)", :onkeyup => "Limit(event)" %>
       <br><span id="msg1">文字数カウント</span><br><div style="color: red;" class="has-error"></div>
-  <%= f.submit "送信", class: "btn btn-primary btn-lg submit-btn", disabled: true %>
+  <%= f.submit "感想を送る", class: "btn btn-primary btn-lg submit-btn", disabled: true %>
 <% end %>
 
 <script>
