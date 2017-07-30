@@ -1,0 +1,2 @@
+class RailstutorialStatus < ApplicationRecord
+end

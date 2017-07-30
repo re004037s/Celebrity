@@ -1,4 +1,245 @@
-<div class="center jumbotron">
-    <h1>セレブエンジニアサロン</h1>
+<<<<<<< HEAD
+ <div class="main-wrapper container">
+  <div class="row">
+    <div class="col-sm-9">
+      <h1>Log in</h1>
+				
+				  <div class="col-md-8 col-md-offset-2">
+				    <%= form_for(:session, url: login_path) do |f| %>
+				
+				      <%= f.label :email %>
+				      <%= f.email_field :email, class: 'form-control' %>
+				
+				      <%= f.label :password %>
+				      <%= f.password_field :password, class: 'form-control' %>
+				
+				      <%= f.submit "Log in", class: "btn btn-primary" %>
+				    <% end %>
+				
+				    <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+				  </div>
+				
+    </div> 
+    <%= render 'layouts/aside' %>
   </div>
+ </div>
+=======
+
+  <div class="col-md-4, pull-right">
+         <ul class="nav nav-pills nav-stacked">
+         	<br></br>
+         	<br></br>
+         	<br></br>
+            <li class="active">ページリンク</a></li>
+            <li><a href="/static_pages/home">はじめに</a></li>
+            <li><%= link_to "フリーとは", signup_path %></li>
+            <li><%= link_to "progate", contact_path %></li>
+            <li><%= link_to "railsチュートリアル", login_path %></li>
+            <li><a href="/static_pages/qa">railsチュートリアル：よくある質問</a></li>
+         </ul>
+        </div>
+        <div class="container">
+        <div align="right">
+        	<br></br>
+        	<br></br>
 <h2>railsチュートリアル</h2>
+<div class="text-center">
+<a href="https://railstutorial.jp/chapters/beginning?version=5.0#cha-beginning">railsチュートリアル1章</a>
+</div>
+<form class="margin-right: 10px;" data-remote="true">
+<input type="button" value="1章完了" class="btn btn-lg btn-primary" onclick="OnOff1(this);">
+</form>
+<div class="text-center">
+<a href="https://railstutorial.jp/chapters/toy_app?version=5.0#cha-a_toy_app">railsチュートリアル2章</a>
+</div>
+<form class="margin-right: 10px;" data-remote="true">
+<input type="button" value="2章完了" class="btn btn-lg btn-primary" onclick="OnOff2(this);">
+</form>
+<div class="text-center">
+<a href="https://railstutorial.jp/chapters/static_pages?version=5.0#cha-static_pages">railsチュートリアル3章</a>
+</div>
+<form class="margin-right: 10px;" data-remote="true">
+<input type="button" value="3章完了" class="btn btn-lg btn-primary" onclick="OnOff3(this);">
+</form>
+<div class="text-center">
+<a href="https://railstutorial.jp/chapters/rails_flavored_ruby?version=5.0#cha-rails_flavored_ruby">railsチュートリアル4章</a>
+</div>
+<form class="margin-right: 10px;" data-remote="true">
+<input type="button" value="4章完了" class="btn btn-lg btn-primary" onclick="OnOff4(this);">
+</form>
+<div class="text-center">
+<a href="https://railstutorial.jp/chapters/filling_in_the_layout?version=5.0#cha-filling_in_the_layout">railsチュートリアル5章</a>
+</div>
+<form class="margin-right: 10px;" data-remote="true">
+<input type="button" value="5章完了" class="btn btn-lg btn-primary" onclick="OnOff5(this);">
+</form>
+<div class="text-center">
+<a href="https://railstutorial.jp/chapters/modeling_users?version=5.0#cha-modeling_users">railsチュートリアル6章</a>
+</div>
+<form class="margin-right: 10px;" data-remote="true">
+<input type="button" value="6章完了" class="btn btn-lg btn-primary" onclick="OnOff6(this);">
+</form>
+<div class="text-center">
+<a href="https://railstutorial.jp/chapters/sign_up?version=5.0#cha-sign_up">railsチュートリアル7章</a>
+</div>
+<form class="margin-right: 10px;" data-remote="true">
+<input type="button" value="7章完了" class="btn btn-lg btn-primary" onclick="OnOff7(this);">
+</form>
+<div class="text-center">
+<a href="https://railstutorial.jp/chapters/basic_login?version=5.0#cha-basic_login">railsチュートリアル8章</a>
+</div>
+<form class="margin-right: 10px;" data-remote="true">
+<input type="button" value="8章完了" class="btn btn-lg btn-primary" onclick="OnOff8(this);">
+</form>
+<div class="text-center">
+<a href="https://railstutorial.jp/chapters/advanced_login?version=5.0#cha-advanced_login">railsチュートリアル9章</a>
+</div>
+<form class="margin-right: 10px;" data-remote="true">
+<input type="button" value="9章完了" class="btn btn-lg btn-primary" onclick="OnOff9(this);">
+</form>
+<div class="text-center">
+<a href="https://railstutorial.jp/chapters/updating_and_deleting_users?version=5.0#cha-updating_showing_and_deleting_users">railsチュートリアル10章</a>
+</div>
+<form class="margin-right: 10px;" data-remote="true">
+<input type="button" value="10章完了" class="btn btn-lg btn-primary" onclick="OnOff10(this);">
+</form>
+<div class="text-center">
+<a href="https://railstutorial.jp/chapters/account_activation?version=5.0#cha-account_activation">railsチュートリアル11章</a>
+</div>
+<form class="margin-right: 10px;" data-remote="true">
+<input type="button" value="11章完了" class="btn btn-lg btn-primary" onclick="OnOff11(this);">
+</form>
+<div class="text-center">
+<a href="https://railstutorial.jp/chapters/password_reset?version=5.0#cha-password_reset">railsチュートリアル12章</a>
+</div>
+<form class="margin-right: 10px;" data-remote="true">
+<input type="button" value="12章完了" class="btn btn-lg btn-primary" onclick="OnOff12(this);">
+</form>
+<div class="text-center">
+<a href="https://railstutorial.jp/chapters/user_microposts?version=5.0#cha-user_microposts">railsチュートリアル13章</a>
+</div>
+<form class="margin-right: 10px;" data-remote="true">
+<input type="button" value="13章完了" class="btn btn-lg btn-primary" onclick="OnOff13(this);">
+</form>
+<div class="text-center">
+<a href="https://railstutorial.jp/chapters/following_users?version=5.0#cha-following_users">railsチュートリアル14章</a>
+</div>
+<form class="margin-right: 10px;" data-remote="true">
+<input type="button" value="14章完了" class="btn btn-lg btn-primary" onclick="OnOff14(this);">
+</form>
+<div align="center">
+          <input type="button" class="btn btn-lg btn-primary" value="詰まった時、困った時はこちらをクリック" onclick="link();">
+          </div>
+            <a href="/static_pages/qa"></a>
+            </div>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+<!--
+function OnOff1(lol1){
+	if (lol1.value == "1章完了") {
+		lol1.value = "1章完了済み";
+	} else {
+		lol1.value = "1章完了";
+	}
+}
+function OnOff2(lol2){
+	if (lol2.value == "2章完了") {
+		lol2.value = "2章完了済み";
+	} else {
+		lol2.value = "2章完了";
+	}
+}
+function OnOff3(lol3){
+	if (lol3.value == "3章完了") {
+		lol3.value = "3章完了済み";
+	} else {
+		lol3.value = "3章完了";
+	}
+}
+function OnOff4(lol4){
+	if (lol4.value == "4章完了") {
+		lol4.value = "4章完了済み";
+	} else {
+		lol4.value = "4章完了";
+	}
+}
+function OnOff5(lol5){
+	if (lol5.value == "5章完了") {
+		lol5.value = "5章完了済み";
+	} else {
+		lol5.value = "5章完了";
+	}
+}
+function OnOff6(lol6){
+	if (lol6.value == "6章完了") {
+		lol6.value = "6章完了済み";
+	} else {
+		lol6.value = "6章完了";
+	}
+}
+function OnOff7(lol7){
+	if (lol7.value == "7章完了") {
+		loL7.value = "7章完了済み";
+	} else {
+		lol7.value = "7章完了";
+	}
+}
+function OnOff8(lol8){
+	if (lol8.value == "8章完了") {
+		lol8.value = "8章完了済み";
+	} else {
+		lol8.value = "8章完了";
+	}
+}
+function OnOff9(lol9){
+	if (lol9.value == "9章完了") {
+		lol9.value = "9章完了済み";
+	} else {
+		lol9.value = "9章完了";
+	}
+}
+function OnOff10(lol10){
+	if (lol10.value == "10章完了") {
+		lol10.value = "10章完了済み";
+	} else {
+		lol10.value = "10章完了";
+	}
+}
+function OnOff11(lol11){
+	if (lol11.value == "11章完了") {
+		lol11.value = "11章完了済み";
+	} else {
+		lol11.value = "11章完了";
+	}
+}
+function OnOff12(lol12){
+	if (lol12.value == "12章完了") {
+		lol12.value = "12章完了済み";
+	} else {
+		lol12.value = "12章完了";
+	}
+}
+function OnOff13(lol13){
+	if (lol13.value == "13章完了") {
+		lol13.value = "13章完了済み";
+	} else {
+		lol13.value = "13章完了";
+	}
+}
+function OnOff14(lol14){
+	if (lol14.value == "14章完了") {
+		lol14.value = "14章完了済み";
+	} else {
+		lol14.value = "14章完了";
+	}
+}
+
+function link(){
+  location.href = "https://shirai-c-sirai.c9users.io/static_pages/qa";
+}
+
+// -->
+</script>
+>>>>>>> c610b9a0ef8867a08c651a2114593b8fdbbf147d

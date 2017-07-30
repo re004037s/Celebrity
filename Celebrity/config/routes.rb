@@ -1,11 +1,18 @@
 Rails.application.routes.draw do
-  get 'static_pages/home'
-  get 'contact' => 'static_pages#contact'
-  get 'about' => 'static_pages#about'
-  get 'help' => 'static_pages#help'
-  get 'logout' => 'static_pages#logout'
-  get 'login' => 'static_pages#login'
+  get '/home', :to =>'static_pages#home' 
+  
+  get '/signup', to:'users#new'
+  post '/signup', to:'users#create'
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root 'application#hello'
+  resources :users
+  get '/login', to:'sessions#new'
+  post '/login', to:'sessions#create'
+  delete '/logout', to:'sessions#destroy'
+
+  get 'static_pages/qa'
+  get 'progate' => 'static_pages#progate'
+  get '/contact' => 'static_pages#contact'
+  get '/about' => 'static_pages#about'
+  get '/help' => 'static_pages#help'
+
 end

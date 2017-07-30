@@ -1,4 +1,53 @@
-<div class="center jumbotron">
-    <h1>セレブエンジニアサロン</h1>
-  </div>
-<h2>プロゲート</h2>
+
+  <div class="col-md-4, pull-right">
+         <ul class="nav nav-pills nav-stacked">
+             <br></br>
+             <br></br>
+             <br></br>
+            <li class="active">ページリンク</a></li>
+            <li><a href="/static_pages/home">はじめに</a></li>
+            <li><%= link_to "フリーとは", signup_path %></li>
+            <li><%= link_to "progate", contact_path %></li>
+            <li><%= link_to "railsチュートリアル", login_path %></li>
+            <li><a href="/static_pages/qa">railsチュートリアル：よくある質問</a></li>
+         </ul>
+         </div>
+         <div class="container">
+        <div class="row" align="right">
+            <br></br>
+            <br></br>
+            <div class="text-left">
+         <h2>プロゲート</h2>
+         </div>
+         <p align="left"><iframe width="560" height="315" src="https://www.youtube.com/embed/B-IQt9NXb5A" frameborder="0" allowfullscreen></iframe>
+            </p>
+            <div class="text-left">
+        <a href="https://prog-8.com/mypage">プロゲートはこちら</a>
+        </div>
+        <br></br>
+        <div class="text-center">
+        <a href="https://prog-8.com/lessons/html/study/1HTML&CSS">HTML&CSS</a>
+        <br></br>
+        <input type="button" value="初級完了" class="btn btn-lg btn-primary" onclick="OnOffh1(this);">
+        <input type="button" value="中級完了" class="btn btn-lg btn-primary" onclick="OnOffh2(this);">
+        </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+<!--
+function OnOffh1(lolh1){
+	if (lolh1.value == "初級完了") {
+		lolh1.value = "初級完了済み";
+	} else {
+		lolh1.value = "初級完了";
+	}
+}
+function OnOffh2(lolh2){
+	if (lolh2.value == "中級完了") {
+		lolh2.value = "中級完了済み";
+	} else {
+		lolh2.value = "中級完了";
+	}
+}
+</script>
