@@ -4,11 +4,11 @@
           Menu
         </div>
         <ul class="nav nav-pills nav-stacked">
-           <li><a href="/static_pages/home">はじめに</a></li>
+           <li><%= link_to 'はじめに', root_path %></li>
            <li><%= link_to "フリーとは", signup_path %></li>
            <li><%= link_to "progate", progate_path %></li>
            <li><%= link_to "railsチュートリアル", login_path %></li>
-           <li><%= link_to "railsチュートリアル：よくある質問", qa_path %></li>
+           <li><%= link_to "railsチュートリアル：よくある質問", static_pages_qa_path %></li>
         </ul>
       </div>
     </aside>
