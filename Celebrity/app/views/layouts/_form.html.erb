@@ -1,0 +1,8 @@
+<%= bootstrap_form_for(:user ,  html: {class: 'form-group'}) do |f| %>
+  <%= f.text_area :feedback,:id => "text_area", :size=>"7x7", :maxlength => "500",
+      :placeholder => "100-500文字で入力してください", required: true %>
+  <%= f.submit "送信", class: "btn btn-primary btn-lg submit-btn" %>
+<% end %>
+
+
+  
