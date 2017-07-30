@@ -1,0 +1,2 @@
+class JavascriptStatus < ApplicationRecord
+end

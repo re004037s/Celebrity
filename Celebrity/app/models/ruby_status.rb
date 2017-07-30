@@ -1,0 +1,2 @@
+class RubyStatus < ApplicationRecord
+end
