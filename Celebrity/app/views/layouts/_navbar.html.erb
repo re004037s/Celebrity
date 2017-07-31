@@ -20,4 +20,14 @@
         </ul>
       </div>
     </div>
-  </nav>
+    <div id="gnavi" class="collapse navbar-collapse">
+      <!--<a href=""><span class="top-phrase">セレブエンジニアリングサロン</span></a>-->
+      <%= link_to "セレブエンジニアリングサロン", root_path, :class => "top-phrase" %>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "ユーザー一覧", users_path %></li>
+        <li><%= link_to "Mypage", current_user %></li>
+        <li><%= link_to "logout", logout_path, method: :delete %></li>
+      </ul>
+    </div>
+  </div>
+</nav>
