@@ -22,4 +22,9 @@ class StaticPagesController < ApplicationController
   
   def qa
   end
+  
+  def progate
+    @ajax_res = params[:impression]
+    render
+  end
 end
