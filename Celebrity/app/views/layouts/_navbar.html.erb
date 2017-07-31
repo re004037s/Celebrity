@@ -1,12 +1,24 @@
-<nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
-  <div class="navbar-wrapper container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#gnavi">
-        <span class="sr-only">メニュー</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
+  <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+    <div class="navbar-wrapper container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#gnavi">
+          <span class="sr-only">メニュー</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <div id="gnavi" class="collapse navbar-collapse">
+        <!--<a href=""><span class="top-phrase">セレブエンジニアリングサロン</span></a>-->
+        <%= link_to "セレブエンジニアリングサロン", home_path, :class => "top-phrase" %>
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to "ユーザー一覧", help_path %></li>
+          <li><%= link_to "Mypage", about_path %></li>
+          <li><%= link_to "signup", signup_path %></li>
+          <li><%= link_to "login", login_path %></li>
+
+        </ul>
+      </div>
     </div>
     <div id="gnavi" class="collapse navbar-collapse">
       <!--<a href=""><span class="top-phrase">セレブエンジニアリングサロン</span></a>-->
