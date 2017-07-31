@@ -1,8 +1,28 @@
-<%= bootstrap_form_for(:user ,  html: {class: 'form-group'}) do |f| %>
-  <%= f.text_area :feedback,:id => "text_area", :size=>"7x7", :maxlength => "500",
-      :placeholder => "100-500文字で入力してください", required: true %>
-  <%= f.submit "送信", class: "btn btn-primary btn-lg submit-btn" %>
+<!--ajax で更新-->
+<div>現在時刻：<%= Time.now %></div>
+<div id="result">現在時刻：<%= Time.now%></div>
+<%= link_to '更新', {:action => 'update_time'}, :remote => true %>
+
+<!---->
+
+<%= form_tag(url_for(:action => 'update_time'), :remote => true,
+    :id => "result_form") do %>
+  <%= text_field_tag :greeting %>
+  <%= submit_tag "Show!" %>
 <% end %>
 
+<!--<%= bootstrap_form_for(:user ,  html: {class: 'form-group', name: 'kansou_send'}) do |f| %>-->
+<!--  <%= f.text_area :感想,:id => "Tobj1", :size=>"7x7", :maxlength => "500",-->
+<!--      :placeholder => "100-500文字で入力してください", required: true, :onchange => "Limit(event)", :onkeyup => "Limit(event)" %>-->
+<!--      <br><span id="msg1">文字数カウント</span><br><div style="color: red;" class="has-error"></div>-->
+<!--  <button type="button" value="ajax" class="btn btn-primary btn-lg submit-btn" onClick="addTF(this.value)">感想を送る</button><br>-->
+<!--        <input type="text" name="syuturyoku">-->
+<!--  <% end %>-->
 
-  
+
+<div id="result"></div>
+
+
+<script>
+
+</script>
