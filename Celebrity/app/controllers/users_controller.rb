@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :logged_in_user, only: [:show]
   
   def show
     @user = User.find(params[:id])
@@ -11,6 +12,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      log_in @user
       flash[:success] = 'Welcome to the セレブエンジニアサロン'
       redirect_to root_path
     else
@@ -20,8 +22,8 @@ class UsersController < ApplicationController
   
   private
   
-  def user_params
-    params.require(:user).permit(:name, :nickname, :email, :password, :password_confirmation)
-  end
+    def user_params
+      params.require(:user).permit(:name, :nickname, :email, :password, :password_confirmation)
+    end
   
 end
