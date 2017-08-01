@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   get '/qa', to: 'static_pages#qa'
   get '/progate', to: 'static_pages#progate'
+  post '/progate', to: 'static_pages#progate'
   get '/contact', to: 'static_pages#contact'
   get '/about', to: 'static_pages#about'
   get '/help', to: 'static_pages#help'
