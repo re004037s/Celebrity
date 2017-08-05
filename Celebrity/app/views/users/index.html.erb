@@ -1,15 +1,29 @@
-<h1>All users</h1>
+<h1>サロンメンバー</h1>
 
 <ul class-"users">
   <% @users.each do |user| %>
     <li>
       <%= user.nickname %>
-      
-      
-      
+      <%= user.email %>
+      <%= user.name %>
     </li>
-    
-    
-    
+    <table border="1">
+      <thead>
+        <tr>
+          <th>動画視聴率</th>
+          <th>Progate</th>
+          <th>Rails Tutorial</th>
+          <th>ポートフォリオ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>100%</td>
+          <td>80%</td>
+          <td>3章完了</td>
+          <td>https://marubozu.herokuapp.com/</td>
+        </tr>
+      </tbody>
+    </table>
   <% end %>
 </ul>
