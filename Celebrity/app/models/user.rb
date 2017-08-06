@@ -20,6 +20,8 @@ class User < ApplicationRecord
     has_many :views
     has_many :movies, through: :views
     
+    has_many :feedbacks
+    
     # 渡された文字列のハッシュ値を返す
     def User.digest(string)
         cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :

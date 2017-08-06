@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170730100846) do
+ActiveRecord::Schema.define(version: 20170805234954) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "feedbacks", force: :cascade do |t|
+    t.text     "feedback"
+    t.integer  "movie_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_feedbacks_on_user_id", using: :btree
+  end
 
   create_table "html_css_statuses", force: :cascade do |t|
     t.integer  "user_id"
@@ -125,6 +134,7 @@ ActiveRecord::Schema.define(version: 20170730100846) do
     t.index ["user_id"], name: "index_views_on_user_id", using: :btree
   end
 
+  add_foreign_key "feedbacks", "users"
   add_foreign_key "views", "movies"
   add_foreign_key "views", "users"
 end
