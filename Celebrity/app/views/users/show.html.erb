@@ -1,0 +1,62 @@
+<h1>進捗詳細</h1>
+
+<%= @user.nickname %>
+<%= @user.email %>
+<%= @user.name %>
+
+<% unless @user.html_css_status.nil? %>
+  <h3>[Progate] HTML&CSS</h3>
+  <table border="1">
+    <thead>
+      <tr>
+        <th> </th>
+        <th>ステータス</th>
+        <th>完了日</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>学習コース/初級</td>
+        <td><%= @user.html_css_status.ga_beginner ? '完了' : '未' %></td>
+        <td><%= @user.html_css_status.updated_at %></td>
+      </tr>
+  
+      <tr>
+        <td>学習コース/中級</td>
+        <td><%= @user.html_css_status.ga_middle ? '完了' : '未' %></td>
+        <td><%= @user.html_css_status.updated_at %></td>
+      </tr>    
+  
+      <tr>
+        <td>学習コース/上級</td>
+        <td><%= @user.html_css_status.ga_advanced ? '完了' : '未' %></td>
+        <td><%= @user.html_css_status.updated_at %></td>
+      </tr>
+    </tbody>
+  </table>
+<% end %>
+
+<% unless @user.javascript_status.nil? %>
+  <h3>[Progate] JavaScript</h3>
+  <table border="1">
+    <thead>
+      <tr>
+        <th> </th>
+        <th>ステータス</th>
+        <th>完了日</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>学習コース/基礎</td>
+        <td><%= @user.javascript_status.ga_beginner ? '完了' : '未' %></td>
+        <td><%= @user.javascript_status.updated_at %></td>
+      </tr>
+      <tr>
+        <td>道場コース/基礎</td>
+        <td><%= @user.javascript_status.do_beginner ? '完了' : '未' %></td>
+        <td><%= @user.javascript_status.updated_at %></td>
+      </tr>
+    </tbody>
+  </table>
+<% end %>
