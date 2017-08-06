@@ -29,8 +29,7 @@ class StaticPagesController < ApplicationController
   end
   
   def update_time
-    @time = Time.now.to_s
-    @greeting = params[:greeting]
+    @greeting = params[:impression]
     render
   end
 end

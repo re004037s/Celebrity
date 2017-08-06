@@ -1,28 +1,22 @@
 <!--ajax で更新-->
-<div>現在時刻：<%= Time.now %></div>
-<div id="result">現在時刻：<%= Time.now%></div>
-<%= link_to '更新', {:action => 'update_time'}, :remote => true %>
-
+<%#= form_tag(url_for(:action => 'update_time'), :remote => true) do %>
+  <%#= text_field_tag :greeting %>
+  <%#= submit_tag "Show!" %>
+<%# end %>
 <!---->
 
-<%= form_tag(url_for(:action => 'update_time'), :remote => true,
-    :id => "result_form") do %>
-  <%= text_field_tag :greeting %>
-  <%= submit_tag "Show!" %>
+<%= bootstrap_form_tag url:'/progate', html: {class: 'form-group'}, :remote => true  do |f| %>
+  <%= f.text_area :impression ,:id => "Tobj1", :size=>"7x7", :maxlength => "500",
+      :placeholder => "100-500文字で入力してください", required: true, :onchange => "Limit(event)", :onkeyup => "Limit(event)" %>
+      <span id="msg1">文字数カウント</span>
+      <div style="color: red;" class="has-error"></div>
+  <%= f.submit "送信", class: "btn btn-primary btn-lg submit-btn", disabled: false %>
 <% end %>
 
-<!--<%= bootstrap_form_for(:user ,  html: {class: 'form-group', name: 'kansou_send'}) do |f| %>-->
-<!--  <%= f.text_area :感想,:id => "Tobj1", :size=>"7x7", :maxlength => "500",-->
-<!--      :placeholder => "100-500文字で入力してください", required: true, :onchange => "Limit(event)", :onkeyup => "Limit(event)" %>-->
-<!--      <br><span id="msg1">文字数カウント</span><br><div style="color: red;" class="has-error"></div>-->
-<!--  <button type="button" value="ajax" class="btn btn-primary btn-lg submit-btn" onClick="addTF(this.value)">感想を送る</button><br>-->
-<!--        <input type="text" name="syuturyoku">-->
-<!--  <% end %>-->
+<!--for develop start-->
+<div >【検証用】送信ボタン押下-> この下にajaxの送信内容が出力されます</div>
+<textarea rows="7" cols="7" id="result" ></textarea>
+<!--for develop end-->  
 
-
+<div >【検証用】この下にajaxの送信内容が出力されます</div>
 <div id="result"></div>
-
-
-<script>
-
-</script>
