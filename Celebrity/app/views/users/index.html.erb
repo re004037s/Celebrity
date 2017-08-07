@@ -21,7 +21,7 @@
           <td><%= percent_movie(user) %>%</td>
           <td><%= percent_progate(user) %>%</td>
           <td><%= count_rails_tutorial(user) %>章完了</td>
-          <td>https://marubozu.herokuapp.com/</td>
+          <td><%= user.try(:portfolio_path) %></td>
         </tr>
       </tbody>
     </table>
