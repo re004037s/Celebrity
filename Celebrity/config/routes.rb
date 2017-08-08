@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   post '/login', to:'sessions#create'
   delete '/logout', to:'sessions#destroy'
 
-
   get '/qa', to: 'static_pages#qa'
   get '/', to: 'static_pages#home'
   get '/progate', to: 'static_pages#progate'
