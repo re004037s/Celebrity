@@ -1,5 +1,6 @@
 class User < ApplicationRecord
     before_save { self.email = email.downcase }
+    default_scope -> { order(:created_at) }
     validates :name, presence: true, length: { maximum: 50 }
     validates :nickname, presence: true, length: { maximum: 50 }
     
