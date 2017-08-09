@@ -4,59 +4,239 @@
 <%= @user.email %>
 <%= @user.name %>
 
-<% unless @user.html_css_status.nil? %>
-  <h3>[Progate] HTML&CSS</h3>
-  <table border="1">
-    <thead>
-      <tr>
-        <th> </th>
-        <th>ステータス</th>
-        <th>完了日</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>学習コース/初級</td>
-        <td><%= @user.html_css_status.ga_beginner ? '完了' : '未' %></td>
-        <td><%= @user.html_css_status.updated_at %></td>
-      </tr>
-  
-      <tr>
-        <td>学習コース/中級</td>
-        <td><%= @user.html_css_status.ga_middle ? '完了' : '未' %></td>
-        <td><%= @user.html_css_status.updated_at %></td>
-      </tr>    
-  
-      <tr>
-        <td>学習コース/上級</td>
-        <td><%= @user.html_css_status.ga_advanced ? '完了' : '未' %></td>
-        <td><%= @user.html_css_status.updated_at %></td>
-      </tr>
-    </tbody>
-  </table>
-<% end %>
+<h3>[Progate] HTML&CSS</h3>
+<table border="1">
+  <thead>
+    <tr>
+      <th> </th>
+      <th>ステータス</th>
+      <th>完了日</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>学習コース/初級</td>
+      <td><%= @user.html_css_status.try(:ga_beginner) ? '完了' : '未' %></td>
+      <td><%= @user.html_css_status.try(:updated_at) %></td>
+    </tr>
+    <tr>
+      <td>学習コース/中級</td>
+      <td><%= @user.html_css_status.try(:ga_middle) ? '完了' : '未' %></td>
+      <td><%= @user.html_css_status.try(:updated_at) %></td>
+    </tr>    
+    <tr>
+      <td>道場コース/初級</td>
+      <td><%= @user.html_css_status.try(:do_beginner) ? '完了' : '未' %></td>
+      <td><%= @user.html_css_status.try(:updated_at) %></td>
+    </tr>
+    <tr>
+      <td>道場コース/中級</td>
+      <td><%= @user.html_css_status.try(:do_middle) ? '完了' : '未' %></td>
+      <td><%= @user.html_css_status.try(:updated_at) %></td>
+    </tr>
+    <tr>
+      <td>道場コース/上級</td>
+      <td><%= @user.html_css_status.try(:do_advanced) ? '完了' : '未' %></td>
+      <td><%= @user.html_css_status.try(:updated_at) %></td>
+    </tr>
+    <tr>
+      <td>実践コース/1</td>
+      <td><%= @user.html_css_status.try(:ji_1) ? '完了' : '未' %></td>
+      <td><%= @user.html_css_status.try(:updated_at) %></td>
+    </tr>
+    <tr>
+      <td>実践コース/2</td>
+      <td><%= @user.html_css_status.try(:ji_2) ? '完了' : '未' %></td>
+      <td><%= @user.html_css_status.try(:updated_at) %></td>
+    </tr>
+  </tbody>
+</table>
 
-<% unless @user.javascript_status.nil? %>
-  <h3>[Progate] JavaScript</h3>
-  <table border="1">
-    <thead>
-      <tr>
-        <th> </th>
-        <th>ステータス</th>
-        <th>完了日</th>
-      </tr>
-    </thead>
+
+<h3>[Progate] JavaScript</h3>
+<table border="1">
+  <thead>
+    <tr>
+      <th> </th>
+      <th>ステータス</th>
+      <th>完了日</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>学習コース/基礎</td>
+      <td><%= @user.javascript_status.try(:ga_beginner) ? '完了' : '未' %></td>
+      <td><%= @user.javascript_status.try(:updated_at) %></td>
+    </tr>
+    <tr>
+      <td>道場コース/基礎</td>
+      <td><%= @user.javascript_status.try(:do_beginner) ? '完了' : '未' %></td>
+      <td><%= @user.javascript_status.try(:updated_at) %></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>[Progate] Ruby</h3>
+<table border="1">
+  <thead>
+    <tr>
+      <th> </th>
+      <th>ステータス</th>
+      <th>完了日</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>学習コース 1</td>
+      <td><%= @user.ruby_status.try(:ga_1) ? '完了' : '未' %></td>
+      <td><%= @user.ruby_status.try(:updated_at) %></td>
+    </tr>
+    <tr>
+      <td>学習コース 2</td>
+      <td><%= @user.ruby_status.try(:ga_2) ? '完了' : '未' %></td>
+      <td><%= @user.ruby_status.try(:updated_at) %></td>
+    </tr>
+    <tr>
+      <td>学習コース 3</td>
+      <td><%= @user.ruby_status.try(:ga_3) ? '完了' : '未' %></td>
+      <td><%= @user.ruby_status.try(:updated_at) %></td>
+    </tr>
+    <tr>
+      <td>学習コース 4</td>
+      <td><%= @user.ruby_status.try(:ga_4) ? '完了' : '未' %></td>
+      <td><%= @user.ruby_status.try(:updated_at) %></td>
+    </tr>
+    <tr>
+      <td>学習コース 5</td>
+      <td><%= @user.ruby_status.try(:ga_5) ? '完了' : '未' %></td>
+      <td><%= @user.ruby_status.try(:updated_at) %></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>[Progate] Ruby on Rails</h3>
+<table border="1">
+  <thead>
+    <tr>
+      <th> </th>
+      <th>ステータス</th>
+      <th>完了日</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>学習コース 1</td>
+      <td><%= @user.rubyonrails_status.try(:ga_1) ? '完了' : '未' %></td>
+      <td><%= @user.rubyonrails_status.try(:updated_at) %></td>
+    </tr>
+
+    <tr>
+      <td>学習コース 2</td>
+      <td><%= @user.rubyonrails_status.try(:ga_2) ? '完了' : '未' %></td>
+      <td><%= @user.rubyonrails_status.try(:updated_at) %></td>
+    </tr>
+
+    <tr>
+      <td>学習コース 3</td>
+      <td><%= @user.rubyonrails_status.try(:ga_3) ? '完了' : '未' %></td>
+      <td><%= @user.rubyonrails_status.try(:updated_at) %></td>
+    </tr>
+
+    <tr>
+      <td>学習コース 4</td>
+      <td><%= @user.rubyonrails_status.try(:ga_4) ? '完了' : '未' %></td>
+      <td><%= @user.rubyonrails_status.try(:updated_at) %></td>
+    </tr>
+
+    <tr>
+      <td>学習コース 5</td>
+      <td><%= @user.rubyonrails_status.try(:ga_5) ? '完了' : '未' %></td>
+      <td><%= @user.rubyonrails_status.try(:updated_at) %></td>
+    </tr>
+
+    <tr>
+      <td>学習コース 6</td>
+      <td><%= @user.rubyonrails_status.try(:ga_6) ? '完了' : '未' %></td>
+      <td><%= @user.rubyonrails_status.try(:updated_at) %></td>
+    </tr>
+
+    <tr>
+      <td>学習コース 7</td>
+      <td><%= @user.rubyonrails_status.try(:ga_7) ? '完了' : '未' %></td>
+      <td><%= @user.rubyonrails_status.try(:updated_at) %></td>
+    </tr>
+
+    <tr>
+      <td>学習コース 8</td>
+      <td><%= @user.rubyonrails_status.try(:ga_8) ? '完了' : '未' %></td>
+      <td><%= @user.rubyonrails_status.try(:updated_at) %></td>
+    </tr>
+
+    <tr>
+      <td>学習コース 9</td>
+      <td><%= @user.rubyonrails_status.try(:ga_9) ? '完了' : '未' %></td>
+      <td><%= @user.rubyonrails_status.try(:updated_at) %></td>
+    </tr>
+
+    <tr>
+      <td>学習コース 10</td>
+      <td><%= @user.rubyonrails_status.try(:ga_10) ? '完了' : '未' %></td>
+      <td><%= @user.rubyonrails_status.try(:updated_at) %></td>
+    </tr>
+
+    <tr>
+      <td>学習コース 11</td>
+      <td><%= @user.rubyonrails_status.try(:ga_11) ? '完了' : '未' %></td>
+      <td><%= @user.rubyonrails_status.try(:updated_at) %></td>
+    </tr>
+
+    <tr>
+      <td>道場コース 1</td>
+      <td><%= @user.rubyonrails_status.try(:do_1) ? '完了' : '未' %></td>
+      <td><%= @user.rubyonrails_status.try(:updated_at) %></td>
+    </tr>
+
+    <tr>
+      <td>道場コース 2</td>
+      <td><%= @user.rubyonrails_status.try(:do_2) ? '完了' : '未' %></td>
+      <td><%= @user.rubyonrails_status.try(:updated_at) %></td>
+    </tr>
+
+    <tr>
+      <td>道場コース 3</td>
+      <td><%= @user.rubyonrails_status.try(:do_3) ? '完了' : '未' %></td>
+      <td><%= @user.rubyonrails_status.try(:updated_at) %></td>
+    </tr>
+
+    <tr>
+      <td>道場コース 4</td>
+      <td><%= @user.rubyonrails_status.try(:do_4) ? '完了' : '未' %></td>
+      <td><%= @user.rubyonrails_status.try(:updated_at) %></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Rails Tutorial</h3>
+<%= count_rails_tutorial(@user) %>章まで完了
+
+
+<h3>動画視聴</h3>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>動画名</th>
+      <th>ステータス</th>
+      <th>感想</th>
+    </tr>
+  </thead>
+  <% for n in 1..Movie.count do %>
     <tbody>
       <tr>
-        <td>学習コース/基礎</td>
-        <td><%= @user.javascript_status.ga_beginner ? '完了' : '未' %></td>
-        <td><%= @user.javascript_status.updated_at %></td>
-      </tr>
-      <tr>
-        <td>道場コース/基礎</td>
-        <td><%= @user.javascript_status.do_beginner ? '完了' : '未' %></td>
-        <td><%= @user.javascript_status.updated_at %></td>
+        <td><%= Movie.find(n).title %></td>
+        <td><%= @user.feedbacks.find_by(movie_id: n) ? '完了' : '未' %></td>
+        <td><%= @user.feedbacks.find_by(movie_id: n) ? @user.feedbacks.find_by(movie_id: n).feedback : '-' %></td>
       </tr>
     </tbody>
-  </table>
-<% end %>
+  <% end %>
+</table>
