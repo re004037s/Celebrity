@@ -240,3 +240,7 @@
     </tbody>
   <% end %>
 </table>
+
+<%= link_to 'ユーザ編集', edit_user_path(@user) , class: 'btn btn-primary' %>
+<%= link_to 'ユーザ削除', @user, method: :delete, class: 'btn btn-danger',
+    data: { confirm: '本当に削除しますか？' } %>
