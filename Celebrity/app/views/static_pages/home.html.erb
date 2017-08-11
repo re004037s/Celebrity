@@ -1,17 +1,38 @@
+ <meta name="viewport" content="width=device-width; initial-scale=1.0">
  <div class="main-wrapper container">
   <div class="row">
     <div class="col-sm-9">
-      <p class="text-center"><iframe width="560" height="315" src="https://www.youtube.com/embed/lj_PJMauzNU?list=UUV_bOyaNKyzKX6fnRlcu4UA" 
+      <div class="text-center">
+          <div class="video-container">
+          <iframe width="853" height="510" src="https://www.youtube.com/embed/lj_PJMauzNU?list=UUV_bOyaNKyzKX6fnRlcu4UA" 
             frameborder="0" allowfullscreen></iframe>
-      </p>
-      <p class="text-center">プログラミングを学んでフリーランスを目指しましょう</p>
-      <p class="text-center">
-        <%= link_to "さあ、プログラミングを始めよう！", progate_path, class: "btn btn-lg btn-primary" %>
-      </p>
+            </div>
+      </div>
+      <div class="text-center">プログラミングを学んでフリーランスを目指しましょう</div>
+      <div class="text-center">
+        <%= link_to "さあ、プログラミングを始めよう！", root_path, class: "btn btn-lg btn-primary" %>
+      </div>
     </div> 
     
     <%= render 'layouts/aside' %>
 
   </div>
  </div>
-  
+ <style>
+ .video-container {
+	position: relative;
+	padding-bottom: 56.25%;
+	padding-top: 30px;
+	height: 0;
+	overflow: hidden;
+}
+
+iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100% !important;
+    height: 100% !important;
+}
+
+ </style>

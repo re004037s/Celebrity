@@ -127,3 +127,27 @@ input {
     color: $state-danger-text;
   }
 }
+.mod-sampleBlock{
+    padding:10px;
+    background:#eee;
+    *zoom:1;
+}
+.mod-sampleBlock:after{
+    content:'';
+    clear:both;
+    display:table;
+}
+/* [ 2 ] */
+.mod-sampleBlock .mod-sampleBlock-header{
+    border-bottom:1px solid #000;
+    margin:0 0 .5em;
+}
+.mod-sampleBlock .mod-sampleBlock-header h1{
+    font-size:1.25em;
+    margin:0;
+}
+/* [ 3 ] */
+.mod-sampleBlock .mod-sampleBlock-image {
+    float:right;
+    margin:0 0 0 10px;
+}
