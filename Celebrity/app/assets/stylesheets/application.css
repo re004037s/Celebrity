@@ -67,9 +67,19 @@ footer.container{
 }
 @media (min-width: 992px) {
     .container {
-        width: 100%;
+        width: 850px;
+        padding-left: 0px;
+        padding-right: 0px;
         background-color: white;
     }
+}
+div.navbar-wrapper, .navbar{
+  background-color: #222222;
+  border-bottom: none;
+}
+.blank-box{
+  height: 30px;
+  background-color: white
 }
 
 @media (min-width: 768px){
