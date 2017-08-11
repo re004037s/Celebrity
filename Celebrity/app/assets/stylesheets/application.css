@@ -15,20 +15,29 @@
  *= require rails_bootstrap_forms
  */
 
+body{
+  background-color: gray;
+}
+
 .body-wrapper, .navbar-wrapper{
-  width: 970px;
+  width: 850px;
   margin: 0 auto;
+}
+.navbar{
+  margin-bottom: 0px;
 }
 
 .body-wrapper{
-  margin-top: 20px;
+  background-color: white;
 }
 
 
 .top-pic-wrapper{
- background-color: gray;
- margin-top: 40px;
- margin-bottom: 40px;
+}
+
+div.main-wrapper{
+  padding-top: 50px;
+  padding-bottom: 55px;
 }
 
 .top-phrase{
@@ -40,10 +49,36 @@
 .navbar-inverse .navbar-nav > li > a {
     color: #FFFFFF;
 }
+.container{
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.row{
+    margin-left: 0px; 
+    margin-right: 0px; 
+}
 
+iframe{
+  width: 500px;
+  height: 360px;
+}
+footer.container{
+  background-color: white;
+}
 @media (min-width: 992px) {
     .container {
-        width: 970px;
+        width: 850px;
+        padding-left: 0px;
+        padding-right: 0px;
+        background-color: white;
     }
+}
+div.navbar-wrapper, .navbar{
+  background-color: #222222;
+  border-bottom: none;
+}
+.blank-box{
+  height: 30px;
+  background-color: white
 }
 
