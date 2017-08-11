@@ -1,8 +1,7 @@
 class StaticPagesController < ApplicationController
-  def home
-  end
+  before_action :logged_in_user
   
-  def contact 
+  def home
   end
 
   def about
@@ -11,9 +10,15 @@ class StaticPagesController < ApplicationController
   def help
   end
   
-  def logout
+  def contact
   end
   
-  def login
+  def qa
   end
+  
+  def progate
+    @ajax_res = params[:impression]
+    render
+  end
+  
 end
