@@ -20,7 +20,7 @@ body{
 }
 
 .body-wrapper, .navbar-wrapper{
-  width: 850px;
+  max-width: 850px;
   margin: 0 auto;
 }
 .navbar{
@@ -56,11 +56,6 @@ div.main-wrapper{
 .row{
     margin-left: 0px; 
     margin-right: 0px; 
-}
-
-iframe{
-  width: 500px;
-  height: 360px;
 }
 footer.container{
   background-color: white;
@@ -112,18 +107,24 @@ div.navbar-wrapper, .navbar{
     width: 60vw;
 }
 
-.img-responsive{
-  width: 100%;
+img{
+   width:10vw;
+    height: auto;
 }
 
 iframe{
-  width: 28vw;
-  min-width: 450px;
-  min-height: 280px;
+   width:100%;
+    height: auto;
 }
 
 .navbar-wrapper{
     min-width: 700px;
     width: 60vw;
+}
+.aside {
+ 
+}
+.txt1{
+  font-size: 1vw;
 }
 }
