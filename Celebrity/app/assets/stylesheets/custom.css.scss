@@ -8,11 +8,11 @@ $gray-medium-light: #eaeaea;
 /* universal */
 
 body {
-  padding-top: 55px;
+  
 }
 
 section {
-  overflow: auto;
+  
 }
 
 textarea {
@@ -55,7 +55,9 @@ p {
 
 
 /* header */
-
+header{
+  width: 80vw;
+}
 #logo {
   float: left;
   margin-right: 10px;
@@ -142,4 +144,8 @@ img {
     max-width: 500px;
     max-height: 360px;
   }
+}
+.container{
+  width:80%;
+  margin: 0 auto;
 }
