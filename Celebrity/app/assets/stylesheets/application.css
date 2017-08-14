@@ -19,13 +19,13 @@ body{
 }
 
 .body-wrapper, .navbar-wrapper{
-  max-width: 850px;
+  width: 70vw;
   margin: 0 auto;
 }
 .navbar{
   margin-bottom: 0px;
-  width:850px;
-  margin: auto;
+  width: 70vw;
+  margin: 0 auto;
 }
 
 .body-wrapper{
@@ -61,7 +61,7 @@ footer.container{
 }
 @media (min-width: 992px) {
   .container {
-    width: 850px;
+    width: 70vw;
     padding-left: 0px;
     padding-right: 0px;
     background-color: white;
