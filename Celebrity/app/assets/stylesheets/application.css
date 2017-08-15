@@ -39,14 +39,15 @@ div.main-wrapper{
 }
 
 .top-phrase{
-  font-size: large;
+  font-size: 2vw;
   line-height: 3em;
   color: #F8C810;
 }
 
 .navbar-inverse .navbar-nav > li > a {
+    font-size: 1vw;
+    line-height: 3em;
     color: #FFFFFF;
-    padding-right: 3vw;
 }
 .container{
   padding-left: 0px;
