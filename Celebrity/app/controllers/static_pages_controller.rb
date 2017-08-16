@@ -17,8 +17,22 @@ class StaticPagesController < ApplicationController
   end
   
   def progate
-    @ajax_res = params[:impression]
-    render
+  
+  end
+  
+  def feedback
+    # user_id(current_user_id) とmovie_idを取得する
+    @user = User.find_by(id:1)
+    @feedbacks = @user.feedbacks.build(feedback: params[:impression], movie_id: '1')
+
+    # saveする
+    @feedbacks.save
+    
+    # 確認のためにリダイレクトさせているが
+    # ボタンを押下したらdisabledかつ感想送信完了かつメッセージ通知を出したい
+    redirect_to '/'
+    flash[:notice] = "登録完了したのでリダイレクトしました"
+
   end
   
 end
