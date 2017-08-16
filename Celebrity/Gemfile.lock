@@ -61,8 +61,7 @@ GEM
     concurrent-ruby (1.0.5)
     erubis (2.7.0)
     execjs (2.7.0)
-
-    faker (1.8.4)
+    faker (1.4.2)
       i18n (~> 0.5)
     ffi (1.9.18)
     formatador (0.2.5)
@@ -213,7 +212,7 @@ DEPENDENCIES
   bootstrap_form
   byebug (= 9.0.6)
   coffee-rails (= 4.2.2)
-  faker
+  faker (= 1.4.2)
   guard (= 2.13.0)
   guard-minitest (= 2.4.4)
   jbuilder (= 2.6.1)
