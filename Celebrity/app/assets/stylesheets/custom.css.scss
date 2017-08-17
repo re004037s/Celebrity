@@ -150,3 +150,34 @@ img {
   width:80%;
   margin: 0 auto;
 }
+
+/* ユーザ一覧&詳細ページ */
+li {
+  list-style: none;
+}
+
+.user-info {
+}
+
+.table-index {
+  width: 90%;
+  table-layout: fixed;
+  margin-bottom: 50px;
+}
+
+.table-status {
+  width: 90%;
+  table-layout: fixed;
+  margin: 0 auto;
+  margin-bottom: 50px;
+}
+
+.status-name {
+  margin-left: 30px;
+}
+
+.form-button {
+  padding-top: 20px;
+  margin-left: auto;
+  width: 20%;
+}
