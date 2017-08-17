@@ -2,22 +2,16 @@
  <div class="main-wrapper container">
   <div class="row">
     <div class="col-sm-9">
-
-          <div class="video-container">
-          <iframe style="width:100%; height: auto;" src="https://www.youtube.com/embed/lj_PJMauzNU?list=UUV_bOyaNKyzKX6fnRlcu4UA" 
-            frameborder="0" allowfullscreen></iframe>
-            </div>
-    
-      <div class="txt1">
-      <div class="text-center">プログラミングを学んでフリーランスを目指しましょう</div>
-      <div class="text-center">
-       <a class="btn btn-lg btn-primary" href="/"><div class="txt1">さあ、プログラミングを始めよう！</div></a>
+          
+        <p class="text-center movie"><iframe src="https://www.youtube.com/embed/lj_PJMauzNU?list=UUV_bOyaNKyzKX6fnRlcu4UA" 
+        frameborder="0" allowfullscreen></iframe></p>
+      
+      <p class="text-center txt1">プログラミングを学んでフリーランスを目指しましょう</p>
+      <p class="text-center">
+        <%= link_to "さあ、プログラミングを始めよう！", progate_path, class: "txt1 btn btn-lg btn-primary" %>
+      </p>
       </div>
-      </div>
-    </div> 
-    
     <%= render 'layouts/aside' %>
-
   </div>
  </div>
  <style>
@@ -25,13 +19,16 @@
 	position: relative;
 	padding-bottom: 56.25%;
 	padding-top: 30px;
-	height: 0
+	height: 0;
 	overflow: hidden;
 }
 
 iframe {
 	position: absolute;
-	left: 0
+	display: block;
+	margin: 0px auto
+	top: 0;
+	left: 0;
 	width: 100% !important;
     height: 100% !important;
 }

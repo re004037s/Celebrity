@@ -1,21 +1,21 @@
 <nav class="navbar navbar-fixed-top navbar-inverse">
   <div class="navbar-wrapper container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#gnavi">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".bs-navbar-collapse">
         <span class="sr-only">メニュー</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
     </div>
-    <div id="gnavi" class="collapse navbar-collapse">
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
       <!--<a href=""><span class="top-phrase">セレブエンジニアリングサロン</span></a>-->
       <%= link_to "セレブエンジニアリングサロン", root_path, :class => "top-phrase" %>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "ユーザー一覧", users_path %></li>
-        <li><%= link_to "Mypage", current_user %></li>
-        <li><%= link_to "logout", logout_path, method: :delete %></li>
+        <li><%= link_to "ユーザー一覧", users_path, :class => "text1" %></li>
+        <li><%= link_to "マイページ", current_user, :class => "text1" %></li>
+        <li><%= link_to "ログアウト", logout_path, method: :delete, :class => "txt1" %></li>
       </ul>
-    </div>
+    </nav>
   </div>
 </nav>

@@ -14,17 +14,18 @@
  *= require_self
  *= require rails_bootstrap_forms
  */
-
 body{
   background-color: gray;
 }
 
 .body-wrapper, .navbar-wrapper{
-  max-width: 850px;
+  width: 70vw;
   margin: 0 auto;
 }
 .navbar{
   margin-bottom: 0px;
+  width: 70vw;
+  margin: 0 auto;
 }
 
 .body-wrapper{
@@ -32,21 +33,20 @@ body{
 }
 
 
-.top-pic-wrapper{
-}
-
 div.main-wrapper{
   padding-top: 50px;
   padding-bottom: 55px;
 }
 
 .top-phrase{
-  font-size: large;
+  font-size: 2vw;
   line-height: 3em;
   color: #F8C810;
 }
 
 .navbar-inverse .navbar-nav > li > a {
+    font-size: 1vw;
+    line-height: 3em;
     color: #FFFFFF;
 }
 .container{
@@ -57,17 +57,19 @@ div.main-wrapper{
     margin-left: 0px; 
     margin-right: 0px; 
 }
+
 footer.container{
   background-color: white;
 }
 @media (min-width: 992px) {
-    .container {
-        width: 850px;
-        padding-left: 0px;
-        padding-right: 0px;
-        background-color: white;
-    }
+  .container {
+    width: 70vw;
+    padding-left: 0px;
+    padding-right: 0px;
+    background-color: white;
+  }
 }
+
 div.navbar-wrapper, .navbar{
   background-color: #222222;
   border-bottom: none;
@@ -75,53 +77,7 @@ div.navbar-wrapper, .navbar{
 .blank-box{
   height: 30px;
   background-color: white
-}
-
-@media (min-width: 768px){
-.container {
-    width: 100%;
-}
-div.navbar-wrapper, .navbar{
-  background-color: #222222;
-  border-bottom: none;
-}
-.blank-box{
-  height: 30px;
-  background-color: white
-}
-.navbar-wrapper{
-    min-width: 700px;
-    width: 60vw;
-}
-
-.body-wrapper{
-    min-width: 700px;
-    width: 60vw;
-}
-
-.img-responsive{
-  width: 100%;
-}
-.body-wrapper{
-    min-width: 700px;
-    width: 60vw;
-}
-
-img{
-   width:10vw;
-    height: auto;
-}
-
-iframe{
-   width:100%;
-    height: auto;
-}
-
-.navbar-wrapper{
-    min-width: 700px;
-    width: 60vw;
 }
 .txt1{
-  font-size: 1vw;
-}
+  font-size: 2vw;
 }
