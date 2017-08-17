@@ -2,17 +2,18 @@
 
 <ul class-"users">
   <% @users.each do |user| %>
-    <li>
+    <h4 class="user-info">
       <%= link_to user.nickname, user %>
-      <%= user.email %>
-      <%= user.name %>
-    </li>
-    <table border="1">
+      [ <%= user.name %> ]
+      Email: <%= user.email %>
+    </h4>
+    
+    <table class="table table-bordered table-striped table-index">
       <thead>
         <tr>
-          <th>動画視聴率</th>
-          <th>Progate</th>
-          <th>Rails Tutorial</th>
+          <th width=15%>動画視聴率</th>
+          <th width=15%>Progate</th>
+          <th width=15%>Rails Tutorial</th>
           <th>ポートフォリオ</th>
         </tr>
       </thead>
@@ -21,7 +22,11 @@
           <td><%= percent_movie(user) %>%</td>
           <td><%= percent_progate(user) %>%</td>
           <td><%= count_rails_tutorial(user) %>章完了</td>
-          <td><%= user.try(:portfolio_path) %></td>
+          <td>
+            <a href="<%= user.try(:portfolio_path) %>" target="_blank">
+              <%= user.try(:portfolio_path) %>
+            </a>
+          </td>
         </tr>
       </tbody>
     </table>
