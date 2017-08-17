@@ -1,14 +1,15 @@
 <h1>進捗詳細</h1>
 
-<%= @user.nickname %>
-<%= @user.email %>
-<%= @user.name %>
+<h2>
+  <%= @user.nickname %>
+  [ <%= @user.name %> ]
+</h2>
 
-<h3>[Progate] HTML&CSS</h3>
-<table border="1">
+<h3 class="status-name">[Progate] HTML&CSS</h3>
+<table class="table table-bordered table-striped table-condensed table-status">
   <thead>
     <tr>
-      <th> </th>
+      <th>コース</th>
       <th>ステータス</th>
       <th>完了日</th>
     </tr>
@@ -53,11 +54,11 @@
 </table>
 
 
-<h3>[Progate] JavaScript</h3>
-<table border="1">
+<h3 class="status-name">[Progate] JavaScript</h3>
+<table class="table table-bordered table-striped table-condensed table-status">
   <thead>
     <tr>
-      <th> </th>
+      <th>コース</th>
       <th>ステータス</th>
       <th>完了日</th>
     </tr>
@@ -76,11 +77,11 @@
   </tbody>
 </table>
 
-<h3>[Progate] Ruby</h3>
-<table border="1">
+<h3 class="status-name">[Progate] Ruby</h3>
+<table class="table table-bordered table-striped table-condensed table-status">
   <thead>
     <tr>
-      <th> </th>
+      <th>コース</th>
       <th>ステータス</th>
       <th>完了日</th>
     </tr>
@@ -114,11 +115,11 @@
   </tbody>
 </table>
 
-<h3>[Progate] Ruby on Rails</h3>
-<table border="1">
+<h3 class="status-name">[Progate] Ruby on Rails</h3>
+<table class="table table-bordered table-striped table-condensed table-status">
   <thead>
     <tr>
-      <th> </th>
+      <th>コース</th>
       <th>ステータス</th>
       <th>完了日</th>
     </tr>
@@ -216,18 +217,22 @@
   </tbody>
 </table>
 
-<h3>Rails Tutorial</h3>
-<%= count_rails_tutorial(@user) %>章まで完了
+<h3 class="status-name">Rails Tutorial</h3>
+<table class="table table-bordered table-condensed table-status">
+  <tr>
+    <td>完了した章</td>
+    <td><%= count_rails_tutorial(@user) %>章</td>
+  </tr>
+</table>
 
+<h3 class="status-name">動画視聴</h3>
 
-<h3>動画視聴</h3>
-
-<table border="1">
+<table class="table table-bordered table-striped table-condensed table-status">
   <thead>
     <tr>
       <th>動画名</th>
       <th>ステータス</th>
-      <th>感想</th>
+      <th width=50%>感想</th>
     </tr>
   </thead>
   <% for n in 1..Movie.count do %>
@@ -241,6 +246,8 @@
   <% end %>
 </table>
 
-<%= link_to 'ユーザ編集', edit_user_path(@user) , class: 'btn btn-primary' %>
-<%= link_to 'ユーザ削除', @user, method: :delete, class: 'btn btn-danger',
-    data: { confirm: '本当に削除しますか？' } %>
+<div class="form-button">
+  <%= link_to 'ユーザ編集', edit_user_path(@user) , class: 'btn btn-primary' %>
+  <%= link_to 'ユーザ削除', @user, method: :delete, class: 'btn btn-danger',
+      data: { confirm: '本当に削除しますか？' } %>
+</div>
