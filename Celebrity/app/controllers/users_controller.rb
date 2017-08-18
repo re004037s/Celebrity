@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :show, :edit, :update]
   before_action :correct_user, only: [:show, :edit, :update]
+  before_action :existence_user, only: [:show, :edit, :update]
   
   def index
     @users = User.all
@@ -52,6 +53,12 @@ class UsersController < ApplicationController
     def correct_user
       @user = User.find(params[:id])
       redirect_to root_url unless current_user?(@user) || current_user.admin
+    end
+    
+    # アクセスしようとしているページが削除ユーザのものである場合はルートURLへリダイレクト
+    def existence_user
+      @user = User.find(params[:id])
+      redirect_to root_url unless existence_user?(@user)
     end
 
 end
