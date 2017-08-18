@@ -1,17 +1,17 @@
-<h1>サロンメンバー</h1>
+<h1 class="txt2">サロンメンバー</h1>
 
-<ul class-"users">
+<ul class="users">
   <% @users.each do |user| %>
-    <h4 class="user-info">
+    <h4 class="txt3 user-info">
       <%= link_to user.nickname, user %>
       [ <%= user.name %> ]
       Email: <%= user.email %>
     </h4>
     
-    <table class="table table-bordered table-striped table-index">
+    <table class="txt4 table table-bordered table-striped table-index">
       <thead>
         <tr>
-          <th width=15%>動画視聴率</th>
+          <th width=20%>動画視聴率</th>
           <th width=15%>Progate</th>
           <th width=15%>Rails Tutorial</th>
           <th>ポートフォリオ</th>

@@ -1,8 +1,8 @@
-<h1>サロンメンバー</h1>
+<h1 class="txt2">サロンメンバー</h1>
 
-<ul class-"users">
+<ul class-"txt1 users">
   <% @users.each do |user| %>
-    <li>
+    <li class="txt1">
       <%= link_to user.nickname, user %>
       <%= user.email %>
       <%= user.name %>
@@ -27,3 +27,19 @@
     </table>
   <% end %>
 </ul>
+<style type="text/css">
+.txt1{
+  font-size: 2vw;
+}
+.txt2{
+  font-size: 6vw;
+}
+.txt3{
+  font-size: 3vw;
+}
+.btn-delete{
+  font-size: 1vw;
+  position:relative;
+  right: 3em
+}
+</style>

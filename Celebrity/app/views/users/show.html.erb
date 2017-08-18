@@ -1,12 +1,13 @@
-<h1>進捗詳細</h1>
 
-<h2>
+<h1 class="txt2">進捗詳細</h1>
+
+<h2 class="txt3">
   <%= @user.nickname %>
   [ <%= @user.name %> ]
 </h2>
 
-<h3 class="status-name">[Progate] HTML&CSS</h3>
-<table class="table table-bordered table-striped table-condensed table-status">
+<h3 class="txt3 status-name">[Progate] HTML&CSS</h3>
+<table class="txt1 table table-bordered table-striped table-condensed table-status">
   <thead>
     <tr>
       <th>コース</th>
@@ -54,8 +55,8 @@
 </table>
 
 
-<h3 class="status-name">[Progate] JavaScript</h3>
-<table class="table table-bordered table-striped table-condensed table-status">
+<h3 class="txt3 status-name">[Progate] JavaScript</h3>
+<table class="txt1 table table-bordered table-striped table-condensed table-status">
   <thead>
     <tr>
       <th>コース</th>
@@ -77,8 +78,8 @@
   </tbody>
 </table>
 
-<h3 class="status-name">[Progate] Ruby</h3>
-<table class="table table-bordered table-striped table-condensed table-status">
+<h3 class="txt3 status-name">[Progate] Ruby</h3>
+<table class="txt1 table table-bordered table-striped table-condensed table-status">
   <thead>
     <tr>
       <th>コース</th>
@@ -115,8 +116,8 @@
   </tbody>
 </table>
 
-<h3 class="status-name">[Progate] Ruby on Rails</h3>
-<table class="table table-bordered table-striped table-condensed table-status">
+<h3 class="txt3 status-name">[Progate] Ruby on Rails</h3>
+<table class="txt1 table table-bordered table-striped table-condensed table-status">
   <thead>
     <tr>
       <th>コース</th>
@@ -217,17 +218,17 @@
   </tbody>
 </table>
 
-<h3 class="status-name">Rails Tutorial</h3>
-<table class="table table-bordered table-condensed table-status">
+<h3 class="txt3 status-name">Rails Tutorial</h3>
+<table class="txt1 table table-bordered table-condensed table-status">
   <tr>
     <td>完了した章</td>
     <td><%= count_rails_tutorial(@user) %>章</td>
   </tr>
 </table>
 
-<h3 class="status-name">動画視聴</h3>
+<h3 class="txt3 status-name">動画視聴</h3>
 
-<table class="table table-bordered table-striped table-condensed table-status">
+<table class="txt1 table table-bordered table-striped table-condensed table-status">
   <thead>
     <tr>
       <th>動画名</th>
@@ -247,7 +248,7 @@
 </table>
 
 <div class="form-button">
-  <%= link_to 'ユーザ編集', edit_user_path(@user) , class: 'btn btn-primary' %>
-  <%= link_to 'ユーザ削除', @user, method: :delete, class: 'btn btn-danger',
+  <%= link_to 'ユーザ編集', edit_user_path(@user) , class: 'btn-delete btn btn-primary' %>
+  <%= link_to 'ユーザ削除', @user, method: :delete, class: 'btn-delete btn btn-danger',
       data: { confirm: '本当に削除しますか？' } %>
 </div>
