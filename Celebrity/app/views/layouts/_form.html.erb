@@ -2,11 +2,15 @@
   <%= f.text_area :impression ,:id => "Tobj1", :size=>"7x7", :maxlength => "500",
       :placeholder => "100-500文字で入力してください", required: true, :onchange => "Limit(event)", :onkeyup => "Limit(event)" %>
       <br><span id="msg1">文字数カウント</span><br><div style="color: red;" class="has-error"></div>
-  <%= f.submit "感想を送る", id: "feedback-btn", class: "btn btn-primary btn-lg submit-btn", disabled: true %>
-  <%= hidden_field_tag 'feedbacks[set]' %>
+  <%= f.submit "感想を送る",id:"feedback-btn" , class: "btn btn-primary btn-lg submit-btn", disabled: true %>
+  <%#= hidden_field_tag 'feedbacks[set]' %>
   <!--TODO hidden_tag　を使う-->
   
 <% end %>
+
+<% if @feedbacks%>
+<%= @feedbacks%>
+<% end%>
 
 <!--for develop start-->
 <div >【検証用】送信ボタン押下-> この下にajaxの送信内容が出力されます</div>
@@ -70,9 +74,9 @@ $(function(){
 
 <script>
 $(function() {
-    $('#feedback-btn').click(function(){
-        $(this).val('送信完了しました');
-        $(this).prop('disabled', true)
-    });
+     $('#feedback-btn').click(function(){
+         $(this).val('送信完了しました');
+     $(this).prop('disabled', true)
+     });
 });
 </script>

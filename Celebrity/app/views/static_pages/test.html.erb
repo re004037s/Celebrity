@@ -1,0 +1,7 @@
+<div>
+	<p class="text-center"><a href="https://prog-8.com/mypage">プロゲートはこちら</a></p>
+	<%= bootstrap_form_tag url:'/progate', html: {class: 'form-group'}, :remote => true  do |f| %>
+	  <%= f.submit "初級未完了", class: "btn btn-primary btn-lg progress-btn", disabled: false %>
+	  <%= f.submit "中級未完了", class: "btn btn-primary btn-lg progress-btn", disabled: true %>
+	<% end %>
+</div>
