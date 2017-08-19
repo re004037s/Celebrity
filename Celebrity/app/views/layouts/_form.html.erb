@@ -5,6 +5,15 @@
   <%= f.submit "感想を送る", class: "btn btn-primary btn-lg submit-btn", disabled: true %>
 <% end %>
 
+
+<%= bootstrap_form_tag url:'/progate', html: {class: 'form-group'}, :remote => true  do |f| %>
+  <%= f.submit '初級', name: 'begi' ,class: 'btn btn-danger' %>
+<% end %>
+
+<%= bootstrap_form_tag url:'/progate', html: {class: 'form-group'}, :remote => true  do |f| %>
+    <%= f.submit '中級', name: 'midd' ,class: 'btn btn-danger' %>
+<% end %>
+
 <!--for develop start-->
 <div >【検証用】送信ボタン押下-> この下にajaxの送信内容が出力されます</div>
 <textarea rows="7" cols="7" id="result" ></textarea>
