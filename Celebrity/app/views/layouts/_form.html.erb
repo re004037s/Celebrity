@@ -2,7 +2,8 @@
   <%= f.text_area :impression ,:id => "Tobj1", :size=>"7x7", :maxlength => "500",
       :placeholder => "100-500文字で入力してください", required: true, :onchange => "Limit(event)", :onkeyup => "Limit(event)" %>
       <br><span id="msg1">文字数カウント</span><br><div style="color: red;" class="has-error"></div>
-  <%= f.submit "感想を送る", class: "btn btn-primary btn-lg submit-btn", disabled: true %>
+  <%= f.submit "感想を送る", id: "feedback-btn", class: "btn btn-primary btn-lg submit-btn", disabled: true %>
+  <%= hidden_field_tag 'feedbacks[set]' %>
   <!--TODO hidden_tag　を使う-->
   
 <% end %>
@@ -21,7 +22,6 @@ $(function() {
         $('#Tobj1').show();
     });
 });
-
 </script>
 
 <script language="JavaScript">
@@ -64,6 +64,15 @@ $(function(){
             jQuery( '.has-error' ) . text( '100文字以上入力してください' );
             jQuery( '.has-error' ).show();
         }
+    });
+});
+</script>
+
+<script>
+$(function() {
+    $('#feedback-btn').click(function(){
+        $(this).val('送信完了しました');
+        $(this).prop('disabled', true)
     });
 });
 </script>

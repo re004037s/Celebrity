@@ -22,6 +22,7 @@ class StaticPagesController < ApplicationController
   
   def feedback
     # user_id(current_user_id) とmovie_idを取得する
+    if params[feedbacks[set]]
     @user = User.find_by(id:1)
     @feedbacks = @user.feedbacks.build(feedback: params[:impression], movie_id: '1')
 
@@ -30,8 +31,9 @@ class StaticPagesController < ApplicationController
     
     # 確認のためにリダイレクトさせているが
     # ボタンを押下したらdisabledかつ感想送信完了かつメッセージ通知を出したい
-    redirect_to '/'
-    flash[:notice] = "登録完了したのでリダイレクトしました"
+    flash[:success] = "登録完了したのでリダイレクトしました"
+    # redirect_to '/progate'
+    end
 
   end
   
