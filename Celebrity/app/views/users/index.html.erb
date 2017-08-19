@@ -2,33 +2,39 @@
 
 <ul class-"users">
   <% @users.each do |user| %>
-    <h4 class="user-info">
-      <%= link_to user.nickname, user %>
-      [ <%= user.name %> ]
-      Email: <%= user.email %>
-    </h4>
-    
-    <table class="table table-bordered table-striped table-index">
-      <thead>
-        <tr>
-          <th width=15%>動画視聴率</th>
-          <th width=15%>Progate</th>
-          <th width=15%>Rails Tutorial</th>
-          <th>ポートフォリオ</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><%= percent_movie(user) %>%</td>
-          <td><%= percent_progate(user) %>%</td>
-          <td><%= count_rails_tutorial(user) %>章完了</td>
-          <td>
-            <a href="<%= user.try(:portfolio_path) %>" target="_blank">
-              <%= user.try(:portfolio_path) %>
-            </a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <% if user.existence %>
+      <h4 class="user-info">
+        <% if @current_user.admin %>
+          <%= link_to user.nickname, user %>
+          [ <%= user.name %> ]
+          Email: <%= user.email %>
+        <% else %>
+          <%= user.nickname %>
+        <% end %>
+      </h4>
+      
+      <table class="table table-bordered table-striped table-index">
+        <thead>
+          <tr>
+            <th width=15%>動画視聴率</th>
+            <th width=15%>Progate</th>
+            <th width=15%>Rails Tutorial</th>
+            <th>ポートフォリオ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= percent_movie(user) %>%</td>
+            <td><%= percent_progate(user) %>%</td>
+            <td><%= count_rails_tutorial(user) %>章完了</td>
+            <td>
+              <a href="<%= user.try(:portfolio_path) %>" target="_blank">
+                <%= user.try(:portfolio_path) %>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    <% end %>
   <% end %>
 </ul>
