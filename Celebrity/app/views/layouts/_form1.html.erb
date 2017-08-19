@@ -1,6 +1,7 @@
 <p class="text-center">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/B-IQt9NXb5A" frameborder="0" allowfullscreen></iframe>
     <button type="button" id="show-feedback-form" class="btn btn-lg btn-primary" data-toggle="modal">感想を送る！</button>
+    <p id="alert" class="text-center">感想を再送する場合はページを再読み込みしてください</p>
 </p>
 
 <%= bootstrap_form_tag url:'/feedback', html: {class: 'form-group'}, :remote => true  do |f| %>
@@ -11,10 +12,6 @@
   
 <% end %>
 
-<% if @feedbacks%>
-<%= @feedbacks%>
-<% end%>
-
 <!--for develop start-->
 <!--<div >【検証用】送信ボタン押下-> この下にajaxの送信内容が出力されます</div>-->
 <!--<textarea rows="7" cols="7" id="result" ></textarea>-->
@@ -22,11 +19,12 @@
 
 <script>
 $(function(){
-    $('#Tobj1').hide();
+    $('.form-group').hide();
+    $('#alert').hide();
 });
 $(function() {
     $('#show-feedback-form').click(function(){
-        $('#Tobj1').show();
+        $('.form-group').show();
         $(this).fadeOut();
     });
 });
@@ -84,7 +82,7 @@ $(function() {
          $('#Tobj1').fadeOut();
          $('#msg1').fadeOut();
          $('.control-label').fadeOut();
-         
+         $('#alert').fadeIn();
      });
 });
 </script>

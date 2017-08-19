@@ -27,12 +27,14 @@ class StaticPagesController < ApplicationController
     @feedbacks = @user.feedbacks.build(feedback: params[:impression], movie_id: 1)
 
     # saveする
-    @feedbacks.save
+    if @feedbacks.save
     
-    # 確認のためにリダイレクトさせているが
+    render 'layouts/_form'    
     # ボタンを押下したらdisabledかつ感想送信完了かつメッセージ通知を出したい
-    flash[:success] = "登録完了したのでリダイレクトしました"
+    # flash[:success] = "登録完了したのでリダイレクトしました"
     # redirect_to '/progate'
+    end
+    
   end
   
   private
