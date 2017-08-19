@@ -37,7 +37,7 @@ class StaticPagesController < ApplicationController
   
   private
     def feedback_params
-      params.require(:feedback).permit(:impression, :movie_id)
+      params.require(:feedback).permit(:impression, movie_id)
     end
   
 

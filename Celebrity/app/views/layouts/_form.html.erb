@@ -1,10 +1,13 @@
+<p class="text-center">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/B-IQt9NXb5A" frameborder="0" allowfullscreen></iframe>
+    <button type="button" id="show-feedback-form" class="btn btn-lg btn-primary" data-toggle="modal">感想を送る！</button>
+</p>
+
 <%= bootstrap_form_tag url:'/feedback', html: {class: 'form-group'}, :remote => true  do |f| %>
   <%= f.text_area :impression ,:id => "Tobj1", :size=>"7x7", :maxlength => "500",
       :placeholder => "100-500文字で入力してください", required: true, :onchange => "Limit(event)", :onkeyup => "Limit(event)" %>
       <br><span id="msg1">文字数カウント</span><br><div style="color: red;" class="has-error"></div>
-  <%= f.submit "感想を送る",id:"feedback-btn" , class: "btn btn-primary btn-lg submit-btn", disabled: true %>
-  <%#= hidden_field_tag 'feedbacks[set]' %>
-  <!--TODO hidden_tag　を使う-->
+  <%= f.submit "感想を送る", id:"feedback-btn" , class: "btn btn-primary btn-lg submit-btn", disabled: true %>
   
 <% end %>
 
@@ -13,8 +16,8 @@
 <% end%>
 
 <!--for develop start-->
-<div >【検証用】送信ボタン押下-> この下にajaxの送信内容が出力されます</div>
-<textarea rows="7" cols="7" id="result" ></textarea>
+<!--<div >【検証用】送信ボタン押下-> この下にajaxの送信内容が出力されます</div>-->
+<!--<textarea rows="7" cols="7" id="result" ></textarea>-->
 <!--for develop end-->  
 
 <script>
@@ -24,6 +27,7 @@ $(function(){
 $(function() {
     $('#show-feedback-form').click(function(){
         $('#Tobj1').show();
+        $(this).fadeOut();
     });
 });
 </script>
@@ -75,8 +79,12 @@ $(function(){
 <script>
 $(function() {
      $('#feedback-btn').click(function(){
-         $(this).val('送信完了しました');
-     $(this).prop('disabled', true)
+         $(this).val('送信完了');
+         $(this).prop('disabled', true);
+         $('#Tobj1').fadeOut();
+         $('#msg1').fadeOut();
+         $('.control-label').fadeOut();
+         
      });
 });
 </script>
