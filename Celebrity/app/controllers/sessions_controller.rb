@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
   before_action :logged_in_user, only: [:destroy]
   
   def new
+    redirect_to root_url if logged_in?
   end
   
   def create
