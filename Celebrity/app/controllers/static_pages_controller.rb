@@ -26,14 +26,26 @@ class StaticPagesController < ApplicationController
   def progate
 
     if params[:impression]
+
       @msg = params[:impression]
+      
     elsif params[:beginner]
+      
       @msg = "you push beginner"
+      
     elsif params[:intermediate]
+      
       @msg = "you push intermediate"
+
+    elsif params[:expert]
+
+      @msg = "you push expert"
+    
+    else
+    
     end
     
-    @user = User.find_by(id:1)
+    @user = User.find_by(id:3)
     @feedbacks = @user.feedbacks.build(feedback: params[:impression], movie_id:2)
     @feedbacks.save
 

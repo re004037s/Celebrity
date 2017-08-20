@@ -15,16 +15,20 @@
 
 <!--検証用に複数ボタンを配置する-->
 <%= bootstrap_form_tag url:'/progate', :remote => true  do |f| %>
- <%= f.submit '初級', name: 'beginner' ,class: 'btn btn-danger' %>
+ <%= f.submit '初級未完了', name: 'beginner' ,class: 'btn btn-danger' %>
 <% end %>
 
 <%= bootstrap_form_tag url:'/progate', :remote => true  do |f| %>
- <%= f.submit '中級', name: 'intermediate' ,class: 'btn btn-danger' %>
+ <%= f.submit '中級未完了', name: 'intermediate' ,class: 'btn btn-danger' ,disabled:true %>
 <% end %>
+
+<%= bootstrap_form_tag url:'/progate', :remote => true  do |f| %>
+ <%= f.submit '上級未完了', name: 'expert' ,class: 'btn btn-danger' ,disabled:true %>
+<% end %>
+
 
 <!--検証用 progate.js で入力内容を受け取り、下記に出力している-->
 <input type="textarea" rows="7" cols="7" id="result">
-<input type="textarea" rows="7" cols="7" id="success_msg">
     
     
 <% if @msg %>
@@ -99,5 +103,20 @@ $(function() {
          $('.control-label').fadeOut();
          $('#alert').fadeIn();
      });
+
+     
+     $('input[name="beginner"]').click(function(){
+         $(this).val('初級完了')
+         $('input[name="intermediate"]').prop('disabled', false);
+     })
+     
+     $('input[name="intermediate"]').click(function(){
+         $(this).val('中級完了')
+         $('input[name="expert"]').prop('disabled', false);
+     })
+     
+     $('input[name="expert"]').click(function(){
+         $(this).val('上級完了')
+     })
 });
 </script>
