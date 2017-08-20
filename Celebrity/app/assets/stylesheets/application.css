@@ -94,12 +94,21 @@ div.navbar-wrapper, .navbar{
 .txt5{
   font-size: 3vw;
 }
+.txt6{
+  font-size: 1px;
+  padding: 3px 10px;
+}
+
+
 
 
 .btn-delete{
   font-size: 1vw;
   position:relative;
   right: 3em
+}
+table{
+  width: 50vw;
 }
 
 
