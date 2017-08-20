@@ -24,20 +24,19 @@ class StaticPagesController < ApplicationController
   end
   
   def progate
-    # user_id(current_user_id) とmovie_idを取得する
 
-    @user = User.find_by(id:1)
-    @feedbacks = @user.feedbacks.build(feedback: params[:impression], movie_id: 1)
-
-    # DBのsave　が返る前に処理が進む
+    # saveする
+    # if @feedbacks.save
+    # ボタンを押下したらdisabledかつ感想送信完了かつメッセージ通知を出したい
+    # flash[:success] = "登録完了したのでリダイレクトしました"
+    # redirect_to '/progate'
+    # end
     
-    if !@feedbacks.save
+    if params[:impression]
 
       @msg = params[:impression]
-
-    end
-    
-    if params[:beginner]
+      
+    elsif params[:beginner]
       
       @msg = "you push beginner"
    
@@ -46,6 +45,12 @@ class StaticPagesController < ApplicationController
       @msg = "you push intermediate"
 
     end
+
+    @user = User.find_by(id:1)
+    @feedbacks = @user.feedbacks.build(feedback: params[:impression], movie_id: 1)
+    
+    @feedbacks.save
+    
     
   end
   
