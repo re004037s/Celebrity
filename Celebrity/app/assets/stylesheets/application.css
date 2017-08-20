@@ -79,5 +79,37 @@ div.navbar-wrapper, .navbar{
   background-color: white
 }
 .txt1{
+  font-size: 1vw;
+}
+.txt2{
   font-size: 2vw;
 }
+.txt3{
+  font-size: 1.5vw;
+}
+.txt4{
+  font-size: 1vw;
+  word-break:break-all
+}
+.txt5{
+  font-size: 3vw;
+}
+.txt6{
+  font-size: 1px;
+  padding: 3px 10px;
+}
+
+
+
+
+.btn-delete{
+  font-size: 1vw;
+  position:relative;
+  right: 3em
+}
+table{
+  width: 50vw;
+}
+
+
+

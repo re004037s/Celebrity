@@ -18,7 +18,12 @@ class StaticPagesController < ApplicationController
   
   def progate
     @ajax_res = params[:impression]
-    render
+    if params[:begi]
+    
+    elsif params[:midd]
+    
+    end
+    
   end
-  
+
 end
