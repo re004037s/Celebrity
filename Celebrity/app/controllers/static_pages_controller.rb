@@ -36,6 +36,7 @@ class StaticPagesController < ApplicationController
 
       @msg = params[:impression]
       
+      
     elsif params[:beginner]
       
       @msg = "you push beginner"
@@ -49,8 +50,10 @@ class StaticPagesController < ApplicationController
     @user = User.find_by(id:1)
     @feedbacks = @user.feedbacks.build(feedback: params[:impression], movie_id: 1)
     
-    @feedbacks.save
     
+    if @feedbacks.save
+      @success_msg = "感想がDBに保存されました"
+    end
     
   end
   
