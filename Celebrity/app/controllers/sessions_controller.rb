@@ -2,16 +2,17 @@ class SessionsController < ApplicationController
   before_action :logged_in_user, only: [:destroy]
   
   def new
+    redirect_to root_url if logged_in?
   end
   
   def create
     user = User.find_by(email: params[:session][:email].downcase)
-    if user && user.authenticate(params[:session][:password])
+    if user && existence_user?(user) && user.authenticate(params[:session][:password])
       log_in user
       redirect_to root_url
     else
       # エラーメッセージを作成する
-      flash.now[:danger] = 'Invalid email/password combination'
+      flash.now[:danger] = 'メールアドレスとパスワードの組み合わせが不正です'
       render 'new'
     end
   end

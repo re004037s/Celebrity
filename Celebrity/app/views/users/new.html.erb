@@ -11,7 +11,7 @@
       <%= f.label :nickname, "ニックネーム" %>
       <%= f.text_field :nickname, class: 'form-control' %>
 
-      <%= f.label :email %>
+      <%= f.label :email, 'Email' %>
       <%= f.email_field :email, class: 'form-control' %>
 
       <%= f.label :password, 'パスワード' %>
@@ -20,7 +20,9 @@
       <%= f.label :password_confirmation, "パスワード確認" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
 
-      <%= f.submit "Create my account", class: "btn btn-primary" %>
+      <%= f.submit "登録！", class: "btn btn-primary" %>
     <% end %>
+    
+    <p>ログインは <%= link_to "こちら", login_path %>から！</p>
   </div>
 </div>

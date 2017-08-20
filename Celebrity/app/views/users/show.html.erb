@@ -248,25 +248,10 @@
 </table>
 
 <div class="form-button">
-  <%= link_to 'ユーザ編集', edit_user_path(@user) , class: 'btn-delete btn btn-primary' %>
-  <%= link_to 'ユーザ削除', @user, method: :delete, class: 'btn-delete btn btn-danger',
-      data: { confirm: '本当に削除しますか？' } %>
+
+  <%= link_to 'ユーザ編集', edit_user_path(@user) , class: 'btn btn-primary' %>
+  <% if current_user.admin %>
+    <%= link_to 'ユーザ削除', @user, method: :delete, class: 'btn btn-danger',
+        data: { confirm: '本当に削除しますか？' } %>
+  <% end %>
 </div>
-<script type="text/javascript">
-<!--
-function OnOffh1(lolh1){
-	if (lolh1.value == "初級完了") {
-		lolh1.value = "初級完了済み";
-		disabled 
-	} else {
-		lolh1.value = "初級完了";
-	}
-}
-function OnOffh2(lolh2){
-	if (lolh2.value == "中級完了") {
-		lolh2.value = "中級完了済み";
-	} else {
-		lolh2.value = "中級完了";
-	}
-}
-</script>
