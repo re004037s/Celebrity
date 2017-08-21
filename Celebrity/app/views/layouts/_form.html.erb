@@ -3,10 +3,8 @@
       :placeholder => "100-500文字で入力してください", required: true, :onchange => "Limit(event)", :onkeyup => "Limit(event)" %>
       <br><span id="msg1">文字数カウント</span><br><div style="color: red;" class="has-error"></div>
   <%= f.submit "感想を送る", class: "btn btn-primary btn-lg submit-btn", disabled: true %>
-<% end %>
-
-
-<%= bootstrap_form_tag url:'/progate', html: {class: 'form-group'}, :remote => true  do |f| %>
+  <% end %>
+  <%= bootstrap_form_tag url:'/progate', html: {class: 'form-group'}, :remote => true  do |f| %>
   <%= f.submit '初級', name: 'begi' ,class: 'btn btn-danger' %>
 <% end %>
 
@@ -17,17 +15,18 @@
 <!--for develop start-->
 <div >【検証用】送信ボタン押下-> この下にajaxの送信内容が出力されます</div>
 <textarea rows="7" cols="7" id="result" ></textarea>
-<!--for develop end-->
+<!--for develop end-->  
 
 <script>
 $(function(){
     $('#Tobj1').hide();
 });
 $(function() {
-    $('#show-form').click(function(){
+    $('#show-feedback-form').click(function(){
         $('#Tobj1').show();
     });
 });
+
 </script>
 
 <script language="JavaScript">
@@ -41,13 +40,16 @@ Tarea= document.getElementById("Tobj1");
   val= mojiVal.replace(/\n|\r\n/g,"");//改行を除く
   val= val.length; //改行を含めない文字数
     Etype=event.type; //イベントのタイプを取得
+
 if(Etype== "keyup"){//イベントのタイプが"Keyup"なら
   Mcnt.innerHTML= //文字数のカウントを表示
 "<span style='font-weight: bold;color:blue ;'>"+val+"</span>文字";
   }
 }
+
 </script>
 <script>
+
 $(function(){
     var     $text = $("textarea"),
             $button = $('.submit-btn'),

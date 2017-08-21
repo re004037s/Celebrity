@@ -98,6 +98,10 @@ div.navbar-wrapper, .navbar{
   font-size: 1px;
   padding: 3px 10px;
 }
+.btn{
+  background-color:#00CCCC;
+  color:black;
+}
 
 
 
