@@ -104,7 +104,7 @@ end
 
 # Movieテーブル
 Movie.create!(title: 'なぜプログラムを勉強したら短期間で月収50万円になれるのか？',
-              path: 'ttps://www.youtube.com/embed/lj_PJMauzNU?list=UUV_bOyaNKyzKX6fnRlcu4UA')
+              path: 'https://www.youtube.com/embed/lj_PJMauzNU?list=UUV_bOyaNKyzKX6fnRlcu4UA')
 Movie.create!(title: '挫折しない！プログラミング入門その１',
               path: 'https://www.youtube.com/embed/B-IQt9NXb5A')
 Movie.create!(title: '貧乏人の特徴',
