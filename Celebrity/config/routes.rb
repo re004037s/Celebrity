@@ -11,6 +11,10 @@ Rails.application.routes.draw do
   get '/', to: 'static_pages#home'
   get '/progate', to: 'static_pages#progate'
   post '/progate', to: 'static_pages#progate'
+  
+  get '/free', to: 'static_pages#free'
+  get '/rails', to: 'static_pages#rails'
+  
   get '/contact', to: 'static_pages#contact'
   get '/about', to: 'static_pages#about'
   get '/help', to: 'static_pages#help'

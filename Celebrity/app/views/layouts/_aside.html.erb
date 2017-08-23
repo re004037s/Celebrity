@@ -5,9 +5,9 @@
     </div>
     <ul class="nav nav-pills nav-stacked">
        <li><%= link_to 'はじめに', root_path %></li>
-       <li><%= link_to "フリーとは", signup_path %></li>
-       <li><%= link_to "progate", progate_path %></li>
-       <li><%= link_to "railsチュートリアル", login_path %></li>
+       <li><%= link_to_if @home_flag , "フリーとは",{:controller=> "static_pages", :action => "free" } %></li>
+       <li><%= link_to_if @free_flag  , "progate", {:controller => "static_pages", :action => "progate"} %></li>
+       <li><%= link_to_if @progate_flag  ,"railsチュートリアル", {:controller => "static_pages", :action => "rails" } %></li>
        <li><%= link_to "railsチュートリアル：よくある質問", qa_path %></li>
     </ul>
   </div>
