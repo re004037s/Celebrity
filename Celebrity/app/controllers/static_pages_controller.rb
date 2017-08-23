@@ -104,7 +104,7 @@ class StaticPagesController < ApplicationController
   end
   
   def qa
-    # link_to のオープンフラグ
+    ## link_to のオープンフラグ
     if @feedback_progate = current_user.feedbacks.find_by(movie_id:3) 
       @progate_flag = true
       @free_flag = true
