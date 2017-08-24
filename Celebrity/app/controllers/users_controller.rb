@@ -10,6 +10,8 @@ class UsersController < ApplicationController
   def show
   end
   
+  
+  
   def new
     @user = User.new
     redirect_to root_url if logged_in?

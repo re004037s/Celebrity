@@ -16,6 +16,13 @@
  */
 body{
   background-color: gray;
+   padding: 40px 0 0 0;
+  display: absolute;
+   
+}
+.navbar-fixed-top{
+  width: 70vw;
+  height: auto;
 }
 
 .body-wrapper, .navbar-wrapper{
@@ -23,9 +30,20 @@ body{
   margin: 0 auto;
 }
 .navbar{
-  margin-bottom: 0px;
+ background-color: black;
   width: 70vw;
+  
   margin: 0 auto;
+min-height: 50px;
+margin-bottom: 20px;
+  
+max-height: 10px;
+}
+.navbar-nav{
+  height: 50px;
+padding: 15px 15px;
+font-size: 18px;
+line-height: 20px;
 }
 
 .body-wrapper{
@@ -76,7 +94,7 @@ div.navbar-wrapper, .navbar{
 }
 .blank-box{
   height: 30px;
-  background-color: white
+  background-color: black
 }
 .txt1{
   font-size: 1vw;
