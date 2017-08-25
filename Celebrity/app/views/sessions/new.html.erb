@@ -1,18 +1,18 @@
-<h1>ログイン</h1>
+<h1 class="txt5">ログイン</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(:session, url: login_path) do |f| %>
-
-      <%= f.label :email, 'Email' %>
+      
+      <%= f.label :email, 'Email', class: 'txt1' %>
       <%= f.email_field :email, class: 'form-control' %>
 
-      <%= f.label :password, 'パスワード' %>
-      <%= f.password_field :password, class: 'form-control' %>
+      <%= f.label :password, 'パスワード', class: 'txt1'%>
+      <%= f.password_field :password, class: 'form-control', syle: 'swidth:100%' %>
 
-      <%= f.submit "Log in", class: "btn btn-primary" %>
+      <%= f.submit "Log in", class: "btn-log btn btn-primary" %>
     <% end %>
 
-    <p>新規メンバーの方は <%= link_to "こちら", signup_path %>から！</p>
+    <p class='txt1'>新規メンバーの方は <%= link_to "こちら", signup_path, class: 'txt1' %>から！</p>
   </div>
 </div>

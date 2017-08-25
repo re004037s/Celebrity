@@ -5,24 +5,24 @@
     <%= form_for(@user, url: signup_path) do |f| %>
       <%= render 'shared/error_messages' %>
     
-      <%= f.label :name, "氏名" %>
+      <%= f.label :name, "氏名", class: 'txt1' %>
       <%= f.text_field :name, class: 'form-control' %>
 
-      <%= f.label :nickname, "ニックネーム" %>
+      <%= f.label :nickname, "ニックネーム", class: 'txt1' %>
       <%= f.text_field :nickname, class: 'form-control' %>
 
-      <%= f.label :email, 'Email' %>
+      <%= f.label :email, 'Email', class: 'txt1' %>
       <%= f.email_field :email, class: 'form-control' %>
 
-      <%= f.label :password, 'パスワード' %>
+      <%= f.label :password, 'パスワード', class: 'txt1' %>
       <%= f.password_field :password, class: 'form-control' %>
 
-      <%= f.label :password_confirmation, "パスワード確認" %>
+      <%= f.label :password_confirmation, "パスワード確認", class: 'txt1' %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
 
-      <%= f.submit "登録！", class: "btn btn-primary" %>
+      <%= f.submit "登録！", class: "btn-log btn btn-primary" %>
     <% end %>
     
-    <p>ログインは <%= link_to "こちら", login_path %>から！</p>
+    <p class="txt1">ログインは <%= link_to "こちら", login_path, class: 'txt1' %>から！</p>
   </div>
 </div>

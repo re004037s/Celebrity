@@ -127,6 +127,10 @@ input {
     color: $state-danger-text;
   }
 }
+.form-control {
+     width: 100%;
+     height: auto;
+  }
 
 img {
   width: 100%;
