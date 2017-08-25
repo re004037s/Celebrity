@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   end
   
   def show
+    @date_format = "%Y年%m月%d日"
   end
   
   def new
