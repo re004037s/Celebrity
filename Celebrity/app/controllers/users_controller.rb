@@ -11,6 +11,8 @@ class UsersController < ApplicationController
     @date_format = "%Y年%m月%d日"
   end
   
+  
+  
   def new
     @user = User.new
     redirect_to root_url if logged_in?
