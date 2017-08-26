@@ -49,8 +49,10 @@ if(Etype<%= movie_id %> == "keyup"){//イベントのタイプが"Keyup"なら
     "<span style='font-weight: bold;color:blue ;'>"+val<%= movie_id %>+"</span>文字";
   }
 }
+
 </script>
 <script>
+
 $(function(){
     var     $text<%= movie_id %> = $("#textarea<%= movie_id %>"),
             $button<%= movie_id %> = $(".submit-btn<%= movie_id %>"),
@@ -71,5 +73,33 @@ $(function(){
             $('.has-error<%= movie_id %>' ).show();
         }
     });
+});
+</script>
+
+<script>
+$(function() {
+     $('#feedback-btn').click(function(){
+         $(this).val('送信完了');
+         $(this).prop('disabled', true);
+         $('#Tobj1').fadeOut();
+         $('#msg1').fadeOut();
+         $('.control-label').fadeOut();
+         $('#alert').fadeIn();
+     });
+
+     
+     $('input[name="chain1"]').click(function(){
+         $(this).val('完了')
+         $('input[name="chain1"]').prop('disabled', false);
+     })
+     
+     $('input[name="chain2"]').click(function(){
+         $(this).val('完了')
+         $('input[name="chain2"]').prop('disabled', false);
+     })
+     
+     $('input[name="chain3"]').click(function(){
+         $(this).val('完了')
+     })
 });
 </script>
