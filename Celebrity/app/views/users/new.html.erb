@@ -19,8 +19,9 @@
 
       <%= f.label :password_confirmation, "パスワード確認", class: 'txt1' %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
-
-      <%= f.submit "登録！", class: "btn-log btn btn-primary" %>
+    <div id="centering">
+      <%= f.submit "登録！", class: "btn-log btn btn-primary", id: "submit_button" %>
+    </div>
     <% end %>
     
     <p class="txt1">ログインは <%= link_to "こちら", login_path, class: 'txt1' %>から！</p>

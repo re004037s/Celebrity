@@ -121,9 +121,22 @@ div.navbar-wrapper, .navbar{
   color:black;
 }
 .btn-log{
+  text-align:center;
   font-size: 1vw;
 }
+.header-logo{
+  
+padding-right: 30px;
+}
+input#submit_button {
+    
+    width: 30vw;
+    height: auto;
 
+}
+div#centering{
+  text-align : center ;
+}
 
 
 
