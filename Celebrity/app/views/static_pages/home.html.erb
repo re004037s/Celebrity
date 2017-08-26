@@ -1,36 +1,27 @@
- <meta name="viewport" content="width=device-width; initial-scale=1.0">
- <div class="main-wrapper container">
+<meta name="viewport" content="width=device-width; initial-scale=1.0">
+<div class="main-wrapper container">
   <div class="row">
     <div class="col-sm-9">
-          
-        <p class="text-center movie"><iframe src="https://www.youtube.com/embed/lj_PJMauzNU?list=UUV_bOyaNKyzKX6fnRlcu4UA" 
-        frameborder="0" allowfullscreen></iframe></p>
       
-      <p class="text-center txt1">プログラミングを学んでフリーランスを目指しましょう</p>
-      <p class="text-center">
-        <%= link_to "さあ、プログラミングを始めよう！", progate_path, class: "txt1 btn btn-lg btn-primary" %>
-      </p>
+      <div id="m1">
+        <%= render 'shared/movie', movies: @movies, movie_id: 1 %>
+        <%= render 'layouts/form', feedback: @feedback, movie_id: 1 %>
       </div>
+      
+      <% if current_user.feedbacks.find_by(movie_id: 1) %>
+        <div id="m2">
+          <%= render 'shared/movie', movies: @movies, movie_id: 2 %>
+          <%= render 'layouts/form', feedback: @feedback, movie_id: 2 %>
+        </div>
+      <% end %>
+
+      <% if current_user.feedbacks.find_by(movie_id: 2) %>
+        <p class="text-center txt1">プログラミングを学んでフリーランスを目指しましょう</p>
+        <p class="text-center">
+          <%= link_to "フリーエンジニアとは", freelance_path, class: "txt1 btn btn-lg btn-primary" %>
+        </p>
+      <% end %>
+    </div>
     <%= render 'layouts/aside' %>
   </div>
- </div>
- <style>
- .video-container {
-	position: relative;
-	padding-bottom: 56.25%;
-	padding-top: 30px;
-	height: 0;
-	overflow: hidden;
-}
-
-iframe {
-	position: absolute;
-	display: block;
-	margin: 0px auto
-	top: 0;
-	left: 0;
-	width: 100% !important;
-    height: 100% !important;
-}
-
- </style>
+</div>

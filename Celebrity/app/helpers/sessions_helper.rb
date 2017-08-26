@@ -31,4 +31,5 @@ module SessionsHelper
     user.existence
   end
 
+
 end

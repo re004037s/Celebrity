@@ -177,7 +177,6 @@ li {
 }
 
 
-
 td {
   word-wrap: break-word;
 }
@@ -200,4 +199,22 @@ td {
   font-size: 1vw;
   position:relative;
   right: 3em
+}
+
+.video-container {
+	position: relative;
+	padding-bottom: 56.25%;
+	padding-top: 30px;
+	height: 0;
+	overflow: hidden;
+}
+
+iframe {
+	position: absolute;
+	display: block;
+	margin: 0px auto;
+	top: 0;
+	left: 0;
+	width: 100% !important;
+  height: 100% !important;
 }
