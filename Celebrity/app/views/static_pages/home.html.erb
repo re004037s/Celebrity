@@ -5,13 +5,13 @@
       
       <div id="m1">
         <%= render 'shared/movie', movies: @movies, movie_id: 1 %>
-        <%= render 'layouts/form', feedback: @feedback, movie_id: 1 %>
+        <%= render 'feedbacks/form', feedback: @feedback, movie_id: 1 %>
       </div>
       
       <% if current_user.feedbacks.find_by(movie_id: 1) %>
         <div id="m2">
           <%= render 'shared/movie', movies: @movies, movie_id: 2 %>
-          <%= render 'layouts/form', feedback: @feedback, movie_id: 2 %>
+          <%= render 'feedbacks/form', feedback: @feedback, movie_id: 2 %>
         </div>
       <% end %>
 

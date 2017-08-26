@@ -6,14 +6,14 @@
     <% if current_user.feedbacks.find_by(movie_id: 2) %>
       <div id="m3">
         <%= render 'shared/movie', movies: @movies, movie_id: 3 %>
-        <%= render 'layouts/form', feedback: @feedback, movie_id: 3 %>
+        <%= render 'feedbacks/form', feedback: @feedback, movie_id: 3 %>
       </div>
     <% end %>
       
       <% if current_user.feedbacks.find_by(movie_id: 3) %>
         <div id="m4">
           <%= render 'shared/movie', movies: @movies, movie_id: 4 %>
-          <%= render 'layouts/form', feedback: @feedback, movie_id: 4 %>
+          <%= render 'feedbacks/form', feedback: @feedback, movie_id: 4 %>
         </div>
       <% end %>
 

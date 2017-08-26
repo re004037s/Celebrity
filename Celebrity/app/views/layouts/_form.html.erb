@@ -1,35 +1,49 @@
-<%= form_for(feedback) do |f| %>
-  <div class="form-group<%= movie_id %>">
-    <%= f.text_area :feedback, :id => "textarea#{movie_id}", :size => "7x7", :maxlength => "500",
-        :placeholder => "100-500文字で入力してください", required: true, 
-        :onchange => "Limit#{movie_id}(event)", :onkeyup => "Limit#{movie_id}(event)" %>
-    <%= f.hidden_field :movie_id, :value => movie_id %>
-    <br><span id="msg<%= movie_id %>">文字数カウント</span><br><div style="color: red;" class="has-error<%= movie_id %>"></div>
-  </div>
-    <%= f.submit "感想を送る", id: "feedback-btn#{movie_id}", class: "btn btn-primary btn-lg submit-btn#{movie_id}", disabled: true %>
+<p class="text-center">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/B-IQt9NXb5A" frameborder="0" allowfullscreen></iframe>
+    <button type="button" id="show-feedback-form" class="btn btn-lg btn-primary" data-toggle="modal">感想を送る！</button>
+    <p id="alert" class="text-center">感想を再送する場合はページを再読み込みしてください</p>
+</p>
+
+<%= bootstrap_form_tag url:'/progate', html: {class: 'form-group'}, :remote => true  do |f| %>
+  <%= f.text_area :impression ,:id => "Tobj1", :size=>"7x7", :maxlength => "500",
+      :placeholder => "100-500文字で入力してください", required: true, :onchange => "Limit(event)", :onkeyup => "Limit(event)" %>
+      <br><span id="msg1">文字数カウント</span><br><div style="color: red;" class="has-error"></div>
+  <%= f.submit "感想を送る", id:"feedback-btn" , class: "btn btn-primary btn-lg submit-btn", disabled: true %>
+  
 <% end %>
 
 
-<!--<%= bootstrap_form_tag url:'/progate', html: {class: 'form-group'}, :remote => true  do |f| %>-->
-<!--  <%= f.submit '初級', name: 'begi' ,class: 'btn btn-danger' %>-->
-<!--<% end %>-->
+<!--検証用に複数ボタンを配置する-->
+<%= bootstrap_form_tag url:'/progate', :remote => true  do |f| %>
+ <%= f.submit '初級未完了', name: 'beginner' ,class: 'btn btn-danger' %>
+<% end %>
 
-<!--<%= bootstrap_form_tag url:'/progate', html: {class: 'form-group'}, :remote => true  do |f| %>-->
-<!--    <%= f.submit '中級', name: 'midd' ,class: 'btn btn-danger' %>-->
-<!--<% end %>-->
+<%= bootstrap_form_tag url:'/progate', :remote => true  do |f| %>
+ <%= f.submit '中級未完了', name: 'intermediate' ,class: 'btn btn-danger' ,disabled: true %>
+<% end %>
 
-<!--for develop start-->
-<!--<div>【検証用】送信ボタン押下-> この下にajaxの送信内容が出力されます</div>-->
-<!--<textarea rows="7" cols="7" id="result" ></textarea>-->
-<!--for develop end-->
+<%= bootstrap_form_tag url:'/progate', :remote => true  do |f| %>
+ <%= f.submit '上級未完了', name: 'expert' ,class: 'btn btn-danger' ,disabled: true %>
+<% end %>
+
+
+<!--検証用 progate.js で入力内容を受け取り、下記に出力している-->
+<input type="textarea" rows="7" cols="7" id="result">
+    
+    
+<% if @msg %>
+    <%= msg %>
+<% end %>
+
 
 <script>
 $(function(){
-    $('.form-group<%= movie_id %>').hide();
+    $('.form-group').hide();
+    $('#alert').hide();
 });
 $(function() {
-    $('#show-form<%= movie_id %>').click(function(){
-        $('.form-group<%= movie_id %>').show();
+    $('#show-feedback-form').click(function(){
+        $('.form-group').show();
         $(this).fadeOut();
     });
 });
@@ -37,39 +51,68 @@ $(function() {
 
 <script language="JavaScript">
 var str1 = document.js.authenticity_token.value;
-
-function Limit<%= movie_id %>(event){
-  var Tarea<%= movie_id %>= document.getElementById("textarea<%= movie_id %>");
-  var Mcnt<%= movie_id %>= document.getElementById("msg<%= movie_id %>");
-  var mojiVal<%= movie_id %> = Tarea<%= movie_id %>.value; //テキストエリアの文字数
-  var val<%= movie_id %> = mojiVal<%= movie_id %>.replace(/\n|\r\n/g,"").length;
-  var Etype<%= movie_id %> = event.type; //イベントのタイプを取得
-if(Etype<%= movie_id %> == "keyup"){//イベントのタイプが"Keyup"なら
-  Mcnt<%= movie_id %>.innerHTML = //文字数のカウントを表示
-    "<span style='font-weight: bold;color:blue ;'>"+val<%= movie_id %>+"</span>文字";
+var max=500; //制限文字数
+var min=100;
+function Limit(event){
+Tarea= document.getElementById("Tobj1");
+  Mcnt= document.getElementById("msg1");
+  mojiVal= Tarea.value; //テキストエリアの文字数
+  val= mojiVal.replace(/\n|\r\n/g,"");//改行を除く
+  val= val.length; //改行を含めない文字数
+    Etype=event.type; //イベントのタイプを取得
+if(Etype== "keyup"){//イベントのタイプが"Keyup"なら
+  Mcnt.innerHTML= //文字数のカウントを表示
+"<span style='font-weight: bold;color:blue ;'>"+val+"</span>文字";
   }
 }
 </script>
 <script>
 $(function(){
-    var     $text<%= movie_id %> = $("#textarea<%= movie_id %>"),
-            $button<%= movie_id %> = $(".submit-btn<%= movie_id %>"),
+    var     $text = $("textarea"),
+            $button = $('.submit-btn'),
             disabled_class = 'disabled';
  
-    if($text<%= movie_id %>.val().length == 0) {
-        $button<%= movie_id %>.prop('disabled',true).addClass('disabled');
+    if($text.val().length == 0) {
+        $button.prop('disabled',true).addClass('disabled');
     }
  
-    $text<%= movie_id %>.bind('keydown keyup keypress change',function(){
+    $text.bind('keydown keyup keypress change',function(){
         var thisValueLength = $(this).val().length;
         if(thisValueLength >= 100){
-            $button<%= movie_id %>.prop('disabled',false).removeClass(disabled_class);
-            $('.has-error<%= movie_id %>').hide();
+            $button.prop('disabled',false).removeClass(disabled_class);
+            jQuery( '.has-error' ).hide();
         }else{
-            $button<%= movie_id %>.prop('disabled',true).addClass(disabled_class);
-            $('.has-error<%= movie_id %>').text( '100文字以上入力してください' );
-            $('.has-error<%= movie_id %>' ).show();
+            $button.prop('disabled',true).addClass(disabled_class);
+            jQuery( '.has-error' ) . text( '100文字以上入力してください' );
+            jQuery( '.has-error' ).show();
         }
     });
+});
+</script>
+
+<script>
+$(function() {
+     $('#feedback-btn').click(function(){
+         $(this).val('送信完了');
+         $(this).prop('disabled', true);
+         $('#Tobj1').fadeOut();
+         $('#msg1').fadeOut();
+         $('.control-label').fadeOut();
+         $('#alert').fadeIn();
+     });
+     
+     $('input[name="chain1"]').click(function(){
+         $(this).val('完了')
+         $('input[name="chain1"]').prop('disabled', false);
+     })
+     
+     $('input[name="chain2"]').click(function(){
+         $(this).val('完了')
+         $('input[name="chain2"]').prop('disabled', false);
+     })
+     
+     $('input[name="chain3"]').click(function(){
+         $(this).val('完了')
+     })
 });
 </script>
