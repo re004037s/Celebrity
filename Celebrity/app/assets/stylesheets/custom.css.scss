@@ -127,6 +127,10 @@ input {
     color: $state-danger-text;
   }
 }
+.form-control {
+     width: 100%;
+     height: auto;
+  }
 
 img {
   width: 100%;
@@ -200,4 +204,7 @@ td {
   font-size: 1vw;
   position:relative;
   right: 3em
+}
+header h1{
+padding-left: 1000px;
 }
