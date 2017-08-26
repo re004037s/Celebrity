@@ -2,6 +2,8 @@ class StaticPagesController < ApplicationController
   before_action :logged_in_user
   
   def home
+    @movies = Movie.all
+    @feedback = current_user.feedbacks.build
   end
 
   def about
