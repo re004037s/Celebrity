@@ -9,8 +9,9 @@
 
       <%= f.label :password, 'パスワード', class: 'txt1'%>
       <%= f.password_field :password, class: 'form-control', syle: 'swidth:100%' %>
-
-      <%= f.submit "Log in", class: "btn-log btn btn-primary" %>
+    <div id="centering">
+      <%= f.submit "ログイン", class: "btn-log btn btn-primary", id: "submit_button" %>
+    </div>
     <% end %>
 
     <p class='txt1'>新規メンバーの方は <%= link_to "こちら", signup_path, class: 'txt1' %>から！</p>

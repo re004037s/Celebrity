@@ -124,9 +124,8 @@ div.navbar-wrapper, .navbar{
   text-align:center;
   font-size: 1vw;
 }
-.header-logo{
-  
-padding-right: 30px;
+.top-phrase{
+padding-left: 20px;
 }
 input#submit_button {
     
