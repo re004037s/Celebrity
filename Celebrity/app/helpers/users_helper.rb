@@ -71,7 +71,7 @@ module UsersHelper
     sum += count_javascript(user)
     sum += count_ruby(user)
     sum += count_ruby_on_rails(user)
-    return sum * 100/30
+    return sum * 100 / 30
   end
   
   def count_rails_tutorial(user)
@@ -99,7 +99,7 @@ module UsersHelper
   
   def percent_movie(user)
     c = user.feedbacks.count
-    return c * 100 / 4
+    return c * 100 / Movie.count
   end
 
 end
