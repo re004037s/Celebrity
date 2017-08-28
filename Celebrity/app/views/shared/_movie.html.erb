@@ -1,0 +1,10 @@
+<h3 class="movie-title"><%= movies.find(movie_id).title %></h3>
+<div class="movie">
+  <iframe src="<%= movies.find(movie_id).path %>" 
+  frameborder="0" allowfullscreen></iframe>
+</div>
+<p class="text-center">
+  <!-- whateverの値はmodal formに渡セル-->
+  <button type="button" id="show-form<%= movie_id %>" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#exampleModal" 
+  data-whatever="この動画のid">感想を送る！</button>
+</p>
