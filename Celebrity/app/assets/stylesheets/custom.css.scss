@@ -131,7 +131,6 @@ input {
      width: 100%;
      height: auto;
   }
-
 img {
   width: 100%;
   height: auto;
@@ -181,7 +180,6 @@ li {
 }
 
 
-
 td {
   word-wrap: break-word;
 }
@@ -205,6 +203,16 @@ td {
   position:relative;
   right: 3em
 }
+
+
+.video-container {
+	position: relative;
+	padding-bottom: 56.25%;
+	padding-top: 30px;
+	height: 0;
+	overflow: hidden;
+}
 header h1{
 padding-left: 1000px;
+
 }
