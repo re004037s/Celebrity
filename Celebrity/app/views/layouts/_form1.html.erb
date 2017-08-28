@@ -103,19 +103,20 @@ $(function() {
          $('.control-label').fadeOut();
          $('#alert').fadeIn();
      });
+
      
-     $('input[name="chain1"]').click(function(){
-         $(this).val('完了')
-         $('input[name="chain1"]').prop('disabled', false);
+     $('input[name="beginner"]').click(function(){
+         $(this).val('初級完了')
+         $('input[name="intermediate"]').prop('disabled', false);
      })
      
-     $('input[name="chain2"]').click(function(){
-         $(this).val('完了')
-         $('input[name="chain2"]').prop('disabled', false);
+     $('input[name="intermediate"]').click(function(){
+         $(this).val('中級完了')
+         $('input[name="expert"]').prop('disabled', false);
      })
      
-     $('input[name="chain3"]').click(function(){
-         $(this).val('完了')
+     $('input[name="expert"]').click(function(){
+         $(this).val('上級完了')
      })
 });
 </script>
