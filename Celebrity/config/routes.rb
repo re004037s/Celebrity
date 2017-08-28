@@ -8,14 +8,15 @@ Rails.application.routes.draw do
   post '/login', to:'sessions#create'
   delete '/logout', to:'sessions#destroy'
 
-  get '/qa', to: 'static_pages#qa'
+  root 'static_pages#home'
   get '/freelance', to: 'static_pages#freelance'
+  get '/program_learn', to: 'static_pages#program_learn'
+  get '/able_engineer', to: 'static_pages#able_engineer'
+  get '/job_hunting', to: 'static_pages#job_hunting'
+
   get '/progate', to: 'static_pages#progate'
   post '/progate', to: 'static_pages#progate'
-  get '/contact', to: 'static_pages#contact'
-  get '/about', to: 'static_pages#about'
-  get '/help', to: 'static_pages#help'
 
-  root 'static_pages#home'
+  get '/qa', to: 'static_pages#qa'
 
 end
