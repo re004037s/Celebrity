@@ -1,27 +1,13 @@
 <%= form_for(feedback) do |f| %>
-  <div class="form-group<%= movie_id %>">
+  <div class="form-group<%= movie_id %> forms">
     <%= f.text_area :feedback, :id => "textarea#{movie_id}", :size => "7x7", :maxlength => "500",
         :placeholder => "100-500文字で入力してください", required: true, 
         :onchange => "Limit#{movie_id}(event)", :onkeyup => "Limit#{movie_id}(event)" %>
     <%= f.hidden_field :movie_id, :value => movie_id %>
     <br><span id="msg<%= movie_id %>">文字数カウント</span><br><div style="color: red;" class="has-error<%= movie_id %>"></div>
-  </div>
     <%= f.submit "感想を送る", id: "feedback-btn#{movie_id}", class: "btn btn-primary btn-lg submit-btn#{movie_id}", disabled: true %>
+  </div>
 <% end %>
-
-
-<!--<%= bootstrap_form_tag url:'/progate', html: {class: 'form-group'}, :remote => true  do |f| %>-->
-<!--  <%= f.submit '初級', name: 'begi' ,class: 'btn btn-danger' %>-->
-<!--<% end %>-->
-
-<!--<%= bootstrap_form_tag url:'/progate', html: {class: 'form-group'}, :remote => true  do |f| %>-->
-<!--    <%= f.submit '中級', name: 'midd' ,class: 'btn btn-danger' %>-->
-<!--<% end %>-->
-
-<!--for develop start-->
-<!--<div>【検証用】送信ボタン押下-> この下にajaxの送信内容が出力されます</div>-->
-<!--<textarea rows="7" cols="7" id="result" ></textarea>-->
-<!--for develop end-->
 
 <script>
 $(function(){
