@@ -21,10 +21,15 @@ class StaticPagesController < ApplicationController
 #  end
   
   def progate
-    @ajax_res = params[:impression]
-    if params[:begi]
-    elsif params[:midd]
-    end
+    @html_css_status = HtmlCssStatus.find_or_create_by(user_id: current_user.id)
+    @javascript_status = JavascriptStatus.find_or_create_by(user_id: current_user.id)
+    @ruby_status = RubyStatus.find_or_create_by(user_id: current_user.id)
+    @rubyonrails_status = RubyonrailsStatus.find_or_create_by(user_id: current_user.id)
+    
+    # @ajax_res = params[:impression]
+    # if params[:begi]
+    # elsif params[:midd]
+    # end
   end
 
   private

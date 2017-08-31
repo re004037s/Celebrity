@@ -139,8 +139,13 @@ div.navbar-wrapper, .navbar{
   font-size: 1vw;
 }
 
-.fb-comp {
+.btn-comp {
   background-color: #248;
+  color: #fff;
+}
+
+.btn-incomp {
+  background-color: gray;
   color: #fff;
 }
 

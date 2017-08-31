@@ -16,6 +16,11 @@ Rails.application.routes.draw do
 
   get '/progate', to: 'static_pages#progate'
   post '/progate', to: 'static_pages#progate'
+  
+  patch '/html_css_status', to: 'html_css_statuses#update'
+  patch '/javascript_status', to: 'javascript_statuses#update'
+  patch '/ruby_status', to: 'ruby_statuses#update'
+  patch '/rubyonrails_status', to: 'rubyonrails_statuses#update'
 
   get '/qa', to: 'static_pages#qa'
 
