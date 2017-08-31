@@ -32,10 +32,12 @@ class StaticPagesController < ApplicationController
     def setting
       @movies = Movie.all
       @feedback = current_user.feedbacks.build
+      
       @home_flag = !!current_user.feedbacks.find_by(movie_id: 2)
       @freelance_flag = !!current_user.feedbacks.find_by(movie_id: 4)
-      @program_learn_flag = !!current_user.feedbacks.find_by(movie_id: 16)
       @able_engineer_flag = !!current_user.feedbacks.find_by(movie_id: 7)
+      @job_hunting_flag = !!current_user.feedbacks.find_by(movie_id: 10)
+      @program_learn_flag = !!current_user.feedbacks.find_by(movie_id: 16)
     end
 
 end

@@ -2,7 +2,28 @@
 <div class="main-wrapper container">
   <div class="row">
     <div class="col-sm-9">
-      <h2>現在ページの準備中です</h2>
+      
+    <% if current_user.feedbacks.find_by(movie_id: 4) %>
+      <div id="m5">
+        <%= render 'shared/movie', movies: @movies, movie_id: 5 %>
+        <%= render 'feedbacks/form', feedback: @feedback, movie_id: 5 %>
+      </div>
+    <% end %>
+
+    <% if current_user.feedbacks.find_by(movie_id: 5) %>
+      <div id="m6">
+        <%= render 'shared/movie', movies: @movies, movie_id: 6 %>
+        <%= render 'feedbacks/form', feedback: @feedback, movie_id: 6 %>
+      </div>
+    <% end %>
+
+    <% if current_user.feedbacks.find_by(movie_id: 6) %>
+      <div id="m7">
+        <%= render 'shared/movie', movies: @movies, movie_id: 7 %>
+        <%= render 'feedbacks/form', feedback: @feedback, movie_id: 7 %>
+      </div>
+    <% end %>
+
     </div>
     <%= render 'layouts/aside' %>
   </div>
