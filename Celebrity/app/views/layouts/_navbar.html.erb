@@ -13,7 +13,7 @@
       <%= link_to "セレブエンジニアリングサロン", root_path, :class => "top-phrase" %>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "サロンメンバー", users_path, :class => "text1" %></li>
-        <li><%= link_to current_user.try(:nickname), current_user, :class => "text1" %></li>
+        <li><%= link_to 'マイページ', current_user, :class => "text1" %></li>
         <li><%= link_to "ログアウト", logout_path, method: :delete, :class => "txt1" %></li>
       </ul>
     </nav>

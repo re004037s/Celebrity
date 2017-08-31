@@ -3,26 +3,32 @@
   <div class="row">
     <div class="col-sm-9">
 
-    <% if current_user.feedbacks.find_by(movie_id: 7) %>
-      <div id="m8">
-        <%= render 'shared/movie', movies: @movies, movie_id: 8 %>
-        <%= render 'feedbacks/form', feedback: @feedback, movie_id: 8 %>
-      </div>
-    <% end %>
+      <% if current_user.feedbacks.find_by(movie_id: 7) %>
+        <div id="m8">
+          <%= render 'shared/movie', movies: @movies, movie_id: 8 %>
+          <%= render 'feedbacks/form', feedback: @feedback, movie_id: 8 %>
+        </div>
+      <% end %>
+  
+      <% if current_user.feedbacks.find_by(movie_id: 8) %>
+        <div id="m9">
+          <%= render 'shared/movie', movies: @movies, movie_id: 9 %>
+          <%= render 'feedbacks/form', feedback: @feedback, movie_id: 9 %>
+        </div>
+      <% end %>
+  
+      <% if current_user.feedbacks.find_by(movie_id: 9) %>
+        <div id="m10">
+          <%= render 'shared/movie', movies: @movies, movie_id: 10 %>
+          <%= render 'feedbacks/form', feedback: @feedback, movie_id: 10 %>
+        </div>
+      <% end %>
 
-    <% if current_user.feedbacks.find_by(movie_id: 8) %>
-      <div id="m9">
-        <%= render 'shared/movie', movies: @movies, movie_id: 9 %>
-        <%= render 'feedbacks/form', feedback: @feedback, movie_id: 9 %>
-      </div>
-    <% end %>
-
-    <% if current_user.feedbacks.find_by(movie_id: 9) %>
-      <div id="m10">
-        <%= render 'shared/movie', movies: @movies, movie_id: 10 %>
-        <%= render 'feedbacks/form', feedback: @feedback, movie_id: 10 %>
-      </div>
-    <% end %>
+      <% if current_user.feedbacks.find_by(movie_id: 10) %>
+        <p class="text-center">
+          <%= link_to "NEXT：プログラミング学習編", program_learn_path, class: "txt1 btn btn-lg btn-primary" %>
+        </p>
+      <% end %>
 
     </div>
     <%= render 'layouts/aside' %>
