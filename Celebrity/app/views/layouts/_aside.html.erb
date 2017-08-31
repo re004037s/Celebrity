@@ -6,10 +6,10 @@
     </div>
     <ul class="nav nav-pills nav-stacked sidebar-nav">
        <li><%= link_to 'はじめに', root_path %></li>
-       <li id="freelance_path"><%= link_to "フリーエンジニアとは", freelance_path %></li>
-       <li id="able_engineer_path"><%= link_to "できるエンジニアになる", able_engineer_path %></li>
-       <li id="job_hunting_path"><%= link_to "就活編", job_hunting_path %></li>
-       <li id="program_learn_path"><%= link_to "プログラミング学習編", program_learn_path %></li>
+       <li id="freelance_path"><%= link_to "フリーエンジニアとは", freelance_path, disabled: true %></li>
+       <li id="able_engineer_path"><%= link_to "できるエンジニアになる", able_engineer_path, disabled: true %></li>
+       <li id="job_hunting_path"><%= link_to "就活編", job_hunting_path, disabled: true %></li>
+       <li id="program_learn_path"><%= link_to "プログラミング学習編", program_learn_path, disabled: true %></li>
 <!--   <li><%#= link_to "railsチュートリアル：よくある質問", qa_path %></li> -->
     </ul>
     </div>
@@ -19,29 +19,29 @@
 <script>
   $(document).ready(function(){
     <% unless @home_flag %>
+      $('#freelance_path').prop('disabled', true).addClass('disabled');
       $('#freelance_path').click(function(){
-        alert('感想の送信が完了していませんよ＾＾')
         return false;
       })
     <% end %>
     
     <% unless @freelance_flag %>
+      $('#able_engineer_path').prop('disabled', true).addClass('disabled');
       $('#able_engineer_path').click(function(){
-        alert('感想の送信が完了していませんよ＾＾')
         return false;
       })
     <% end %>
 
     <% unless @able_engineer_flag %>
+      $('#job_hunting_path').prop('disabled', true).addClass('disabled');
       $('#job_hunting_path').click(function(){
-        alert('感想の送信が完了していませんよ＾＾')
         return false;
       })
     <% end %>
     
     <% unless @job_hunting_flag %>
+      $('#program_learn_path').prop('disabled', true).addClass('disabled');
       $('#program_learn_path').click(function(){
-        alert('感想の送信が完了していませんよ＾＾')
         return false;
       })
     <% end %>
