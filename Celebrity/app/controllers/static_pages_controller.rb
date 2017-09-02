@@ -31,6 +31,10 @@ class StaticPagesController < ApplicationController
     # elsif params[:midd]
     # end
   end
+  
+  def railstutorial
+    @railstutorial_status = RailstutorialStatus.find_or_create_by(user_id: current_user.id)
+  end
 
   private
     
