@@ -26,6 +26,14 @@ class StaticPagesController < ApplicationController
     elsif params[:midd]
     end
   end
+  def engineer
+  end
+
+  def job
+  end
+  
+  def study
+  end
 
   private
     
