@@ -25,6 +25,7 @@ class StaticPagesController < ApplicationController
     end
     
   end
+  
   def engineer
   end
 
