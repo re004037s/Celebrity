@@ -1,0 +1,12 @@
+<h4 class="movie-title d-inline-flex">■<%= movies.find(movie_id).title %></h4>
+<div class="movie">
+  <iframe src="<%= movies.find(movie_id).path %>" 
+  frameborder="0" allowfullscreen></iframe>
+</div>
+<p class="text-center">
+  <% if current_user.feedbacks.find_by(movie_id: movie_id) %>
+    <button type="button" id="show-form<%= movie_id %>" class="btn btn-lg mv-comp fb-comp">感想送信済み</button>
+  <% else %>
+    <button type="button" id="show-form<%= movie_id %>" class="btn btn-lg mv-comp">感想を提出する</button>
+  <% end %>
+</p>
