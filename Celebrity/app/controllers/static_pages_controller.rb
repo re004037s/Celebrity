@@ -25,5 +25,13 @@ class StaticPagesController < ApplicationController
     end
     
   end
+  def engineer
+  end
+
+  def job
+  end
+  
+  def study
+  end
 
 end
