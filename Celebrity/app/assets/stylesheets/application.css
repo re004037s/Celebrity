@@ -165,6 +165,10 @@ div#centering{
 table{
   width: 50vw;
 }
+iframe{
+  display: block;
+  margin: 0px auto;
+}
 
 
 
