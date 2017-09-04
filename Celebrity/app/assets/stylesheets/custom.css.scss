@@ -21,6 +21,7 @@ textarea {
 
 .center {
   text-align: center;
+  vertical-align: middle;
   h1 {
     margin-bottom: 10px;
   }
@@ -75,9 +76,10 @@ header{
 }
 
 .top-phrase{
-  font-size: 2vw;
+  font-size: 1.5vw;
   line-height: 3em;
   color: #F8C810;
+  padding-left: 20px;
   &:hover {
     text-decoration: none;
   }
@@ -188,6 +190,13 @@ li {
   table-layout: fixed;
   margin: 0 auto;
   margin-bottom: 50px;
+}
+
+.table-header {
+  background-color: black;
+  color: white;
+  font-weight: 400;
+  text-align: center;
 }
 
 .status-name {

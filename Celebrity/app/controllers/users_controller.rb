@@ -8,10 +8,7 @@ class UsersController < ApplicationController
   end
   
   def show
-    @date_format = "%Y年%m月%d日"
   end
-  
-  
   
   def new
     @user = User.new
@@ -21,6 +18,13 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      # 作成ユーザに紐付く進捗テーブルレコードの作成（nil回避）
+      HtmlCssStatus.create(user_id: @user.id)
+      JavascriptStatus.create(user_id: @user.id)
+      RubyStatus.create(user_id: @user.id)
+      RubyonrailsStatus.create(user_id: @user.id)
+      RailstutorialStatus.create(user_id: @user.id)
+      
       log_in @user
       flash[:success] = 'Welcome to the セレブエンジニアサロン'
       redirect_to root_path

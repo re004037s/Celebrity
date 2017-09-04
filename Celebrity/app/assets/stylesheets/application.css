@@ -134,19 +134,21 @@ div.navbar-wrapper, .navbar{
   background-color:#00CCCC;
   color:black;
 }
-.btn-log{
+.btn-lg{
   text-align: center;
   font-size: 1vw;
 }
 
-.fb-comp {
+.btn-comp {
   background-color: #248;
   color: #fff;
 }
 
-.top-phrase{
-padding-left: 20px;
+.btn-incomp {
+  background-color: gray;
+  color: #fff;
 }
+
 input#submit_button {
     
     width: 30vw;

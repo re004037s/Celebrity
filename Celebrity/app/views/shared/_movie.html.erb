@@ -5,7 +5,7 @@
 </div>
 <p class="text-center">
   <% if current_user.feedbacks.find_by(movie_id: movie_id) %>
-    <button type="button" id="show-form<%= movie_id %>" class="btn btn-lg mv-comp fb-comp">感想送信済み</button>
+    <button type="button" id="show-form<%= movie_id %>" class="btn btn-lg mv-comp btn-comp">感想送信済み</button>
   <% else %>
     <button type="button" id="show-form<%= movie_id %>" class="btn btn-lg mv-comp">感想を提出する</button>
   <% end %>

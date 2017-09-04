@@ -2,7 +2,49 @@
 <div class="main-wrapper container">
   <div class="row">
     <div class="col-sm-9">
-      <h2>現在ページの準備中です</h2>
+
+    <% if current_user.feedbacks.find_by(movie_id: 10) %>
+      <div id="m11">
+        <%= render 'shared/movie', movies: @movies, movie_id: 11 %>
+        <%= render 'feedbacks/form', feedback: @feedback, movie_id: 11 %>
+      </div>
+    <% end %>
+
+    <% if current_user.feedbacks.find_by(movie_id: 11) %>
+      <div id="m12">
+        <%= render 'shared/movie', movies: @movies, movie_id: 12 %>
+        <%= render 'feedbacks/form', feedback: @feedback, movie_id: 12 %>
+      </div>
+    <% end %>
+
+    <% if current_user.feedbacks.find_by(movie_id: 12) %>
+      <div id="m13">
+        <%= render 'shared/movie', movies: @movies, movie_id: 13 %>
+        <%= render 'feedbacks/form', feedback: @feedback, movie_id: 13 %>
+      </div>
+    <% end %>
+
+    <% if current_user.feedbacks.find_by(movie_id: 13) %>
+      <div id="m14">
+        <%= render 'shared/movie', movies: @movies, movie_id: 14 %>
+        <%= render 'feedbacks/form', feedback: @feedback, movie_id: 14 %>
+      </div>
+    <% end %>
+
+    <% if current_user.feedbacks.find_by(movie_id: 14) %>
+      <div id="m15">
+        <%= render 'shared/movie', movies: @movies, movie_id: 15 %>
+        <%= render 'feedbacks/form', feedback: @feedback, movie_id: 15 %>
+      </div>
+    <% end %>
+
+    <% if current_user.feedbacks.find_by(movie_id: 15) %>
+      <div id="m16">
+        <%= render 'shared/movie', movies: @movies, movie_id: 16 %>
+        <%= render 'feedbacks/form', feedback: @feedback, movie_id: 16 %>
+      </div>
+    <% end %>
+
     </div>
     <%= render 'layouts/aside' %>
   </div>

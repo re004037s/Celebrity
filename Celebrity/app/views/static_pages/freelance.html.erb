@@ -16,7 +16,12 @@
           <%= render 'feedbacks/form', feedback: @feedback, movie_id: 4 %>
         </div>
       <% end %>
-
+      
+      <% if current_user.feedbacks.find_by(movie_id: 4) %>
+        <p class="text-center">
+          <%= link_to "NEXT：できるエンジニアになる", able_engineer_path, class: "txt1 btn btn-lg btn-primary" %>
+        </p>
+      <% end %>
     </div>
     <%= render 'layouts/aside' %>
   </div>
