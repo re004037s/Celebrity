@@ -3,15 +3,15 @@
 <table class="table table-bordered table-striped table-index">
   <thead>
     <tr>
-      <th width=15%>ユーザ名</th>
+      <th width=15% class="table-header">ユーザ名</th>
         <% if @current_user.admin %>
-          <th width=15%>氏名</th>
-          <th width=15%>メアド</th>
+          <th width=15% class="table-header">氏名</th>
+          <th width=15% class="table-header">メアド</th>
         <% end %>
-      <th width=10%>動画視聴率</th>
-      <th width=10%>Progate</th>
-      <th width=10%>Rails Tutorial</th>
-      <th>ポートフォリオ</th>
+      <th width=10% class="table-header">動画視聴率</th>
+      <th width=10% class="table-header">Progate</th>
+      <th width=10% class="table-header">Rails Tutorial</th>
+      <th class="table-header">ポートフォリオ</th>
     </tr>
   </thead>
   <% @users.each do |user| %>
