@@ -1,0 +1,6 @@
+<% if @movie_id == '1' %>
+  <% unless current_user.feedbacks.find_by(movie_id: 2) %>
+    $("#m2").html("<%= j(render 'shared/movie', movies: @movies, movie_id: 2) %>");
+    $("#m2").html("<%= j(render 'feedbacks/form', feedback: @feedback, movie_id: 2) %>");
+  <% end %>
+<% end %>

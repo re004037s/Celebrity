@@ -1,5 +1,5 @@
 <%= form_for(current_user.javascript_status, remote: true) do |f| %>
   <%= hidden_field_tag :course, course %>
   <%= hidden_field_tag :status, true %>
-  <%= f.submit '完了済！', class: 'btn btn-primary btn-comp' %>
+  <%= f.submit '完了済', class: 'btn btn-primary btn-comp' %>
 <% end %>
