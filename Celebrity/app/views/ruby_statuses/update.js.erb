@@ -33,6 +33,10 @@
 <% if @course == 'ruby_ga_5' %>
   <% if @status == 'false' %>
     $("#ruby_ga_5").html("<%= j(render('ruby_statuses/incomplete', course: @course)) %>");
+    <% if @progate_comp_flag %>
+      $("#link_railstutorial").removeAttr("style");
+      $("#link_railstutorial").removeClass("hide-movie");
+    <% end %>
   <% else %>
     $("#ruby_ga_5").html("<%= j(render('ruby_statuses/complete', course: @course)) %>");
   <% end %>

@@ -16,20 +16,12 @@ class StaticPagesController < ApplicationController
   
   def job_hunting
   end
- 
-#  def qa
-#  end
   
   def progate
     @html_css_status = HtmlCssStatus.find_or_create_by(user_id: current_user.id)
     @javascript_status = JavascriptStatus.find_or_create_by(user_id: current_user.id)
     @ruby_status = RubyStatus.find_or_create_by(user_id: current_user.id)
     @rubyonrails_status = RubyonrailsStatus.find_or_create_by(user_id: current_user.id)
-    
-    # @ajax_res = params[:impression]
-    # if params[:begi]
-    # elsif params[:midd]
-    # end
   end
   
   def railstutorial
@@ -41,12 +33,21 @@ class StaticPagesController < ApplicationController
     def setting
       @movies = Movie.all
       @feedback = current_user.feedbacks.build
+      @hide = 'hide-movie'
       
       @home_flag = !!current_user.feedbacks.find_by(movie_id: 2)
       @freelance_flag = !!current_user.feedbacks.find_by(movie_id: 4)
       @able_engineer_flag = !!current_user.feedbacks.find_by(movie_id: 7)
       @job_hunting_flag = !!current_user.feedbacks.find_by(movie_id: 10)
       @program_learn_flag = !!current_user.feedbacks.find_by(movie_id: 16)
+      
+      if current_user.html_css_status.ji_2 \
+        && current_user.javascript_status.do_beginner \
+        && current_user.ruby_status.ga_5 \
+        && current_user.rubyonrails_status.do_4
+          @progate_comp_flag = true
+      else
+          @progate_comp_flag = false
+      end
     end
-
 end

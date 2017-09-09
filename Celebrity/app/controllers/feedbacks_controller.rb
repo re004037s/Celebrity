@@ -6,15 +6,15 @@ class FeedbacksController < ApplicationController
     @feedback_2 = current_user.feedbacks.find_by(movie_id: params[:feedback][:movie_id])
     
     if @feedback_2.nil?
+      # 新規作成
       @feedback_1.save
-      flash[:success] = '感想を送信しました'
+      @movie_id = @feedback_1.movie_id
     else
+      # 更新
       @feedback_2.update_attributes(feedback_params)
-      flash[:success] = '感想を更新しました'
+      @movie_id = nil
     end
-    
-    @ref  = request.referer
-    redirect_to @ref
+    @movies = Movie.all
 
   end
   

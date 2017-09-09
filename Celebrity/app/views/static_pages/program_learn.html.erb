@@ -3,49 +3,47 @@
   <div class="row">
     <div class="col-sm-9">
 
-    <% if current_user.feedbacks.find_by(movie_id: 10) %>
       <div id="m11">
         <%= render 'shared/movie', movies: @movies, movie_id: 11 %>
         <%= render 'feedbacks/form', feedback: @feedback, movie_id: 11 %>
       </div>
-    <% end %>
 
-    <% if current_user.feedbacks.find_by(movie_id: 11) %>
-      <div id="m12">
+      <div id="m12" class="<%= @hide unless current_user.fb_comp?(11) %>">
         <%= render 'shared/movie', movies: @movies, movie_id: 12 %>
         <%= render 'feedbacks/form', feedback: @feedback, movie_id: 12 %>
       </div>
-    <% end %>
 
-    <% if current_user.feedbacks.find_by(movie_id: 12) %>
-      <div id="m13">
+      <div id="m13" class="<%= @hide unless current_user.fb_comp?(12) %>">
         <%= render 'shared/movie', movies: @movies, movie_id: 13 %>
         <%= render 'feedbacks/form', feedback: @feedback, movie_id: 13 %>
       </div>
-    <% end %>
 
-    <% if current_user.feedbacks.find_by(movie_id: 13) %>
-      <div id="m14">
+      <div id="m14" class="<%= @hide unless current_user.fb_comp?(13) %>">
         <%= render 'shared/movie', movies: @movies, movie_id: 14 %>
         <%= render 'feedbacks/form', feedback: @feedback, movie_id: 14 %>
       </div>
-    <% end %>
 
-    <% if current_user.feedbacks.find_by(movie_id: 14) %>
-      <div id="m15">
+      <div id="m15" class="<%= @hide unless current_user.fb_comp?(14) %>">
         <%= render 'shared/movie', movies: @movies, movie_id: 15 %>
         <%= render 'feedbacks/form', feedback: @feedback, movie_id: 15 %>
       </div>
-    <% end %>
 
-    <% if current_user.feedbacks.find_by(movie_id: 15) %>
-      <div id="m16">
+      <div id="m16" class="<%= @hide unless current_user.fb_comp?(15) %>">
         <%= render 'shared/movie', movies: @movies, movie_id: 16 %>
         <%= render 'feedbacks/form', feedback: @feedback, movie_id: 16 %>
       </div>
-    <% end %>
+
+      <div id="link_progate" class="<%= @hide unless current_user.fb_comp?(16) %>">
+        <p class="text-center">
+          <%= link_to "NEXT：Progate学習", progate_path, class: "txt1 btn btn-lg btn-primary" %>
+        </p>
+      </div>
 
     </div>
     <%= render 'layouts/aside' %>
   </div>
 </div>
+
+<script>
+  $('.hide-movie').hide();
+</script>

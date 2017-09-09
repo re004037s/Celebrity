@@ -113,6 +113,10 @@
 <% if @course == 'rubyonrails_do_4' %>
   <% if @status == 'false' %>
     $("#rubyonrails_do_4").html("<%= j(render('rubyonrails_statuses/incomplete', course: @course)) %>");
+    <% if @progate_comp_flag %>
+      $("#link_railstutorial").removeAttr("style");
+      $("#link_railstutorial").removeClass("hide-movie");
+    <% end %>
   <% else %>
     $("#rubyonrails_do_4").html("<%= j(render('rubyonrails_statuses/complete', course: @course)) %>");
   <% end %>

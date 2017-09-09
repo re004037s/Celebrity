@@ -1,6 +1,92 @@
-<% if @movie_id == '1' %>
-  <% unless current_user.feedbacks.find_by(movie_id: 2) %>
-    $("#m2").html("<%= j(render 'shared/movie', movies: @movies, movie_id: 2) %>");
-    $("#m2").html("<%= j(render 'feedbacks/form', feedback: @feedback, movie_id: 2) %>");
-  <% end %>
+<% if @movie_id == 1 %>
+  $("#m2").removeAttr("style");
+  $("#m2").removeClass("hide-movie");
+  $("#textarea1").fadeOut();
+  $("#feedback-btn1").addClass("btn-comp");
+  $("#msg1").fadeOut();
+<% elsif @movie_id == 2 %>
+  $("#link_freelance").removeAttr("style");
+  $("#textarea2").fadeOut();
+  $("#feedback-btn2").addClass("btn-comp");
+  $("#msg2").fadeOut();
+<% elsif @movie_id == 3 %>
+  $("#m4").removeAttr("style");
+  $("#m4").removeClass("hide-movie");
+  $("#textarea3").fadeOut();
+  $("#feedback-btn3").addClass("btn-comp");
+  $("#msg3").fadeOut();
+<% elsif @movie_id == 4 %>
+  $("#link_able_engineer").removeAttr("style");
+  $("#textarea4").fadeOut();
+  $("#feedback-btn4").addClass("btn-comp");
+  $("#msg4").fadeOut();
+<% elsif @movie_id == 5 %>
+  $("#m6").removeAttr("style");
+  $("#m6").removeClass("hide-movie");
+  $("#textarea5").fadeOut();
+  $("#feedback-btn5").addClass("btn-comp");
+  $("#msg5").fadeOut();
+<% elsif @movie_id == 6 %>
+  $("#m7").removeAttr("style");
+  $("#m7").removeClass("hide-movie");
+  $("#textarea6").fadeOut();
+  $("#feedback-btn6").addClass("btn-comp");
+  $("#msg6").fadeOut();
+<% elsif @movie_id == 7 %>
+  $("#link_job_hunting").removeAttr("style");
+  $("#textarea7").fadeOut();
+  $("#feedback-btn7").addClass("btn-comp");
+  $("#msg7").fadeOut();
+<% elsif @movie_id == 8 %>
+  $("#m9").removeAttr("style");
+  $("#m9").removeClass("hide-movie");
+  $("#textarea8").fadeOut();
+  $("#feedback-btn8").addClass("btn-comp");
+  $("#msg8").fadeOut();
+<% elsif @movie_id == 9 %>
+  $("#m10").removeAttr("style");
+  $("#m10").removeClass("hide-movie");
+  $("#textarea9").fadeOut();
+  $("#feedback-btn9").addClass("btn-comp");
+  $("#msg9").fadeOut();
+<% elsif @movie_id == 10 %>
+  $("#link_program_learn").removeAttr("style");
+  $("#textarea10").fadeOut();
+  $("#feedback-btn10").addClass("btn-comp");
+  $("#msg10").fadeOut();
+<% elsif @movie_id == 11 %>
+  $("#m12").removeAttr("style");
+  $("#m12").removeClass("hide-movie");
+  $("#textarea11").fadeOut();
+  $("#feedback-btn11").addClass("btn-comp");
+  $("#msg11").fadeOut();
+<% elsif @movie_id == 12 %>
+  $("#m13").removeAttr("style");
+  $("#m13").removeClass("hide-movie");
+  $("#textarea12").fadeOut();
+  $("#feedback-btn12").addClass("btn-comp");
+  $("#msg12").fadeOut();
+<% elsif @movie_id == 13 %>
+  $("#m14").removeAttr("style");
+  $("#m14").removeClass("hide-movie");
+  $("#textarea13").fadeOut();
+  $("#feedback-btn13").addClass("btn-comp");
+  $("#msg13").fadeOut();
+<% elsif @movie_id == 14 %>
+  $("#m15").removeAttr("style");
+  $("#m15").removeClass("hide-movie");
+  $("#textarea14").fadeOut();
+  $("#feedback-btn14").addClass("btn-comp");
+  $("#msg14").fadeOut();
+<% elsif @movie_id == 15 %>
+  $("#m16").removeAttr("style");
+  $("#m16").removeClass("hide-movie");
+  $("#textarea15").fadeOut();
+  $("#feedback-btn15").addClass("btn-comp");
+  $("#msg15").fadeOut();
+<% elsif @movie_id == 16 %>
+  $("#link_progate").removeAttr("style");
+  $("#textarea16").fadeOut();
+  $("#feedback-btn16").addClass("btn-comp");
+  $("#msg16").fadeOut();
 <% end %>

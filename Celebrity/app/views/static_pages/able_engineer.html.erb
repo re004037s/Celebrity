@@ -3,34 +3,32 @@
   <div class="row">
     <div class="col-sm-9">
       
-    <% if current_user.feedbacks.find_by(movie_id: 4) %>
       <div id="m5">
         <%= render 'shared/movie', movies: @movies, movie_id: 5 %>
         <%= render 'feedbacks/form', feedback: @feedback, movie_id: 5 %>
       </div>
-    <% end %>
-
-    <% if current_user.feedbacks.find_by(movie_id: 5) %>
-      <div id="m6">
+  
+      <div id="m6" class="<%= @hide unless current_user.fb_comp?(5) %>">
         <%= render 'shared/movie', movies: @movies, movie_id: 6 %>
         <%= render 'feedbacks/form', feedback: @feedback, movie_id: 6 %>
       </div>
-    <% end %>
-
-    <% if current_user.feedbacks.find_by(movie_id: 6) %>
-      <div id="m7">
+  
+      <div id="m7" class="<%= @hide unless current_user.fb_comp?(6) %>">
         <%= render 'shared/movie', movies: @movies, movie_id: 7 %>
         <%= render 'feedbacks/form', feedback: @feedback, movie_id: 7 %>
       </div>
-    <% end %>
 
-      <% if current_user.feedbacks.find_by(movie_id: 7) %>
+      <div id="link_job_hunting" class="<%= @hide unless current_user.fb_comp?(7) %>">
         <p class="text-center">
           <%= link_to "NEXT：就活編", job_hunting_path, class: "txt1 btn btn-lg btn-primary" %>
         </p>
-      <% end %>
+      </div>
       
     </div>
     <%= render 'layouts/aside' %>
   </div>
 </div>
+
+<script>
+  $('.hide-movie').hide();
+</script>

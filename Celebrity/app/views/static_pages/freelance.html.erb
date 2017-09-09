@@ -3,26 +3,26 @@
   <div class="row">
     <div class="col-sm-9">
       
-    <% if current_user.feedbacks.find_by(movie_id: 2) %>
       <div id="m3">
         <%= render 'shared/movie', movies: @movies, movie_id: 3 %>
         <%= render 'feedbacks/form', feedback: @feedback, movie_id: 3 %>
       </div>
-    <% end %>
+  
+      <div id="m4" class="<%= @hide unless current_user.fb_comp?(3) %>">
+        <%= render 'shared/movie', movies: @movies, movie_id: 4 %>
+        <%= render 'feedbacks/form', feedback: @feedback, movie_id: 4 %>
+      </div>
       
-      <% if current_user.feedbacks.find_by(movie_id: 3) %>
-        <div id="m4">
-          <%= render 'shared/movie', movies: @movies, movie_id: 4 %>
-          <%= render 'feedbacks/form', feedback: @feedback, movie_id: 4 %>
-        </div>
-      <% end %>
-      
-      <% if current_user.feedbacks.find_by(movie_id: 4) %>
+      <div id="link_able_engineer" class="<%= @hide unless current_user.fb_comp?(4) %>">  
         <p class="text-center">
           <%= link_to "NEXT：できるエンジニアになる", able_engineer_path, class: "txt1 btn btn-lg btn-primary" %>
         </p>
-      <% end %>
+      </div>
     </div>
     <%= render 'layouts/aside' %>
   </div>
 </div>
+
+<script>
+  $('.hide-movie').hide();
+</script>
