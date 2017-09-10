@@ -17,6 +17,9 @@ class StaticPagesController < ApplicationController
   def job_hunting
   end
   
+  def qa
+  end
+  
   def progate
     @html_css_status = HtmlCssStatus.find_or_create_by(user_id: current_user.id)
     @javascript_status = JavascriptStatus.find_or_create_by(user_id: current_user.id)
