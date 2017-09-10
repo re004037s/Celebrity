@@ -1,6 +1,6 @@
 
 # 1.管理ユーザ かつ ポートフォリオあり
-User.create!(name: '鈴木 一朗',
+User.first_or_create!(name: '鈴木 一朗',
           nickname: 'イチロー',
           email: 'ichiro@gmail.com',
           password: 'password',
@@ -10,7 +10,7 @@ User.create!(name: '鈴木 一朗',
           portfolio_path: 'https://marubozu.herokuapp.com')
 
 # 2.一般ユーザ かつ 勉強進度：0% かつ 視聴完了(感想送信)率：0%
-User.create!(name: '松井 秀喜',
+User.first_or_create!(name: '松井 秀喜',
           nickname: 'ゴジラ',
           email: 'matsui@gmail.com',
           password: 'password',
@@ -20,7 +20,7 @@ User.create!(name: '松井 秀喜',
           portfolio_path: '')
 
 # 3.一般ユーザ かつ 削除済み
-User.create!(name: '中村 剛也',
+User.first_or_create!(name: '中村 剛也',
           nickname: 'おかわり',
           email: 'nakamura@gmail.com',
           password: 'password',
@@ -31,7 +31,7 @@ User.create!(name: '中村 剛也',
 
 # 4.一般ユーザ & 勉強進度：50% & 視聴完了(感想送信)率：50% & Tutorial：7章完了
 #
-User.create!(name: '山田 哲人',
+User.first_or_create!(name: '山田 哲人',
           nickname: 'ヤマダ',
           email: 'yamada@gmail.com',
           password: 'password',
@@ -57,7 +57,7 @@ user4.feedbacks.create!(movie_id: '1', feedback: '面白かった' * 50 )
 user4.feedbacks.create!(movie_id: '2', feedback: 'すごかった' * 50 )
 
 # 5.一般ユーザ & 勉強進度：100% & 視聴完了(感想送信)率：100% & Tutorial：14章完了
-User.create!(name: '大谷 翔平',
+User.first_or_create!(name: '大谷 翔平',
           nickname: 'ショーヘイ',
           email: 'otani@gmail.com',
           password: 'password',
@@ -92,7 +92,7 @@ user5.feedbacks.create!(movie_id: '4', feedback: 'よかった' * 50 )
   name = Faker::Name.name
   email = "example-#{n+1}@gmail.com"
   password = 'password'
-  User.create!(name: name,
+  User.first_or_create!(name: name,
               nickname: name,
               email: email,
               password: password,
