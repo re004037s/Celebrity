@@ -1,5 +1,5 @@
 <%= form_for(current_user.rubyonrails_status, remote: true) do |f| %>
   <%= hidden_field_tag :course, course %>
   <%= hidden_field_tag :status, false %>
-  <%= f.submit '未完了', class: 'btn btn-incomp' %>
+  <%= f.submit '未完了', class: 'txt1 btn btn-incomp' %>
 <% end %>
