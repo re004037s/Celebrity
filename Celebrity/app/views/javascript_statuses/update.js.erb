@@ -9,6 +9,10 @@
 <% if @course == 'javascript_do_be' %>
   <% if @status == 'false' %>
     $("#javascript_do_be").html("<%= j(render('javascript_statuses/incomplete', course: @course)) %>");
+    <% if @progate_comp_flag %>
+      $("#link_railstutorial").removeAttr("style");
+      $("#link_railstutorial").removeClass("hide-movie");
+    <% end %>
   <% else %>
     $("#javascript_do_be").html("<%= j(render('javascript_statuses/complete', course: @course)) %>");
   <% end %>

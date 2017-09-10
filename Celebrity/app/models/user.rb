@@ -26,4 +26,8 @@ class User < ApplicationRecord
                                                   BCrypt::Engine.cost
         BCrypt::Password.create(string, cost: cost)
     end
+    
+    def fb_comp?(movie_id)
+        !!self.feedbacks.find_by(movie_id: movie_id)
+    end
 end

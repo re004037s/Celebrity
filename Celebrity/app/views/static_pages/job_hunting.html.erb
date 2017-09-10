@@ -3,34 +3,31 @@
   <div class="row">
     <div class="col-sm-9">
 
-      <% if current_user.feedbacks.find_by(movie_id: 7) %>
-        <div id="m8">
-          <%= render 'shared/movie', movies: @movies, movie_id: 8 %>
-          <%= render 'feedbacks/form', feedback: @feedback, movie_id: 8 %>
-        </div>
-      <% end %>
-  
-      <% if current_user.feedbacks.find_by(movie_id: 8) %>
-        <div id="m9">
-          <%= render 'shared/movie', movies: @movies, movie_id: 9 %>
-          <%= render 'feedbacks/form', feedback: @feedback, movie_id: 9 %>
-        </div>
-      <% end %>
-  
-      <% if current_user.feedbacks.find_by(movie_id: 9) %>
-        <div id="m10">
-          <%= render 'shared/movie', movies: @movies, movie_id: 10 %>
-          <%= render 'feedbacks/form', feedback: @feedback, movie_id: 10 %>
-        </div>
-      <% end %>
+      <div id="m8">
+        <%= render 'shared/movie', movies: @movies, movie_id: 8 %>
+        <%= render 'feedbacks/form', feedback: @feedback, movie_id: 8 %>
+      </div>
 
-      <% if current_user.feedbacks.find_by(movie_id: 10) %>
+      <div id="m9" class="<%= @hide unless current_user.fb_comp?(8) %>">
+        <%= render 'shared/movie', movies: @movies, movie_id: 9 %>
+        <%= render 'feedbacks/form', feedback: @feedback, movie_id: 9 %>
+      </div>
+
+      <div id="m10" class="<%= @hide unless current_user.fb_comp?(9) %>">
+        <%= render 'shared/movie', movies: @movies, movie_id: 10 %>
+        <%= render 'feedbacks/form', feedback: @feedback, movie_id: 10 %>
+      </div>
+      
+      <div id="link_program_learn" class="<%= @hide unless current_user.fb_comp?(10) %>">
         <p class="text-center">
           <%= link_to "NEXT：プログラミング学習編", program_learn_path, class: "txt1 btn btn-lg btn-primary" %>
         </p>
-      <% end %>
-
+      </div>
     </div>
     <%= render 'layouts/aside' %>
   </div>
 </div>
+
+<script>
+  $('.hide-movie').hide();
+</script>

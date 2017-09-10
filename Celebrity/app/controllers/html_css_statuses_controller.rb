@@ -1,4 +1,5 @@
 class HtmlCssStatusesController < ApplicationController
+  before_action :progate_check
   
   def update
     require 'date'
@@ -70,10 +71,17 @@ class HtmlCssStatusesController < ApplicationController
         @html_css_status.update_attributes(ji_2: false, ji_2_compd: nil)
       end
     end
-
-    # respond_to do |format|
-    #   format.html { redirect_to current_user }
-    #   format.js
-    # end
   end
+  
+  private
+  
+    def progate_check
+      if current_user.javascript_status.do_beginner \
+        && current_user.ruby_status.ga_5 \
+        && current_user.rubyonrails_status.do_4
+          @progate_comp_flag = true
+      else
+          @progate_comp_flag = false
+      end
+    end
 end

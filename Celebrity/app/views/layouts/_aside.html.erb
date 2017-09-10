@@ -10,9 +10,8 @@
            <li id="able_engineer_path"><%= link_to "できるエンジニアになる", able_engineer_path, disabled: true %></li>
            <li id="job_hunting_path"><%= link_to "就活編", job_hunting_path, disabled: true %></li>
            <li id="program_learn_path"><%= link_to "プログラミング学習編", program_learn_path, disabled: true %></li>
-           <li><%= link_to 'Progate進捗入力', progate_path %></li>
-           <li><%= link_to 'RailsTutorial進捗入力', railstutorial_path %></li>
-    <!--   <li><%#= link_to "railsチュートリアル：よくある質問", qa_path %></li> -->
+           <li id="progate_path"><%= link_to 'Progate進捗入力', progate_path %></li>
+           <li id="railstutorial_path"><%= link_to 'RailsTutorial進捗入力', railstutorial_path %></li>
         </ul>
       </div>
     </div>
@@ -44,6 +43,20 @@
     <% unless @job_hunting_flag %>
       $('#program_learn_path').prop('disabled', true).addClass('disabled');
       $('#program_learn_path').click(function(){
+        return false;
+      })
+    <% end %>
+
+    <% unless @program_learn_flag %>
+      $('#progate_path').prop('disabled', true).addClass('disabled');
+      $('#progate_path').click(function(){
+        return false;
+      })
+    <% end %>
+
+    <% unless @progate_comp_flag %>
+      $('#railstutorial_path').prop('disabled', true).addClass('disabled');
+      $('#railstutorial_path').click(function(){
         return false;
       })
     <% end %>

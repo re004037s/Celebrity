@@ -1,4 +1,4 @@
-<%= form_for(feedback) do |f| %>
+<%= form_for(feedback, remote: true) do |f| %>
   <div class="form-group<%= movie_id %> forms">
     <%= f.text_area :feedback, :id => "textarea#{movie_id}", :size => "7x7", :maxlength => "500",
         :placeholder => "100-500文字で入力してください", required: true, 
@@ -12,17 +12,19 @@
 <script>
 $(function(){
     $('.form-group<%= movie_id %>').hide();
-});
-$(function() {
+
     $('#show-form<%= movie_id %>').click(function(){
         $('.form-group<%= movie_id %>').show();
         $(this).fadeOut();
+    });
+    
+    $('#feedback-btn<%= movie_id %>').click(function(){
+        $(this).val("感想送信済み");
     });
 });
 </script>
 
 <script language="JavaScript">
-var str1 = document.js.authenticity_token.value;
 
 function Limit<%= movie_id %>(event){
   var Tarea<%= movie_id %>= document.getElementById("textarea<%= movie_id %>");

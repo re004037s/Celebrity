@@ -1,5 +1,6 @@
 class RubyStatusesController < ApplicationController
-  
+   before_action :progate_check
+
   def update
     require 'date'
     @ruby_status = current_user.ruby_status
@@ -47,4 +48,16 @@ class RubyStatusesController < ApplicationController
       end
     end
   end
+  
+  private
+
+    def progate_check
+      if current_user.html_css_status.ji_2 \
+        && current_user.javascript_status.do_beginner \
+        && current_user.rubyonrails_status.do_4
+          @progate_comp_flag = true
+      else
+          @progate_comp_flag = false
+      end
+    end
 end
