@@ -1,0 +1,5 @@
+<%= form_for(current_user.html_css_status, remote: true) do |f| %>
+  <%= hidden_field_tag :course, course %>
+  <%= hidden_field_tag :status, true %>
+  <%= f.submit '完了済！', class: 'txt1 btn btn-primary btn-comp' %>
+<% end %>

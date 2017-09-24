@@ -14,52 +14,53 @@
  *= require_self
  *= require rails_bootstrap_forms
  */
-body{
+body {
   background-color: gray;
-   padding: 40px 0 0 0;
+  padding: 40px 0 0 0;
   display: absolute;
-   
 }
+
 .navbar-fixed-top{
   width: 70vw;
   height: auto;
+  max-width: 900px;
 }
 
 .body-wrapper, .navbar-wrapper{
   width: 70vw;
   margin: 0 auto;
+  max-width: 900px;
 }
 .navbar{
- background-color: black;
+  background-color: black;
   width: 70vw;
   
   margin: 0 auto;
-min-height: 50px;
-margin-bottom: 20px;
+  min-height: 50px;
+  margin-bottom: 20px;
   
 max-height: 10px;
 }
 .navbar-nav{
   height: 50px;
-padding: 15px 15px;
-font-size: 18px;
-line-height: 20px;
+  padding: 15px 15px;
+  font-size: 18px;
+  line-height: 20px;
+}
+
+.panel {
+  margin-top: 20px;
 }
 
 .body-wrapper{
   background-color: white;
+  max-width: 900px;
 }
 
-
-div.main-wrapper{
-  padding-top: 50px;
+.main-wrapper {
+  padding-top: 30px;
   padding-bottom: 55px;
-}
-
-.top-phrase{
-  font-size: 2vw;
-  line-height: 3em;
-  color: #F8C810;
+  max-width: 900px;
 }
 
 .navbar-inverse .navbar-nav > li > a {
@@ -70,25 +71,38 @@ div.main-wrapper{
     padding: 0.1em 1em;
 }
 .container{
+  margin: 0 auto;
   padding-left: 0px;
   padding-right: 0px;
+  /*margin-left: 0px;*/
+  /*margin-right: 0px;*/
+  max-width: 900px;
+  background-color: white;
+}
+
+footer {
+  width: 70vw;
+  max-width: 900px;
+  background-color: white;
+  padding: 10px 0;
+  margin: 0 auto;
 }
 .row{
     margin-left: 0px; 
     margin-right: 0px; 
 }
 
-footer.container{
-  background-color: white;
-}
-@media (min-width: 992px) {
-  .container {
-    width: 70vw;
-    padding-left: 0px;
-    padding-right: 0px;
-    background-color: white;
-  }
-}
+/*footer.container{*/
+/*  background-color: white;*/
+/*}*/
+/*@media (min-width: 992px) {*/
+/*  .container {*/
+    /*width: 70vw;*/
+    /*padding-left: 0px;*/
+    /*padding-right: 0px;*/
+    /*background-color: white;*/
+  /*}*/
+/*}*/
 
 div.navbar-wrapper, .navbar{
   background-color: #222222;
@@ -122,13 +136,21 @@ div.navbar-wrapper, .navbar{
   background-color:#00CCCC;
   color:black;
 }
-.btn-log{
-  text-align:center;
+.btn-lg{
+  text-align: center;
   font-size: 1vw;
 }
-.top-phrase{
-padding-left: 20px;
+
+.btn-comp {
+  background-color: #248;
+  color: #fff;
 }
+
+.btn-incomp {
+  background-color: gray;
+  color: #fff;
+}
+
 input#submit_button {
     
     width: 30vw;
@@ -136,10 +158,8 @@ input#submit_button {
 
 }
 div#centering{
-  text-align : center ;
+  text-align: center ;
 }
-
-
 
 .btn-delete{
   font-size: 1vw;
