@@ -18,3 +18,34 @@
     </div>
 </aside>
 
+<script>
+  $(document).ready(function(){
+    <% unless @home_flag %>
+      $('#freelance_path').click(function(){
+        alert('感想の送信が完了していませんよ＾＾')
+        return false;
+      })
+    <% end %>
+    
+    <% unless @freelance_flag %>
+      $('#program_learn_path').click(function(){
+        alert('感想の送信が完了していませんよ＾＾')
+        return false;
+      })
+    <% end %>
+
+    <% unless @program_learn_flag %>
+      $('#able_engineer_path').click(function(){
+        alert('感想の送信が完了していませんよ＾＾')
+        return false;
+      })
+    <% end %>
+
+    <% unless @able_engineer_flag %>
+      $('#job_hunting_path').click(function(){
+        alert('感想の送信が完了していませんよ＾＾')
+        return false;
+      })
+    <% end %>
+  });
+</script>

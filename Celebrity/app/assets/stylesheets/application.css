@@ -66,6 +66,8 @@ div.main-wrapper{
     font-size: 1vw;
     line-height: 3em;
     color: #FFFFFF;
+    margin: 0.1em 1em;
+    padding: 0.1em 1em;
 }
 .container{
   padding-left: 0px;
