@@ -32,8 +32,13 @@
         <%= render 'shared/movie', movies: @movies, movie_id: 16 %>
         <%= render 'feedbacks/form', feedback: @feedback, movie_id: 16 %>
       </div>
+      
+      <div id="m17" class="<%= @hide unless current_user.fb_comp?(16) %>">
+        <%= render 'shared/movie', movies: @movies, movie_id: 17 %>
+        <%= render 'feedbacks/form', feedback: @feedback, movie_id: 17 %>
+      </div>
 
-      <div id="link_progate" class="<%= @hide unless current_user.fb_comp?(16) %>">
+      <div id="link_progate" class="<%= @hide unless current_user.fb_comp?(17) %>">
         <p class="text-center">
           <%= link_to "NEXT：Progate学習", progate_path, class: "txt1 btn btn-lg btn-primary" %>
         </p>

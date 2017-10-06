@@ -28,9 +28,10 @@ Movie.create!(title: '正しい転職活動',
               path: 'https://www.youtube.com/embed/zJYYX-IPCsM')
 Movie.create!(title: 'インフラ系と開発系の違い',
               path: 'https://www.youtube.com/embed/Il2UQ6oyRBM')
-
 Movie.create!(title: 'プログラミング勉強法',
               path: 'https://www.youtube.com/embed/asUe-__w3o0')
+Movie.create!(title: 'ポートフォリオ作成のポイント',
+              path: 'https://youtube.com/embed/UnwPmOROW2g')
 Movie.create!(title: 'Cloud9の登録方法',
               path: 'https://www.youtube.com/embed/dXUol31KHRc')
 Movie.create!(title: 'GitHub講習(1)',

@@ -85,8 +85,14 @@
   $("#feedback-btn15").addClass("btn-comp");
   $("#msg15").fadeOut();
 <% elsif @movie_id == 16 %>
-  $("#link_progate").removeAttr("style");
+  $("#m17").removeAttr("style");
+  $("#m17").removeClass("hide-movie");
   $("#textarea16").fadeOut();
   $("#feedback-btn16").addClass("btn-comp");
   $("#msg16").fadeOut();
+<% elsif @movie_id == 17 %>
+  $("#link_progate").removeAttr("style");
+  $("#textarea17").fadeOut();
+  $("#feedback-btn17").addClass("btn-comp");
+  $("#msg17").fadeOut();
 <% end %>
