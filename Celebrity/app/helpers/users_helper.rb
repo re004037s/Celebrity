@@ -99,7 +99,7 @@ module UsersHelper
   
   def percent_movie(user)
     c = user.feedbacks.count
-    return c * 100 / Movie.count
+    return c * 100 / 17 #Movie.count
   end
 
 end
