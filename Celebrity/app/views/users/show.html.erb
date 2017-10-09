@@ -240,15 +240,125 @@
       <th class="table-header">感想</th>
     </tr>
   </thead>
-  <% for n in 1..Movie.count do %>
     <tbody>
       <tr>
-        <td><%= Movie.find(n).title %></td>
-        <td class="center"><%= @user.feedbacks.find_by(movie_id: n) ? '完了' : '未' %></td>
-        <td><%= @user.feedbacks.find_by(movie_id: n) ? @user.feedbacks.find_by(movie_id: n).feedback : '-' %></td>
+        <td><%= Movie.find(1).title %></td>
+        <td class="center"><%= @user.feedbacks.find_by(movie_id: 1) ? '完了' : '未' %></td>
+        <td><%= @user.feedbacks.find_by(movie_id: 1) ? @user.feedbacks.find_by(movie_id: 1).feedback : '-' %></td>
       </tr>
     </tbody>
-  <% end %>
+    <tbody>
+      <tr>
+        <td><%= Movie.find(2).title %></td>
+        <td class="center"><%= @user.feedbacks.find_by(movie_id: 2) ? '完了' : '未' %></td>
+        <td><%= @user.feedbacks.find_by(movie_id: 2) ? @user.feedbacks.find_by(movie_id: 2).feedback : '-' %></td>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr>
+        <td><%= Movie.find(3).title %></td>
+        <td class="center"><%= @user.feedbacks.find_by(movie_id: 3) ? '完了' : '未' %></td>
+        <td><%= @user.feedbacks.find_by(movie_id: 3) ? @user.feedbacks.find_by(movie_id: 3).feedback : '-' %></td>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr>
+        <td><%= Movie.find(4).title %></td>
+        <td class="center"><%= @user.feedbacks.find_by(movie_id: 4) ? '完了' : '未' %></td>
+        <td><%= @user.feedbacks.find_by(movie_id: 4) ? @user.feedbacks.find_by(movie_id: 4).feedback : '-' %></td>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr>
+        <td><%= Movie.find(5).title %></td>
+        <td class="center"><%= @user.feedbacks.find_by(movie_id: 5) ? '完了' : '未' %></td>
+        <td><%= @user.feedbacks.find_by(movie_id: 5) ? @user.feedbacks.find_by(movie_id: 5).feedback : '-' %></td>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr>
+        <td><%= Movie.find(6).title %></td>
+        <td class="center"><%= @user.feedbacks.find_by(movie_id: 6) ? '完了' : '未' %></td>
+        <td><%= @user.feedbacks.find_by(movie_id: 6) ? @user.feedbacks.find_by(movie_id: 6).feedback : '-' %></td>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr>
+        <td><%= Movie.find(7).title %></td>
+        <td class="center"><%= @user.feedbacks.find_by(movie_id: 7) ? '完了' : '未' %></td>
+        <td><%= @user.feedbacks.find_by(movie_id: 7) ? @user.feedbacks.find_by(movie_id: 7).feedback : '-' %></td>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr>
+        <td><%= Movie.find(8).title %></td>
+        <td class="center"><%= @user.feedbacks.find_by(movie_id: 8) ? '完了' : '未' %></td>
+        <td><%= @user.feedbacks.find_by(movie_id: 8) ? @user.feedbacks.find_by(movie_id: 8).feedback : '-' %></td>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr>
+        <td><%= Movie.find(9).title %></td>
+        <td class="center"><%= @user.feedbacks.find_by(movie_id: 9) ? '完了' : '未' %></td>
+        <td><%= @user.feedbacks.find_by(movie_id: 9) ? @user.feedbacks.find_by(movie_id: 9).feedback : '-' %></td>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr>
+        <td><%= Movie.find(10).title %></td>
+        <td class="center"><%= @user.feedbacks.find_by(movie_id: 10) ? '完了' : '未' %></td>
+        <td><%= @user.feedbacks.find_by(movie_id: 10) ? @user.feedbacks.find_by(movie_id: 10).feedback : '-' %></td>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr>
+        <td><%= Movie.find(11).title %></td>
+        <td class="center"><%= @user.feedbacks.find_by(movie_id: 11) ? '完了' : '未' %></td>
+        <td><%= @user.feedbacks.find_by(movie_id: 11) ? @user.feedbacks.find_by(movie_id: 11).feedback : '-' %></td>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr>
+        <td><%= Movie.find(33).title %></td>
+        <td class="center"><%= @user.feedbacks.find_by(movie_id: 33) ? '完了' : '未' %></td>
+        <td><%= @user.feedbacks.find_by(movie_id: 33) ? @user.feedbacks.find_by(movie_id: 33).feedback : '-' %></td>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr>
+        <td><%= Movie.find(12).title %></td>
+        <td class="center"><%= @user.feedbacks.find_by(movie_id: 12) ? '完了' : '未' %></td>
+        <td><%= @user.feedbacks.find_by(movie_id: 12) ? @user.feedbacks.find_by(movie_id: 12).feedback : '-' %></td>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr>
+        <td><%= Movie.find(13).title %></td>
+        <td class="center"><%= @user.feedbacks.find_by(movie_id: 13) ? '完了' : '未' %></td>
+        <td><%= @user.feedbacks.find_by(movie_id: 13) ? @user.feedbacks.find_by(movie_id: 13).feedback : '-' %></td>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr>
+        <td><%= Movie.find(14).title %></td>
+        <td class="center"><%= @user.feedbacks.find_by(movie_id: 14) ? '完了' : '未' %></td>
+        <td><%= @user.feedbacks.find_by(movie_id: 14) ? @user.feedbacks.find_by(movie_id: 14).feedback : '-' %></td>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr>
+        <td><%= Movie.find(15).title %></td>
+        <td class="center"><%= @user.feedbacks.find_by(movie_id: 15) ? '完了' : '未' %></td>
+        <td><%= @user.feedbacks.find_by(movie_id: 15) ? @user.feedbacks.find_by(movie_id: 15).feedback : '-' %></td>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr>
+        <td><%= Movie.find(16).title %></td>
+        <td class="center"><%= @user.feedbacks.find_by(movie_id: 16) ? '完了' : '未' %></td>
+        <td><%= @user.feedbacks.find_by(movie_id: 16) ? @user.feedbacks.find_by(movie_id: 16).feedback : '-' %></td>
+      </tr>
+    </tbody>
 </table>
 
 <div class="form-button">
