@@ -61,11 +61,17 @@
   $("#feedback-btn11").addClass("btn-comp");
   $("#msg11").fadeOut();
 <% elsif @movie_id == 33 %>
-  $("#m13").removeAttr("style");
-  $("#m13").removeClass("hide-movie");
+  $("#m12").removeAttr("style");
+  $("#m12").removeClass("hide-movie");
   $("#textarea33").fadeOut();
   $("#feedback-btn33").addClass("btn-comp");
   $("#msg33").fadeOut();
+<% elsif @movie_id == 12 %>
+  $("#m13").removeAttr("style");
+  $("#m13").removeClass("hide-movie");
+  $("#textarea12").fadeOut();
+  $("#feedback-btn12").addClass("btn-comp");
+  $("#msg12").fadeOut();
 <% elsif @movie_id == 13 %>
   $("#m14").removeAttr("style");
   $("#m14").removeClass("hide-movie");
@@ -85,14 +91,8 @@
   $("#feedback-btn15").addClass("btn-comp");
   $("#msg15").fadeOut();
 <% elsif @movie_id == 16 %>
-  $("#m17").removeAttr("style");
-  $("#m17").removeClass("hide-movie");
+  $("#link_progate").removeAttr("style");
   $("#textarea16").fadeOut();
   $("#feedback-btn16").addClass("btn-comp");
   $("#msg16").fadeOut();
-<% elsif @movie_id == 17 %>
-  $("#link_progate").removeAttr("style");
-  $("#textarea17").fadeOut();
-  $("#feedback-btn17").addClass("btn-comp");
-  $("#msg17").fadeOut();
 <% end %>

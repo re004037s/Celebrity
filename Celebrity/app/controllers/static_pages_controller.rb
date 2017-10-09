@@ -51,7 +51,7 @@ class StaticPagesController < ApplicationController
       @freelance_flag = !!current_user.feedbacks.find_by(movie_id: 4)
       @able_engineer_flag = !!current_user.feedbacks.find_by(movie_id: 7)
       @job_hunting_flag = !!current_user.feedbacks.find_by(movie_id: 10)
-      @program_learn_flag = !!current_user.feedbacks.find_by(movie_id: 17)
+      @program_learn_flag = !!current_user.feedbacks.find_by(movie_id: 16)
       
       if current_user.html_css_status.ji_2 \
         && current_user.javascript_status.do_beginner \
