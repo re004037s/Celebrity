@@ -291,6 +291,13 @@
     </tbody>
     <tbody>
       <tr>
+        <td><%= Movie.find(51).title %></td>
+        <td class="center"><%= @user.feedbacks.find_by(movie_id: 51) ? '完了' : '未' %></td>
+        <td><%= @user.feedbacks.find_by(movie_id: 51) ? @user.feedbacks.find_by(movie_id: 51).feedback : '-' %></td>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr>
         <td><%= Movie.find(8).title %></td>
         <td class="center"><%= @user.feedbacks.find_by(movie_id: 8) ? '完了' : '未' %></td>
         <td><%= @user.feedbacks.find_by(movie_id: 8) ? @user.feedbacks.find_by(movie_id: 8).feedback : '-' %></td>

@@ -22,6 +22,8 @@ Movie.first_or_create!(title: 'PDCA(2)',
               path: 'https://www.youtube.com/embed/JFb4WMnQerk')
 Movie.first_or_create!(title: '作業速度を5倍にする方法',
               path: 'https://www.youtube.com/embed/fdpAKUc5-_c')
+Movie.first_or_create!(title: '報連相の重要性',
+              path: 'https://www.youtube.com/embed/Hn_hfNDWXfA') #id=51
 Movie.first_or_create!(title: '正しい会社の辞め方',
               path: 'https://www.youtube.com/embed/DX6vxAqafEM')
 Movie.first_or_create!(title: '正しい転職活動',
@@ -31,7 +33,7 @@ Movie.first_or_create!(title: 'インフラ系と開発系の違い',
 Movie.first_or_create!(title: 'プログラミング勉強法',
               path: 'https://www.youtube.com/embed/asUe-__w3o0')
 Movie.first_or_create!(title: 'ポートフォリオ作成のポイント',
-              path: 'https://youtube.com/embed/UnwPmOROW2g')
+              path: 'https://youtube.com/embed/UnwPmOROW2g') #id=33
 Movie.first_or_create!(title: 'Cloud9の登録方法',
               path: 'https://www.youtube.com/embed/dXUol31KHRc')
 Movie.first_or_create!(title: 'GitHub講習(1)',

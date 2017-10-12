@@ -33,10 +33,16 @@
   $("#feedback-btn6").addClass("btn-comp");
   $("#msg6").fadeOut();
 <% elsif @movie_id == 7 %>
-  $("#link_job_hunting").removeAttr("style");
+  $("#m51").removeAttr("style");
+  $("#m51").removeClass("hide-movie");
   $("#textarea7").fadeOut();
   $("#feedback-btn7").addClass("btn-comp");
   $("#msg7").fadeOut();
+<% elsif @movie_id == 51 %>
+  $("#link_job_hunting").removeAttr("style");
+  $("#textarea51").fadeOut();
+  $("#feedback-btn51").addClass("btn-comp");
+  $("#msg51").fadeOut();
 <% elsif @movie_id == 8 %>
   $("#m9").removeAttr("style");
   $("#m9").removeClass("hide-movie");
