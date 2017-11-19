@@ -13,6 +13,6 @@ development:
 
 production:
   <<: *default
-  database: celebrity_production
-  username: celebrity
-  password: <%= ENV['CELEBRITY_DATABASE_PASSWORD'] %>
+  database: celebrity_development
+  username: postgres
+  password:
