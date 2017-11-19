@@ -1,0 +1,122 @@
+<p class="text-center">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/B-IQt9NXb5A" frameborder="0" allowfullscreen></iframe>
+    <button type="button" id="show-feedback-form" class="btn btn-lg btn-primary" data-toggle="modal">感想を送る！</button>
+    <p id="alert" class="text-center">感想を再送する場合はページを再読み込みしてください</p>
+</p>
+
+<%= bootstrap_form_tag url:'/progate', html: {class: 'form-group'}, :remote => true  do |f| %>
+  <%= f.text_area :impression ,:id => "Tobj1", :size=>"7x7", :maxlength => "500",
+      :placeholder => "100-500文字で入力してください", required: true, :onchange => "Limit(event)", :onkeyup => "Limit(event)" %>
+      <br><span id="msg1">文字数カウント</span><br><div style="color: red;" class="has-error"></div>
+  <%= f.submit "感想を送る", id:"feedback-btn" , class: "btn btn-primary btn-lg submit-btn", disabled: true %>
+  
+<% end %>
+
+
+<!--検証用に複数ボタンを配置する-->
+<%= bootstrap_form_tag url:'/progate', :remote => true  do |f| %>
+ <%= f.submit '初級未完了', name: 'beginner' ,class: 'btn btn-danger' %>
+<% end %>
+
+<%= bootstrap_form_tag url:'/progate', :remote => true  do |f| %>
+ <%= f.submit '中級未完了', name: 'intermediate' ,class: 'btn btn-danger' ,disabled: true %>
+<% end %>
+
+<%= bootstrap_form_tag url:'/progate', :remote => true  do |f| %>
+ <%= f.submit '上級未完了', name: 'expert' ,class: 'btn btn-danger' ,disabled: true %>
+<% end %>
+
+
+<!--検証用 progate.js で入力内容を受け取り、下記に出力している-->
+<input type="textarea" rows="7" cols="7" id="result">
+    
+    
+<% if @msg %>
+    <%= msg %>
+<% end %>
+
+
+<script>
+$(function(){
+    $('.form-group').hide();
+    $('#alert').hide();
+});
+$(function() {
+    $('#show-feedback-form').click(function(){
+        $('.form-group').show();
+        $(this).fadeOut();
+    });
+});
+</script>
+
+<script language="JavaScript">
+var str1 = document.js.authenticity_token.value;
+var max=500; //制限文字数
+var min=100;
+function Limit(event){
+Tarea= document.getElementById("Tobj1");
+  Mcnt= document.getElementById("msg1");
+  mojiVal= Tarea.value; //テキストエリアの文字数
+  val= mojiVal.replace(/\n|\r\n/g,"");//改行を除く
+  val= val.length; //改行を含めない文字数
+    Etype=event.type; //イベントのタイプを取得
+
+if(Etype== "keyup"){//イベントのタイプが"Keyup"なら
+  Mcnt.innerHTML= //文字数のカウントを表示
+"<span style='font-weight: bold;color:blue ;'>"+val+"</span>文字";
+  }
+}
+
+</script>
+<script>
+
+$(function(){
+    var     $text = $("textarea"),
+            $button = $('.submit-btn'),
+            disabled_class = 'disabled';
+ 
+    if($text.val().length == 0) {
+        $button.prop('disabled',true).addClass('disabled');
+    }
+ 
+    $text.bind('keydown keyup keypress change',function(){
+        var thisValueLength = $(this).val().length;
+        if(thisValueLength >= 100){
+            $button.prop('disabled',false).removeClass(disabled_class);
+            jQuery( '.has-error' ).hide();
+        }else{
+            $button.prop('disabled',true).addClass(disabled_class);
+            jQuery( '.has-error' ) . text( '100文字以上入力してください' );
+            jQuery( '.has-error' ).show();
+        }
+    });
+});
+</script>
+
+<script>
+$(function() {
+     $('#feedback-btn').click(function(){
+         $(this).val('送信完了');
+         $(this).prop('disabled', true);
+         $('#Tobj1').fadeOut();
+         $('#msg1').fadeOut();
+         $('.control-label').fadeOut();
+         $('#alert').fadeIn();
+     });
+
+     
+     $('input[name="beginner"]').click(function(){
+         $(this).val('初級完了')
+         $('input[name="intermediate"]').prop('disabled', false);
+     })
+     
+     $('input[name="intermediate"]').click(function(){
+         $(this).val('中級完了')
+         $('input[name="expert"]').prop('disabled', false);
+     })
+     
+     $('input[name="expert"]').click(function(){
+         $(this).val('上級完了')
+     })
+});
+</script>

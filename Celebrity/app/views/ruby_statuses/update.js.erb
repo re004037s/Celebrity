@@ -1,0 +1,43 @@
+<% if @course == 'ruby_ga_1' %>
+  <% if @status == 'false' %>
+    $("#ruby_ga_1").html("<%= j(render('ruby_statuses/incomplete', course: @course)) %>");
+  <% else %>
+    $("#ruby_ga_1").html("<%= j(render('ruby_statuses/complete', course: @course)) %>");
+  <% end %>
+<% end %>
+
+<% if @course == 'ruby_ga_2' %>
+  <% if @status == 'false' %>
+    $("#ruby_ga_2").html("<%= j(render('ruby_statuses/incomplete', course: @course)) %>");
+  <% else %>
+    $("#ruby_ga_2").html("<%= j(render('ruby_statuses/complete', course: @course)) %>");
+  <% end %>
+<% end %>
+
+<% if @course == 'ruby_ga_3' %>
+  <% if @status == 'false' %>
+    $("#ruby_ga_3").html("<%= j(render('ruby_statuses/incomplete', course: @course)) %>");
+  <% else %>
+    $("#ruby_ga_3").html("<%= j(render('ruby_statuses/complete', course: @course)) %>");
+  <% end %>
+<% end %>
+
+<% if @course == 'ruby_ga_4' %>
+  <% if @status == 'false' %>
+    $("#ruby_ga_4").html("<%= j(render('ruby_statuses/incomplete', course: @course)) %>");
+  <% else %>
+    $("#ruby_ga_4").html("<%= j(render('ruby_statuses/complete', course: @course)) %>");
+  <% end %>
+<% end %>
+
+<% if @course == 'ruby_ga_5' %>
+  <% if @status == 'false' %>
+    $("#ruby_ga_5").html("<%= j(render('ruby_statuses/incomplete', course: @course)) %>");
+    <% if @progate_comp_flag %>
+      $("#link_railstutorial").removeAttr("style");
+      $("#link_railstutorial").removeClass("hide-movie");
+    <% end %>
+  <% else %>
+    $("#ruby_ga_5").html("<%= j(render('ruby_statuses/complete', course: @course)) %>");
+  <% end %>
+<% end %>

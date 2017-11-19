@@ -1,12 +1,16 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
+<div class="container">
+  <header class="navbar navbar-fixed-top">
   <div class="container">
     <nav>
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "User一覧", help_path %></li>
-        <li><%= link_to "Mypage", about_path %></li>
-        <li><%= link_to "logout", root_path %></li>
-
+      <ul class="nav navbar-nav">
+        <li><%= link_to "ユーザー一覧", help_path %></li>
+        <li><%= link_to "マイページ", about_path %></li>
+        <li><%= link_to "ログアウト", root_path %></li>
       </ul>
     </nav>
   </div>
+  <div class="header-logo text-success bg-success">
+    <h1 style="padding-left: 70px;">セレブエンジニアサロン</h1>
+    </div>
 </header>
+</div>

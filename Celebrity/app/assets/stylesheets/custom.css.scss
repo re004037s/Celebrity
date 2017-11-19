@@ -8,11 +8,11 @@ $gray-medium-light: #eaeaea;
 /* universal */
 
 body {
-  padding-top: 60px;
+  
 }
 
 section {
-  overflow: auto;
+  
 }
 
 textarea {
@@ -21,6 +21,7 @@ textarea {
 
 .center {
   text-align: center;
+  vertical-align: middle;
   h1 {
     margin-bottom: 10px;
   }
@@ -55,7 +56,10 @@ p {
 
 
 /* header */
-
+header{
+  width: 80vw;
+  font-size:2px;
+}
 #logo {
   float: left;
   margin-right: 10px;
@@ -71,12 +75,19 @@ p {
   }
 }
 
+.top-phrase{
+  font-size: 1.5vw;
+  line-height: 3em;
+  color: #F8C810;
+  padding-left: 20px;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 /* footer */
 
 footer {
-  margin-top: 45px;
-  padding-top: 5px;
-  border-top: 1px solid $gray-medium-light;
   color: $gray-light;
   a {
     color: $gray;
@@ -99,4 +110,157 @@ footer {
 .collapse.navbar-collapse.navbar-right{
   text-align: right;
   display: block;
+}
+
+/* forms */
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+input {
+  height: auto !important;
+}
+
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
+}
+.form-control {
+     width: 100%;
+     height: auto;
+  }
+img {
+  width: 100%;
+  height: auto;
+}
+
+.movie {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  margin-bottom: 10px;
+  iframe {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    max-width: 500px;
+    max-height: 360px;
+  }
+}
+
+.movie-title {
+  margin-top: 50px;
+}
+
+.container{
+  width: 80%;
+  margin: 0 auto;
+}
+
+/* ユーザ一覧&詳細ページ */
+li {
+  list-style: none;
+}
+
+.user-info {
+}
+
+.table-index {
+  width: 90%;
+  table-layout: fixed;
+  margin: 0 auto;
+}
+
+.table-status {
+  width: 90%;
+  table-layout: fixed;
+  margin: 0 auto;
+  margin-bottom: 50px;
+}
+
+.table-header {
+  background-color: black;
+  color: white;
+  font-weight: 400;
+  text-align: center;
+}
+
+.status-name {
+  margin-left: 30px;
+}
+
+
+td {
+  word-wrap: break-word;
+}
+
+.forms {
+  margin-bottom: 50px;
+}
+
+.form-button {
+  height: 40px;
+}
+
+.user-delete {
+  float: right;
+  margin-right: 20px;
+  
+}
+
+.user-edit {
+  float: right;
+  margin-right: 10px;
+}
+
+.txt1{
+  font-size: 1vw;
+}
+.txt2{
+  font-size: 2vw;
+}
+.txt3{
+  font-size: 1.5vw;
+}
+.btn-delete{
+  font-size: 1vw;
+  position:relative;
+  right: 3em
+}
+
+
+.video-container {
+	position: relative;
+	padding-bottom: 56.25%;
+	padding-top: 30px;
+	height: 0;
+	overflow: hidden;
+}
+
+header h1{
+padding-left: 1000px;
+}
+
+.mv-com {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+// ページネーション
+#paginate {
+  text-align: center;
 }

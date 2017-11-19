@@ -1,0 +1,366 @@
+<div class="main-wrapper container">
+  <div class="row">
+    <div class="col-sm-9">
+      <p class="txt2 text-center"><a href="https://prog-8.com/mypage" target="_blank">プロゲートはこちら</a></p>
+      <h3 class="txt3 status-name">[Progate] HTML&CSS</h3>
+    
+<table class="txt1 table table-bordered table-striped table-condensed table-status">
+  <thead>
+    <tr>
+      <th class="table-header">コース</th>
+      <th class="table-header">ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>学習コース/初級</td>
+      <td id="html_css_ga_be">
+        <% if !@html_css_status.ga_beginner %>
+          <%= render 'html_css_statuses/complete', course: 'html_css_ga_be' %>
+        <% else %>
+          <%= render 'html_css_statuses/incomplete', course: 'html_css_ga_be' %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>学習コース/中級</td>
+      <td id="html_css_ga_mi">
+        <% if !@html_css_status.ga_middle %>
+          <%= render 'html_css_statuses/complete', course: 'html_css_ga_mi' %>
+        <% else %>
+          <%= render 'html_css_statuses/incomplete', course: 'html_css_ga_mi' %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>道場コース/上級</td>
+      <td id="html_css_ga_ad">
+        <% if !@html_css_status.ga_advanced %>
+          <%= render 'html_css_statuses/complete', course: 'html_css_ga_ad' %>
+        <% else %>
+          <%= render 'html_css_statuses/incomplete', course: 'html_css_ga_ad' %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>道場コース/初級</td>
+      <td id="html_css_do_be">
+        <% if !@html_css_status.do_beginner %>
+          <%= render 'html_css_statuses/complete', course: 'html_css_do_be' %>
+        <% else %>
+          <%= render 'html_css_statuses/incomplete', course: 'html_css_do_be' %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>道場コース/中級</td>
+      <td id="html_css_do_mi">
+        <% if !@html_css_status.do_middle %>
+          <%= render 'html_css_statuses/complete', course: 'html_css_do_mi' %>
+        <% else %>
+          <%= render 'html_css_statuses/incomplete', course: 'html_css_do_mi' %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>道場コース/上級</td>
+      <td id="html_css_do_ad">
+        <% if !@html_css_status.do_advanced %>
+          <%= render 'html_css_statuses/complete', course: 'html_css_do_ad' %>
+        <% else %>
+          <%= render 'html_css_statuses/incomplete', course: 'html_css_do_ad' %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>実践コース/1</td>
+      <td id="html_css_ji_1">
+        <% if !@html_css_status.ji_1 %>
+          <%= render 'html_css_statuses/complete', course: 'html_css_ji_1' %>
+        <% else %>
+          <%= render 'html_css_statuses/incomplete', course: 'html_css_ji_1' %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>実践コース/2</td>
+      <td id="html_css_ji_2">
+        <% if !@html_css_status.ji_2 %>
+          <%= render 'html_css_statuses/complete', course: 'html_css_ji_2' %>
+        <% else %>
+          <%= render 'html_css_statuses/incomplete', course: 'html_css_ji_2' %>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 class="txt3 status-name">[Progate] JavaScript</h3>
+<table class="txt1 table table-bordered table-striped table-condensed table-status">
+  <thead>
+    <tr>
+      <th class="table-header">コース</th>
+      <th class="table-header">ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>学習コース/基礎</td>
+      <td id="javascript_ga_be">
+        <% if !@javascript_status.ga_beginner %>
+          <%= render 'javascript_statuses/complete', course: 'javascript_ga_be' %>
+        <% else %>
+          <%= render 'javascript_statuses/incomplete', course: 'javascript_ga_be' %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>道場コース/基礎</td>
+      <td id="javascript_do_be">
+        <% if !@javascript_status.do_beginner %>
+          <%= render 'javascript_statuses/complete', course: 'javascript_do_be' %>
+        <% else %>
+          <%= render 'javascript_statuses/incomplete', course: 'javascript_do_be' %>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 class="txt3 status-name">[Progate] Ruby</h3>
+<table class="txt1 table table-bordered table-striped table-condensed table-status">
+  <thead>
+    <tr>
+      <th class="table-header">コース</th>
+      <th class="table-header">ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>学習コース 1</td>
+      <td id="ruby_ga_1">
+        <% if !@ruby_status.ga_1 %>
+          <%= render 'ruby_statuses/complete', course: 'ruby_ga_1' %>
+        <% else %>
+          <%= render 'ruby_statuses/incomplete', course: 'ruby_ga_1' %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>学習コース 2</td>
+      <td id="ruby_ga_2">
+        <% if !@ruby_status.ga_2 %>
+          <%= render 'ruby_statuses/complete', course: 'ruby_ga_2' %>
+        <% else %>
+          <%= render 'ruby_statuses/incomplete', course: 'ruby_ga_2' %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>学習コース 3</td>
+      <td id="ruby_ga_3">
+        <% if !@ruby_status.ga_3 %>
+          <%= render 'ruby_statuses/complete', course: 'ruby_ga_3' %>
+        <% else %>
+          <%= render 'ruby_statuses/incomplete', course: 'ruby_ga_3' %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>学習コース 4</td>
+      <td id="ruby_ga_4">
+        <% if !@ruby_status.ga_4 %>
+          <%= render 'ruby_statuses/complete', course: 'ruby_ga_4' %>
+        <% else %>
+          <%= render 'ruby_statuses/incomplete', course: 'ruby_ga_4' %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>学習コース 5</td>
+      <td id="ruby_ga_5">
+        <% if !@ruby_status.ga_5 %>
+          <%= render 'ruby_statuses/complete', course: 'ruby_ga_5' %>
+        <% else %>
+          <%= render 'ruby_statuses/incomplete', course: 'ruby_ga_5' %>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 class="txt3 status-name">[Progate] Ruby on Rails</h3>
+<table class="txt1 table table-bordered table-striped table-condensed table-status">
+  <thead>
+    <tr>
+      <th class="table-header">コース</th>
+      <th class="table-header">ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>学習コース 1</td>
+      <td id="rubyonrails_ga_1">
+        <% if !@rubyonrails_status.ga_1 %>
+          <%= render 'rubyonrails_statuses/complete', course: 'rubyonrails_ga_1' %>
+        <% else %>
+          <%= render 'rubyonrails_statuses/incomplete', course: 'rubyonrails_ga_1' %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>学習コース 2</td>
+      <td id="rubyonrails_ga_2">
+        <% if !@rubyonrails_status.ga_2 %>
+          <%= render 'rubyonrails_statuses/complete', course: 'rubyonrails_ga_2' %>
+        <% else %>
+          <%= render 'rubyonrails_statuses/incomplete', course: 'rubyonrails_ga_2' %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>学習コース 3</td>
+      <td id="rubyonrails_ga_3">
+        <% if !@rubyonrails_status.ga_3 %>
+          <%= render 'rubyonrails_statuses/complete', course: 'rubyonrails_ga_3' %>
+        <% else %>
+          <%= render 'rubyonrails_statuses/incomplete', course: 'rubyonrails_ga_3' %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>学習コース 4</td>
+      <td id="rubyonrails_ga_4">
+        <% if !@rubyonrails_status.ga_4 %>
+          <%= render 'rubyonrails_statuses/complete', course: 'rubyonrails_ga_4' %>
+        <% else %>
+          <%= render 'rubyonrails_statuses/incomplete', course: 'rubyonrails_ga_4' %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>学習コース 5</td>
+      <td id="rubyonrails_ga_5">
+        <% if !@rubyonrails_status.ga_5 %>
+          <%= render 'rubyonrails_statuses/complete', course: 'rubyonrails_ga_5' %>
+        <% else %>
+          <%= render 'rubyonrails_statuses/incomplete', course: 'rubyonrails_ga_5' %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>学習コース 6</td>
+      <td id="rubyonrails_ga_6">
+        <% if !@rubyonrails_status.ga_6 %>
+          <%= render 'rubyonrails_statuses/complete', course: 'rubyonrails_ga_6' %>
+        <% else %>
+          <%= render 'rubyonrails_statuses/incomplete', course: 'rubyonrails_ga_6' %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>学習コース 7</td>
+      <td id="rubyonrails_ga_7">
+        <% if !@rubyonrails_status.ga_7 %>
+          <%= render 'rubyonrails_statuses/complete', course: 'rubyonrails_ga_7' %>
+        <% else %>
+          <%= render 'rubyonrails_statuses/incomplete', course: 'rubyonrails_ga_7' %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>学習コース 8</td>
+      <td id="rubyonrails_ga_8">
+        <% if !@rubyonrails_status.ga_8 %>
+          <%= render 'rubyonrails_statuses/complete', course: 'rubyonrails_ga_8' %>
+        <% else %>
+          <%= render 'rubyonrails_statuses/incomplete', course: 'rubyonrails_ga_8' %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>学習コース 9</td>
+      <td id="rubyonrails_ga_9">
+        <% if !@rubyonrails_status.ga_9 %>
+          <%= render 'rubyonrails_statuses/complete', course: 'rubyonrails_ga_9' %>
+        <% else %>
+          <%= render 'rubyonrails_statuses/incomplete', course: 'rubyonrails_ga_9' %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>学習コース 10</td>
+      <td id="rubyonrails_ga_10">
+        <% if !@rubyonrails_status.ga_10 %>
+          <%= render 'rubyonrails_statuses/complete', course: 'rubyonrails_ga_10' %>
+        <% else %>
+          <%= render 'rubyonrails_statuses/incomplete', course: 'rubyonrails_ga_10' %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>学習コース 11</td>
+      <td id="rubyonrails_ga_11">
+        <% if !@rubyonrails_status.ga_11 %>
+          <%= render 'rubyonrails_statuses/complete', course: 'rubyonrails_ga_11' %>
+        <% else %>
+          <%= render 'rubyonrails_statuses/incomplete', course: 'rubyonrails_ga_11' %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>道場コース 1</td>
+      <td id="rubyonrails_do_1">
+        <% if !@rubyonrails_status.do_1 %>
+          <%= render 'rubyonrails_statuses/complete', course: 'rubyonrails_do_1' %>
+        <% else %>
+          <%= render 'rubyonrails_statuses/incomplete', course: 'rubyonrails_do_1' %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>道場コース 2</td>
+      <td id="rubyonrails_do_2">
+        <% if !@rubyonrails_status.do_2 %>
+          <%= render 'rubyonrails_statuses/complete', course: 'rubyonrails_do_2' %>
+        <% else %>
+          <%= render 'rubyonrails_statuses/incomplete', course: 'rubyonrails_do_2' %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>道場コース 3</td>
+      <td id="rubyonrails_do_3">
+        <% if !@rubyonrails_status.do_3 %>
+          <%= render 'rubyonrails_statuses/complete', course: 'rubyonrails_do_3' %>
+        <% else %>
+          <%= render 'rubyonrails_statuses/incomplete', course: 'rubyonrails_do_3' %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>道場コース 4</td>
+      <td id="rubyonrails_do_4">
+        <% if !@rubyonrails_status.do_4 %>
+          <%= render 'rubyonrails_statuses/complete', course: 'rubyonrails_do_4' %>
+        <% else %>
+          <%= render 'rubyonrails_statuses/incomplete', course: 'rubyonrails_do_4' %>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+      <div id="link_railstutorial" class="<%= @hide unless @progate_comp_flag %>">
+        <p class="text-center">
+          <%= link_to "NEXT：Rails Tutorial", railstutorial_path, class: "txt1 btn btn-lg btn-primary" %>
+        </p>
+      </div>
+    </div> 
+    <%= render 'layouts/aside' %>
+  </div>
+ </div>
+
+<script>
+  $('.hide-movie').hide();
+</script>
