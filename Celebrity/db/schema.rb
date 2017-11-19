@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20170822171011) do
 
   create_table "html_css_statuses", force: :cascade do |t|
     t.integer  "user_id"
-    t.boolean  "ga_beginner",       default: true
+    t.boolean  "ga_beginner",       default: false
     t.boolean  "ga_middle",         default: false
     t.boolean  "ga_advanced",       default: false
     t.boolean  "do_beginner",       default: false
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20170822171011) do
 
   create_table "javascript_statuses", force: :cascade do |t|
     t.integer  "user_id"
-    t.boolean  "ga_beginner",       default: true
+    t.boolean  "ga_beginner",       default: false
     t.boolean  "do_beginner",       default: false
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
