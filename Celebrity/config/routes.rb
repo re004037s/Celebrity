@@ -5,9 +5,12 @@ Rails.application.routes.draw do
   resources :users
   resources :feedbacks, only: [:create, :update, :destroy]
   
-  resources :movies
-  resources :movie_categories
-  get '/category_sort', to: 'movie_categories#sort'
+  resources :movies do
+    get 'sort', on: :collection
+  end
+  resources :movie_categories do
+    get 'sort', on: :collection
+  end
   
   get '/login', to:'sessions#new'
   post '/login', to:'sessions#create'

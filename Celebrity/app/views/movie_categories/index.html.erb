@@ -1,0 +1,8 @@
+<h1 class="txt5">カテゴリ順序の変更</h1>
+
+<div id="category_sort_table">
+  <% if @categories.present? %>
+    <%= render :partial => 'sort_table', locals: { categories: @categories } %>  
+  <% end %>
+</div>
+<%= link_to '動画一覧へ戻る', movies_path %>

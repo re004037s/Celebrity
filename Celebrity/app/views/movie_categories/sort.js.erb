@@ -1,1 +1,1 @@
-$("#sort_table").html("<%= j(render('sort_table', movies: @movies)) %>");
+$("#category_sort_table").html("<%= j(render( :partial => 'sort_table', locals: { categories: @categories })) %>");

@@ -1,23 +1,20 @@
 <div><%= link_to '動画を追加する', new_movie_path %></div>
-<div><%= link_to '動画カテゴリを追加する', new_movie_category_path %></div>
+<div><%= link_to 'カテゴリを追加する', new_movie_category_path %></div>
+<div><%= link_to 'カテゴリの順番を変更する', movie_categories_path %></div>
 
 <table class="table table-bordered table-striped table-index">
-  <thead>
-    <tr>
-      <th class="table-header">カテゴリ</th>
-      <th class="table-header">タイトル</th>
-      <th class="table-header">URL</th>
-      <th class="table-header" width="10%"></th>
-    </tr>
-  </thead>
-  <% @movies.each do |movie| %>
-    <tbody>
+  <% @categories.each do |category| %>
+    <thead>
       <tr>
-        <td><%= movie.movie_category.name %></td>
-        <td><%= movie.title %></td>
-        <td><%= movie.path %></td>
-        <td><%= link_to '編集', edit_movie_path(movie.id) %></td>
+        <th class="table-header"><%= category.name %> [<%= link_to '編集', edit_movie_category_path(category) %>]</th>
       </tr>
+    </thead>
+    <tbody>
+      <% category.movies.order('sort_order').each do |movie| %>
+        <tr>
+          <td>【<%= movie.sort_order %>】<%=link_to movie.title, edit_movie_path(movie) %></td>
+        </tr>
+      <% end %>
     </tbody>
   <% end %>
 </table>

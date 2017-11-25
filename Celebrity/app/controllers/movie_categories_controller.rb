@@ -1,9 +1,13 @@
 class MovieCategoriesController < ApplicationController
 
+  def index
+    @categories = MovieCategory.all.order('sort_order')
+  end
+
   def show
     @movies         = Movie.where(movie_category_id: params[:id]).order('sort_order')
     @category       = MovieCategory.find_by(id: params[:id])
-    @categories_all = MovieCategory.all
+    @categories_all = MovieCategory.all.order('sort_order')
   end
 
   def new
@@ -37,33 +41,6 @@ class MovieCategoriesController < ApplicationController
     end
   end
 
-  def sort
-    @category_movies = Movie.where(movie_category_id: params[:category_id])
-    sort_num = params[:sort_up].present? ? params[:sort_up].to_i : params[:sort_down].to_i
-
-    if params[:sort_up].present?
-      @sort_up_movie   = @category_movies.find_by(sort_order: sort_num)
-      @sort_down_movie = @category_movies.find_by(sort_order: sort_num - 1)
-  
-      @sort_up_movie.update_attributes(sort_order: sort_num - 1)
-      @sort_down_movie.update_attributes(sort_order: sort_num)
-
-    else
-      @sort_up_movie   = @category_movies.find_by(sort_order: sort_num + 1)
-      @sort_down_movie = @category_movies.find_by(sort_order: sort_num)
-  
-      @sort_up_movie.update_attributes(sort_order: sort_num)
-      @sort_down_movie.update_attributes(sort_order: sort_num + 1)
-    end
-
-    @movies = Movie.where(movie_category_id: params[:category_id]).order('sort_order')
-    
-    respond_to do |format|
-      format.html { redirect_to edit_movie_url }
-      format.js
-    end
-  end
-
   def destroy
     @movie_category = MovieCategory.find_by(id: params[:id])
     @movie_category.update_attributes(sort_order: 0)
@@ -76,6 +53,33 @@ class MovieCategoriesController < ApplicationController
     end
   end
   
+  def sort
+    @categories = MovieCategory.all
+    sort_num = params[:sort_up].present? ? params[:sort_up].to_i : params[:sort_down].to_i
+
+    if params[:sort_up].present?
+      @sort_up_category   = @categories.find_by(sort_order: sort_num)
+      @sort_down_category = @categories.find_by(sort_order: sort_num - 1)
+  
+      @sort_up_category.update_attributes(sort_order: sort_num - 1)
+      @sort_down_category.update_attributes(sort_order: sort_num)
+
+    else
+      @sort_up_category   = @categories.find_by(sort_order: sort_num + 1)
+      @sort_down_category = @categories.find_by(sort_order: sort_num)
+  
+      @sort_up_category.update_attributes(sort_order: sort_num)
+      @sort_down_category.update_attributes(sort_order: sort_num + 1)
+    end
+
+    @categories = MovieCategory.all.order('sort_order')
+ 
+    respond_to do |format|
+      format.html { redirect_to edit_movie_url }
+      format.js
+    end
+  end
+
   private
   
     def movie_category_params

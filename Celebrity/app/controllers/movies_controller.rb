@@ -2,7 +2,7 @@ class MoviesController < ApplicationController
   before_action :set_categories, only: [:new, :edit]
 
   def index
-    @movies = Movie.all.sort_by {|m| [m.movie_category.sort_order, m.sort_order] }
+    @categories = MovieCategory.all.order('sort_order')
   end
 
   def new
@@ -27,6 +27,7 @@ class MoviesController < ApplicationController
   
   def update
     @movie = Movie.find_by(id: params[:id])
+    params[:movie][:sort_order] = Movie.where(movie_category_id: params[:movie][:movie_category_id]).pluck(:sort_order).max.to_i + 1
     if @movie.update_attributes(movie_params)
       flash[:success] = '動画情報を更新しました' 
       redirect_to movies_path
@@ -43,6 +44,34 @@ class MoviesController < ApplicationController
       end
       flash[:success] = '動画を削除しました'
       redirect_to movies_path
+    end
+  end
+
+  def sort
+    @category_movies = Movie.where(movie_category_id: params[:category_id])
+    sort_num = params[:sort_up].present? ? params[:sort_up].to_i : params[:sort_down].to_i
+
+    if params[:sort_up].present?
+      @sort_up_movie   = @category_movies.find_by(sort_order: sort_num)
+      @sort_down_movie = @category_movies.find_by(sort_order: sort_num - 1)
+  
+      @sort_up_movie.update_attributes(sort_order: sort_num - 1)
+      @sort_down_movie.update_attributes(sort_order: sort_num)
+
+    else
+      @sort_up_movie   = @category_movies.find_by(sort_order: sort_num + 1)
+      @sort_down_movie = @category_movies.find_by(sort_order: sort_num)
+  
+      @sort_up_movie.update_attributes(sort_order: sort_num)
+      @sort_down_movie.update_attributes(sort_order: sort_num + 1)
+    end
+
+    @movies = Movie.where(movie_category_id: params[:category_id]).order('sort_order')
+    @movie_category = MovieCategory.find_by(id: params[:category_id])
+ 
+    respond_to do |format|
+      format.html { redirect_to edit_movie_url }
+      format.js
     end
   end
   
