@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170822171011) do
+ActiveRecord::Schema.define(version: 20171125105607) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20170822171011) do
     t.date     "do_advanced_compd"
     t.date     "ji_1_compd"
     t.date     "ji_2_compd"
+    t.date     "sche"
     t.index ["user_id"], name: "index_html_css_statuses_on_user_id", using: :btree
   end
 
@@ -55,6 +56,7 @@ ActiveRecord::Schema.define(version: 20170822171011) do
     t.datetime "updated_at",                        null: false
     t.date     "ga_beginner_compd"
     t.date     "do_beginner_compd"
+    t.date     "schej"
     t.index ["user_id"], name: "index_javascript_statuses_on_user_id", using: :btree
   end
 
@@ -97,6 +99,8 @@ ActiveRecord::Schema.define(version: 20170822171011) do
     t.date     "chapter12_compd"
     t.date     "chapter13_compd"
     t.date     "chapter14_compd"
+    t.date     "schert"
+    t.date     "schertf"
     t.index ["user_id"], name: "index_railstutorial_statuses_on_user_id", using: :btree
   end
 
@@ -114,6 +118,7 @@ ActiveRecord::Schema.define(version: 20170822171011) do
     t.date     "ga_3_compd"
     t.date     "ga_4_compd"
     t.date     "ga_5_compd"
+    t.date     "scher"
     t.index ["user_id"], name: "index_ruby_statuses_on_user_id", using: :btree
   end
 
@@ -151,6 +156,7 @@ ActiveRecord::Schema.define(version: 20170822171011) do
     t.date     "do_2_compd"
     t.date     "do_3_compd"
     t.date     "do_4_compd"
+    t.date     "schero"
     t.index ["user_id"], name: "index_rubyonrails_statuses_on_user_id", using: :btree
   end
 

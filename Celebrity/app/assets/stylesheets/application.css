@@ -67,6 +67,8 @@ max-height: 10px;
     font-size: 1vw;
     line-height: 3em;
     color: #FFFFFF;
+    margin: 0.1em 1em;
+    padding: 0.1em 1em;
 }
 .container{
   margin: 0 auto;
@@ -167,6 +169,7 @@ div#centering{
 table{
   width: 50vw;
 }
-
-
-
+iframe{
+  display: block;
+  margin: 0px auto;
+}
