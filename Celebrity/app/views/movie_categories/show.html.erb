@@ -1,0 +1,16 @@
+<div class="main-wrapper container">
+  <div class="row">
+    <div class="col-sm-9">
+      <div>
+        <%= @category.name %>
+      </div>
+      <% @movies.each do |movie| %>
+        <h4 class="movie-title d-inline-flex">■<%= movie.title %></h4>
+        <div class="movie">
+          <iframe src="<%= movie.path %>" frameborder="0" allowfullscreen></iframe>
+        </div>
+      <% end %>
+    </div>
+    <%= render 'layouts/aside' %>
+  </div>
+</div>

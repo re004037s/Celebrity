@@ -1,6 +1,7 @@
 class StaticPagesController < ApplicationController
   before_action :logged_in_user
   before_action :setting
+  before_action :set_movie_categories
   
   def home
   end
@@ -52,5 +53,9 @@ class StaticPagesController < ApplicationController
       else
           @progate_comp_flag = false
       end
+    end
+    
+    def set_movie_categories
+      @categories_all = MovieCategory.all
     end
 end

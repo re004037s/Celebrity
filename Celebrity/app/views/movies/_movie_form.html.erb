@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@movie) do |f| %>
+    
+      <%= f.label :title, "タイトル", class: 'txt1' %>
+      <%= f.text_field :title, class: 'form-control' %>
+
+      <%= f.label :path, "埋め込みURL", class: 'txt1' %>
+      <%= f.text_field :path, class: 'form-control' %>
+
+      <%= f.label :movie_category_id, 'カテゴリ', class: 'txt1' %>
+      <%= f.select :movie_category_id, @categories, class: 'form-control' %>
+
+      <div id="centering">
+        <%= f.submit "登録", class: "btn-log btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<%= link_to '動画一覧へ戻る', movies_path %>

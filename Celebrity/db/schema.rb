@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170822171011) do
+ActiveRecord::Schema.define(version: 20171125015328) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20170822171011) do
 
   create_table "html_css_statuses", force: :cascade do |t|
     t.integer  "user_id"
-    t.boolean  "ga_beginner",       default: false
+    t.boolean  "ga_beginner",       default: true
     t.boolean  "ga_middle",         default: false
     t.boolean  "ga_advanced",       default: false
     t.boolean  "do_beginner",       default: false
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20170822171011) do
 
   create_table "javascript_statuses", force: :cascade do |t|
     t.integer  "user_id"
-    t.boolean  "ga_beginner",       default: false
+    t.boolean  "ga_beginner",       default: true
     t.boolean  "do_beginner",       default: false
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
@@ -58,11 +58,25 @@ ActiveRecord::Schema.define(version: 20170822171011) do
     t.index ["user_id"], name: "index_javascript_statuses_on_user_id", using: :btree
   end
 
+  create_table "movie_categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "sort_order"
+    t.index ["deleted_at"], name: "index_movie_categories_on_deleted_at", using: :btree
+  end
+
   create_table "movies", force: :cascade do |t|
     t.string   "title"
     t.string   "path"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.datetime "deleted_at"
+    t.integer  "movie_category_id"
+    t.integer  "sort_order"
+    t.index ["deleted_at"], name: "index_movies_on_deleted_at", using: :btree
+    t.index ["movie_category_id"], name: "index_movies_on_movie_category_id", using: :btree
   end
 
   create_table "railstutorial_statuses", force: :cascade do |t|
@@ -168,4 +182,5 @@ ActiveRecord::Schema.define(version: 20170822171011) do
   end
 
   add_foreign_key "feedbacks", "users"
+  add_foreign_key "movies", "movie_categories"
 end

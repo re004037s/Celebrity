@@ -264,3 +264,26 @@ padding-left: 1000px;
 #paginate {
   text-align: center;
 }
+
+// 上矢印
+.arrow-up {
+  display: block;
+  width: 18px;
+  height: 18px;
+  border-top: 4px solid gray;
+  border-right: 4px solid gray;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  margin: auto;
+}
+// 下矢印
+.arrow-down {
+  display: block;
+  width: 18px;
+  height: 18px;
+  border-top: 4px solid gray;
+  border-right: 4px solid gray;
+  -webkit-transform: rotate(135deg);
+  transform: rotate(135deg);
+  margin: auto;
+}

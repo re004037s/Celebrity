@@ -1,0 +1,23 @@
+<div><%= link_to '動画を追加する', new_movie_path %></div>
+<div><%= link_to '動画カテゴリを追加する', new_movie_category_path %></div>
+
+<table class="table table-bordered table-striped table-index">
+  <thead>
+    <tr>
+      <th class="table-header">カテゴリ</th>
+      <th class="table-header">タイトル</th>
+      <th class="table-header">URL</th>
+      <th class="table-header" width="10%"></th>
+    </tr>
+  </thead>
+  <% @movies.each do |movie| %>
+    <tbody>
+      <tr>
+        <td><%= movie.movie_category.name %></td>
+        <td><%= movie.title %></td>
+        <td><%= movie.path %></td>
+        <td><%= link_to '編集', edit_movie_path(movie.id) %></td>
+      </tr>
+    </tbody>
+  <% end %>
+</table>

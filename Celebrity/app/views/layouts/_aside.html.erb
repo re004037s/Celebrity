@@ -13,6 +13,9 @@
         <li id="progate_path"><%= link_to 'Progate進捗入力', progate_path %></li>
         <li id="railstutorial_path"><%= link_to 'RailsTutorial進捗入力', railstutorial_path %></li>
         <li><%= link_to 'よくある質問', qa_path %></li>
+        <% @categories_all.each do |category| %>
+          <li><%= link_to category.name, movie_category_path(category) %></li>
+        <% end %>
       </ul>
     </div>
   </div>

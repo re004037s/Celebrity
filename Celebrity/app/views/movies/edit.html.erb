@@ -1,0 +1,5 @@
+<h1 class="txt5">動画編集</h1>
+
+<%= render :partial => 'movie_form' %>
+
+<%= link_to '削除', @movie, method: :delete, class: 'btn btn-danger', data: { confirm: '本当に削除しますか？' } %>

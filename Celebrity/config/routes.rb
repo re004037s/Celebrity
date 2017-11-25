@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
   get '/signup', to:'users#new'
   post '/signup', to:'users#create'
+
   resources :users
   resources :feedbacks, only: [:create, :update, :destroy]
+  
+  resources :movies
+  resources :movie_categories
+  get '/category_sort', to: 'movie_categories#sort'
   
   get '/login', to:'sessions#new'
   post '/login', to:'sessions#create'
