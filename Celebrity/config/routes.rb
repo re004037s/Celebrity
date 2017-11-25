@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   post '/signup', to:'users#create'
   resources :users
   resources :feedbacks, only: [:create, :update, :destroy]
+  resources :html_css_statuses
+  resources :javascript_statuses
   
   get '/login', to:'sessions#new'
   post '/login', to:'sessions#create'
@@ -19,6 +21,16 @@ Rails.application.routes.draw do
   get '/qa', to: 'static_pages#qa'
   
   patch '/html_css_status', to: 'html_css_statuses#update'
+  patch '/html_css_status_schedule', to: 'html_css_statuses#update_schedule', as: 'html_css_schedule'
+  patch '/javascript_status', to: 'javascript_statuses#update'
+  patch '/javascript_status_schedule', to: 'javascript_statuses#update_schedule', as: 'javascript_schedule'
+  patch '/ruby_status', to: 'ruby_statuses#update'
+  patch '/ruby_status_schedule', to: 'ruby_statuses#update_schedule', as: 'ruby_schedule'
+  patch '/rubyonrails_status', to: 'rubyonrails_statuses#update'
+  patch '/rubyonrails_status_schedule', to: 'rubyonrails_statuses#update_schedule', as: 'rubyonrails_schedule'
+  patch '/railstutorial_status', to: 'railstutorial_statuses#update'
+  patch '/railstutorial_status_schedule', to: 'railstutorial_statuses#update_schedule', as: 'railstutorial_schedule'
+  patch '/railstutorial_status_schedule_impression', to: 'railstutorial_statuses#update_schedule_impression', as: 'railstutorial_schedule_impression'
   patch '/javascript_status', to: 'javascript_statuses#update'
   patch '/ruby_status', to: 'ruby_statuses#update'
   patch '/rubyonrails_status', to: 'rubyonrails_statuses#update'

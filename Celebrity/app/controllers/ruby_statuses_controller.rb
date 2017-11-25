@@ -1,6 +1,13 @@
 class RubyStatusesController < ApplicationController
    before_action :progate_check
-
+  
+  def update_schedule
+    @scher = params[:date]
+    @ruby_status = current_user.ruby_status
+    @ruby_status.update_attributes(scher: @scher)
+    redirect_to current_user
+  end
+  
   def update
     require 'date'
     @ruby_status = current_user.ruby_status

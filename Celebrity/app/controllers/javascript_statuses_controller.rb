@@ -1,6 +1,13 @@
 class JavascriptStatusesController < ApplicationController
   before_action :progate_check
-
+  
+  def update_schedule
+    @schej = params[:date]
+    @javascript_status = current_user.javascript_status
+    @javascript_status.update_attributes(schej: @schej)
+    redirect_to current_user
+  end
+  
   def update
     require 'date'
     @javascript_status = current_user.javascript_status
