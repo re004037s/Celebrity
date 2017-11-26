@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   get '/signup', to:'users#new'
   post '/signup', to:'users#create'
 
+  get '/login', to:'sessions#new'
+  post '/login', to:'sessions#create'
+  delete '/logout', to:'sessions#destroy'
+
   resources :users
   resources :feedbacks, only: [:create, :update, :destroy]
   
@@ -11,16 +15,9 @@ Rails.application.routes.draw do
   resources :movie_categories do
     get 'sort', on: :collection
   end
-  
-  get '/login', to:'sessions#new'
-  post '/login', to:'sessions#create'
-  delete '/logout', to:'sessions#destroy'
 
-  root 'static_pages#home'
-  get '/freelance', to: 'static_pages#freelance'
-  get '/program_learn', to: 'static_pages#program_learn'
-  get '/able_engineer', to: 'static_pages#able_engineer'
-  get '/job_hunting', to: 'static_pages#job_hunting'
+  root 'top#index'
+
   get '/progate', to: 'static_pages#progate'
   post '/progate', to: 'static_pages#progate'
   get '/railstutorial', to: 'static_pages#railstutorial'
@@ -31,5 +28,4 @@ Rails.application.routes.draw do
   patch '/ruby_status', to: 'ruby_statuses#update'
   patch '/rubyonrails_status', to: 'rubyonrails_statuses#update'
   patch '/railstutorial_status', to: 'railstutorial_statuses#update'
-
 end

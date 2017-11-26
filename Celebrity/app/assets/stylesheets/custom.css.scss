@@ -205,7 +205,6 @@ td {
 .user-delete {
   float: right;
   margin-right: 20px;
-  
 }
 
 .user-edit {
@@ -213,15 +212,6 @@ td {
   margin-right: 10px;
 }
 
-.txt1{
-  font-size: 1vw;
-}
-.txt2{
-  font-size: 2vw;
-}
-.txt3{
-  font-size: 1.5vw;
-}
 .btn-delete{
   font-size: 1vw;
   position:relative;
@@ -267,4 +257,9 @@ td {
   -webkit-transform: rotate(135deg);
   transform: rotate(135deg);
   margin: auto;
+}
+
+.disabled {
+  pointer-events: none;
+  color: gray;
 }

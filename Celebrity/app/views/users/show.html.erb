@@ -240,14 +240,17 @@
       <th class="table-header">感想</th>
     </tr>
   </thead>
-  <% for n in 1..Movie.count do %>
-    <tbody>
-      <tr>
-        <td><%= Movie.find(n).title %></td>
-        <td class="center"><%= @user.feedbacks.find_by(movie_id: n) ? '完了' : '未' %></td>
-        <td><%= @user.feedbacks.find_by(movie_id: n) ? @user.feedbacks.find_by(movie_id: n).feedback : '-' %></td>
-      </tr>
-    </tbody>
+  <% @categories.each do |category| %>
+    <% category.movies.order('sort_order').each do |movie| %>
+      <% feedback = @user.feedbacks.find_by(movie_id: movie.id) %>
+      <tbody>
+        <tr>
+          <td><%= movie.title %></td>
+          <td class="center"><%= feedback.present? ? '完了' : '未' %></td>
+          <td><%= feedback.present? ? feedback.feedback : '-' %></td>
+        </tr>
+      </tbody>
+    <% end %>
   <% end %>
 </table>
 

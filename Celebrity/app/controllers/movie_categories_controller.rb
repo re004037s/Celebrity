@@ -8,6 +8,9 @@ class MovieCategoriesController < ApplicationController
     @movies         = Movie.where(movie_category_id: params[:id]).order('sort_order')
     @category       = MovieCategory.find_by(id: params[:id])
     @categories_all = MovieCategory.all.order('sort_order')
+    @next_category  = MovieCategory.find_by(sort_order: @category.sort_order + 1)
+    
+    @feedback = current_user.feedbacks.build
   end
 
   def new
@@ -75,7 +78,6 @@ class MovieCategoriesController < ApplicationController
     @categories = MovieCategory.all.order('sort_order')
  
     respond_to do |format|
-      format.html { redirect_to edit_movie_url }
       format.js
     end
   end

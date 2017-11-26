@@ -34,12 +34,10 @@ body {
 .navbar{
   background-color: black;
   width: 70vw;
-  
   margin: 0 auto;
   min-height: 50px;
   margin-bottom: 20px;
-  
-max-height: 10px;
+  max-height: 10px;
 }
 .navbar-nav{
   height: 50px;
@@ -90,18 +88,6 @@ footer {
     margin-right: 0px; 
 }
 
-/*footer.container{*/
-/*  background-color: white;*/
-/*}*/
-/*@media (min-width: 992px) {*/
-/*  .container {*/
-    /*width: 70vw;*/
-    /*padding-left: 0px;*/
-    /*padding-right: 0px;*/
-    /*background-color: white;*/
-  /*}*/
-/*}*/
-
 div.navbar-wrapper, .navbar{
   background-color: #222222;
   border-bottom: none;
@@ -150,11 +136,10 @@ div.navbar-wrapper, .navbar{
 }
 
 input#submit_button {
-    
     width: 30vw;
     height: auto;
-
 }
+
 div#centering{
   text-align: center ;
 }
@@ -164,9 +149,7 @@ div#centering{
   position:relative;
   right: 3em
 }
+
 table{
   width: 50vw;
 }
-
-
-

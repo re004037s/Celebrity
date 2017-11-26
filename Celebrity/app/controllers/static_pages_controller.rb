@@ -3,21 +3,6 @@ class StaticPagesController < ApplicationController
   before_action :setting
   before_action :set_movie_categories
   
-  def home
-  end
-  
-  def freelance
-  end
-
-  def program_learn
-  end
-  
-  def able_engineer
-  end
-  
-  def job_hunting
-  end
-  
   def qa
   end
   
@@ -37,14 +22,7 @@ class StaticPagesController < ApplicationController
     def setting
       @movies = Movie.all
       @feedback = current_user.feedbacks.build
-      @hide = 'hide-movie'
-      
-      @home_flag = !!current_user.feedbacks.find_by(movie_id: 2)
-      @freelance_flag = !!current_user.feedbacks.find_by(movie_id: 4)
-      @able_engineer_flag = !!current_user.feedbacks.find_by(movie_id: 7)
-      @job_hunting_flag = !!current_user.feedbacks.find_by(movie_id: 10)
-      @program_learn_flag = !!current_user.feedbacks.find_by(movie_id: 16)
-      
+
       if current_user.html_css_status.ji_2 \
         && current_user.javascript_status.do_beginner \
         && current_user.ruby_status.ga_5 \

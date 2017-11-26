@@ -54,3 +54,12 @@ MovieCategory.create!(name: 'フリーエンジニアとは',   sort_order: 2)
 MovieCategory.create!(name: 'できるエンジニアになる', sort_order: 3)
 MovieCategory.create!(name: '就活編',                 sort_order: 4)
 MovieCategory.create!(name: 'プログラム学習編',       sort_order: 5)
+
+# Admin user
+User.create!(name: '鈴木 一郎',
+            nickname: 'イチロー',
+            email: 'ichiro@gmail.com',
+            password: 'password',
+            password_confirmation: 'password',
+            admin: true,
+            existence: true)
