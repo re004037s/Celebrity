@@ -1,4 +1,5 @@
 class TopController < ApplicationController
+  before_action :logged_in_user
   before_action :set_movie_categories, only: [:index]
   
   def index

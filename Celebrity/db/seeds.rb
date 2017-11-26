@@ -1,3 +1,10 @@
+# MovieCategoryテーブル
+MovieCategory.create!(name: 'はじめに',               sort_order: 1)
+MovieCategory.create!(name: 'フリーエンジニアとは',   sort_order: 2)
+MovieCategory.create!(name: 'できるエンジニアになる', sort_order: 3)
+MovieCategory.create!(name: '就活編',                 sort_order: 4)
+MovieCategory.create!(name: 'プログラム学習編',       sort_order: 5)
+
 # Movieテーブル
 Movie.create!(title: 'まずはじめに',
               path: 'https://www.youtube.com/embed/9_631aHH1DM',
@@ -47,13 +54,6 @@ Movie.create!(title: 'GitHub講習(3)',
 Movie.create!(title: 'プログラミング演習',
               path: 'https://www.youtube.com/embed/K2FRGtAk6p8',
               movie_category_id: 5, sort_order: 6)
-
-# MovieCategoryテーブル
-MovieCategory.create!(name: 'はじめに',               sort_order: 1)
-MovieCategory.create!(name: 'フリーエンジニアとは',   sort_order: 2)
-MovieCategory.create!(name: 'できるエンジニアになる', sort_order: 3)
-MovieCategory.create!(name: '就活編',                 sort_order: 4)
-MovieCategory.create!(name: 'プログラム学習編',       sort_order: 5)
 
 # Admin user
 User.create!(name: '鈴木 一郎',

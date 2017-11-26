@@ -1,5 +1,6 @@
 class MoviesController < ApplicationController
   before_action :set_categories, only: [:new, :edit]
+  before_action :admin_user
 
   def index
     @categories = MovieCategory.all.order('sort_order')
