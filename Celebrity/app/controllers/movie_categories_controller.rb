@@ -1,5 +1,5 @@
 class MovieCategoriesController < ApplicationController
-  before_action :admin_user
+  before_action :admin_user, only: [:index, :new, :create, :edit, :update, :destroy, :sort]
   
   def index
     @categories = MovieCategory.all.order('sort_order')
