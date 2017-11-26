@@ -47,9 +47,10 @@ class MovieCategoriesController < ApplicationController
 
   def destroy
     @movie_category = MovieCategory.find_by(id: params[:id])
+    delete_order = @movie_category.sort_order
     @movie_category.update_attributes(sort_order: 0)
     if @movie_category.destroy  # 論理削除
-      MovieCategory.where(['sort_order > ?', @movie_category.sort_ordert]).try(:each) do |mc|
+      MovieCategory.where(['sort_order > ?', delete_order]).try(:each) do |mc|
         mc.update_attributes(sort_order: mc.sort_order - 1)
       end
       flash[:success] = '動画カテゴリを削除しました'

@@ -18,6 +18,11 @@ textarea {
   }
 }
 
+.disabled {
+  pointer-events: none;
+  color: gray;
+}
+
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
@@ -131,8 +136,8 @@ input {
   }
 }
 .form-control {
-     width: 100%;
-     height: auto;
+   width: 100%;
+   height: auto;
   }
 img {
   width: 100%;
@@ -155,6 +160,10 @@ img {
 }
 
 .movie-title {
+  padding: 0.25em 0.5em;/*上下 左右の余白*/
+  color: #494949;/*文字色*/
+  background: transparent;/*背景透明に*/
+  border-left: solid 5px #7db4e6;/*左線*/
   margin-top: 50px;
 }
 
@@ -236,6 +245,8 @@ td {
   text-align: center;
 }
 
+// 動画管理系ページ
+
 // 上矢印
 .arrow-up {
   display: block;
@@ -259,7 +270,22 @@ td {
   margin: auto;
 }
 
-.disabled {
-  pointer-events: none;
-  color: gray;
+.btn-wrapper {
+  text-align: center;
+  padding: 20px 0;
+  a {
+    margin: 0 10px;
+  }
+}
+
+.category-form {
+  margin: 20px 0;
+}
+
+.category-title {
+  padding: 0.4em 0.5em;/*文字の上下 左右の余白*/
+  color: #494949;/*文字色*/
+  background: #f4f4f4;/*背景色*/
+  border-left: solid 5px #7db4e6;/*左線*/
+  border-bottom: solid 3px #d7d7d7;/*下線*/
 }

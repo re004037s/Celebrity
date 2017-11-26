@@ -1,6 +1,8 @@
-<div><%= link_to '動画を追加する', new_movie_path %></div>
-<div><%= link_to 'カテゴリを追加する', new_movie_category_path %></div>
-<div><%= link_to 'カテゴリの順番を変更する', movie_categories_path %></div>
+<div class="btn-wrapper">
+  <%= link_to '動画を追加する', new_movie_path, class: 'btn btn-secondary' %>
+  <%= link_to 'カテゴリを追加する', new_movie_category_path, class: 'btn btn-secondary' %>
+  <%= link_to 'カテゴリの順番を変更する', movie_categories_path, class: 'btn btn-secondary' %>
+</div>
 
 <table class="table table-bordered table-striped table-index">
   <% @categories.each do |category| %>

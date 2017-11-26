@@ -8,5 +8,7 @@
 
 <%= render :partial => 'movie_category_form' %>
 
-<%= link_to '動画一覧へ戻る', movies_path %>
-<%= link_to 'カテゴリ削除', @movie_category, method: :delete, class: 'btn btn-danger', data: { confirm: '本当に削除しますか？' } %>
+<div class="btn-wrapper">
+  <%= link_to '<< 動画一覧へ戻る', movies_path %>
+  <%= link_to 'カテゴリ削除', @movie_category, method: :delete, data: { confirm: '本当に削除しますか？' } %>
+</div>

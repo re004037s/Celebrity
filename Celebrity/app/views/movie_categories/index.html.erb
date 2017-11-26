@@ -5,4 +5,7 @@
     <%= render :partial => 'sort_table', locals: { categories: @categories } %>  
   <% end %>
 </div>
-<%= link_to '動画一覧へ戻る', movies_path %>
+
+<div class="btn-wrapper">
+  <%= link_to '<< 動画一覧へ戻る', movies_path %>
+</div>

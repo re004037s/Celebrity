@@ -1,14 +1,14 @@
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
+  <div class="col-md-8 col-md-offset-2">
     <%= form_for(@movie) do |f| %>
     
-      <%= f.label :title, "タイトル", class: 'txt1' %>
+      <%= f.label :title, "タイトル", class: 'txt3' %>
       <%= f.text_field :title, class: 'form-control' %>
 
-      <%= f.label :path, "埋め込みURL", class: 'txt1' %>
+      <%= f.label :path, "埋め込みURL", class: 'txt3' %>
       <%= f.text_field :path, class: 'form-control' %>
 
-      <%= f.label :movie_category_id, 'カテゴリ', class: 'txt1' %>
+      <%= f.label :movie_category_id, 'カテゴリ', class: 'txt3' %>
       <%= f.select :movie_category_id, @categories, class: 'form-control' %>
 
       <div id="centering">

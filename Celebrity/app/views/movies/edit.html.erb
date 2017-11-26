@@ -2,5 +2,7 @@
 
 <%= render :partial => 'movie_form' %>
 
-<%= link_to '動画一覧へ戻る', movies_path %>
-<%= link_to '削除', @movie, method: :delete, class: 'btn btn-danger', data: { confirm: '本当に削除しますか？' } %>
+<div class="btn-wrapper">
+  <%= link_to '<< 動画一覧へ戻る', movies_path %>
+  <%= link_to '動画を削除', @movie, method: :delete, data: { confirm: '本当に削除しますか？' } %>  
+</div>

@@ -34,6 +34,6 @@ class StaticPagesController < ApplicationController
     end
     
     def set_movie_categories
-      @categories_all = MovieCategory.all
+      @categories_all = MovieCategory.all.order('sort_order')
     end
 end
