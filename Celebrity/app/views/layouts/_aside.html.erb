@@ -5,61 +5,13 @@
         Menu
       </div>
       <ul class="nav nav-pills nav-stacked sidebar-nav">
-        <li><%= link_to 'はじめに', root_path %></li>
-        <li id="freelance_path"><%= link_to "フリーエンジニアとは", freelance_path, disabled: true %></li>
-        <li id="able_engineer_path"><%= link_to "できるエンジニアになる", able_engineer_path, disabled: true %></li>
-        <li id="job_hunting_path"><%= link_to "就活編", job_hunting_path, disabled: true %></li>
-        <li id="program_learn_path"><%= link_to "プログラミング学習編", program_learn_path, disabled: true %></li>
-        <li id="progate_path"><%= link_to 'Progate進捗入力', progate_path %></li>
-        <li id="railstutorial_path"><%= link_to 'RailsTutorial進捗入力', railstutorial_path %></li>
+        <% @categories_all.each do |category| %>
+          <li><%= link_to category.name, movie_category_path(category), class: "#{'disabled' unless before_category_comp?(category)}" %></li>
+        <% end %>
+        <li><%= link_to 'Progate進捗入力', progate_path, class: "#{'disabled' unless send_feedbacks_comp?}" %></li>
+        <li><%= link_to 'RailsTutorial進捗入力', railstutorial_path, class: "#{'disabled' unless progate_comp?}" %></li>
         <li><%= link_to 'よくある質問', qa_path %></li>
       </ul>
     </div>
   </div>
 </aside>
-
-<script>
-  $(document).ready(function(){
-    <% unless @home_flag %>
-      $('#freelance_path').prop('disabled', true).addClass('disabled');
-      $('#freelance_path').click(function(){
-        return false;
-      })
-    <% end %>
-    
-    <% unless @freelance_flag %>
-      $('#able_engineer_path').prop('disabled', true).addClass('disabled');
-      $('#able_engineer_path').click(function(){
-        return false;
-      })
-    <% end %>
-
-    <% unless @able_engineer_flag %>
-      $('#job_hunting_path').prop('disabled', true).addClass('disabled');
-      $('#job_hunting_path').click(function(){
-        return false;
-      })
-    <% end %>
-    
-    <% unless @job_hunting_flag %>
-      $('#program_learn_path').prop('disabled', true).addClass('disabled');
-      $('#program_learn_path').click(function(){
-        return false;
-      })
-    <% end %>
-
-    <% unless @program_learn_flag %>
-      $('#progate_path').prop('disabled', true).addClass('disabled');
-      $('#progate_path').click(function(){
-        return false;
-      })
-    <% end %>
-
-    <% unless @progate_comp_flag %>
-      $('#railstutorial_path').prop('disabled', true).addClass('disabled');
-      $('#railstutorial_path').click(function(){
-        return false;
-      })
-    <% end %>
-  });
-</script>

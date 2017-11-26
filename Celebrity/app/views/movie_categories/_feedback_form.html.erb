@@ -1,0 +1,60 @@
+<%= form_for(feedback, remote: true) do |f| %>
+  <div class="form-group<%= sort_order %> forms">
+    <%= f.text_area :feedback, :id => "textarea#{sort_order}", :size => "7x7", :maxlength => "500",
+        :placeholder => "100-500文字で入力してください", required: true, 
+        :onchange => "Limit#{sort_order}(event)", :onkeyup => "Limit#{sort_order}(event)" %>
+    <%= f.hidden_field :movie_id, :value => movie_id %>
+    <br><span id="msg<%= sort_order %>">文字数カウント</span><br><div style="color: red;" class="has-error<%= sort_order %>"></div>
+    <%= f.submit "感想を送る", id: "feedback-btn#{sort_order}", class: "btn btn-primary btn-lg submit-btn#{sort_order}", disabled: true %>
+  </div>
+<% end %>
+
+<script>
+$(function(){
+    $('.form-group<%= sort_order %>').hide();
+
+    $('#show-form<%= sort_order %>').click(function(){
+        $('.form-group<%= sort_order %>').show(500);
+        $(this).fadeOut(500);
+    });
+    
+    $('#feedback-btn<%= sort_order %>').click(function(){
+        $(this).val("感想送信済み");
+    });
+});
+
+function Limit<%= sort_order %>(event){
+  var Tarea<%= sort_order %>= document.getElementById("textarea<%= sort_order %>");
+  var Mcnt<%= sort_order %>= document.getElementById("msg<%= sort_order %>");
+  var mojiVal<%= sort_order %> = Tarea<%= sort_order %>.value; //テキストエリアの文字数
+  var val<%= sort_order %> = mojiVal<%= sort_order %>.replace(/\n|\r\n/g,"").length;
+  var Etype<%= sort_order %> = event.type; //イベントのタイプを取得
+if(Etype<%= sort_order %> == "keyup"){//イベントのタイプが"Keyup"なら
+  Mcnt<%= sort_order %>.innerHTML = //文字数のカウントを表示
+    "<span style='font-weight: bold;color:blue ;'>"+val<%= sort_order %>+"</span>文字";
+  }
+}
+
+$(function(){
+    var $text<%= sort_order %> = $("#textarea<%= sort_order %>"),
+        $button<%= sort_order %> = $(".submit-btn<%= sort_order %>"),
+        disabled_class = 'disabled';
+ 
+    if($text<%= sort_order %>.val().length == 0) {
+        $button<%= sort_order %>.prop('disabled',true).addClass('disabled');
+    }
+ 
+    $text<%= sort_order %>.bind('keydown keyup keypress change',function(){
+        var thisValueLength = $(this).val().length;
+        if(thisValueLength >= 100){
+            $button<%= sort_order %>.prop('disabled',false).removeClass(disabled_class);
+            $('.has-error<%= sort_order %>').hide();
+        }else{
+            $button<%= sort_order %>.prop('disabled',true).addClass(disabled_class);
+            $('.has-error<%= sort_order %>').text( '100文字以上入力してください' );
+            $('.has-error<%= sort_order %>').show();
+        }
+    });
+});
+
+</script>

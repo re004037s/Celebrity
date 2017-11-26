@@ -6,15 +6,6 @@
 $gray-medium-light: #eaeaea;
 
 /* universal */
-
-body {
-  
-}
-
-section {
-  
-}
-
 textarea {
   resize: vertical;
 }
@@ -25,6 +16,11 @@ textarea {
   h1 {
     margin-bottom: 10px;
   }
+}
+
+.disabled {
+  pointer-events: none;
+  color: gray;
 }
 
 /* typography */
@@ -54,12 +50,12 @@ p {
   line-height: 1.7em;
 }
 
+li {
+  list-style: none;
+}
 
 /* header */
-header{
-  width: 80vw;
-  font-size:2px;
-}
+
 #logo {
   float: left;
   margin-right: 10px;
@@ -80,6 +76,7 @@ header{
   line-height: 3em;
   color: #F8C810;
   padding-left: 20px;
+  display: inline;
   &:hover {
     text-decoration: none;
   }
@@ -139,8 +136,8 @@ input {
   }
 }
 .form-control {
-     width: 100%;
-     height: auto;
+   width: 100%;
+   height: auto;
   }
 img {
   width: 100%;
@@ -163,6 +160,10 @@ img {
 }
 
 .movie-title {
+  padding: 0.25em 0.5em;/*上下 左右の余白*/
+  color: #494949;/*文字色*/
+  background: transparent;/*背景透明に*/
+  border-left: solid 5px #7db4e6;/*左線*/
   margin-top: 50px;
 }
 
@@ -172,12 +173,6 @@ img {
 }
 
 /* ユーザ一覧&詳細ページ */
-li {
-  list-style: none;
-}
-
-.user-info {
-}
 
 .table-index {
   width: 90%;
@@ -219,7 +214,6 @@ td {
 .user-delete {
   float: right;
   margin-right: 20px;
-  
 }
 
 .user-edit {
@@ -227,21 +221,11 @@ td {
   margin-right: 10px;
 }
 
-.txt1{
-  font-size: 1vw;
-}
-.txt2{
-  font-size: 2vw;
-}
-.txt3{
-  font-size: 1.5vw;
-}
 .btn-delete{
   font-size: 1vw;
   position:relative;
   right: 3em
 }
-
 
 .video-container {
 	position: relative;
@@ -249,10 +233,6 @@ td {
 	padding-top: 30px;
 	height: 0;
 	overflow: hidden;
-}
-
-header h1{
-padding-left: 1000px;
 }
 
 .mv-com {
@@ -263,4 +243,49 @@ padding-left: 1000px;
 // ページネーション
 #paginate {
   text-align: center;
+}
+
+// 動画管理系ページ
+
+// 上矢印
+.arrow-up {
+  display: block;
+  width: 18px;
+  height: 18px;
+  border-top: 4px solid gray;
+  border-right: 4px solid gray;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  margin: auto;
+}
+// 下矢印
+.arrow-down {
+  display: block;
+  width: 18px;
+  height: 18px;
+  border-top: 4px solid gray;
+  border-right: 4px solid gray;
+  -webkit-transform: rotate(135deg);
+  transform: rotate(135deg);
+  margin: auto;
+}
+
+.btn-wrapper {
+  text-align: center;
+  padding: 20px 0;
+  a {
+    margin: 0 10px;
+  }
+}
+
+.category-form {
+  margin: 20px 0;
+}
+
+.category-title {
+  padding: 0.4em 0.5em;/*文字の上下 左右の余白*/
+  color: #494949;/*文字色*/
+  background: #f4f4f4;/*背景色*/
+  border-left: solid 5px #7db4e6;/*左線*/
+  border-bottom: solid 3px #d7d7d7;/*下線*/
 }

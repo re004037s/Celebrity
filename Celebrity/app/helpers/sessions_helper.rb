@@ -30,6 +30,4 @@ module SessionsHelper
   def existence_user?(user)
     user.existence
   end
-
-
 end

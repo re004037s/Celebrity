@@ -1,0 +1,30 @@
+<table class="table table-bordered table-striped table-index">
+  <thead>
+    <tr>
+      <th class="table-header" width="80%"><%= category.name %></th>
+      <th class="table-header">Up</th>
+      <th class="table-header">Down</th>
+    </tr>
+  </thead>
+  <% movies.each_with_index do |movie, i| %>
+    <tbody>
+      <tr>
+        <td>【<%= movie.sort_order %>】<%= movie.title %></td>
+        <td>
+          <% if i >= 1 %>
+            <%= link_to sort_movies_path(sort_up: movie.sort_order, category_id: movie.movie_category_id), remote: true do %>
+              <span class="arrow-up"></span>
+            <% end %>
+          <% end %>
+        </td>
+        <td>
+          <% if i < movies.count - 1 %>
+            <%= link_to sort_movies_path(sort_down: movie.sort_order, category_id: movie.movie_category_id), remote: true do %>
+              <span class="arrow-down"></span>
+            <% end %>
+          <% end %>
+        </td>
+      </tr>
+    </tbody>    
+  <% end %>
+</table>

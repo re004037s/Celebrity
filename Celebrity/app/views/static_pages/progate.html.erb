@@ -350,8 +350,8 @@
     </tr>
   </tbody>
 </table>
-
-      <div id="link_railstutorial" class="<%= @hide unless @progate_comp_flag %>">
+<% hide = 'hide' %>
+      <div id="link_railstutorial" class="<%= hide unless @progate_comp_flag %>">
         <p class="text-center">
           <%= link_to "NEXT：Rails Tutorial", railstutorial_path, class: "txt1 btn btn-lg btn-primary" %>
         </p>
@@ -362,5 +362,5 @@
  </div>
 
 <script>
-  $('.hide-movie').hide();
+  $('.hide').hide();
 </script>

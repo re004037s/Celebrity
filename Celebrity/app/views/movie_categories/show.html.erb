@@ -1,0 +1,28 @@
+<div class="main-wrapper container">
+  <div class="row">
+    <div class="col-sm-9">
+      <div>
+        <h2 class="category-title"><%= @category.name %></h1>
+      </div>
+      <% hide = 'hide-movie' %>
+      <% @movies.each do |movie| %>
+        <div id="m<%= movie.sort_order %>" class="<%= hide unless current_user.before_fb_comp?(movie.sort_order, @category.id) %>">
+          <%= render 'movie', movie: movie %>
+          <%= render 'feedback_form', feedback: @feedback, sort_order: movie.sort_order, movie_id: movie.id %>
+        </div>
+      <% end %>
+      <% unless @category.sort_order == MovieCategory.count %>
+        <div id="next_category_link" class="<%= hide unless current_user.before_fb_comp?(@category.movies.count + 1, @category.id) %>">
+          <p class="text-center">
+            <%= link_to "NEXT：#{@next_category.name}", movie_category_path(@next_category), class: "txt1 btn btn-lg btn-primary" %>
+          </p>
+        </div>
+      <% end %>
+    </div>
+    <%= render 'layouts/aside' %>
+  </div>
+</div>
+
+<script>
+  $('.hide-movie').hide();
+</script>

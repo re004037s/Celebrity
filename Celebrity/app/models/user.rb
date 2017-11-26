@@ -30,4 +30,9 @@ class User < ApplicationRecord
     def fb_comp?(movie_id)
         !!self.feedbacks.find_by(movie_id: movie_id)
     end
+    
+    def before_fb_comp?(sort_order, category_id)
+        return true if sort_order == 1
+        !!self.feedbacks.find_by(movie_id: Movie.where(movie_category_id: category_id, sort_order: sort_order - 1).first.id)
+    end
 end

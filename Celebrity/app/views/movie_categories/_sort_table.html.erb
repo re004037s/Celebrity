@@ -1,0 +1,30 @@
+<table class="table table-bordered table-striped table-index">
+  <thead>
+    <tr>
+      <th class="table-header" width="80%">カテゴリ</th>
+      <th class="table-header">Up</th>
+      <th class="table-header">Down</th>
+    </tr>
+  </thead>
+  <% categories.each_with_index do |category, i| %>
+    <tbody>
+      <tr>
+        <td>【<%= category.sort_order %>】<%= category.name %></td>
+        <td>
+          <% if i >= 1 %>
+            <%= link_to sort_movie_categories_path(sort_up: category.sort_order), remote: true do %>
+              <span class="arrow-up"></span>
+            <% end %>
+          <% end %>
+        </td>
+        <td>
+          <% if i < categories.count - 1 %>
+            <%= link_to sort_movie_categories_path(sort_down: category.sort_order), remote: true do %>
+              <span class="arrow-down"></span>
+            <% end %>
+          <% end %>
+        </td>
+      </tr>
+    </tbody>    
+  <% end %>
+</table>
