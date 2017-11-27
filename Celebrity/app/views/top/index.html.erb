@@ -6,6 +6,30 @@
         <%= current_user.nickname %>さんこんにちは！<br>
         今日も一日頑張りましょう(๑╹ω╹๑ )
       </p>
+      <div class="panel panel-primary">
+        <div class="panel-heading">新着動画</div>
+        <div class="panel-body">
+          <% if @new_movies.present? %>
+            <div class="mini-box">
+              <span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>
+              <h4 style="display: inline;">まだ視聴していない動画はありませんか!?</h4>              
+            </div>
+            <ul>
+              <% @new_movies.each do |movie| %>
+                <li>
+                  <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
+                  <p class="inline"><%= movie.title %></p>
+                </li>
+              <% end %>
+            </ul>
+          <% else %>
+            <div class="mini-box">
+              <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
+              <p class="inline">直近1週間に投稿された動画はありません。</p>              
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
     <%= render 'layouts/aside' %>
   </div>
