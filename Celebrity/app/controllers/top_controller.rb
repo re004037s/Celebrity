@@ -1,5 +1,4 @@
 class TopController < ApplicationController
-  require 'date'
   before_action :logged_in_user
   before_action :set_movie_categories, only: [:index]
   
