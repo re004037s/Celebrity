@@ -162,6 +162,13 @@ img {
   }
 }
 
+table {
+width: 100%;
+table-layout: fixed;
+word-break: break-all;
+word-wrap: break-all;
+}
+
 .movie-title {
   margin-top: 50px;
 }
@@ -190,6 +197,12 @@ li {
   table-layout: fixed;
   margin: 0 auto;
   margin-bottom: 50px;
+}
+
+.table-status-schedule {
+  width: 90%;
+  table-layout: fixed;
+  margin: 0 auto;
 }
 
 .table-header {
@@ -241,6 +254,9 @@ td {
   position:relative;
   right: 3em
 }
+.btn-schedule{
+  font-size: 1vw;
+}
 
 
 .video-container {
@@ -266,4 +282,13 @@ padding-left: 1000px;
 }
 td {
 padding: 5px 10px;
+}
+input[type="date"] {
+  position: relative;
+  padding: 0 10px;
+  width: 200px;
+  height: 36px;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: #999;
 }

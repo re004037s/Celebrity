@@ -5,20 +5,20 @@
   [ <%= @user.name %> ]
 </h2>
 
-<table>
+<table class="txt1 table-condensed table-status-schedule">
    <tr valign="baseline">
-     <td nowrap>
-      <h3 class="txt3 status-name" style="display:inline;">[Progate] HTML&CSS　完了予定日
-      <%= @user.html_css_status.try(:sche) if @user.html_css_status.sche.present? %></h3>
-     </td>
-    <td width="20%">
+     <td width="60%">
+      <h3 class="txt3">[Progate] HTML&CSS　完了予定日
+      <%= @user.html_css_status.try(:schedule_date) if @user.html_css_status.schedule_date.present? %></h3>
+      </td>
+      <td>
       <%= form_for(@user.html_css_status, url: html_css_schedule_path ) do |f| %>
-      <input type="date" name="date">
-    </td>
-    <td width="10%">
-      <%= f.submit "登録", class: "btn" %>
+      <input style="width:100%" type="date" name="date">
+      </td>
+      <td width="20%">
+      <%= f.submit "登録", class: "btn btn-schedule" %>
       <% end %>
-    </td>
+      </td>
   </tr>
 </table>
 <table class="txt1 table table-bordered table-striped table-condensed table-status">
@@ -74,18 +74,18 @@
 </table>
 
 
-<table>
+<table class="txt1 table-condensed table-status-schedule">
    <tr valign="baseline">
-    <td nowrap>
-      <h3 class="txt3 status-name">[Progate] JavaScript　完了予定日
-      <%= @user.javascript_status.try(:schej) if @user.javascript_status.schej.present? %></h3>
+    <td width="60%">
+      <h3 class="txt3">[Progate] JavaScript　完了予定日
+      <%= @user.javascript_status.try(:schedule_date) if @user.javascript_status.schedule_date.present? %></h3>
     </td>
     <td>
       <%= form_for(@user.javascript_status, url: javascript_schedule_path ) do |f| %>
-      <input type="date" name="date">
+      <input style="width:100%" type="date" name="date">
     </td>
-    <td>
-      <%= f.submit "登録", class: "btn" %>
+    <td width="20%">
+      <%= f.submit "登録", class: "btn btn-schedule" %>
       <% end %>
     </td>
   </tr>
@@ -112,18 +112,18 @@
   </tbody>
 </table>
 
-<table>
+<table class="txt1 table-condensed table-status-schedule">
    <tr valign="baseline">
-    <td nowrap>
-      <h3 class="txt3 status-name">[Progate] Ruby　完了予定日
-      <%= @user.ruby_status.try(:scher) if @user.ruby_status.scher.present? %></h3>
+    <td width="60%">
+      <h3 class="txt3">[Progate] Ruby　完了予定日
+      <%= @user.ruby_status.try(:schedule_date) if @user.ruby_status.schedule_date.present? %></h3>
     </td>
     <td>
       <%= form_for(@user.ruby_status, url: ruby_schedule_path ) do |f| %>
-      <input type="date" name="date">
+      <input style="width:100%" type="date" name="date">
     </td>
-    <td>
-      <%= f.submit "登録", class: "btn" %>
+    <td width="20%">
+      <%= f.submit "登録", class: "btn btn-schedule" %>
       <% end %>
     </td>
   </tr>
@@ -165,18 +165,18 @@
   </tbody>
 </table>
 
-<table>
+<table class="txt1 table-condensed table-status-schedule">
    <tr valign="baseline">
-    <td nowrap>
-      <h3 class="txt3 status-name">[Progate] Ruby on Rails　完了予定日
-      <%= @user.rubyonrails_status.try(:schero) if @user.rubyonrails_status.schero.present? %></h3>
+    <td width="60%">
+      <h3 class="txt3">[Progate] Ruby on Rails　完了予定日
+      <%= @user.rubyonrails_status.try(:schedule_date) if @user.rubyonrails_status.schedule_date.present? %></h3>
     </td>
     <td>
       <%= form_for(@user.rubyonrails_status, url: rubyonrails_schedule_path ) do |f| %>
-      <input type="date" name="date">
+      <input style="width:100%" type="date" name="date">
     </td>
-    <td>
-      <%= f.submit "登録", class: "btn" %>
+    <td width="20%">
+      <%= f.submit "登録", class: "btn btn-schedule" %>
       <% end %>
     </td>
   </tr>
@@ -282,18 +282,18 @@
   </tbody>
 </table>
 
-<table>
+<table class="txt1 table-condensed table-status-schedule">
    <tr valign="baseline">
-    <td nowrap>
-      <h3 class="txt3 status-name">Rails Tutorial　完了予定日
-      <%= @user.railstutorial_status.try(:schert) if @user.railstutorial_status.schert.present? %></h3>
+    <td width="60%">
+      <h3 class="txt3">Rails Tutorial　完了予定日
+      <%= @user.railstutorial_status.try(:schedule_date) if @user.railstutorial_status.schedule_date.present? %></h3>
     </td>
     <td>
       <%= form_for(@user.railstutorial_status, url: railstutorial_schedule_path ) do |f| %>
-      <input type="date" name="date">
+      <input style="width:100%" type="date" name="date">
     </td>
-    <td>
-      <%= f.submit "登録", class: "btn btn-ds" %>
+    <td width="20%">
+      <%= f.submit "登録", class: "btn btn-schedule" %>
       <% end %>
     </td>
   </tr>
@@ -305,18 +305,18 @@
   </tr>
 </table>
 
-<table>
+<table class="txt1 table-condensed table-status-schedule">
    <tr valign="baseline">
-    <td>
-      <h3 class="txt3 status-name">動画視聴　完了予定日
-      <%= @user.railstutorial_status.try(:schertf) if @user.railstutorial_status.schertf.present? %></h3>
+    <td width="60%">
+      <h3 class="txt3">動画視聴　完了予定日
+      <%= @user.railstutorial_status.try(:schedule_date_impression) if @user.railstutorial_status.schedule_date_impression.present? %></h3>
     </td>
     <td>
       <%= form_for(@user.railstutorial_status, url: railstutorial_schedule_impression_path) do |f| %>
-      <input type="date" name="date">
+      <input style="width:100%" type="date" name="date">
     </td>
-    <td>
-      <%= f.submit "登録", class: "btn btn-ds" %>
+    <td width="20%">
+      <%= f.submit "登録", class: "btn btn-schedule" %>
       <% end %>
     </td>
   </tr>

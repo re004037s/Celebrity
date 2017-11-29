@@ -2,9 +2,9 @@ class HtmlCssStatusesController < ApplicationController
   before_action :progate_check
   
   def update_schedule
-    @sche = params[:date]
+    @schedule_date = params[:date]
     @html_css_status = current_user.html_css_status
-    @html_css_status.update_attributes(sche: @sche)
+    @html_css_status.update_attributes(schedule_date: @schedule_date)
     redirect_to current_user
   end
   

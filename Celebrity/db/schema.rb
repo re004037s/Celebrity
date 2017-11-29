@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171125105607) do
+ActiveRecord::Schema.define(version: 20171126064305) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20171125105607) do
     t.date     "do_advanced_compd"
     t.date     "ji_1_compd"
     t.date     "ji_2_compd"
-    t.date     "sche"
+    t.date     "schedule_date"
     t.index ["user_id"], name: "index_html_css_statuses_on_user_id", using: :btree
   end
 
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20171125105607) do
     t.datetime "updated_at",                        null: false
     t.date     "ga_beginner_compd"
     t.date     "do_beginner_compd"
-    t.date     "schej"
+    t.date     "schedule_date"
     t.index ["user_id"], name: "index_javascript_statuses_on_user_id", using: :btree
   end
 
@@ -69,22 +69,22 @@ ActiveRecord::Schema.define(version: 20171125105607) do
 
   create_table "railstutorial_statuses", force: :cascade do |t|
     t.integer  "user_id"
-    t.boolean  "chapter1",        default: false
-    t.boolean  "chapter2",        default: false
-    t.boolean  "chapter3",        default: false
-    t.boolean  "chapter4",        default: false
-    t.boolean  "chapter5",        default: false
-    t.boolean  "chapter6",        default: false
-    t.boolean  "chapter7",        default: false
-    t.boolean  "chapter8",        default: false
-    t.boolean  "chapter9",        default: false
-    t.boolean  "chapter10",       default: false
-    t.boolean  "chapter11",       default: false
-    t.boolean  "chapter12",       default: false
-    t.boolean  "chapter13",       default: false
-    t.boolean  "chapter14",       default: false
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.boolean  "chapter1",                 default: false
+    t.boolean  "chapter2",                 default: false
+    t.boolean  "chapter3",                 default: false
+    t.boolean  "chapter4",                 default: false
+    t.boolean  "chapter5",                 default: false
+    t.boolean  "chapter6",                 default: false
+    t.boolean  "chapter7",                 default: false
+    t.boolean  "chapter8",                 default: false
+    t.boolean  "chapter9",                 default: false
+    t.boolean  "chapter10",                default: false
+    t.boolean  "chapter11",                default: false
+    t.boolean  "chapter12",                default: false
+    t.boolean  "chapter13",                default: false
+    t.boolean  "chapter14",                default: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
     t.date     "chapter1_compd"
     t.date     "chapter2_compd"
     t.date     "chapter3_compd"
@@ -99,48 +99,48 @@ ActiveRecord::Schema.define(version: 20171125105607) do
     t.date     "chapter12_compd"
     t.date     "chapter13_compd"
     t.date     "chapter14_compd"
-    t.date     "schert"
-    t.date     "schertf"
+    t.date     "schedule_date"
+    t.date     "schedule_date_impression"
     t.index ["user_id"], name: "index_railstutorial_statuses_on_user_id", using: :btree
   end
 
   create_table "ruby_statuses", force: :cascade do |t|
     t.integer  "user_id"
-    t.boolean  "ga_1",       default: false
-    t.boolean  "ga_2",       default: false
-    t.boolean  "ga_3",       default: false
-    t.boolean  "ga_4",       default: false
-    t.boolean  "ga_5",       default: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.boolean  "ga_1",          default: false
+    t.boolean  "ga_2",          default: false
+    t.boolean  "ga_3",          default: false
+    t.boolean  "ga_4",          default: false
+    t.boolean  "ga_5",          default: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.date     "ga_1_compd"
     t.date     "ga_2_compd"
     t.date     "ga_3_compd"
     t.date     "ga_4_compd"
     t.date     "ga_5_compd"
-    t.date     "scher"
+    t.date     "schedule_date"
     t.index ["user_id"], name: "index_ruby_statuses_on_user_id", using: :btree
   end
 
   create_table "rubyonrails_statuses", force: :cascade do |t|
     t.integer  "user_id"
-    t.boolean  "ga_1",        default: false
-    t.boolean  "ga_2",        default: false
-    t.boolean  "ga_3",        default: false
-    t.boolean  "ga_4",        default: false
-    t.boolean  "ga_5",        default: false
-    t.boolean  "ga_6",        default: false
-    t.boolean  "ga_7",        default: false
-    t.boolean  "ga_8",        default: false
-    t.boolean  "ga_9",        default: false
-    t.boolean  "ga_10",       default: false
-    t.boolean  "ga_11",       default: false
-    t.boolean  "do_1",        default: false
-    t.boolean  "do_2",        default: false
-    t.boolean  "do_3",        default: false
-    t.boolean  "do_4",        default: false
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.boolean  "ga_1",          default: false
+    t.boolean  "ga_2",          default: false
+    t.boolean  "ga_3",          default: false
+    t.boolean  "ga_4",          default: false
+    t.boolean  "ga_5",          default: false
+    t.boolean  "ga_6",          default: false
+    t.boolean  "ga_7",          default: false
+    t.boolean  "ga_8",          default: false
+    t.boolean  "ga_9",          default: false
+    t.boolean  "ga_10",         default: false
+    t.boolean  "ga_11",         default: false
+    t.boolean  "do_1",          default: false
+    t.boolean  "do_2",          default: false
+    t.boolean  "do_3",          default: false
+    t.boolean  "do_4",          default: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.date     "ga_1_compd"
     t.date     "ga_2_compd"
     t.date     "ga_3_compd"
@@ -156,7 +156,7 @@ ActiveRecord::Schema.define(version: 20171125105607) do
     t.date     "do_2_compd"
     t.date     "do_3_compd"
     t.date     "do_4_compd"
-    t.date     "schero"
+    t.date     "schedule_date"
     t.index ["user_id"], name: "index_rubyonrails_statuses_on_user_id", using: :btree
   end
 

@@ -1,18 +1,16 @@
 class RailstutorialStatusesController < ApplicationController
   
   def update_schedule
-    @schert = params[:date]
-    # @schertf = params[:date]
+    @schedule_date = params[:date]
     @railstutorial_status = current_user.railstutorial_status
-    @railstutorial_status.update_attributes(schert: @schert)
-    # @railstutorial_status.update_attributes(schert: @schertf)
+    @railstutorial_status.update_attributes(schedule_date: @schedule_date)
     redirect_to current_user
   end
   
   def update_schedule_impression
-    @schertf = params[:date]
+    @schedule_date_impression = params[:date]
     @railstutorial_status = current_user.railstutorial_status
-    @railstutorial_status.update_attributes(schertf: @schertf)
+    @railstutorial_status.update_attributes(schedule_date_impression: @schedule_date_impression)
     redirect_to current_user
   end
   
