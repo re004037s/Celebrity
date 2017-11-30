@@ -28,7 +28,7 @@
           <td><%= percent_progate(user) %>%</td>
           <td><%= count_rails_tutorial(user) %>章完了</td>
           <td align="center"><%= link_to 'ポートフォリオ', user.try(:portfolio_path), class: "btn#{' disabled' if user.try(:portfolio_path).nil?}", target: 'blank' %></td>
-          <td align="center"><%= link_to 'GitHub', user.try(:portfolio_path), class: "btn#{' disabled' if user.try(:github_path).nil?}", target: 'blank' %></td>
+          <td align="center"><%= link_to 'GitHub', user.try(:github_path), class: "btn#{' disabled' if user.try(:github_path).nil?}", target: 'blank' %></td>
         </tr>
       </tbody>
     <% end %>
