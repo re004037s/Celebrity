@@ -27,15 +27,8 @@
           <td><%= percent_movie(user) %>%</td>
           <td><%= percent_progate(user) %>%</td>
           <td><%= count_rails_tutorial(user) %>章完了</td>
-          <td align="center">
-            
-          <button type="button" onclick="window.open('<%= user.try(:portfolio_path) %>')" class="btn btn-lg mv-comp active">
-            ポートフォリオ</button></td>
-           
-          <td align="center"> 
-          <button type="button" onclick="window.open('<%= user.try(:github_path) %>')" class="btn btn-lg mv-comp active">
-            GitHub</button></td>
-            
+          <td align="center"><%= link_to 'ポートフォリオ', user.try(:portfolio_path), class: "btn#{' disabled' if user.try(:portfolio_path).nil?}", target: 'blank' %></td>
+          <td align="center"><%= link_to 'GitHub', user.try(:portfolio_path), class: "btn#{' disabled' if user.try(:github_path).nil?}", target: 'blank' %></td>
         </tr>
       </tbody>
     <% end %>
