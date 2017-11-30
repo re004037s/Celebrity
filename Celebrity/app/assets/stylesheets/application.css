@@ -116,6 +116,10 @@ div.navbar-wrapper, .navbar{
   font-size: 1px;
   padding: 3px 10px;
 }
+.t_1 {
+  font-size: 70%;
+}
+
 .btn{
   background-color:#00CCCC;
   color:black;

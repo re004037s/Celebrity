@@ -5,8 +5,8 @@
     <tr>
       <th width=15% class="table-header">ユーザ名</th>
         <% if @current_user.admin %>
-          <th width=15% class="table-header">氏名</th>
-          <th width=15% class="table-header">メアド</th>
+          <th width=10% class="table-header">氏名</th>
+          <th width=20% class="table-header">メアド</th>
         <% end %>
       <th width=10% class="table-header">動画視聴率</th>
       <th width=10% class="table-header">Progate</th>
@@ -29,12 +29,12 @@
           <td><%= count_rails_tutorial(user) %>章完了</td>
           <td>
             <%= link_to user.try(:portfolio_path), class: "btn btn-sm#{' disabled' if user.try(:portfolio_path).nil?}", target: '_blank' do %>
-              <div>ポートフォリオ</div>
+              <div class="t_1">ポートフォリオ</div>
             <% end %>
           </td>
           <td>
             <%= link_to user.try(:github_path), class: "btn btn-sm#{' disabled' if user.try(:github_path).nil?}", target: '_blank' do %>
-              <div>GitHub</div>
+              <div class="t_1">GitHub</div>
             <% end %>
           </td>
         </tr>
