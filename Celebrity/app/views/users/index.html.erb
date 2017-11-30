@@ -27,8 +27,16 @@
           <td><%= percent_movie(user) %>%</td>
           <td><%= percent_progate(user) %>%</td>
           <td><%= count_rails_tutorial(user) %>章完了</td>
-          <td align="center"><%= link_to 'ポートフォリオ', user.try(:portfolio_path), class: "btn#{' disabled' if user.try(:portfolio_path).nil?}", target: 'blank' %></td>
-          <td align="center"><%= link_to 'GitHub', user.try(:github_path), class: "btn#{' disabled' if user.try(:github_path).nil?}", target: 'blank' %></td>
+          <td>
+            <%= link_to user.try(:portfolio_path), class: "btn btn-sm#{' disabled' if user.try(:portfolio_path).nil?}", target: '_blank' do %>
+              <div>ポートフォリオ</div>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to user.try(:github_path), class: "btn btn-sm#{' disabled' if user.try(:github_path).nil?}", target: '_blank' do %>
+              <div>GitHub</div>
+            <% end %>
+          </td>
         </tr>
       </tbody>
     <% end %>
