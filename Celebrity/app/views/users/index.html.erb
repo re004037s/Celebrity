@@ -12,6 +12,7 @@
       <th width=10% class="table-header">Progate</th>
       <th width=10% class="table-header">Rails Tutorial</th>
       <th class="table-header">ポートフォリオ</th>
+      <th class="table-header">GitHub</th>
     </tr>
   </thead>
   <% @users.each do |user| %>
@@ -26,11 +27,8 @@
           <td><%= percent_movie(user) %>%</td>
           <td><%= percent_progate(user) %>%</td>
           <td><%= count_rails_tutorial(user) %>章完了</td>
-          <td>
-            <a href="<%= user.try(:portfolio_path) %>" target="_blank">
-              <%= user.try(:portfolio_path) %>
-            </a>
-          </td>
+          <td align="center"><%= link_to 'ポートフォリオ', user.try(:portfolio_path), class: "btn#{' disabled' if user.try(:portfolio_path).nil?}", target: 'blank' %></td>
+          <td align="center"><%= link_to 'GitHub', user.try(:github_path), class: "btn#{' disabled' if user.try(:github_path).nil?}", target: 'blank' %></td>
         </tr>
       </tbody>
     <% end %>
