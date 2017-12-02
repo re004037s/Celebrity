@@ -297,6 +297,7 @@ td {
   border-left: solid 5px #7db4e6;/*左線*/
   border-bottom: solid 3px #d7d7d7;/*下線*/
 }
+
 .btn-schedule{
   font-size: 1vw;
 }
@@ -317,4 +318,10 @@ padding: 5px 10px;
   font: Times New Roman, Times, serif;
   text-shadow: 0 1px 0 #999,
   0 2px 0 #999,
+
+
+.btn-sm {
+  display: inline-block;
+  width: 100%;
+  margin: 0 auto;
 }
