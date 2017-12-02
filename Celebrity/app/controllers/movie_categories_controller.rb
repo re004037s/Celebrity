@@ -87,6 +87,6 @@ class MovieCategoriesController < ApplicationController
   private
   
     def movie_category_params
-      params.require(:movie_category).permit(:name, :sort_order)
+      params.require(:movie_category).permit(:name, :sort_order, :must_view)
     end
 end

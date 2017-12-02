@@ -1,6 +1,6 @@
 module MovieCategoriesHelper
   def before_category_comp?(category)
-    return true if category.sort_order == 1
+    return true if category.sort_order == 1 || !MovieCategory.find_by(sort_order: category.sort_order - 1).must_view
 
     target_movie_ids = MovieCategory.find_by(sort_order: category.sort_order - 1).movies.pluck(:id)
     sent_movie_ids   = current_user.feedbacks.pluck(:movie_id)
