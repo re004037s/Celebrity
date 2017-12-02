@@ -8,8 +8,8 @@
 <table class="txt1 table-condensed table-status-schedule">
    <tr valign="baseline">
      <td width="60%">
-      <h3 class="txt3">[Progate] HTML&CSS　完了予定日
-      <%= @user.html_css_status.try(:schedule_date) if @user.html_css_status.schedule_date.present? %></h3>
+      <h3 class="txt3">[Progate] HTML&CSS　<span class="font-schedule">完了予定日
+      <%= @user.html_css_status.try(:schedule_date) if @user.html_css_status.schedule_date.present? %></span></h3>
       </td>
       <td>
       <%= form_for(@user.html_css_status, url: html_css_schedule_path ) do |f| %>
@@ -77,8 +77,8 @@
 <table class="txt1 table-condensed table-status-schedule">
    <tr valign="baseline">
     <td width="60%">
-      <h3 class="txt3">[Progate] JavaScript　完了予定日
-      <%= @user.javascript_status.try(:schedule_date) if @user.javascript_status.schedule_date.present? %></h3>
+      <h3 class="txt3">[Progate] JavaScript　<span class="font-schedule">完了予定日
+      <%= @user.javascript_status.try(:schedule_date) if @user.javascript_status.schedule_date.present? %><span class="font-schedule"></h3>
     </td>
     <td>
       <%= form_for(@user.javascript_status, url: javascript_schedule_path ) do |f| %>
@@ -115,8 +115,8 @@
 <table class="txt1 table-condensed table-status-schedule">
    <tr valign="baseline">
     <td width="60%">
-      <h3 class="txt3">[Progate] Ruby　完了予定日
-      <%= @user.ruby_status.try(:schedule_date) if @user.ruby_status.schedule_date.present? %></h3>
+      <h3 class="txt3">[Progate] Ruby　<span class="font-schedule">完了予定日
+      <%= @user.ruby_status.try(:schedule_date) if @user.ruby_status.schedule_date.present? %></span></h3>
     </td>
     <td>
       <%= form_for(@user.ruby_status, url: ruby_schedule_path ) do |f| %>
@@ -168,8 +168,8 @@
 <table class="txt1 table-condensed table-status-schedule">
    <tr valign="baseline">
     <td width="60%">
-      <h3 class="txt3">[Progate] Ruby on Rails　完了予定日
-      <%= @user.rubyonrails_status.try(:schedule_date) if @user.rubyonrails_status.schedule_date.present? %></h3>
+      <h3 class="txt3">[Progate] Ruby on Rails　<span class="font-schedule">完了予定日
+      <%= @user.rubyonrails_status.try(:schedule_date) if @user.rubyonrails_status.schedule_date.present? %></span></h3>
     </td>
     <td>
       <%= form_for(@user.rubyonrails_status, url: rubyonrails_schedule_path ) do |f| %>
@@ -285,8 +285,8 @@
 <table class="txt1 table-condensed table-status-schedule">
    <tr valign="baseline">
     <td width="60%">
-      <h3 class="txt3">Rails Tutorial　完了予定日
-      <%= @user.railstutorial_status.try(:schedule_date) if @user.railstutorial_status.schedule_date.present? %></h3>
+      <h3 class="txt3">Rails Tutorial　<span class="font-schedule">完了予定日
+      <%= @user.railstutorial_status.try(:schedule_date) if @user.railstutorial_status.schedule_date.present? %></span></h3>
     </td>
     <td>
       <%= form_for(@user.railstutorial_status, url: railstutorial_schedule_path ) do |f| %>
@@ -308,11 +308,11 @@
 <table class="txt1 table-condensed table-status-schedule">
    <tr valign="baseline">
     <td width="60%">
-      <h3 class="txt3">動画視聴　完了予定日
-      <%= @user.railstutorial_status.try(:schedule_date_impression) if @user.railstutorial_status.schedule_date_impression.present? %></h3>
+      <h3 class="txt3">動画視聴　<span class="font-schedule">完了予定日
+      <%= @user.user_movie_status.try(:schedule_date) if @user.user_movie_status.schedule_date.present? %></span></h3>
     </td>
     <td>
-      <%= form_for(@user.railstutorial_status, url: railstutorial_schedule_impression_path) do |f| %>
+      <%= form_for(@user.user_movie_status, url: user_movie_schedule_path) do |f| %>
       <input style="width:100%" type="date" name="date">
     </td>
     <td width="20%">
@@ -330,14 +330,17 @@
       <th class="table-header">感想</th>
     </tr>
   </thead>
-  <% for n in 1..Movie.count do %>
-    <tbody>
-      <tr>
-        <td><%= Movie.find(n).title %></td>
-        <td class="center"><%= @user.feedbacks.find_by(movie_id: n) ? '完了' : '未' %></td>
-        <td><%= @user.feedbacks.find_by(movie_id: n) ? @user.feedbacks.find_by(movie_id: n).feedback : '-' %></td>
-      </tr>
-    </tbody>
+  <% @categories.each do |category| %>
+    <% category.movies.order('sort_order').each do |movie| %>
+      <% feedback = @user.feedbacks.find_by(movie_id: movie.id) %>
+      <tbody>
+        <tr>
+          <td><%= movie.title %></td>
+          <td class="center"><%= feedback.present? ? '完了' : '未' %></td>
+          <td><%= feedback.present? ? feedback.feedback : '-' %></td>
+        </tr>
+      </tbody>
+    <% end %>
   <% end %>
 </table>
 

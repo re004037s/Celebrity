@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171130131749) do
+ActiveRecord::Schema.define(version: 20171201130022) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,22 +83,22 @@ ActiveRecord::Schema.define(version: 20171130131749) do
 
   create_table "railstutorial_statuses", force: :cascade do |t|
     t.integer  "user_id"
-    t.boolean  "chapter1",                 default: false
-    t.boolean  "chapter2",                 default: false
-    t.boolean  "chapter3",                 default: false
-    t.boolean  "chapter4",                 default: false
-    t.boolean  "chapter5",                 default: false
-    t.boolean  "chapter6",                 default: false
-    t.boolean  "chapter7",                 default: false
-    t.boolean  "chapter8",                 default: false
-    t.boolean  "chapter9",                 default: false
-    t.boolean  "chapter10",                default: false
-    t.boolean  "chapter11",                default: false
-    t.boolean  "chapter12",                default: false
-    t.boolean  "chapter13",                default: false
-    t.boolean  "chapter14",                default: false
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
+    t.boolean  "chapter1",        default: false
+    t.boolean  "chapter2",        default: false
+    t.boolean  "chapter3",        default: false
+    t.boolean  "chapter4",        default: false
+    t.boolean  "chapter5",        default: false
+    t.boolean  "chapter6",        default: false
+    t.boolean  "chapter7",        default: false
+    t.boolean  "chapter8",        default: false
+    t.boolean  "chapter9",        default: false
+    t.boolean  "chapter10",       default: false
+    t.boolean  "chapter11",       default: false
+    t.boolean  "chapter12",       default: false
+    t.boolean  "chapter13",       default: false
+    t.boolean  "chapter14",       default: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.date     "chapter1_compd"
     t.date     "chapter2_compd"
     t.date     "chapter3_compd"
@@ -114,7 +114,6 @@ ActiveRecord::Schema.define(version: 20171130131749) do
     t.date     "chapter13_compd"
     t.date     "chapter14_compd"
     t.date     "schedule_date"
-    t.date     "schedule_date_impression"
     t.index ["user_id"], name: "index_railstutorial_statuses_on_user_id", using: :btree
   end
 
@@ -172,6 +171,14 @@ ActiveRecord::Schema.define(version: 20171130131749) do
     t.date     "do_4_compd"
     t.date     "schedule_date"
     t.index ["user_id"], name: "index_rubyonrails_statuses_on_user_id", using: :btree
+  end
+
+  create_table "user_movie_statuses", force: :cascade do |t|
+    t.integer  "user_id"
+    t.date     "schedule_date"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["user_id"], name: "index_user_movie_statuses_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
