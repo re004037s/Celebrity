@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   end
   
   def show
-    @categories = MovieCategory.all.order('sort_order')
+    @categories = MovieCategory.where(must_view: true).order('sort_order')
   end
   
   def new
