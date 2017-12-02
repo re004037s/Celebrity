@@ -8,7 +8,7 @@
   <% @categories.each do |category| %>
     <thead>
       <tr>
-        <th class="table-header"><%= category.name %> [<%= link_to '編集', edit_movie_category_path(category) %>]</th>
+        <th class="table-header"><%= link_to category.name, edit_movie_category_path(category) %></th>
       </tr>
     </thead>
     <tbody>

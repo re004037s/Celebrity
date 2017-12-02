@@ -2,8 +2,19 @@
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <%= form_for(@movie_category) do |f| %>
-        <%= f.label :name, 'カテゴリ名', class: 'txt3' %>
-        <%= f.text_field :name, class: 'form-control' %>
+
+        <div class="form-group">
+          <%= f.label :name, 'カテゴリ名', class: 'txt3' %>
+          <%= f.text_field :name, class: 'form-control' %>
+        </div>
+
+        <div class="form-inline">
+          <label class="checkbox-inline">
+            <%= f.check_box :must_view, {}, 'true', 'false' %>
+            感想送信を必須にする
+          </label>
+        </div>
+
         <%= f.submit "登録", class: "btn btn-secondary" %>
       <% end %>
     </div>

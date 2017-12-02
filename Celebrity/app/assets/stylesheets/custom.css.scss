@@ -290,6 +290,10 @@ td {
   margin: 20px 0;
 }
 
+.form-inline {
+  margin-bottom: 10px;
+}
+
 .category-title {
   padding: 0.4em 0.5em;/*文字の上下 左右の余白*/
   color: #494949;/*文字色*/
@@ -319,6 +323,13 @@ padding: 5px 10px;
   text-shadow: 0 1px 0 #999,
   0 2px 0 #999,
 
+.table-header a {
+  color: white;
+  &:hover {
+    color: aqua;
+    text-decoration: none;
+  }
+}
 
 .btn-sm {
   display: inline-block;
