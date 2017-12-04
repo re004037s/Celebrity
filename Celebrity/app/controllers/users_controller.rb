@@ -69,5 +69,23 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       redirect_to root_url unless existence_user?(@user)
     end
+    
+    
+    # TODO WIP
+    def create_profile_pic
+      upload_file = image_params[:file]
+      image = {}
+      if upload_file != nil 
+        image[:filename] = upload_file.original_filename
+        image[:file] = upload_file.read
+      end 
+      @image = Image.new(image)
+      if @image.save
+        flash[:success] = “画像を保存しました。”
+        redirect_to @image
+      else
+        flash[:error] = “保存できませんでした。”
+      end 
+    end
 
 end
