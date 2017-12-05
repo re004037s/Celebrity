@@ -5,9 +5,9 @@
   [ <%= @user.name %> ]
   <img id="profile_pic" src="/default.jpg" >
   
-  <%= form_for(@user) do |f| %>
-    <%= f.file_field :file, accept: 'image/*' %>
-    <%= f.submit 'アップロードする' %>
+  <%= form_for(@user, url: post_pic_path) do |f| %>
+    <%= f.file_field :file, accept: 'image/*', class: 'fileuploader' %>
+    <%= f.submit '画像をアップロード', class: 'btn btn-primary fileuploader' %>
   <% end %>
 </h2>
 
