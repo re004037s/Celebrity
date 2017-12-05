@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   end
 
   root 'top#index'
+  
+  patch '/post_pic', to:'users#edit_profile_pic'
 
   get '/progate', to: 'static_pages#progate'
   post '/progate', to: 'static_pages#progate'
