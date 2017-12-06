@@ -290,6 +290,10 @@ td {
   margin: 20px 0;
 }
 
+.form-inline {
+  margin-bottom: 10px;
+}
+
 .category-title {
   padding: 0.4em 0.5em;/*文字の上下 左右の余白*/
   color: #494949;/*文字色*/
@@ -297,24 +301,38 @@ td {
   border-left: solid 5px #7db4e6;/*左線*/
   border-bottom: solid 3px #d7d7d7;/*下線*/
 }
-.btn-schedule{
-  font-size: 1vw;
-}
+
 td {
 padding: 5px 10px;
 }
+
 .table-status-schedule {
   width: 90%;
   table-layout: fixed;
   margin: 0 auto;
 }
+
 .btn-schedule{
   font-size: 1vw;
 }
+
 .font-schedule{
   background-color:#FFCACA;
   color: red;
   font: Times New Roman, Times, serif;
   text-shadow: 0 1px 0 #999,
   0 2px 0 #999,
+
+.table-header a {
+  color: white;
+  &:hover {
+    color: aqua;
+    text-decoration: none;
+  }
+}
+
+.btn-sm {
+  display: inline-block;
+  width: 100%;
+  margin: 0 auto;
 }

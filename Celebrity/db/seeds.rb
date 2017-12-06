@@ -1,9 +1,9 @@
 # MovieCategoryテーブル
-MovieCategory.create!(name: 'はじめに',               sort_order: 1)
-MovieCategory.create!(name: 'フリーエンジニアとは',   sort_order: 2)
-MovieCategory.create!(name: 'できるエンジニアになる', sort_order: 3)
-MovieCategory.create!(name: '就活編',                 sort_order: 4)
-MovieCategory.create!(name: 'プログラム学習編',       sort_order: 5)
+MovieCategory.create!(name: 'はじめに',               sort_order: 1, must_view: true)
+MovieCategory.create!(name: 'フリーエンジニアとは',   sort_order: 2, must_view: true)
+MovieCategory.create!(name: 'できるエンジニアになる', sort_order: 3, must_view: true)
+MovieCategory.create!(name: '就活編',                 sort_order: 4, must_view: true)
+MovieCategory.create!(name: 'プログラム学習編',       sort_order: 5, must_view: true)
 
 # Movieテーブル
 Movie.create!(title: 'まずはじめに',

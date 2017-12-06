@@ -98,9 +98,13 @@ module UsersHelper
   end
   
   def percent_movie(user)
-    c = user.feedbacks.count
-    return 0 if Movie.count == 0
-    return c * 100 / Movie.count
+    enable_movies    = Movie.where(movie_category_id: MovieCategory.where(must_view: true).try(:pluck,:id))
+    movie_count      = enable_movies.try(:count)
+    enable_movie_ids = enable_movies.try(:pluck,:id)
+    sent_count       = user.feedbacks.where(movie_id: enable_movie_ids).try(:count)
+
+    return 0 if movie_count == 0 || movie_count.nil?
+    return sent_count * 100 / movie_count
   end
 
 end

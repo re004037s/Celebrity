@@ -30,15 +30,16 @@ class MoviesController < ApplicationController
     @movie = Movie.find_by(id: params[:id])
     before_update_category_id = @movie.movie_category_id
     before_update_sort_order  = @movie.sort_order
-    params[:movie][:sort_order] = Movie.where(movie_category_id: params[:movie][:movie_category_id]).pluck(:sort_order).max.to_i + 1
+
+    # カテゴリが変更された場合はsort_orderのparamsを書き換える
+    if before_update_category_id != params[:movie][:movie_category_id].to_i
+      params[:movie][:sort_order] = Movie.where(movie_category_id: params[:movie][:movie_category_id]).pluck(:sort_order).max.to_i + 1
+      Movie.where(movie_category_id: before_update_category_id).where(['sort_order > ?', before_update_sort_order]).try(:each) do |m|
+        m.update_attributes(sort_order: m.sort_order - 1)
+      end
+    end
     
     if @movie.update_attributes(movie_params)
-      # カテゴリが変更された場合
-      if before_update_category_id != @movie.movie_category_id
-        Movie.where(movie_category_id: before_update_category_id).where(['sort_order > ?', before_update_sort_order]).try(:each) do |m|
-          m.update_attributes(sort_order: m.sort_order - 1)
-        end
-      end
       flash[:success] = '動画情報を更新しました' 
       redirect_to movies_path
     else

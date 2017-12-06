@@ -63,9 +63,10 @@ ActiveRecord::Schema.define(version: 20171202122748) do
   create_table "movie_categories", force: :cascade do |t|
     t.string   "name"
     t.datetime "deleted_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.integer  "sort_order"
+    t.boolean  "must_view",  default: false
     t.index ["deleted_at"], name: "index_movie_categories_on_deleted_at", using: :btree
   end
 
