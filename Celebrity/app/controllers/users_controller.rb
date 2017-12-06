@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :show, :edit, :update]
   before_action :correct_user, only: [:show, :edit, :update]
   before_action :existence_user, only: [:show, :edit, :update]
+  before_action :administrator_user, only: :new
   
   def index
     @users = User.page(params[:page])
@@ -13,7 +14,6 @@ class UsersController < ApplicationController
   
   def new
     @user = User.new
-    redirect_to root_url if logged_in?
   end
   
   def create
@@ -69,5 +69,10 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       redirect_to root_url unless existence_user?(@user)
     end
-
+    
+    # 管理者かどうか確認
+    def administrator_user
+      redirect_to root_url if current_user == nil || !current_user.admin
+    end
+    
 end
