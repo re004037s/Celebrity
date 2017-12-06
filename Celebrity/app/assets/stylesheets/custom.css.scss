@@ -302,6 +302,27 @@ td {
   border-bottom: solid 3px #d7d7d7;/*下線*/
 }
 
+td {
+padding: 5px 10px;
+}
+
+.table-status-schedule {
+  width: 90%;
+  table-layout: fixed;
+  margin: 0 auto;
+}
+
+.btn-schedule{
+  font-size: 1vw;
+}
+
+.font-schedule{
+  background-color:#FFCACA;
+  color: red;
+  font: Times New Roman, Times, serif;
+  text-shadow: 0 1px 0 #999,
+  0 2px 0 #999
+}
 .table-header a {
   color: white;
   &:hover {

@@ -25,6 +25,7 @@ class UsersController < ApplicationController
       RubyStatus.create(user_id: @user.id)
       RubyonrailsStatus.create(user_id: @user.id)
       RailstutorialStatus.create(user_id: @user.id)
+      UserMovieStatus.create(user_id: @user.id)
       
       log_in @user
       flash[:success] = 'Welcome to the セレブエンジニアサロン'
