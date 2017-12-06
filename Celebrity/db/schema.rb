@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171202122748) do
+ActiveRecord::Schema.define(version: 20171204163009) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -187,12 +187,15 @@ ActiveRecord::Schema.define(version: 20171202122748) do
     t.string   "nickname"
     t.string   "email"
     t.string   "password_digest"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
-    t.boolean  "admin",           default: false
-    t.boolean  "existence",       default: true
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.boolean  "admin",            default: false
+    t.boolean  "existence",        default: true
     t.string   "portfolio_path"
     t.string   "github_path"
+    t.string   "picture"
+    t.string   "profile_pic_name"
+    t.binary   "profile_pic"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
