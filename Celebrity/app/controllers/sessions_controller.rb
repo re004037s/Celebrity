@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
       RubyStatus.create(user_id: user.id)          if user.ruby_status.nil?
       RubyonrailsStatus.create(user_id: user.id)   if user.rubyonrails_status.nil?
       RailstutorialStatus.create(user_id: user.id) if user.railstutorial_status.nil?
-      
+      UserMovieStatus.create(user_id: user.id)     if user.user_movie_status.nil?
       redirect_to root_url
     else
       # エラーメッセージを作成する
