@@ -157,3 +157,10 @@ div#centering{
 table{
   width: 50vw;
 }
+
+.po-main{
+  text-align: center;
+  padding-bottom: 40px;
+}
+  
+.po-main h2{font-size: 30px;

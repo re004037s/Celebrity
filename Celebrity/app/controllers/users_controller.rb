@@ -52,6 +52,7 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
   
+  
   private
   
     def user_params
@@ -69,5 +70,5 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       redirect_to root_url unless existence_user?(@user)
     end
-
+    
 end
