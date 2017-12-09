@@ -71,13 +71,12 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       redirect_to root_url unless existence_user?(@user)
     end
-    
-<<<<<<< HEAD
-=======
+
+
     # 管理者かどうか確認
     def administrator_user
       redirect_to root_url if current_user == nil || !current_user.admin
     end
     
->>>>>>> 84a1f810bcb53e97150a3a6d20fa3f81a3725f48
+
 end
