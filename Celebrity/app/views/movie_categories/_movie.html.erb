@@ -1,6 +1,7 @@
 <h4 class="movie-title d-inline-flex"><%= movie.title %></h4>
 <div class="movie">
-  <iframe src="<%= movie.path %>" frameborder="0" allowfullscreen></iframe>
+  <% param = '?rel=0&amp;controls=0&amp' %>
+  <iframe src="<%= movie.path + param %>" frameborder="0" allowfullscreen></iframe>
 </div>
 <% if @category.must_view %>
   <p class="text-center">
@@ -11,3 +12,45 @@
     <% end %>
   </p>
 <% end %>
+
+<div id="modal-form" style="background-color:yellow; width:100%; height:100px; display:none;"></div>
+
+<script>
+  
+  (function() {
+
+    var iframes = document.querySelectorAll("iframe");
+    
+    iframes[0].onload = function() {
+        var modal_form = $('#modal-form'); 
+        // トップフレーズを表示する
+        let top_phrase = $('.top-phrase').text();
+        // modalを表示する
+        modal_form.html(top_phrase);
+        // モーダルを表示状態にする
+        modal_form.show();
+        
+        // モーダルのcss設定
+        $('#modal-form').css(
+          {'z-index' : '9999',
+          'background-color': 'black',
+          'color': '#F8C810',
+          'text-align' : 'center',
+          'line-height' : '2em',
+          'font-size' : '1.5em',
+          'position':'relative',
+          'top': '34px',
+          'height': '50px',
+          }
+        );
+        
+        // HTMLとして出力する
+        $('.movie-title').after(modal_form);
+        
+        // todo window widthが1259px以上になったらmodal-formのwidthをmax-width:500pxにしたい
+        
+    };
+    
+})();
+
+</script>
