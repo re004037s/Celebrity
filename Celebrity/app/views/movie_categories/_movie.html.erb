@@ -1,6 +1,7 @@
 <h4 class="movie-title d-inline-flex"><%= movie.title %></h4>
 <div class="movie">
-  <iframe src="<%= movie.path %>" frameborder="0" allowfullscreen></iframe>
+  <% param = '?rel=0&amp;controls=0&amp' %>
+  <iframe src="<%= movie.path + param %>" frameborder="0" allowfullscreen></iframe>
 </div>
 <% if @category.must_view %>
   <p class="text-center">
