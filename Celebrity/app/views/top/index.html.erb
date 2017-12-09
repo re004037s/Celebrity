@@ -3,8 +3,14 @@
   <div class="row">
     <div class="col-sm-9">
       <p class="txt2">
+        <% Date.today %>
+        <% day = Date.today %>
+        
         <%= current_user.nickname %>さんこんにちは！<br>
-        今日も一日頑張りましょう(๑╹ω╹๑ )
+        今日も一日頑張りましょう(๑╹ω╹๑ )<br>
+        本日は<%= day %>です<br>
+        <%= %>の完了予定日が近づいてます。<br>
+        何かわからないことがあれば、質問してくださいね！
       </p>
       <div class="panel panel-primary">
         <div class="panel-heading">新着動画</div>
