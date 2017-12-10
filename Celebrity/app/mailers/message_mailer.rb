@@ -1,16 +1,9 @@
 class MessageMailer < ApplicationMailer
+  default from: 'celebrityengineer.members@gmail.com'
 
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.message_mailer.hello.subject
-  #
-  
-  default from: 'r.takayama92@gmail.com'
-
-  def hello
-    @greeting = "Hi"
-    mail to:      'ryota4afi@gmail.com',
-         subject: 'Mail from MessageMailer'
+  def deadline_alert(user)
+    @name = user.nickname
+    mail to: user.email,
+    subject: 'Mail from セレブエンジニアサロン'
   end
 end
