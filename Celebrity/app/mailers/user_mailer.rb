@@ -5,15 +5,17 @@ class UserMailer < ApplicationMailer
   #
   #   en.user_mailer.alert_completion_date.subject
   #
-  def alert_completion_date
+  def alert_completion_date(user,no_complete_task)
+    
+    @user = user
 
 #user name
-    @user_name = "中野"
+    @user_name = @user.name
 
 #task name
-    @task_name = "HTML&CSS３章"
+    @task_name = no_complete_task
 
 #宛先アドレス
-    mail to: "to@example.org"
+    mail to: @user.email
   end
 end

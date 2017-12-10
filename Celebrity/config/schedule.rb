@@ -4,7 +4,7 @@
 # http://en.wikipedia.org/wiki/Cron
 
  every 1.day, :at => '8:00 am' do
-   rake "judge_completion_date"
+   rake "mail:judge_completion_date"
  end
 
 # Learn more: http://github.com/javan/whenever
