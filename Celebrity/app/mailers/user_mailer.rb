@@ -1,21 +1,15 @@
 class UserMailer < ApplicationMailer
-
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.user_mailer.alert_completion_date.subject
-  #
-  def alert_completion_date(user,no_complete_task)
+  def alert_completion_date(user,no_complete_tasks)
     
     @user = user
 
-#user name
+    #user name
     @user_name = @user.name
 
-#task name
-    @task_name = no_complete_task
+    #task names
+    @task_names = no_complete_tasks
 
-#宛先アドレス
+    #宛先アドレス
     mail to: @user.email
   end
 end
