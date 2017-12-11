@@ -1,6 +1,6 @@
 namespace :mail do
     desc "現在日付と完了予定日を比較"
-    task :judge_completion_date do
+    task :judge_completion_date => :environment do 
         @users = User.all
         no_complete_task = []
         @users.each do |user|
