@@ -8,9 +8,11 @@
         
         <%= current_user.nickname %>さんこんにちは！<br>
         今日も一日頑張りましょう(๑╹ω╹๑ )<br>
-        本日は<%= day %>です<br>
-        <%= %>の完了予定日が近づいてます。<br>
-        何かわからないことがあれば、質問してくださいね！
+        <%= @alert_messages_html %><br>
+        <%= @alert_messages_javascript %><br>
+        <%= @alert_messages_ruby %><br>
+        <%= @alert_messages_rubyonrails %><br>
+        <%= @alert_messages_railstutorial %><br>
       </p>
       <div class="panel panel-primary">
         <div class="panel-heading">新着動画</div>
