@@ -20,7 +20,7 @@ class User < ApplicationRecord
     has_one :user_movie_status
     
     has_many :feedbacks
-    has_many :comments, dependent: :destroy
+    has_many :comments, dependent: :destroy 
     
     # 渡された文字列のハッシュ値を返す
     def User.digest(string)
