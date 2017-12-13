@@ -157,3 +157,12 @@ div#centering{
 table{
   width: 50vw;
 }
+
+#picture{
+  width: 10vw;
+}
+
+.fileuploader{
+  margin: 0 auto;
+  width: 25vw;
+}

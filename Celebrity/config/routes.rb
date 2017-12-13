@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   delete '/logout', to:'sessions#destroy'
 
   resources :users
+  
+  # patch '/users/:id/update_picture', to: 'users#update_picture'
+    
   resources :feedbacks, only: [:create, :update, :destroy]
   
   resources :movies do
@@ -15,6 +18,9 @@ Rails.application.routes.draw do
   resources :movie_categories do
     get 'sort', on: :collection
   end
+  
+    patch '/post_pic', to:'users#update_picture'
+  # patch '/post_pic', to:'users#edit_profile_pic'
 
   root 'top#index'
 

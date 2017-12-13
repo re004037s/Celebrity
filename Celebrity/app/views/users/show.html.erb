@@ -3,12 +3,29 @@
 <h2 class="txt3">
   <%= @user.nickname %>
   [ <%= @user.name %> ]
-</h2>
-
+    <!--<img id="picture" src="/default.jpg" >-->
+    <%= image_tag @user.picture.url if @user.picture? %>
+    
+    <%= form_for(@user, url: post_pic_path) do |f| %>
+      <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+      <%= f.submit '画像をアップロード', class: 'btn btn-primary fileuploader' %>
+    <% end %>
+    
+  <script type="text/javascript">
+    $('#user_picture').bind('change', function() {
+     var size_in_megabytes = this.files[0].size/1024/1024;
+     if (size_in_megabytes > 5) {
+      alert('Maximum file size is 5MB. Please choose a smaller file.');
+     }
+    });
+  </script>
+    
+</h2>    
+    
 <table class="txt1 table-condensed table-status-schedule">
    <tr valign="baseline">
      <td width="60%">
-      <h3 class="txt3">[Progate] HTML&CSS　<span class="font-schedule">完了予定日
+      <h3 class="txt3">[Progate] HTML&CSS<span class="font-schedule">完了予定日
       <%= @user.html_css_status.try(:schedule_date) if @user.html_css_status.schedule_date.present? %></span></h3>
       </td>
       <td>
@@ -77,7 +94,7 @@
 <table class="txt1 table-condensed table-status-schedule">
    <tr valign="baseline">
     <td width="60%">
-      <h3 class="txt3">[Progate] JavaScript　<span class="font-schedule">完了予定日
+      <h3 class="txt3">[Progate] JavaScript<span class="font-schedule">完了予定日
       <%= @user.javascript_status.try(:schedule_date) if @user.javascript_status.schedule_date.present? %><span class="font-schedule"></h3>
     </td>
     <td>
@@ -115,7 +132,7 @@
 <table class="txt1 table-condensed table-status-schedule">
    <tr valign="baseline">
     <td width="60%">
-      <h3 class="txt3">[Progate] Ruby　<span class="font-schedule">完了予定日
+      <h3 class="txt3">[Progate] Ruby<span class="font-schedule">完了予定日
       <%= @user.ruby_status.try(:schedule_date) if @user.ruby_status.schedule_date.present? %></span></h3>
     </td>
     <td>
@@ -168,7 +185,7 @@
 <table class="txt1 table-condensed table-status-schedule">
    <tr valign="baseline">
     <td width="60%">
-      <h3 class="txt3">[Progate] Ruby on Rails　<span class="font-schedule">完了予定日
+      <h3 class="txt3">[Progate] Ruby on Rails<span class="font-schedule">完了予定日
       <%= @user.rubyonrails_status.try(:schedule_date) if @user.rubyonrails_status.schedule_date.present? %></span></h3>
     </td>
     <td>
@@ -285,7 +302,7 @@
 <table class="txt1 table-condensed table-status-schedule">
    <tr valign="baseline">
     <td width="60%">
-      <h3 class="txt3">Rails Tutorial　<span class="font-schedule">完了予定日
+      <h3 class="txt3">Rails Tutorial<span class="font-schedule">完了予定日
       <%= @user.railstutorial_status.try(:schedule_date) if @user.railstutorial_status.schedule_date.present? %></span></h3>
     </td>
     <td>
@@ -308,7 +325,7 @@
 <table class="txt1 table-condensed table-status-schedule">
    <tr valign="baseline">
     <td width="60%">
-      <h3 class="txt3">動画視聴　<span class="font-schedule">完了予定日
+      <h3 class="txt3">動画視聴<span class="font-schedule">完了予定日
       <%= @user.user_movie_status.try(:schedule_date) if @user.user_movie_status.schedule_date.present? %></span></h3>
     </td>
     <td>

@@ -12,6 +12,54 @@ class UsersController < ApplicationController
     @categories = MovieCategory.where(must_view: true).order('sort_order')
   end
   
+  def update_picture
+    # coding: utf-8
+    # @user = User.find(params[:id])
+    @user = current_user #current_userに変更
+    upload_picture = user_params[:picture]
+      # byebug
+    user = {}
+    if upload_picture != nil 
+      # user[:filename] = upload_file.original_filename
+      # str = upload_picture.read
+      str = upload_picture.read.encode("UTF-8",:invalid => :replace)
+      user[:picture] = str
+    end 
+     
+    if@user.update_columns(picture: user[:picture])
+      flash[:success] = '画像を保存しました！'
+          
+      @user.id
+      @user.picture
+      
+      redirect_to users_path 
+    else
+      flash[:error] = '画像の保存に失敗しました！'
+      redirect_to users_path
+    end 
+  end
+  
+  # 前ブランチで作成したアクション
+  # def edit_profile_pic
+  #   @user = current_user #current_userに変更
+  #   upload_file = user_params[:file]
+     
+  #   user = {}
+  #   if upload_file != nil 
+  #     user[:filename] = upload_file.original_filename
+  #     user[:file] = upload_file.read
+  #   end 
+     
+  #   if @user.update_columns(profile_pic_name: user[:filename], profile_pic: user[:file])
+  #     flash[:success] = '画像を保存しました！'
+  #     redirect_to current_user 
+  #   else
+  #     flash[:error] = '画像が保存できません！'
+  #     redirect_to current_user
+  #   end 
+  # end
+  
+  
   def new
     @user = User.new
   end
@@ -56,7 +104,7 @@ class UsersController < ApplicationController
   private
   
     def user_params
-      params.require(:user).permit(:name, :nickname, :email, :password, :password_confirmation, :portfolio_path, :github_path)
+      params.require(:user).permit(:name, :nickname, :email, :password, :password_confirmation, :portfolio_path, :github_path, :picture)
     end
     
     # ログイン済み or 管理ユーザであれば true を返す
@@ -75,5 +123,4 @@ class UsersController < ApplicationController
     def administrator_user
       redirect_to root_url if current_user == nil || !current_user.admin
     end
-    
-end
+  end
