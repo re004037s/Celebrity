@@ -11,16 +11,16 @@ class TopController < ApplicationController
         @current_user_html.do_middle && @current_user_html.do_advanced && 
         @current_user_html.ji_1 && @current_user_html.ji_2) != true
           if @current_user_html.schedule_date == Date.today + 3
-            @alert_messages_html = "完了予定日まであと3日です↓【Progate:HTML&CSSコース】"
-          elsif @current_user_html.schedule_date == Date.today + 2
-            @alert_messages_html = "完了予定日まであと2日です↓【Progate:HTML&CSSコース】"
+            @alert_messages_html = "完了予定日まであと3日です→【Progate:HTML&CSSコース】"
+            elsif @current_user_html.schedule_date == Date.today + 2
+            @alert_messages_html = "完了予定日まであと2日です→【Progate:HTML&CSSコース】"
             elsif @current_user_html.schedule_date == Date.today + 1
-            @alert_messages_html = "完了予定日まであと1日です↓【Progate:HTML&CSSコース】"
+            @alert_messages_html = "完了予定日まであと1日です→【Progate:HTML&CSSコース】"
             elsif @current_user_html.schedule_date == Date.today
-            @alert_messages_html = "今日が完了予定日です↓【Progate:HTML&CSSコース】"
+            @alert_messages_html = "今日が完了予定日です→【Progate:HTML&CSSコース】"
             elsif @current_user_html.schedule_date < Date.today
-            @alert_messages_html = "完了予定日を過ぎています↓【Progate:HTML&CSSコース】"
-          else
+            @alert_messages_html = "完了予定日を過ぎています→【Progate:HTML&CSSコース】"
+            else
             @alert_messages_html = ""
           end
       end
@@ -30,16 +30,16 @@ class TopController < ApplicationController
     if @current_user_javascript.schedule_date
       if (@current_user_javascript.ga_beginner && @current_user_javascript.do_beginner) != true
           if @current_user_javascript.schedule_date == Date.today + 3
-            @alert_messages_javascript = "完了予定日まであと3日です↓【Progate:javascriptコース】"
-          elsif @current_user_javascript.schedule_date == Date.today + 2
-            @alert_messages_javascript = "完了予定日まであと2日です↓【Progate:javascriptコース】"
+            @alert_messages_javascript = "完了予定日まであと3日です→【Progate:javascriptコース】"
+            elsif @current_user_javascript.schedule_date == Date.today + 2
+            @alert_messages_javascript = "完了予定日まであと2日です→【Progate:javascriptコース】"
             elsif @current_user_javascript.schedule_date == Date.today + 1
-            @alert_messages_javascript = "完了予定日まであと1日です↓【Progate:javascriptコース】"
+            @alert_messages_javascript = "完了予定日まであと1日です→【Progate:javascriptコース】"
             elsif @current_user_javascript.schedule_date == Date.today
-            @alert_messages_javascript = "今日が完了予定日です↓【Progate:javascriptコース】"
+            @alert_messages_javascript = "今日が完了予定日です→【Progate:javascriptコース】"
             elsif @current_user_javascript.schedule_date < Date.today
-            @alert_messages_javascript = "完了予定日を過ぎています↓【Progate:javascriptコース】"
-          else
+            @alert_messages_javascript = "完了予定日を過ぎています→【Progate:javascriptコース】"
+            else
             @alert_messages_javascript = ""
           end
       end
@@ -52,16 +52,16 @@ class TopController < ApplicationController
         @current_user_ruby_ga_3 && @current_user_ruby_ga_4 && 
         @current_ruby_ga_5) != true
           if @current_user_ruby.schedule_date == Date.today + 3
-            @alert_messages_ruby = "完了予定日まであと3日です↓【Progate:Rubyコース】"
-          elsif @current_user_ruby.schedule_date == Date.today + 2
-            @alert_messages_ruby = "完了予定日まであと2日です↓【Progate:Rubyコース】"
+            @alert_messages_ruby = "完了予定日まであと3日です→【Progate:Rubyコース】"
+            elsif @current_user_ruby.schedule_date == Date.today + 2
+            @alert_messages_ruby = "完了予定日まであと2日です→【Progate:Rubyコース】"
             elsif @current_user_ruby.schedule_date == Date.today + 1
-            @alert_messages_ruby = "完了予定日まであと1日です↓【Progate:Rubyコース】"
+            @alert_messages_ruby = "完了予定日まであと1日です→【Progate:Rubyコース】"
             elsif @current_user_ruby.schedule_date == Date.today
-            @alert_messages_ruby = "今日が完了予定日です↓【Progate:Rubyコース】"
+            @alert_messages_ruby = "今日が完了予定日です→【Progate:Rubyコース】"
             elsif @current_user_ruby.schedule_date < Date.today
-            @alert_messages_ruby = "完了予定日を過ぎています↓【Progate:Rubyコース】"
-          else
+            @alert_messages_ruby = "完了予定日を過ぎています→【Progate:Rubyコース】"
+            else
             @alert_messages_ruby = ""
           end
       end
@@ -78,16 +78,16 @@ class TopController < ApplicationController
         @current_user_rubyonrails.do_2 && @current_user_rubyonrails.do_3 &&
         @current_user_rubyonrails.do_4) != true
           if @current_user_rubyonrails.schedule_date == Date.today + 3
-            @alert_messages_rubyonrails = "完了予定日まであと3日です↓【Progate:Ruby on railsコース】"
-          elsif @current_user_rubyonrails.schedule_date == Date.today + 2
-            @alert_messages_rubyonrails = "完了予定日まであと2日です↓【Progate:Ruby on railsコース】"
+            @alert_messages_rubyonrails = "完了予定日まであと3日です→【Progate:Ruby on railsコース】"
+            elsif @current_user_rubyonrails.schedule_date == Date.today + 2
+            @alert_messages_rubyonrails = "完了予定日まであと2日です→【Progate:Ruby on railsコース】"
             elsif @current_user_rubyonrails.schedule_date == Date.today + 1
-            @alert_messages_rubyonrails = "完了予定日まであと1日です↓【Progate:Ruby on railsコース】"
+            @alert_messages_rubyonrails = "完了予定日まであと1日です→【Progate:Ruby on railsコース】"
             elsif @current_user_rubyonrails.schedule_date == Date.today
-            @alert_messages_rubyonrails = "今日が完了予定日です↓【Progate:Ruby on railsコース】"
+            @alert_messages_rubyonrails = "今日が完了予定日です→【Progate:Ruby on railsコース】"
             elsif @current_user_rubyonrails.schedule_date < Date.today
-            @alert_messages_rubyonrails = "完了予定日を過ぎています↓【Progate:Ruby on railsコース】"
-          else
+            @alert_messages_rubyonrails = "完了予定日を過ぎています→【Progate:Ruby on railsコース】"
+            else
             @alert_messages_rubyonrails = ""
           end
       end
@@ -103,21 +103,48 @@ class TopController < ApplicationController
         @current_user_railstutorial.chapter11 && @current_user_railstutorial.chapter12 &&
         @current_user_railstutorial.chapter13 && @current_user_railstutorial.chapter14) != true
           if @current_user_railstutorial.schedule_date == Date.today + 3
-            @alert_messages_railstutorial = "完了予定日まであと3日です↓【railstutorial】"
-          elsif @current_user_railstutorial.schedule_date == Date.today + 2
-            @alert_messages_railstutorial = "完了予定日まであと2日です↓【railstutorial】"
+            @alert_messages_railstutorial = "完了予定日まであと3日です→【railstutorial】"
+            elsif @current_user_railstutorial.schedule_date == Date.today + 2
+            @alert_messages_railstutorial = "完了予定日まであと2日です→【railstutorial】"
             elsif @current_user_railstutorial.schedule_date == Date.today + 1
-            @alert_messages_railstutorial = "完了予定日まであと1日です↓【railstutorial】"
+            @alert_messages_railstutorial = "完了予定日まであと1日です→【railstutorial】"
             elsif @current_user_railstutorial.schedule_date == Date.today
-            @alert_messages_railstutorial = "今日が完了予定日です↓【railstutorial】"
+            @alert_messages_railstutorial = "今日が完了予定日です→【railstutorial】"
             elsif @current_user_railstutorial.schedule_date < Date.today
-            @alert_messages_railstutorial = "完了予定日を過ぎています↓【railstutorial】"
-          else
+            @alert_messages_railstutorial = "完了予定日を過ぎています→【railstutorial】"
+            else
             @alert_messages_railstutorial = ""
           end
       end
     end
     
+    @current_user_movie = current_user.user_movie_status
+     if current_user.user_movie_status.try(:schedule_date).present?
+        @flg = 0
+        @categories = MovieCategory.all
+        @categories.each do |category|
+          category.movies.order('sort_order').each do |movie|
+          feedback = current_user.feedbacks.find_by(movie_id: movie.id)
+            @flg = 1 if !feedback.present?
+          end
+        end
+                
+        if @flg == 1
+          if @current_user_movie.schedule_date == Date.today + 3
+            @alert_messages_movie = "完了予定日まであと3日です→【railstutorial】"
+            elsif @current_user_movie.schedule_date == Date.today + 2
+            @alert_messages_movie = "完了予定日まであと2日です→【railstutorial】"
+            elsif @current_user_movie.schedule_date == Date.today + 1
+            @alert_messages_movie = "完了予定日まであと1日です→【railstutorial】"
+            elsif @current_user_movie.schedule_date == Date.today
+            @alert_messages_movie = "今日が完了予定日です→【railstutorial】"
+            elsif @current_user_movie.schedule_date < Date.today
+            @alert_messages_movie = "完了予定日を過ぎています→【railstutorial】"
+            else
+            @alert_messages_movie = ""
+          end
+      end
+    end
   end
 
   private
