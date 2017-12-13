@@ -6,81 +6,79 @@ namespace :mail do
             
             no_complete_tasks = []
             
-            if user.html_css_status.try(:schedule_date).present?
-                if (user.html_css_status.ga_beginner && user.html_css_status.schedule_date.ga_middle &&
-                    user.html_css_status.schedule_date.ga_advanced && user.html_css_status.schedule_date.do_beginner &&
-                    user.html_css_status.schedule_date.do_middle && user.html_css_status.schedule_date.ga_advanced &&
-                    user.html_css_status.schedule_date.ji_1 && user.html_css_status.schedule_date.ji_2) != true
-                    if user.html_css_status.schedule_date < Date.today
+            st1 = user.html_css_status
+            if st1.try(:schedule_date).present?
+                if (st1.ga_beginner && st1.ga_middle &&
+                    st1.ga_advanced && st1.do_beginner &&
+                    st1.do_middle && st1.ga_advanced &&
+                    st1.ji_1 && st1.ji_2) != true
+                    if st1.schedule_date < Date.today
                         no_complete_tasks << "Progate(HTML&CSS)"
                     end        
                 end
             end
 
-            if user.javascript_status.try(:schedule_date).present?
-                if (user.javascript_status.ga_beginner && user.javascript_status.ga_beginner) != true
-                    if user.javascript_status.schedule_date < Date.today
+            st2 = user.javascript_status
+            if st2.try(:schedule_date).present?
+                if (st2.ga_beginner && st2.ga_beginner) != true
+                    if st2.schedule_date < Date.today
                         no_complete_tasks << "Progate(Javascript)"
                     end        
                 end
             end
 
-            if user.ruby_status.try(:schedule_date).present?
-                if (user.ruby_status.ga_1 && user.ruby_status.ga_2 &&
-                    user.ruby_status.ga_3 && user.ruby_status.ga_4 &&
-                    user.ruby_status.ga_5) != true                
-                    if user.ruby_status.schedule_date < Date.today
+            st3 = user.ruby_status
+            if st3.try(:schedule_date).present?
+                if (st3.ga_1 && st3.ga_2 &&
+                    st3.ga_3 && st3.ga_4 &&
+                    st3.ga_5) != true                
+                    if st3.schedule_date < Date.today
                         no_complete_tasks << "Progate(Ruby)"
                     end        
                 end
             end
 
-            if user.rubyonrails_status.try(:schedule_date).present?
-                if (user.rubyonrails_status.ga_1 && user.rubyonrails_status.ga_2 &&
-                    user.rubyonrails_status.ga_3 && user.rubyonrails_status.ga_4 &&
-                    user.rubyonrails_status.ga_5 && user.rubyonrails_status.ga_6 &&
-                    user.rubyonrails_status.ga_7 && user.rubyonrails_status.ga_8 &&
-                    user.rubyonrails_status.ga_9 && user.rubyonrails_status.ga_10 &&    
-                    user.rubyonrails_status.ga_11 && user.rubyonrails_status.do_1 &&         
-                    user.rubyonrails_status.do_2 && user.rubyonrails_status.do_3 &&   
-                    user.rubyonrails_status.do_4) != true                       
-                    if user.rubyonrails_status.schedule_date < Date.today
+            st4 = user.rubyonrails_status
+            if st4.try(:schedule_date).present?
+                if (st4.ga_1 && st4.ga_2 &&
+                    st4.ga_3 && st4.ga_4 &&
+                    st4.ga_5 && st4.ga_6 &&
+                    st4.ga_7 && st4.ga_8 &&
+                    st4.ga_9 && st4.ga_10 &&    
+                    st4.ga_11 && st4.do_1 &&         
+                    st4.do_2 && st4.do_3 &&   
+                    st4.do_4) != true                       
+                    if st4.schedule_date < Date.today
                         no_complete_tasks << "Progate(RubyonRails)"
                     end    
                 end
             end
 
-            if user.railstutorial_status.try(:schedule_date).present?
-                if (user.railstutorial_status.chapter1 && user.railstutorial_status.chapter2 &&
-                    user.railstutorial_status.chapter3 && user.railstutorial_status.chapter4 &&
-                    user.railstutorial_status.chapter5 && user.railstutorial_status.chapter6 &&
-                    user.railstutorial_status.chapter7 && user.railstutorial_status.chapter8 &&
-                    user.railstutorial_status.chapter9 && user.railstutorial_status.chapter10 &&
-                    user.railstutorial_status.chapter11 && user.railstutorial_status.chapter12 &&
-                    user.railstutorial_status.chapter13 && user.railstutorial_status.chapter14) != true
-                    if user.user_movie_status.schedule_date < Date.today
+            st5 = user.railstutorial_status
+            if st5.try(:schedule_date).present?
+                if (st5.chapter1 && st5.chapter2 &&
+                    st5.chapter3 && st5.chapter4 &&
+                    st5.chapter5 && st5.chapter6 &&
+                    st5.chapter7 && st5.chapter8 &&
+                    st5.chapter9 && st5.chapter10 &&
+                    st5.chapter11 && st5.chapter12 &&
+                    st5.chapter13 && st5.chapter14) != true
+                    if st5.schedule_date < Date.today
                         no_complete_tasks << "Railsチュートリアル"
                     end
                 end
             end
 
-            if user.user_movie_status.try(:schedule_date).present?
-                @flg = 0
-                @categories = Movie.all
-                @categories.each do |category|
-                    category.movies.order('sort_order').each do |movie|
-                        feedback = user.feedbacks.find_by(movie_id: movie.id)
-                        @flg = 1 if !feedback.present?
-                    end
+            st6 = user.user_movie_status
+            if st6.try(:schedule_date).present?
+              last_movie = MovieCategory.where(must_view: true).order('sort_order').last.movies.order('sort_order').last
+              if user.feedbacks.find_by(movie_id: last_movie.id).nil?
+                if st6.schedule_date < Date.today
+                  no_complete_tasks << "動画視聴"
                 end
-                
-                if @flg == 1
-                    if user.user_movie_status.schedule_date < Date.today
-                        no_complete_tasks << "動画視聴"
-                    end
-                end
+              end
             end
-            
+
             UserMailer.alert_completion_date(user,no_complete_tasks).deliver_now if no_complete_tasks.present?
         end
     end    
