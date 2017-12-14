@@ -10,6 +10,6 @@ class UserMailer < ApplicationMailer
     @task_names = no_complete_tasks
 
     #宛先アドレス
-    mail to: @user.email
+    mail to: @user.email, subject: "セレブエンジニアサロンのタスクについて"
   end
 end
