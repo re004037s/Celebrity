@@ -1,23 +1,60 @@
-<h1 class="txt5">ログイン</h1>
+<div class="before-login">
+<h1 class="txt5"></h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(:session, url: login_path) do |f| %>
       
-      <%= f.label :email, 'Email', class: 'txt1' %>
+      <%= f.label :email, 'ログインID（ご登録いただいたメールアドレス）', class: 'txt1' %>
       <%= f.email_field :email, class: 'form-control' %>
 
       <%= f.label :password, 'パスワード', class: 'txt1'%>
       <%= f.password_field :password, class: 'form-control' %>
+      
+      <a href="" class="txt2">パスワードを忘れた方はコチラ</a>
+      
     <div id="centering">
-      <%= f.submit "ログイン", class: "btn-log btn btn-primary" %>
+      <%= f.submit "LOG IN", class: "btn-log btn btn-primary" %>
     </div>
     <% end %>
-
+</div>
   </div>
 </div>
+
 <style>
 .navbar { display: none; }
-body { padding-top: 0px; }
+body { padding-top: 120px; 
+       background-image: url(/1213-top-image.png);
+       background-size: cover;
+      }
 .blank-box{ display: none; }
+.top-pic-wrapper{ display: none; }
+.before-login { background-color: #d0cfcf6b; 
+                height: 0px;
+                }
+.row { background-color: black;
+       opacity: 0.7;
+       margin-top: 180px;
+       padding-top: 80px;
+       padding-bottom: 80px;;
+     }
+footer { display: none; }
+.txt1 { font-size: 16px; 
+        color: #bdb76b;
+}
+.txt2 { font-size: 16px; 
+        padding-bottom:20px
+        color: #bdb76b;
+      }
+.btn { background-color: #bdb76b;
+       color: white;
+      }
+.col-md-6  {
+    position: relative;
+    min-height: 1px;
+    padding: 40px 10px;
+    background-color: white;
+    margin-right: 20px;
+    }
+
 </style>
