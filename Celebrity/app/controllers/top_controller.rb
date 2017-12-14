@@ -118,33 +118,44 @@ class TopController < ApplicationController
       end
     end
     
-    @current_user_movie = current_user.user_movie_status
-     if current_user.user_movie_status.try(:schedule_date).present?
-        @flg = 0
-        @categories = MovieCategory.all
-        @categories.each do |category|
-          category.movies.order('sort_order').each do |movie|
-          feedback = current_user.feedbacks.find_by(movie_id: movie.id)
-            @flg = 1 if !feedback.present?
-          end
-        end
-                
-        if @flg == 1
-          if @current_user_movie.schedule_date == Date.today + 3
-            @alert_messages_movie = "完了予定日まであと3日です→【railstutorial】"
-            elsif @current_user_movie.schedule_date == Date.today + 2
-            @alert_messages_movie = "完了予定日まであと2日です→【railstutorial】"
-            elsif @current_user_movie.schedule_date == Date.today + 1
-            @alert_messages_movie = "完了予定日まであと1日です→【railstutorial】"
-            elsif @current_user_movie.schedule_date == Date.today
-            @alert_messages_movie = "今日が完了予定日です→【railstutorial】"
-            elsif @current_user_movie.schedule_date < Date.today
-            @alert_messages_movie = "完了予定日を過ぎています→【railstutorial】"
-            else
-            @alert_messages_movie = ""
-          end
-      end
+    @movies = MovieCategory.where(must_view: true).all
+    
+    
+    @movie_category_ids = []
+    @movies.each do |movie|
+      @movie_category_ids.push(movie.id) 
     end
+    
+    @must_movies = Movie.where(movie_category_id: @movie_category_ids)
+    @max_movie_id = @must_movies.maximum(:id)
+    @movie_ids = []
+    current_user.feedbacks.each do |feedback|
+        @movie_ids.push(feedback.movie_id)
+    end
+    
+    
+   @current_user_movie = current_user.user_movie_status
+    if @movie_ids.include?(@max_movie_id)
+      @alert_message_mv = ""
+    elsif
+     @current_user_movie.schedule_date == Date.today + 3
+     @alert_message_mv = "【完了予定日3日前】まだ見終わっていない動画があります"
+     elsif
+     @current_user_movie.schedule_date == Date.today + 2
+      @alert_message_mv = "【完了予定日2日前】まだ見終わっていない動画があります"
+      elsif
+     @current_user_movie.schedule_date == Date.today + 1
+      @alert_message_mv = "【完了予定日1日前】まだ見終わっていない動画があります"
+      elsif
+     @current_user_movie.schedule_date == Date.today
+      @alert_message_mv = "【本日完了予定日】まだ見終わっていない動画があります"
+      elsif
+     @current_user_movie.schedule_date < Date.today
+      @alert_message_mv = "【完了予定日を過ぎました】まだ見終わっていない動画があります"
+    end
+    
+    
+    
   end
 
   private
