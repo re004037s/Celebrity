@@ -13,52 +13,22 @@ class UsersController < ApplicationController
   end
   
   def update_picture
-    # coding: utf-8
-    # @user = User.find(params[:id])
-    @user = current_user #current_userに変更
+    @user = current_user
     upload_picture = user_params[:picture]
-      # byebug
-    user = {}
-    if upload_picture != nil 
-      # user[:filename] = upload_file.original_filename
-      # str = upload_picture.read
-      str = upload_picture.read.encode("UTF-8",:invalid => :replace)
-      user[:picture] = str
-    end 
-     
-    if@user.update_columns(picture: user[:picture])
+
+    if@user.update_columns(picture: upload_picture.original_filename, picture_file: upload_picture.read)
       flash[:success] = '画像を保存しました！'
-          
-      @user.id
-      @user.picture
-      
-      redirect_to users_path 
+      redirect_to @user 
     else
       flash[:error] = '画像の保存に失敗しました！'
-      redirect_to users_path
+      redirect_to @user
     end 
   end
   
-  # 前ブランチで作成したアクション
-  # def edit_profile_pic
-  #   @user = current_user #current_userに変更
-  #   upload_file = user_params[:file]
-     
-  #   user = {}
-  #   if upload_file != nil 
-  #     user[:filename] = upload_file.original_filename
-  #     user[:file] = upload_file.read
-  #   end 
-     
-  #   if @user.update_columns(profile_pic_name: user[:filename], profile_pic: user[:file])
-  #     flash[:success] = '画像を保存しました！'
-  #     redirect_to current_user 
-  #   else
-  #     flash[:error] = '画像が保存できません！'
-  #     redirect_to current_user
-  #   end 
-  # end
-  
+  def get_image
+    @image = current_user
+    send_data(@image.picture_file)
+  end
   
   def new
     @user = User.new

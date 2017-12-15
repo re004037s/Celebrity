@@ -4,7 +4,7 @@
   <%= @user.nickname %>
   [ <%= @user.name %> ]
     <!--<img id="picture" src="/default.jpg" >-->
-    <%= image_tag @user.picture.url if @user.picture? %>
+    <%= image_tag(get_image_user_path, :size => '100x100') %>
     
     <%= form_for(@user, url: post_pic_path) do |f| %>
       <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>

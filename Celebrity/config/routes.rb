@@ -6,8 +6,12 @@ Rails.application.routes.draw do
   post '/login', to:'sessions#create'
   delete '/logout', to:'sessions#destroy'
 
-  resources :users
-  
+  resources :users do
+      member do
+        get 'get_image'
+    end
+  end
+        
   # patch '/users/:id/update_picture', to: 'users#update_picture'
     
   resources :feedbacks, only: [:create, :update, :destroy]
@@ -19,8 +23,7 @@ Rails.application.routes.draw do
     get 'sort', on: :collection
   end
   
-    patch '/post_pic', to:'users#update_picture'
-  # patch '/post_pic', to:'users#edit_profile_pic'
+  patch '/post_pic', to:'users#update_picture'
 
   root 'top#index'
 
