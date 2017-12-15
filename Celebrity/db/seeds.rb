@@ -65,15 +65,6 @@ user = User.new(name: '鈴木 一郎',
                 existence: true)
 user.save
 
-sample_user = User.new(name: 'sugi',
-                nickname: 'sugi',
-                email: 'sugi@gmail.com',
-                password: 'password',
-                password_confirmation: 'password',
-                admin: true,
-                existence: true)
-sample_user.save
-
 
 HtmlCssStatus.create(user_id: user.id)
 JavascriptStatus.create(user_id: user.id)
