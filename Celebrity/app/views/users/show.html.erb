@@ -3,13 +3,22 @@
 <h2 class="txt3">
   <%= @user.nickname %>
   [ <%= @user.name %> ]
-    <!--<img id="picture" src="/default.jpg" >-->
-    <%= image_tag(get_image_user_path, :size => '100x100') %>
-    
-    <%= form_for(@user, url: post_pic_path) do |f| %>
-      <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
-      <%= f.submit '画像をアップロード', class: 'btn btn-primary fileuploader' %>
-    <% end %>
+</h2>
+
+<div class="align-center">
+  <%= image_tag(get_image_user_path) %>
+</div>
+
+
+<div class="align-center">
+  <button type="button" class="edit-my-picture btn btn-primary" >写真を編集する</button>
+</div>
+
+<div id="upload-my-picture" class="align-center">
+  <%= form_for(@user, url: post_pic_path) do |f| %>
+    <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+    <%= f.submit '画像をアップロード', class: 'btn btn-primary fileuploader' %>
+  <% end %>
     
   <script type="text/javascript">
     $('#user_picture').bind('change', function() {
@@ -19,8 +28,9 @@
      }
     });
   </script>
+</div>
+
     
-</h2>    
     
 <table class="txt1 table-condensed table-status-schedule">
    <tr valign="baseline">
@@ -368,3 +378,11 @@
   <% end %>
   <%= link_to 'ユーザ編集', edit_user_path(@user) , class: 'btn btn-primary user-edit' %>
 </div>
+
+
+<script>
+$('.edit-my-picture').click(function(){
+  $('#upload-my-picture').show();
+  $(this).hide();
+});
+</script>

@@ -158,11 +158,25 @@ table{
   width: 50vw;
 }
 
-#picture_file{
-  width: 10vw;
+.align-center{
+  width: 30%;
+  margin: 0 auto;
+  text-align: center;
 }
 
-.fileuploader{
-  margin: 0 auto;
-  width: 25vw;
+.align-center img {
+  margin-bottom: 1em;
+  border-radius: 50%;
+  width: 50%;
 }
+
+#upload-my-picture{
+  display: none;
+}
+
+.edit-my-picture{
+  text-align: center;
+}
+
+
+
