@@ -6,7 +6,11 @@
 </h2>
 
 <div class="align-center">
+  <% if @user.picture_file %>
   <%= image_tag(get_image_user_path) %>
+  <% else %>
+  <%= image_tag('default.jpg') %>
+  <% end %>
 </div>
 
 

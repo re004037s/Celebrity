@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   
   def show
     @categories = MovieCategory.where(must_view: true).order('sort_order')
+    @user = current_user
   end
   
   def update_picture
