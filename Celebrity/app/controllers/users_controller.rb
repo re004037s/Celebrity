@@ -53,6 +53,11 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
   
+  def portfolio
+    @user = User.find(params[:id])
+    @comments = @user.comments.paginate(page: params[:page])
+  end
+  
   
   private
   
@@ -77,6 +82,5 @@ class UsersController < ApplicationController
     def administrator_user
       redirect_to root_url if current_user == nil || !current_user.admin
     end
-    
 
 end

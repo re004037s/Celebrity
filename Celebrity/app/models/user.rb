@@ -37,4 +37,8 @@ class User < ApplicationRecord
         return true if sort_order == 1
         !!self.feedbacks.find_by(movie_id: Movie.where(movie_category_id: category_id, sort_order: sort_order - 1).first.id)
     end
+    
+    def feed
+        Commnet.where("user_id = ?", id)
+    end
 end

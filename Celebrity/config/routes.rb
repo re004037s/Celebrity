@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :feedbacks, only: [:create, :update, :destroy]
+  resources :comments, only: [:create, :destroy]
   
   resources :movies do
     get 'sort', on: :collection
@@ -21,7 +22,7 @@ Rails.application.routes.draw do
   get '/progate', to: 'static_pages#progate'
   post '/progate', to: 'static_pages#progate'
   get '/railstutorial', to: 'static_pages#railstutorial'
-  get '/portfolio', to: 'users#portfolio'
+  get '/portfolio', to: 'portfolio_comments#_portfolio'
   get '/qa', to: 'static_pages#qa'
   
   patch '/html_css_status', to: 'html_css_statuses#update'

@@ -25,3 +25,27 @@
     </div>
   </div>
  </div>
+
+<% if logged_in? %>
+  <div class="row">
+    <aside class="col-md-4">
+      <section class="user_info">
+        <%= render '/portfolio_comments/portfolio' %>
+      </section>
+      <section class="comment_form">
+        <%= render '/portfolio_comments/portfolio' %>
+      </section>
+    </aside>
+    <div class="col-md-8">
+      <h3>Comment Feed</h3>
+      <% if @feed_items.any? %>
+        <ol class="microposts">
+        <%= render @feed_items %>
+        </ol>
+        <%= will_paginate @feed_items %>
+      <% end %>
+    </div>
+  </div>
+<% else %>
+  <h1>Welcome to the Sample App</h1>
+<% end %>
