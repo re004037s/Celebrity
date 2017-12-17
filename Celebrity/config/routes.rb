@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   get '/railstutorial', to: 'static_pages#railstutorial'
   get '/portfolio', to: 'portfolio_comments#portfolio'
   post '/comments/create', to: 'portfolio_comments#create'
-  delete '/comments/destroy', to: 'portfolio_comments#destroy'
+  post '/comments/:id/destroy', to: 'portfolio_comments#destroy'
   get '/qa', to: 'static_pages#qa'
   
   patch '/html_css_status', to: 'html_css_statuses#update'

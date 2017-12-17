@@ -3,7 +3,8 @@ class PortfolioCommentsController < ApplicationController
   before_action :correct_user,   only: :destroy
   
   def index
-    @comments = Comment.all.order(created_at: :desc)
+    @comments = Comment.all
+    @comment = Comment.find_by(id: params[:id])
   end
   
   def new
@@ -17,23 +18,14 @@ class PortfolioCommentsController < ApplicationController
   end
 
   def destroy
+    @comment = Comment.find_by(id: params[:id])
     @comment.destroy
     flash[:success] = "Comment deleted"
+    redirect_to("/portfolio")
   end
   
   def portfolio
-    @comment = current_user.comments.find_by(id: params[:id])
-    @comments = Comment.all.order(created_at: :desc)
+    @comments = Comment.all
   end
 
-  
-  private
-
-  def comment_params
-      params.require(:comment).permit(:content)
-  end
-  
-  def correct_user
-      @comment = current_user.comments.find_by(id: params[:id])
-  end
 end

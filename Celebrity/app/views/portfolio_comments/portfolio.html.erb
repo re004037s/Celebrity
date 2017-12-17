@@ -18,19 +18,18 @@
   <br>
   <input type="submit" name="botan" value="アップロード" class= 'portfolio_upload'>
   </form>
+  
     <div class="comments">
-      <textarea rows="7">＜解説・疑問点を記載してください＞</textarea>
+      <%= render 'portfolio_comments/new' %>
     </div>
+    <% if @comments.any? %>
+      <%= render 'portfolio_comments/index' %>
+    <% end %>
   </div>
  </div>
 
-<%= render 'portfolio_comments/new' %>
 
 
- 
-          
-            <%= render 'portfolio_comments/index' %>
-          
  
 
 
