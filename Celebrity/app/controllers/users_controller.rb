@@ -24,6 +24,7 @@ class UsersController < ApplicationController
         flash[:error] = '画像の保存に失敗しました！'
         redirect_to @user
       end
+    end
   end
   
   def get_image
