@@ -9,7 +9,7 @@
   <% if @user.picture_file %>
   <%= image_tag(get_image_user_path) %>
   <% else %>
-  <%= image_tag('default.jpg') %>
+  <%= image_tag('default.png') %>
   <% end %>
 </div>
 
@@ -19,13 +19,14 @@
 </div>
 
 <div id="upload-my-picture" class="align-center">
-  <%= form_for(@user, url: post_pic_path) do |f| %>
+  
+  <%= form_for(@user, url: post_pic_path, :id => 'form_id' ) do |f| %>
     <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
     <%= f.submit '画像をアップロード', class: 'btn btn-primary fileuploader' %>
   <% end %>
-    
+  
   <script type="text/javascript">
-    $('#user_picture').bind('change', function() {
+    $('#user_picture_file').bind('change', function() {
      var size_in_megabytes = this.files[0].size/1024/1024;
      if (size_in_megabytes > 5) {
       alert('Maximum file size is 5MB. Please choose a smaller file.');

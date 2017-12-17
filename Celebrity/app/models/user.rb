@@ -5,6 +5,8 @@ class User < ApplicationRecord
     validates :name, presence: true, length: { maximum: 50 }
     validates :nickname, presence: true, length: { maximum: 50 }
     validate  :picture_size
+    validates :picture_file, presence: true #追加
+    # validates :picture_file, presence: true
     
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
     validates :email, presence: true, length: { maximum: 255 },
@@ -43,8 +45,8 @@ class User < ApplicationRecord
 
     # アップロードされた画像のサイズをバリデーションする
     def picture_size
-      if picture.size > 5.megabytes
-        errors.add(:picture, "should be less than 5MB")
+      if picture_file.size > 5.megabytes
+        errors.add(:picture_file, "should be less than 5MB")
       end
     end
     

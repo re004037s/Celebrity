@@ -15,15 +15,19 @@ class UsersController < ApplicationController
   
   def update_picture
     @user = current_user
-    upload_picture = user_params[:picture]
-
-    if@user.update_columns(picture: upload_picture.original_filename, picture_file: upload_picture.read)
-      flash[:success] = '画像を保存しました！'
-      redirect_to @user 
+    unless params[:user].try(:[],:picture) == nil
+      upload_picture = user_params[:picture]
+      if @user.update_columns(picture_file: upload_picture.read)
+        flash[:success] = '画像を保存しました！'
+        redirect_to @user 
+      else
+        flash[:error] = '画像の保存に失敗しました！'
+        redirect_to @user
+      end
     else
-      flash[:error] = '画像の保存に失敗しました！'
+      flash[:error] = '画像が選択されていません！'
       redirect_to @user
-    end 
+    end
   end
   
   def get_image
@@ -75,7 +79,7 @@ class UsersController < ApplicationController
   private
   
     def user_params
-      params.require(:user).permit(:name, :nickname, :email, :password, :password_confirmation, :portfolio_path, :github_path, :picture)
+      params.require(:user).permit(:name, :nickname, :email, :password, :password_confirmation, :portfolio_path, :github_path, :picture_file, :picture)
     end
     
     # ログイン済み or 管理ユーザであれば true を返す
