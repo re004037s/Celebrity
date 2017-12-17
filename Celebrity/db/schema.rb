@@ -153,6 +153,7 @@ ActiveRecord::Schema.define(version: 20171202122748) do
     t.boolean  "do_2",          default: false
     t.boolean  "do_3",          default: false
     t.boolean  "do_4",          default: false
+    t.boolean  "do_5",          default: false
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.date     "ga_1_compd"
@@ -170,6 +171,7 @@ ActiveRecord::Schema.define(version: 20171202122748) do
     t.date     "do_2_compd"
     t.date     "do_3_compd"
     t.date     "do_4_compd"
+    t.date     "do_5_compd"
     t.date     "schedule_date"
     t.index ["user_id"], name: "index_rubyonrails_statuses_on_user_id", using: :btree
   end
