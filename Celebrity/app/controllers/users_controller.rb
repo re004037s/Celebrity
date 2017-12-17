@@ -25,7 +25,7 @@ class UsersController < ApplicationController
         redirect_to @user
       end
     else
-      flash[:error] = '画像が選択されていません！'
+      flash[:danger] = '画像が選択されていません！'
       redirect_to @user
     end
   end

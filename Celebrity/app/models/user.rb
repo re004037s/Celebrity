@@ -6,7 +6,6 @@ class User < ApplicationRecord
     validates :nickname, presence: true, length: { maximum: 50 }
     validate  :picture_size
     validates :picture_file, presence: true #追加
-    # validates :picture_file, presence: true
     
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
     validates :email, presence: true, length: { maximum: 255 },

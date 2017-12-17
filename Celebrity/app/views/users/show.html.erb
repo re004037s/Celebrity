@@ -21,16 +21,38 @@
 <div id="upload-my-picture" class="align-center">
   
   <%= form_for(@user, url: post_pic_path, :id => 'form_id' ) do |f| %>
-    <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
-    <%= f.submit '画像をアップロード', class: 'btn btn-primary fileuploader' %>
+  <div class="form-group has-error">
+    <span id="__has-warning" style="color: red;">画像を選択してください</span>
+    <%= f.file_field :picture, accept: 'image/*' %>
+    <%= f.submit '画像をアップロード', id: 'fileuploader', class: 'btn btn-primary fileuploader', :disabled => 'true' %>
+  </div>
   <% end %>
   
   <script type="text/javascript">
-    $('#user_picture_file').bind('change', function() {
-     var size_in_megabytes = this.files[0].size/1024/1024;
-     if (size_in_megabytes > 5) {
-      alert('Maximum file size is 5MB. Please choose a smaller file.');
+    $('#user_picture').bind('change', function() {
+      
+    let size_in_megabytes = this.files[0].size/1024/1024;
+    
+    // 画像未選択の場合
+    if (size_in_megabytes === null){
+      $("#fileuploader").prop("disabled", true);
+      $('#__has-warning').show();
+    }
+    
+    // 画像のサイズが5MBを超える場合
+    if (size_in_megabytes > 5) {
+      $('#__has-warning').text('5MB以下のファイルを選択してください。');
+      $('#__has-warning').css('color','red');
+      $('#__has-warning').show();
+      $("#fileuploader").prop("disabled", true);
+    
+    // 画像のサイズが5MB以下の場合（正常）
+     }else if (size_in_megabytes <= 5){
+       $('#__has-warning').text('アップロードできます');
+       $('#__has-warning').css('color','blue');
+       $("#fileuploader").prop("disabled", false);
      }
+     
     });
   </script>
 </div>
