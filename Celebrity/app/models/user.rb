@@ -39,14 +39,5 @@ class User < ApplicationRecord
         return true if sort_order == 1
         !!self.feedbacks.find_by(movie_id: Movie.where(movie_category_id: category_id, sort_order: sort_order - 1).first.id)
     end
-
-     private
-
-    # アップロードされた画像のサイズをバリデーションする
-    def picture_size
-      if picture_file.size > 5.megabytes
-        errors.add(:picture_file, "should be less than 5MB")
-      end
-    end
     
 end
