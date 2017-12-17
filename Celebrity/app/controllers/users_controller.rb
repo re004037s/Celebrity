@@ -53,11 +53,6 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
   
-  def portfolio
-    @user = User.find(params[:id])
-    @comments = @user.comments.paginate(page: params[:page])
-  end
-  
   
   private
   

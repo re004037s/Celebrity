@@ -1,0 +1,38 @@
+<h1 class="txt5">ポートフォリオ</h1>
+  <div class="po-main">
+  <div class="po-contents">
+    <div class="user">
+      <h2 class="favi"><%= current_user.nickname %>のfavicon</h2>
+      <h2 class="name">【<%= current_user.name %>】</h2>
+    </div>
+    <div class="portfolio">
+      <p>＜ポートフォリオ名＞</p>
+      <input type="text" name="name" placeholder="NAME" maxlength="30" size="30">
+      <p>＜ポートフォリオURL＞</p>
+      <input type="text" name="url" placeholder="URL">
+      <div class="submit"><input type="submit" value="保存"></div><div class="submit"><input type="submit" value="編集"></div>
+    </div>
+    <!--画像アップロード -->
+   <form method="post" enctype="multipart/form-data">
+　<input type="file" name="pic" class= 'portfolio_file'>
+  <br>
+  <input type="submit" name="botan" value="アップロード" class= 'portfolio_upload'>
+  </form>
+    <div class="comments">
+      <textarea rows="7">＜解説・疑問点を記載してください＞</textarea>
+    </div>
+  </div>
+ </div>
+
+<%= render 'portfolio_comments/new' %>
+
+
+ 
+          
+            <%= render 'portfolio_comments/index' %>
+          
+ 
+
+
+
+  

@@ -37,10 +37,4 @@ class StaticPagesController < ApplicationController
       @categories_all = MovieCategory.all.order('sort_order')
     end
     
-    def portfolio
-      if logged_in?
-      @comment  = current_user.commnets.build
-      @feed_items = current_user.feed.paginate(page: params[:page])
-      end
-    end
 end

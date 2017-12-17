@@ -1,0 +1,20 @@
+<div class="main posts-index">
+  <div class="container">
+    <% @comments.each do |comment| %>
+    <p>------------------</p>
+      <div class="posts-index-item">
+        <p><%= comment.content %></p>
+
+        
+      </div>
+      <span class="timestamp">
+        Posted <%= time_ago_in_words(comment.created_at) %> ago.
+        <% if current_user?(comment.user) %>
+        <%= link_to "delete", '/comments/destroy', method: :delete,
+                                       data: { confirm: "You sure?" } %>
+        <% end %>
+      </span>
+      <p>------------------</p>
+    <% end %>
+  </div>
+</div>
