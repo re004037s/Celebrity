@@ -5,6 +5,7 @@ class TopController < ApplicationController
   def index
     @new_movies = Movie.all.where(['created_at > ?', Date.today.prev_day(7)])
     current_user_html = current_user.html_css_status
+
     if current_user_html.schedule_date
       if (current_user_html.ga_beginner && current_user_html.ga_middle && 
         current_user_html.ga_advanced && current_user_html.do_beginner && 
@@ -50,7 +51,7 @@ class TopController < ApplicationController
     if current_user_ruby.schedule_date
       if (current_user_ruby.ga_1 && current_user_ruby.ga_2 && 
           current_user_ruby.ga_3 && current_user_ruby.ga_4 && 
-          current_ruby.ga_5) != true
+          current_user_ruby.ga_5) != true
           if current_user_ruby.schedule_date == Date.today + 3
             @alert_messages_ruby = "完了予定日まであと3日です"
             elsif current_user_ruby.schedule_date == Date.today + 2

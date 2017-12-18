@@ -10,7 +10,6 @@ class UsersController < ApplicationController
   
   def show
     @categories = MovieCategory.where(must_view: true).order('sort_order')
-    @user = current_user
   end
   
   def update_picture
@@ -95,4 +94,4 @@ class UsersController < ApplicationController
     def administrator_user
       redirect_to root_url if current_user == nil || !current_user.admin
     end
-  end
+end
