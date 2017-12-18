@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+    acts_as_taggable
     before_save { self.email = email.downcase }
     default_scope -> { order(:created_at) }
     mount_uploader :picture, PictureUploader #画像アップロード用に追加

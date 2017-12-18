@@ -3,7 +3,7 @@ class PictureUploader < CarrierWave::Uploader::Base
   process resize_to_limit: [100, 100]
   storage :file
   
-  def default_url
+  def default_url #ここ多分機能してない
     "default.jpg"
   end
 
