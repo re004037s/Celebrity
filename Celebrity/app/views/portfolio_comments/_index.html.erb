@@ -3,16 +3,11 @@
     <% @comments.each do |comment| %>
     <p>------------------------------------------------------------------------</p>
       <div class="posts-index-item">
-        <p>Name：<%= comment.user.name %></p>
-        <p>内容：<%= comment.content %></p>
+        <p><%= comment.content %></p>
       </div>
       <span class="timestamp">
         Posted <%= comment.created_at %>.
-        <% if current_user?(comment.user) %>
-        <%= link_to "削除", "/comments/#{comment.id}/destroy", method: :delete,
-                                       data: { confirm: "You sure?" } %>    
-                                   
-        <% end %>
+ 
       </span>
     <% end %>
   </div>
