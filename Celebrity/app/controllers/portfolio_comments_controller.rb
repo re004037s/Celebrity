@@ -26,6 +26,7 @@ class PortfolioCommentsController < ApplicationController
   
   def portfolio
     @comments = Comment.all
+    @comment = Comment.find_by(id: params[:id])
   end
 
 end
