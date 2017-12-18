@@ -10,6 +10,26 @@ class UsersController < ApplicationController
   
   def show
     @categories = MovieCategory.where(must_view: true).order('sort_order')
+    @user = current_user
+  end
+  
+  def update_picture
+    @user = current_user
+    unless params[:user].try(:[],:picture) == nil
+      upload_picture = user_params[:picture]
+      if @user.update_columns(picture_file: upload_picture.read)
+        flash[:success] = '画像を保存しました！'
+        redirect_to @user 
+      else
+        flash[:error] = '画像の保存に失敗しました！'
+        redirect_to @user
+      end
+    end
+  end
+  
+  def get_image
+    @image = current_user
+    send_data(@image.picture_file)
   end
   
   def new
@@ -56,7 +76,7 @@ class UsersController < ApplicationController
   private
   
     def user_params
-      params.require(:user).permit(:name, :nickname, :email, :password, :password_confirmation, :portfolio_path, :github_path)
+      params.require(:user).permit(:name, :nickname, :email, :password, :password_confirmation, :portfolio_path, :github_path, :picture_file, :picture)
     end
     
     # ログイン済み or 管理ユーザであれば true を返す
@@ -75,5 +95,4 @@ class UsersController < ApplicationController
     def administrator_user
       redirect_to root_url if current_user == nil || !current_user.admin
     end
-    
-end
+  end

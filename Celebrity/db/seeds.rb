@@ -65,6 +65,7 @@ user = User.new(name: '鈴木 一郎',
                 existence: true)
 user.save
 
+
 HtmlCssStatus.create(user_id: user.id)
 JavascriptStatus.create(user_id: user.id)
 RubyStatus.create(user_id: user.id)

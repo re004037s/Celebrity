@@ -157,3 +157,26 @@ div#centering{
 table{
   width: 50vw;
 }
+
+.align-center{
+  width: 30%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.align-center img {
+  margin-bottom: 1em;
+  border-radius: 50%;
+  width: 50%;
+}
+
+#upload-my-picture{
+  display: none;
+}
+
+.edit-my-picture{
+  text-align: center;
+}
+
+
+
