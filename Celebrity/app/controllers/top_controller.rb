@@ -49,8 +49,13 @@ class TopController < ApplicationController
     current_user_ruby = current_user.ruby_status
     if current_user_ruby.schedule_date
       if (current_user_ruby.ga_1 && current_user_ruby.ga_2 && 
+<<<<<<< HEAD
           current_user_ruby.ga_3 && current_user_ruby.ga_4 && 
           current_ruby.ga_5) != true
+=======
+        current_user_ruby.ga_3 && current_user_ruby.ga_4 && 
+        current_ruby.ga_5) != true
+>>>>>>> 0dd6c7634f72ed88828f5d3358d814f686d985db
           if current_user_ruby.schedule_date == Date.today + 3
             @alert_messages_ruby = "完了予定日まであと3日です"
             elsif current_user_ruby.schedule_date == Date.today + 2
