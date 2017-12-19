@@ -1,0 +1,25 @@
+                                        Access privileges
+ Schema |             Name              |   Type   | Access privileges | Column access privileges 
+--------+-------------------------------+----------+-------------------+--------------------------
+ public | ar_internal_metadata          | table    |                   | 
+ public | feedbacks                     | table    |                   | 
+ public | feedbacks_id_seq              | sequence |                   | 
+ public | html_css_statuses             | table    |                   | 
+ public | html_css_statuses_id_seq      | sequence |                   | 
+ public | javascript_statuses           | table    |                   | 
+ public | javascript_statuses_id_seq    | sequence |                   | 
+ public | movie_categories              | table    |                   | 
+ public | movie_categories_id_seq       | sequence |                   | 
+ public | movies                        | table    |                   | 
+ public | movies_id_seq                 | sequence |                   | 
+ public | railstutorial_statuses        | table    |                   | 
+ public | railstutorial_statuses_id_seq | sequence |                   | 
+ public | ruby_statuses                 | table    |                   | 
+ public | ruby_statuses_id_seq          | sequence |                   | 
+ public | rubyonrails_statuses          | table    |                   | 
+ public | rubyonrails_statuses_id_seq   | sequence |                   | 
+ public | schema_migrations             | table    |                   | 
+ public | users                         | table    |                   | 
+ public | users_id_seq                  | sequence |                   | 
+(20 rows)
+

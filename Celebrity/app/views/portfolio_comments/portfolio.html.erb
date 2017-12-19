@@ -1,0 +1,64 @@
+<h1 class="txt5">ポートフォリオ</h1>
+
+  <div class="po-main">
+  <div class="po-contents">
+    <div class="user">
+      <h2 class="favi"><%= current_user.nickname %>のfavicon</h2>
+      <h2 class="name">【<%= current_user.name %>】</h2>
+    </div>
+    <div class="portfolio">
+      <p>＜ポートフォリオ名＞</p>
+      <input type="text" name="name" placeholder="NAME" maxlength="30" size="30">
+      <p>＜ポートフォリオURL＞</p>
+      <input type="text" name="url" placeholder="URL">
+      <div class="submit"><input type="submit" value="保存"></div><div class="submit"><input type="submit" value="編集"></div>
+    </div>
+    <!--画像アップロード -->
+   <form method="post" enctype="multipart/form-data">
+　<input type="file" name="pic" class= 'portfolio_file'>
+  <br>
+  <input type="submit" name="botan" value="アップロード" class= 'portfolio_upload'>
+  </form>
+  
+    <div class="comments">
+      <textarea rows="7">＜解説・疑問点を記載してください＞</textarea>
+    </div>
+  </div>
+ </div>
+
+<li id="comment-<%= comment.id %>">
+  <%= link_to gravatar_for(comment.user, size: 50), comment.user %>
+  <span class="user"><%= link_to comment.user.name, comment.user %></span>
+  <span class="content"><%= comment.content %></span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(comment.created_at) %> ago.
+    <% if current_user?(comment.user) %>
+      <%= link_to "delete", comment, method: :delete,
+                                       data: { confirm: "You sure?" } %>
+    <% end %>
+  </span>
+</li>
+  
+<% if logged_in? %>
+  <div class="row">
+    <aside class="col-md-4">
+      <section class="user_info">
+        <!--<%= render '/portfolio_comments/portfolio' %>-->
+      </section>
+      <section class="comment_form">
+        <!--<%= render '/portfolio_comments/portfolio' %>-->
+      </section>
+    </aside>
+    <div class="col-md-8">
+      <h3>Comment Feed</h3>
+      <% if @feed_items.any? %>
+        <ol class="microposts">
+        <%= render @feed_items %>
+        </ol>
+        <%= will_paginate @feed_items %>
+      <% end %>
+    </div>
+  </div>
+<% else %>
+  <h1>Welcome to the Sample App</h1>
+<% end %>
