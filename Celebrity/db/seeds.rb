@@ -56,14 +56,23 @@ Movie.create!(title: 'プログラミング演習',
               movie_category_id: 5, sort_order: 6)
 
 # Admin user
-user = User.new(name: '鈴木 一郎',
-                nickname: 'イチロー',
-                email: 'ichiro@gmail.com',
-                password: 'password',
-                password_confirmation: 'password',
-                admin: true,
-                existence: true)
-user.save
+User.create(name: '鈴木 一郎',
+            nickname: 'イチロー',
+            email: 'ichiro@gmail.com',
+            password: 'password',
+            password_confirmation: 'password',
+            admin: true,
+            existence: true)
+            
+# 一般 user
+User.create(name: '松井 秀喜',
+            nickname: 'ゴジラ',
+            email: 'hideki@gmail.com',
+            password: 'password',
+            password_confirmation: 'password',
+            admin: false,
+            existence: true)
+
 
 HtmlCssStatus.create(user_id: user.id)
 JavascriptStatus.create(user_id: user.id)
