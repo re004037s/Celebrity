@@ -342,3 +342,36 @@ padding: 5px 10px;
   width: 40%;
   margin: 0 auto;
 }
+
+
+// ポートフォリオの解説ページ
+.com-main {
+  text-align: center;
+  padding-bottom: 30px;
+  margin: 0 150px 0;
+  
+  h3 {
+    font-size: 30px;
+  }
+  
+  textarea {
+    background: whitesmoke;
+    height: 180px;
+    margin-top: 20px;
+  }
+  
+  input {
+    background: whitesmoke;
+    font-size: 18px;
+    width: 20%;
+    padding: 10px 0 10px;
+    border-radius: 10px;
+  }
+}
+
+.com-text {
+  border-bottom: 2px solid lightgrey;
+  text-align: center;
+  padding: 60px 0 20px;
+  margin: 0 10px 0;
+}

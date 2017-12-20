@@ -1,19 +1,12 @@
-<div class="main posts-index">
-  <div class="container">
-    <% @comments.each do |comment| %>
-    <p>------------------------------------------------------------------------</p>
-      <div class="posts-index-item">
-        <p><%= comment.content %></p>
-      </div>
-      <span class="timestamp">
-        Posted <%= comment.created_at %>.
-        <% if current_user %>
-          <% if current_user %>
-            <%= link_to "削除", "/comments/#{comment.id}/destroy", method: "post",
-                                             data: { confirm: "本当に削除しますか？" } %> 
-          <% end %>                          
-        <% end %>
-      </span>
+<% @comments.each do |comment| %>
+  <div class="com-text">
+    <p><%= comment.content %></p>
+    <p>［投稿日時： <%= comment.created_at %>］
+    <% if current_user %>
+      <%= link_to "削除", "/comments/#{comment.id}/destroy", method: "post",
+                                data: { confirm: "本当に削除しますか？" } %>
+    </p>
     <% end %>
   </div>
-</div>
+<% end %>
+
