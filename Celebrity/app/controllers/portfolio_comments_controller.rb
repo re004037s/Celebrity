@@ -1,6 +1,5 @@
 class PortfolioCommentsController < ApplicationController
-  before_action :logged_in_user, only: [:create, :destroy]
-  before_action :correct_user,   only: :destroy
+
   
   def index
     @comments = Comment.all
@@ -13,14 +12,14 @@ class PortfolioCommentsController < ApplicationController
   def create
     @comment = Comment.new(content: params[:content])
     @comment.save
-    flash[:success] = "Comment saved"
+    flash[:success] = "投稿されました！"
     redirect_to("/portfolio")
   end
 
   def destroy
     @comment = Comment.find_by(id: params[:id])
     @comment.destroy
-    flash[:success] = "Comment deleted"
+    flash[:success] = "投稿を削除しました！"
     redirect_to("/portfolio")
   end
   

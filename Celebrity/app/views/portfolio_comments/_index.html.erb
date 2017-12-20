@@ -7,11 +7,12 @@
       </div>
       <span class="timestamp">
         Posted <%= comment.created_at %>.
-   
-   
-      <%= link_to "削除", comment.id, method: :delete,
-                                       data: { confirm: "You sure?" } %>
-     
+        <% if current_user %>
+          <% if current_user %>
+            <%= link_to "削除", "/comments/#{comment.id}/destroy", method: "post",
+                                             data: { confirm: "本当に削除しますか？" } %> 
+          <% end %>                          
+        <% end %>
       </span>
     <% end %>
   </div>

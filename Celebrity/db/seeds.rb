@@ -71,10 +71,3 @@ RubyStatus.create(user_id: user.id)
 RubyonrailsStatus.create(user_id: user.id)
 RailstutorialStatus.create(user_id: user.id)
 UserMovieStatus.create(user_id: user.id)
-
-
-users = User.order(:created_at).take(1)
-4.times do
-  content = Faker::Lorem.sentence(1)
-  users.each { |user| user.comments.create!(content: content) }
-end

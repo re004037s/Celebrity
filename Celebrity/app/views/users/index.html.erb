@@ -30,7 +30,7 @@
           <td>
             <%= link_to user.try(:portfolio_path), class: "btn btn-sm#{' disabled' if user.try(:portfolio_path).nil?}", target: '_blank' do %>
               <div class="t_1">ポートフォリオ</div>
-              <%= link_to 'コメント', 'portfolio' %>
+              <%= link_to 'コメント', 'portfolio', class: "t_1" %>
               
             <% end %>
           </td>
