@@ -57,7 +57,15 @@
   </script>
 </div>
 
-    
+<ul id="myTags">
+</ul>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+      $("#myTags").tagit(); //tagitがnot definedになるエラー発生。jsファイルが読み込まれてない可能性大
+  });
+</script>
+
     
 <table class="txt1 table-condensed table-status-schedule">
    <tr valign="baseline">

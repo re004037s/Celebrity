@@ -19,6 +19,7 @@ gem 'bootstrap_form'
 gem 'kaminari'
 gem 'kaminari-bootstrap', '~> 3.0.1'
 gem "paranoia", '~> 2.2'
+gem 'jquery-ui-rails'
 gem 'acts-as-taggable-on', '~> 5.0.0', :git => 'https://github.com/mbleigh/acts-as-taggable-on'
 gem 'whenever', :require => false
 
