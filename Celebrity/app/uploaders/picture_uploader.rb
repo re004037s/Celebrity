@@ -3,9 +3,9 @@ class PictureUploader < CarrierWave::Uploader::Base
   process resize_to_limit: [100, 100]
   storage :file
   
-  def default_url
-    "default.jpg"
-  end
+  # def default_url #ここ多分機能してない by mikami
+  #   "default.jpg"
+  # end
 
   # アップロードファイルの保存先ディレクトリは上書き可能
   # 下記はデフォルトの保存先  

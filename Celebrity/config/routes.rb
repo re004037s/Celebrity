@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   end
   
   patch '/post_pic', to:'users#update_picture'
+  patch '/tag_edit', to:'users#tag_edit'
+  
 
   root 'top#index'
 

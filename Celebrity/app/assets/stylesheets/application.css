@@ -11,8 +11,10 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_tree .
+ *= require tagit.ui-zendesk
  *= require_self
  *= require rails_bootstrap_forms
+ *= require jquery.tagit
  */
 body {
   background-color: gray;

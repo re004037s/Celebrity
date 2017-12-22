@@ -1,10 +1,12 @@
 class User < ApplicationRecord
+    acts_as_taggable
     before_save { self.email = email.downcase }
     default_scope -> { order(:created_at) }
     mount_uploader :picture, PictureUploader #画像アップロード用に追加
     validates :name, presence: true, length: { maximum: 50 }
     validates :nickname, presence: true, length: { maximum: 50 }
     
+
     
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
     validates :email, presence: true, length: { maximum: 255 },
