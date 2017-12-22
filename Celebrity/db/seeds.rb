@@ -73,10 +73,11 @@ User.create(name: '松井 秀喜',
             admin: false,
             existence: true)
 
-
-HtmlCssStatus.create(user_id: user.id)
-JavascriptStatus.create(user_id: user.id)
-RubyStatus.create(user_id: user.id)
-RubyonrailsStatus.create(user_id: user.id)
-RailstutorialStatus.create(user_id: user.id)
-UserMovieStatus.create(user_id: user.id)
+User.all.each do |user|
+    HtmlCssStatus.create(user_id: user.id)
+    JavascriptStatus.create(user_id: user.id)
+    RubyStatus.create(user_id: user.id)
+    RubyonrailsStatus.create(user_id: user.id)
+    RailstutorialStatus.create(user_id: user.id)
+    UserMovieStatus.create(user_id: user.id)
+end 
