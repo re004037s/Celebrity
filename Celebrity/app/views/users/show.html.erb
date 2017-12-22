@@ -57,16 +57,17 @@
   </script>
 </div>
 
-<ul id="myTags">
-</ul>
+  <div>
+  <%= form_for(@user, url: tag_edit_path, remote:true) do |f| %>
+    <%= render 'shared/error_messages' %>
+    <%= f.label :tag, "タグ", class: 'tag-input' %>
+    <%= f.text_field :tag, class: 'form-control' %>
+  <div id="centering">
+    <%#= f.submit "登録！", class: "btn-log btn btn-primary" %>
+  </div>
+  <% end %>  
+  
 
-<script type="text/javascript">
-  $(document).ready(function() {
-      $("#myTags").tagit(); //tagitがnot definedになるエラー発生。jsファイルが読み込まれてない可能性大
-  });
-</script>
-
-    
 <table class="txt1 table-condensed table-status-schedule">
    <tr valign="baseline">
      <td width="60%">

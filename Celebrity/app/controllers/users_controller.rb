@@ -31,6 +31,21 @@ class UsersController < ApplicationController
     send_data(@image.picture_file)
   end
   
+  def tag_edit
+    @user = current_user
+    unless params[:user].try(:[],:tag) == nil
+      edit_tag = user_params[:tag]
+      if @user.update_columns(tag: edit_tag)
+        flash[:success] = 'タグを登録しました'
+        redirect_to @user
+      else
+        flash[:error] = '失敗しました！'
+        redirect_to @user
+      end
+    end
+  end
+  
+  
   def new
     @user = User.new
   end
@@ -75,7 +90,7 @@ class UsersController < ApplicationController
   private
   
     def user_params
-      params.require(:user).permit(:name, :nickname, :email, :password, :password_confirmation, :portfolio_path, :github_path, :picture_file, :picture)
+      params.require(:user).permit(:name, :nickname, :email, :password, :password_confirmation, :portfolio_path, :github_path, :picture_file, :picture, :tag)
     end
     
     # ログイン済み or 管理ユーザであれば true を返す
