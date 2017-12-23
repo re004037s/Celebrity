@@ -9,6 +9,7 @@
 
       <%= f.label :password, 'パスワード', class: 'txt1'%>
       <%= f.password_field :password, class: 'form-control' %>
+      <%= link_to "パスワードを忘れた方はコチラ", new_password_reset_path %>
     <div id="centering">
       <%= f.submit "ログイン", class: "btn-log btn btn-primary" %>
     </div>

@@ -12,4 +12,10 @@ class UserMailer < ApplicationMailer
     #宛先アドレス
     mail to: @user.email, subject: "セレブエンジニアサロンのタスクについて"
   end
+  
+  def password_reset(user)
+    @user = user
+    mail to: user.email, subject: "Password reset"
+  end
+
 end
