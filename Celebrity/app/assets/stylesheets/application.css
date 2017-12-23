@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  *= require rails_bootstrap_forms
+ *= require responsive.css
  */
 body {
   background-color: gray;
@@ -21,7 +22,7 @@ body {
 }
 
 .navbar-fixed-top{
-  width: 95vw;
+  width: 20em;
   height: auto;
   max-width: 900px;
 }
@@ -65,11 +66,12 @@ body {
     font-size: 1vw;
     line-height: 3em;
     color: #FFFFFF;
+    
 }
 .container{
   margin: 0 auto;
-  padding-left: 0px;
-  padding-right: 0px;
+  /*padding-left: 0px;*/
+  /*padding-right: 0px;*/
   /*margin-left: 0px;*/
   /*margin-right: 0px;*/
   max-width: 900px;
