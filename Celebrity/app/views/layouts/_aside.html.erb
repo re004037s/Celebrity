@@ -5,11 +5,12 @@
         Menu
       </div>
       <ul class="nav nav-pills nav-stacked sidebar-nav">
+        <% current_user_railstutorial = current_user.railstutorial_status %>
         <% @categories_all.each do |category| %>
           <li><%= link_to category.name, movie_category_path(category), class: "#{'disabled' unless before_category_comp?(category)}" %></li>
         <% end %>
         <li><%= link_to 'Progate進捗入力', progate_path %></li>
-        <li><%= link_to 'RailsTutorial進捗入力', railstutorial_path %></li>
+        <li><%= link_to 'RailsTutorial進捗入力', railstutorial_path, class: "#{'disabled' unless progatetask_tutolialday_comp?}" %></li>
         <li><%= link_to 'よくある質問', qa_path %></li>
       </ul>
     </div>
