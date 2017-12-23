@@ -7,7 +7,7 @@ module ApplicationHelper
     end
   end
   
-  def prgatetask_tutolialday_comp?
+  def progatetask_tutolialday_comp?
          current_user_html = current_user.html_css_status
          current_user_javascript = current_user.javascript_status
          current_user_ruby = current_user.ruby_status
