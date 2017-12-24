@@ -1,0 +1,48 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+
+/* スマホ向けレイアウト */
+
+@media (max-width: 767px) {
+
+  p {
+    font-size: 0.3em;
+  }
+
+  h4 {
+    font-size: 0.7em;
+  }
+
+  ul {
+    padding: 0;
+  }
+
+  li {
+    font-size: 0.2em;
+  }
+  
+  .txt2 {
+    margin-right: -30px;
+    margin-left: -30px;
+  }
+  
+  .panel {
+    margin-right: -30px;
+    margin-left: -30px;
+  }
+  
+   .navbar {
+    width: 110px;
+    margin-top: 1px;
+    margin-left: 10px;
+    min-height: 50px;
+    max-height: 10px;
+ }
+ 
+ .navbar-fixed-top {
+    width: 20em;
+    height: auto;
+    max-width: 400px;
+ }
+}
