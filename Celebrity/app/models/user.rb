@@ -1,10 +1,11 @@
 class User < ApplicationRecord
+    # acts_as_taggable
     before_save { self.email = email.downcase }
     default_scope -> { order(:created_at) }
     mount_uploader :picture, PictureUploader #画像アップロード用に追加
     validates :name, presence: true, length: { maximum: 50 }
     validates :nickname, presence: true, length: { maximum: 50 }
-    
+  
     
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
     validates :email, presence: true, length: { maximum: 255 },
@@ -20,8 +21,9 @@ class User < ApplicationRecord
     has_one :rubyonrails_status
     has_one :railstutorial_status
     has_one :user_movie_status
-    
     has_many :feedbacks
+    has_many :tags, through: :user_tags
+    has_many :user_tags
     
     # 渡された文字列のハッシュ値を返す
     def User.digest(string)

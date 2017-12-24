@@ -13,6 +13,12 @@
  *= require_tree .
  *= require_self
  *= require rails_bootstrap_forms
+ 
+ *= require_tree .
+ *= require jquery.tagit
+ *= require tagit.ui-zendesk
+ *= require_self
+ 
  */
 body {
   background-color: gray;
