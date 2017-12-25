@@ -15,5 +15,6 @@ class AddCompdateToRubyonrailsStatus < ActiveRecord::Migration[5.0]
     add_column :rubyonrails_statuses, :do_2_compd, :date    
     add_column :rubyonrails_statuses, :do_3_compd, :date    
     add_column :rubyonrails_statuses, :do_4_compd, :date    
+    add_column :rubyonrails_statuses, :do_5_compd, :date 
   end
 end

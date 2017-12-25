@@ -17,3 +17,54 @@
     $("#javascript_do_be").html("<%= j(render('javascript_statuses/complete', course: @course)) %>");
   <% end %>
 <% end %>
+
+<% if @course == 'javascript_ga_1' %>
+  <% if @status == 'false' %>
+    $("#javascript_ga_1").html("<%= j(render('javascript_statuses/incomplete', course: @course)) %>");
+    <% if @progate_comp_flag %>
+      $("#link_railstutorial").removeAttr("style");
+      $("#link_railstutorial").removeClass("hide-movie");
+    <% end %>
+  <% else %>
+    $("#javascript_ga_1").html("<%= j(render('javascript_statuses/complete', course: @course)) %>");
+  <% end %>
+  <% if @course == 'javascript_ga_2' %>
+  <% if @status == 'false' %>
+    $("#javascript_ga_2").html("<%= j(render('javascript_statuses/incomplete', course: @course)) %>");
+    <% if @progate_comp_flag %>
+      $("#link_railstutorial").removeAttr("style");
+      $("#link_railstutorial").removeClass("hide-movie");
+    <% end %>
+  <% else %>
+    $("#javascript_ga_2").html("<%= j(render('javascript_statuses/complete', course: @course)) %>");
+  <% end %>
+    <% if @course == 'javascript_ga_3' %>
+  <% if @status == 'false' %>
+    $("#javascript_ga_3").html("<%= j(render('javascript_statuses/incomplete', course: @course)) %>");
+    <% if @progate_comp_flag %>
+      $("#link_railstutorial").removeAttr("style");
+      $("#link_railstutorial").removeClass("hide-movie");
+    <% end %>
+  <% else %>
+    $("#javascript_ga_3").html("<%= j(render('javascript_statuses/complete', course: @course)) %>");
+  <% end %>
+    <% if @course == 'javascript_ga_4' %>
+  <% if @status == 'false' %>
+    $("#javascript_ga_4").html("<%= j(render('javascript_statuses/incomplete', course: @course)) %>");
+    <% if @progate_comp_flag %>
+      $("#link_railstutorial").removeAttr("style");
+      $("#link_railstutorial").removeClass("hide-movie");
+    <% end %>
+  <% else %>
+    $("#javascript_ga_4").html("<%= j(render('javascript_statuses/complete', course: @course)) %>");
+  <% end %>
+  
+  <% if @course == 'javascript_do_1' %>
+  <% if @status == 'false' %>
+    $("#javascript_do_1").html("<%= j(render('javascript_statuses/incomplete', course: @course)) %>");
+    <% if @progate_comp_flag %>
+      $("#link_railstutorial").removeAttr("style");
+      $("#link_railstutorial").removeClass("hide-movie");
+    <% end %>
+  <% else %>
+<% end %>

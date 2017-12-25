@@ -135,7 +135,15 @@ class RubyonrailsStatusesController < ApplicationController
         @rubyonrails_status.update_attributes(do_4: false, do_4_compd: nil)
       end
     end
+    if @course == 'rubyonrails_do_5'
+      if @status == 'false'
+        @rubyonrails_status.update_attributes(do_4: true, do_4_compd: @today)
+      else
+        @rubyonrails_status.update_attributes(do_4: false, do_4_compd: nil)
+      end
+    end
   end
+  
   
   private
     

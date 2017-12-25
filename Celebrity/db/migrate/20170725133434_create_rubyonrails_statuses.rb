@@ -17,6 +17,7 @@ class CreateRubyonrailsStatuses < ActiveRecord::Migration[5.0]
       t.boolean :do_2, default: false
       t.boolean :do_3, default: false
       t.boolean :do_4, default: false
+      t.boolean :do_5, default: false
 
       t.timestamps
     end

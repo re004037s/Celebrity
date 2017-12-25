@@ -5,6 +5,7 @@ class CreateJavascriptStatuses < ActiveRecord::Migration[5.0]
       t.boolean :ga_beginner, default: false
       t.boolean :do_beginner, default: false
       
+      
       t.timestamps
     end
   end

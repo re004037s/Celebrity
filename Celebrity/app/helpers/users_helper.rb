@@ -61,6 +61,7 @@ module UsersHelper
       sum += 1 if user.rubyonrails_status.do_2
       sum += 1 if user.rubyonrails_status.do_3
       sum += 1 if user.rubyonrails_status.do_4
+      sum += 1 if user.rubyonrails_status.do_5
       return sum
     end
   end
