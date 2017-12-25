@@ -2,11 +2,11 @@
   <div class="com-text">
     <p><%= comment.content %></p>
     <p>［投稿日時： <%= comment.created_at %>］
-    <% if current_user %>
-      <%= link_to "削除", "/comments/#{comment.id}/destroy", method: "post",
-                                data: { confirm: "本当に削除しますか？" } %>
+      <% if @user == @comment_user %>
+        <%= link_to "削除", "/comments/#{comment.id}/destroy", method: "post",
+         data: { confirm: "本当に削除しますか？" } %>
+      <% end %>
     </p>
-    <% end %>
   </div>
 <% end %>
 

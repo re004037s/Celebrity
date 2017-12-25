@@ -17,10 +17,12 @@ class PortfolioCommentsController < ApplicationController
   end
 
   def destroy
+    
     @comment = Comment.find_by(id: params[:id])
     @comment.destroy
     flash[:success] = "投稿を削除しました！"
     redirect_to("/portfolio")
+    
   end
   
   def portfolio
