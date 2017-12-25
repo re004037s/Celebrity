@@ -1,7 +1,3 @@
-@import "bootstrap-sprockets";
-@import "bootstrap";
-
-
 /* スマホ向けレイアウト */
 
 @media (max-width: 767px) {
@@ -34,8 +30,9 @@
   
    .navbar {
     width: 110px;
-    margin-top: 1px;
-    margin-left: 10px;
+    margin: 3px 9px;
+    /*margin-top: 1px;*/
+    /*margin-left: 10px;*/
     min-height: 50px;
     max-height: 10px;
  }
