@@ -45,4 +45,8 @@
     height: auto;
     max-width: 400px;
  }
+ 
+   .navbar-collapse.in {
+    height: 18em;
+  }
 }
