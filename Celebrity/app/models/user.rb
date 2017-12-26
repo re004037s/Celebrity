@@ -22,8 +22,8 @@ class User < ApplicationRecord
     has_one :railstutorial_status
     has_one :user_movie_status
     has_many :feedbacks
-    has_many :tags, through: :user_tags
-    has_many :user_tags
+    has_many :tags, through: :user_tags #user_tags(中間テーブル)を通じて、tagを多く持っている
+    has_many :user_tags #user_tagを多く持っている
     
     # 渡された文字列のハッシュ値を返す
     def User.digest(string)

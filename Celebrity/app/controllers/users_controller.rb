@@ -31,6 +31,11 @@ class UsersController < ApplicationController
     send_data(@image.picture_file)
   end
   
+   def tag_show
+    @user = User.find(params[:id])
+    @tags = @user.tags.paginate(page: params[:page])
+  end
+  
   def new
     @user = User.new
   end

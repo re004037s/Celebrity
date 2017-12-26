@@ -57,7 +57,13 @@
   </script>
 </div>
 
-
+<!-- ajax のときのroutes の指定方法がわかりません-->
+<%= form_for(tag, remote:true) do |f| %>
+    <%= f.label :tag, "タグ", class: 'tag-input' %>
+    <%= f.text_field :tag, class: 'form-control' %>
+    <%= f.submit "登録！", class: "btn-log btn btn-primary" %>
+    <%= f.hidden_field :user_id, :value => user_id %>
+<% end %> 
 
 
     

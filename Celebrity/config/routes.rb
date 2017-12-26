@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :users do
       member do
         get 'get_image'
+        # post 'post_tag' //WIP
     end
   end
         
@@ -23,8 +24,11 @@ Rails.application.routes.draw do
     get 'sort', on: :collection
   end
   
+  # resources :tags #userページに飛びたいのでいらない
+  # resources :user_tags #追加
+  
   patch '/post_pic', to:'users#update_picture'
-
+  patch '/tag_edit', to:'users#tag_edit'
   root 'top#index'
 
   get '/progate', to: 'static_pages#progate'
