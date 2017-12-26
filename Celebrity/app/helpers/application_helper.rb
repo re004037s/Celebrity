@@ -28,6 +28,7 @@ module ApplicationHelper
          current_user_rubyonrails = current_user.rubyonrails_status
          current_user_railstutorial = current_user.railstutorial_status
          
+
          if (current_user_html.ga_beginner && current_user_html.ga_middle && 
          current_user_html.ga_advanced && current_user_html.do_beginner && 
          current_user_html.do_middle && current_user_html.do_advanced && 
@@ -48,6 +49,20 @@ module ApplicationHelper
          else
           return false
          end
+  end
+    
+    def railstutrial_status_present?
+        if (current_user.railstutorial_status.chapter1 || current_user.railstutorial_status.chapter2 || 
+        current_user.railstutorial_status.chapter3 || current_user.railstutorial_status.chapter4 || 
+        current_user.railstutorial_status.chapter5 || current_user.railstutorial_status.chapter6 || 
+        current_user.railstutorial_status.chapter7 || current_user.railstutorial_status.chapter8 ||
+        current_user.railstutorial_status.chapter9 || current_user.railstutorial_status.chapter10 ||
+        current_user.railstutorial_status.chapter11 || current_user.railstutorial_status.chapter12 ||
+        current_user.railstutorial_status.chapter13 || current_user.railstutorial_status.chapter14)
+        return true
+         else
+          return false
+        end
     end
 
 end
