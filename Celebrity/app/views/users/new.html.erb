@@ -22,9 +22,11 @@
     <div id="centering">
       <%= f.submit "登録！", class: "btn-log btn btn-primary" %>
     </div>
+      <p></p>
+    <div id="centering">
+      <%= link_to "トップページへ戻る", login_path, class: "btn-log btn btn-primary" %>
+    </div>
     <% end %>
-    
-    <p class="txt1">ログインは <%= link_to "こちら", login_path, class: 'txt1' %>から！</p>
   </div>
 </div>
 <style>
