@@ -59,11 +59,8 @@ body {
     
 }
 .container{
-  margin: 0 auto;
-  /*padding-left: 0px;*/
-  /*padding-right: 0px;*/
-  /*margin-left: 0px;*/
-  /*margin-right: 0px;*/
+  
+  margin: -6px 0px;
   max-width: 900px;
   background-color: white;
 }
@@ -200,7 +197,8 @@ table{
   
    .navbar {
     width: 110px;
-    margin: 20px 9px;
+    margin-top: 15px;
+    margin-left: 10px;
     padding: 0 1px;
     min-height: 50px;
     max-height: 10px;
@@ -208,7 +206,7 @@ table{
  
  .navbar-fixed-top {
     position: absolute;
-    width: 20em;
+    width: 28em;
     height: auto;
     max-width: 400px;
     top: -1em;
