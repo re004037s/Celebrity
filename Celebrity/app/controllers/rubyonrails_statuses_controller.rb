@@ -141,7 +141,7 @@ class RubyonrailsStatusesController < ApplicationController
     
     def progate_check
       if current_user.html_css_status.ji_2 \
-        && current_user.javascript_status.do_beginner \
+        && current_user.javascript_status.ga_4 \
         && current_user.ruby_status.ga_5
           @progate_comp_flag = true
       else

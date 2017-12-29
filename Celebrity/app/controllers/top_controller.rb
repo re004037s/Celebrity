@@ -16,7 +16,9 @@ class TopController < ApplicationController
          current_user_html.ga_advanced && current_user_html.do_beginner && 
          current_user_html.do_middle && current_user_html.do_advanced && 
          current_user_html.ji_1 && current_user_html.ji_2 &&
-         current_user_javascript.ga_beginner && current_user_javascript.do_beginner &&
+         current_user_javascript.ga_1 && current_user_javascript.ga_2 &&
+         current_user_javascript.ga_3 && current_user_javascript.ga_4 &&
+         current_user_javascript.do_1 &&         
          current_user_ruby.ga_1 && current_user_ruby.ga_2 && 
          current_user_ruby.ga_3 && current_user_ruby.ga_4 && 
          current_user_ruby.ga_5 &&current_user_rubyonrails.ga_1 &&
@@ -56,7 +58,9 @@ class TopController < ApplicationController
     
     current_user_javascript = current_user.javascript_status
     if current_user_javascript.schedule_date
-      if (current_user_javascript.ga_beginner && current_user_javascript.do_beginner) != true
+      if (current_user_javascript.ga_1 && current_user_javascript.ga_2 &&
+          current_user_javascript.ga_3 && current_user_javascript.ga_4 &&
+          current_user_javascript.do_1 ) != true
           if current_user_javascript.schedule_date == Date.today + 3
             @alert_messages_javascript = "完了予定日まであと3日です"
             elsif current_user_javascript.schedule_date == Date.today + 2

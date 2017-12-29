@@ -24,7 +24,7 @@ class StaticPagesController < ApplicationController
       @feedback = current_user.feedbacks.build
 
       if current_user.html_css_status.ji_2 \
-        && current_user.javascript_status.do_beginner \
+        && current_user.javascript_status.ga_4 \
         && current_user.ruby_status.ga_5 \
         && current_user.rubyonrails_status.do_4
           @progate_comp_flag = true
