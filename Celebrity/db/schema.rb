@@ -187,16 +187,13 @@ ActiveRecord::Schema.define(version: 20171229055500) do
     t.string   "nickname"
     t.string   "email"
     t.string   "password_digest"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
-    t.boolean  "admin",             default: false
-    t.boolean  "existence",         default: true
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.boolean  "admin",           default: false
+    t.boolean  "existence",       default: true
     t.string   "portfolio_path"
     t.string   "github_path"
     t.binary   "picture_file"
-    t.string   "activation_digest"
-    t.boolean  "activated",         default: false
-    t.datetime "activated_at"
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
