@@ -1,5 +1,4 @@
 class PortfolioCommentsController < ApplicationController
-
   
   def index
     @comments = Comment.all
@@ -10,10 +9,11 @@ class PortfolioCommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.new(content: params[:content])
-    @comment.save
+    @comment = Comment.new(content: params[:content], user_id: params[:id])
+    if @comment.save
     flash[:success] = "投稿されました！"
     redirect_to("/portfolio")
+    end
   end
 
   def destroy
