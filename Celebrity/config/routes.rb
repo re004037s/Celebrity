@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   # post 'tag_show', to:'users#tag_show'
   patch '/post_pic', to:'users#update_picture'
   patch '/tag_edit', to:'users#tag_edit' #追加
+  patch '/tag_show', to:'users#tag_show' #追加 sugi
   root 'top#index'
 
   get '/progate', to: 'static_pages#progate'

@@ -57,11 +57,16 @@
   </script>
 </div>
 
-  <form method="post" action="tag_show"> <!-- フォーム作った -->
-  <label for="exampleInputEmail1">タグ</label>
-  <textarea name="tag_name" class="form-control post_form"></textarea>
-  <input type="submit" value="送信ボタン">
-  </form>
+  <%= form_for(@user, url: tag_show_path) do |f| %>
+    <%= f.text_field :tag %>
+    <%= f.submit '送信する' %>
+  <% end %>
+
+  <!--<form method="post" action="tag_show"> <!-- フォーム作った -->
+  <!--<label for="exampleInputEmail1">タグ</label>-->
+  <!--<textarea name="tag_name" class="form-control post_form"></textarea>-->
+  <!--<input type="submit" value="送信ボタン">-->
+  <!--</form>-->
     
 <table class="txt1 table-condensed table-status-schedule">
    <tr valign="baseline">

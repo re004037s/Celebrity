@@ -32,14 +32,20 @@ class UsersController < ApplicationController
   end
   
   def tag_show
-    @user = User.new(title:params[:title],location:params[:location],gender:params[:gender],line_id:params[:line_id],user_id:params[:user_id],description:params[:description])
-    @user.save
-    redirect_to("/")
-    tag_list = params[:tag_name].split(",")
-    if @user.save
-    @user.save_posts(tag_list)
+    @user = current_user
+    tag = user_params[:tag]
+    
+    # error
+    @tags = @user.tag.build(params[:tag]);
+    
+    if @tags.save
+      flash[:success] = 'saved!'
+      redirect_to @user
     end
     
+    flash[:error] = 'failed to save'
+    redirect_to @user
+
   end
   
   def new
@@ -86,7 +92,7 @@ class UsersController < ApplicationController
   private
   
     def user_params
-      params.require(:user).permit(:name, :nickname, :email, :password, :password_confirmation, :portfolio_path, :github_path, :picture_file, :picture)
+      params.require(:user).permit(:tag, :name, :nickname, :email, :password, :password_confirmation, :portfolio_path, :github_path, :picture_file, :picture)
     end
     
     # ログイン済み or 管理ユーザであれば true を返す
