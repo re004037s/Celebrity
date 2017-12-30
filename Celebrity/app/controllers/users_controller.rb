@@ -31,9 +31,15 @@ class UsersController < ApplicationController
     send_data(@image.picture_file)
   end
   
-   def tag_show
-    @user = User.find(params[:id])
-    @tags = @user.tags.paginate(page: params[:page])
+  def tag_show
+    @user = User.new(title:params[:title],location:params[:location],gender:params[:gender],line_id:params[:line_id],user_id:params[:user_id],description:params[:description])
+    @user.save
+    redirect_to("/")
+    tag_list = params[:tag_name].split(",")
+    if @user.save
+    @user.save_posts(tag_list)
+    end
+    
   end
   
   def new
