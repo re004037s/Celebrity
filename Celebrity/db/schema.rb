@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20171230143259) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id", "created_at"], name: "index_comments_on_user_id_and_created_at", using: :btree
     t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
 
@@ -210,6 +211,7 @@ ActiveRecord::Schema.define(version: 20171230143259) do
     t.boolean  "existence",       default: true
     t.string   "portfolio_path"
     t.string   "github_path"
+    t.binary   "picture_file"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 

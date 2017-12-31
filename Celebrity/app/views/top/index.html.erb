@@ -3,9 +3,21 @@
   <div class="row">
     <div class="col-sm-9">
       <p class="txt2">
+        <% Date.today %>
+        <% day = Date.today %>
+        
         <%= current_user.nickname %>さんこんにちは！<br>
-        今日も一日頑張りましょう(๑╹ω╹๑ )
-      </p><br><br>
+
+        今日も一日頑張りましょう(๑╹ω╹๑ )<br>
+        </p>
+        <!--ここにアラート入れる-->    
+       <h4 style="color:red;"><%= @alert_messages_html + "→【Progate:HTML&CSSコース】" if @alert_messages_html.present? %></h4>
+       <h4 style="color:red;"><%= @alert_messages_javascript + "→【Progate:javascriptコース】" if @alert_messages_javascript.present? %></h4>
+       <h4 style="color:red;"><%= @alert_messages_ruby + "→【Progate:rubyコース】" if @alert_messages_ruby.present? %></h4>
+       <h4 style="color:red;"><%= @alert_messages_rubyonrails + "→【Progate:ruby on railsコース】" if @alert_messages_rubyonrails.present? %></h4>
+       <h4 style="color:red;"><%= @alert_messages_railstutorial + "→【railsチュートリアル】" if @alert_messages_railstutorial.present? %></h4>
+       <h4 style="color:red;"><%= @alert_message_mv + "まだ見終わっていない動画があります" if @alert_message_mv.present? %></h4>
+      
        <h4>はじめに</h4>
        <br>
   

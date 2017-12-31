@@ -3,11 +3,12 @@
     【<%= current_user.nickname %>さんのコメント】
     <p><%= comment.content %></p>
     <p>［投稿日時： <%= comment.created_at %>］
-      <% if @user == @comment_user %>
+      <% if @logged_in_user == @comment_user %>
         <%= link_to "削除", "/comments/#{comment.id}/destroy", method: "post",
          data: { confirm: "本当に削除しますか？" } %>
       <% end %>
     </p>
   </div>
 <% end %>
+
 

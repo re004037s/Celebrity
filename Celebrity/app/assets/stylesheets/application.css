@@ -62,7 +62,7 @@ body {
 }
 
 .navbar-inverse .navbar-nav > li > a {
-    font-size: 1vw;
+    font-size: 80%;
     line-height: 3em;
     color: #FFFFFF;
 }
@@ -158,3 +158,28 @@ table{
   width: 50vw;
 }
 
+<<<<<<< HEAD
+=======
+.align-center{
+  width: 30%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.align-center img {
+  margin-bottom: 1em;
+  border-radius: 50%;
+  width: 50%;
+}
+
+#upload-my-picture{
+  display: none;
+}
+
+.edit-my-picture{
+  text-align: center;
+}
+
+
+
+>>>>>>> 5ac67cc9f21d419a1f9a4ce37a4c659ce9e38c17

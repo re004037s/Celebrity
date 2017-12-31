@@ -22,6 +22,7 @@ class StaticPagesController < ApplicationController
     def setting
       @movies = Movie.all
       @feedback = current_user.feedbacks.build
+      @comment = current_user.comments.build
 
       if current_user.html_css_status.ji_2 \
         && current_user.javascript_status.do_beginner \
