@@ -96,8 +96,5 @@ class UsersController < ApplicationController
     def administrator_user
       redirect_to root_url if current_user == nil || !current_user.admin
     end
-<<<<<<< HEAD
 
-=======
->>>>>>> 5ac67cc9f21d419a1f9a4ce37a4c659ce9e38c17
 end
