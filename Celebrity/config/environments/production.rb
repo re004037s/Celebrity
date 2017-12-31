@@ -60,9 +60,9 @@ Rails.application.configure do
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.delivery_method = :test
-  host = 'salon-tokoix.c9users.io' # ここをコピペすると失敗します。自分の環境に合わせてください。
-  config.action_mailer.default_url_options = { host: host, protocol: 'https' }
+  config.action_mailer.delivery_method = :smtp
+  host = 'http://www.celebrity-engineer-members.com'
+  config.action_mailer.default_url_options = { host: host, protocol: 'http' }
   config.action_mailer.smtp_settings = {
     address: 'smtp.gmail.com',
     port: 587,
