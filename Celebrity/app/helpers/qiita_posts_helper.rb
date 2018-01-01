@@ -1,0 +1,2 @@
+module QiitaPostsHelper
+end
