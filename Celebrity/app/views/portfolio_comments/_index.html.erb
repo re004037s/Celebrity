@@ -1,14 +1,13 @@
 <% @comments.each do |comment| %>
   <div class="com-text">
-    【<%= current_user.nickname %>さんのコメント】
+    <p>【<%= comment.user.nickname %>さんのコメント】</p>
     <p><%= comment.content %></p>
     <p>［投稿日時： <%= comment.created_at %>］
-      <% if @logged_in_user == @comment_user %>
+      <% if current_user == comment.user %>
         <%= link_to "削除", "/comments/#{comment.id}/destroy", method: "post",
          data: { confirm: "本当に削除しますか？" } %>
       <% end %>
     </p>
   </div>
 <% end %>
-
 

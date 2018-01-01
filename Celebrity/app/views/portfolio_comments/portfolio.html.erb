@@ -1,14 +1,9 @@
 <div class="com-main"> 
   <h3>ポートフォリオの解説</h3>
-  <h2 class="txt3">
-    [ <%= current_user.nickname %>さんの作品 ]
-  </h2>
+  <h2 class="txt3">＜下記の欄に解説文を記載して下さい＞</h2>
     <%= render 'portfolio_comments/new' %>
-
-
-  <% if @comments.any? %>
-    <%= render 'portfolio_comments/index' %>
-
+    <% if @comments.any? %>
+      <%= render 'portfolio_comments/index' %>
     <% end %>
 </div>
 
