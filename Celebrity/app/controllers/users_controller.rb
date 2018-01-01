@@ -33,19 +33,17 @@ class UsersController < ApplicationController
   
   def tag_show
     @user = current_user
-    tag = user_params[:tag]
-    
-    # error
-    @tags = @user.tag.build(params[:tag]);
+    @tag = @user.Tag.new(params_tag)
     
     if @tags.save
       flash[:success] = 'saved!'
-      redirect_to @user
-    end
+      redirect_to @user #current_user(マイページ）へのpath
+    else
     
     flash[:error] = 'failed to save'
     redirect_to @user
-
+    end
+    
   end
   
   def new

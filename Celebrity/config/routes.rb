@@ -36,7 +36,7 @@ Rails.application.routes.draw do
   post '/progate', to: 'static_pages#progate'
   get '/railstutorial', to: 'static_pages#railstutorial'
   get '/qa', to: 'static_pages#qa'
-  post '/tag_show', to: 'users#tag_show'#ルーティング指定したけどエラー
+  # post '/tag_show', to: 'users#tag_show'#ルーティング指定したけどエラー
   patch '/html_css_status', to: 'html_css_statuses#update'
   patch '/html_css_status_schedule', to: 'html_css_statuses#update_schedule', as: 'html_css_schedule'
   patch '/javascript_status', to: 'javascript_statuses#update'

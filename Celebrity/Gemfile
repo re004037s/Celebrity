@@ -23,6 +23,7 @@ gem 'whenever', :require => false
 
 group :development, :test do
   gem 'byebug',  '9.0.6', platform: :mri
+  gem 'pry-rails' #pry-rails を入れるとshow-modelsのコマンドが Rails consoleで使えるようになる
 end
 
 group :development do

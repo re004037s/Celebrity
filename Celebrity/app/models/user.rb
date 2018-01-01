@@ -22,9 +22,9 @@ class User < ApplicationRecord
     has_one :railstutorial_status
     has_one :user_movie_status
     has_many :feedbacks
-    has_many :user_tag, dependent: :destroy #user_tagを多く持っている,コメントを削除する動作
-    has_many :tag, through: :user_tag #user_tags(中間テーブル)を通じて、tagを多く持っている.throughを定義する場合、それに関連するもの通過するものは先に関連付けさせる。
-    
+    has_many :user_tags, foreign_key: 'user_id' #user_tagを多く持っている,コメントを削除する動作。has_manyに指定する場合複数形
+    has_many :tags, through: :user_tags #:throughでuser_tags(中間テーブル)を通じて、tagを多く持っている.throughを定義する場合、それに関連するもの通過するものは先に関連付けさせる。
+    accepts_nested_attributes_for :user_tags, allow_destroy: true #関連項目も含めて一度に保存、削除するとい意味
     
     # 渡された文字列のハッシュ値を返す
     def User.digest(string)
