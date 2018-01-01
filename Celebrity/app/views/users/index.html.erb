@@ -31,8 +31,8 @@
             <%= link_to user.try(:portfolio_path), class: "btn btn-sm#{' disabled' if user.try(:portfolio_path).nil?}", target: '_blank' do %>
               <div class="t_1">ポートフォリオ</div>
             <% end %>
-            <%= link_to 'portfolio', class: "t_1 btn btn-sm-1#{' disabled' if user.try(:portfolio_path).nil?}", target: '_blank' do %>
-              <div class="t_1">コメント</div>
+            <% if user.try(:portfolio_path).nil? %><% else %>
+              <%= link_to 'コメント', 'portfolio', class: "t_1 btn btn-sm-1" %>
             <% end %>
           </td>
           <td>
