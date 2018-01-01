@@ -69,15 +69,6 @@ ActiveRecord::Schema.define(version: 20171230143259) do
     t.index ["user_id"], name: "index_javascript_statuses_on_user_id", using: :btree
   end
 
-  create_table "microposts", force: :cascade do |t|
-    t.text     "content"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at", using: :btree
-    t.index ["user_id"], name: "index_microposts_on_user_id", using: :btree
-  end
-
   create_table "movie_categories", force: :cascade do |t|
     t.string   "name"
     t.datetime "deleted_at"
@@ -217,6 +208,5 @@ ActiveRecord::Schema.define(version: 20171230143259) do
 
   add_foreign_key "comments", "users"
   add_foreign_key "feedbacks", "users"
-  add_foreign_key "microposts", "users"
   add_foreign_key "movies", "movie_categories"
 end
