@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'password_resets/new'
+
+  get 'password_resets/edit'
+
   get '/signup', to:'users#new'
   post '/signup', to:'users#create'
 
@@ -11,10 +15,11 @@ Rails.application.routes.draw do
         get 'get_image'
     end
   end
-        
+  resources :account_activations, only: [:edit]
   # patch '/users/:id/update_picture', to: 'users#update_picture'
     
   resources :feedbacks, only: [:create, :update, :destroy]
+  resources :password_resets,     only: [:new, :create, :edit, :update]
   
   resources :movies do
     get 'sort', on: :collection
