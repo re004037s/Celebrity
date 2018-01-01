@@ -1,8 +1,9 @@
 class PortfolioCommentsController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
-  before_action :correct_user,   only: :destroy
+  
   
   def index
+    @users = User.page(params[:page])
     @comments = Comment.all
     @comment = Comment.find_by(id: params[:id])
   end
@@ -28,9 +29,9 @@ class PortfolioCommentsController < ApplicationController
   end
   
   def portfolio
+    @users = User.page(params[:page])
     @comments = Comment.all
     @comment = Comment.find_by(id: params[:id])
   end
-
 
 end

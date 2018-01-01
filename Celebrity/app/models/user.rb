@@ -23,7 +23,6 @@ class User < ApplicationRecord
     
     has_many :feedbacks
     has_many :comments, dependent: :destroy 
-    has_many :microposts
 
     # 渡された文字列のハッシュ値を返す
     def User.digest(string)
