@@ -1,5 +1,6 @@
 <%= form_tag('/comments/create') do %>
-  <textarea name="content"></textarea>
+  <textarea name="content" cols=35 rows=30 wrap="hard" 
+  placeholder="（例）サロン内メンバーのスケジュールを管理する為のポートフォリオ" required></textarea>
   <input type="submit" value="投稿する">
 <% end %>
   
