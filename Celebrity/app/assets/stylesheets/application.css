@@ -67,7 +67,7 @@ body {
 }
 
 .navbar-inverse .navbar-nav > li > a {
-    font-size: 1vw;
+    font-size: 80%;
     line-height: 3em;
     color: #FFFFFF;
 }

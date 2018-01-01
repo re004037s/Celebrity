@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171223063115) do
+
+ActiveRecord::Schema.define(version: 20171229055500) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -209,6 +211,8 @@ ActiveRecord::Schema.define(version: 20171223063115) do
     t.string   "portfolio_path"
     t.string   "github_path"
     t.binary   "picture_file"
+    t.string   "reset_digest"
+    t.datetime "reset_sent_at"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
