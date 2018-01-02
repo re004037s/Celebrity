@@ -23,7 +23,8 @@ class User < ApplicationRecord
     has_one :user_movie_status
     
     has_many :feedbacks
-    
+    has_many :comments, dependent: :destroy 
+
     # 渡された文字列のハッシュ値を返す
     def User.digest(string)
         cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
@@ -39,7 +40,7 @@ class User < ApplicationRecord
         return true if sort_order == 1
         !!self.feedbacks.find_by(movie_id: Movie.where(movie_category_id: category_id, sort_order: sort_order - 1).first.id)
     end
-    
+
 # アカウントを有効にする
   def activate
     update_attribute(:activated,    true)
@@ -90,3 +91,4 @@ class User < ApplicationRecord
       SecureRandom.urlsafe_base64
     end
 end
+

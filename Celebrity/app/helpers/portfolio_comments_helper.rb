@@ -1,0 +1,2 @@
+module PortfolioCommentsHelper
+end
