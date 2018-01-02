@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   resources :movie_categories do
     get 'sort', on: :collection
   end
-  resources :qiita_posts, only: [:create, :destroy]
+  resources :qiita_posts
   
   patch '/post_pic', to:'users#update_picture'
 

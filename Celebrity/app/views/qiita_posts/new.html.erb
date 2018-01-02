@@ -1,5 +1,5 @@
 <h1>新規登録</h1>
-<%= form_for :post, url: posts_path do |f| %>
+<%= form_for :qiita_post, url: qiita_posts_path do |f| %>
   <p>
     <%= f.label :title, "タイトル" %><br>
     <%= f.text_field :title %>
@@ -11,6 +11,6 @@
   </p>
  
   <p>
-    <%= f.submit %>
+    <%= f.submit "登録" %>
   </p>
 <% end %>
