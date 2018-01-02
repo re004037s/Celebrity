@@ -1,1 +1,20 @@
 <h1>投稿編集</h1>
+<%= form_for :qiita_post, url: qiita_posts_path do |f| %>
+  <p>
+    <%= f.label :title, "タイトル" %><br>
+    <%= f.text_field :title %>
+  </p>
+ 
+  <p>
+    <%= f.label :url, "投稿URL" %><br>
+    <%= f.text_field :url %>
+  </p>
+
+  <p>
+    <%= f.submit "更新", {class: 'btn btn-update' } %>
+  </p>
+  <p>
+    <%= f.submit "削除", {class: 'btn btn-delete' } %>
+  </p>
+
+<% end %>

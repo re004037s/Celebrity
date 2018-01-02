@@ -178,5 +178,24 @@ table{
   text-align: center;
 }
 
+.btn-new {
+  color: #FAFAFA;
+  margin-left: 3em;
+  border-radius: 25px;
+  padding: 2px 18px;
+  background-color: #00BFFF
+}
+
+.button_wrapper {
+   text-align:center;
+}
+
+.btn-regist {
+  color: #FAFAFA;
+  border-radius: 25px;
+  background-color: #00BFFF;
+  width: 8em;
+}
+
 
 

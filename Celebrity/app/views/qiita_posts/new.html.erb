@@ -6,11 +6,10 @@
   </p>
  
   <p>
-    <%= f.label :title, "投稿URL" %><br>
-    <%= f.text_field :title %>
+    <%= f.label :url, "投稿URL" %><br>
+    <%= f.text_field :url %>
   </p>
- 
-  <p>
-    <%= f.submit "登録" %>
-  </p>
+  <div class="button_wrapper"> 
+    <%= f.submit '登録', {class: 'btn btn-regist' }%>
+  </div>
 <% end %>

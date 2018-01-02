@@ -9,10 +9,6 @@ Rails.application.routes.draw do
   post '/login', to:'sessions#create'
   delete '/logout', to:'sessions#destroy'
   
-  get 'qiita_posts/new'
-  get 'qiita_posts/edit'
-
-
   resources :users do
       member do
         get 'get_image'
