@@ -197,5 +197,16 @@ table{
   width: 8em;
 }
 
+.btn-update {
+  color: #FAFAFA;
+  border-radius: 25px;
+  background-color: #00BFFF;
+  width: 8em;
+}
 
-
+.btn-postdelete {
+  color: #FAFAFA;
+  border-radius: 25px;
+  background-color: #FF0000;
+  width: 8em;
+}
