@@ -33,16 +33,16 @@ class UsersController < ApplicationController
   
   def tag_show
     @user = current_user
-    @tag = @user.Tag.new(params_tag)
+    tags = user_params[:tags]
     
-    if @tags.save
-      flash[:success] = 'saved!'
-      redirect_to @user #current_user(マイページ）へのpath
-    else
+    # if @tags.save
+    #   flash[:success] = 'saved!'
+    #   redirect_to @user #current_user(マイページ）へのpath
+    # else
     
-    flash[:error] = 'failed to save'
+    flash[:error] = tags
     redirect_to @user
-    end
+    # end
     
   end
   
@@ -90,7 +90,7 @@ class UsersController < ApplicationController
   private
   
     def user_params
-      params.require(:user).permit(:tag, :name, :nickname, :email, :password, :password_confirmation, :portfolio_path, :github_path, :picture_file, :picture)
+      params.require(:user).permit(:tags, :name, :nickname, :email, :password, :password_confirmation, :portfolio_path, :github_path, :picture_file, :picture)
     end
     
     # ログイン済み or 管理ユーザであれば true を返す
