@@ -12,13 +12,13 @@
         <%= f.text_field :url %>
       </p>
       <p>
-        <%= f.submit "更新", {class: 'btn btn-update' } %>
+        <%= f.submit "更新", {class: 'btn btn-primary post-update' } %>
       </p>
     <% end %>
   </div>
 </div>
 
 <% if current_user?(@qiitapost.user) %>
-<%= link_to "削除", @qiitapost, class: "btn btn-postdelete", method: :delete,
+<%= link_to "削除", @qiitapost, class: "btn btn-danger post-delete", method: :delete,
                                  data: { confirm: "本当に削除しますか?" } %>
 <% end %>
