@@ -32,18 +32,24 @@ class UsersController < ApplicationController
   end
   
   def tag_show
-    @user = current_user
-    tags = user_params[:tags]
+
     
-    # if @tags.save
-    #   flash[:success] = 'saved!'
-    #   redirect_to @user #current_user(マイページ）へのpath
-    # else
+    tagname = user_params[:tags]
+    @user = current_user
+    # tagのidカラムが連番にならない
+    @tag = @user.tags.build(id: 11 ,tag: tagname)
+    
+    if @tag.save
+      # 中間テーブルに登録する
+      
+      flash[:success] = 'saved!'
+      redirect_to @user 
+    else
     
     flash[:error] = tags
     redirect_to @user
     # end
-    
+    end
   end
   
   def new
