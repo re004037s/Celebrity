@@ -2,7 +2,8 @@ class PortfolioCommentsController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
   
   def portfolio
-    @comments = Comment.page(params[:page])
+    @user_id =  params[:id]
+    @comments = Comment.where(user_page_id: @user_id).page(params[:page])
   end
   
   def index
@@ -12,7 +13,7 @@ class PortfolioCommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.new(content: params[:content], user_id: @current_user.id)
+    @comment = Comment.new(content: params[:content], user_id: @current_user.id, user_page_id: params[:user_page_id])
     if @comment.save
     flash[:success] = "投稿されました！"
     redirect_to("/portfolio")
