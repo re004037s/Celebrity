@@ -178,5 +178,29 @@ table{
   text-align: center;
 }
 
+.btn-new {
+  color: #FAFAFA;
+  margin-left: 3em;
+  border-radius: 25px;
+  padding: 2px 18px;
+  background-color: #00BFFF
+}
 
+.button_wrapper {
+   text-align:center;
+}
 
+.post-regist, .post-update {
+  color: #FAFAFA;
+  border-radius: 25px;
+  background-color: #00BFFF;
+  width: 8em;
+}
+
+.post-delete {
+  color: #FAFAFA;
+  border-radius: 25px;
+  background-color: #FF0000;
+  width: 8em;
+  margin-top: 1em;
+}

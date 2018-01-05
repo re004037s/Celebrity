@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   get 'password_resets/new'
-
   get 'password_resets/edit'
 
   get '/signup', to:'users#new'
@@ -9,7 +8,9 @@ Rails.application.routes.draw do
   get '/login', to:'sessions#new'
   post '/login', to:'sessions#create'
   delete '/logout', to:'sessions#destroy'
-
+  
+  
+  
   resources :users do
       member do
         get 'get_image'
@@ -28,6 +29,7 @@ Rails.application.routes.draw do
   resources :movie_categories do
     get 'sort', on: :collection
   end
+  resources :qiita_posts
   
   patch '/post_pic', to:'users#update_picture'
 
