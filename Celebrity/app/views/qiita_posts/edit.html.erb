@@ -20,8 +20,6 @@
 </div>
 
 <div id="centering">
-  <% if current_user.admin? || current_user?(@qiitapost.user) %>
   <%= link_to "削除", @qiitapost, class: "btn btn-danger post-delete", method: :delete,
                                    data: { confirm: "本当に削除しますか?" } %>
-  <% end %>
 </div>
