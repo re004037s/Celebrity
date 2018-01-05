@@ -1,6 +1,6 @@
 class QiitaPostsController < ApplicationController
-  before_action :logged_in_user, only: [:create, :destroy]
-  before_action :correct_user,   only: :destroy
+  before_action :logged_in_user, only: [:index, :create, :edit, :destroy]
+  before_action :correct_user,   only: [:edit, :update, :destroy]
   
   def index
     @qiitaposts = QiitaPost.all.page(params[:page])
@@ -35,7 +35,7 @@ class QiitaPostsController < ApplicationController
   end
 
   def destroy
-    # @qiitapost = QiitaPost.find(params[:id])
+    @qiitapost = QiitaPost.find(params[:id])
     @qiitapost.destroy
     flash[:success] = "Qiitaが削除されました"
     redirect_to qiita_posts_url
@@ -47,10 +47,10 @@ class QiitaPostsController < ApplicationController
     def qiitapost_params
       params.require(:qiita_post).permit(:title, :url)
     end
-    
+
     def correct_user
-      @qiitapost = current_user.qiita_posts.find_by(id: params[:id])
-      redirect_to qiita_posts_url if @qiitapost.nil?
+      @post = current_user.qiita_posts.find_by(id: params[:id])
+      redirect_to qiita_posts_url if @post.nil? && !current_user.admin
     end
 end
   

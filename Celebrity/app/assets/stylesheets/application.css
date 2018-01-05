@@ -190,19 +190,11 @@ table{
    text-align:center;
 }
 
-.btn-regist {
+.post-regist, .post-update {
   color: #FAFAFA;
   border-radius: 25px;
   background-color: #00BFFF;
   width: 8em;
-}
-
-.post-update {
-  color: #FAFAFA;
-  border-radius: 25px;
-  background-color: #00BFFF;
-  width: 8em;
-  margin-left: 10em;
 }
 
 .post-delete {
@@ -210,5 +202,5 @@ table{
   border-radius: 25px;
   background-color: #FF0000;
   width: 8em;
-  margin-left: 380px;
+  margin-top: 1em;
 }

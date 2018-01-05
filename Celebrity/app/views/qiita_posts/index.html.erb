@@ -13,7 +13,7 @@
   <% @qiitaposts.each do |qiitapost| %>
     <tbody>
       <tr>
-        <td class="left"><%= link_to qiitapost.title, qiitapost.url %></td>
+        <td class="left"><%= link_to qiitapost.title, qiitapost.url, target: '_blank' %></td>
         <td class="center"><%= qiitapost.user.nickname %></td>
         <td class="center"><%= qiitapost.created_at.strftime("%Y/%m/%d") %></td>
         <td class="center"><%= link_to '編集', edit_qiita_post_path(qiitapost) %></td>
