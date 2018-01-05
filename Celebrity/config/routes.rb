@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   # patch '/users/:id/update_picture', to: 'users#update_picture'
     
   resources :feedbacks, only: [:create, :update, :destroy]
+  resources :comments, only: [:create, :destroy]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   
   resources :movies do
@@ -37,6 +38,9 @@ Rails.application.routes.draw do
   get '/progate', to: 'static_pages#progate'
   post '/progate', to: 'static_pages#progate'
   get '/railstutorial', to: 'static_pages#railstutorial'
+  get '/portfolio', to: 'portfolio_comments#portfolio'
+  post '/comments/create', to: 'portfolio_comments#create'
+  post '/comments/:id/destroy', to: 'portfolio_comments#destroy'
   get '/qa', to: 'static_pages#qa'
   
   patch '/html_css_status', to: 'html_css_statuses#update'
