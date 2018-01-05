@@ -1,22 +1,30 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-/* mixins, variables, etc. */
+/*ベースカラー*/
+$frame-grey: #373737;
+$background-grey: #f4f4f4;
 
-$gray-medium-light: #eaeaea;
 
-/* universal */
-textarea {
-  resize: vertical;
-}
+/*定義した変数やクラスのインポート*/
+@import "variables"; //ベースカラーなどの設定
+@import "classes";  //オリジナル設定のクラス
 
-.center {
-  text-align: center;
-  vertical-align: middle;
-  h1 {
-    margin-bottom: 10px;
-  }
-}
+/*共通設定のインポート*/
+@import "common";  //全体
+@import "header";  //ヘッダー
+@import "container";  //メインコンテンツ
+@import "footer";  //フッター
+@import "sidebar";  //サイドバー
+@import "texts";  //テキスト
+@import "forms";  //フォーム
+@import "tables";  //テーブル
+@import "parts";  //ボタンや矢印など
+
+@import "responsive";  //レスポンシブ関連の設定
+
+
+
 
 .disabled {
   pointer-events: none;
@@ -29,106 +37,6 @@ textarea {
 
 .inline {
   display: inline;
-}
-
-/* typography */
-
-h1, h2, h3, h4, h5, h6 {
-  line-height: 1;
-}
-
-h1 {
-  font-size: 3em;
-  letter-spacing: -2px;
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-h2 {
-  font-size: 1.2em;
-  letter-spacing: -1px;
-  margin-bottom: 30px;
-  text-align: center;
-  font-weight: normal;
-  color: $gray-light;
-}
-
-
-
-p {
-  font-size: 1.1em;
-  line-height: 1.7em;
-}
-
-li {
-  list-style: none;
-}
-
-/* header */
-
-#logo {
-  float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: -1px;
-  padding-top: 9px;
-  font-weight: bold;
-  &:hover {
-    color: white;
-    text-decoration: none;
-  }
-}
-
-.top-phrase{
-  font-size: 154%;
-  line-height: 3em;
-  color: #F8C810;
-  padding-left: 20px;
-  display: inline;
-  &:hover {
-    text-decoration: none;
-  }
-}
-
-/* footer */
-
-footer {
-  color: $gray-light;
-  a {
-    color: $gray;
-    &:hover {
-      color: $gray-darker;
-    }
-  }
-  small {
-    float: left;
-  }
-  ul {
-    float: right;
-    list-style: none;
-    li {
-      float: left;
-      margin-left: 15px;
-    }
-  }
-}
-.collapse.navbar-collapse.navbar-right{
-  text-align: right;
-  display: block;
-}
-
-/* forms */
-
-input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
-  width: 100%;
-  margin-bottom: 15px;
-}
-
-input {
-  height: auto !important;
 }
 
 #error_explanation {
@@ -149,10 +57,7 @@ input {
    width: 100%;
    height: auto;
   }
-img {
-  width: 100%;
-  height: auto;
-}
+
 
 .movie {
   position: relative;
@@ -177,13 +82,9 @@ img {
   margin-top: 50px;
 }
 
-.container{
-  width: 80%;
-  margin: 0 auto;
-}
 
 /* ユーザ一覧&詳細ページ */
-
+/*
 .table-index {
   width: 90%;
   table-layout: fixed;
@@ -209,17 +110,12 @@ img {
 }
 
 
-td {
-  word-wrap: break-word;
-}
 
 .forms {
   margin-bottom: 50px;
 }
 
-.form-button {
-  height: 40px;
-}
+
 
 .user-delete {
   float: right;
@@ -254,7 +150,7 @@ td {
 #paginate {
   text-align: center;
 }
-
+*/
 // 動画管理系ページ
 
 // 上矢印
@@ -279,7 +175,7 @@ td {
   transform: rotate(135deg);
   margin: auto;
 }
-
+/*
 .btn-wrapper {
   text-align: center;
   padding: 20px 0;
@@ -295,7 +191,7 @@ td {
 .form-inline {
   margin-bottom: 10px;
 }
-
+*/
 .category-title {
   padding: 0.4em 0.5em;/*文字の上下 左右の余白*/
   color: #494949;/*文字色*/
@@ -304,37 +200,82 @@ td {
   border-bottom: solid 3px #d7d7d7;/*下線*/
 }
 
-td {
-padding: 5px 10px;
+
+/*
+
+
+
+
+
+
+
+.panel {
+  margin-top: 20px;
 }
 
-.table-status-schedule {
-  width: 90%;
-  table-layout: fixed;
-  margin: 0 auto;
+
+
+.blank-box{
+  height: 30px;
+  background-color: black
 }
 
-.btn-schedule{
+.btn{
+  background-color:#00CCCC;
+  color:black;
+}
+.btn-lg{
+  text-align: center;
   font-size: 1vw;
 }
 
-.font-schedule{
-  background-color:#FFCACA;
-  color: red;
-  font: Times New Roman, Times, serif;
-  text-shadow: 0 1px 0 #999,
-  0 2px 0 #999
-}
-.table-header a {
-  color: white;
-  &:hover {
-    color: aqua;
-    text-decoration: none;
-  }
+.btn-comp {
+  background-color: #248;
+  color: #fff;
 }
 
-.btn-sm {
-  display: inline-block;
-  width: 100%;
-  margin: 0 auto;
+.btn-incomp {
+  background-color: gray;
+  color: #fff;
 }
+
+input#submit_button {
+    width: 30vw;
+    height: auto;
+}
+
+div#centering{
+  text-align: center ;
+}
+
+.btn-delete{
+  font-size: 1vw;
+  position:relative;
+  right: 3em
+}
+
+
+
+.align-center{
+  width: 30%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.align-center img {
+  margin-bottom: 1em;
+  border-radius: 50%;
+  width: 50%;
+}
+
+#upload-my-picture{
+  display: none;
+}
+
+.edit-my-picture{
+  text-align: center;
+}
+
+
+
+*/
