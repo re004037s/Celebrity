@@ -73,14 +73,11 @@ $('#user_tags').keyup(function() {
   }
 });
 </script>
-  
-  
-  
-  <%#= @user_tags.each do |user_tag| %>
-    <%#= user_tag.tag %>
-  <%# end %>
-  
 
+<!--不要なデータも表示される-->
+<%= @user_tags.each do |user_tag| %>
+  <%= user_tag.tag %>
+<% end %>
   
 <table class="txt1 table-condensed table-status-schedule">
    <tr valign="baseline">

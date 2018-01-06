@@ -10,6 +10,10 @@ class UsersController < ApplicationController
   
   def show
     @categories = MovieCategory.where(must_view: true).order('sort_order')
+    
+    # 不要なデータも表示される
+    @user_tags = current_user.tags.select("tag")
+    
   end
   
   def update_picture
