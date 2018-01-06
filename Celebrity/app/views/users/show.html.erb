@@ -57,17 +57,31 @@
   </script>
 </div>
 
-  <%= form_for(@user, url: tag_show_path) do |f| %>
-    <%= f.text_field :tags %> <!--tags（多対多だと複数形）-->
-    <%= f.submit '送信する' %>
-  <% end %>
+<%= form_for(@user, url: tag_show_path) do |f| %>
+  <%= f.text_field :tags , value:'' %> <!--tags（多対多だと複数形）-->
+  <%= f.submit '送信する', id:'tag-submit', class: 'btn btn-primary', :disabled => 'true' %>
+<% end %>
 
-  <!--<form method="post" action="tag_show"> <!-- フォーム作った -->
-  <!--<label for="exampleInputEmail1">タグ</label>-->
-  <!--<textarea name="tag_name" class="form-control post_form"></textarea>-->
-  <!--<input type="submit" value="送信ボタン">-->
-  <!--</form>-->
-    
+<script>
+$('#user_tags').keyup(function() {
+  let text_field_obj = $('#tag-submit').parent('.edit_user').find('#user_tags');
+  let words = text_field_obj.val();
+  if(words.length >= 1){
+    $("#tag-submit").prop("disabled", false);
+  }else{
+    $("#tag-submit").prop("disabled", true);
+  }
+});
+</script>
+  
+  
+  
+  <%#= @user_tags.each do |user_tag| %>
+    <%#= user_tag.tag %>
+  <%# end %>
+  
+
+  
 <table class="txt1 table-condensed table-status-schedule">
    <tr valign="baseline">
      <td width="60%">
