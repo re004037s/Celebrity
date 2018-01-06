@@ -15,6 +15,7 @@
       <ul class="nav navbar-nav navbar-right">
         <% if current_user.try(:admin) %>
           <li><%= link_to 'MOVIES EDIT', movies_path %></li>
+          <li><%= link_to 'SIGN UP', signup_path %></li>
         <% end %>
         <li><%= link_to 'SALON MEMBERS', users_path %></li>
         <li><%= link_to 'MY PAGE', current_user %></li>

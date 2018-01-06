@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171215163120) do
+
+ActiveRecord::Schema.define(version: 20180101135247) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "created_at"], name: "index_comments_on_user_id_and_created_at", using: :btree
+    t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
+  end
 
   create_table "feedbacks", force: :cascade do |t|
     t.text     "feedback"
@@ -80,6 +90,16 @@ ActiveRecord::Schema.define(version: 20171215163120) do
     t.integer  "sort_order"
     t.index ["deleted_at"], name: "index_movies_on_deleted_at", using: :btree
     t.index ["movie_category_id"], name: "index_movies_on_movie_category_id", using: :btree
+  end
+
+  create_table "qiita_posts", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "created_at"], name: "index_qiita_posts_on_user_id_and_created_at", using: :btree
+    t.index ["user_id"], name: "index_qiita_posts_on_user_id", using: :btree
   end
 
   create_table "railstutorial_statuses", force: :cascade do |t|
@@ -194,9 +214,13 @@ ActiveRecord::Schema.define(version: 20171215163120) do
     t.string   "portfolio_path"
     t.string   "github_path"
     t.binary   "picture_file"
+    t.string   "reset_digest"
+    t.datetime "reset_sent_at"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
+  add_foreign_key "comments", "users"
   add_foreign_key "feedbacks", "users"
   add_foreign_key "movies", "movie_categories"
+  add_foreign_key "qiita_posts", "users"
 end
