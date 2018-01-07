@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     @categories = MovieCategory.where(must_view: true).order('sort_order')
     
     # 不要なデータも表示される
-    @user_tags = current_user.tags.select("tag")
+    @user_tags = current_user.tags
     
   end
   
@@ -36,17 +36,16 @@ class UsersController < ApplicationController
   end
   
   def tag_show
-
-    
     # tagname = user_params[:tags]
     @user = current_user
     # tagのidカラムが連番にならない
     # @tag = @user.tags.build(id: 11 ,tag: tagname)
     tag = @user.tags.create(tag: user_params[:tags])
+    tag_name = user_params[:tags]
     if tag.save
       # 中間テーブルに登録する
       # user.tags << tag
-      flash[:success] = 'saved!'
+      flash[:success] = 'タグ名： ' + tag_name + ' を追加しました'
       redirect_to @user 
     else
     
@@ -54,6 +53,17 @@ class UsersController < ApplicationController
     redirect_to @user
     # end
     end
+  end
+  
+  def tag_delete
+    @user = current_user
+    user_id = params[:user_id]
+    tag_id = params[:tag_id]
+
+    #invalid foreign key error -> modelにdestroy?? 関係の追記が必要？
+    @user.tags.find_by(id: tag_id).delete
+    
+    redirect_to @user
   end
   
   def new

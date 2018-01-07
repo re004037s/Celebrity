@@ -57,10 +57,33 @@
   </script>
 </div>
 
+<div id="tag-controll">
+  
 <%= form_for(@user, url: tag_show_path) do |f| %>
-  <%= f.text_field :tags , value:'' %> <!--tags（多対多だと複数形）-->
-  <%= f.submit '送信する', id:'tag-submit', class: 'btn btn-primary', :disabled => 'true' %>
+  <%= f.text_field :tags , value:'', placeholder: 'タグを入力' %> <!--tags（多対多だと複数形）-->
+  <%= f.submit '登録', id:'tag-submit', class: 'btn btn-primary', :disabled => 'true' %>
 <% end %>
+
+<p>登録済みのタグ一覧：</p>
+<% @user_tags.each do |user_tag| %>
+  <span class="tag_box">
+    <!--WIP javascript validate-->
+    
+    <!-- 1byte char のみ登録可能にする 日本語の文字は2バイトか3バイトなので登録不可にする-->
+    
+    <!-- English 2 words eg. 「table tennis」のように間や前後に半角スペースが入った場合はどうする？-->
+    
+    <!-- ajax で既存のタグを推測してサジェストできると同名タグの重複登録を防げる？
+      例えば tabletennis , table tennis というタグが存在してしまう可能性がある。
+      同じ意味なのにデータベース上、別の単語になってしまう？
+    -->
+    
+    <%= link_to user_tag.tag, user_path %>
+    <%= link_to image_tag('delete_icon.png', :class => 'delete_icon'), delete_tag_path(user_id: current_user.id, tag_id: user_tag.id) %>
+  </span>
+<% end %>
+
+</div>
 
 <script>
 $('#user_tags').keyup(function() {
@@ -72,12 +95,15 @@ $('#user_tags').keyup(function() {
     $("#tag-submit").prop("disabled", true);
   }
 });
-</script>
 
-<!--不要なデータも表示される-->
-<%= @user_tags.each do |user_tag| %>
-  <%= user_tag.tag %>
-<% end %>
+  $('.delete_icon').css('width', '15');
+  $('.tag_box').css('border', 'solid 1px #000000');
+  $('.tag_box').css('margin', '0 3px 0 0');
+  $('.tag_box').css('padding', '2 2');
+  $('.tag_box').css('font-size', '1.3em');
+  $('#tag-controll').css('width', '60%');
+  $('#tag-controll').css('margin', '1em auto');
+</script>
   
 <table class="txt1 table-condensed table-status-schedule">
    <tr valign="baseline">
