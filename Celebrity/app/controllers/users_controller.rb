@@ -53,7 +53,7 @@ class UsersController < ApplicationController
       redirect_to @user 
     else
     
-    flash[:error] = tags
+    flash[:danger] = tag.errors.messages[:tag].join(' / ') ##[:tag]で配列を取り出し、.join(' / ')で分割した。
     redirect_to @user
     # end
     end
