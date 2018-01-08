@@ -150,42 +150,29 @@ class TopController < ApplicationController
       end
     end
     
-    movies = MovieCategory.where(must_view: true).all
+    movie_ids = current_user.feedbacks.pluck(:movie_id)
+    current_user_movie = current_user.user_movie_status
+    last_movie_id = MovieCategory.where(must_view: true).order('sort_order').last.movies.order('sort_order').last.id
+    if current_user_movie.schedule_date
+    if movie_ids.include?(last_movie_id)
     
-    
-    movie_category_ids = []
-    movies.each do |movie|
-      movie_category_ids.push(movie.id) 
-    end
-    
-    must_movies = Movie.where(movie_category_id: movie_category_ids)
-    max_movie_id = must_movies.maximum(:id)
-    movie_ids = []
-    current_user.feedbacks.each do |feedback|
-        movie_ids.push(feedback.movie_id)
-    end
-    
-    
-   current_user_movie = current_user.user_movie_status
-   if current_user_movie.schedule_date
-    if movie_ids.include?(max_movie_id)
       @alert_message_mv = ""
-     elsif
-     current_user_movie.schedule_date == Date.today + 3
-     @alert_message_mv = "【完了予定日3日前】"
-     elsif
-     current_user_movie.schedule_date == Date.today + 2
-      @alert_message_mv = "【完了予定日2日前】"
       elsif
-     current_user_movie.schedule_date == Date.today + 1
-      @alert_message_mv = "【完了予定日1日前】"
+        current_user_movie.schedule_date == Date.today + 3
+        @alert_message_mv = "【完了予定日3日前】"
       elsif
-     current_user_movie.schedule_date == Date.today
-      @alert_message_mv = "【本日完了予定日】"
+        current_user_movie.schedule_date == Date.today + 2
+        @alert_message_mv = "【完了予定日2日前】"
       elsif
-     current_user_movie.schedule_date < Date.today
-      @alert_message_mv = "【完了予定日を過ぎました】"
-    else
+        current_user_movie.schedule_date == Date.today + 1
+        @alert_message_mv = "【完了予定日1日前】"
+      elsif
+        current_user_movie.schedule_date == Date.today
+        @alert_message_mv = "【本日完了予定日】"
+      elsif
+        current_user_movie.schedule_date < Date.today
+        @alert_message_mv = "【完了予定日を過ぎました】"
+      else
       @alert_message_mv = ""
     end
    end

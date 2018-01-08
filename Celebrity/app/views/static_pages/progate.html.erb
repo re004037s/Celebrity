@@ -381,9 +381,9 @@
   </tbody>
 </table>
 <% hide = 'hide' %>
-      <div id="link_railstutorial" class="<%= hide unless @progate_comp_flag %>">
+      <div id="link_railstutorial" class="<%= hide unless progatetask_tutolialday_comp? %>">
         <p class="text-center">
-          <%= link_to "NEXT：Rails Tutorial", railstutorial_path, class: "txt1 btn btn-lg btn-primary" %>
+          <%= link_to "NEXT：Rails Tutorial", railstutorial_path, class: "txt1 btn btn-lg btn-primary"%>
         </p>
       </div>
     </div> 
