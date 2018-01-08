@@ -10,9 +10,13 @@ class UsersController < ApplicationController
   
   def show
     @categories = MovieCategory.where(must_view: true).order('sort_order')
-    
-    # 不要なデータも表示される
-    @user_tags = current_user.tags
+    if params[:user_id]
+      user = User.find_by(id: params[:user_id])
+      # 不要なデータも表示される
+      @user_tags = user.tags
+    else
+      @user_tags = current_user.tags
+    end
     
   end
   
@@ -57,11 +61,22 @@ class UsersController < ApplicationController
   
   def tag_delete
     @user = current_user
+    # GET https://celeb/users/1?user_id=1&tag_id=10
+    # GET URLを打つとデータを表示できる
+    
+    # POST https://celeb/users/1?user_id=1&tag_id=10
+    # URLでアクセスしても実行されない
+    # parameter(?以降)は表示されない
+    # DELETEも同様
+    
+    #params[:user_id] つまり user_id=1 のuser_idがキーになっている値 つまり1を受け取る
+    
+    
     user_id = params[:user_id]
     tag_id = params[:tag_id]
 
     #invalid foreign key error -> modelにdestroy?? 関係の追記が必要？
-    @user.tags.find_by(id: tag_id).delete
+    @user.user_tags.find_by(id: tag_id).delete #tags ⇨ user_tags（中間テーブル）に変更
     
     redirect_to @user
   end

@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   patch '/post_pic', to:'users#update_picture'
   patch '/tag_edit', to:'users#tag_edit' #追加
   patch '/tag_show', to:'users#tag_show' #追加 sugi
-  post '/delete_tag', to: 'users#tag_delete' #temp
+  delete '/delete_tag', to: 'users#tag_delete' #temp post⇨deleteに変更しshow.htmlと統一
   root 'top#index'
 
   get '/progate', to: 'static_pages#progate'
