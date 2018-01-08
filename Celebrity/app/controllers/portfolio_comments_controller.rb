@@ -16,7 +16,7 @@ class PortfolioCommentsController < ApplicationController
     @comment = Comment.new(content: params[:content], user_id: @current_user.id, user_page_id: params[:user_page_id])
     if @comment.save
     flash[:success] = "投稿されました！"
-    redirect_to("/portfolio")
+    redirect_to portfolio_path(id: params[:user_page_id])
     end
   end
 
@@ -24,7 +24,7 @@ class PortfolioCommentsController < ApplicationController
     @comment = Comment.find_by(id: params[:id])
     @comment.destroy
     flash[:success] = "投稿を削除しました！"
-    redirect_to("/portfolio")
+    redirect_to portfolio_path(id: params[:user_page_id])
   end
 
 end
