@@ -40,20 +40,15 @@ class UsersController < ApplicationController
   end
   
   def tag_show
-    # tagname = user_params[:tags]
     @user = current_user
-    # tagのidカラムが連番にならない
-    # @tag = @user.tags.build(id: 11 ,tag: tagname)
     tag = @user.tags.create(tag: user_params[:tags])
     tag_name = user_params[:tags]
     if tag.save
-      # 中間テーブルに登録する
-      # user.tags << tag
       flash[:success] = 'タグ名： ' + tag_name + ' を追加しました'
       redirect_to @user 
     else
-    
-    flash[:danger] = tag.errors.messages[:tag].join(' / ') ##[:tag]でメッセージの配列を取り出し、.join(' / ')で分割した。
+    ##[:tag]でメッセージの配列を取り出し、.join(' / ')で分割した。
+    flash[:danger] = tag.errors.messages[:tag].join(' / ') 
     redirect_to @user
     # end
     end
@@ -61,24 +56,17 @@ class UsersController < ApplicationController
   
   def tag_delete
     @user = current_user
-    # GET https://celeb/users/1?user_id=1&tag_id=10
-    # GET URLを打つとデータを表示できる
-    
-    # POST https://celeb/users/1?user_id=1&tag_id=10
-    # URLでアクセスしても実行されない
-    # parameter(?以降)は表示されない
-    # DELETEも同様
-    
-    #params[:user_id] つまり user_id=1 のuser_idがキーになっている値 つまり1を受け取る
-    
-    
     user_id = params[:user_id]
     tag_id = params[:tag_id]
 
     #invalid foreign key error -> modelにdestroy?? 関係の追記が必要？
-    @user.user_tags.find_by(id: tag_id).delete #tags ⇨ user_tags（中間テーブル）に変更
-    
-    redirect_to @user
+    if @user.user_tags.find_by(id: tag_id).delete #tags ⇨ user_tags（中間テーブル）に変更
+      flash[:success] = 'タグ を削除しました'
+      redirect_to @user
+    else
+      flash[:success] = '削除失敗'
+      redirect_to @user
+    end
   end
   
   def new
