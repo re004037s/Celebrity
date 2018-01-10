@@ -1,6 +1,8 @@
 <%= form_tag('/comments/create') do %>
+  <% user_id %>
   <textarea name="content" cols=35 rows=30 wrap="hard" 
   placeholder="（例）サロン内メンバーのスケジュールを管理する為のポートフォリオ" required></textarea>
+  <input name="user_page_id" type="hidden" value=<%= user_id %> >
   <input type="submit" value="投稿する">
 <% end %>
   
