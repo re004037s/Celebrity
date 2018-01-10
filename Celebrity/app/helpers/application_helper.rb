@@ -1,13 +1,4 @@
 module ApplicationHelper
-  def progate_comp?
-    if current_user.javascript_status.do_beginner && current_user.ruby_status.ga_5 && current_user.rubyonrails_status.do_4
-      return true
-    else
-      return false
-    end
-  end
-  
-
   def movie_comp?
     last_movie = MovieCategory.where(must_view: true).order('sort_order').last.movies.order('sort_order').last
     if (current_user.feedbacks.find_by(movie_id: last_movie.id) &&
@@ -33,7 +24,9 @@ module ApplicationHelper
          current_user_html.ga_advanced && current_user_html.do_beginner && 
          current_user_html.do_middle && current_user_html.do_advanced && 
          current_user_html.ji_1 && current_user_html.ji_2 &&
-         current_user_javascript.ga_beginner && current_user_javascript.do_beginner &&
+         current_user_javascript.ga_1 && current_user_javascript.ga_2 &&
+         current_user_javascript.ga_3 && current_user_javascript.ga_4 &&
+         current_user_javascript.do_1 &&
          current_user_ruby.ga_1 && current_user_ruby.ga_2 && 
          current_user_ruby.ga_3 && current_user_ruby.ga_4 && 
          current_user_ruby.ga_5 &&current_user_rubyonrails.ga_1 &&
