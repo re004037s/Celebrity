@@ -200,12 +200,27 @@ ActiveRecord::Schema.define(version: 20180103225219) do
     t.index ["user_id"], name: "index_rubyonrails_statuses_on_user_id", using: :btree
   end
 
+  create_table "tags", force: :cascade do |t|
+    t.text     "tag"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "user_movie_statuses", force: :cascade do |t|
     t.integer  "user_id"
     t.date     "schedule_date"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.index ["user_id"], name: "index_user_movie_statuses_on_user_id", using: :btree
+  end
+
+  create_table "user_tags", force: :cascade do |t|
+    t.integer  "tag_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tag_id"], name: "index_user_tags_on_tag_id", using: :btree
+    t.index ["user_id"], name: "index_user_tags_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -228,5 +243,8 @@ ActiveRecord::Schema.define(version: 20180103225219) do
   add_foreign_key "comments", "users"
   add_foreign_key "feedbacks", "users"
   add_foreign_key "movies", "movie_categories"
+  add_foreign_key "user_tags", "tags"
+  add_foreign_key "user_tags", "users"
   add_foreign_key "qiita_posts", "users"
+
 end

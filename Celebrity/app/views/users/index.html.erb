@@ -21,7 +21,7 @@
         <tr>
           <td><%= user.nickname %></td>
             <% if @current_user.admin %>
-              <td><%= link_to user.name, user %></td>
+              <td><%= link_to user.name, user_path(user, user_id: user.id) %></td>
               <td><%= user.email %></td>
             <% end %>
           <td><%= percent_movie(user) %>%</td>
