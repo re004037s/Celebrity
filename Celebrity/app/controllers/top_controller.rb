@@ -5,6 +5,35 @@ class TopController < ApplicationController
   def index
     @new_movies = Movie.all.where(['created_at > ?', Date.today.prev_day(7)])
     current_user_html = current_user.html_css_status
+    
+    current_user_rubyonrails = current_user.rubyonrails_status
+         current_user_html = current_user.html_css_status
+         current_user_javascript = current_user.javascript_status
+         current_user_ruby = current_user.ruby_status
+         current_user_railstutorial = current_user.railstutorial_status
+         
+         if (current_user_html.ga_beginner && current_user_html.ga_middle && 
+         current_user_html.ga_advanced && current_user_html.do_beginner && 
+         current_user_html.do_middle && current_user_html.do_advanced && 
+         current_user_html.ji_1 && current_user_html.ji_2 &&
+         current_user_javascript.ga_1 && current_user_javascript.ga_2 &&
+         current_user_javascript.ga_3 && current_user_javascript.ga_4 &&
+         current_user_javascript.do_1 &&         
+         current_user_ruby.ga_1 && current_user_ruby.ga_2 && 
+         current_user_ruby.ga_3 && current_user_ruby.ga_4 && 
+         current_user_ruby.ga_5 &&current_user_rubyonrails.ga_1 &&
+         current_user_rubyonrails.ga_2 && current_user_rubyonrails.ga_3 &&
+         current_user_rubyonrails.ga_4 && current_user_rubyonrails.ga_5 &&
+         current_user_rubyonrails.ga_6 && current_user_rubyonrails.ga_7 &&
+         current_user_rubyonrails.ga_8 && current_user_rubyonrails.ga_9 &&
+         current_user_rubyonrails.ga_10 && current_user_rubyonrails.ga_11 &&
+         current_user_rubyonrails.do_1 && current_user_rubyonrails.do_2 &&
+         current_user_rubyonrails.do_3 && current_user_rubyonrails.do_4 &&
+         current_user_railstutorial.schedule_date.present?) != true
+         @finish_flag = 1
+         else
+         @finish_flag = 0
+         end
 
     if current_user_html.schedule_date
       if (current_user_html.ga_beginner && current_user_html.ga_middle && 
@@ -29,7 +58,9 @@ class TopController < ApplicationController
     
     current_user_javascript = current_user.javascript_status
     if current_user_javascript.schedule_date
-      if (current_user_javascript.ga_beginner && current_user_javascript.do_beginner) != true
+      if (current_user_javascript.ga_1 && current_user_javascript.ga_2 &&
+          current_user_javascript.ga_3 && current_user_javascript.ga_4 &&
+          current_user_javascript.do_1 ) != true
           if current_user_javascript.schedule_date == Date.today + 3
             @alert_messages_javascript = "完了予定日まであと3日です"
             elsif current_user_javascript.schedule_date == Date.today + 2
@@ -119,42 +150,29 @@ class TopController < ApplicationController
       end
     end
     
-    movies = MovieCategory.where(must_view: true).all
+    movie_ids = current_user.feedbacks.pluck(:movie_id)
+    current_user_movie = current_user.user_movie_status
+    last_movie_id = MovieCategory.where(must_view: true).order('sort_order').last.movies.order('sort_order').last.id
+    if current_user_movie.schedule_date
+    if movie_ids.include?(last_movie_id)
     
-    
-    movie_category_ids = []
-    movies.each do |movie|
-      movie_category_ids.push(movie.id) 
-    end
-    
-    must_movies = Movie.where(movie_category_id: movie_category_ids)
-    max_movie_id = must_movies.maximum(:id)
-    movie_ids = []
-    current_user.feedbacks.each do |feedback|
-        movie_ids.push(feedback.movie_id)
-    end
-    
-    
-   current_user_movie = current_user.user_movie_status
-   if current_user_movie.schedule_date
-    if movie_ids.include?(max_movie_id)
       @alert_message_mv = ""
-     elsif
-     current_user_movie.schedule_date == Date.today + 3
-     @alert_message_mv = "【完了予定日3日前】"
-     elsif
-     current_user_movie.schedule_date == Date.today + 2
-      @alert_message_mv = "【完了予定日2日前】"
       elsif
-     current_user_movie.schedule_date == Date.today + 1
-      @alert_message_mv = "【完了予定日1日前】"
+        current_user_movie.schedule_date == Date.today + 3
+        @alert_message_mv = "【完了予定日3日前】"
       elsif
-     current_user_movie.schedule_date == Date.today
-      @alert_message_mv = "【本日完了予定日】"
+        current_user_movie.schedule_date == Date.today + 2
+        @alert_message_mv = "【完了予定日2日前】"
       elsif
-     current_user_movie.schedule_date < Date.today
-      @alert_message_mv = "【完了予定日を過ぎました】"
-    else
+        current_user_movie.schedule_date == Date.today + 1
+        @alert_message_mv = "【完了予定日1日前】"
+      elsif
+        current_user_movie.schedule_date == Date.today
+        @alert_message_mv = "【本日完了予定日】"
+      elsif
+        current_user_movie.schedule_date < Date.today
+        @alert_message_mv = "【完了予定日を過ぎました】"
+      else
       @alert_message_mv = ""
     end
    end

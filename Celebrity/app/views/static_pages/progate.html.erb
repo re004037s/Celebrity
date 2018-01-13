@@ -105,22 +105,52 @@
   </thead>
   <tbody>
     <tr>
-      <td>学習コース/基礎</td>
-      <td id="javascript_ga_be">
-        <% if !@javascript_status.ga_beginner %>
-          <%= render 'javascript_statuses/complete', course: 'javascript_ga_be' %>
+      <td>学習コース 1</td>
+      <td id="javascript_ga_1">
+        <% if !@javascript_status.ga_1 %>
+          <%= render 'javascript_statuses/complete', course: 'javascript_ga_1' %>
         <% else %>
-          <%= render 'javascript_statuses/incomplete', course: 'javascript_ga_be' %>
+          <%= render 'javascript_statuses/incomplete', course: 'javascript_ga_1' %>
         <% end %>
       </td>
     </tr>
     <tr>
-      <td>道場コース/基礎</td>
-      <td id="javascript_do_be">
-        <% if !@javascript_status.do_beginner %>
-          <%= render 'javascript_statuses/complete', course: 'javascript_do_be' %>
+      <td>学習コース 2</td>
+      <td id="javascript_ga_2">
+        <% if !@javascript_status.ga_2 %>
+          <%= render 'javascript_statuses/complete', course: 'javascript_ga_2' %>
         <% else %>
-          <%= render 'javascript_statuses/incomplete', course: 'javascript_do_be' %>
+          <%= render 'javascript_statuses/incomplete', course: 'javascript_ga_2' %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>学習コース 3</td>
+      <td id="javascript_ga_3">
+        <% if !@javascript_status.ga_3 %>
+          <%= render 'javascript_statuses/complete', course: 'javascript_ga_3' %>
+        <% else %>
+          <%= render 'javascript_statuses/incomplete', course: 'javascript_ga_3' %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>学習コース 4</td>
+      <td id="javascript_ga_4">
+        <% if !@javascript_status.ga_4 %>
+          <%= render 'javascript_statuses/complete', course: 'javascript_ga_4' %>
+        <% else %>
+          <%= render 'javascript_statuses/incomplete', course: 'javascript_ga_4' %>
+        <% end %>
+      </td>
+    </tr>        
+    <tr>
+      <td>道場コース 1</td>
+      <td id="javascript_do_1">
+        <% if !@javascript_status.do_1 %>
+          <%= render 'javascript_statuses/complete', course: 'javascript_do_1' %>
+        <% else %>
+          <%= render 'javascript_statuses/incomplete', course: 'javascript_do_1' %>
         <% end %>
       </td>
     </tr>
@@ -351,9 +381,9 @@
   </tbody>
 </table>
 <% hide = 'hide' %>
-      <div id="link_railstutorial" class="<%= hide unless @progate_comp_flag %>">
+      <div id="link_railstutorial" class="<%= hide unless progatetask_tutolialday_comp? %>">
         <p class="text-center">
-          <%= link_to "NEXT：Rails Tutorial", railstutorial_path, class: "txt1 btn btn-lg btn-primary" %>
+          <%= link_to "NEXT：Rails Tutorial", railstutorial_path, class: "txt1 btn btn-lg btn-primary"%>
         </p>
       </div>
     </div> 

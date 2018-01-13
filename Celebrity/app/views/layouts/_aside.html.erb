@@ -8,9 +8,11 @@
         <% @categories_all.each do |category| %>
           <li><%= link_to category.name, movie_category_path(category), class: "#{'disabled' unless before_category_comp?(category)}" %></li>
         <% end %>
-        <li><%= link_to 'Progate進捗入力', progate_path %></li>
-        <li><%= link_to 'RailsTutorial進捗入力', railstutorial_path %></li>
+
+        <li><%= link_to 'Progate進捗入力', progate_path, class: "#{'disabled' unless movie_comp?}" %></li>
+        <li><%= link_to 'RailsTutorial進捗入力', railstutorial_path, class: "#{'disabled' unless progatetask_tutolialday_comp?}" %></li>
         <li><%= link_to 'よくある質問', qa_path %></li>
+        <li><%= link_to 'Qiita投稿まとめ', qiita_posts_path %></li>
       </ul>
     </div>
   </div>

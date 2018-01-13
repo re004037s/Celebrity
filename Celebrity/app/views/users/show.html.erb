@@ -189,14 +189,29 @@ $('#user_tags').keyup(function() {
   </thead>
   <tbody>
     <tr>
-      <td>学習コース/基礎</td>
-      <td class="center"><%= @user.javascript_status.try(:ga_beginner) ? '完了' : '未' %></td>
-      <td><%= @user.javascript_status.try(:ga_beginner_compd)%></td>
+      <td>学習コース 1</td>
+      <td class="center"><%= @user.javascript_status.try(:ga_1) ? '完了' : '未' %></td>
+      <td><%= @user.javascript_status.try(:ga_1_compd)%></td>
     </tr>
     <tr>
-      <td>道場コース/基礎</td>
-      <td class="center"><%= @user.javascript_status.try(:do_beginner) ? '完了' : '未' %></td>
-      <td><%= @user.javascript_status.try(:do_beginner_compd) %></td>
+      <td>学習コース 2</td>
+      <td class="center"><%= @user.javascript_status.try(:ga_2) ? '完了' : '未' %></td>
+      <td><%= @user.javascript_status.try(:do_2_compd) %></td>
+    </tr>
+    <tr>
+      <td>学習コース 3</td>
+      <td class="center"><%= @user.javascript_status.try(:ga_3) ? '完了' : '未' %></td>
+      <td><%= @user.javascript_status.try(:ga_3_compd)%></td>
+    </tr>
+    <tr>
+      <td>学習コース 4</td>
+      <td class="center"><%= @user.javascript_status.try(:ga_4) ? '完了' : '未' %></td>
+      <td><%= @user.javascript_status.try(:ga_4_compd)%></td>
+    </tr>      
+    <tr>
+      <td>道場コース 1</td>
+      <td class="center"><%= @user.javascript_status.try(:do_1) ? '完了' : '未' %></td>
+      <td><%= @user.javascript_status.try(:do_1_compd)%></td>
     </tr>
   </tbody>
 </table>

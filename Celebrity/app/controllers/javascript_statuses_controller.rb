@@ -16,19 +16,43 @@ class JavascriptStatusesController < ApplicationController
     @course = params[:course]
     @status = params[:status]
     
-    if @course == 'javascript_ga_be'
+    if @course == 'javascript_ga_1'
       if @status == 'false'
-        @javascript_status.update_attributes(ga_beginner: true, ga_beginner_compd: @today)
+        @javascript_status.update_attributes(ga_1: true, ga_1_compd: @today)
       else
-        @javascript_status.update_attributes(ga_beginner: false, ga_beginner_compd: nil)
+        @javascript_status.update_attributes(ga_1: false, ga_1_compd: nil)
       end
     end
 
-    if @course == 'javascript_do_be'
+    if @course == 'javascript_ga_2'
       if @status == 'false'
-        @javascript_status.update_attributes(do_beginner: true, do_beginner_compd: @today)
+        @javascript_status.update_attributes(ga_2: true, ga_2_compd: @today)
       else
-        @javascript_status.update_attributes(do_beginner: false, do_beginner_compd: nil)
+        @javascript_status.update_attributes(ga_2: false, ga_2_compd: nil)
+      end
+    end 
+    
+    if @course == 'javascript_ga_3'
+      if @status == 'false'
+        @javascript_status.update_attributes(ga_3: true, ga_3_compd: @today)
+      else
+        @javascript_status.update_attributes(ga_3: false, ga_3_compd: nil)
+      end
+    end 
+    
+    if @course == 'javascript_ga_4'
+      if @status == 'false'
+        @javascript_status.update_attributes(ga_4: true, ga_4_compd: @today)
+      else
+        @javascript_status.update_attributes(ga_4: false, ga_4_compd: nil)
+      end
+    end 
+    
+    if @course == 'javascript_do_1'
+      if @status == 'false'
+        @javascript_status.update_attributes(do_1: true, do_1_compd: @today)
+      else
+        @javascript_status.update_attributes(do_1: false, do_1_compd: nil)
       end
     end 
   end
