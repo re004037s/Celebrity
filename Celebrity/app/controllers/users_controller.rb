@@ -40,9 +40,15 @@ class UsersController < ApplicationController
   end
   
   def tag_show
-    @user = current_user
+    
     tag = @user.tags.create(tag: user_params[:tags])
     tag_name = user_params[:tags]
+    
+    @tag = [] #あいまい検索　追加しました
+    if request.post? then
+      @tag = Tag.where("tag like 't%'")
+    end
+    
     if tag.save
       flash[:success] = 'タグ名： ' + tag_name + ' を追加しました'
       redirect_to @user 
