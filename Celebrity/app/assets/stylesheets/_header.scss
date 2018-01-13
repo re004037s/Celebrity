@@ -13,13 +13,13 @@
   //padding: 0 200px;
   width: 70vw;
   //margin: 0 auto;
-  //max-width: 786px;
+  max-width: 786px;
   
 }
 
 
 #logo-header {
-  max-width: 450px;
+  max-width: 350px;
   //vertical-align: middle;
   /*
   float: left;
@@ -35,6 +35,10 @@
     text-decoration: none;
   }
   */
+}
+
+#logo-top {
+  max-width: 1366px;
 }
 
 /*
@@ -70,3 +74,10 @@
 }
 
 */
+
+.navbar-nav > li > a {
+  color: #f4e9db;
+  &:hover {
+    background-color: black;
+  }
+}

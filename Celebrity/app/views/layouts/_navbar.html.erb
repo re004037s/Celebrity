@@ -1,5 +1,8 @@
 <nav class="header navbar navbar-fixed-top">
   <div class="navbar-wrapper container">
+    <%= link_to root_path do %>
+      <%= image_tag "logo_header.png", id: "logo-header" %>
+    <% end %>
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".bs-navbar-collapse">
         <span class="sr-only">メニュー</span>
@@ -9,9 +12,6 @@
       </button>
     </div>
     <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
-      <%= link_to root_path do %>
-        <%= image_tag "logo_header.png", id: "logo-header" %>
-      <% end %>
       <ul class="nav navbar-nav navbar-right">
         <% if current_user.try(:admin) %>
           <li><%= link_to 'MOVIES EDIT', movies_path %></li>

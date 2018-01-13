@@ -1,40 +1,34 @@
 <meta name="viewport" content="width=device-width; initial-scale=1.0">
 <div class="main-wrapper container">
   <div class="row">
-    <div class="col-sm-9">
-      <p class="txt2">
-        <% Date.today %>
-        <% day = Date.today %>
-        
+    <div class="col-md-9">
+      <p class="txt2" style="text-align:center">
         <%= current_user.nickname %>さんこんにちは！<br>
-
-        今日も一日頑張りましょう(๑╹ω╹๑ )<br>
-        </p>
-        <!--ここにアラート入れる-->    
-       <h4 style="color:red;"><%= @alert_messages_html + "→【Progate:HTML&CSSコース】" if @alert_messages_html.present? %></h4>
-       <h4 style="color:red;"><%= @alert_messages_javascript + "→【Progate:javascriptコース】" if @alert_messages_javascript.present? %></h4>
-       <h4 style="color:red;"><%= @alert_messages_ruby + "→【Progate:rubyコース】" if @alert_messages_ruby.present? %></h4>
-       <h4 style="color:red;"><%= @alert_messages_rubyonrails + "→【Progate:ruby on railsコース】" if @alert_messages_rubyonrails.present? %></h4>
-       <h4 style="color:red;"><%= @alert_messages_railstutorial + "→【railsチュートリアル】" if @alert_messages_railstutorial.present? %></h4>
-       <h4 style="color:red;"><%= @alert_message_mv + "まだ見終わっていない動画があります" if @alert_message_mv.present? %></h4>
+        今日も一日頑張りましょう♪<br>
+      </p>
       
-       <h4>はじめに</h4>
-       <br>
+      <% day = Date.today %>
+      <!--ここにアラート入れる-->
+      <h4 style="color:red;"><%= @alert_messages_html + "→【Progate:HTML&CSSコース】" if @alert_messages_html.present? %></h4>
+      <h4 style="color:red;"><%= @alert_messages_javascript + "→【Progate:javascriptコース】" if @alert_messages_javascript.present? %></h4>
+      <h4 style="color:red;"><%= @alert_messages_ruby + "→【Progate:rubyコース】" if @alert_messages_ruby.present? %></h4>
+      <h4 style="color:red;"><%= @alert_messages_rubyonrails + "→【Progate:ruby on railsコース】" if @alert_messages_rubyonrails.present? %></h4>
+      <h4 style="color:red;"><%= @alert_messages_railstutorial + "→【railsチュートリアル】" if @alert_messages_railstutorial.present? %></h4>
+      <h4 style="color:red;"><%= @alert_message_mv + "まだ見終わっていない動画があります" if @alert_message_mv.present? %></h4>
+      
+      <h3 class="center" style="text-decoration:underline;">はじめに</h3>
+      <br>
   
       <ol style="font-size:120%;">
-      <li>①このサイトのカリキュラムをこなすことで、フリーになるためのスキルが最短で身につきます。</li>
+      <li>このサイトのカリキュラムをこなすことで、フリーになるためのスキルが最短で身につきます。</li>
       <br>
-
-      <li>②まずはマインドセットを動画で学習します。一覧の最初の動画から順に動画を視聴してください。各動画を見た後に、感想を記入して送信してください。</li>
+      <li>まずはマインドセットを動画で学習します。一覧の最初の動画から順に動画を視聴してください。各動画を見た後に、感想を記入して送信してください。</li>
       <br>
-
-      <li>③次に、プログラミングの基礎を身につけます。プログラミング学習サイト「Progate」を使い、「HTML & CSS」「JavaScript」「Ruby」「Ruby on Rails5」のコースを全て終了させてください。</li>
+      <li>次に、プログラミングの基礎を身につけます。プログラミング学習サイト「Progate」を使い、「HTML & CSS」「JavaScript」「Ruby」「Ruby on Rails5」のコースを全て終了させてください。</li>
       <br>
-
-      <li>④次に、「Ruby on Rails チュートリアル」1章〜14章まで全て終了させてください。アプリケーション開発の基礎について学習することができます。</li>
+      <li>次に、「Ruby on Rails チュートリアル」1章〜14章まで全て終了させてください。アプリケーション開発の基礎について学習することができます。</li>
       <br>
-
-      <li>⑤チュートリアルが完了したら、面談などで使用するポートフォリオ（自作のWebアプリケーション）を作成します。作り方等詳細については動画で確認してください。</li>
+      <li>チュートリアルが完了したら、面談などで使用するポートフォリオ（自作のWebアプリケーション）を作成します。作り方等詳細については動画で確認してください。</li>
       <br>
 
       </ol>
@@ -43,13 +37,11 @@
         <div class="panel-body">
           <% if @new_movies.present? %>
             <div class="mini-box">
-              <span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>
               <h4 style="display: inline;">まだ視聴していない動画はありませんか!?</h4>              
             </div>
             <ul>
               <% @new_movies.each do |movie| %>
                 <li>
-                  <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
                   <p class="inline"><%= movie.title %></p>
                 </li>
               <% end %>

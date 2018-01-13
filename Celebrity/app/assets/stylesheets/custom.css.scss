@@ -55,27 +55,22 @@ $background-grey: #f4f4f4;
    height: auto;
   }
 
-
 .movie {
   position: relative;
   width: 100%;
   padding-top: 56.25%;
-  margin-bottom: 10px;
+  margin: 0 0 10px 0;
   iframe {
     position: absolute;
     top: 0;
     width: 100%;
     height: 100%;
-    max-width: 500px;
-    max-height: 360px;
+    max-width: 600px;
+    max-height: 432px;
   }
 }
 
 .movie-title {
-  padding: 0.25em 0.5em;/*上下 左右の余白*/
-  color: #494949;/*文字色*/
-  background: transparent;/*背景透明に*/
-  border-left: solid 5px #7db4e6;/*左線*/
   margin-top: 50px;
 }
 
@@ -311,4 +306,8 @@ div#centering{
   text-align: center;
   padding: 60px 0 20px;
   margin: 0 10px 0;
+}
+
+#next_category_link {
+  margin-top: 30px;
 }
