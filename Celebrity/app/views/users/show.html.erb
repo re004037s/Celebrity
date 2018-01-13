@@ -64,6 +64,12 @@
   <%= f.submit '登録', id:'tag-submit', class: 'btn btn-primary', :disabled => 'true' %>
 <% end %>
 
+<p>サジェスト機能のテスト用（下に表示されます）</p>
+<ul id="result">
+
+<!-- この中に<li>デデデ大王</li>みたいに検索候補を追加していきます -->
+</ul>
+
 <p>登録済みのタグ一覧：</p>
 <% @user_tags.each do |user_tag| %>
   <span class="tag_box">
@@ -75,15 +81,42 @@
 </div>
 
 <script>
-$('#user_tags').keyup(function() {
+$('#user_tags').keyup(function(e) {
+  e.preventDefault(); //キャンセル可能なイベントをキャンセル
   let text_field_obj = $('#tag-submit').parent('.edit_user').find('#user_tags');
-  let words = text_field_obj.val();
+  let words = $.trim(text_field_obj.val());
+  if(words.length == 0 ){
+    $('#result').find('li').remove();
+    return;
+  };
   if(words.length >= 1 && words.length <= 20){
     $("#tag-submit").prop("disabled", false);
   }else{
     $("#tag-submit").prop("disabled", true);
   }
+  
+
+  //inputに入力した文字列をリアルタイムでajaxリクエストする
+  $.ajax({ //ajax通信で以下のことを行います
+    url: '/users/search', //urlを指定
+    type: 'GET', //メソッドを指定
+    data: ('keyword=' + words), //コントローラーに渡すデータを'keyword=input(入力された文字のことですね)'にするように指定
+    processData: false, //おまじない
+    contentType: false, //おまじない
+    dataType: 'json' //データ形式を指定
+  })
+  //ajax request success時の処理
+  .done(function(response){ //データを受け取ることに成功したら、dataを引数に取って以下のことする(dataには@usersが入っている状態ですね)
+  debugger;
+    $('#result').find('li').remove();  //idがresultの子要素のliを削除する
+    $(response).each(function(i, fetchedTag){ //dataをuserという変数に代入して、以下のことを繰り返し行う(単純なeach文ですね)
+      $('#result').append('<li>' + fetchedTag.tag + '</li>') //resultというidの要素に対して、<li>ユーザーの名前</li>を追加する。
+    });
+  })
+  
 });
+
+
 
   $('.delete_icon').css('width', '15');
   $('.tag_box').css('border', 'solid 1px #000000');

@@ -75,6 +75,11 @@ class UsersController < ApplicationController
     end
   end
   
+  def search
+    @fetched_tags = Tag.where('tag LIKE(?)', "#{params[:keyword]}%")
+    render json: @fetched_tags
+  end
+  
   def new
     @user = User.new
   end

@@ -7,9 +7,13 @@ Rails.application.routes.draw do
   delete '/logout', to:'sessions#destroy'
 
   resources :users do
-      member do
-        get 'get_image'
-        # post 'post_tag' //WIP
+    member do
+      get 'get_image'
+      # post 'post_tag' //WIP
+    end
+    
+    collection do
+      get 'search'
     end
   end
         
