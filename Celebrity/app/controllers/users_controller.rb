@@ -40,7 +40,7 @@ class UsersController < ApplicationController
   end
   
   def tag_show
-    
+    @user = current_user
     tag = @user.tags.create(tag: user_params[:tags])
     tag_name = user_params[:tags]
     
@@ -53,16 +53,14 @@ class UsersController < ApplicationController
       flash[:success] = 'タグ名： ' + tag_name + ' を追加しました'
       redirect_to @user 
     else
-    ##[:tag]でメッセージの配列を取り出し、.join(' / ')で分割した。
-    flash[:danger] = tag.errors.messages[:tag].join(' / ') 
-    redirect_to @user
-    # end
+      # [:tag]でメッセージの配列を取り出し、.join(' / ')で分割した。
+      flash[:danger] = tag.errors.messages[:tag].join(' / ') 
+      redirect_to @user
     end
   end
   
   def tag_delete
     @user = current_user
-    user_id = params[:user_id]
     tag_id = params[:tag_id]
 
     #invalid foreign key error -> modelにdestroy?? 関係の追記が必要？
