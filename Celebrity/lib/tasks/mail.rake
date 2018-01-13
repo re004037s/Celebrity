@@ -20,7 +20,9 @@ namespace :mail do
 
             st2 = user.javascript_status
             if st2.try(:schedule_date).present?
-                if (st2.ga_beginner && st2.ga_beginner) != true
+                if (st2.ga_1 && st2.ga_2 &&
+                    st2.ga_3 && st2.ga_4 &&
+                    st2.do_1) != true
                     if st2.schedule_date < Date.today
                         no_complete_tasks << "Progate(Javascript)"
                     end        

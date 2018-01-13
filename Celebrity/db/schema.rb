@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20180101135247) do
+ActiveRecord::Schema.define(version: 20180103225219) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,8 +18,9 @@ ActiveRecord::Schema.define(version: 20180101135247) do
   create_table "comments", force: :cascade do |t|
     t.text     "content"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "user_page_id"
     t.index ["user_id", "created_at"], name: "index_comments_on_user_id_and_created_at", using: :btree
     t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
@@ -60,13 +60,19 @@ ActiveRecord::Schema.define(version: 20180101135247) do
 
   create_table "javascript_statuses", force: :cascade do |t|
     t.integer  "user_id"
-    t.boolean  "ga_beginner",       default: false
-    t.boolean  "do_beginner",       default: false
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
-    t.date     "ga_beginner_compd"
-    t.date     "do_beginner_compd"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.date     "schedule_date"
+    t.boolean  "ga_1",          default: false
+    t.boolean  "ga_2",          default: false
+    t.boolean  "ga_3",          default: false
+    t.boolean  "ga_4",          default: false
+    t.boolean  "do_1",          default: false
+    t.date     "ga_1_compd"
+    t.date     "ga_2_compd"
+    t.date     "ga_3_compd"
+    t.date     "ga_4_compd"
+    t.date     "do_1_compd"
     t.index ["user_id"], name: "index_javascript_statuses_on_user_id", using: :btree
   end
 
