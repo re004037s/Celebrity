@@ -57,6 +57,7 @@
   </script>
 </div>
 
+
 <div id="tag-controll">
   
 <%= form_for(@user, url: tag_show_path) do |f| %>
@@ -79,8 +80,10 @@
     <%= link_to image_tag('delete_icon.png', :class => 'delete_icon'), delete_tag_path(user_id: current_user.id, tag_id: user_tag.id), :method => :delete %>　<!-- methodでdeleteを指定する--> 
   </span>
 <% end %>
-
 </div>
+
+<!--tag_displayed-->
+
 
 <div id="modal-content" style="display:none;">
 	<p>「閉じる」か「背景」をクリックするとモーダルウィンドウを終了します。</p>
@@ -120,14 +123,31 @@ $('#user_tags').keyup(function(e) {
       $('#result').append('<li>' + fetchedTag.tag + '</li>') //resultというidの要素に対して、<li>ユーザーの名前</li>を追加する。
     });
   })
-  
 });
-
 
 $('.tag_displayed').click(function(e) {
   let clicked_tag_name = $.trim($(this).text());
+    //clickしたタグ名に紐づくユーザー情報をリアルタイムでajaxリクエストする
+  $.ajax({ //ajax通信で以下のことを行います
+    url: '/users/tag_related', //urlを指定
+    type: 'GET', //メソッドを指定
+    data: ('tag_name=' + clicked_tag_name), 
+    contentType: false, //おまじない
+    dataType: 'json' //データ形式を指定
+  })
+  //ajax request success時の処理
+  .done(function(res){ 
+    $('.txt2').find('li').remove();  
+    $(res).each(function(i, hogehoge){
+      debugger
+      let picture_file = hogehoge[3];
+      if (hogehoge[3] == null){
+        picture_file = "null"
+      } 
+      $('.txt2').append('<li>' + hogehoge + picture_file + '</li>') 
+    });
+  })
 })
-
 
 $(window).scroll(function() {
   let scroll_y = $(window).scrollTop();
