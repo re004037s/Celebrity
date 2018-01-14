@@ -16,7 +16,15 @@
           <li><%= link_to '新規登録', signup_path %></li>
         <% end %>
         <li><%= link_to 'サロンメンバー', users_path %></li>
-        <li><%= link_to 'マイページ', current_user %></li> 
+        <li> 
+        <% if Feedback.where(user_id: @current_user).count == Movie.where(movie_category_id: 1 .. 5).count ||
+        current_user.try(:admin) %>
+          <%= link_to 'マイページ', current_user %>
+        <% else %>
+          <p style="color: #4d4d4d; font-size: 15px; margin: 25px 10px 0px; cursor: pointer;"
+          title="先に動画を視聴して下さい">マイページ</p>
+        <% end %>
+        </li>
         <li><%= link_to 'ログアウト', logout_path, method: :delete %></li>
       </ul>
     </nav>
