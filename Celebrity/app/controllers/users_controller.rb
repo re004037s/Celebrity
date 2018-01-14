@@ -118,11 +118,9 @@ class UsersController < ApplicationController
   private
   
     def user_params
-<<<<<<< HEAD
+
       params.require(:user).permit(:name, :nickname, :line_id, :email, :password, :password_confirmation, :portfolio_path, :github_path, :picture_file, :picture)
-=======
-      params.require(:user).permit(:tags, :name, :nickname, :email, :password, :password_confirmation, :portfolio_path, :github_path, :picture_file, :picture)
->>>>>>> 81a35e91cd00c9985e83dff9b54fced984b9fbbf
+
     end
     
     # ログイン済み or 管理ユーザであれば true を返す
