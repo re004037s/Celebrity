@@ -244,7 +244,13 @@ ActiveRecord::Schema.define(version: 20180113061019) do
   add_foreign_key "comments", "users"
   add_foreign_key "feedbacks", "users"
   add_foreign_key "movies", "movie_categories"
-  add_foreign_key "qiita_posts", "users"
   add_foreign_key "user_tags", "tags"
   add_foreign_key "user_tags", "users"
+  add_foreign_key "qiita_posts", "users"
+<<<<<<< HEAD
+  add_foreign_key "user_tags", "tags"
+  add_foreign_key "user_tags", "users"
+=======
+
+>>>>>>> 81a35e91cd00c9985e83dff9b54fced984b9fbbf
 end

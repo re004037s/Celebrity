@@ -21,23 +21,23 @@
         <tr>
           <td><%= user.nickname %></td>
             <% if @current_user.admin %>
-              <td><%= link_to user.name, user %></td>
+              <td><%= link_to user.name, user_path(user, user_id: user.id) %></td>
               <td><%= user.email %></td>
             <% end %>
           <td><%= percent_movie(user) %>%</td>
           <td><%= percent_progate(user) %>%</td>
           <td><%= count_rails_tutorial(user) %>章完了</td>
           <td>
-            <%= link_to user.try(:portfolio_path), class: "btn btn-sm#{' disabled' if user.try(:portfolio_path).nil?}", target: '_blank' do %>
-              <div class="t_1">ポートフォリオ</div>
-            <% end %>
-            <% if user.try(:portfolio_path).nil? %><% else %>
-              <%= link_to 'コメント', portfolio_path(id: user.id), class: "t_1 btn btn-sm-1" %>
-            <% end %>
-          </td>
-          <td>
-            <%= link_to user.try(:github_path), class: "btn btn-sm#{' disabled' if user.try(:github_path).nil?}", target: '_blank' do %>
-              <div class="t_1">GitHub</div>
+              <%= link_to user.try(:portfolio_path), class: "btn btn-sm#{' disabled' if user.try(:portfolio_path).blank?}", target: '_blank' do %>
+             <div class="t_1">ポートフォリオ</div>
+           <% end %>
+           <% if user.try(:portfolio_path).blank? %><% else %>
+             <%= link_to 'コメント', portfolio_path(id: user.id), class: "t_1 btn btn-sm-1" %>
+           <% end %>
+         </td>
+         <td>
+           <%= link_to user.try(:github_path), class: "btn btn-sm#{' disabled' if user.try(:github_path).blank?}", target: '_blank' do %>
+             <div class="t_1">GitHub</div>
             <% end %>
           </td>
         </tr>
