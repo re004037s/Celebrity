@@ -7,12 +7,8 @@ class User < ApplicationRecord
     mount_uploader :picture, PictureUploader #画像アップロード用に追加
     validates :name, presence: true, length: { maximum: 50 }
     validates :nickname, presence: true, length: { maximum: 50 }
-<<<<<<< HEAD
     validates :line_id, presence: true, length: { maximum: 50 }
-    
-=======
-  
->>>>>>> 81a35e91cd00c9985e83dff9b54fced984b9fbbf
+
     
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
     validates :email, presence: true, length: { maximum: 255 },
