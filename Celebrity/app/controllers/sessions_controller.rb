@@ -2,7 +2,6 @@ class SessionsController < ApplicationController
   before_action :logged_in_user, only: [:destroy]
   
   def new
-    @current_user = User.find_by(id: params[:id])
     redirect_to root_url if logged_in?
   end
   
