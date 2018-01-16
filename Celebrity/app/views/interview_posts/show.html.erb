@@ -1,0 +1,36 @@
+<h1 class="txt2">面談内容</h1>
+
+<div class="span">
+  <div class="well">
+    <ul>
+      <div id="centering">
+        <li class="first-child"><font size="4"> <%= @interviewpost.title %> </font></li>
+      </div>
+        <li>・経験年数：<%= @interviewpost.experience %> </li>
+        <li>・面談日：<%= @interviewpost.day %> </li>
+        <li>・言語：<%= @interviewpost.language %> </li>
+        <li>・フリー or 転職：<%= @interviewpost.type %> </li>
+        <li>・案件概要：<%= @interviewpost.summary %> </li>
+      <div class="att">
+        <li>・面談での質問内容・回答：<br> <%= @interviewpost.question %> </li>
+      </div>
+        <li>・合否：<%= @interviewpost.result %> </li>
+    </ul>
+  </div>
+</div>
+
+<% if current_user.try(:admin) %>
+  <div id="centering">
+    <%= link_to '編集', edit_interview_post_path, {class: 'btn btn-primary post-update' }%>
+  </div>
+
+  <div id="centering">
+    <%= link_to "削除", @interviewpost, class: "btn btn-danger post-delete", method: :delete,
+                                         data: { confirm: "本当に削除しますか?" } %>
+  </div>
+<% end %>
+
+<div id="centering">
+  <%= link_to '戻る', interview_posts_path %>
+</div>
+

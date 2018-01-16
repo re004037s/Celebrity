@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  title: MyString
+  language: MyString
+  experience: MyString
+  type: 
+  user_id: 1
+  day: 2018-01-15
+  summary: MyText
+  question: MyText
+  result: MyString
+
+two:
+  user: two
+  title: MyString
+  language: MyString
+  experience: MyString
+  type: 
+  user_id: 1
+  day: 2018-01-15
+  summary: MyText
+  question: MyText
+  result: MyString

@@ -1,0 +1,2 @@
+module InterviewPostsHelper
+end

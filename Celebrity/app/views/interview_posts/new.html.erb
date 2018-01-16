@@ -1,0 +1,38 @@
+<h1 class="txt2">新規登録</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@interviewpost) do |f| %>
+      <%= render partial: 'shared/error_messages', locals: {object: @interviewpost } %>
+      
+      <%= f.label :title, "案件タイトル（15文字程度）", class: 'txt1' %>
+      <%= f.text_field :title, class: 'form-control' %>
+      
+      <%= f.label :experience, '経験年数', class: 'txt1' %>
+      <%= f.select :experience, [["半年未満", "半年未満"], ["1年未満", "1年未満"], 
+                                 ["2年未満",  "2年未満"], ["2年以上", "2年以上"]] ,class:"form-control" %>      
+
+      <%= f.label :day, '面談日', class: 'txt1' %>
+      <%= f.text_field :day, placeholder: "2018/01/01", class: 'form-control' %>
+
+      <%= f.label :language, '言語', class: 'txt1' %>
+      <%= f.text_field :language, class: 'form-control' %>
+
+      <%= f.label :type, 'フリー or 転職', class: 'txt1' %>
+      <%= f.select :type, [["フリー", "フリー"], ["転職", "転職"]] ,class: 'form-control' %>
+
+      <%= f.label :summary, '案件概要', class: 'txt1' %>
+      <%= f.text_field :summary, placeholder: "Java/建設会社でのシステム開発/保守・・・", class: 'form-control' %>
+      
+      <%= f.label :question, '面談での質問内容・回答', class: 'txt1' %>
+      <%= f.text_area :question, rows: 15, class: 'form-control' %>
+
+      <%= f.label :result, '合否', class: 'txt1' %>
+      <%= f.select :result, [["合格", "合格"], ["不合格", "不合格"]] ,class: 'form-control' %>
+      
+      <div id="centering">
+        <%= f.submit '登録', {class: 'btn btn-primary post-regist' }%>
+      </div>
+    <% end %>
+  </div>
+</div>
