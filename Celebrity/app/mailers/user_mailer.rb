@@ -14,6 +14,21 @@ class UserMailer < ApplicationMailer
     mail to: @user.email, subject: "セレブエンジニアサロンのタスクについて"		
   end
   
+  def new_movie_add(user,)
+    
+    @user = user		
+ 		
+    #user name		
+    @user_name = @user.nickname	
+    
+    #new movies
+    @new_movies = add_new_movies
+    
+    #宛先アドレス		 
+    mail to: @user.email, subject: "セレブエンジニアサロンのタスクについて"	
+    
+  end
+  
   def account_activation(user)
     @user = user
     mail to: user.email, subject: "Account activation"

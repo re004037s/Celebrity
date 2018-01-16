@@ -1,0 +1,23 @@
+<p>
+    <%= @user_name %>さん、こんにちは。<br>
+    セレブエンジニアサロンの小松です。
+</p>
+
+<p>
+    新しい動画が投稿されました！<br>
+    <ul>
+        <% @new_movies.each do |movie| %>
+            <li><%= movie %></li>
+            <li>
+                <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
+                <p class="inline"><%= movie.title %></p>
+            </li
+        <% end %>
+    </ul>
+    サロンページの新着動画一覧よりご確認下さい！
+</p>
+
+<p>
+	セレブエンジニアサロンメンバー限定サイトはこちら
+	http://www.celebrity-engineer-members.com/login
+</p>
