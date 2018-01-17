@@ -12,9 +12,14 @@ Rails.application.routes.draw do
   
   
   resources :users do
-      member do
-        get 'get_image'
-        # post 'post_tag' //WIP
+    member do
+      get 'get_image'
+      # post 'post_tag' //WIP
+    end
+    
+    collection do
+      get 'search'
+      get 'tag_related'
     end
   end
   resources :account_activations, only: [:edit]
