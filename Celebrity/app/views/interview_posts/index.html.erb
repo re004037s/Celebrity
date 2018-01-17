@@ -14,7 +14,7 @@
   <% @interviewposts.each do |interviewpost| %>
     <tbody>
       <tr>
-        <td class="left"><%= link_to interviewpost.title, "" %></td>
+        <td class="left"><%= link_to interviewpost.title, interviewpost %></td>
         <td class="center"><%= interviewpost.language %></td>
         <td class="center"><%= interviewpost.experience %></td>
         <td class="center"><%= interviewpost.type %></td>

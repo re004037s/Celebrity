@@ -4,22 +4,26 @@
   <div class="well">
     <ul>
       <div id="centering">
-        <li class="first-child"><font size="4"> <%= @interviewpost.title %> </font></li>
+        <li class="first-child"><font size="4"><%= @interviewpost.title %></font></li>
       </div>
-        <li>・経験年数：<%= @interviewpost.experience %> </li>
-        <li>・面談日：<%= @interviewpost.day %> </li>
-        <li>・言語：<%= @interviewpost.language %> </li>
-        <li>・フリー or 転職：<%= @interviewpost.type %> </li>
-        <li>・案件概要：<%= @interviewpost.summary %> </li>
+      <li>【面談日】<%= @interviewpost.day %></li><br>
+      <li>【経験年数】<%= @interviewpost.experience %></li><br>
+      <li>【言語】<%= @interviewpost.language %> </li><br>
+      <li>【フリー or 転職】<%= @interviewpost.type %></li><br>
       <div class="att">
-        <li>・面談での質問内容・回答：<br> <%= @interviewpost.question %> </li>
+        <li>【案件概要】</li>
+        <li><%= simple_format(@interviewpost.summary) %></li><br>
+      </div>        
+      <div class="att">
+        <li>【面談での質問内容・回答】</li>
+        <li><%= simple_format(@interviewpost.question) %></li><br>
       </div>
-        <li>・合否：<%= @interviewpost.result %> </li>
+      <li>【合否】<%= @interviewpost.result %></li>
     </ul>
   </div>
 </div>
 
-<% if current_user.try(:admin) %>
+<% if current_user.try(:admin) || current_user.id == @interviewpost.user_id %>
   <div id="centering">
     <%= link_to '編集', edit_interview_post_path, {class: 'btn btn-primary post-update' }%>
   </div>
