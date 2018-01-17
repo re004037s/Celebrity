@@ -1,4 +1,3 @@
-  <%= form_for(@interviewpost) do |f| %>
     <%= render partial: 'shared/error_messages', locals: {object: @interviewpost } %>
     
     <%= f.label :title, "案件タイトル（15文字程度）", class: 'txt1' %>
@@ -9,7 +8,7 @@
                                ["2年未満",  "2年未満"], ["2年以上", "2年以上"]] ,class:"form-control" %>      
 
     <%= f.label :day, '面談日', class: 'txt1' %>
-    <%= f.text_field :day, placeholder: "2018/01/01", class: 'form-control' %>
+    <%= f.date_field :day, class: 'form-control' %>
 
     <%= f.label :language, '言語', class: 'txt1' %>
     <%= f.text_field :language, class: 'form-control' %>
@@ -25,4 +24,3 @@
 
     <%= f.label :result, '合否', class: 'txt1' %>
     <%= f.select :result, [["合格", "合格"], ["不合格", "不合格"]] ,class: 'form-control' %>
-  <% end %>
