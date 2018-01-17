@@ -25,7 +25,7 @@ class UserMailer < ApplicationMailer
     @new_movies = add_new_movies
     
     #宛先アドレス		 
-    mail to: @user.email, subject: "セレブエンジニアサロンのタスクについて"	
+    mail to: @user.email, subject: "セレブエンジニアサロン新着動画"	
     
   end
   
