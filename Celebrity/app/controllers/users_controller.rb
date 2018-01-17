@@ -21,6 +21,7 @@ class UsersController < ApplicationController
     
   end
   
+  
   def update_picture
     @user = current_user
     unless params[:user].try(:[],:picture) == nil
@@ -44,8 +45,6 @@ class UsersController < ApplicationController
     @user = current_user
     tag = @user.tags.create(tag: user_params[:tags])
     tag_name = user_params[:tags]
-    
-
  
     if tag.save
       flash[:success] = 'タグ名： ' + tag_name + ' を追加しました'
@@ -87,6 +86,14 @@ class UsersController < ApplicationController
     # end
     @fetched_tags = Tag.where('tag LIKE(?)', "#{params[:keyword]}%")
     render json: @fetched_tags
+  end
+  
+  def tag_edit
+    # @tag = Tag.where('tag LIKE(?)', "#{params[:keyword]}%")
+    # @tag = Tag.where("tag like '%'")
+    @tags  = Tag.all
+    
+    # @tag  = User.includes(:tags).where(tags:{tags: })
   end
   
   def new

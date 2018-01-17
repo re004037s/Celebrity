@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   # resources :user_tags #追加
   # post 'tag_show', to:'users#tag_show'
   patch '/post_pic', to:'users#update_picture'
-  patch '/tag_edit', to:'users#tag_edit' #追加
+  get '/tag_edit', to:'users#tag_edit' #追加
   patch '/tag_show', to:'users#tag_show' #追加 sugi
   delete '/delete_tag', to: 'users#tag_delete' #temp post⇨deleteに変更しshow.htmlと統一
   root 'top#index'
