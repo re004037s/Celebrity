@@ -1,3 +1,13 @@
+  <% if Feedback.where(user_id: current_user).count == 
+  Movie.where(movie_category_id: MovieCategory.where(must_view: true).ids).count &&
+  @user.html_css_status.schedule_date.blank? ||
+  @user.javascript_status.schedule_date.blank? ||
+  @user.ruby_status.schedule_date.blank? ||
+  @user.rubyonrails_status.schedule_date.blank? ||
+  @user.railstutorial_status.schedule_date.blank? %>
+  <%= render 'top/show' %>
+  <% else %>
+
 <meta name="viewport" content="width=device-width; initial-scale=1.0">
 <div class="main-wrapper container">
   <div class="row">
@@ -7,7 +17,6 @@
         <% day = Date.today %>
         
         <%= current_user.nickname %>さんこんにちは！<br>
-
         今日も一日頑張りましょう(๑╹ω╹๑ )<br>
         </p>
         <!--ここにアラート入れる-->    
@@ -66,3 +75,4 @@
     <%= render 'layouts/aside' %>
   </div>
 </div>
+<% end %>

@@ -247,10 +247,7 @@ ActiveRecord::Schema.define(version: 20180103225219) do
   add_foreign_key "qiita_posts", "users"
   add_foreign_key "user_tags", "tags"
   add_foreign_key "user_tags", "users"
-<<<<<<< HEAD
-=======
   add_foreign_key "qiita_posts", "users"
   add_foreign_key "user_tags", "tags"
   add_foreign_key "user_tags", "users"
->>>>>>> 49382e8776df6aa6d0000cdbe4dcb6d13c23c302
 end
