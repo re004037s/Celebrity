@@ -13,7 +13,6 @@ class UsersController < ApplicationController
     
     if params[:user_id]
       user = User.find_by(id: params[:user_id])
-      # 不要なデータも表示される
       @user_tags = user.tags
     else
       @user_tags = current_user.tags
@@ -87,6 +86,12 @@ class UsersController < ApplicationController
     # end
     @fetched_tags = Tag.where('tag LIKE(?)', "#{params[:keyword]}%")
     render json: @fetched_tags
+  end
+  
+  def tags_belongs_to_user
+    user_id = params[:user_id]
+    @tags_belongs_to_user = Tag.includes(:users).references(:users)
+    render json: @tags_belongs_to_user
   end
   
   def new

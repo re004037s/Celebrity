@@ -82,7 +82,26 @@
 <% end %>
 </div>
 
-<div id="modal-content" style="display:none;"></div>
+
+<div id="modal-content" style="display:none;">
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>名前</th>
+        <th>ニックネーム</th>
+        <th>画像</th>
+        <th>登録タグ</th>
+      </tr>
+    </thead>
+    <tbody id="tags_for_tbody">
+      <!--<tr>-->
+      <!--  <td></td>-->
+      <!--</tr>-->
+    </tbody>
+  </table>
+</div>
+
 <div id="modal-overlay" style="background:gray; opacity:0.5;"></div>
 
 <script>
@@ -112,8 +131,6 @@ $(".tag_displayed").click(
       h = $("#modal-content").height();
       ww = ( wW - w ) / 2.2;
       hh = ( wH - h ) / 1.9;
-      // hh = h;
-      debugger
       $('#modal-content').offset({ "top": hh, "left": ww});
       cnt += 1;
     }
@@ -184,7 +201,7 @@ function centeringModalSyncer(){
 
 }
 
-
+let tags_arrays = [];
 $('#user_tags').keyup(function(e) {
   e.preventDefault(); //キャンセル可能なイベントをキャンセル
   let text_field_obj = $('#tag-submit').parent('.edit_user').find('#user_tags');
@@ -211,7 +228,7 @@ $('#user_tags').keyup(function(e) {
   })
   //ajax request success時の処理
   .done(function(response){ //データを受け取ることに成功したら、dataを引数に取って以下のことする(dataには@usersが入っている状態ですね)
-    $('#result').find('li').remove();  //idがresultの子要素のliを削除する
+    // $('#result').find('li').remove();  //idがresultの子要素のliを削除する
     $(response).each(function(i, fetchedTag){ //dataをuserという変数に代入して、以下のことを繰り返し行う(単純なeach文ですね)
       $('#result').append('<li>' + fetchedTag.tag + '</li>') //resultというidの要素に対して、<li>ユーザーの名前</li>を追加する。
     });
@@ -231,13 +248,33 @@ $('.tag_displayed').click(function(e) {
   //ajax request success時の処理
   .done(function(res){ 
     $('#modal-content').find('li').remove();  
-    $(res).each(function(i, hogehoge){
-      debugger
-      let picture_file = hogehoge[3];
-      if (hogehoge[3] == null){
+    $(res).each(function(i, user_info){
+      //user_info as array
+      let user_id = user_info[0]
+      let picture_file = user_info[3];
+      if (picture_file == null){
         picture_file = "null"
-      } 
-      $('#modal-content').append('<li>' + hogehoge + picture_file + '</li>') 
+      }
+      $('#modal-content').append('<li>' + user_info + picture_file + '</li>') 
+      tags_arrays.push(user_info);
+
+      //user_id をキーにしてuserに紐づくタグを取得する      
+      $.ajax({ //ajax通信で以下のことを行います
+        url: '/users/tags_belongs_to_user', //urlを指定
+        type: 'GET', //メソッドを指定
+        data: ('user_id' + user_id), 
+        contentType: false, //おまじない
+        dataType: 'json' //データ形式を指定
+      })
+      
+      .done(function(tags_row){
+        debugger;
+        $(tags_row).each(function(i, tag_row){
+          
+        })
+      })
+      
+      
     });
   })
 })

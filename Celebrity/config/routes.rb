@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     collection do
       get 'search'
       get 'tag_related'
+      get 'tags_belongs_to_user'
     end
   end
   resources :account_activations, only: [:edit]
