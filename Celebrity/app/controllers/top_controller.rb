@@ -3,7 +3,7 @@ class TopController < ApplicationController
   before_action :set_movie_categories, only: [:index]
   
   def index
-        @categories = MovieCategory.where(must_view: true).order('sort_order')
+    @categories = MovieCategory.where(must_view: true).order('sort_order')
     if params[:user_id]
       user = User.find_by(id: params[:user_id])
       # 不要なデータも表示される
