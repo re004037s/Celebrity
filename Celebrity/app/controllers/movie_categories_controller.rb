@@ -22,6 +22,7 @@ class MovieCategoriesController < ApplicationController
     params[:movie_category][:sort_order] = MovieCategory.all.pluck(:sort_order).max.to_i + 1
     @movie_category = MovieCategory.new(movie_category_params)
     if @movie_category.save
+      UserMailer.send_when_create(@movie).deliver
       flash[:success] = '動画カテゴリを登録しました'
       redirect_to movies_path
     else
