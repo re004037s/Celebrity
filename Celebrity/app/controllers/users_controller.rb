@@ -88,6 +88,12 @@ class UsersController < ApplicationController
     render json: @fetched_tags
   end
   
+  def tags_belongs_to_user
+    userid = params[:userid];
+    @tags_row = Tag.includes(:users).where('users.id =?', userid).references(:posts)
+    render json: @tags_row
+  end
+  
   def tag_edit
     # @tag = Tag.where('tag LIKE(?)', "#{params[:keyword]}%")
     # @tag = Tag.where("tag like '%'")

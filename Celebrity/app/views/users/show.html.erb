@@ -257,12 +257,12 @@ $('.tag_displayed').click(function(e) {
       }
       $('#modal-content').append('<li>' + user_info + picture_file + '</li>') 
       tags_arrays.push(user_info);
-
-      //user_id をキーにしてuserに紐づくタグを取得する      
+      //user_id をキーにしてuserに紐づくタグを取得する  
+      debugger
       $.ajax({ //ajax通信で以下のことを行います
         url: '/users/tags_belongs_to_user', //urlを指定
         type: 'GET', //メソッドを指定
-        data: ('user_id' + user_id), 
+        data: ('userid=' + user_id), 
         contentType: false, //おまじない
         dataType: 'json' //データ形式を指定
       })
