@@ -95,9 +95,6 @@
       </tr>
     </thead>
     <tbody id="tags_for_tbody">
-      <!--<tr id="tags_for_tr">-->
-      <!--  <td></td>-->
-      <!--</tr>-->
     </tbody>
   </table>
 </div>
@@ -128,9 +125,8 @@ $(".tag_displayed").click(
       wH = $(window).height();
       wW = $(window).width();
       w = $("#modal-content").width();
-      h = $("#modal-content").height();
-      ww = ( wW - w ) / 2.2;
-      hh = ( wH - h ) / 1.9;
+      ww = ( wW - w ) / 2;
+      hh = wH * 1 / 3;
       $('#modal-content').offset({ "top": hh, "left": ww});
       cnt += 1;
     }
@@ -154,7 +150,7 @@ $(".tag_displayed").click(
       $("#modal-content, #modal-overlay").fadeOut("slow",function(){
     	//フェードアウト後、[#modal-overlay]をHTML(DOM)上から削除
     	  $("#modal-overlay").remove();
-        
+        $('#tags_for_tbody').children().remove();
         
         //スクロール位置を移動
         window.scrollTo( sX_syncerModal , sY_syncerModal );
@@ -245,9 +241,7 @@ function createTd_html(user_info){
 }
 
 let tags_arrays = [];
-let tags_from_users = [];
-let cnt_of_tags_arrays = 0;
-$('.tag_displayed').click(function(e) {
+$('.tag_displayed, .tag_appeared').click(function(e) {
   let clicked_tag_name = $.trim($(this).text());
     //clickしたタグ名に紐づくユーザー情報をリアルタイムでajaxリクエストする
   $.ajax({ //ajax通信で以下のことを行います
@@ -259,13 +253,12 @@ $('.tag_displayed').click(function(e) {
   })
   //ajax request success時の処理
   .done(function(res){ 
-    $('#modal-content').find('li').remove();  
+      
     $(res).each(function(i, user_info){
-      //user_info as array
       let user_id = user_info[0]
       let picture_file = user_info[3];
       if (picture_file == null){
-        picture_file = "null"
+         user_info[3] = '<img src="' + "/assets/default.png" + '" />'
       }
       
       let _tr_html = '<tr>';
@@ -274,8 +267,6 @@ $('.tag_displayed').click(function(e) {
       _tr_html += '</tr>';
        
       $('#tags_for_tbody').append(_tr_html) 
-      
-      tags_arrays.push(user_info);
       
       //user_id をキーにしてuserに紐づくタグを取得する  
       $.ajax({ //ajax通信で以下のことを行います
@@ -294,25 +285,15 @@ $('.tag_displayed').click(function(e) {
           
           for(let key in tag_row){
             for(let j in tag_row[key]){
-              _tag_field += '<p>' + tag_row[key][j].tag + '</p>'
+              //click event をつけて再帰的にこのajaxを実行させる
+              _tag_field += '<span '+ 'class="'+ 'tag_appeared'  +'">'
+              _tag_field += tag_row[key][j].tag 
+              _tag_field += '</span><br>'
             }
-  
             $('#' + key  + '').append(_tag_field);
-  
           }
-          
-          debugger;
-          
-          
         })
-        
-        debugger;
-        // tags_from_users[cnt_of_tags_arrays] = tmp;
-        
-        cnt_of_tags_arrays += 1;
       })
-      
-      
     });
   })
 })

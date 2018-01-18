@@ -214,8 +214,7 @@ table{
 /*************modal form*********************/
 /********************************************/
 #modal-content{
-	width:50%;
-	/*height:50%;*/
+	width:60%;
 	max-height:90%;
 	margin:1.5em auto 0;
 	padding:10px 20px;
@@ -223,9 +222,10 @@ table{
 	background:#fff;
 	z-index:9999;
 	position:fixed;
-	top:0;
+	top:-50;
 	left:20%;
 	background-color: white;
+	overflow: auto;
 }
 
 .modal-p{
@@ -235,16 +235,6 @@ table{
 .modal-p:first-child{
 	margin-top:0;
 }
-
-/*.button-link{*/
-/*	color:#00f;*/
-/*	text-decoration:underline;*/
-/*}*/
- 
-/*.button-link:hover{*/
-/*	cursor:pointer;*/
-/*	color:#f00;*/
-/*}*/
 
 #modal-overlay{
 	z-index:1;
@@ -261,4 +251,8 @@ table{
 	position:fixed;
 	top:0;
 	left:0;
+}
+
+#modal-content img{
+  width: 20%;
 }
