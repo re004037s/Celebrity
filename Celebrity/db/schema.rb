@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180103225219) do
+ActiveRecord::Schema.define(version: 20180115154854) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,22 @@ ActiveRecord::Schema.define(version: 20180103225219) do
     t.date     "ji_2_compd"
     t.date     "schedule_date"
     t.index ["user_id"], name: "index_html_css_statuses_on_user_id", using: :btree
+  end
+
+  create_table "interview_posts", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "language"
+    t.string   "experience"
+    t.string   "type"
+    t.date     "day"
+    t.text     "summary"
+    t.text     "question"
+    t.string   "result"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "created_at"], name: "index_interview_posts_on_user_id_and_created_at", using: :btree
+    t.index ["user_id"], name: "index_interview_posts_on_user_id", using: :btree
   end
 
   create_table "javascript_statuses", force: :cascade do |t|
@@ -243,9 +259,8 @@ ActiveRecord::Schema.define(version: 20180103225219) do
 
   add_foreign_key "comments", "users"
   add_foreign_key "feedbacks", "users"
+  add_foreign_key "interview_posts", "users"
   add_foreign_key "movies", "movie_categories"
-  add_foreign_key "user_tags", "tags"
-  add_foreign_key "user_tags", "users"
   add_foreign_key "qiita_posts", "users"
   add_foreign_key "user_tags", "tags"
   add_foreign_key "user_tags", "users"

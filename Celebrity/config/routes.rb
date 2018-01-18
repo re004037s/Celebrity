@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     get 'sort', on: :collection
   end
   resources :qiita_posts
+  resources :interview_posts
   
   # resources :tags #userページに飛びたいのでいらない
   # resources :user_tags #追加
