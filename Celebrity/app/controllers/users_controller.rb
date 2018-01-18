@@ -13,12 +13,14 @@ class UsersController < ApplicationController
     
     if params[:user_id]
       user = User.find_by(id: params[:user_id])
+      # 不要なデータも表示される
       @user_tags = user.tags
     else
       @user_tags = current_user.tags
     end
     
   end
+  
   
   def update_picture
     @user = current_user
@@ -43,8 +45,6 @@ class UsersController < ApplicationController
     @user = current_user
     tag = @user.tags.create(tag: user_params[:tags])
     tag_name = user_params[:tags]
-    
-
  
     if tag.save
       flash[:success] = 'タグ名： ' + tag_name + ' を追加しました'
@@ -88,10 +88,12 @@ class UsersController < ApplicationController
     render json: @fetched_tags
   end
   
-  def tags_belongs_to_user
-    user_id = params[:user_id]
-    @tags_belongs_to_user = Tag.includes(:users).references(:users)
-    render json: @tags_belongs_to_user
+  def tag_edit
+    # @tag = Tag.where('tag LIKE(?)', "#{params[:keyword]}%")
+    # @tag = Tag.where("tag like '%'")
+    @tags  = Tag.all
+    
+    # @tag  = User.includes(:tags).where(tags:{tags: })
   end
   
   def new
@@ -160,4 +162,7 @@ class UsersController < ApplicationController
       redirect_to root_url if current_user == nil || !current_user.admin
     end
 
+
 end
+
+    
