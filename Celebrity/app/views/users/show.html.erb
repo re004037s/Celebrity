@@ -95,7 +95,7 @@
       </tr>
     </thead>
     <tbody id="tags_for_tbody">
-      <!--<tr>-->
+      <!--<tr id="tags_for_tr">-->
       <!--  <td></td>-->
       <!--</tr>-->
     </tbody>
@@ -201,7 +201,7 @@ function centeringModalSyncer(){
 
 }
 
-let tags_arrays = [];
+
 $('#user_tags').keyup(function(e) {
   e.preventDefault(); //キャンセル可能なイベントをキャンセル
   let text_field_obj = $('#tag-submit').parent('.edit_user').find('#user_tags');
@@ -235,6 +235,18 @@ $('#user_tags').keyup(function(e) {
   })
 });
 
+
+function createTd_html(user_info){
+  let tmp = '';
+  for(let i = 0, len = user_info.length; i < len; i++){
+    tmp += '<td>' + user_info[i] + '</td>';
+  }
+  return tmp;
+}
+
+let tags_arrays = [];
+let tags_from_users = [];
+let cnt_of_tags_arrays = 0;
 $('.tag_displayed').click(function(e) {
   let clicked_tag_name = $.trim($(this).text());
     //clickしたタグ名に紐づくユーザー情報をリアルタイムでajaxリクエストする
@@ -255,10 +267,17 @@ $('.tag_displayed').click(function(e) {
       if (picture_file == null){
         picture_file = "null"
       }
-      $('#modal-content').append('<li>' + user_info + picture_file + '</li>') 
+      
+      let _tr_html = '<tr>';
+      _tr_html += createTd_html(user_info);
+      _tr_html += '<td id="' + user_id   + '">' + '' + '</td>';
+      _tr_html += '</tr>';
+       
+      $('#tags_for_tbody').append(_tr_html) 
+      
       tags_arrays.push(user_info);
+      
       //user_id をキーにしてuserに紐づくタグを取得する  
-      debugger
       $.ajax({ //ajax通信で以下のことを行います
         url: '/users/tags_belongs_to_user', //urlを指定
         type: 'GET', //メソッドを指定
@@ -268,10 +287,29 @@ $('.tag_displayed').click(function(e) {
       })
       
       .done(function(tags_row){
-        debugger;
+        // let tmp = [];
+        let _tag_field = '';
         $(tags_row).each(function(i, tag_row){
+          // tmp.push(tag_row.tag);
+          
+          for(let key in tag_row){
+            for(let j in tag_row[key]){
+              _tag_field += '<p>' + tag_row[key][j].tag + '</p>'
+            }
+  
+            $('#' + key  + '').append(_tag_field);
+  
+          }
+          
+          debugger;
+          
           
         })
+        
+        debugger;
+        // tags_from_users[cnt_of_tags_arrays] = tmp;
+        
+        cnt_of_tags_arrays += 1;
       })
       
       

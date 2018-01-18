@@ -91,7 +91,8 @@ class UsersController < ApplicationController
   def tags_belongs_to_user
     userid = params[:userid];
     @tags_row = Tag.includes(:users).where('users.id =?', userid).references(:posts)
-    render json: @tags_row
+    @foo = { userid => @tags_row }
+    render json: @foo
   end
   
   def tag_edit
