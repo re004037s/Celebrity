@@ -72,6 +72,18 @@ User.create(name: '松井 秀喜',
             password_confirmation: 'password',
             admin: false,
             existence: true)
+            
+            
+#テスト user
+User.create(name: 'テスト',
+            nickname: 'テスト',
+            email: ' "test@gmail.com',
+            password: 'password',
+            password_confirmation: 'password',
+            admin: false,
+            
+            existence: true)
+
 
 User.all.each do |user|
     HtmlCssStatus.create(user_id: user.id)
