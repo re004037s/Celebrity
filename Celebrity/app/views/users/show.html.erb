@@ -100,7 +100,8 @@ $('#user_tags').keyup(function() {
   current_user.javascript_status.schedule_date.blank? ||
   current_user.ruby_status.schedule_date.blank? ||
   current_user.rubyonrails_status.schedule_date.blank? ||
-  current_user.railstutorial_status.schedule_date.blank? %>
+  current_user.railstutorial_status.schedule_date.blank? &&
+  current_user.admin? == false %>
   <p style="background-color:#FFCACA; color: red; font-size: 30px; text-align: center; 
   margin: 60px 0 25px; text-shadow: 0 1px 0 #999, 0 2px 0 #999">まずは下記の完了予定日を登録して下さい</p>
   <% end %>

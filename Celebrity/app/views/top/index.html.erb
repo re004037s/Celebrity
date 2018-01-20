@@ -1,7 +1,7 @@
 <% if current_user.try(:admin) ||
 Feedback.where(user_id: current_user).count < 
 Movie.where(movie_category_id: MovieCategory.where(must_view: true).ids).count %>
-  <%= render 'top/top_index' %>
+  <%= render 'top/top_page' %>
 
 <% elsif 
 Feedback.where(user_id: current_user).count == 
@@ -11,7 +11,7 @@ current_user.javascript_status.schedule_date.blank? ||
 current_user.ruby_status.schedule_date.blank? ||
 current_user.rubyonrails_status.schedule_date.blank? ||
 current_user.railstutorial_status.schedule_date.blank? %>
-  <%= render 'top/show' %>
+  <%= render file: 'users/show' %>
 
 <% elsif 
 Feedback.where(user_id: current_user).count == 
@@ -21,6 +21,6 @@ current_user.javascript_status.schedule_date.present? ||
 current_user.ruby_status.schedule_date.present? ||
 current_user.rubyonrails_status.schedule_date.present? ||
 current_user.railstutorial_status.schedule_date.present? %>
-  <%= render 'top/top_index' %>
+  <%= render 'top/top_page' %>
 
 <% end %>

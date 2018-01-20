@@ -83,22 +83,27 @@ User.create(name: '大谷 翔平',
             password_confirmation: 'password',
             admin: false,
             existence: true,
-            line_id: 098)
+            line_id: 98765)
             
 # 一般 user
-User.create(name: '赤星', nickname: 'レッドスター',
-            email: 'aka@gmail.com',
+User.create(name: 'ベーブルース',
+            nickname: 'ベビーフェイス',
+            email: 'baby@gmail.com',
             password: 'password',
             password_confirmation: 'password',
             admin: false,
             existence: true,
-            line_id: 765)
+            line_id: 43210)
 
-User.all.each do |user|
-    HtmlCssStatus.create(user_id: user.id)
-    JavascriptStatus.create(user_id: user.id)
-    RubyStatus.create(user_id: user.id)
-    RubyonrailsStatus.create(user_id: user.id)
-    RailstutorialStatus.create(user_id: user.id)
-    UserMovieStatus.create(user_id: user.id)
-end 
+
+User.where(id: 3..4).each do |user|
+    for i in 1..Movie.where(movie_category_id: MovieCategory.where(must_view: true).ids).count
+    Feedback.create(feedback: 'a'*100, movie_id: i, user_id: user.id)
+    end
+    HtmlCssStatus.create(user_id: user.id, schedule_date: '2019-01-01')
+    JavascriptStatus.create(user_id: user.id, schedule_date: '2019-01-01')
+    RubyStatus.create(user_id: user.id, schedule_date: '2019-01-01')
+    RubyonrailsStatus.create(user_id: user.id, schedule_date: '2019-01-01')
+    RailstutorialStatus.create(user_id: user.id, schedule_date: '2019-01-01')
+    UserMovieStatus.create(user_id: user.id, schedule_date: '2019-01-01')
+end
