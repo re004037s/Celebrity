@@ -76,27 +76,28 @@ $background-grey: #f4f4f4;
 
 
 /* ユーザ一覧&詳細ページ */
-/*
+
 .table-index {
-  width: 90%;
+  width: 70%;
   table-layout: fixed;
   margin: 0 auto;
+  text-align: center;  
 }
-
+/*
 .table-status {
   width: 90%;
   table-layout: fixed;
   margin: 0 auto;
   margin-bottom: 50px;
 }
-
+*/
 .table-header {
   background-color: black;
   color: white;
   font-weight: 400;
   text-align: center;
 }
-
+/*
 .status-name {
   margin-left: 30px;
 }

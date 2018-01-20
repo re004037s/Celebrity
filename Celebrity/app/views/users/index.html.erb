@@ -15,9 +15,9 @@
       <th class="table-header">GitHub</th>
     </tr>
   </thead>
+  <tbody>
   <% @users.each do |user| %>
     <% if user.existence %>
-      <tbody>
         <tr>
           <td><%= user.nickname %></td>
             <% if @current_user.admin %>
@@ -28,22 +28,28 @@
           <td><%= percent_progate(user) %>%</td>
           <td><%= count_rails_tutorial(user) %>章完了</td>
           <td>
-            <%= link_to user.try(:portfolio_path), class: "btn btn-sm#{' disabled' if user.try(:portfolio_path).nil?}", target: '_blank' do %>
-              <div class="t_1">ポートフォリオ</div>
-            <% end %>
-            <% if user.try(:portfolio_path).nil? %><% else %>
+            <% if user.try(:portfolio_path).nil? %>
+              <%= image_tag "button_portfolio1.png" %>
+            <% else %>
+              <%= link_to user.portfolio_path, target: '_blank' do %>
+                <%= image_tag "button_portfolio2.png" %>
+              <% end %>  
               <%= link_to 'コメント', portfolio_path(id: user.id), class: "t_1 btn btn-sm-1" %>
             <% end %>
           </td>
           <td>
-            <%= link_to user.try(:github_path), class: "btn btn-sm#{' disabled' if user.try(:github_path).nil?}", target: '_blank' do %>
-              <div class="t_1">GitHub</div>
+            <% if user.try(:github_path).nil? %>
+              <%= image_tag "button_github1.png" %>
+            <% else %>
+            　<%= link_to user.github_path, target: '_blank' do %>
+                <%= image_tag "button_github2.png" %>
+              <% end %>              
             <% end %>
           </td>
         </tr>
-      </tbody>
     <% end %>
   <% end %>
+  </tbody>
 </table>
 <div id="paginate">
   <%= paginate @users %>
