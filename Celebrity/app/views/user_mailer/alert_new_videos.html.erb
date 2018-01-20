@@ -5,15 +5,9 @@
 
 <p>
     新しい動画が投稿されました！<br>
-    <ul>
-        <% @new_movies.each do |movie| %>
-            <li><%= movie %></li>
-            <li>
                 <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
-                <p class="inline"><%= movie.title %></p>
-            </li
+                <p class="inline"><%= @new_movie.title %></p>
         <% end %>
-    </ul>
     サロンページの新着動画一覧よりご確認下さい！
 </p>
 
