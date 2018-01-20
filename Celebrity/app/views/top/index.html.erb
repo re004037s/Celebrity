@@ -1,68 +1,26 @@
-<meta name="viewport" content="width=device-width; initial-scale=1.0">
-<div class="main-wrapper container">
-  <div class="row">
-    <div class="col-sm-9">
-      <p class="txt2">
-        <% Date.today %>
-        <% day = Date.today %>
-        
-        <%= current_user.nickname %>さんこんにちは！<br>
+<% if current_user.try(:admin) ||
+Feedback.where(user_id: current_user).count < 
+Movie.where(movie_category_id: MovieCategory.where(must_view: true).ids).count %>
+  <%= render 'top/top_page' %>
 
-        今日も一日頑張りましょう(๑╹ω╹๑ )<br>
-        </p>
-        <!--ここにアラート入れる-->    
-       <h4 style="color:red;"><%= @alert_messages_html + "→【Progate:HTML&CSSコース】" if @alert_messages_html.present? %></h4>
-       <h4 style="color:red;"><%= @alert_messages_javascript + "→【Progate:javascriptコース】" if @alert_messages_javascript.present? %></h4>
-       <h4 style="color:red;"><%= @alert_messages_ruby + "→【Progate:rubyコース】" if @alert_messages_ruby.present? %></h4>
-       <h4 style="color:red;"><%= @alert_messages_rubyonrails + "→【Progate:ruby on railsコース】" if @alert_messages_rubyonrails.present? %></h4>
-       <h4 style="color:red;"><%= @alert_messages_railstutorial + "→【railsチュートリアル】" if @alert_messages_railstutorial.present? %></h4>
-       <h4 style="color:red;"><%= @alert_message_mv + "まだ見終わっていない動画があります" if @alert_message_mv.present? %></h4>
-      
-       <h4>はじめに</h4>
-       <br>
+<% elsif 
+Feedback.where(user_id: current_user).count == 
+Movie.where(movie_category_id: MovieCategory.where(must_view: true).ids).count &&
+current_user.html_css_status.schedule_date.blank? ||
+current_user.javascript_status.schedule_date.blank? ||
+current_user.ruby_status.schedule_date.blank? ||
+current_user.rubyonrails_status.schedule_date.blank? ||
+current_user.railstutorial_status.schedule_date.blank? %>
+  <%= render file: 'users/show' %>
+
+<% elsif 
+Feedback.where(user_id: current_user).count == 
+Movie.where(movie_category_id: MovieCategory.where(must_view: true).ids).count &&
+current_user.html_css_status.schedule_date.present? ||
+current_user.javascript_status.schedule_date.present? ||
+current_user.ruby_status.schedule_date.present? ||
+current_user.rubyonrails_status.schedule_date.present? ||
+current_user.railstutorial_status.schedule_date.present? %>
+  <%= render 'top/top_page' %>
   
-      <ol style="font-size:120%;">
-      <li>①このサイトのカリキュラムをこなすことで、フリーになるためのスキルが最短で身につきます。</li>
-      <br>
-
-      <li>②まずはマインドセットを動画で学習します。一覧の最初の動画から順に動画を視聴してください。各動画を見た後に、感想を記入して送信してください。(全動画を視聴後、マイページに移動出来ます。)</li>
-      <br>
-
-      <li>③次に、プログラミングの基礎を身につけます。プログラミング学習サイト「Progate」を使い、「HTML & CSS」「JavaScript」「Ruby」「Ruby on Rails5」のコースを全て終了させてください。</li>
-      <br>
-
-      <li>④次に、「Ruby on Rails チュートリアル」1章〜14章まで全て終了させてください。アプリケーション開発の基礎について学習することができます。</li>
-      <br>
-
-      <li>⑤チュートリアルが完了したら、面談などで使用するポートフォリオ（自作のWebアプリケーション）を作成します。作り方等詳細については動画で確認してください。</li>
-      <br>
-
-      </ol>
-      <div class="panel panel-primary">
-        <div class="panel-heading">新着動画</div>
-        <div class="panel-body">
-          <% if @new_movies.present? %>
-            <div class="mini-box">
-              <span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>
-              <h4 style="display: inline;">まだ視聴していない動画はありませんか!?</h4>              
-            </div>
-            <ul>
-              <% @new_movies.each do |movie| %>
-                <li>
-                  <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
-                  <p class="inline"><%= movie.title %></p>
-                </li>
-              <% end %>
-            </ul>
-          <% else %>
-            <div class="mini-box">
-              <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
-              <p class="inline">直近1週間に投稿された動画はありません。</p>              
-            </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
-    <%= render 'layouts/aside' %>
-  </div>
-</div>
+<% end %>
