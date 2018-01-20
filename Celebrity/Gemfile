@@ -23,6 +23,7 @@ gem 'whenever', :require => false
 
 group :development, :test do
   gem 'byebug',  '9.0.6', platform: :mri
+  gem 'pry-rails' #pry-rails を入れるとshow-modelsのコマンドが Rails consoleで使えるようになる
 end
 
 group :development do
@@ -43,6 +44,6 @@ group :production do
   gem 'pg', '~> 0.18'
   gem 'therubyracer'
 end
-
+ 
 # Windows環境ではtzinfo-dataというgemを含める必要があります
 gem 'tzinfo-data', platforms: [:ruby, :mingw, :mswin, :x64_mingw, :jruby]

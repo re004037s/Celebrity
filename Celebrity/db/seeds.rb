@@ -62,7 +62,8 @@ User.create(name: '鈴木 一郎',
             password: 'password',
             password_confirmation: 'password',
             admin: true,
-            existence: true)
+            existence: true,
+            line_id: 12345)
             
 # 一般 user
 User.create(name: '松井 秀喜',
@@ -71,7 +72,8 @@ User.create(name: '松井 秀喜',
             password: 'password',
             password_confirmation: 'password',
             admin: false,
-            existence: true)
+            existence: true,
+             line_id: 67890)
             
             
 #テスト user
@@ -81,7 +83,6 @@ User.create(name: 'テスト',
             password: 'password',
             password_confirmation: 'password',
             admin: false,
-            
             existence: true)
 
 

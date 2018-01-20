@@ -57,8 +57,43 @@
   </script>
 </div>
 
-    
-    
+<div id="tag-controll">
+  
+<%= form_for(@user, url: tag_show_path) do |f| %>
+  <%= f.text_field :tags , value:'', placeholder: 'タグを入力【20文字(英字or半角スペース)までOK】' %>
+  <%= f.submit '登録', id:'tag-submit', class: 'btn btn-primary', :disabled => 'true' %>
+<% end %>
+
+<p>登録済みのタグ一覧：</p>
+<% @user_tags.each do |user_tag| %>
+  <span class="tag_box">
+    <%=  user_tag.tag %>
+    <%= link_to image_tag('delete_icon.png', :class => 'delete_icon'), delete_tag_path(user_id: current_user.id, tag_id: user_tag.id), :method => :delete %>　<!-- methodでdeleteを指定する--> 
+  </span>
+<% end %>
+
+</div>
+
+<script>
+$('#user_tags').keyup(function() {
+  let text_field_obj = $('#tag-submit').parent('.edit_user').find('#user_tags');
+  let words = text_field_obj.val();
+  if(words.length >= 1 && words.length <= 20){
+    $("#tag-submit").prop("disabled", false);
+  }else{
+    $("#tag-submit").prop("disabled", true);
+  }
+});
+
+  $('.delete_icon').css('width', '15');
+  $('.tag_box').css('border', 'solid 1px #000000');
+  $('.tag_box').css('margin', '0 3px 0 0');
+  $('.tag_box').css('padding', '2 2');
+  $('.tag_box').css('font-size', '1.3em');
+  $('#tag-controll').css('width', '60%');
+  $('#tag-controll').css('margin', '1em auto');
+</script>
+  
 <table class="txt1 table-condensed table-status-schedule">
    <tr valign="baseline">
      <td width="60%">
@@ -154,14 +189,29 @@
   </thead>
   <tbody>
     <tr>
-      <td>学習コース/基礎</td>
-      <td class="center"><%= @user.javascript_status.try(:ga_beginner) ? '完了' : '未' %></td>
-      <td><%= @user.javascript_status.try(:ga_beginner_compd)%></td>
+      <td>学習コース 1</td>
+      <td class="center"><%= @user.javascript_status.try(:ga_1) ? '完了' : '未' %></td>
+      <td><%= @user.javascript_status.try(:ga_1_compd)%></td>
     </tr>
     <tr>
-      <td>道場コース/基礎</td>
-      <td class="center"><%= @user.javascript_status.try(:do_beginner) ? '完了' : '未' %></td>
-      <td><%= @user.javascript_status.try(:do_beginner_compd) %></td>
+      <td>学習コース 2</td>
+      <td class="center"><%= @user.javascript_status.try(:ga_2) ? '完了' : '未' %></td>
+      <td><%= @user.javascript_status.try(:do_2_compd) %></td>
+    </tr>
+    <tr>
+      <td>学習コース 3</td>
+      <td class="center"><%= @user.javascript_status.try(:ga_3) ? '完了' : '未' %></td>
+      <td><%= @user.javascript_status.try(:ga_3_compd)%></td>
+    </tr>
+    <tr>
+      <td>学習コース 4</td>
+      <td class="center"><%= @user.javascript_status.try(:ga_4) ? '完了' : '未' %></td>
+      <td><%= @user.javascript_status.try(:ga_4_compd)%></td>
+    </tr>      
+    <tr>
+      <td>道場コース 1</td>
+      <td class="center"><%= @user.javascript_status.try(:do_1) ? '完了' : '未' %></td>
+      <td><%= @user.javascript_status.try(:do_1_compd)%></td>
     </tr>
   </tbody>
 </table>

@@ -1,3 +1,6 @@
+/*@import url("./jquery.tagit.css"); */
+/*@import url("./tagit.ui-zendesk.css"); */
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -9,10 +12,12 @@
  * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
- *
  *= require_tree .
+ *= require tagit.ui-zendesk
  *= require_self
  *= require rails_bootstrap_forms
+ *= require jquery.tagit
+ 
  */
 body {
   background-color: gray;
@@ -178,5 +183,29 @@ table{
   text-align: center;
 }
 
+.btn-new {
+  color: #FAFAFA;
+  margin-left: 3em;
+  border-radius: 25px;
+  padding: 2px 18px;
+  background-color: #00BFFF
+}
 
+.button_wrapper {
+   text-align:center;
+}
 
+.post-regist, .post-update {
+  color: #FAFAFA;
+  border-radius: 25px;
+  background-color: #00BFFF;
+  width: 8em;
+}
+
+.post-delete {
+  color: #FAFAFA;
+  border-radius: 25px;
+  background-color: #FF0000;
+  width: 8em;
+  margin-top: 1em;
+}
