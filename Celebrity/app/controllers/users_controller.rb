@@ -88,6 +88,7 @@ class UsersController < ApplicationController
     render json: @fetched_tags
   end
   
+
   
   def new
     @user = User.new

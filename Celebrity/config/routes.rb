@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     collection do
       get 'search'
       get 'tag_related'
+      post 'update_tag'
     end
   end
         
@@ -38,9 +39,13 @@ Rails.application.routes.draw do
   patch '/post_icon', to:'tags#icon_show'
   post '/post_icon', to:'tags#icon_show'
   get '/post_icon', to:'tags#icon_show'
+  
   get '/tag_edit', to:'tags#tag_edit' 
   patch'/tag_edit', to:'tags#tag_edit'
-  post'/tag_edit', to:'tags#tag_edit'
+  # TODO ajaxのparamが渡らない
+  post'/tag_edit/update_tag', to:'tags#update_tag'
+  
+
   
   patch '/tag_show', to:'users#tag_show' #追加 sugi
   delete '/delete_tag', to: 'users#tag_delete' #temp post⇨deleteに変更しshow.htmlと統一

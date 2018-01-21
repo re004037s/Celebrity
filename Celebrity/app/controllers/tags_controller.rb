@@ -1,11 +1,24 @@
 class TagsController < ApplicationController
 
 
-def tag_edit
+  def tag_edit
  
     @tags  = Tag.all
     
     # send_data(@tags.icon)
+  end
+  
+  def update_tag
+    
+    # http ~~~~~~~~~~~~~~users/update_tag?update_tag_name=#input_text
+    @new_color = params[:new_color]
+    # タグのidを元にタグの色を変更する
+
+    # 成功した場合
+    render json: @new_color
+    
+    # 失敗した場合
+    
   end
   
   def icon_show

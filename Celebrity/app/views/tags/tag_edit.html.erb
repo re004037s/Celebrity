@@ -15,7 +15,7 @@
         <td><%= tag.id %></td>
         <td><%= tag.tag %></td>
         <td>
-          <input type="text" name="c1" value="<%= tag.color %>" placeholder="登録してください" size="12" class="html5jp-cpick [coloring:true]" readonly="readonly" />
+          <input type="text" name="c1" value="<%= tag.color %>" placeholder="登録してください" size="12" class="html5jp-cpick [coloring:true]"  readonly="readonly"/>
         </td>
         <td><% if tag.icon %>
             <%= image_tag (tag_edit_path) %>
@@ -30,3 +30,47 @@
     <% end %>
   </tbody>
 </table>
+
+
+<script>
+  console.log("jfsaldkjfalskjdflkj");
+  $('.html5jp-cpick').focusout(function(e) { // class のtext change イベント発生時に
+  // e.preventDefault(); //キャンセル可能なイベントをキャンセル
+  debugger
+  console.log($(this));
+  let input_text = $(this).val();
+  console.log(input_text);
+  
+  if(input_text == "") return;
+  isValidColorCode = input_text.match(/^#+([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/);
+  
+  //color code として不正なので、処理をやめる
+  if(isValidColorCode == null) {
+    alert("不正なカラーコードです");
+    return;
+  }
+  
+  //正しい場合は処理を続ける
+  console.log("正しいカラーコード処理");
+  
+  // TODO idを取得する
+  
+  
+   $.ajax({ //ajax通信で以下のことを行います
+    url: '/tag_edit/update_tag', //urlを指定
+    type: 'POST', //メソッドを指定
+    data: ('new_color=' + input_text), //コントローラーに渡すデータを'keyword=input(入力された文字のことですね)'にするように指定
+    processData: false, //おまじない
+    contentType: false, //おまじない
+    dataType: 'json' //データ形式を指定
+  })
+  //ajax request success時の処理
+
+  .done(function(res_data){ //データを受け取ることに成功したら、dataを引数に取って以下のことする(dataには@usersが入っている状態ですね)
+    console.log("response がきた！！！");
+    console.log(res_data);
+  })
+  
+  
+});
+</script>
