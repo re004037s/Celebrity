@@ -1,11 +1,12 @@
-<h1 class="txt2">進捗詳細</h1>
+<h2 class="page-title">MY PAGE</h2>
 
-<h2 class="txt3">
+<div class="main-wrapper">
+<h3 class="center">
   <%= @user.nickname %>
   [ <%= @user.name %> ]
-</h2>
+</h3>
 
-<div class="align-center">
+<div class="center">
   <% if @user.picture_file %>
   <%= image_tag(get_image_user_path) %>
   <% else %>
@@ -14,48 +15,47 @@
 </div>
 
 
-<div class="align-center">
-  <button type="button" class="edit-my-picture btn btn-primary" >写真を編集する</button>
+<div class="center">
+  <button class="edit-my-picture btn btn-primary">写真を編集する</button>
+
+  <div id="upload-my-picture" class="mg_auto wh_30">
+    <%= form_for(@user, url: post_pic_path, :id => 'form_id' ) do |f| %>
+    <div class="form-group has-error">
+      <span id="__has-warning" style="color: red;">画像を選択してください</span>
+      <%= f.file_field :picture, accept: 'image/*' %>
+      <%= f.submit '画像をアップロード', id: 'fileuploader', class: 'btn btn-primary fileuploader', :disabled => 'true' %>
+    </div>
+    <% end %>
+  </div>
 </div>
 
-<div id="upload-my-picture" class="align-center">
+<script type="text/javascript">
+  $('#user_picture').bind('change', function() {
+    
+  let size_in_megabytes = this.files[0].size/1024/1024;
   
-  <%= form_for(@user, url: post_pic_path, :id => 'form_id' ) do |f| %>
-  <div class="form-group has-error">
-    <span id="__has-warning" style="color: red;">画像を選択してください</span>
-    <%= f.file_field :picture, accept: 'image/*' %>
-    <%= f.submit '画像をアップロード', id: 'fileuploader', class: 'btn btn-primary fileuploader', :disabled => 'true' %>
-  </div>
-  <% end %>
+  // 画像未選択の場合
+  if (size_in_megabytes === null){
+    $("#fileuploader").prop("disabled", true);
+    $('#__has-warning').show();
+  }
   
-  <script type="text/javascript">
-    $('#user_picture').bind('change', function() {
-      
-    let size_in_megabytes = this.files[0].size/1024/1024;
-    
-    // 画像未選択の場合
-    if (size_in_megabytes === null){
-      $("#fileuploader").prop("disabled", true);
-      $('#__has-warning').show();
-    }
-    
-    // 画像のサイズが5MBを超える場合
-    if (size_in_megabytes > 5) {
-      $('#__has-warning').text('5MB以下のファイルを選択してください。');
-      $('#__has-warning').css('color','red');
-      $('#__has-warning').show();
-      $("#fileuploader").prop("disabled", true);
-    
-    // 画像のサイズが5MB以下の場合（正常）
-     }else if (size_in_megabytes <= 5){
-       $('#__has-warning').text('アップロードできます');
-       $('#__has-warning').css('color','blue');
-       $("#fileuploader").prop("disabled", false);
-     }
-     
-    });
-  </script>
-</div>
+  // 画像のサイズが5MBを超える場合
+  if (size_in_megabytes > 5) {
+    $('#__has-warning').text('5MB以下のファイルを選択してください。');
+    $('#__has-warning').css('color','red');
+    $('#__has-warning').show();
+    $("#fileuploader").prop("disabled", true);
+  
+  // 画像のサイズが5MB以下の場合（正常）
+   }else if (size_in_megabytes <= 5){
+     $('#__has-warning').text('アップロードできます');
+     $('#__has-warning').css('color','blue');
+     $("#fileuploader").prop("disabled", false);
+   }
+   
+  });
+</script>
 
 <div id="tag-controll">
   
@@ -97,8 +97,8 @@ $('#user_tags').keyup(function() {
 <table class="txt1 table-condensed table-status-schedule">
    <tr valign="baseline">
      <td width="60%">
-      <h3 class="txt3">[Progate] HTML&CSS<span class="font-schedule">完了予定日
-      <%= @user.html_css_status.try(:schedule_date) if @user.html_css_status.schedule_date.present? %></span></h3>
+      <h3 class="txt3">[Progate] HTML&CSS</h3>
+      完了予定日：<%= @user.html_css_status.try(:schedule_date) if @user.html_css_status.schedule_date.present? %></span></h3>
       </td>
       <td>
       <%= form_for(@user.html_css_status, url: html_css_schedule_path ) do |f| %>
@@ -166,8 +166,8 @@ $('#user_tags').keyup(function() {
 <table class="txt1 table-condensed table-status-schedule">
    <tr valign="baseline">
     <td width="60%">
-      <h3 class="txt3">[Progate] JavaScript<span class="font-schedule">完了予定日
-      <%= @user.javascript_status.try(:schedule_date) if @user.javascript_status.schedule_date.present? %><span class="font-schedule"></h3>
+      <h3 class="txt3">[Progate] JavaScript</h3>
+      完了予定日：<%= @user.javascript_status.try(:schedule_date) if @user.javascript_status.schedule_date.present? %><span class="font-schedule"></h3>
     </td>
     <td>
       <%= form_for(@user.javascript_status, url: javascript_schedule_path ) do |f| %>
@@ -219,8 +219,8 @@ $('#user_tags').keyup(function() {
 <table class="txt1 table-condensed table-status-schedule">
    <tr valign="baseline">
     <td width="60%">
-      <h3 class="txt3">[Progate] Ruby<span class="font-schedule">完了予定日
-      <%= @user.ruby_status.try(:schedule_date) if @user.ruby_status.schedule_date.present? %></span></h3>
+      <h3 class="txt3">[Progate] Ruby</h3>
+      完了予定日：<%= @user.ruby_status.try(:schedule_date) if @user.ruby_status.schedule_date.present? %></span></h3>
     </td>
     <td>
       <%= form_for(@user.ruby_status, url: ruby_schedule_path ) do |f| %>
@@ -272,8 +272,8 @@ $('#user_tags').keyup(function() {
 <table class="txt1 table-condensed table-status-schedule">
    <tr valign="baseline">
     <td width="60%">
-      <h3 class="txt3">[Progate] Ruby on Rails<span class="font-schedule">完了予定日
-      <%= @user.rubyonrails_status.try(:schedule_date) if @user.rubyonrails_status.schedule_date.present? %></span></h3>
+      <h3 class="txt3">[Progate] Ruby on Rails</h3>
+      完了予定日：<%= @user.rubyonrails_status.try(:schedule_date) if @user.rubyonrails_status.schedule_date.present? %></span></h3>
     </td>
     <td>
       <%= form_for(@user.rubyonrails_status, url: rubyonrails_schedule_path ) do |f| %>
@@ -389,8 +389,8 @@ $('#user_tags').keyup(function() {
 <table class="txt1 table-condensed table-status-schedule">
    <tr valign="baseline">
     <td width="60%">
-      <h3 class="txt3">Rails Tutorial<span class="font-schedule">完了予定日
-      <%= @user.railstutorial_status.try(:schedule_date) if @user.railstutorial_status.schedule_date.present? %></span></h3>
+      <h3 class="txt3">Rails Tutorial</h3>
+      完了予定日：<%= @user.railstutorial_status.try(:schedule_date) if @user.railstutorial_status.schedule_date.present? %></span></h3>
     </td>
     <td>
       <%= form_for(@user.railstutorial_status, url: railstutorial_schedule_path ) do |f| %>
@@ -412,8 +412,8 @@ $('#user_tags').keyup(function() {
 <table class="txt1 table-condensed table-status-schedule">
    <tr valign="baseline">
     <td width="60%">
-      <h3 class="txt3">動画視聴<span class="font-schedule">完了予定日
-      <%= @user.user_movie_status.try(:schedule_date) if @user.user_movie_status.schedule_date.present? %></span></h3>
+      <h3 class="txt3">動画視聴</h3>
+      完了予定日：<%= @user.user_movie_status.try(:schedule_date) if @user.user_movie_status.schedule_date.present? %></span></h3>
     </td>
     <td>
       <%= form_for(@user.user_movie_status, url: user_movie_schedule_path) do |f| %>
@@ -448,14 +448,14 @@ $('#user_tags').keyup(function() {
   <% end %>
 </table>
 
-<div class="form-button">
+<div class="right">
+  <%= link_to 'ユーザ編集', edit_user_path(@user) , class: 'btn btn-primary' %>
   <% if current_user.admin %>
-    <%= link_to 'ユーザ削除', @user, method: :delete, class: 'btn btn-danger user-delete',
+    <%= link_to 'ユーザ削除', @user, method: :delete, class: 'btn btn-danger',
         data: { confirm: '本当に削除しますか？' } %>
   <% end %>
-  <%= link_to 'ユーザ編集', edit_user_path(@user) , class: 'btn btn-primary user-edit' %>
 </div>
-
+</div>
 
 <script>
 $('.edit-my-picture').click(function(){
