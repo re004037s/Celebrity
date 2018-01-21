@@ -1,8 +1,8 @@
-<div class="main-wrapper container">
+<div class="main-wrapper">
   <div class="row">
-    <div class="col-sm-9">
+    <div class="col-md-9">
       <div>
-        <h2 class="category-title"><%= @category.name %></h1>
+        <h2 class="center txt2 under"><%= @category.name %></h2>
       </div>
       <% hide = 'hide-movie' %>
       <% @movies.each do |movie| %>
@@ -15,17 +15,15 @@
       <% end %>
       <% if @category.sort_order == MovieCategory.where(must_view: true).count %>
         <div id="mypage_link" class="<%= hide if !current_user.before_fb_comp?(@category.movies.count + 1, @category.id) && @category.must_view %>">
-          <ul class="txt3">
-            <br>
-            <li> おめでとうございます！</li>
-            <li> 課題となる動画視聴はこれで完了です。</li>
-            <li> 次はProgate完了予定日の登録に進みましょう！</li>
-            <br>
-          </ul>
+          <div class="txt1">
+            おめでとうございます！<br>
+            課題となる動画視聴はこれで完了です。<br>
+            次はProgate完了予定日の登録に進みましょう！<br>
+          </div>
           <p class="text-center">  
             <%= link_to "完了予定日を登録", current_user, class: "txt1 btn btn-lg btn-primary" %>
-          </p>      
-        </div>                   
+          </p>
+        </div>
       <% elsif @category.sort_order != MovieCategory.count %>
         <div id="next_category_link" class="<%= hide if !current_user.before_fb_comp?(@category.movies.count + 1, @category.id) && @category.must_view %>">
           <p class="text-center">

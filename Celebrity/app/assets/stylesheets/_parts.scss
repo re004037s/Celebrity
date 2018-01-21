@@ -1,0 +1,38 @@
+.form-button {
+  height: 40px;
+}
+
+.mv-btn {
+  text-align: center;
+}
+
+.img-feed-btn {
+  width: 150px;
+  height: auto;
+  padding:0;
+  margin:0;
+  background:none;
+  border:0;
+  font-size:0;
+  line-height:0;
+  overflow:visible;
+  cursor:pointer;  
+}
+
+// パネル（panelsの代替）
+.information {
+  width: 543px;
+  border: solid 2px #373737;
+}
+.information-head {
+  height: 66px;
+  border-bottom: solid 2px #373737;
+  background-color: #373737;
+  font-size: 30px;
+  color: #fff;
+  padding: 18px 15px;
+}
+.information-body {
+  padding: 20px;
+}
+

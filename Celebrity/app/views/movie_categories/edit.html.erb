@@ -1,4 +1,4 @@
-<h1 class="txt5">カテゴリ情報の編集</h1>
+<h2 class="page-title">カテゴリ情報の編集</h2>
 
 <div id="sort_table">
   <% if @movies.present? %>
@@ -8,7 +8,7 @@
 
 <%= render :partial => 'movie_category_form' %>
 
-<div class="btn-wrapper">
+<div class="center mt_20">
   <%= link_to '<< 動画一覧へ戻る', movies_path %>
   <%= link_to 'カテゴリ削除', @movie_category, method: :delete, data: { confirm: '本当に削除しますか？' } %>
 </div>

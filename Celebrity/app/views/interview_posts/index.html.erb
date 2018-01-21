@@ -1,6 +1,8 @@
-<h1 class="txt2">面談内容投稿</h1>
+<h2 class="page-title">面談内容一覧</h2>
 
-<%= link_to '新規登録', new_interview_post_path, {class: 'btn btn-new' }%>
+<div class="center">
+  <%= link_to '新規登録', new_interview_post_path %>
+</div>
 <table class="table table-bordered table-striped table-index">
   <thead>
     <tr>
@@ -23,6 +25,6 @@
     </tbody>
   <% end %>
 </table>
-<div id="paginate">
+<div class="center">
   <%= paginate @interviewposts %>
 </div>
