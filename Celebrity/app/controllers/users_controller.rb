@@ -88,13 +88,6 @@ class UsersController < ApplicationController
     render json: @fetched_tags
   end
   
-  def tag_edit
-    # @tag = Tag.where('tag LIKE(?)', "#{params[:keyword]}%")
-    # @tag = Tag.where("tag like '%'")
-    @tags  = Tag.all
-    
-    # @tag  = User.includes(:tags).where(tags:{tags: })
-  end
   
   def new
     @user = User.new

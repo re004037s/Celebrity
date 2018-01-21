@@ -1,0 +1,32 @@
+<h1>タグ一覧</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>タグ</th>
+      <th>カラー</th>
+      <th>アイコン</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tags.each do |tag| %>
+      <tr>
+        <td><%= tag.id %></td>
+        <td><%= tag.tag %></td>
+        <td>
+          <input type="text" name="c1" value="<%= tag.color %>" placeholder="登録してください" size="12" class="html5jp-cpick [coloring:true]" readonly="readonly" />
+        </td>
+        <td><% if tag.icon %>
+            <%= image_tag (tag_edit_path) %>
+            <% else %>
+            <%= image_tag("default_icon.png", :class => "tag_icon")%>
+            <% end %>
+            <%= form_for tag, url: post_icon_path do |f| %>
+<%= f.file_field :icon %>
+<%= f.submit '登録', class: 'btn btn-primary fileuploader'%>
+<% end %></td>
+        
+    <% end %>
+  </tbody>
+</table>
