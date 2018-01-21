@@ -39,9 +39,17 @@
   border-bottom: solid 2px #373737;
 }
 
+.left {
+  text-align: left;
+}
+
 .img-button {
-  width:auto;
-  height:auto;
-  max-width:100%;
-  max-height:100%;  
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;  
+}
+
+.mt_20 {
+  margin-top: 20px;
 }

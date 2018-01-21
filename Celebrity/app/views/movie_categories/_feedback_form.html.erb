@@ -7,7 +7,7 @@
     <span id="msg<%= sort_order %>">文字数カウント</span><br>
     <div style="color: red;" class="has-error<%= sort_order %>"></div>
     <div id="feedback-btn<%= sort_order %>" class="center">
-      <%= image_submit_tag("button_feedback1.png", class: "img-feed-btn", disabled: false) %>        
+      <%= image_submit_tag("button_feedback1.png", class: "img-feed-btn submit-btn#{sort_order}", disabled: true) %>        
     </div>
   </div>
 <% end %>
