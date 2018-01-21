@@ -18,7 +18,16 @@
           <li><%= link_to 'SIGN UP', signup_path %></li>
         <% end %>
         <li><%= link_to 'SALON MEMBERS', users_path %></li>
-        <li><%= link_to 'MY PAGE', current_user %></li>
+        <li> 
+          <% if Feedback.where(user_id: current_user).count == 
+          Movie.where(movie_category_id: MovieCategory.where(must_view: true).ids).count ||
+          current_user.try(:admin) %>
+            <%= link_to 'MY PAGE', current_user %>
+          <% else %>
+            <p style="color: #4d4d4d; font-size: 15px; margin: 25px 10px 0px; cursor: pointer;"
+            title="先に動画を視聴して下さい">MY PAGE</p>
+          <% end %>
+        </li>
         <li><%= link_to 'LOG OUT', logout_path, method: :delete %></li>
       </ul>
     </nav>
