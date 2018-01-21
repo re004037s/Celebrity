@@ -3,10 +3,10 @@
 <table class="table table-bordered table-striped table-index">
   <thead>
     <tr>
-      <th width=15% class="table-header">ユーザ名</th>
+      <th width=10% class="table-header">ユーザ名</th>
         <% if @current_user.admin %>
           <th width=10% class="table-header">氏名</th>
-          <th width=20% class="table-header">メアド</th>
+          <th width=15% class="table-header">メアド</th>
         <% end %>
       <th width=10% class="table-header">動画視聴率</th>
       <th width=10% class="table-header">Progate</th>
@@ -29,20 +29,20 @@
           <td><%= count_rails_tutorial(user) %>章完了</td>
           <td>
             <% if user.try(:portfolio_path).nil? %>
-              <%= image_tag "button_portfolio1.png" %>
+              <%= image_tag "button_portfolio1.png", class: 'img-button' %>
             <% else %>
               <%= link_to user.portfolio_path, target: '_blank' do %>
-                <%= image_tag "button_portfolio2.png" %>
+                <%= image_tag "button_portfolio2.png", class: 'img-button' %>
               <% end %>  
               <%= link_to 'コメント', portfolio_path(id: user.id), class: "t_1 btn btn-sm-1" %>
             <% end %>
           </td>
           <td>
             <% if user.try(:github_path).nil? %>
-              <%= image_tag "button_github1.png" %>
+              <%= image_tag "button_github1.png", class: 'img-button' %>
             <% else %>
             　<%= link_to user.github_path, target: '_blank' do %>
-                <%= image_tag "button_github2.png" %>
+                <%= image_tag "button_github2.png", class: 'img-button' %>
               <% end %>              
             <% end %>
           </td>
