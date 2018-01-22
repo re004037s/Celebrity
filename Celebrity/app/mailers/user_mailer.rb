@@ -14,15 +14,14 @@ class UserMailer < ApplicationMailer
     mail to: @user.email, subject: "セレブエンジニアサロンのタスクについて"		
   end
   
-  def send_when_create(user,movie)
-    @user = user
-    
+  def send_when_create(users,movie)
     @new_movie = movie
-    #user name		
-    @user_name = @user.nickname
-    
-    mail to: @user.email, subject: 'セレブエンジニアサロンの新規動画について'
+    users.each do |user|
+       @user_name = user.nickname
+       mail to: user.email, subject:  'セレブエンジニアサロンの新規動画について'
+    end
   end
+  
   
   
   def account_activation(user)

@@ -13,9 +13,9 @@ class MoviesController < ApplicationController
   def create
     params[:movie][:sort_order] = Movie.where(movie_category_id: params[:movie][:movie_category_id]).pluck(:sort_order).max.to_i + 1
     @movie = Movie.new(movie_params)
-    @user = user.all
+    @user=User.all
     if @movie.save
-      UserMailer.send_when_create(@movie).deliver
+      UserMailer.send_when_create(@user, @movie).deliver
       flash[:success] = '動画を登録しました'
       redirect_to movies_path
     else
