@@ -7,21 +7,18 @@
   //overflow: hidden;
 }
 
-.container {
-  //width: 1366px;
-  //padding-left: 0px;
-  //padding-right: 0px;
-  /*margin-left: 0px;*/
-  /*margin-right: 0px;*/
-  //max-width: 900px;
-  //background-color: white;
+.body-login-reset {
+  background-color: #000;
+  background-image: image_url("img_login.png");
+  background-size: auto 100%;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  max-width: 1366px;
+  max-height: 786px;
+  //margin: 0 auto;
 }
 
-
-.row {
-    //margin-left: 0px; 
-    //margin-right: 0px; 
-}
 
 .center {
   text-align: center;

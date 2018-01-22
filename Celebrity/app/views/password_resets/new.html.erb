@@ -1,13 +1,20 @@
 <% provide(:title, "Forgot password") %>
-<h2 class="page-title">パスワード再設定</h2>
-
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
+<div class="form-login-reset">
+  <div class="form-login-reset--wrapper">
+    <h6 class="form-login-reset--title">パスワードをお忘れの方へ</h6>
+    <ul class="form-login-reset--message">
+      <li>以下のフォームにご登録メールアドレスを入力し、</li>
+      <li>「パスワードの再設定申請」ボタンを押してください。</li>
+      <br>
+      <li>パスワードの再設定ページがメールで通知されますので、</li>
+      <li>そのURLをブラウザで開いてください。</li>
+    </ul>
+    
     <%= form_for(:password_reset, url: password_resets_path) do |f| %>
-      <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %>
+      <%= f.label :email, 'ご登録メールアドレス', class: 'form-login-reset--label' %>
+      <%= f.email_field :email, class: 'form-login-reset--textbox' %>
 
-      <%= f.submit "送信", class: "btn btn-primary" %>
+      <%= image_submit_tag("button_login.png", class: "form-login-reset--button") %>
     <% end %>
   </div>
 </div>
