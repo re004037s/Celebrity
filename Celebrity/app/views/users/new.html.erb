@@ -1,38 +1,39 @@
-<h2 class="page-title">SIGN UP</h2>
-
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
+<div class="form-window form-signup">
+  <div class="form-window--wrapper">
+    <h6 class="form-window--title">新規登録</h6>
+    
     <%= form_for(@user, url: signup_path) do |f| %>
       <%= render partial: 'shared/error_messages', locals: { object: @user } %>
     
-      <%= f.label :name, "氏名", class: 'txt1' %>
-      <%= f.text_field :name, class: 'form-control' %>
+      <%= f.label :name, "氏名", class: 'form-window--label' %>
+      <%= f.text_field :name, class: 'form-window--textbox' %>
 
-      <%= f.label :nickname, "ニックネーム", class: 'txt1' %>
-      <%= f.text_field :nickname, class: 'form-control' %>
+      <%= f.label :nickname, "ニックネーム", class: 'form-window--label' %>
+      <%= f.text_field :nickname, class: 'form-window--textbox' %>
 
-      <%= f.label :email, 'Email', class: 'txt1' %>
-      <%= f.email_field :email, class: 'form-control' %>
+      <%= f.label :email, 'Email', class: 'form-window--label' %>
+      <%= f.email_field :email, class: 'form-window--textbox' %>
       
-      <%= f.label :line_id, "LINE ID", class: 'txt1' %>
-      <%= f.text_field :line_id, class: 'form-control' %>
+      <%= f.label :line_id, "LINE ID", class: 'form-window--label' %>
+      <%= f.text_field :line_id, class: 'form-window--textbox' %>
 
-      <%= f.label :password, 'パスワード', class: 'txt1' %>
-      <%= f.password_field :password, class: 'form-control' %>
+      <%= f.label :password, 'パスワード', class: 'form-window--label' %>
+      <%= f.password_field :password, class: 'form-window--textbox' %>
 
-      <%= f.label :password_confirmation, "パスワード確認", class: 'txt1' %>
-      <%= f.password_field :password_confirmation, class: 'form-control' %>
+      <%= f.label :password_confirmation, "パスワード確認", class: 'form-window--label' %>
+      <%= f.password_field :password_confirmation, class: 'form-window--textbox' %>
 
-      <%= f.submit "登録！", class: "btn-log btn btn-primary" %>
+      <%= f.submit "登録", class: "btn btn-secondary btn-block" %>
+      <!--画像を差し込む場合は下記を加工してください。-->
+      <!--<= image_submit_tag("button_xxxxx.png", class: "form-window--button") %>-->
+      
+      <%= link_to ">> TOPページへ戻る", login_path, class: 'form-window--link' %>
     <% end %>
-
-    <div class="center mt_20">
-      <%= link_to ">> TOPページへ戻る", login_path %>
-    </div>
   </div>
 </div>
-<style>
-.navbar{display:none;}
-body{padding-top:0px;}
-.blank-box{display:none;}
-</style>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    
+  </div>
+</div>

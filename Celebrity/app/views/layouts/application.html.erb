@@ -23,7 +23,7 @@
   <% if change_background_image? %><!--表示を変更するページを判定-->
     
     <!--背景を変更（ログイン時など）-->
-    <body class="body-login-reset">
+    <body class="body-window">
       <!--アラートメッセージ-->
       <% flash.each do |message_type, message| %>
         <div class="alert alert-<%= message_type %>"><%= message %></div>

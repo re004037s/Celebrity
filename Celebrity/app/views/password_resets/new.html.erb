@@ -1,8 +1,8 @@
 <% provide(:title, "Forgot password") %>
-<div class="form-login-reset">
-  <div class="form-login-reset--wrapper">
-    <h6 class="form-login-reset--title">パスワードをお忘れの方へ</h6>
-    <ul class="form-login-reset--message">
+<div class="form-window form-login-reset">
+  <div class="form-window--wrapper">
+    <h6 class="form-window--title">パスワードをお忘れの方へ</h6>
+    <ul class="form-window--message">
       <li>以下のフォームにご登録メールアドレスを入力し、</li>
       <li>「パスワードの再設定申請」ボタンを押してください。</li>
       <br>
@@ -11,10 +11,10 @@
     </ul>
     
     <%= form_for(:password_reset, url: password_resets_path) do |f| %>
-      <%= f.label :email, 'ご登録メールアドレス', class: 'form-login-reset--label' %>
-      <%= f.email_field :email, class: 'form-login-reset--textbox' %>
+      <%= f.label :email, 'ご登録メールアドレス', class: 'form-window--label' %>
+      <%= f.email_field :email, class: 'form-window--textbox' %>
 
-      <%= image_submit_tag("button_password.png", class: "form-login-reset--button") %>
+      <%= image_submit_tag("button_password.png", class: "form-window--button") %>
     <% end %>
   </div>
 </div>
