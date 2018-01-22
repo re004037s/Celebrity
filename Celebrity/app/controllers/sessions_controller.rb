@@ -21,8 +21,10 @@ class SessionsController < ApplicationController
       redirect_to root_url
     else
       # エラーメッセージを作成する
-      flash.now[:danger] = 'メールアドレスとパスワードの組み合わせが不正です'
-      render 'new'
+      # flash.now[:danger] = 'メールアドレスとパスワードの組み合わせが不正です'
+      # render 'new'
+      flash[:danger] = 'メールアドレスとパスワードの組み合わせが不正です'
+      redirect_to login_url
     end
   end
   
