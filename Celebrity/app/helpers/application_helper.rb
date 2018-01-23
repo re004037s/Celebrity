@@ -14,7 +14,7 @@ module ApplicationHelper
   
   def change_background_image?
     path = controller_path + '#' + action_name
-    path.in?(['sessions#new', 'users#new', 'password_resets#edit', 'password_resets#new'])
+    path.in?(['sessions#new', 'users#new', 'users#create', 'password_resets#edit', 'password_resets#new'])
   end
 
   def progatetask_tutolialday_comp?
