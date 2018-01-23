@@ -47,7 +47,7 @@ class User < ApplicationRecord
         !!self.feedbacks.find_by(movie_id: Movie.where(movie_category_id: category_id, sort_order: sort_order - 1).first.id)
     end
 
-# アカウントを有効にする
+  # アカウントを有効にする
   def activate
     update_attribute(:activated,    true)
     update_attribute(:activated_at, Time.zone.now)
@@ -93,56 +93,22 @@ class User < ApplicationRecord
     end
     
     def save_users(savepost_tags)
-    current_tags = self.tags.pluck(:name) unless self.tags.nil?
-    old_tags = current_tags - savepost_tags
-    new_tags = savepost_tags - current_tags
-
-    # Destroy old taggings:
-    old_tags.each do |old_name|
-      self.tags.delete Tag.find_by(name:old_name)
-    end
-
-    # Create new taggings:
-    new_tags.each do |new_name|
-      post_tag = Tag.find_or_create_by(name:new_name)
-      self.tags << post_tag
-    end
+      current_tags = self.tags.pluck(:name) unless self.tags.nil?
+      old_tags = current_tags - savepost_tags
+      new_tags = savepost_tags - current_tags
+  
+      # Destroy old taggings:
+      old_tags.each do |old_name|
+        self.tags.delete Tag.find_by(name:old_name)
+      end
+  
+      # Create new taggings:
+      new_tags.each do |new_name|
+        post_tag = Tag.find_or_create_by(name:new_name)
+        self.tags << post_tag
+      end
     end
     
-    # アカウントを有効にする
-   def activate
-     update_attribute(:activated,    true)
-     update_attribute(:activated_at, Time.zone.now)
-   end
- 
-   # 有効化用のメールを送信する
-   def send_activation_email
-     UserMailer.account_activation(self).deliver_now
-   end
- 
-   # パスワード再設定の属性を設定する
-   def create_reset_digest
-     self.reset_token = User.new_token
-     update_attribute(:reset_digest,  User.digest(reset_token))
-     update_attribute(:reset_sent_at, Time.zone.now)
-   end
-   
-    # パスワード再設定のメールを送信する
-   def send_password_reset_email
-     UserMailer.password_reset(self).deliver_now
-   end
-   # パスワード再設定の期限が切れている場合はtrueを返す
-   def password_reset_expired?
-     reset_sent_at < 2.hours.ago
-   end
-   
-   # トークンがダイジェストと一致したらtrueを返す
-   def authenticated?(attribute, token)
-     digest = send("#{attribute}_digest")
-     return false if digest.nil?
-     BCrypt::Password.new(digest).is_password?(token)
-   end
- 
      # メールアドレスをすべて小文字にする
     def downcase_email
        self.email = email.downcase
@@ -156,7 +122,6 @@ class User < ApplicationRecord
     def User.new_token
        SecureRandom.urlsafe_base64
     end
-   
 end
 
 
