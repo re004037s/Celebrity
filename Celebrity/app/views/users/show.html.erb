@@ -81,6 +81,8 @@
 </div>
 
 
+
+
 <div id="modal-content" class="table-responsive" style="display:none;">
   <table class="table table-bordered table-hover table-striped">
     <thead>
@@ -199,6 +201,8 @@ function showModalForm(){
 
 
 
+
+
 //センタリングをする関数
 function centeringModalSyncer(){
 
@@ -232,8 +236,9 @@ function centeringModalSyncer(){
 
 }
 
-
+let availableTags = [];
 $('#user_tags').keyup(function(e) {
+  availableTags = [];
   e.preventDefault(); //キャンセル可能なイベントをキャンセル
   let text_field_obj = $('#tag-submit').parent('.edit_user').find('#user_tags');
   let words = $.trim(text_field_obj.val());
@@ -261,7 +266,14 @@ $('#user_tags').keyup(function(e) {
   .done(function(response){ //データを受け取ることに成功したら、dataを引数に取って以下のことする(dataには@usersが入っている状態ですね)
     // $('#result').find('li').remove();  //idがresultの子要素のliを削除する
     $(response).each(function(i, fetchedTag){ //dataをuserという変数に代入して、以下のことを繰り返し行う(単純なeach文ですね)
-      $('#result').append('<li>' + fetchedTag.tag + '</li>') //resultというidの要素に対して、<li>ユーザーの名前</li>を追加する。
+      // $('#result').append('<li>' + fetchedTag.tag + '</li>') //resultというidの要素に対して、<li>ユーザーの名前</li>を追加する。
+      availableTags.push(fetchedTag.tag);
+    });
+    
+    // TODO error / autocomplete
+    debugger;
+    $("#user_tags").autocomplete({
+      source: availableTags
     });
   })
 });

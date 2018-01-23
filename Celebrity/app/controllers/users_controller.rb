@@ -13,9 +13,9 @@ class UsersController < ApplicationController
     
     if params[:user_id]
       user = User.find_by(id: params[:user_id])
-      # 不要なデータも表示される
       @user_tags = user.tags
     else
+      flash[:error] = 'エラー：ユーザーのタグを取得できませんでした'
       @user_tags = current_user.tags
     end
     
