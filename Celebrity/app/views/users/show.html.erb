@@ -83,14 +83,14 @@
 </div>
 
 
-<div id="modal-content" style="display:none;">
-  <table>
+<div id="modal-content" class="table-responsive" style="display:none;">
+  <table class="table table-bordered table-hover table-striped">
     <thead>
       <tr>
         <th>ID</th>
         <th>名前</th>
         <th>ニックネーム</th>
-        <th>画像</th>
+        <th class="profile-pic">画像</th>
         <th>登録タグ</th>
       </tr>
     </thead>
@@ -109,58 +109,83 @@ let sY_syncerModal = 0 ;
 let cnt = 0;
 let w, h, wW, wH, ww, hh = 0;
 
-$(".tag_displayed").click(
-	function(){
-    //スクロール位置を記録
-    var dElm = document.documentElement , dBody = document.body;
-    sX_syncerModal = dElm.scrollLeft || dBody.scrollLeft;	//現在位置のX座標
-    sY_syncerModal = dElm.scrollTop || dBody.scrollTop;		//現在位置のY座標
 
-		//キーボード操作などにより、オーバーレイが多重起動するのを防止する
-    $(this).blur() ;	//ボタンからフォーカスを外す
-    //if($("#modal-overlay")[0]) return false ;		//新しくモーダルウィンドウを起動しない [下とどちらか選択]
-    if($("#modal-overlay")) $("#modal-overlay").remove() ;		//現在のモーダルウィンドウを削除して新しく起動する [上とどちらか選択]
+let tag_displayed_objs = document.getElementsByClassName("tag_displayed");
+for(let i = 0, len = tag_displayed_objs.length; i < len; i++){
+  tag_displayed_objs[i].addEventListener(
+    "click", showModalForm
+  );
+  tag_displayed_objs[i].addEventListener(
+    "click", displayUserTagRelation
+  );
+}
+
+
+$(window).resize(function(){
+  cnt = 0;
+});
+
+function showModalForm(){
+  if($('#tags_for_tbody').children().remove()){
+    $('#tags_for_tbody').children().remove();
+  };
+  
+
+  //スクロール位置を記録
+  var dElm = document.documentElement , dBody = document.body;
+  sX_syncerModal = dElm.scrollLeft || dBody.scrollLeft;	//現在位置のX座標
+  sY_syncerModal = dElm.scrollTop || dBody.scrollTop;		//現在位置のY座標
+
+	//キーボード操作などにより、オーバーレイが多重起動するのを防止する
+  $(this).blur() ;	//ボタンからフォーカスを外す
+  //if($("#modal-overlay")[0]) return false ;		//新しくモーダルウィンドウを起動しない [下とどちらか選択]
+  if($("#modal-overlay")) $("#modal-overlay").remove() ;		//現在のモーダルウィンドウを削除して新しく起動する [上とどちらか選択]
+  
+
+  
+  if (cnt == 0){
+    var w = $(window).width();
+    var h = $(window).height();
+
+    var cw = $("#modal-content").outerWidth();
+    var ch = $("#modal-content").outerHeight();
     
-    if( cnt === 0){
-      wH = $(window).height();
-      wW = $(window).width();
-      w = $("#modal-content").width();
-      ww = ( wW - w ) / 2;
-      hh = wH * 1 / 3;
-      $('#modal-content').offset({ "top": hh, "left": ww});
-      cnt += 1;
-    }
+    var sc = $(window).scrollTop();
     
-    //オーバーレイ用のHTMLコードを、[body]内の最後に生成する
-    $("body").append('<div id="modal-overlay"></div>');
-    
-    //[$modal-content]をフェードインさせる
-    $("#modal-content").fadeIn("slow");
-    
-    //[$modal-overlay]をフェードインさせる
-    $("#modal-overlay").fadeIn("slow");
-    
-    centeringModalSyncer();
-    
-    $(window).resize(centeringModalSyncer);
-    
-    
-    $("#modal-overlay").unbind().click(function(){
-    	//[#modal-overlay]と[#modal-close]をフェードアウトする
-      $("#modal-content, #modal-overlay").fadeOut("slow",function(){
-    	//フェードアウト後、[#modal-overlay]をHTML(DOM)上から削除
-    	  $("#modal-overlay").remove();
-        $('#tags_for_tbody').children().remove();
-        
-        //スクロール位置を移動
-        window.scrollTo( sX_syncerModal , sY_syncerModal );
-        
-      });
+    $("#modal-content").css({
+      "left": ((w - cw) / 2 ) + "px",
+      "top": ( h * 1 / 8) + "px"
     });
-    
-		
-	}
-);
+    cnt += 1;
+  }
+  
+  //オーバーレイ用のHTMLコードを、[body]内の最後に生成する
+  $("body").append('<div id="modal-overlay"></div>');
+  
+  //[$modal-content]をフェードインさせる
+  $("#modal-content").fadeIn("slow");
+  
+  //[$modal-overlay]をフェードインさせる
+  $("#modal-overlay").fadeIn("slow");
+  
+  centeringModalSyncer();
+  
+  $(window).resize(centeringModalSyncer);
+  
+  
+  $("#modal-overlay").unbind().click(function(){
+  	//[#modal-overlay]と[#modal-close]をフェードアウトする
+    $("#modal-content, #modal-overlay").fadeOut("slow",function(){
+  	//フェードアウト後、[#modal-overlay]をHTML(DOM)上から削除
+  	  $("#modal-overlay").remove();
+      $('#tags_for_tbody').children().remove();
+      
+      //スクロール位置を移動
+      window.scrollTo( sX_syncerModal , sY_syncerModal );
+    });
+  });
+}
+
 
 
 
@@ -241,7 +266,8 @@ function createTd_html(user_info){
 }
 
 let tags_arrays = [];
-$('.tag_displayed, .tag_appeared').click(function(e) {
+function displayUserTagRelation() {
+  $('.tag_appeared').off('click');
   let clicked_tag_name = $.trim($(this).text());
     //clickしたタグ名に紐づくユーザー情報をリアルタイムでajaxリクエストする
   $.ajax({ //ajax通信で以下のことを行います
@@ -282,23 +308,33 @@ $('.tag_displayed, .tag_appeared').click(function(e) {
         let _tag_field = '';
         $(tags_row).each(function(i, tag_row){
           // tmp.push(tag_row.tag);
-          
+          // debugger
           for(let key in tag_row){
             for(let j in tag_row[key]){
               //click event をつけて再帰的にこのajaxを実行させる
-              _tag_field += '<span '+ 'class="'+ 'tag_appeared'  +'">'
+              _tag_field += '<span '+ 'class="'+ 'tag_appeared__userid_' + key +'">'
               _tag_field += tag_row[key][j].tag 
-              _tag_field += '</span><br>'
+              _tag_field += '</span>'
+              _tag_field += '</br>'
+              $('#' + key  + '').append(_tag_field);
             }
-            $('#' + key  + '').append(_tag_field);
+            
+            let tag_appeared_obj = $(".tag_appeared__userid_" + key);
+            tag_appeared_obj.click(showModalForm);
+            tag_appeared_obj.click(displayUserTagRelation)
+            
+            
           }
+          
         })
+        
       })
+      
     });
   })
-})
+}
 
-$(window).scroll(function() {
+  $(window).scroll(function() {
   let scroll_y = $(window).scrollTop();
   $('#modal-layer').offset({ top: scroll_y, left: 0 });
 });

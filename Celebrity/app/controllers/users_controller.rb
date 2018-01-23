@@ -79,11 +79,6 @@ class UsersController < ApplicationController
   end
   
   def search
-    #参考
-    # @tag = [] #あいまい検索　追加しました
-    # if request.post? then
-    #   @tag = Tag.where("tag like 't%'")
-    # end
     @fetched_tags = Tag.where('tag LIKE(?)', "#{params[:keyword]}%")
     render json: @fetched_tags
   end

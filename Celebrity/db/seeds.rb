@@ -104,6 +104,20 @@ User.create(name: 'ロクロー',
             password_confirmation: 'password',
             admin: false,
             existence: true)            
+User.create(name: 'ナナロー',
+            nickname: 'ナナちゃん',
+            email: 'nanaro@gmail.com',
+            password: 'password',
+            password_confirmation: 'password',
+            admin: false,
+            existence: true)            
+User.create(name: 'ハチロー',
+            nickname: 'ハチちゃん',
+            email: 'hachiro@gmail.com',
+            password: 'password',
+            password_confirmation: 'password',
+            admin: false,
+            existence: true)            
 
 User.all.each do |user|
     HtmlCssStatus.create(user_id: user.id)
