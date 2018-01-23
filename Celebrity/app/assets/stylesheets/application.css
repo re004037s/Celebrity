@@ -247,10 +247,8 @@ table{
 	left:0;
 }
 
-.profile-pic{
-  /*width: 100px;*/
-}
 
 #modal-content img{
-  width: 20%;
+  width: 50px;
+  min-width: 20%;
 }

@@ -67,8 +67,6 @@
 
 <p>サジェスト機能のテスト用（下に表示されます）</p>
 <ul id="result">
-
-<!-- この中に<li>デデデ大王</li>みたいに検索候補を追加していきます -->
 </ul>
 
 <p>登録済みのタグ一覧：</p>
@@ -122,6 +120,18 @@ for(let i = 0, len = tag_displayed_objs.length; i < len; i++){
 
 
 $(window).resize(function(){
+    var w = $(window).width();
+    var h = $(window).height();
+
+    var cw = $("#modal-content").outerWidth();
+    var ch = $("#modal-content").outerHeight();
+    
+    var sc = $(window).scrollTop();
+    
+    $("#modal-content").css({
+      "left": ((w - cw) / 2 ) + "px",
+      "top": ( h * 1 / 8) + "px"
+    });
   cnt = 0;
 });
 
@@ -304,21 +314,17 @@ function displayUserTagRelation() {
       })
       
       .done(function(tags_row){
-        // let tmp = [];
-        let _tag_field = '';
         $(tags_row).each(function(i, tag_row){
-          // tmp.push(tag_row.tag);
-          // debugger
           for(let key in tag_row){
             for(let j in tag_row[key]){
-              //click event をつけて再帰的にこのajaxを実行させる
-              _tag_field += '<span '+ 'class="'+ 'tag_appeared__userid_' + key +'">'
-              _tag_field += tag_row[key][j].tag 
+              let _tag_field = '';
+              _tag_field += '<span style="font-size: 1.5em;"'+ 'class="'+ 'tag_appeared__userid_' + key +'">'
+              _tag_field += '<a href="#">' + tag_row[key][j].tag + '</a>' 
               _tag_field += '</span>'
               _tag_field += '</br>'
               $('#' + key  + '').append(_tag_field);
             }
-            
+            //click event をつけて再帰的にこのajaxを実行させる
             let tag_appeared_obj = $(".tag_appeared__userid_" + key);
             tag_appeared_obj.click(showModalForm);
             tag_appeared_obj.click(displayUserTagRelation)
