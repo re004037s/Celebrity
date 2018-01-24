@@ -1,5 +1,9 @@
-<nav class="navbar navbar-fixed-top navbar-inverse">
+<% unless non_navbar? %>
+<nav class="header navbar navbar-fixed-top">
   <div class="navbar-wrapper container">
+    <%= link_to root_path do %>
+      <%= image_tag "logo_header.png", id: "logo-header" %>
+    <% end %>
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".bs-navbar-collapse">
         <span class="sr-only">メニュー</span>
@@ -9,16 +13,25 @@
       </button>
     </div>
     <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
-      <%= link_to "セレブエンジニアリングサロン", root_path, class: 'top-phrase' %>
       <ul class="nav navbar-nav navbar-right">
         <% if current_user.try(:admin) %>
-          <li><%= link_to '動画管理', movies_path %></li>
-          <li><%= link_to '新規登録', signup_path %></li>
+          <li><%= link_to 'MOVIES EDIT', movies_path %></li>
+          <li><%= link_to 'SIGN UP', signup_path %></li>
         <% end %>
-        <li><%= link_to 'サロンメンバー', users_path %></li>
-        <li><%= link_to 'マイページ', current_user %></li> 
-        <li><%= link_to 'ログアウト', logout_path, method: :delete %></li>
+        <li><%= link_to 'SALON MEMBERS', users_path %></li>
+        <li> 
+          <% if Feedback.where(user_id: current_user).count == 
+          Movie.where(movie_category_id: MovieCategory.where(must_view: true).ids).count ||
+          current_user.try(:admin) %>
+            <%= link_to 'MY PAGE', current_user %>
+          <% else %>
+            <p style="color: #4d4d4d; font-size: 15px; margin: 25px 10px 0px; cursor: pointer;"
+            title="先に動画を視聴して下さい">MY PAGE</p>
+          <% end %>
+        </li>
+        <li><%= link_to 'LOG OUT', logout_path, method: :delete %></li>
       </ul>
     </nav>
   </div>
 </nav>
+<% end %>

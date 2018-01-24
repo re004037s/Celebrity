@@ -74,7 +74,7 @@ module UsersHelper
     sum += count_javascript(user)
     sum += count_ruby(user)
     sum += count_ruby_on_rails(user)
-    return sum * 100 / 30
+    return sum * 100 / 33
   end
   
   def count_rails_tutorial(user)

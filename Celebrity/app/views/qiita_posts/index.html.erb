@@ -1,6 +1,7 @@
-<h1>Qiita投稿</h1>
-
-  <%= link_to '新規登録', new_qiita_post_path, {class: 'btn btn-new' }%>
+<h2 class="page-title">Qiita投稿</h2>
+<div class="center">
+  <%= link_to '新規登録', new_qiita_post_path, class: 'txt1' %>
+</div>
 <table class="table table-bordered table-striped table-index">
   <thead>
     <tr>
@@ -21,6 +22,7 @@
     </tbody>
   <% end %>
 </table>
-<div id="paginate">
+
+<div class="center">
   <%= paginate @qiitaposts %>
 </div>

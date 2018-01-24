@@ -3,9 +3,12 @@
     <%= f.text_area :feedback, :id => "textarea#{sort_order}", :size => "7x7", :maxlength => "500",
         :placeholder => "100-500文字で入力してください", required: true, 
         :onchange => "Limit#{sort_order}(event)", :onkeyup => "Limit#{sort_order}(event)" %>
-    <%= f.hidden_field :movie_id, :value => movie_id %>
-    <br><span id="msg<%= sort_order %>">文字数カウント</span><br><div style="color: red;" class="has-error<%= sort_order %>"></div>
-    <%= f.submit "感想を送る", id: "feedback-btn#{sort_order}", class: "btn btn-primary btn-lg submit-btn#{sort_order}", disabled: true %>
+    <%= f.hidden_field :movie_id, :value => movie_id %><br>
+    <span id="msg<%= sort_order %>">文字数カウント</span><br>
+    <div style="color: red;" class="has-error<%= sort_order %>"></div>
+    <div id="feedback-btn<%= sort_order %>" class="center">
+      <%= image_submit_tag("button_feedback1.png", class: "img-feed-btn submit-btn#{sort_order}", disabled: true) %>        
+    </div>
   </div>
 <% end %>
 
@@ -16,10 +19,6 @@ $(function(){
     $('#show-form<%= sort_order %>').click(function(){
         $('.form-group<%= sort_order %>').show(500);
         $(this).fadeOut(500);
-    });
-    
-    $('#feedback-btn<%= sort_order %>').click(function(){
-        $(this).val("感想送信済み");
     });
 });
 

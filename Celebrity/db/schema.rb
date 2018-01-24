@@ -58,6 +58,22 @@ ActiveRecord::Schema.define(version: 20180116153032) do
     t.index ["user_id"], name: "index_html_css_statuses_on_user_id", using: :btree
   end
 
+  create_table "interview_posts", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "language"
+    t.string   "experience"
+    t.string   "type"
+    t.date     "day"
+    t.text     "summary"
+    t.text     "question"
+    t.string   "result"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "created_at"], name: "index_interview_posts_on_user_id_and_created_at", using: :btree
+    t.index ["user_id"], name: "index_interview_posts_on_user_id", using: :btree
+  end
+
   create_table "javascript_statuses", force: :cascade do |t|
     t.integer  "user_id"
     t.datetime "created_at",                    null: false
@@ -239,11 +255,13 @@ ActiveRecord::Schema.define(version: 20180116153032) do
     t.binary   "picture_file"
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
+    t.string   "line_id"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
   add_foreign_key "comments", "users"
   add_foreign_key "feedbacks", "users"
+  add_foreign_key "interview_posts", "users"
   add_foreign_key "movies", "movie_categories"
   add_foreign_key "qiita_posts", "users"
   add_foreign_key "user_tags", "tags"

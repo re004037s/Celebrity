@@ -53,9 +53,12 @@ class UsersController < ApplicationController
     ##[:tag]でメッセージの配列を取り出し、.join(' / ')で分割した。
     flash[:danger] = tag.errors.messages[:tag].join(' / ') 
     redirect_to @user
+      # [:tag]でメッセージの配列を取り出し、.join(' / ')で分割した。
+      flash[:danger] = tag.errors.messages[:tag].join(' / ') 
+      redirect_to @user
     end
   end
-  git name-rev
+  
   def tag_delete
     @user = current_user
     # user_id = params[:user_id]
@@ -143,7 +146,9 @@ class UsersController < ApplicationController
   private
   
     def user_params
-      params.require(:user).permit(:tags, :name, :nickname, :email, :password, :password_confirmation, :portfolio_path, :github_path, :picture_file, :picture)
+
+      params.require(:user).permit(:name, :nickname, :line_id, :email, :password, :password_confirmation, :portfolio_path, :github_path, :picture_file, :picture)
+
     end
     
     # ログイン済み or 管理ユーザであれば true を返す
