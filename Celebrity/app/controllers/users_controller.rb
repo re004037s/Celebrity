@@ -15,7 +15,6 @@ class UsersController < ApplicationController
       user = User.find_by(id: params[:user_id])
       @user_tags = user.tags
     else
-      flash[:error] = 'エラー：ユーザーのタグを取得できませんでした'
       @user_tags = current_user.tags
     end
     
@@ -45,7 +44,6 @@ class UsersController < ApplicationController
     @user = current_user
     tag = @user.tags.create(tag: user_params[:tags])
     tag_name = user_params[:tags]
- 
     if tag.save
       flash[:success] = 'タグ名： ' + tag_name + ' を追加しました'
       redirect_to @user 
@@ -53,9 +51,6 @@ class UsersController < ApplicationController
     ##[:tag]でメッセージの配列を取り出し、.join(' / ')で分割した。
     flash[:danger] = tag.errors.messages[:tag].join(' / ') 
     redirect_to @user
-      # [:tag]でメッセージの配列を取り出し、.join(' / ')で分割した。
-      flash[:danger] = tag.errors.messages[:tag].join(' / ') 
-      redirect_to @user
     end
   end
   
@@ -147,7 +142,7 @@ class UsersController < ApplicationController
   
     def user_params
 
-      params.require(:user).permit(:name, :nickname, :line_id, :email, :password, :password_confirmation, :portfolio_path, :github_path, :picture_file, :picture)
+      params.require(:user).permit(:tags, :name, :nickname, :line_id, :email, :password, :password_confirmation, :portfolio_path, :github_path, :picture_file, :picture)
 
     end
     
