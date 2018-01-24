@@ -1,15 +1,20 @@
-<div class="form-window form-login-reset">
-  <div class="form-window--wrapper">
+<!--テンプレートのソースを変更-->
+<% content_for :entrance do %>
+
+<div class="form-entrance-login">
+  <div class="form-entrance--wrapper">
     <%= form_for(:session, url: login_path) do |f| %>
       
-      <%= f.label :email, 'ログインID（ご登録いただいたメールアドレス）', class: 'form-window--label' %>
-      <%= f.email_field :email, class: 'form-window--textbox' %>
+      <%= f.label :email, 'ログインID（ご登録いただいたメールアドレス）', class: 'form-entrance--label' %>
+      <%= f.email_field :email, class: 'form-entrance--textbox' %>
 
-      <%= f.label :password, 'パスワード', class: 'form-window--label'%>
-      <%= f.password_field :password, class: 'form-window--textbox' %>
-      <%= link_to "パスワードを忘れた方はコチラ", new_password_reset_path, class: 'form-window--link' %>
+      <%= f.label :password, 'パスワード', class: 'form-entrance--label'%>
+      <%= f.password_field :password, class: 'form-entrance--textbox' %>
+      <%= link_to "パスワードを忘れた方はコチラ", new_password_reset_path, class: 'form-entrance--link' %>
 
-      <%= image_submit_tag("button_login.png", class: "form-window--button") %>
+      <%= image_submit_tag("button_login.png", class: "form-entrance--button") %>
     <% end %>
   </div>
 </div>
+
+<% end %>

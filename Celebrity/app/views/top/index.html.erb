@@ -36,14 +36,14 @@
         <div class="information-head">新着動画</div>
         <div class="information-body">
           <% if @new_movies.present? %>
-            <div class="mini-box">
-              <h4 style="display: inline;">まだ視聴していない動画はありませんか!?</h4>              
+            <div class="imnformation-title">
+              <h4 style="">
+                まだ視聴していない動画はありませんか!?
+              </h4>              
             </div>
-            <ul>
+            <ul class="information-list">
               <% @new_movies.each do |movie| %>
-                <li>
-                  <p class="inline"><%= movie.title %></p>
-                </li>
+                <li><%= movie.title %></li>
               <% end %>
             </ul>
           <% else %>

@@ -1,8 +1,11 @@
+<!--テンプレートのソースを変更-->
+<% content_for :entrance do %>
+
 <% provide(:title, "Forgot password") %>
-<div class="form-window form-login-reset">
-  <div class="form-window--wrapper">
-    <h6 class="form-window--title">パスワードをお忘れの方へ</h6>
-    <ul class="form-window--message">
+<div class="form-entrance-reset">
+  <div class="form-entrance--wrapper">
+    <h6 class="form-entrance--title">パスワードをお忘れの方へ</h6>
+    <ul class="form-entrance--message">
       <li>以下のフォームにご登録メールアドレスを入力し、</li>
       <li>「パスワードの再設定申請」ボタンを押してください。</li>
       <br>
@@ -11,10 +14,12 @@
     </ul>
     
     <%= form_for(:password_reset, url: password_resets_path) do |f| %>
-      <%= f.label :email, 'ご登録メールアドレス', class: 'form-window--label' %>
-      <%= f.email_field :email, class: 'form-window--textbox' %>
+      <%= f.label :email, 'ご登録メールアドレス', class: 'form-entrance--label' %>
+      <%= f.email_field :email, class: 'form-entrance--textbox' %>
 
-      <%= image_submit_tag("button_password.png", class: "form-window--button") %>
+      <%= image_submit_tag("button_password.png", class: "form-entrance--button") %>
     <% end %>
   </div>
 </div>
+
+<% end %>

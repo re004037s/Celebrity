@@ -20,19 +20,21 @@
     <%= favicon_link_tag('favicon32.png') %>
   </head>
   
-  <% if change_background_image? %><!--表示を変更するページを判定-->
+  <!--表示するページを判定-->
+  <% if content_for?(:entrance) %>
     
     <!--背景を変更（ログイン時など）-->
-    <body class="body-window">
+    <body class="body-entrance">
       <!--アラートメッセージ-->
       <% flash.each do |message_type, message| %>
         <div class="alert alert-<%= message_type %>"><%= message %></div>
       <% end %>
       <!--コンテンツを読み込み-->
-      <%= yield %>
+    <%= yield :entrance %>
     </body>
-
-  <% else %><!--以下、通常の表示-->
+    
+  <!--以下、通常の表示-->
+  <% else %>
   
     <body class="body">
       <!--ナビゲーションバー-->
@@ -54,5 +56,5 @@
       <%= render 'layouts/footer' %>
     </body>
     
-  <% end %><!-- unless change_background_image? -->
+  <% end %><!-- if content_for?(:entrance) -->
 </html>
