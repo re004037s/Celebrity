@@ -253,3 +253,30 @@ table{
   width: 50px;
   min-width: 20%;
 }
+
+.tag_icon{
+  width: 4em;
+}
+
+.edit_tag .fileuploader{
+  width: 5em;
+  line-height: 0.5em;
+}
+
+.edit_tag input{
+  wdith: 5em;
+}
+
+.edit_tag input{
+  width: 6.3em;
+  margin: 0;
+}
+
+#tag_icon{
+  width: 17.3em;  
+}
+
+.edit_tag{
+  display: inline-block;
+}
+

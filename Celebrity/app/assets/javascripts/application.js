@@ -17,3 +17,4 @@
 //= require bootstrap
 //= require jquery-ui.1.12.1
 //= require_tree .
+//= require cpick
