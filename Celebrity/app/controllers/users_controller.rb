@@ -55,7 +55,7 @@ class UsersController < ApplicationController
     redirect_to @user
     end
   end
-  
+  git name-rev
   def tag_delete
     @user = current_user
     # user_id = params[:user_id]
