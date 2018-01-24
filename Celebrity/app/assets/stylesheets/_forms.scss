@@ -12,6 +12,7 @@
 //   resize: vertical;
 // }
 
+//ログイン画面
 @mixin form-entrance($width: 390px, $margin-v: 200px) {
   //メイン＋内側ライン
   position: relative;
@@ -82,4 +83,18 @@
 // 仮設定ボタン
 .form-kari-button {
   margin: 10px auto;
+}
+
+//動画感想フォーム
+.movie-feedback-form--count {
+  font-size: 14px;
+}
+.movie-feedback-form--error-message {
+  color: #ff0000;
+  font-size: 14px;
+}
+.movie-feedback-form--textarea {
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 10px;
 }
