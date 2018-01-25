@@ -22,10 +22,10 @@
             <% else %>
             <%= image_tag("default_icon.png", :class => "tag_icon")%>
             <% end %>
-            <%= form_for tag, url: post_icon_path do |f| %>
-<%= f.file_field :icon %>
-<%= f.submit '登録', class: 'btn btn-primary fileuploader'%>
-<% end %></td>
+            <%= form_for tag, url: tag_edit_path do |f| %>
+            <%= f.file_field :icon %>
+            <%= f.submit '登録', class: 'btn btn-primary fileuploader'%>
+            <% end %></td>
         
     <% end %>
   </tbody>
@@ -35,8 +35,14 @@
 <script>
   console.log("jfsaldkjfalskjdflkj");
   $('.html5jp-cpick').focusout(function(e) { // class のtext change イベント発生時に
-  // e.preventDefault(); //キャンセル可能なイベントをキャンセル
-  debugger
+  //TODO
+  //change event が発火しないためfocusoutにしたが、
+  //新しいカラーコードが入る前に古いカラーコードを参照してしまう。（期待通りではない）
+  
+  //フォーカスアウトなので、OKを押下後に画面をクリックすると
+  //新しいカラーコードでリクエストが走る。この場合は期待通りの結果になる
+  
+  e.preventDefault(); //キャンセル可能なイベントをキャンセル
   console.log($(this));
   let input_text = $(this).val();
   console.log(input_text);
@@ -50,24 +56,19 @@
     return;
   }
   
-  //正しい場合は処理を続ける
   console.log("正しいカラーコード処理");
   
   // TODO idを取得する
-  
-  
+  let tag_id = $(this).closest('tr').find('td').first().text();
+  let params = {'color' : input_text, 'tag_id': tag_id};
+  debugger
    $.ajax({ //ajax通信で以下のことを行います
-    url: '/tag_edit/update_tag', //urlを指定
     type: 'POST', //メソッドを指定
-    data: ('new_color=' + input_text), //コントローラーに渡すデータを'keyword=input(入力された文字のことですね)'にするように指定
-    processData: false, //おまじない
-    contentType: false, //おまじない
+    url: 'update_tag', //urlを指定
+    data: params, //コントローラーに渡すデータを'keyword=input(入力された文字のことですね)'にするように指定
     dataType: 'json' //データ形式を指定
   })
-  //ajax request success時の処理
-
   .done(function(res_data){ //データを受け取ることに成功したら、dataを引数に取って以下のことする(dataには@usersが入っている状態ですね)
-    console.log("response がきた！！！");
     console.log(res_data);
   })
   

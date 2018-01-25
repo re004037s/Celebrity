@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   resources :users do
     member do
       get 'get_image'
-      # post 'post_tag' //WIP
     end
     
     collection do
@@ -19,7 +18,6 @@ Rails.application.routes.draw do
     end
   end
         
-  # patch '/users/:id/update_picture', to: 'users#update_picture'
     
   resources :feedbacks, only: [:create, :update, :destroy]
   
@@ -30,20 +28,12 @@ Rails.application.routes.draw do
     get 'sort', on: :collection
   end
   
-  # resources :tags #userページに飛びたいのでいらない
-  # resources :user_tags #追加
-  # post 'tag_show', to:'users#tag_show'
+ 
   patch '/post_pic', to:'users#update_picture'
   
-  #adminのtag一覧ページ用
-  patch '/post_icon', to:'tags#icon_show'
-  post '/post_icon', to:'tags#icon_show'
-  get '/post_icon', to:'tags#icon_show'
   
-  get '/tag_edit', to:'tags#tag_edit' 
-  patch'/tag_edit', to:'tags#tag_edit'
-  # TODO ajaxのparamが渡らない
-  post'/tag_edit/update_tag', to:'tags#update_tag'
+   match 'tag_edit', to: 'tags#tag_edit', via: [:get, :post]
+   match 'update_tag', to: 'tags#update_tag', via: [:post]
   
 
   
@@ -55,7 +45,6 @@ Rails.application.routes.draw do
   post '/progate', to: 'static_pages#progate'
   get '/railstutorial', to: 'static_pages#railstutorial'
   get '/qa', to: 'static_pages#qa'
-  # post '/tag_show', to: 'users#tag_show'#ルーティング指定したけどエラー
   patch '/html_css_status', to: 'html_css_statuses#update'
   patch '/html_css_status_schedule', to: 'html_css_statuses#update_schedule', as: 'html_css_schedule'
   patch '/javascript_status', to: 'javascript_statuses#update'

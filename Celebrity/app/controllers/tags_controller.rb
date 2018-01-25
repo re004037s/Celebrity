@@ -1,35 +1,35 @@
 class TagsController < ApplicationController
+  protect_from_forgery :except => [:update_tag]
 
 
   def tag_edit
- 
-    @tags  = Tag.all
-    
-    # send_data(@tags.icon)
+    @tags  = Tag.all.order(id: "ASC")
   end
   
   def update_tag
     
-    # http ~~~~~~~~~~~~~~users/update_tag?update_tag_name=#input_text
-    @new_color = params[:new_color]
-    # タグのidを元にタグの色を変更する
+    # js ajax request case
+    if params[:color]
+      new_color = params[:color]
+      tag_id = params[:tag_id]
+      @tag = Tag.find_by(id: tag_id)
+      # TODO ajax がhtmlサイドに帰らないため暫定処置
+      if @tag.update_columns(color: new_color)
+        redirect_to tag_edit_path
+      else
+        redirect_to tag_edit_path
+      end
+      
+    end
 
-    # 成功した場合
-    render json: @new_color
-    
-    # 失敗した場合
-    
   end
-  
+
   def icon_show
    
-    # @user = current_user
-    # tag = @user.tags.create(tag: user_params[:tags])
-    # tag_name = user_params[:tags]
     
-    　icon = tag_params[:icon]
+    　upload_icon = params[:icon]
 
-      if upload_icon.save
+      if @tag.update_columns(icon: upload_icon.read)
         flash[:success] = 'iconを保存しました！'
         redirect_to tag_edit_path
          
