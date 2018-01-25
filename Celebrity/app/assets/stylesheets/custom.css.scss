@@ -56,25 +56,53 @@ $background-grey: #f4f4f4;
    width: 100%;
    height: auto;
   }
+  
+.movies-page--wrapper {
+  max-width: 450px;
+  margin: 0 auto;
+  margin-top: 50px;
+  
+  .movie-title {
+    margin-top: 50px;
+    font-size: 24px;
+    color: #373737;
+  }
+  
+}
 
 .movie {
   position: relative;
-  width: 100%;
-  padding-top: 56.25%;
-  margin: 0 0 10px 0;
+  //width: 100%;
+  width: 410px;
+  height: 300.6px;
+  //padding-top: 70%;
+  margin: 15px auto;
   iframe {
     position: absolute;
     top: 0;
     width: 100%;
     height: 100%;
-    max-width: 600px;
-    max-height: 432px;
+    z-index: 1;
+    //max-width: 600px;
+    //max-height: 432px;
+  }
+  .movie-layer {
+    position: absolute;
+    max-width: 100%;
+    height: 35px;
+    background-color: #000;
+    color: #f4f4f4;
+    text-align: right;
+    font-size: 20px;
+    //font-family: serif;
+    line-height: 35px;
+    padding: 0 10px;
+    //display: none;
+    z-index: 2;
   }
 }
 
-.movie-title {
-  margin-top: 50px;
-}
+
 
 
 /* ユーザ一覧&詳細ページ */

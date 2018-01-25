@@ -1,14 +1,13 @@
 .page-title {
-  //font-size: 3em;
-  //letter-spacing: -2px;
   text-align: center;
   font-size: 30px;
   font-family: serif;
-  border-bottom: 2px solid black;
-  line-height: 2em;
-  padding: 0 ;
-  margin:30px auto;
-  width: 25%;
+  margin: 0 auto;
+  span {
+    padding: 0 0.5em;
+    padding-bottom: 0.2em;
+    border-bottom: 2px solid black;
+  }
 }
 
 /*
