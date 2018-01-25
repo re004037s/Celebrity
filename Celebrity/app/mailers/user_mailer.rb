@@ -15,8 +15,8 @@ class UserMailer < ApplicationMailer
   end
   
   def send_when_create(users,movie)
-    @new_movie = movie
-    users.each do |user|
+       @new_movie = movie
+       users.each do |user|
        @user_name = user.nickname
        mail to: user.email, subject:  'セレブエンジニアサロンの新規動画について'
     end

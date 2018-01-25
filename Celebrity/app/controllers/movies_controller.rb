@@ -13,7 +13,7 @@ class MoviesController < ApplicationController
   def create
     params[:movie][:sort_order] = Movie.where(movie_category_id: params[:movie][:movie_category_id]).pluck(:sort_order).max.to_i + 1
     @movie = Movie.new(movie_params)
-    @user=User.all
+    @user = User.all
     if @movie.save
       UserMailer.send_when_create(@user, @movie).deliver
       flash[:success] = '動画を登録しました'
@@ -29,6 +29,7 @@ class MoviesController < ApplicationController
   end
   
   def update
+    @user = user
     @movie = Movie.find_by(id: params[:id])
     before_update_category_id = @movie.movie_category_id
     before_update_sort_order  = @movie.sort_order
