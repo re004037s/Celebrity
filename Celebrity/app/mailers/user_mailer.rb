@@ -16,11 +16,7 @@ class UserMailer < ApplicationMailer
   
   def send_when_create(users,movie)
        @new_movie = movie
-       #users.each do |user|
-       #@user_name = user.nickname
-       #@user_name = users.map{|u| u.nickname}
        mail to: 'test@example.com', subject:  'セレブエンジニアサロンの新規動画について',bcc: users.map{|u| u.email}
-    #end
   end
   
   
