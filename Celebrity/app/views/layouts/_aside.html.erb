@@ -1,9 +1,9 @@
-<aside class="col-md-3">
+<aside class="col-md-4">
   <div class="sidebar-wrapper">
-    <div class="panel-heading center">
-      <span class="under txt1">MENU</span>
-    </div>
-    <ul class="nav nav-pills nav-stacked sidebar-nav under">
+    
+    <div class="sidebar-title">MENU</div>
+    
+    <ul class="sidebar-list">
       <% @categories_all.each do |category| %>
         <li><%= link_to category.name, movie_category_path(category), class: "#{'disabled' unless before_category_comp?(category)}" %></li>
       <% end %>

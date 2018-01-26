@@ -23,7 +23,7 @@
       
       <!--▼ＰＣ用-->
       <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
-        <ul class="header-list nav navbar-nav navbar-right">
+        <ul class="header-menu-list">
           <% if current_user.try(:admin) %>
             <li><%= link_to 'MOVIES EDIT', movies_path %></li>
             <li><%= link_to 'SIGN UP', signup_path %></li>

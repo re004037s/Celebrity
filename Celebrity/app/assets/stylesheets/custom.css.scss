@@ -57,6 +57,9 @@ $background-grey: #f4f4f4;
    height: auto;
   }
   
+  
+  
+  
 .movies-page--wrapper {
   max-width: 480px;
   margin: 0 auto;
@@ -64,6 +67,7 @@ $background-grey: #f4f4f4;
   
   .movie-title {
     margin-top: 50px;
+    margin-bottom: 15px;
     font-size: 24px;
     color: #373737;
   }
@@ -131,6 +135,31 @@ $background-grey: #f4f4f4;
   color: white;
   font-weight: 400;
   text-align: center;
+}
+
+
+.top-index--wrapper {
+  width: 543px;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
+
+.welcome-message--wrapper {
+  margin-bottom: 60px;
+  p {
+    font-size: 30px;
+    text-align: center;
+  }
+}
+
+.produce-list {
+  margin-top: 50px;
+  
+  li {
+    font-size: 20px;
+    margin: 30px 0;
+  }
 }
 /*
 .status-name {
