@@ -79,6 +79,7 @@ $background-grey: #f4f4f4;
   margin: 15px auto;
   iframe {
     position: absolute;
+    content: "";
     top: 0;
     left: 0;
     width: 100%;
@@ -89,6 +90,7 @@ $background-grey: #f4f4f4;
   }
   .movie-layer {
     position: absolute;
+    content: "";
     top: 0;
     left: 0;
     width: 480px;

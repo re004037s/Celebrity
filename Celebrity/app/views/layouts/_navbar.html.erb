@@ -1,35 +1,48 @@
 <nav class="header navbar navbar-fixed-top">
-  <div class="navbar-wrapper container">
-    <%= link_to root_path do %>
-      <%= image_tag "logo_header.png", id: "logo-header" %>
-    <% end %>
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".bs-navbar-collapse">
-        <span class="sr-only">メニュー</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
+  <div class="header-wrapper container">
+    
+    <!--▼ロゴ-->
+    <div class="header-logo-wrapper">
+      <%= link_to root_path do %>
+        <%= image_tag "logo_header.png", id: "logo-header" %>
+      <% end %>
     </div>
-    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
-      <ul class="nav navbar-nav navbar-right">
-        <% if current_user.try(:admin) %>
-          <li><%= link_to 'MOVIES EDIT', movies_path %></li>
-          <li><%= link_to 'SIGN UP', signup_path %></li>
-        <% end %>
-        <li><%= link_to 'SALON MEMBERS', users_path %></li>
-        <li> 
-          <% if Feedback.where(user_id: current_user).count == 
-                  Movie.where(movie_category_id: MovieCategory.where(must_view: true).ids).count ||
-                  current_user.try(:admin) %>
-            <%= link_to 'MY PAGE', current_user %>
-          <% else %>
-            <p style="color: #4d4d4d; font-size: 15px; margin: 25px 10px 0px; cursor: pointer;"
-            title="先に動画を視聴して下さい">MY PAGE</p>
+    
+    <!--▼リスト-->
+    <div class="header-list-wrapper">
+      
+      <!--▼スマホ用-->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".bs-navbar-collapse">
+          <span class="sr-only">メニュー</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      
+      <!--▼ＰＣ用-->
+      <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+        <ul class="header-list nav navbar-nav navbar-right">
+          <% if current_user.try(:admin) %>
+            <li><%= link_to 'MOVIES EDIT', movies_path %></li>
+            <li><%= link_to 'SIGN UP', signup_path %></li>
           <% end %>
-        </li>
-        <li><%= link_to 'LOG OUT', logout_path, method: :delete %></li>
-      </ul>
-    </nav>
+          <li><%= link_to 'SALON MEMBERS', users_path %></li>
+          <li> 
+            <% if Feedback.where(user_id: current_user).count == 
+                    Movie.where(movie_category_id: MovieCategory.where(must_view: true).ids).count ||
+                    current_user.try(:admin) %>
+              <%= link_to 'MY PAGE', current_user %>
+            <% else %>
+              <sapn style="color: #4d4d4d; font-size: 15px; margin: 25px 10px 0px; cursor: pointer;"
+              title="先に動画を視聴して下さい">MY PAGE</span>
+            <% end %>
+          </li>
+          <li><%= link_to 'LOG OUT', logout_path, method: :delete %></li>
+        </ul>
+      </nav>
+      
+    </div><!--▲リスト-->
   </div>
 </nav>
