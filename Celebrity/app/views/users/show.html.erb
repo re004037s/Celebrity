@@ -1,4 +1,6 @@
-<h2 class="page-title">MY PAGE</h2>
+<h2 class="page-title">
+  <span>MY PAGE</span>
+</h2>
 
 <div class="main-wrapper">
 <h3 class="center">
@@ -15,14 +17,14 @@
 </div>
 
 <div class="center mt_20">
-  <button class="edit-my-picture btn btn-primary">写真を編集する</button>
+  <button class="edit-my-picture btn btn-default active">写真を編集する</button>
 
   <div id="upload-my-picture" class="mg_auto wh_30">
     <%= form_for(@user, url: post_pic_path, :id => 'form_id' ) do |f| %>
     <div class="form-group has-error">
       <span id="__has-warning" style="color: red;">画像を選択してください</span>
       <%= f.file_field :picture, accept: 'image/*' %>
-      <%= f.submit '画像をアップロード', id: 'fileuploader', class: 'btn btn-primary fileuploader', :disabled => 'true' %>
+      <%= f.submit '画像をアップロード', id: 'fileuploader', class: 'btn btn-default active fileuploader', :disabled => 'true' %>
     </div>
     <% end %>
   </div>
@@ -60,7 +62,7 @@
   
 <%= form_for(@user, url: tag_show_path) do |f| %>
   <%= f.text_field :tags , value:'', placeholder: 'タグを入力【20文字(英字or半角スペース)までOK】' %>
-  <%= f.submit '登録', id:'tag-submit', class: 'btn btn-primary', :disabled => 'true' %>
+  <%= f.submit '登録', id:'tag-submit', class: 'btn btn-default active', :disabled => 'true' %>
 <% end %>
 
 <p>登録済みのタグ一覧：</p>
@@ -104,7 +106,7 @@ $('#user_tags').keyup(function() {
       <input style="width:100%" type="date" name="date">
       </td>
       <td width="20%">
-      <%= f.submit "登録", class: "btn btn-schedule" %>
+      <%= f.submit "登録", class: "btn btn-default active" %>
       <% end %>
       </td>
   </tr>
@@ -173,7 +175,7 @@ $('#user_tags').keyup(function() {
       <input style="width:100%" type="date" name="date">
     </td>
     <td width="20%">
-      <%= f.submit "登録", class: "btn btn-schedule" %>
+      <%= f.submit "登録", class: "btn btn-default active" %>
       <% end %>
     </td>
   </tr>
@@ -226,7 +228,7 @@ $('#user_tags').keyup(function() {
       <input style="width:100%" type="date" name="date">
     </td>
     <td width="20%">
-      <%= f.submit "登録", class: "btn btn-schedule" %>
+      <%= f.submit "登録", class: "btn btn-default active" %>
       <% end %>
     </td>
   </tr>
@@ -279,7 +281,7 @@ $('#user_tags').keyup(function() {
       <input style="width:100%" type="date" name="date">
     </td>
     <td width="20%">
-      <%= f.submit "登録", class: "btn btn-schedule" %>
+      <%= f.submit "登録", class: "btn btn-default active" %>
       <% end %>
     </td>
   </tr>
@@ -396,7 +398,7 @@ $('#user_tags').keyup(function() {
       <input style="width:100%" type="date" name="date">
     </td>
     <td width="20%">
-      <%= f.submit "登録", class: "btn btn-schedule" %>
+      <%= f.submit "登録", class: "btn btn-default active" %>
       <% end %>
     </td>
   </tr>
@@ -419,7 +421,7 @@ $('#user_tags').keyup(function() {
       <input style="width:100%" type="date" name="date">
     </td>
     <td width="20%">
-      <%= f.submit "登録", class: "btn btn-schedule" %>
+      <%= f.submit "登録", class: "btn btn-default active" %>
       <% end %>
     </td>
   </tr>
@@ -448,7 +450,7 @@ $('#user_tags').keyup(function() {
 </table>
 
 <div class="right">
-  <%= link_to 'ユーザ編集', edit_user_path(@user) , class: 'btn btn-primary' %>
+  <%= link_to 'ユーザ編集', edit_user_path(@user) , class: 'btn btn-default active' %>
   <% if current_user.admin %>
     <%= link_to 'ユーザ削除', @user, method: :delete, class: 'btn btn-danger',
         data: { confirm: '本当に削除しますか？' } %>

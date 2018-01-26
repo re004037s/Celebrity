@@ -1,9 +1,11 @@
-<h2 class="page-title">動画管理</h2>
+<h2 class="page-title">
+  <span>動画管理</span>
+</h2>
 
 <div class="center">
-  <%= link_to '動画を追加する', new_movie_path, class: 'btn btn-secondary' %>
-  <%= link_to 'カテゴリを追加する', new_movie_category_path, class: 'btn btn-secondary' %>
-  <%= link_to 'カテゴリの順番を変更する', movie_categories_path, class: 'btn btn-secondary' %>
+  <%= link_to '動画を追加する', new_movie_path, class: 'btn btn-default active' %>
+  <%= link_to 'カテゴリを追加する', new_movie_category_path, class: 'btn btn-default active' %>
+  <%= link_to 'カテゴリの順番を変更する', movie_categories_path, class: 'btn btn-default active' %>
 </div>
 
 <table class="table table-bordered table-striped table-index">

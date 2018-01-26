@@ -1,7 +1,9 @@
-<h4 class="movie-title d-inline-flex"><%= movie.title %></h4>
+<h4 class="movie-title"><%= movie.title %></h4>
 <div class="movie">
-  <% param = '?rel=0&amp;controls=0&amp' %>
-  <iframe src="<%= movie.path + param %>" frameborder="0" allowfullscreen></iframe>
+  <div id="movie-layer" class="movie-layer">セレブエンジニアリング</div>
+  <% param = '?rel=0' + '&controls=0' + '&modestbranding=1' %>
+  <!--< param = '?rel=0&amp;controls=0&amp' %>-->
+  <iframe src="<%= movie.path + param %>" frameborder="0" allowfullscreen  oncontextmenu='return false'></iframe>
 </div>
 
 <% if @category.must_view %>
@@ -14,55 +16,59 @@
   </div>
 <% end %>
 
-<div id="movie-layer" class="movie-layer" style="background-color:yellow; display:none;"></div>
+
 
 <script>
-(function() {
+
+$(function () {
 
   var iframes = document.querySelectorAll("iframe");
   
   iframes[0].onload = function() {
-  console.log('hay')
-  console.log(iframes);
-  var modal_layer = $('#movie-layer'); 
+  //console.log('hay')
+  //console.log(iframes);
+  var modal_layer = $('.movie-layer'); 
   // トップフレーズを表示する
-  let top_phrase = 'セレブエンジニアリング';
+  //let top_phrase = 'セレブエンジニアリング';
   // modalを表示する
-  modal_layer.html(top_phrase);
+  //modal_layer.html(top_phrase);
+  // モーダルのcss設定
+  modal_layer.css();
   // モーダルを表示状態にする
   modal_layer.show();
   
   // モーダルのcss設定
-  modal_layer.css(
-    {'z-index' : '9999',
-    'background-color': 'black',
-    'color': '#F8C810',
-    'text-align' : 'right',
-    'line-height' : '2em',
-    'font-size' : '1.5em',
-    'position':'relative',
-    'top': '34px',
-    'height':'30px',
-    'width' : '600px',
-    'max-width' : '600px'
-    }
-  );
+  // modal_layer.css(
+  //   {'z-index' : '1',
+  //   'background-color': '#373737',
+  //   'color': '#F8C810',
+  //   'text-align' : 'right',
+  //   'line-height' : '2em',
+  //   'font-size' : '1.5em',
+  //   'position':'relative',
+  //   'top': '34px',
+  //   'height':'30px',
+  //   'width' : '600px',
+  //   'max-width' : '600px'
+  //   }
+  // );
 
   // HTMLとして出力する
   $('.movie-title').after(modal_layer);
-};
+  
+  };
     
 })();
 
   // モーダルのcss設定
-  $(window).on('load resize', function(){
-    var modal_layer = $('.movie-layer');
-    sW = window.innerWidth;
-  	let adjustLayout = (sW <= 1261) 
-  	? {'width' :'100%', 'font-size' : '1em'} 
-  	: {'width' : '600px'};
+  // $(window).on('load resize', function(){
+  //   var modal_layer = $('.movie-layer');
+  // //   sW = window.innerWidth;
+  // // 	let adjustLayout = (sW <= 1261) 
+  // // 	? {'width' :'100%', 'font-size' : '1em'} 
+  // // 	: {'width' : '410px'};
   
-    modal_layer.css(adjustLayout);
+  // //   modal_layer.css(adjustLayout);
   
-  });
+  // });
 </script>

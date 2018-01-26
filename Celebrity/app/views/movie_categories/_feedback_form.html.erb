@@ -1,23 +1,29 @@
-<%= form_for(feedback, remote: true) do |f| %>
-  <div class="form-group<%= sort_order %> forms">
-    <%= f.text_area :feedback, :id => "textarea#{sort_order}", :size => "7x7", :maxlength => "500",
-        :placeholder => "100-500文字で入力してください", required: true, 
+<div id="form-group<%= sort_order %>" class="movie-feedback-form--wrapper">
+  <%= form_for(feedback, remote: true) do |f| %>
+    <!--文字数カウント・エラーメッセージ-->
+    <p id="msg<%= sort_order %>" class="movie-feedback-form--count">文字数カウント</p>
+    <p id="has-error<%= sort_order %>" class="movie-feedback-form--error-message"></p>
+    <!--感想入力フォーム-->
+    <div class="">
+      <%= f.text_area :feedback, :id => "textarea#{sort_order}", :class => "movie-feedback-form--textarea",
+        :size => "7x7", :maxlength => "500", :placeholder => "100-500文字で入力してください", required: true, 
         :onchange => "Limit#{sort_order}(event)", :onkeyup => "Limit#{sort_order}(event)" %>
-    <%= f.hidden_field :movie_id, :value => movie_id %><br>
-    <span id="msg<%= sort_order %>">文字数カウント</span><br>
-    <div style="color: red;" class="has-error<%= sort_order %>"></div>
-    <div id="feedback-btn<%= sort_order %>" class="center">
-      <%= image_submit_tag("button_feedback1.png", class: "img-feed-btn submit-btn#{sort_order}", disabled: true) %>        
+    <%= f.hidden_field :movie_id, :value => movie_id %>
     </div>
-  </div>
-<% end %>
+    <!--送信ボタン-->
+    <div id="feedback-btn<%= sort_order %>" class="center">
+      <%= image_submit_tag("button_feedback1.png", id: "submit-btn#{sort_order}",class: "img-feed-btn", disabled: true) %>        
+    </div>
+  <% end %>
+</div>
+
 
 <script>
 $(function(){
-    $('.form-group<%= sort_order %>').hide();
+    $('#form-group<%= sort_order %>').hide();
 
     $('#show-form<%= sort_order %>').click(function(){
-        $('.form-group<%= sort_order %>').show(500);
+        $('#form-group<%= sort_order %>').show(500);
         $(this).fadeOut(500);
     });
 });
@@ -36,7 +42,7 @@ if(Etype<%= sort_order %> == "keyup"){//イベントのタイプが"Keyup"なら
 
 $(function(){
     var $text<%= sort_order %> = $("#textarea<%= sort_order %>"),
-        $button<%= sort_order %> = $(".submit-btn<%= sort_order %>"),
+        $button<%= sort_order %> = $("#submit-btn<%= sort_order %>"),
         disabled_class = 'disabled';
  
     if($text<%= sort_order %>.val().length == 0) {
@@ -47,11 +53,11 @@ $(function(){
         var thisValueLength = $(this).val().length;
         if(thisValueLength >= 100){
             $button<%= sort_order %>.prop('disabled',false).removeClass(disabled_class);
-            $('.has-error<%= sort_order %>').hide();
+            $('#has-error<%= sort_order %>').hide();
         }else{
             $button<%= sort_order %>.prop('disabled',true).addClass(disabled_class);
-            $('.has-error<%= sort_order %>').text( '100文字以上入力してください' );
-            $('.has-error<%= sort_order %>').show();
+            $('#has-error<%= sort_order %>').text( '100文字以上入力してください' );
+            $('#has-error<%= sort_order %>').show();
         }
     });
 });
