@@ -28,7 +28,7 @@
   
   <% if current_user.try(:admin) || current_user.id == @interviewpost.user_id %>
     <div class="right">
-      <%= link_to '編集', edit_interview_post_path, class: 'btn btn-primary post-update' %>
+      <%= link_to '編集', edit_interview_post_path, class: 'btn btn-default active post-update' %>
       <%= link_to "削除", @interviewpost, class: "btn btn-danger post-delete", method: :delete,
                                            data: { confirm: "本当に削除しますか?" } %>
     </div>

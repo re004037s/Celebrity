@@ -1,9 +1,9 @@
 <h4 class="movie-title"><%= movie.title %></h4>
 <div class="movie">
-  <div id="movie-layer" class="movie-layer"></div>
+  <div id="movie-layer" class="movie-layer">セレブエンジニアリング</div>
   <% param = '?rel=0' + '&controls=0' + '&modestbranding=1' %>
   <!--< param = '?rel=0&amp;controls=0&amp' %>-->
-  <iframe src="<%= movie.path + param %>" frameborder="0" allowfullscreen></iframe>
+  <iframe src="<%= movie.path + param %>" frameborder="0" allowfullscreen  oncontextmenu='return false'></iframe>
 </div>
 
 <% if @category.must_view %>
@@ -19,7 +19,8 @@
 
 
 <script>
-(function() {
+
+$(function () {
 
   var iframes = document.querySelectorAll("iframe");
   
@@ -28,9 +29,9 @@
   //console.log(iframes);
   var modal_layer = $('.movie-layer'); 
   // トップフレーズを表示する
-  let top_phrase = 'セレブエンジニアリング';
+  //let top_phrase = 'セレブエンジニアリング';
   // modalを表示する
-  modal_layer.html(top_phrase);
+  //modal_layer.html(top_phrase);
   // モーダルのcss設定
   modal_layer.css();
   // モーダルを表示状態にする
@@ -60,14 +61,14 @@
 })();
 
   // モーダルのcss設定
-  $(window).on('load resize', function(){
-    var modal_layer = $('.movie-layer');
-    sW = window.innerWidth;
-  	let adjustLayout = (sW <= 1261) 
-  	? {'width' :'100%', 'font-size' : '1em'} 
-  	: {'width' : '410px'};
+  // $(window).on('load resize', function(){
+  //   var modal_layer = $('.movie-layer');
+  // //   sW = window.innerWidth;
+  // // 	let adjustLayout = (sW <= 1261) 
+  // // 	? {'width' :'100%', 'font-size' : '1em'} 
+  // // 	: {'width' : '410px'};
   
-    modal_layer.css(adjustLayout);
+  // //   modal_layer.css(adjustLayout);
   
-  });
+  // });
 </script>
