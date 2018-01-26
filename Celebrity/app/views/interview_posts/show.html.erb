@@ -5,23 +5,23 @@
 <div class="main-wrapper">
   <div class="span">
     <div class="well">
-      <ul>
-        <div id="centering">
-          <li class="first-child"><font size="4"><%= @interviewpost.title %></font></li>
+      <ul class="non-liststyle">
+        <div class="center mt_20">
+          <h4><%= @interviewpost.title %></h4>
         </div>
-        <li>【面談日】<%= @interviewpost.day %></li><br>
-        <li>【経験年数】<%= @interviewpost.experience %></li><br>
-        <li>【言語】<%= @interviewpost.language %> </li><br>
-        <li>【フリー or 転職】<%= @interviewpost.type %></li><br>
+        <li class="mt_20">【面談日】<%= @interviewpost.day %></li>
+        <li class="mt_20">【経験年数】<%= @interviewpost.experience %></li>
+        <li class="mt_20">【言語】<%= @interviewpost.language %> </li>
+        <li class="mt_20">【フリー or 転職】<%= @interviewpost.type %></li>
         <div class="att">
-          <li>【案件概要】</li>
-          <li><%= simple_format(@interviewpost.summary) %></li><br>
+          <li class="mt_20">【案件概要】</li>
+          <li><%= simple_format(@interviewpost.summary) %></li>
         </div>        
         <div class="att">
-          <li>【面談での質問内容・回答】</li>
-          <li><%= simple_format(@interviewpost.question) %></li><br>
+          <li class="mt_20">【面談での質問内容・回答】</li>
+          <li><%= simple_format(@interviewpost.question) %></li>
         </div>
-        <li>【合否】<%= @interviewpost.result %></li>
+        <li class="mt_20">【合否】<%= @interviewpost.result %></li>
       </ul>
     </div>
   </div>
