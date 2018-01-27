@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180103225219) do
+ActiveRecord::Schema.define(version: 20180113061019) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -244,8 +244,6 @@ ActiveRecord::Schema.define(version: 20180103225219) do
   add_foreign_key "comments", "users"
   add_foreign_key "feedbacks", "users"
   add_foreign_key "movies", "movie_categories"
-  add_foreign_key "user_tags", "tags"
-  add_foreign_key "user_tags", "users"
   add_foreign_key "qiita_posts", "users"
   add_foreign_key "user_tags", "tags"
   add_foreign_key "user_tags", "users"
