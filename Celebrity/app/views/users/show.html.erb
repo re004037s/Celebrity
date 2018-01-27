@@ -30,6 +30,8 @@
   </div>
 </div>
 
+<script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+
 <script type="text/javascript">
   $('#user_picture').bind('change', function() {
     
@@ -240,6 +242,7 @@ function centeringModalSyncer(){
 
 }
 
+
 let availableTags = [];
 $('#user_tags').keyup(function(e) {
   availableTags = [];
@@ -276,9 +279,10 @@ $('#user_tags').keyup(function(e) {
     
     // TODO error / autocomplete
     debugger;
-    $("#user_tags").autocomplete({
-      source: availableTags
+    $('#user_tags').autocomplete({
+      source: availableTags,
     });
+    
   })
 });
 
