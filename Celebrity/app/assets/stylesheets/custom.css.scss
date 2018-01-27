@@ -21,7 +21,7 @@ $background-grey: #f4f4f4;
 @import "tables";  //テーブル
 @import "parts";  //ボタンや矢印など
 
-@import "responsive";  //レスポンシブ関連の設定
+
 
 
 
@@ -385,3 +385,7 @@ div#centering{
 li.first-child {
   margin-right: 2.5em;
 }
+
+
+
+@import "responsive";  //レスポンシブ関連の設定
