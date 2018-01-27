@@ -57,12 +57,12 @@ class UsersController < ApplicationController
   end
   
   def tag_delete
+    
     @user = current_user
-    # user_id = params[:user_id]
     tag_id = params[:tag_id]
 
-    #invalid foreign key error -> modelにdestroy?? 関係の追記が必要？
-    if @user.user_tags.find_by(id: tag_id).delete #tags ⇨ user_tags（中間テーブル）に変更
+    # if @user.user_tags.find_by(id: tag_id).delete =>エラ〜
+    if @user.user_tags.find_by(tag_id: tag_id).delete #tags ⇨ user_tags（中間テーブル）に変更
       flash[:success] = 'タグ を削除しました'
       redirect_to @user
     else
