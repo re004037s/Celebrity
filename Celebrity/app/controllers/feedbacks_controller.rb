@@ -5,12 +5,13 @@ class FeedbacksController < ApplicationController
     movie_id = params[:feedback][:movie_id]
     @feedback_1 = current_user.feedbacks.build(feedback_params)
     @feedback_2 = current_user.feedbacks.find_by(movie_id: movie_id)
-    
+
+    @sort_order = Movie.find_by(id: movie_id).sort_order
+
     if @feedback_2.nil?
       # 新規作成
       @feedback_1.save
       @movie_id   = @feedback_1.movie_id
-      @sort_order = Movie.find_by(id: movie_id).sort_order
     else
       # 更新
       @feedback_2.update_attributes(feedback_params)

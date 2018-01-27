@@ -10,7 +10,14 @@ module ApplicationHelper
     else
       return false
     end  
-  end    
+  end
+  
+  # アクションを判定して条件分岐（viewのソースを変更）
+  # 必要なりましたが、一応残しておきます。
+  # def change_background_image?
+  #   path = controller_path + '#' + action_name
+  #   path.in?(['sessions#new', 'users#new', 'password_resets#edit', 'password_resets#new'])
+  # end
 
   def progatetask_tutolialday_comp?
          current_user_html = current_user.html_css_status

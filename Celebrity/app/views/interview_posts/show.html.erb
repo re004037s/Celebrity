@@ -1,0 +1,40 @@
+<h2 class="page-title">
+  <span>面談内容 詳細</span>
+</h2>
+
+<div class="main-wrapper">
+  <div class="span">
+    <div class="well">
+      <ul class="non-liststyle">
+        <div class="center mt_20">
+          <h4><%= @interviewpost.title %></h4>
+        </div>
+        <li class="mt_20">【面談日】<%= @interviewpost.day %></li>
+        <li class="mt_20">【経験年数】<%= @interviewpost.experience %></li>
+        <li class="mt_20">【言語】<%= @interviewpost.language %> </li>
+        <li class="mt_20">【フリー or 転職】<%= @interviewpost.type %></li>
+        <div class="att">
+          <li class="mt_20">【案件概要】</li>
+          <li><%= simple_format(@interviewpost.summary) %></li>
+        </div>        
+        <div class="att">
+          <li class="mt_20">【面談での質問内容・回答】</li>
+          <li><%= simple_format(@interviewpost.question) %></li>
+        </div>
+        <li class="mt_20">【合否】<%= @interviewpost.result %></li>
+      </ul>
+    </div>
+  </div>
+  
+  <% if current_user.try(:admin) || current_user.id == @interviewpost.user_id %>
+    <div class="right">
+      <%= link_to '編集', edit_interview_post_path, class: 'btn btn-default active post-update' %>
+      <%= link_to "削除", @interviewpost, class: "btn btn-danger post-delete", method: :delete,
+                                           data: { confirm: "本当に削除しますか?" } %>
+    </div>
+  <% end %>
+  
+  <div class="center">
+    <%= link_to '戻る', interview_posts_path %>
+  </div>
+</div>

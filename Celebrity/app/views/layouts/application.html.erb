@@ -20,16 +20,41 @@
     <%= favicon_link_tag('favicon32.png') %>
   </head>
   
-  <body>
-    <%= render 'layouts/navbar' %>
-    <div class="body-wrapper">
-      <%= render 'layouts/top-pic' %>
+  <!--表示するページを判定-->
+  <% if content_for?(:entrance) %>
+    
+    <!--背景を変更（ログイン時など）-->
+    <body class="body-entrance">
+      <!--アラートメッセージ-->
       <% flash.each do |message_type, message| %>
         <div class="alert alert-<%= message_type %>"><%= message %></div>
       <% end %>
-      <%= yield %>
-    </div>
-    <%= render 'layouts/footer' %>
-
-  </body>
+      <!--コンテンツを読み込み-->
+    <%= yield :entrance %>
+    </body>
+    
+  <!--以下、通常の表示-->
+  <% else %>
+  
+    <body class="body">
+      <!--ナビゲーションバー-->
+      <%= render 'layouts/navbar' %>
+      
+      <div class="body-wrapper">
+        <!--トップ画像-->
+        <div class="img-top-wrapper">
+          <%= image_tag "img_top.png", id: "img-top" %>
+        </div>
+        <!--アラートメッセージ-->
+        <% flash.each do |message_type, message| %>
+          <div class="alert alert-<%= message_type %>"><%= message %></div>
+        <% end %>
+        <!--コンテンツを読み込み-->
+        <%= yield %>
+      </div>
+      <!--フッター-->
+      <%= render 'layouts/footer' %>
+    </body>
+    
+  <% end %><!-- if content_for?(:entrance) -->
 </html>

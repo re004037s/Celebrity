@@ -9,7 +9,7 @@
   <% categories.each_with_index do |category, i| %>
     <tbody>
       <tr>
-        <td>【<%= category.sort_order %>】<%= category.name %></td>
+        <td class="left">【<%= category.sort_order %>】<%= category.name %></td>
         <td>
           <% if i >= 1 %>
             <%= link_to sort_movie_categories_path(sort_up: category.sort_order), remote: true do %>
