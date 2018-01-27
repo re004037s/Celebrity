@@ -11,7 +11,6 @@ class TopController < ApplicationController
          current_user_javascript = current_user.javascript_status
          current_user_ruby = current_user.ruby_status
          current_user_railstutorial = current_user.railstutorial_status
-         
          if (current_user_html.ga_beginner && current_user_html.ga_middle && 
          current_user_html.ga_advanced && current_user_html.do_beginner && 
          current_user_html.do_middle && current_user_html.do_advanced && 

@@ -1,13 +1,25 @@
+<!--テンプレートのソースを変更-->
+<% content_for :entrance do %>
+
 <% provide(:title, "Forgot password") %>
-<h2 class="page-title">パスワード再設定</h2>
-
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
+<div class="form-entrance-reset">
+  <div class="form-entrance--wrapper">
+    <h6 class="form-entrance--title">パスワードをお忘れの方へ</h6>
+    <ul class="form-entrance--message">
+      <li>以下のフォームにご登録メールアドレスを入力し、</li>
+      <li>「パスワードの再設定申請」ボタンを押してください。</li>
+      <br>
+      <li>パスワードの再設定ページがメールで通知されますので、</li>
+      <li>そのURLをブラウザで開いてください。</li>
+    </ul>
+    
     <%= form_for(:password_reset, url: password_resets_path) do |f| %>
-      <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %>
+      <%= f.label :email, 'ご登録メールアドレス', class: 'form-entrance--label' %>
+      <%= f.email_field :email, class: 'form-entrance--textbox' %>
 
-      <%= f.submit "送信", class: "btn btn-primary" %>
+      <%= image_submit_tag("button_password.png", class: "form-entrance--button") %>
     <% end %>
   </div>
 </div>
+
+<% end %>
