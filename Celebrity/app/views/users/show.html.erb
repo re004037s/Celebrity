@@ -63,24 +63,25 @@
 
 <div id="tag-controll">
   
-<%= form_for(@user, url: tag_show_path) do |f| %>
-  <%= f.text_field :tags , value:'', placeholder: 'タグを入力【20文字(英字or半角スペース)までOK】' %>
-  <%= f.submit '登録', id:'tag-submit', class: 'btn btn-default active', :disabled => 'true' %>
-<% end %>
+  <%= form_for(@user, url: tag_show_path) do |f| %>
+    <%= f.text_field :tags , value:'', placeholder: 'タグを入力【20文字(英字or半角スペース)までOK】' %>
+    <%= f.submit '登録', id:'tag-submit', class: 'btn btn-default active', :disabled => 'true' %>
+  <% end %>
 
-<p>サジェスト機能のテスト用（下に表示されます）</p>
-<ul id="result">
-</ul>
+  <div class="tag_regestered">
+    <p>登録済みのタグ一覧：</p>
+    <ul>
+      <% @user_tags.each do |user_tag| %>
+        <li class="tag_box">
+          <span class="tag_displayed">
+            <%= user_tag.tag %>
+          </span>
+          <%= link_to image_tag('delete_icon.png', :class => 'delete_icon'), delete_tag_path(user_id: current_user.id, tag_id: user_tag.id), :method => :delete %>　<!-- methodでdeleteを指定する--> 
+        </li>
+      <% end %>
+    </ul>
+  </div>
 
-<p>登録済みのタグ一覧：</p>
-<% @user_tags.each do |user_tag| %>
-  <span class="tag_box">
-    <span class="tag_displayed">
-      <%= user_tag.tag %>
-    </span>
-    <%= link_to image_tag('delete_icon.png', :class => 'delete_icon'), delete_tag_path(user_id: current_user.id, tag_id: user_tag.id), :method => :delete %>　<!-- methodでdeleteを指定する--> 
-  </span>
-<% end %>
 </div>
 
 
@@ -277,8 +278,6 @@ $('#user_tags').keyup(function(e) {
       availableTags.push(fetchedTag.tag);
     });
     
-    // TODO error / autocomplete
-    debugger;
     $('#user_tags').autocomplete({
       source: availableTags,
     });
@@ -366,12 +365,12 @@ function displayUserTagRelation() {
 });
 
   $('.delete_icon').css('width', '15');
-  $('.tag_box').css('border', 'solid 1px #000000');
-  $('.tag_box').css('margin', '0 3px 0 0');
-  $('.tag_box').css('padding', '2 2');
-  $('.tag_box').css('font-size', '1.3em');
-  $('#tag-controll').css('width', '60%');
-  $('#tag-controll').css('margin', '1em auto');
+  // $('.tag_box').css('border', 'solid 1px #000000');
+  // $('.tag_box').css('margin', '0 3px 0 0');
+  // $('.tag_box').css('padding', '2 2');
+  // $('.tag_box').css('font-size', '1.3em');
+  // $('#tag-controll').css('width', '60%');
+  // $('#tag-controll').css('margin', '1em auto');
   
 </script>
   
