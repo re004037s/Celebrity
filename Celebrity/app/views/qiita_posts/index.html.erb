@@ -1,0 +1,31 @@
+<h2 class="page-title">
+  <span>Qiita投稿</span>
+</h2>
+
+<div class="center">
+  <%= link_to '新規登録', new_qiita_post_path, class: 'txt1' %>
+</div>
+<table class="table table-bordered table-striped table-index">
+  <thead>
+    <tr>
+      <th width="60%" class="table-header">投稿</th>
+      <th class="table-header">Posted by</th>
+      <th class="table-header">投稿日</th>
+      <th class="table-header"></th>
+    </tr>
+  </thead>
+  <% @qiitaposts.each do |qiitapost| %>
+    <tbody>
+      <tr>
+        <td class="left"><%= link_to qiitapost.title, qiitapost.url, target: '_blank' %></td>
+        <td class="center"><%= qiitapost.user.nickname %></td>
+        <td class="center"><%= qiitapost.created_at.strftime("%Y/%m/%d") %></td>
+        <td class="center"><%= link_to '編集', edit_qiita_post_path(qiitapost) %></td>
+      </tr>
+    </tbody>
+  <% end %>
+</table>
+
+<div class="center">
+  <%= paginate @qiitaposts %>
+</div>

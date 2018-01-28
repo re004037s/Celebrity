@@ -19,6 +19,7 @@
  *= require jquery.tagit
  
  */
+
 body {
   background-color: gray;
   padding: 40px 0 0 0;
@@ -263,3 +264,4 @@ table{
 .edit_tag{
   display: inline-block;
 }
+
