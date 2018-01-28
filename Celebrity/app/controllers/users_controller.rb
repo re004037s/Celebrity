@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   
   def show
     @categories = MovieCategory.where(must_view: true).order('sort_order')
+    
     if params[:user_id]
       user = User.find_by(id: params[:user_id])
       # 不要なデータも表示される
@@ -18,6 +19,7 @@ class UsersController < ApplicationController
       @user_tags = current_user.tags
     end
   end
+  
   
   def update_picture
     @user = current_user
@@ -42,28 +44,26 @@ class UsersController < ApplicationController
     @user = current_user
     tag = @user.tags.create(tag: user_params[:tags])
     tag_name = user_params[:tags]
-    
-    @tag = [] #あいまい検索　追加しました
-    if request.post? then
-      @tag = Tag.where("tag like 't%'")
-    end
-    
+ 
     if tag.save
       flash[:success] = 'タグ名： ' + tag_name + ' を追加しました'
       redirect_to @user 
     else
+
       # [:tag]でメッセージの配列を取り出し、.join(' / ')で分割した。
       flash[:danger] = tag.errors.messages[:tag].join(' / ') 
       redirect_to @user
+
     end
   end
   
   def tag_delete
+    
     @user = current_user
     tag_id = params[:tag_id]
 
-    #invalid foreign key error -> modelにdestroy?? 関係の追記が必要？
-    if @user.user_tags.find_by(id: tag_id).delete #tags ⇨ user_tags（中間テーブル）に変更
+    # if @user.user_tags.find_by(id: tag_id).delete =>エラ〜
+    if @user.user_tags.find_by(tag_id: tag_id).delete #tags ⇨ user_tags（中間テーブル）に変更
       flash[:success] = 'タグ を削除しました'
       redirect_to @user
     else
@@ -71,6 +71,25 @@ class UsersController < ApplicationController
       redirect_to @user
     end
   end
+  
+  def tag_related
+    #users tableのid, name, nickname, picture_fileだけ取得する 
+    @hoge  = User.includes(:tags).where(tags:{tag: "#{params[:tag_name]}"}).pluck(:id,:name,:nickname, :picture_file)
+    @hogehoge = @hoge.to_a
+    render json: @hogehoge
+  end
+  
+  def search
+    #参考
+    # @tag = [] #あいまい検索　追加しました
+    # if request.post? then
+    #   @tag = Tag.where("tag like 't%'")
+    # end
+    @fetched_tags = Tag.where('tag LIKE(?)', "#{params[:keyword]}%")
+    render json: @fetched_tags
+  end
+  
+
   
   def new
     @user = User.new

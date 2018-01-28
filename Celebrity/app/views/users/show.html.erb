@@ -58,6 +58,7 @@
   });
 </script>
 
+
 <div id="tag-controll">
   
 <%= form_for(@user, url: tag_show_path) do |f| %>
@@ -65,25 +66,187 @@
   <%= f.submit '登録', id:'tag-submit', class: 'btn btn-default active', :disabled => 'true' %>
 <% end %>
 
+<p>サジェスト機能のテスト用（下に表示されます）</p>
+<ul id="result">
+
+<!-- この中に<li>デデデ大王</li>みたいに検索候補を追加していきます -->
+</ul>
+
 <p>登録済みのタグ一覧：</p>
 <% @user_tags.each do |user_tag| %>
   <span class="tag_box">
-    <%=  user_tag.tag %>
+    <span class="tag_displayed">
+      <%= user_tag.tag %>
+    </span>
     <%= link_to image_tag('delete_icon.png', :class => 'delete_icon'), delete_tag_path(user_id: current_user.id, tag_id: user_tag.id), :method => :delete %>　<!-- methodでdeleteを指定する--> 
   </span>
 <% end %>
-
 </div>
 
+
+<div id="modal-content" style="display:none;"></div>
+<div id="modal-overlay" style="background:gray; opacity:0.5;"></div>
+
 <script>
-$('#user_tags').keyup(function() {
+
+//グローバル変数 (関数外)
+let sX_syncerModal = 0 ;
+let sY_syncerModal = 0 ;
+let cnt = 0;
+let w, h, wW, wH, ww, hh = 0;
+
+$(".tag_displayed").click(
+	function(){
+    //スクロール位置を記録
+    var dElm = document.documentElement , dBody = document.body;
+    sX_syncerModal = dElm.scrollLeft || dBody.scrollLeft;	//現在位置のX座標
+    sY_syncerModal = dElm.scrollTop || dBody.scrollTop;		//現在位置のY座標
+
+		//キーボード操作などにより、オーバーレイが多重起動するのを防止する
+    $(this).blur() ;	//ボタンからフォーカスを外す
+    //if($("#modal-overlay")[0]) return false ;		//新しくモーダルウィンドウを起動しない [下とどちらか選択]
+    if($("#modal-overlay")) $("#modal-overlay").remove() ;		//現在のモーダルウィンドウを削除して新しく起動する [上とどちらか選択]
+    
+    if( cnt === 0){
+      wH = $(window).height();
+      wW = $(window).width();
+      w = $("#modal-content").width();
+      h = $("#modal-content").height();
+      ww = ( wW - w ) / 2.2;
+      hh = ( wH - h ) / 1.9;
+      // hh = h;
+      debugger
+      $('#modal-content').offset({ "top": hh, "left": ww});
+      cnt += 1;
+    }
+    
+    //オーバーレイ用のHTMLコードを、[body]内の最後に生成する
+    $("body").append('<div id="modal-overlay"></div>');
+    
+    //[$modal-content]をフェードインさせる
+    $("#modal-content").fadeIn("slow");
+    
+    //[$modal-overlay]をフェードインさせる
+    $("#modal-overlay").fadeIn("slow");
+    
+    centeringModalSyncer();
+    
+    $(window).resize(centeringModalSyncer);
+    
+    
+    $("#modal-overlay").unbind().click(function(){
+    	//[#modal-overlay]と[#modal-close]をフェードアウトする
+      $("#modal-content, #modal-overlay").fadeOut("slow",function(){
+    	//フェードアウト後、[#modal-overlay]をHTML(DOM)上から削除
+    	  $("#modal-overlay").remove();
+        
+        
+        //スクロール位置を移動
+        window.scrollTo( sX_syncerModal , sY_syncerModal );
+        
+      });
+    });
+    
+		
+	}
+);
+
+
+
+//センタリングをする関数
+function centeringModalSyncer(){
+
+	//画面(ウィンドウ)の幅を取得し、変数[w]に格納
+	var w = $(window).width();
+
+	//画面(ウィンドウ)の高さを取得し、変数[h]に格納
+	var h = $(window).height();
+	
+	//スマホ対応する場合
+	//画面(ウィンドウ)の高さを取得し、変数[h]に格納
+  //var h = window.innerHeight;
+
+	//コンテンツ(#modal-content)の幅を取得し、変数[cw]に格納
+	var cw = $("#modal-content").outerWidth({margin:true});
+
+	//コンテンツ(#modal-content)の高さを取得し、変数[ch]に格納
+	var ch = $("#modal-content").outerHeight({margin:true});
+
+	//コンテンツ(#modal-content)を真ん中に配置するのに、左端から何ピクセル離せばいいか？を計算して、変数[pxleft]に格納
+	var pxleft = ((w - cw)/2);
+
+	//コンテンツ(#modal-content)を真ん中に配置するのに、上部から何ピクセル離せばいいか？を計算して、変数[pxtop]に格納
+	var pxtop = ((h - ch)/2);
+
+	//[#modal-content]のCSSに[left]の値(pxleft)を設定
+	$("#modal-content").css({"left": pxleft + "px"});
+
+	//[#modal-content]のCSSに[top]の値(pxtop)を設定
+	$("#modal-content").css({"top": pxtop + "px"});
+
+}
+
+
+$('#user_tags').keyup(function(e) {
+  e.preventDefault(); //キャンセル可能なイベントをキャンセル
   let text_field_obj = $('#tag-submit').parent('.edit_user').find('#user_tags');
-  let words = text_field_obj.val();
+  let words = $.trim(text_field_obj.val());
+  if(words.length == 0 ){
+    $('#result').find('li').remove();
+    return;
+  };
   if(words.length >= 1 && words.length <= 20){
     $("#tag-submit").prop("disabled", false);
   }else{
     $("#tag-submit").prop("disabled", true);
   }
+  
+
+  //inputに入力した文字列をリアルタイムでajaxリクエストする
+  $.ajax({ //ajax通信で以下のことを行います
+    url: '/users/search', //urlを指定
+    type: 'GET', //メソッドを指定
+    data: ('keyword=' + words), //コントローラーに渡すデータを'keyword=input(入力された文字のことですね)'にするように指定
+    processData: false, //おまじない
+    contentType: false, //おまじない
+    dataType: 'json' //データ形式を指定
+  })
+  //ajax request success時の処理
+  .done(function(response){ //データを受け取ることに成功したら、dataを引数に取って以下のことする(dataには@usersが入っている状態ですね)
+    $('#result').find('li').remove();  //idがresultの子要素のliを削除する
+    $(response).each(function(i, fetchedTag){ //dataをuserという変数に代入して、以下のことを繰り返し行う(単純なeach文ですね)
+      $('#result').append('<li>' + fetchedTag.tag + '</li>') //resultというidの要素に対して、<li>ユーザーの名前</li>を追加する。
+    });
+  })
+});
+
+$('.tag_displayed').click(function(e) {
+  let clicked_tag_name = $.trim($(this).text());
+    //clickしたタグ名に紐づくユーザー情報をリアルタイムでajaxリクエストする
+  $.ajax({ //ajax通信で以下のことを行います
+    url: '/users/tag_related', //urlを指定
+    type: 'GET', //メソッドを指定
+    data: ('tag_name=' + clicked_tag_name), 
+    contentType: false, //おまじない
+    dataType: 'json' //データ形式を指定
+  })
+  //ajax request success時の処理
+  .done(function(res){ 
+    $('#modal-content').find('li').remove();  
+    $(res).each(function(i, hogehoge){
+      debugger
+      let picture_file = hogehoge[3];
+      if (hogehoge[3] == null){
+        picture_file = "null"
+      } 
+      $('#modal-content').append('<li>' + hogehoge + picture_file + '</li>') 
+    });
+  })
+})
+
+$(window).scroll(function() {
+  let scroll_y = $(window).scrollTop();
+  $('#modal-layer').offset({ top: scroll_y, left: 0 });
 });
 
   $('.delete_icon').css('width', '15');
@@ -93,6 +256,7 @@ $('#user_tags').keyup(function() {
   $('.tag_box').css('font-size', '1.3em');
   $('#tag-controll').css('width', '60%');
   $('#tag-controll').css('margin', '1em auto');
+  
 </script>
 
 <% if current_user.try(:admin) == true %>
@@ -414,6 +578,7 @@ $('#user_tags').keyup(function() {
       <% end %>
     </td>
   </tr>
+  
 </table>
 <table class="txt1 table table-bordered table-condensed table-status">
   <tr>

@@ -4,5 +4,7 @@ class Tag < ApplicationRecord
     accepts_nested_attributes_for :user_tags #他のモデルを一括で更新、保存できるようにするもの。user_tagも更新・保存
     validates :tag, presence: true, length: { maximum: 20, message: "20文字以内で入力してください"}, format: { with: /\A[a-zA-Z\s]+\z/, #半角スペースの正規表現は\sを挿入する
     message: "英文字のみが使用できます" }
+    
+    
     # validates :user_id, presence: true #user_idが存在しているかのバリデート
 end

@@ -1,0 +1,77 @@
+<h1>タグ一覧</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>タグ</th>
+      <th>カラー</th>
+      <th>アイコン</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tags.each do |tag| %>
+      <tr>
+        <td><%= tag.id %></td>
+        <td><%= tag.tag %></td>
+        <td>
+          <input type="text" name="c1" value="<%= tag.color %>" placeholder="登録してください" size="12" class="html5jp-cpick [coloring:true]"  readonly="readonly"/>
+        </td>
+        <td><% if tag.icon %>
+            <%= image_tag (tag_edit_path) %>
+            <% else %>
+            <%= image_tag("default_icon.png", :class => "tag_icon")%>
+            <% end %>
+            <%= form_for tag, url: tag_edit_path do |f| %>
+            <%= f.file_field :icon %>
+            <%= f.submit '登録', class: 'btn btn-primary fileuploader'%>
+            <% end %></td>
+        
+    <% end %>
+  </tbody>
+</table>
+
+
+<script>
+  console.log("jfsaldkjfalskjdflkj");
+  $('.html5jp-cpick').focusout(function(e) { // class のtext change イベント発生時に
+  //TODO
+  //change event が発火しないためfocusoutにしたが、
+  //新しいカラーコードが入る前に古いカラーコードを参照してしまう。（期待通りではない）
+  
+  //フォーカスアウトなので、OKを押下後に画面をクリックすると
+  //新しいカラーコードでリクエストが走る。この場合は期待通りの結果になる
+  
+  e.preventDefault(); //キャンセル可能なイベントをキャンセル
+  console.log($(this));
+  let input_text = $(this).val();
+  console.log(input_text);
+  
+  if(input_text == "") return;
+  isValidColorCode = input_text.match(/^#+([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/);
+  
+  //color code として不正なので、処理をやめる
+  if(isValidColorCode == null) {
+    alert("不正なカラーコードです");
+    return;
+  }
+  
+  console.log("正しいカラーコード処理");
+  
+  // TODO idを取得する
+  let tag_id = $(this).closest('tr').find('td').first().text();
+  let params = {'color' : input_text, 'tag_id': tag_id};
+  debugger
+   $.ajax({ //ajax通信で以下のことを行います
+    type: 'POST', //メソッドを指定
+    url: 'update_tag', //urlを指定
+    data: params, //コントローラーに渡すデータを'keyword=input(入力された文字のことですね)'にするように指定
+    dataType: 'json' //データ形式を指定
+  })
+  .done(function(res_data){ //データを受け取ることに成功したら、dataを引数に取って以下のことする(dataには@usersが入っている状態ですね)
+    console.log(res_data);
+  })
+  
+  
+});
+</script>
