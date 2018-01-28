@@ -42,6 +42,16 @@ class UsersController < ApplicationController
   
   def tag_show
     @user = current_user
+    #アド民が個別ユーザーページでタグを登録できないようにする
+    current_user.id
+    user_id_in_param = params[:user][:id]
+    
+    if current_user.id != user_id_in_param
+      flash[:danger] = 'アドミンがユーザーページからユーザーのタグを変更できません'
+      redirect_to @user
+      return
+    end
+  
     tag = @user.tags.create(tag: user_params[:tags])
     tag_name = user_params[:tags]
     if tag.save

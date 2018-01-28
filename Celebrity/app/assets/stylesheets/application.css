@@ -218,7 +218,7 @@ table{
   width: 100%;
   max-width: 350px;
 }
-#tag-controll #edit_user_1{
+#tag-controll .edit_user{
   width: 100%;
   max-width: 40%;
   margin: 0 auto;
