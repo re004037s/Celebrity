@@ -1,6 +1,6 @@
 class TagsController < ApplicationController
   protect_from_forgery :except => [:update_tag]
-
+  before_action :admin_user
 
   def tag_edit
     @tags  = Tag.all.order(id: "ASC")
