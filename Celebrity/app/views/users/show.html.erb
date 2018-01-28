@@ -94,6 +94,18 @@ $('#user_tags').keyup(function() {
   $('#tag-controll').css('width', '60%');
   $('#tag-controll').css('margin', '1em auto');
 </script>
+
+<% if current_user.try(:admin) == true %>
+<% elsif Feedback.where(user_id: current_user).count == 
+  Movie.where(movie_category_id: MovieCategory.where(must_view: true).ids).count &&
+  current_user.html_css_status.schedule_date.blank? ||
+  current_user.javascript_status.schedule_date.blank? ||
+  current_user.ruby_status.schedule_date.blank? ||
+  current_user.rubyonrails_status.schedule_date.blank? ||
+  current_user.railstutorial_status.schedule_date.blank? %>
+  <p style="background-color:#FFCACA; color: red; font-size: 30px; text-align: center; 
+  margin: 60px 0 25px; text-shadow: 0 1px 0 #999, 0 2px 0 #999">まずは下記の完了予定日を登録して下さい</p>
+<% end %>
   
 <table class="txt1 table-condensed table-status-schedule">
    <tr valign="baseline">
