@@ -12,9 +12,16 @@ Rails.application.routes.draw do
   
   
   resources :users do
-      member do
-        get 'get_image'
-        # post 'post_tag' //WIP
+    member do
+      get 'get_image'
+      # post 'post_tag' //WIP
+    end
+    
+    collection do
+      get 'search'
+      get 'tag_related'
+      get 'tags_belongs_to_user'
+      post 'update_tag'
     end
   end
   resources :account_activations, only: [:edit]
@@ -37,7 +44,19 @@ Rails.application.routes.draw do
   # resources :user_tags #追加
   # post 'tag_show', to:'users#tag_show'
   patch '/post_pic', to:'users#update_picture'
-  patch '/tag_edit', to:'users#tag_edit' #追加
+  
+  #adminのtag一覧ページ用
+  patch '/post_icon', to:'tags#icon_show'
+  post '/post_icon', to:'tags#icon_show'
+  get '/post_icon', to:'tags#icon_show'
+  
+  get '/tag_edit', to:'tags#tag_edit' 
+  patch'/tag_edit', to:'tags#tag_edit'
+  # TODO ajaxのparamが渡らない
+  post'/tag_edit/update_tag', to:'tags#update_tag'
+  
+
+  
   patch '/tag_show', to:'users#tag_show' #追加 sugi
   delete '/delete_tag', to: 'users#tag_delete' #temp post⇨deleteに変更しshow.htmlと統一
   root 'top#index'

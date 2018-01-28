@@ -72,8 +72,53 @@ User.create(name: '松井 秀喜',
             password: 'password',
             password_confirmation: 'password',
             admin: false,
-            existence: true,
-            line_id: 67890)
+            existence: true)
+            
+User.create(name: 'サブロー',
+            nickname: 'サブちゃん',
+            email: 'saburo@gmail.com',
+            password: 'password',
+            password_confirmation: 'password',
+            admin: false,
+            existence: true)            
+
+User.create(name: 'シロー',
+            nickname: 'シロちゃん',
+            email: 'siro@gmail.com',
+            password: 'password',
+            password_confirmation: 'password',
+            admin: false,
+            existence: true)            
+
+User.create(name: 'ゴロー',
+            nickname: 'ゴロちゃん',
+            email: 'goro@gmail.com',
+            password: 'password',
+            password_confirmation: 'password',
+            admin: false,
+            existence: true)            
+
+User.create(name: 'ロクロー',
+            nickname: 'ロクちゃん',
+            email: 'rokuro@gmail.com',
+            password: 'password',
+            password_confirmation: 'password',
+            admin: false,
+            existence: true)            
+User.create(name: 'ナナロー',
+            nickname: 'ナナちゃん',
+            email: 'nanaro@gmail.com',
+            password: 'password',
+            password_confirmation: 'password',
+            admin: false,
+            existence: true)            
+User.create(name: 'ハチロー',
+            nickname: 'ハチちゃん',
+            email: 'hachiro@gmail.com',
+            password: 'password',
+            password_confirmation: 'password',
+            admin: false,
+            existence: true)            
 
 # 一般 user
 User.create(name: '大谷 翔平',
