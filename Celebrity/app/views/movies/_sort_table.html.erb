@@ -9,7 +9,7 @@
   <% movies.each_with_index do |movie, i| %>
     <tbody>
       <tr>
-        <td>【<%= movie.sort_order %>】<%= movie.title %></td>
+        <td class="left">【<%= movie.sort_order %>】<%= movie.title %></td>
         <td>
           <% if i >= 1 %>
             <%= link_to sort_movies_path(sort_up: movie.sort_order, category_id: movie.movie_category_id), remote: true do %>

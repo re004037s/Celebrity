@@ -1,22 +1,29 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-/* mixins, variables, etc. */
+/*ベースカラー*/
+$frame-grey: #373737;
+$background-grey: #f4f4f4;
 
-$gray-medium-light: #eaeaea;
 
-/* universal */
-textarea {
-  resize: vertical;
-}
+/*定義した変数やクラスのインポート*/
+@import "variables"; //ベースカラーなどの設定
+@import "classes";  //オリジナル設定のクラス
 
-.center {
-  text-align: center;
-  vertical-align: middle;
-  h1 {
-    margin-bottom: 10px;
-  }
-}
+/*共通設定のインポート*/
+@import "common";  //全体
+@import "header";  //ヘッダー
+@import "container";  //メインコンテンツ
+@import "footer";  //フッター
+@import "sidebar";  //サイドバー
+@import "texts";  //テキスト
+@import "forms";  //フォーム
+@import "tables";  //テーブル
+@import "parts";  //ボタンや矢印など
+
+@import "responsive";  //レスポンシブ関連の設定
+
+
 
 .disabled {
   pointer-events: none;
@@ -29,106 +36,6 @@ textarea {
 
 .inline {
   display: inline;
-}
-
-/* typography */
-
-h1, h2, h3, h4, h5, h6 {
-  line-height: 1;
-}
-
-h1 {
-  font-size: 3em;
-  letter-spacing: -2px;
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-h2 {
-  font-size: 1.2em;
-  letter-spacing: -1px;
-  margin-bottom: 30px;
-  text-align: center;
-  font-weight: normal;
-  color: $gray-light;
-}
-
-
-
-p {
-  font-size: 1.1em;
-  line-height: 1.7em;
-}
-
-li {
-  list-style: none;
-}
-
-/* header */
-
-#logo {
-  float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: -1px;
-  padding-top: 9px;
-  font-weight: bold;
-  &:hover {
-    color: white;
-    text-decoration: none;
-  }
-}
-
-.top-phrase{
-  font-size: 1.5vw;
-  line-height: 3em;
-  color: #F8C810;
-  padding-left: 20px;
-  display: inline;
-  &:hover {
-    text-decoration: none;
-  }
-}
-
-/* footer */
-
-footer {
-  color: $gray-light;
-  a {
-    color: $gray;
-    &:hover {
-      color: $gray-darker;
-    }
-  }
-  small {
-    float: left;
-  }
-  ul {
-    float: right;
-    list-style: none;
-    li {
-      float: left;
-      margin-left: 15px;
-    }
-  }
-}
-.collapse.navbar-collapse.navbar-right{
-  text-align: right;
-  display: block;
-}
-
-/* forms */
-
-input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
-  width: 100%;
-  margin-bottom: 15px;
-}
-
-input {
-  height: auto !important;
 }
 
 #error_explanation {
@@ -149,54 +56,80 @@ input {
    width: 100%;
    height: auto;
   }
-img {
-  width: 100%;
-  height: auto;
+  
+  
+  
+  
+.movies-page--wrapper {
+  max-width: 480px;
+  margin: 0 auto;
+  margin-top: 30px;
+  
+  .movie-title {
+    margin-top: 50px;
+    margin-bottom: 15px;
+    font-size: 24px;
+    color: #373737;
+  }
+  
 }
 
 .movie {
   position: relative;
-  width: 100%;
-  padding-top: 56.25%;
-  margin-bottom: 10px;
+  //width: 100%;
+  width: 480px;
+  height: 340px;
+  //padding-top: 70%;
+  margin: 15px auto;
   iframe {
     position: absolute;
+    content: "";
     top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    max-width: 500px;
-    max-height: 360px;
+    z-index: 1;
+    //max-width: 600px;
+    //max-height: 432px;
+  }
+  .movie-layer {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 480px;
+    height: 35px;
+    background-color: #000;
+    color: #f4f4f4;
+    text-align: right;
+    font-size: 18px;
+    //font-family: serif;
+    line-height: 35px;
+    padding: 0 10px;
+    //display: none;
+    z-index: 2;
   }
 }
 
-.movie-title {
-  padding: 0.25em 0.5em;/*上下 左右の余白*/
-  color: #494949;/*文字色*/
-  background: transparent;/*背景透明に*/
-  border-left: solid 5px #7db4e6;/*左線*/
-  margin-top: 50px;
-}
 
-.container{
-  width: 80%;
-  margin: 0 auto;
-}
+
 
 /* ユーザ一覧&詳細ページ */
 
 .table-index {
-  width: 90%;
+  width: 80%;
   table-layout: fixed;
   margin: 0 auto;
+  text-align: center;  
 }
-
+/*
 .table-status {
   width: 90%;
   table-layout: fixed;
   margin: 0 auto;
   margin-bottom: 50px;
 }
-
+*/
 .table-header {
   background-color: black;
   color: white;
@@ -204,22 +137,42 @@ img {
   text-align: center;
 }
 
+
+.top-index--wrapper {
+  width: 543px;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
+
+.welcome-message--wrapper {
+  margin-bottom: 60px;
+  p {
+    font-size: 30px;
+    text-align: center;
+  }
+}
+
+.produce-list {
+  margin-top: 50px;
+  
+  li {
+    font-size: 20px;
+    margin: 30px 0;
+  }
+}
+/*
 .status-name {
   margin-left: 30px;
 }
 
 
-td {
-  word-wrap: break-word;
-}
 
 .forms {
   margin-bottom: 50px;
 }
 
-.form-button {
-  height: 40px;
-}
+
 
 .user-delete {
   float: right;
@@ -254,7 +207,7 @@ td {
 #paginate {
   text-align: center;
 }
-
+*/
 // 動画管理系ページ
 
 // 上矢印
@@ -279,7 +232,7 @@ td {
   transform: rotate(135deg);
   margin: auto;
 }
-
+/*
 .btn-wrapper {
   text-align: center;
   padding: 20px 0;
@@ -295,7 +248,7 @@ td {
 .form-inline {
   margin-bottom: 10px;
 }
-
+*/
 .category-title {
   padding: 0.4em 0.5em;/*文字の上下 左右の余白*/
   color: #494949;/*文字色*/
@@ -304,37 +257,131 @@ td {
   border-bottom: solid 3px #d7d7d7;/*下線*/
 }
 
-td {
-padding: 5px 10px;
+
+/*
+
+
+
+
+
+
+
+.panel {
+  margin-top: 20px;
 }
 
-.table-status-schedule {
-  width: 90%;
-  table-layout: fixed;
-  margin: 0 auto;
+
+
+.blank-box{
+  height: 30px;
+  background-color: black
 }
 
-.btn-schedule{
+.btn{
+  background-color:#00CCCC;
+  color:black;
+}
+.btn-lg{
+  text-align: center;
   font-size: 1vw;
 }
 
-.font-schedule{
-  background-color:#FFCACA;
-  color: red;
-  font: Times New Roman, Times, serif;
-  text-shadow: 0 1px 0 #999,
-  0 2px 0 #999
+.btn-comp {
+  background-color: #248;
+  color: #fff;
 }
-.table-header a {
-  color: white;
-  &:hover {
-    color: aqua;
-    text-decoration: none;
+
+.btn-incomp {
+  background-color: gray;
+  color: #fff;
+}
+
+input#submit_button {
+    width: 30vw;
+    height: auto;
+}
+
+div#centering{
+  text-align: center ;
+}
+
+.btn-delete{
+  font-size: 1vw;
+  position:relative;
+  right: 3em
+}
+
+
+.align-center{
+  width: 30%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.align-center img {
+  margin-bottom: 1em;
+  border-radius: 50%;
+  width: 50%;
+}
+
+#upload-my-picture{
+  display: none;
+}
+
+.edit-my-picture{
+  text-align: center;
+}
+
+*/
+
+.btn-sm-1 {
+  display: inline-block;
+  width: 100%;
+  margin-top: 1px;
+}
+
+
+// ポートフォリオの解説ページ
+.com-main {
+  text-align: center;
+  padding-bottom: 30px;
+  margin: 0 200px 0;
+  
+  h3 {
+    font-size: 30px;
+  }
+  
+  textarea {
+    background: whitesmoke;
+    height: 150px;
+    margin-top: 30px;
+  }
+  
+  input {
+    background: whitesmoke;
+    font-size: 18px;
+    width: 20%;
+    padding: 10px 0 10px;
+    border-radius: 10px;
   }
 }
 
-.btn-sm {
-  display: inline-block;
-  width: 100%;
-  margin: 0 auto;
+.com-text {
+  border-bottom: 2px solid lightgrey;
+  text-align: center;
+  padding: 60px 0 20px;
+  margin: 0 10px 0;
+}
+
+#next_category_link {
+  margin-top: 30px;
+}
+
+// 面談内容共有ページ
+.att p {
+  padding-left: 1em;
+}
+
+li.first-child {
+  margin-right: 2.5em;
 }

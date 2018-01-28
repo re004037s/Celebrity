@@ -1,12 +1,13 @@
 <% if @sort_order == @category.movies.count %>
   $("#next_category_link").removeAttr("style");
+  $("#mypage_link").removeAttr("style");  
   $("#textarea<%= @sort_order %>").fadeOut(500);
-  $("#feedback-btn<%= @sort_order %>").addClass("btn-comp");
+  $("#feedback-btn<%= @sort_order %>").html("<%= j(image_tag('button_feedback2.png', class: 'img-feed-btn')) %>");
   $("#msg<%= @sort_order %>").fadeOut(500);
 <% else %>
   $("#m<%= @sort_order + 1 %>").removeAttr("style");
   $("#m<%= @sort_order + 1 %>").removeClass("hide-movie");
   $("#textarea<%= @sort_order %>").fadeOut(500);
-  $("#feedback-btn<%= @sort_order %>").addClass("btn-comp");
   $("#msg<%= @sort_order %>").fadeOut(500);
+  $("#feedback-btn<%= @sort_order %>").html("<%= j(image_tag('button_feedback2.png', class: 'img-feed-btn')) %>");
 <% end %>
