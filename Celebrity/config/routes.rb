@@ -18,7 +18,6 @@ Rails.application.routes.draw do
     end
   end
         
-    
   resources :feedbacks, only: [:create, :update, :destroy]
   
   resources :movies do
@@ -28,14 +27,10 @@ Rails.application.routes.draw do
     get 'sort', on: :collection
   end
   
- 
   patch '/post_pic', to:'users#update_picture'
   
-  
-   match 'tag_edit', to: 'tags#tag_edit', via: [:get, :post]
-   match 'update_tag', to: 'tags#update_tag', via: [:post]
-  
-
+  match 'tag_edit', to: 'tags#tag_edit', via: [:get, :post]
+  match 'update_tag', to: 'tags#update_tag', via: [:post]
   
   patch '/tag_show', to:'users#tag_show' #追加 sugi
   delete '/delete_tag', to: 'users#tag_delete' #temp post⇨deleteに変更しshow.htmlと統一
