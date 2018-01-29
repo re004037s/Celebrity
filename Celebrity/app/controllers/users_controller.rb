@@ -45,8 +45,8 @@ class UsersController < ApplicationController
     #アド民が個別ユーザーページでタグを登録できないようにする
     current_user.id
     user_id_in_param = params[:user][:id]
-    
-    if current_user.id != user_id_in_param
+
+    if current_user.id.to_s != user_id_in_param
       flash[:danger] = 'アドミンがユーザーページからユーザーのタグを変更できません'
       redirect_to @user
       return
