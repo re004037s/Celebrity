@@ -15,7 +15,8 @@ class UsersController < ApplicationController
       user = User.find_by(id: params[:user_id])
       @user_tags = user.tags
     else
-      @user_tags = current_user.tags
+      user = User.find_by(id: params[:id])
+      @user_tags = user.tags
     end
     
   end
