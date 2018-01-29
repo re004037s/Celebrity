@@ -296,6 +296,11 @@ table{
 /*****************登録済タグ**************/
 /*****************************************/
 
+.tag_regestered_in_modal {
+	margin: 0 auto ;
+	font-weight: bold;
+}
+
 .tag_regestered {
   width: 100%;
   max-width: 40%;
@@ -303,7 +308,13 @@ table{
 	font-weight: bold;
 }
 
-.tag_regestered ul {
+.tag_regestered_in_modal ul{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.tag_regestered ul{
 	margin: 0;
 	padding: 0;
 	list-style: none;
@@ -314,6 +325,13 @@ table{
 	padding: 0;
   max-width: 5%
 }
+.tag_regestered_in_modal ul li {
+	display: inline-block;
+	margin: 0 .3em .3em 0;
+	padding: 0;
+  max-width: 5%
+}
+
 .tag_regestered ul li{
 	display: inline-block;
 	max-width: 100px;
@@ -329,17 +347,49 @@ table{
 	-webkit-transition: .2s;
 	transition: .2s;
 }
+.tag_regestered_in_modal ul li{
+	display: inline-block;
+	max-width: 100px;
+	height: 28px;
+	line-height: 28px;
+	background-color: #fff;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	color: #333;
+	font-size: 1.1em;
+	text-decoration: none;
+	-webkit-transition: .2s;
+	transition: .2s;
+}
+
 .tag_regestered ul li .tag_displayed{
 	border: 1px solid #aaa;
 	border-radius: 3px;
 	padding: 0 0.5em;
 }
+
 .tag_regestered ul .tag_displayed:hover {
 	background-color: #3498db;
 	border: 1px solid #3498db;
 	color: #fff;
 	cursor : pointer;
 }
+.tag_regestered_in_modal ul li .tag_displayed{
+	border: 1px solid #aaa;
+	border-radius: 3px;
+	padding: 0 0.5em;
+}
+
+.tag_regestered_in_modal ul .tag_displayed:hover {
+	background-color: #3498db;
+	border: 1px solid #3498db;
+	color: #fff;
+	cursor : pointer;
+}
+
+
+
 .delete_icon{
   margin-left: 0.2em;
 }

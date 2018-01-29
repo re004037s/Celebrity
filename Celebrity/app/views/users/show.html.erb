@@ -319,7 +319,7 @@ function displayUserTagRelation() {
       
       let _tr_html = '<tr>';
       _tr_html += createTd_html(user_info);
-      _tr_html += '<td id="' + user_id   + '">' + '' + '</td>';
+      _tr_html += '<td id="' + user_id   + '" class="tag_regestered_in_modal">' + '' + '</td>';
       _tr_html += '</tr>';
        
       $('#tags_for_tbody').append(_tr_html) 
@@ -336,14 +336,16 @@ function displayUserTagRelation() {
       .done(function(tags_row){
         $(tags_row).each(function(i, tag_row){
           for(let key in tag_row){
+            let _tag_field = '<ul>';
             for(let j in tag_row[key]){
-              let _tag_field = '';
-              _tag_field += '<span style="font-size: 1.5em;"'+ 'class="'+ 'tag_appeared__userid_' + key +'">'
-              _tag_field += '<a href="#">' + tag_row[key][j].tag + '</a>' 
-              _tag_field += '</span>'
-              _tag_field += '</br>'
-              $('#' + key  + '').append(_tag_field);
+              _tag_field += '<li style="font-size: 1.5em;"'+ 'class="'+ 'tag_appeared__userid_' + key +'">'
+              _tag_field += '<span class="tag_displayed"><a href="#">' + tag_row[key][j].tag + '</a></span>' 
+              _tag_field += '</li>'
+              // _tag_field += '</br>'
             }
+            _tag_field += '</ul>';
+            $('#' + key  + '').append(_tag_field);
+            
             //click event をつけて再帰的にこのajaxを実行させる
             let tag_appeared_obj = $(".tag_appeared__userid_" + key);
             tag_appeared_obj.click(showModalForm);
