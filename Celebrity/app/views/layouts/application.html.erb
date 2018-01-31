@@ -20,22 +20,23 @@
     <%= favicon_link_tag('favicon32.png') %>
   </head>
   
-  <!--表示するページを判定-->
+  <!--ページ（yield）によってソースを条件分岐-->
+  
+  <!--1.ログイン時など-->
   <% if content_for?(:entrance) %>
     
-    <!--背景を変更（ログイン時など）-->
     <body class="body-entrance">
       <!--アラートメッセージ-->
       <% flash.each do |message_type, message| %>
         <div class="alert alert-<%= message_type %>"><%= message %></div>
       <% end %>
-      <!--コンテンツを読み込み-->
+      
     <%= yield :entrance %>
     </body>
     
-  <!--以下、通常の表示-->
-  <% else %>
+  <% else %><!-- if content_for?(:entrance) -->
   
+    <!--2.通常の表示-->
     <body class="body">
       <!--ナビゲーションバー-->
       <%= render 'layouts/navbar' %>
@@ -49,12 +50,35 @@
         <% flash.each do |message_type, message| %>
           <div class="alert alert-<%= message_type %>"><%= message %></div>
         <% end %>
-        <!--コンテンツを読み込み-->
-        <%= yield %>
-      </div>
+        
+        <!-- 2-1.サイドバーあり-->
+        <% if content_for?(:with_sidebar) %>
+        
+          <div class="main-wrapper">
+            <div class="row">
+              <div class="col-md-8">
+                
+                <%= yield :with_sidebar %>
+                
+              </div>
+              
+              <!--サイドバー-->
+              <aside class="col-md-4">
+                <%= render 'layouts/aside' %>
+              </aside>
+            </div>
+          </div>
+          
+        <% else %>
+        
+          <!--2-2.サイドバーなし-->
+          <%= yield %>
+        
+        <% end %>
+      </div><!-- body -->
+  
       <!--フッター-->
       <%= render 'layouts/footer' %>
     </body>
-    
   <% end %><!-- if content_for?(:entrance) -->
 </html>
