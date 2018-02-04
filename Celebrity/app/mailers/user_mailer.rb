@@ -14,6 +14,13 @@ class UserMailer < ApplicationMailer
     mail to: @user.email, subject: "セレブエンジニアサロンのタスクについて"		
   end
   
+  def send_when_create(users,movie)
+       @new_movie = movie
+       mail to: 'test@example.com', subject:  'セレブエンジニアサロンの新規動画について',bcc: users.map{|u| u.email}
+  end
+  
+  
+  
   def account_activation(user)
     @user = user
     mail to: user.email, subject: "Account activation"

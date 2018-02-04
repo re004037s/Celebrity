@@ -1,3 +1,131 @@
+<!----------------------------------------------------------------->
+ <!--------------- js ---------------------------------------------->
+ <!----------------------------------------------------------------->
+ 
+ <!--sugimoto added-->
+ <script>
+ //下記はボタンの表示が変わってから実行されるjs
+ const CHAPTER_MAX_NUM = 14;
+ const NEXT_LIST_NAME = "ポートフォリオの作り方";
+ const NEXT_LINE_DOM = "</br>";
+ const SINGLE = 1;
+ const DOUBLE = 2;
+ let current_num_of_incomp;
+ 
+ 
+ function showHowToMakePortfolio(){
+   if(is_all_watched()){
+     //全部完了の場合にボタンを非表示-> 表示にする処理
+     showNextButton();
+     
+     //asideの活性化
+     let aside_lists = $('.sidebar-list').find('li');
+     for(let i = 0, len = aside_lists.length; i < len; i++){
+       var listText = aside_lists[i].innerText;
+       if(listText === NEXT_LIST_NAME){
+         switchDisabled($(aside_lists[i]));
+         offsetToCenter();
+         $(window).resize(offsetToCenter);
+         showModalLayer()
+         showMsg(listText + NEXT_LINE_DOM +  NEXT_LINE_DOM + " をオープンしました");
+       }
+     }
+     
+   }else{
+     //全部完了出ない場合の処理、ボタンを非表示にする処理
+     hideNextButton();
+     
+     //asideの非活性化
+     let aside_lists = $('.sidebar-list').find('li');
+     for(let i = 0, len = aside_lists.length; i < len; i++){
+       var listText = aside_lists[i].innerText;
+       if(listText === NEXT_LIST_NAME){
+         switchDisabled($(aside_lists[i]));
+         
+         if(is_become_only_one_uncomp()){
+           return;
+         }
+         
+         if(has_only_one_uncomp()){
+           offsetToCenter();
+           $(window).resize(offsetToCenter);
+           showModalLayer()
+           showMsg(listText + NEXT_LINE_DOM + NEXT_LINE_DOM + " をクローズしました");
+         }
+         
+       }
+     }
+   }
+ }
+ 
+ function offsetToCenter(){
+   //スクロール位置を記録
+   var wH = $(window).height();
+   var wW = $(window).width();
+   var cH = $(".alert-info").outerHeight();
+   var cW = $(".alert-info").outerWidth();
+   var centerH = ( wH ) / 2 ;
+   var sc = $(window).scrollTop();
+   
+   $(".alert-info").css({"top" : centerH - 400 + sc + "px"});
+ }
+ 
+ function switchDisabled(obj){
+   obj.find('a').toggleClass('disabled');
+ }
+ 
+ function showModalLayer(){
+   $(".modal-bg").show().fadeOut(4500);
+ }
+ 
+ function showMsg(text){
+   $('#item_in_menu')[0].innerHTML = text;
+   $('.alert').fadeIn(1000).delay(1000).fadeOut(2000);
+ }
+ 
+ function showNextButton(){
+   $("#link_portfolio_mv").show();
+   $("#link_portfolio_mv").toggleClass('hide');
+ }
+ function hideNextButton(){
+   $("#link_portfolio_mv").show();
+   $("#link_portfolio_mv").toggleClass('hide');
+ }
+ 
+ function is_all_watched(){
+   var comp_length = $('.btn-comp').length
+   if(comp_length === CHAPTER_MAX_NUM){
+     return true;
+   }else{
+     return false;
+   }
+ }
+ 
+ function has_only_one_uncomp(){
+   let incomp_length = $('.btn-incomp').length
+   if(incomp_length === SINGLE){
+     return true;
+   }else{
+     return false;
+   }
+ }
+ 
+ function is_become_only_one_uncomp(){
+   let next_num_of_incomp = $('.btn-incomp').length;
+   if(current_num_of_incomp === DOUBLE && next_num_of_incomp === SINGLE){
+     current_num_of_incomp = next_num_of_incomp
+     return true;
+   }else{
+     current_num_of_incomp = next_num_of_incomp
+     return false;
+   }
+ }
+ </script>
+ 
+ <!----------------------------------------------------------------->
+ <!--------------- HTML -------------------------------------------->
+ <!----------------------------------------------------------------->
+<link rel=“stylesheet” href=“popup.scss”>
 <div class="main-wrapper">
   <div class="row">
     <div class="col-md-8">
@@ -153,9 +281,23 @@
     </tr>
   </tbody>
 </table>
-    </div> 
-    
-    <%= render 'layouts/aside' %>
-
-  </div>
+<% hide = 'hide' %>
+<div id="link_portfolio_mv" class="<%= hide unless railstutorial_comp? %>">
+   <p class="text-center">
+     <%= link_to "NEXT：ポートフォリオの作り方", portfolio_mv_path, class: "txt1 btn btn-lg btn-default active"%>
+   </p>
  </div>
+ </div>
+ <%= render 'layouts/aside' %>
+ 
+ 
+ <div class="alert alert-info">
+   <strong id="item_in_menu"></strong>
+ </div>
+ 
+ <div class="modal-bg"></div>
+ 
+ <script>
+    $('.hide').hide();
+   current_num_of_incomp = $('.btn-incomp').length;
+  </script>

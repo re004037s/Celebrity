@@ -18,7 +18,6 @@ class UsersController < ApplicationController
       user = User.find_by(id: params[:id])
       @user_tags = user.tags
     end
-    
   end
   
   
