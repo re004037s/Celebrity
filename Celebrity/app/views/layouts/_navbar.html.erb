@@ -1,5 +1,13 @@
 <nav class="header navbar navbar-fixed-top">
-  <div class="header-wrapper container">
+  <div class="navbar-wrapper container">
+    <%= link_to root_path do %>
+      <%= image_tag "logo_header.png", id: "logo-header" %>
+    <% end %>
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="sr-only">メニュー</span>
+      </button>
+    <div class="header-wrapper container">
     
     <!--▼ロゴ-->
     <div class="header-logo-wrapper">

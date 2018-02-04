@@ -1,0 +1,1699 @@
+[33mcommit e96f68bbd88ff15d4399b6bca5e73cf16c2f0d95[m[33m ([m[1;36mHEAD[m[33m)[m
+Author: sugimoto <r.sugimoto0615@gmail.com>
+Date:   Wed Jan 17 16:40:55 2018 +0000
+
+    git rebase
+
+[33mcommit 272c3e4700e0b64e393d4974d37c433685e876b8[m[33m ([m[1;31morigin/feature/profole_tag[m[33m)[m
+Author: ryugomikami <mikamiryuugo@yahoo.co.jp>
+Date:   Wed Jan 17 15:58:01 2018 +0000
+
+    タグ一覧ページ途中
+
+[33mcommit 7ee6d02ab74966b2c0dd82ae8f784854c9ee652c[m
+Author: ryugomikami <mikamiryuugo@yahoo.co.jp>
+Date:   Tue Jan 16 16:33:11 2018 +0000
+
+    追加 color column & icon column to tags table
+
+[33mcommit c7b09276842a1e7fd4fa27ff6ddcd8da598ff9b8[m
+Author: ryugomikami <mikamiryuugo@yahoo.co.jp>
+Date:   Tue Jan 16 16:32:19 2018 +0000
+
+    追加 タグ名を押下した際のモーダルレイヤー表示機能
+
+[33mcommit 1a384497e70ca23fc5ddcfbf60a728e52fe767ce[m
+Author: ryugomikami <mikamiryuugo@yahoo.co.jp>
+Date:   Sun Jan 14 16:28:20 2018 +0000
+
+    add 登録済みタグ名を押下時、ajaxでタグ名に紐づくユーザー情報を画面に表示完了
+
+[33mcommit 668551e7ed8e1ae0d180efdf70667bac28e6c7cc[m
+Author: ryugomikami <mikamiryuugo@yahoo.co.jp>
+Date:   Sat Jan 13 16:37:44 2018 +0000
+
+    add タグ名をクリックした際にタグ名を変数に格納する
+
+[33mcommit 49a2f5c9aef4af1f4fea52622db1b2ce62ed6a19[m
+Author: ryugomikami <mikamiryuugo@yahoo.co.jp>
+Date:   Sat Jan 13 15:50:58 2018 +0000
+
+    add サジェスト機能 データベースからajaxでデータを取得、htmlで表示済み
+
+[33mcommit a307da2e128b4ada63063d989ed4ad0706cbfed1[m
+Author: ryugomikami <mikamiryuugo@yahoo.co.jp>
+Date:   Sat Jan 13 06:44:12 2018 +0000
+
+    tag_showアクションにタグのあいまい検索コード追加中
+
+[33mcommit af4afc9019f2d38ff70f2a6ab3ec378c09e7cdb3[m
+Author: ryugomikami <mikamiryuugo@yahoo.co.jp>
+Date:   Tue Jan 9 12:42:12 2018 +0000
+
+    20文字超過でタグ登録ボタン押下不可
+
+[33mcommit 9163b9e953f10670b6b4b7871242444162859952[m
+Author: ryugomikami <mikamiryuugo@yahoo.co.jp>
+Date:   Tue Jan 9 11:35:07 2018 +0000
+
+    タグ入力フォームに半角スペースが入力できる
+
+[33mcommit 5ba92518901b6ec31fa5ab9bc61b188c66381b8c[m
+Author: ryugomikami <mikamiryuugo@yahoo.co.jp>
+Date:   Mon Jan 8 09:35:17 2018 +0000
+
+    複数エラーflashの表示
+
+[33mcommit f8cc5857b55396c3938dcb783f555fc927c402c5[m
+Author: ryugomikami <mikamiryuugo@yahoo.co.jp>
+Date:   Mon Jan 8 05:27:02 2018 +0000
+
+    user別にタグの保存 & delete機能追加完了
+
+[33mcommit c33febaf16b0349daba6fc869bcff9da03aa5b12[m
+Author: ryugomikami <mikamiryuugo@yahoo.co.jp>
+Date:   Sun Jan 7 17:05:04 2018 +0000
+
+    タグの表示まで完了。「×」ボタンでdeleteできない
+
+[33mcommit 7713c56b6d14ceddb855d04c08d3db1f31e25ea8[m
+Author: ryugomikami <mikamiryuugo@yahoo.co.jp>
+Date:   Sat Jan 6 16:05:57 2018 +0000
+
+    ユーザーに紐づくタグ名のみ表示させようとしたが、不要なデータも併せて表示されてしまう
+
+[33mcommit 3590a8bcadd1961ac70bdbf80aeec860a4bb73fd[m
+Author: ryugomikami <mikamiryuugo@yahoo.co.jp>
+Date:   Sat Jan 6 16:03:46 2018 +0000
+
+    追加：タグ名がブランクの時に登録ボタンを押下不可にするスクリプト
+
+[33mcommit 0def40a089d81f7fb5faefaf1b25d05f795418db[m
+Author: ryugomikami <mikamiryuugo@yahoo.co.jp>
+Date:   Sat Jan 6 14:47:18 2018 +0000
+
+    デフォルト画像変更
+
+[33mcommit 5b041b3539c6184e50cabbae805911c0b90cc403[m
+Author: ryugomikami <mikamiryuugo@yahoo.co.jp>
+Date:   Sat Jan 6 14:46:24 2018 +0000
+
+    tagテーブルから中間テーブルへの保存ができるようになった
+
+[33mcommit 1e2880f8f4b5499922de08a9f79f3f9cee1ad175[m
+Author: ryugomikami <mikamiryuugo@yahoo.co.jp>
+Date:   Thu Jan 4 23:54:04 2018 +0000
+
+    タグテーブル・中間テーブル登録で詰まり中
+
+[33mcommit 0ed42a39c5618f18962c4be5be3db5326dcefd99[m
+Author: ryugomikami <mikamiryuugo@yahoo.co.jp>
+Date:   Wed Jan 3 02:48:12 2018 +0000
+
+    formの指定カラムをtags に変更した
+
+[33mcommit bab4c9d4d6946e57de0e5180612705f41b294731[m
+Author: ryugomikami <mikamiryuugo@yahoo.co.jp>
+Date:   Tue Jan 2 14:17:03 2018 +0000
+
+    tag,user_tagテーブルに保存できる
+
+[33mcommit 519d2a2f5a8c10f24db82c68d8c7d664532c28ef[m
+Author: ryugomikami <mikamiryuugo@yahoo.co.jp>
+Date:   Mon Jan 1 14:51:19 2018 +0000
+
+    tagデータ保存できない
+
+[33mcommit 10bdf4b52de84e9863f43655352f447233eecc00[m
+Author: ryugomikami <mikamiryuugo@yahoo.co.jp>
+Date:   Sat Dec 30 15:03:49 2017 +0000
+
+    コントローラーエラー
+
+[33mcommit a339ab5e1845d0ad3938b99f0e023f061a945d5d[m
+Author: ryugomikami <mikamiryuugo@yahoo.co.jp>
+Date:   Sat Dec 30 13:57:29 2017 +0000
+
+    ルーティングエラー
+
+[33mcommit 542cf194221022d504e43820727773b3f9fc2455[m
+Author: ryugomikami <mikamiryuugo@yahoo.co.jp>
+Date:   Tue Dec 26 16:09:46 2017 +0000
+
+    WIP ajax送信時のroutesがわからない状況です。
+
+[33mcommit 91c2b95bcef5a43f6dceb2f9c2295481cccda315[m
+Author: ryugomikami <mikamiryuugo@yahoo.co.jp>
+Date:   Sun Dec 24 06:24:35 2017 +0000
+
+    ja&css読み込み模索
+
+[33mcommit 31e1a22088385d5e3ecfded61a7882b816823344[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Sat Dec 23 04:03:03 2017 +0000
+
+    small fix.
+
+[33mcommit 02936c9509330ee777943f993f764d5aa7938f7c[m
+Merge: b6886fd 6ca1415
+Author: yuichikubo <newstart1ine.yk@gmail.com>
+Date:   Fri Dec 22 10:19:42 2017 +0900
+
+    Merge pull request #82 from re004037s/fix_seed
+    
+    Fix seed
+
+[33mcommit 6ca1415f9c780c333f52a0fa20d28612a7ae130b[m
+Author: Yuichi Kubo <newstart1ine.yk@gmail.com>
+Date:   Fri Dec 22 01:18:16 2017 +0000
+
+    delete file
+
+[33mcommit 913d94ba76527fbd14b77d0c0d9ca95f4ed8b528[m
+Author: Yuichi Kubo <newstart1ine.yk@gmail.com>
+Date:   Fri Dec 22 01:17:47 2017 +0000
+
+    fix seedsfile
+
+[33mcommit b6886fdc81eea64dd360993436b7e03572173e98[m
+Merge: e44e2b3 63b3195
+Author: yuichikubo <newstart1ine.yk@gmail.com>
+Date:   Wed Dec 20 13:04:42 2017 +0900
+
+    Merge pull request #79 from re004037s/add_seed
+    
+    add seed
+
+[33mcommit 63b3195058a1e91c5fe3cfa19a0ec5aabda9be30[m
+Author: Yuichi Kubo <newstart1ine.yk@gmail.com>
+Date:   Wed Dec 20 04:03:56 2017 +0000
+
+    add seed
+
+[33mcommit e44e2b3cdda0939d1869b777336989bf02029d9e[m
+Merge: 3ebbac5 ca36644
+Author: yuichikubo <newstart1ine.yk@gmail.com>
+Date:   Tue Dec 19 17:13:57 2017 +0900
+
+    Merge pull request #77 from re004037s/feature/profile_picture
+    
+    rename file
+
+[33mcommit ca366448fce683485b76acfdd87b94e53ba960aa[m
+Author: Yuichi Kubo <newstart1ine.yk@gmail.com>
+Date:   Tue Dec 19 08:12:31 2017 +0000
+
+    rename file
+
+[33mcommit 3ebbac55e7bbf37e2a8d29e0c55b6245713e50bd[m
+Merge: b5a8c57 07f439d
+Author: yuichikubo <newstart1ine.yk@gmail.com>
+Date:   Tue Dec 19 15:43:24 2017 +0900
+
+    Merge pull request #76 from re004037s/feature/profile_picture
+    
+    Feature/profile picture
+
+[33mcommit 07f439d6c746680398bd917cefff1f5822e14ced[m
+Author: Yuichi Kubo <newstart1ine.yk@gmail.com>
+Date:   Tue Dec 19 06:34:45 2017 +0000
+
+    delete files
+
+[33mcommit 21c1c448b8d5369b176c30ee8b8b81bde7d248b2[m
+Author: Yuichi Kubo <newstart1ine.yk@gmail.com>
+Date:   Tue Dec 19 06:31:50 2017 +0000
+
+    little fix
+
+[33mcommit b5a8c57cf749ceceb6a935c2bca53fc52b237579[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Mon Dec 18 13:08:33 2017 +0000
+
+    small fix.
+
+[33mcommit 424d7257850ea7418ba96f97f304b3b2aaa01352[m
+Merge: a51cc04 05b6877
+Author: yuichikubo <newstart1ine.yk@gmail.com>
+Date:   Mon Dec 18 17:32:53 2017 +0900
+
+    Merge pull request #71 from re004037s/feature/alert_message
+    
+    OKです！
+
+[33mcommit 05b6877a66c8e84851fa85e2ebec00d5b7a8be27[m
+Merge: c594a40 a51cc04
+Author: yuichikubo <newstart1ine.yk@gmail.com>
+Date:   Mon Dec 18 17:32:03 2017 +0900
+
+    Merge branch 'master' into feature/alert_message
+
+[33mcommit c594a40654e84e57f64e21ec4c8c67fcaeb233d0[m
+Author: Hiroaki Ito <pigaru.gooood.mar19@gmail.com>
+Date:   Mon Dec 18 07:12:00 2017 +0000
+
+    add_]
+
+[33mcommit c7a16ade2195153be69b9164d306f187f9bc1c9b[m
+Author: Hiroaki Ito <pigaru.gooood.mar19@gmail.com>
+Date:   Mon Dec 18 04:20:02 2017 +0000
+
+    edit_top_controller
+
+[33mcommit c6a35ce33140dfd86e0ba9bab9402baa6f35b4f9[m
+Merge: 6a144ca 0dd6c76
+Author: Hiroaki Ito <pigaru.gooood.mar19@gmail.com>
+Date:   Mon Dec 18 04:13:22 2017 +0000
+
+    delete_movie_s
+
+[33mcommit 6a144cac24c9ca579a89178e30c707740c673a7a[m
+Author: Hiroaki Ito <pigaru.gooood.mar19@gmail.com>
+Date:   Mon Dec 18 03:29:56 2017 +0000
+
+    movie_alert_s
+
+[33mcommit a51cc04647bfaff21f230eeaef456fbd4ed018b5[m
+Merge: e97467d 0fea60f
+Author: yuichikubo <newstart1ine.yk@gmail.com>
+Date:   Mon Dec 18 07:18:09 2017 +0900
+
+    Merge pull request #72 from re004037s/feature/profile_picture
+    
+    wip[プロフィール画像をアップロード]
+    OKなので、マージします！
+
+[33mcommit 0fea60f5c31c7445ce886e4b4502192887db3485[m
+Author: ryugomikami <mikamiryuugo@yahoo.co.jp>
+Date:   Sun Dec 17 14:10:35 2017 +0000
+
+    不要コード削除（再）
+
+[33mcommit 4a1ca87c06e4e6bb511fb416479b346b9f0aece1[m
+Author: ryugomikami <mikamiryuugo@yahoo.co.jp>
+Date:   Sun Dec 17 13:57:31 2017 +0000
+
+    不要なコード削除
+
+[33mcommit 5e1029b3f2a3587bcefc6eff41693b39197f6d8c[m
+Author: ryugomikami <mikamiryuugo@yahoo.co.jp>
+Date:   Sun Dec 17 13:53:43 2017 +0000
+
+    fix プロフィール画像未選択/サイズ5MB超の場合のバリデート処理
+
+[33mcommit 0dd6c7634f72ed88828f5d3358d814f686d985db[m
+Author: com <com10281028@gmail.com>
+Date:   Sun Dec 17 12:23:58 2017 +0000
+
+    @_delete
+
+[33mcommit 4a2857871df9f0f9d37214dd992a0b6ba50fa4c3[m
+Author: ryugomikami <mikamiryuugo@yahoo.co.jp>
+Date:   Sun Dec 17 06:35:31 2017 +0000
+
+    画像指定無しアップロードOK
+
+[33mcommit d14416f2f369f4066a4509faec4ae40bf7cdd9db[m
+Author: Hiroaki Ito <pigaru.gooood.mar19@gmail.com>
+Date:   Sun Dec 17 02:41:39 2017 +0000
+
+    delete_@
+
+[33mcommit ad89b341efc436563034dd7a8212500f0531ce59[m
+Author: Hiroaki Ito <pigaru.gooood.mar19@gmail.com>
+Date:   Sat Dec 16 12:05:32 2017 +0000
+
+    alert short
+
+[33mcommit 07286726bb130b5469080e507afee95c5fd28003[m
+Author: ryugomikami <mikamiryuugo@yahoo.co.jp>
+Date:   Fri Dec 15 16:36:48 2017 +0000
+
+    remove_column(:users, :picture, :string)
+
+[33mcommit cffa2697794954a221cbfeb9d452b03e64c5d9d9[m
+Author: ryugomikami <mikamiryuugo@yahoo.co.jp>
+Date:   Fri Dec 15 16:05:00 2017 +0000
+
+    renew default.jpg contents
+
+[33mcommit 4af07e2447dc7a86d20b4b71070194a937f04833[m
+Author: ryugomikami <mikamiryuugo@yahoo.co.jp>
+Date:   Fri Dec 15 15:55:28 2017 +0000
+
+    add デフォルト画像が表示されるように変更/ seedsファイルをあるべき姿に戻した
+
+[33mcommit 30a2353ab42c7c5e88b2de5ada34516d9f8addd8[m
+Author: ryugomikami <mikamiryuugo@yahoo.co.jp>
+Date:   Fri Dec 15 15:54:19 2017 +0000
+
+    add デフォルト画像が表示されるように変更
+
+[33mcommit c49ab804779cd82908e20551b0d501029f0bc864[m
+Merge: ad4d5ae e97467d
+Author: r-sugi <r.sugimoto0615@gmail.com>
+Date:   Sat Dec 16 00:04:58 2017 +0900
+
+    Merge branch 'master' into feature/profile_picture
+
+[33mcommit ad4d5ae8fba086f38f7d78c0cf1af8f43b1762b1[m
+Author: ryugomikami <mikamiryuugo@yahoo.co.jp>
+Date:   Fri Dec 15 14:37:11 2017 +0000
+
+    fix layout upload_profile_pic
+
+[33mcommit da419174605dd6417a05752cdc19afb5a38d4cfb[m
+Author: ryugomikami <mikamiryuugo@yahoo.co.jp>
+Date:   Fri Dec 15 13:12:33 2017 +0000
+
+    fix profile_pic_upload function
+
+[33mcommit e97467d6e8948725cdc47227f8994416e4774022[m
+Merge: 59b432e 9d85118
+Author: ryo789 <r.takayama92@gmail.com>
+Date:   Thu Dec 14 23:41:41 2017 +0900
+
+    Merge pull request #69 from re004037s/feature/alert_mail
+    
+    一旦マージします
+
+[33mcommit 9d8511870ee78d9c88202c91b4fb606f29f32774[m[33m ([m[1;31morigin/feature/alert_mail[m[33m)[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Thu Dec 14 14:40:35 2017 +0000
+
+    production環境設定
+
+[33mcommit 83d87437849f4a4be9a5a90b2869409fda8f7da0[m
+Author: Yuya Nakano <tns.b2g8n@gmail.com>
+Date:   Thu Dec 14 14:08:54 2017 +0000
+
+    20171214night
+
+[33mcommit 818cc2c250327ae2865c3a9bb2237a5ce5038056[m
+Author: Hiroaki Ito <pigaru.gooood.mar19@gmail.com>
+Date:   Thu Dec 14 13:22:49 2017 +0000
+
+    alert_red
+
+[33mcommit aed1cb0a9f44681c9be0537aaf81dbc1ce8edd91[m
+Author: ryugomikami <mikamiryuugo@yahoo.co.jp>
+Date:   Wed Dec 13 15:08:56 2017 +0000
+
+    wip 文字コードが一致しないためDBに画像をアップロードできない
+
+[33mcommit 8fece7a77da87f23772aa2dd4013b971f79b0372[m
+Author: Hiroaki Ito <pigaru.gooood.mar19@gmail.com>
+Date:   Wed Dec 13 14:58:28 2017 +0000
+
+    add_movie_ifbun
+
+[33mcommit 60966c85085139fe80e431079b60db4a1762d17e[m
+Author: ryugomikami <mikamiryuugo@yahoo.co.jp>
+Date:   Wed Dec 13 14:51:59 2017 +0000
+
+    wip 文字コードが一致しないためDBに画像をアップロードできない
+
+[33mcommit 631c73c73369faa0212a98c4f9a60ac0bed9d9e7[m
+Author: Yuya Nakano <tns.b2g8n@gmail.com>
+Date:   Wed Dec 13 14:47:36 2017 +0000
+
+    20171213night
+
+[33mcommit 35101aa89bf7bcafc94872d3b06acf54d37ad837[m
+Author: Yuya Nakano <tns.b2g8n@gmail.com>
+Date:   Tue Dec 12 14:38:41 2017 +0000
+
+    20171212night
+
+[33mcommit 8698499ed775c22eeb289043eed2897180bcd4b3[m
+Author: Hiroaki Ito <pigaru.gooood.mar19@gmail.com>
+Date:   Tue Dec 12 13:43:20 2017 +0000
+
+    progate_railstutrial_alert
+
+[33mcommit 0a235d72b888f99536f151e7665ef0bb49b3338b[m
+Author: Yuya Nakano <tns.b2g8n@gmail.com>
+Date:   Mon Dec 11 21:51:11 2017 +0000
+
+    20171212morning
+
+[33mcommit 342638ee89e5fc49566984290889b3c096c0cd99[m
+Author: Yuya Nakano <tns.b2g8n@gmail.com>
+Date:   Mon Dec 11 14:15:38 2017 +0000
+
+    20171211night
+
+[33mcommit 59b432ee29c319cdf50398a080cde8c9119845d7[m
+Merge: b54a2f2 2d84f32
+Author: ryo789 <r.takayama92@gmail.com>
+Date:   Mon Dec 11 21:56:43 2017 +0900
+
+    Merge pull request #70 from re004037s/top_procedure
+    
+    確認しました
+
+[33mcommit b54a2f27772681c9df611f07303a75092fe6af65[m
+Merge: 84a1f81 1e4d1e9
+Author: yuichikubo <newstart1ine.yk@gmail.com>
+Date:   Sun Dec 10 19:21:02 2017 +0900
+
+    Merge pull request #68 from re004037s/feature/movie_security
+    
+    Feature/movie security
+
+[33mcommit 1e4d1e9b577b44fd4aa0bf3ffd35c3df56bffa68[m[33m ([m[1;31morigin/feature/movie_security[m[33m)[m
+Author: sugimoto <r.sugimoto0615@gmail.com>
+Date:   Sun Dec 10 08:45:16 2017 +0000
+
+    ヘッダーレイヤーの幅を動画幅を一致させた
+
+[33mcommit 06ff116bcaf9a56715fb6d5722587f3a0ce30b25[m
+Author: sugimoto <r.sugimoto0615@gmail.com>
+Date:   Sun Dec 10 08:42:47 2017 +0000
+
+    ヘッダーレイヤーの幅を動画幅と動的に一致させた
+
+[33mcommit 13b7d0a31d41c8a53c2f81e86df6fd37140e20b6[m
+Author: Yuya Nakano <tns.b2g8n@gmail.com>
+Date:   Sun Dec 10 07:08:24 2017 +0000
+
+    1210
+
+[33mcommit 2d84f32f9a7dfa16bc9c022a034075fc2b98bdd5[m[33m ([m[1;31morigin/feature/facebook_login[m[33m)[m
+Author: Tokoi Kazunori <trustsport12quruli@yahoo.co.jp>
+Date:   Sun Dec 10 06:21:42 2017 +0000
+
+    top_document
+
+[33mcommit e046ec51d88ddf430f6bc9ca96a8c0076f5473c4[m
+Author: Yuya Nakano <tns.b2g8n@gmail.com>
+Date:   Sat Dec 9 09:00:36 2017 +0000
+
+    alert_mail1
+
+[33mcommit a4d58f8ceb8f48b53afcb3e6bf2f39e0c0afaa7f[m
+Author: Hiroaki Ito <pigaru.gooood.mar19@gmail.com>
+Date:   Sat Dec 9 06:43:39 2017 +0000
+
+    Add_today
+
+[33mcommit d8e2bf6d79bdea42a7e3f2d224873a10f2625b8c[m
+Author: sugimoto <r.sugimoto0615@gmail.com>
+Date:   Sat Dec 9 06:28:51 2017 +0000
+
+    youtube画像のフッターを非表示にした/ ヘッダーはモーダルレイヤーを重ねてボタン押下不可にした
+
+[33mcommit 968f82b74704210b0d32a89be31992c136e7ea0e[m[33m ([m[1;31morigin/feature/add_profilepic_in_mypage[m[33m, [m[1;32mfeature/add_profilepic_in_mypage[m[33m)[m
+Author: sugimoto <r.sugimoto0615@gmail.com>
+Date:   Sat Dec 9 06:17:55 2017 +0000
+
+    youtube動画の上にmodalを重ねて、ボタン押下不可の状態にした
+
+[33mcommit c02e81921455c508c6308471be4783c8e3230f9f[m
+Author: sugimoto <r.sugimoto0615@gmail.com>
+Date:   Sat Dec 9 04:44:16 2017 +0000
+
+    youtube urlにparamを追加->headerのみ表示させる
+
+[33mcommit 84a1f810bcb53e97150a3a6d20fa3f81a3725f48[m
+Merge: 3d351d4 6f9a8f9
+Author: ryo789 <r.takayama92@gmail.com>
+Date:   Thu Dec 7 01:34:38 2017 +0900
+
+    Merge pull request #65 from re004037s/feature/admin_access_restrictions
+    
+    OKなのでマージします
+
+[33mcommit 6f9a8f9188666cde16f3e887756efd28bc98766c[m
+Author: Yuya Nakano <tns.b2g8n@gmail.com>
+Date:   Wed Dec 6 15:45:16 2017 +0000
+
+    admin_access1207
+
+[33mcommit 3d351d45581ac160a7e3b7a35353cd094ac5269d[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Wed Dec 6 13:33:24 2017 +0000
+
+    small fix.
+
+[33mcommit abfb3e7b32681400b428d7147e7d1e166b372590[m
+Merge: 786abeb 42697f8
+Author: ryo789 <r.takayama92@gmail.com>
+Date:   Wed Dec 6 22:27:11 2017 +0900
+
+    Merge pull request #62 from re004037s/fix/schedule_bug_ver6
+    
+    確認の上、Conflict解消したのでマージします
+
+[33mcommit 42697f827888ffbd719277b10aca0b74efef0e9c[m
+Merge: df29cc3 786abeb
+Author: ryo789 <r.takayama92@gmail.com>
+Date:   Wed Dec 6 09:53:03 2017 +0900
+
+    Merge branch 'master' into fix/schedule_bug_ver6
+
+[33mcommit 786abeb4d8fe45353ab48f3c2bdc3ab6267155c6[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Tue Dec 5 03:45:22 2017 +0000
+
+    seeds.rb修正
+
+[33mcommit df29cc39dbbcea2e7895af3d595f3968cda36cd1[m
+Author: sirai tooru <zabiisann@gmail.com>
+Date:   Sun Dec 3 00:08:07 2017 +0000
+
+    完了予定日の不要ファイル削除完了
+
+[33mcommit e11d4013e7d7acb0d61c079379ef31d0053b2027[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Sat Dec 2 15:24:25 2017 +0000
+
+    small fix.
+
+[33mcommit 8a14e38fb855d746a9ab53e7f80a4d0ed12e1c85[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Sat Dec 2 14:41:18 2017 +0000
+
+    small fix.
+
+[33mcommit 98c268e4ca537bb193f6d10fcb74d975e30c8844[m
+Merge: 9f68f3b faa3e03
+Author: ryo789 <r.takayama92@gmail.com>
+Date:   Sat Dec 2 23:28:06 2017 +0900
+
+    Merge pull request #61 from re004037s/feature/add_must-view-flg
+    
+    動画カテゴリに視聴マストフラグ追加
+
+[33mcommit faa3e0382cad67b3ad35537896994092a8a90b64[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Sat Dec 2 14:25:12 2017 +0000
+
+    動画カテゴリに視聴マストフラグ追加
+
+[33mcommit a92f4257ead6d168aa67f8532cb19e7a3017e324[m
+Author: sirai tooru <zabiisann@gmail.com>
+Date:   Sat Dec 2 14:08:30 2017 +0000
+
+    完了予定日のモデル、テーブル、カラムを追加し、文字色変更実装
+
+[33mcommit 80de3c252e7962118c926a6327ccef2e874ca597[m
+Author: sirai tooru <zabiisann@gmail.com>
+Date:   Sat Dec 2 14:05:28 2017 +0000
+
+    完了予定日のモデル、テーブル、カラムを追加、文字色変更
+
+[33mcommit 04ce6a64867b073347d5f634a302bc041cc0f0bc[m
+Author: sirai tooru <zabiisann@gmail.com>
+Date:   Sat Dec 2 13:58:38 2017 +0000
+
+    完了予定日のモデル、テーブル、カラムを追加、文字色を変更
+
+[33mcommit 9f68f3b35d99e6a4cda7718c5785e614642e2fdc[m[33m ([m[1;32mfeature/removeButtonsInYouTubes[m[33m, [m[1;32mfeature/addTagsInMyProfilePage[m[33m)[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Thu Nov 30 13:37:28 2017 +0000
+
+    small fix.
+
+[33mcommit dfb191185ea5818dd9ca9cc1e33b435e0eba8eae[m
+Author: sirai tooru <zabiisann@gmail.com>
+Date:   Thu Nov 30 13:36:04 2017 +0000
+
+    schedule mypage
+
+[33mcommit 644a51e878a07d4b3cf3a5f7f60a65746c6822a9[m
+Merge: d3422aa eec0de3
+Author: ryo789 <r.takayama92@gmail.com>
+Date:   Thu Nov 30 22:19:26 2017 +0900
+
+    Merge pull request #58 from re004037s/fix/button-size
+    
+    ボタンレイアウト調整
+
+[33mcommit eec0de32ef04d2cd7b1b2e6d27c23f916aac2bfb[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Thu Nov 30 13:18:03 2017 +0000
+
+    ボタンレイアウト調整
+
+[33mcommit d3422aaefc159a17b04bea1ddd3f1d628ca809b9[m
+Merge: ebcd145 1a336f0
+Author: ryo789 <r.takayama92@gmail.com>
+Date:   Thu Nov 30 20:46:30 2017 +0900
+
+    Merge pull request #56 from re004037s/feature/github_path
+    
+    ポートフォリオ/Githubリンク改修
+
+[33mcommit 1a336f0dfd547f5158929e5c3836eba78cd5e5a1[m
+Author: ryugomikami <mikamiryuugo@yahoo.co.jp>
+Date:   Thu Nov 30 11:39:22 2017 +0000
+
+    ポートフォリオ/Githubリンク改修：ボタン非活性2
+
+[33mcommit 5c584b935bfa2814fbf277fc00f7521b1c2a8f18[m
+Author: ryugomikami <mikamiryuugo@yahoo.co.jp>
+Date:   Thu Nov 30 11:15:47 2017 +0000
+
+    ポートフォリオ/Githubリンク改修：ボタン非活性
+
+[33mcommit e539b2e825d9d55eceaf7c0a3939f72fd966feb0[m
+Author: ryugomikami <mikamiryuugo@yahoo.co.jp>
+Date:   Mon Nov 27 23:14:18 2017 +0000
+
+    ポートフォリオ/Githubリンク改修２回目
+
+[33mcommit f810767639bb5e814d028f08b3ad25af15456f7f[m
+Author: ryugomikami <mikamiryuugo@yahoo.co.jp>
+Date:   Mon Nov 27 23:08:36 2017 +0000
+
+    ポートフォリオ/Githubリンク改修
+
+[33mcommit ebcd1455e8de44994564b07dd688a8f7fae4d79b[m
+Merge: 6f50f15 077529b
+Author: ryo789 <r.takayama92@gmail.com>
+Date:   Tue Nov 28 00:14:52 2017 +0900
+
+    Merge pull request #55 from re004037s/feature/suggest_new_movies
+    
+    新着動画サジェスト
+
+[33mcommit 077529b5726e4cfc8ab58cc0e7915c8e43b255d2[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Mon Nov 27 15:14:05 2017 +0000
+
+    small fix.
+
+[33mcommit 668182e87f32a98779f99fa73ded523782ed9861[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Mon Nov 27 15:11:47 2017 +0000
+
+    新着動画のサジェスト
+
+[33mcommit 6f50f150501d40c22e418e882c33560f7ce1d2a7[m
+Merge: 994dbc7 645197e
+Author: ryo789 <r.takayama92@gmail.com>
+Date:   Mon Nov 27 08:52:13 2017 +0900
+
+    Merge pull request #54 from re004037s/fix/admin-auth
+    
+    非管理者の権限を修正
+
+[33mcommit 645197ea1d31c3fd384bd6b743337f6ad52bd678[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Sun Nov 26 23:51:32 2017 +0000
+
+    非管理者の権限を修正
+
+[33mcommit 994dbc7e5c75a21d97d8b84f7f3236efa8d66884[m
+Merge: 3adb539 a52e4c3
+Author: ryo789 <r.takayama92@gmail.com>
+Date:   Sun Nov 26 21:55:34 2017 +0900
+
+    Merge pull request #53 from re004037s/feature/admin_movie_manage
+    
+    Admin画面からの動画管理
+
+[33mcommit a52e4c3c5a6ceddf16cdbbdd0a0c9f9ca7fdb502[m
+Merge: 7839e55 3adb539
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Sun Nov 26 12:49:39 2017 +0000
+
+    resolve conflict
+
+[33mcommit 7839e55294147aa05d047f84463622767d3cfb7f[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Sun Nov 26 12:47:16 2017 +0000
+
+    レイアウト調整他
+
+[33mcommit a2b910801bb792fbf080a3f5b59a44021003f46d[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Sun Nov 26 11:01:03 2017 +0000
+
+    Adminユーザのみ動画管理系ページへアクセス許可
+
+[33mcommit b04395808ec9b873cb3b3a38484dd2eda7fdf348[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Sun Nov 26 10:40:49 2017 +0000
+
+    サイドバー表示/不要ファイル削除
+
+[33mcommit 809555554bcd64152e724f22021e8bc6a32a78d1[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Sat Nov 25 16:24:57 2017 +0000
+
+    動画管理系ビュー調整
+
+[33mcommit 2927ee994456dd47342fa0dd118dfdf3134f965b[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Sat Nov 25 14:07:13 2017 +0000
+
+    動画/カテゴリ追加&順番変更
+
+[33mcommit 3adb539121e66e8f5859b194805a8f3f382d7db0[m
+Merge: 91458b5 f566d33
+Author: ryo789 <r.takayama92@gmail.com>
+Date:   Thu Nov 23 19:59:39 2017 +0900
+
+    Merge pull request #51 from re004037s/feature/q
+    
+    「よくある質問」の充実
+
+[33mcommit f566d330f8f59e1d83fb3ba871d724cdd8149832[m
+Merge: c468aad 91458b5
+Author: ryo789 <r.takayama92@gmail.com>
+Date:   Thu Nov 23 19:57:57 2017 +0900
+
+    Merge branch 'master' into feature/q
+
+[33mcommit c468aad1dad61457f0d65d8b4fe9b3427de35ba3[m
+Author: ryugomikami <mikamiryuugo@yahoo.co.jp>
+Date:   Thu Nov 23 10:48:38 2017 +0000
+
+    よくある質問の充実
+
+[33mcommit 5987d697e7b89886816230ac944e89b40ee9a6ac[m
+Author: ryugomikami <mikamiryuugo@yahoo.co.jp>
+Date:   Thu Nov 23 07:14:45 2017 +0000
+
+    Q&A更新
+
+[33mcommit 91458b54b7a4da3b61b9d5c3500ddf3576a9873b[m
+Merge: 9e513f8 3b9bf0c
+Author: mikamiryuugo <30526530+mikamiryuugo@users.noreply.github.com>
+Date:   Thu Nov 23 13:39:54 2017 +0900
+
+    Merge pull request #50 from re004037s/feature/admin_movie_manage
+    
+    [WIP]Admin画面からの動画管理機能
+
+[33mcommit 3b9bf0cf2a4906bb6a842f4ac18ca6c800f16fe9[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Mon Nov 20 14:47:25 2017 +0000
+
+    [WIP]Admin画面からの動画管理機能
+
+[33mcommit 9e513f8027c5b980845d5eed18b5c0a3704c6856[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Mon Nov 20 14:19:58 2017 +0000
+
+    seeds.rb修正
+
+[33mcommit 2a19247b87f89af37ec029ab80886f1c69227bed[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Sun Nov 19 15:57:27 2017 +0000
+
+    6%問題を解消
+
+[33mcommit 8bf72f3aa62def034d8a445b111b24fc9d160964[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Sun Nov 19 08:59:25 2017 +0000
+
+    gitignoreにpuma.rb追記/Gemfile.lock差分
+
+[33mcommit 1baad87f351206374f112f9f6abbe85482b1644d[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Sun Nov 19 06:51:39 2017 +0000
+
+    Gemfileに追記
+
+[33mcommit 80da0444e0529802f72a7250f4c096c997f1657c[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Sun Nov 19 05:20:21 2017 +0000
+
+    configファイル(production系)修正
+
+[33mcommit 5828db2fdded6f64863cd847590aa1697491a201[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Sun Nov 19 04:56:43 2017 +0000
+
+    gitignoreに追加
+
+[33mcommit 26e2bee0ee545da2e878ba5ef91b5e1cdb40fbe6[m
+Merge: 52ef2e4 3b4f399
+Author: ryo789 <r.takayama92@gmail.com>
+Date:   Sun Nov 19 11:14:26 2017 +0900
+
+    Merge pull request #49 from re004037s/develop_takayama
+    
+    masterブランチ整備
+
+[33mcommit 3b4f399251ce4137ed8b8e849e2cba42b5b04d3c[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Sun Sep 24 08:54:47 2017 +0000
+
+    RailsTutorialボタン修正
+
+[33mcommit 0255afac82b8b7d071ded771add827bc65993b26[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Sun Sep 10 05:24:01 2017 +0000
+
+    seeds.rbの変更
+
+[33mcommit eb8ec4d5150c5ecd277fcaf88fddc7fd10d59978[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Sun Sep 10 05:21:20 2017 +0000
+
+    QAページのリンク追加
+
+[33mcommit c44ed25a25bed6e443b6980e0a9814c4c2980a2f[m
+Merge: 87137d0 25a35fe
+Author: ryo789 <r.takayama92@gmail.com>
+Date:   Sun Sep 10 12:53:51 2017 +0900
+
+    Merge pull request #40 from re004037s/develop_takayama
+    
+    感想送信Ajax化/進捗ページのリンク制御
+
+[33mcommit 87137d0f9b7f21e3f89e002c48d3e5dbcda63746[m
+Merge: dfb822a 4e0d3cb
+Author: siraitooru <zabiisann@gmail.com>
+Date:   Sun Sep 10 12:17:59 2017 +0900
+
+    Merge pull request #39 from re004037s/btn-comp-incomp
+    
+    Btn comp incomp
+
+[33mcommit 25a35fe10ef20323512e0ca073322962c946c11d[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Sat Sep 9 15:47:42 2017 +0000
+
+    感想送信Ajax化/進捗ページのリンク制御
+
+[33mcommit 4e0d3cbdd32f11f225790fe6eba2756cfde624d4[m
+Merge: 0b34787 dfb822a
+Author: siraitooru <zabiisann@gmail.com>
+Date:   Sat Sep 9 19:50:32 2017 +0900
+
+    Merge branch 'develop' into btn-comp-incomp
+
+[33mcommit 0b347872bc4464dd32e1a6ca74fdd7afcd63a30d[m
+Author: sirai tooru <zabiisann@gmail.com>
+Date:   Sat Sep 9 10:46:30 2017 +0000
+
+    progate,railstutorialページの完了、未完了ボタンの大きさ調整済
+
+[33mcommit 4e1af7868eafcf747ab1b72019a14b3ab7275a2f[m
+Author: sirai tooru <zabiisann@gmail.com>
+Date:   Sat Sep 9 10:43:47 2017 +0000
+
+    progate,railstutorialページの完了、未完了ボタンの大きさ調整済み
+
+[33mcommit dfb822ac2a9f70470c7b799f4ef9d25dd3846f71[m
+Merge: 5af7ff8 9d8374a
+Author: ryo789 <r.takayama92@gmail.com>
+Date:   Thu Sep 7 23:45:19 2017 +0900
+
+    Merge pull request #38 from re004037s/develop_takayama
+    
+    Develop takayama
+
+[33mcommit 9d8374af9d0e2c4187cfcb2da984e857d2ac599d[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Wed Sep 6 23:46:03 2017 +0000
+
+    Implement pagination
+
+[33mcommit b4a88e7f4993bb51cf60acbfc3aee7a28e0d35ba[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Wed Sep 6 13:45:41 2017 +0000
+
+    Modified learning-incomplete-buttons
+
+[33mcommit 5af7ff85e58b4be684816b3227963bdbe1558412[m
+Merge: fd0b89b 026b7b9
+Author: ryo789 <r.takayama92@gmail.com>
+Date:   Tue Sep 5 08:11:31 2017 +0900
+
+    Merge pull request #35 from re004037s/develop_takayama
+    
+    OK頂いたのでマージします。
+
+[33mcommit 026b7b9c753839bd8c860a26dbc310badaa4147a[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Sat Sep 2 02:07:49 2017 +0000
+
+    Implement RailsTutorial learning-status-ajax
+
+[33mcommit a16ca4ba17a50031cd924ef6a2cc3fe0c8d9fe01[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Thu Aug 31 23:06:06 2017 +0000
+
+    Implement sidebar-link-control
+
+[33mcommit ce3e916503dc183145d695e5493f6d2d0c64cd7b[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Thu Aug 31 12:56:56 2017 +0000
+
+    Modify some layouts
+
+[33mcommit 77afcaa0b3abde17047b7329e3100a99d541635d[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Thu Aug 31 11:45:32 2017 +0000
+
+    Disable turbolinks
+
+[33mcommit 1158d7c02047a9bf5f869378cf7a59b004e96548[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Thu Aug 31 11:23:10 2017 +0000
+
+    Implement learning-status-ajax
+
+[33mcommit a3557d623e4497be413a2e3db7b0515823c7ec73[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Thu Aug 31 08:33:51 2017 +0000
+
+    Embed all movies
+
+[33mcommit fd0b89b9885b37caf56fe51eff12cdc3db7a7a5a[m
+Merge: afc98c3 ffe0da1
+Author: ryo789 <r.takayama92@gmail.com>
+Date:   Tue Aug 29 23:45:29 2017 +0900
+
+    Merge pull request #33 from re004037s/develop_takayama
+    
+    Develop takayama
+
+[33mcommit ffe0da1656acb86ce9c26d49e1ddcb2ae5e2decf[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Mon Aug 28 17:45:13 2017 +0000
+
+    Modify some layouts
+
+[33mcommit f33ed900d88033a9813ff91986a01d7e52335d5f[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Mon Aug 28 15:01:40 2017 +0000
+
+    Implement link-control
+
+[33mcommit 2ef4f80322fd3161ad4956e54c16f941d08df4ef[m
+Merge: 4cecef0 afc98c3
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Mon Aug 28 13:20:59 2017 +0000
+
+    Merge branch 'develop' of https://github.com/re004037s/Celebrity into movie-pages_nonajax02
+
+[33mcommit afc98c35f5ae097969e4095632e6d1616b95e28e[m
+Merge: 0d02440 dbf045f
+Author: ryo789 <r.takayama92@gmail.com>
+Date:   Mon Aug 28 22:13:54 2017 +0900
+
+    Merge pull request #31 from re004037s/movie-pages_nonajax02
+    
+    Movie pages nonajax02
+
+[33mcommit dbf045f7f3ecf91f77157f70d07db67369ddb44c[m
+Author: ryo789 <r.takayama92@gmail.com>
+Date:   Mon Aug 28 14:17:58 2017 +0900
+
+    Update custom.css.scss
+
+[33mcommit 0d02440c3250549981b2b52ee491d2ab01439ece[m
+Merge: 4c80b72 94cbcb6
+Author: siraitooru <zabiisann@gmail.com>
+Date:   Mon Aug 28 07:28:46 2017 +0900
+
+    Merge pull request #32 from re004037s/test
+    
+    header-display-none
+
+[33mcommit 4cecef08701d05d50e1a2986ac77cbbce1b86be3[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Sun Aug 27 00:34:14 2017 +0000
+
+    Modify movie-view percentage
+
+[33mcommit 94cbcb6239426ea7dc0921924e15e891fe02cef7[m
+Author: sirai tooru <zabiisann@gmail.com>
+Date:   Sat Aug 26 23:34:29 2017 +0000
+
+    header-display-none
+
+[33mcommit e0db9652b0c460b5d539b03a44da7ad40fca794f[m
+Merge: 1496e6a 4c80b72
+Author: ryo789 <r.takayama92@gmail.com>
+Date:   Sun Aug 27 00:43:22 2017 +0900
+
+    Merge branch 'develop' into movie-pages_nonajax02
+
+[33mcommit 1496e6a72f5eb98669a9cb094d42354d6dfe6d70[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Sat Aug 26 15:41:03 2017 +0000
+
+    Resolve conflicts
+
+[33mcommit 437fa99f3fb9ea0bd298c50733ba8e3d187cc129[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Sat Aug 26 15:05:05 2017 +0000
+
+    Fix an error 02
+
+[33mcommit 4c80b72e030712dbe6bec6cd9edc1ce86b1002f6[m
+Merge: 6104eaf 7569049
+Author: siraitooru <zabiisann@gmail.com>
+Date:   Sat Aug 26 23:46:59 2017 +0900
+
+    Merge pull request #29 from re004037s/test
+    
+    adjust-signup-login
+
+[33mcommit 756904983a4b67591cb29922f40d06f7ae8d5f99[m
+Author: sirai tooru <zabiisann@gmail.com>
+Date:   Sat Aug 26 09:35:55 2017 +0000
+
+    header-clearance
+
+[33mcommit 6564b71890ab8b37410026d8eae162573bfb8080[m
+Author: sirai tooru <zabiisann@gmail.com>
+Date:   Sat Aug 26 09:15:24 2017 +0000
+
+    btn-centering
+
+[33mcommit 01c377bffd705d36a0a478ae9a09bc852745b0cb[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Sat Aug 26 06:53:25 2017 +0000
+
+    movie-pages(nonajax)
+
+[33mcommit ce2a006a54c4a941f53960cd6dc3a8e6e2b21f3a[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Sat Aug 26 05:22:44 2017 +0000
+
+    suspend01
+
+[33mcommit 6104eaf9d1871c615345e68cda1cb1749971a43f[m
+Merge: 7125417 745112b
+Author: ryo789 <r.takayama92@gmail.com>
+Date:   Sat Aug 26 13:00:26 2017 +0900
+
+    Merge pull request #26 from re004037s/develop_takayama
+    
+    確認頂きましたのでマージします。
+
+[33mcommit 745112b0bd46eecda2407e42503495416ba1fab9[m
+Merge: 869828d 7125417
+Author: ryo789 <r.takayama92@gmail.com>
+Date:   Sat Aug 26 12:59:19 2017 +0900
+
+    Merge branch 'develop' into develop_takayama
+
+[33mcommit 869828d3efe9e9e13b4f2641861ceb76af9abbde[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Fri Aug 25 12:10:12 2017 +0000
+
+    Fixed user-index/show page layouts
+
+[33mcommit 12a21d9694b9f964e580956bad78889c83e9b0b7[m
+Author: sirai tooru <zabiisann@gmail.com>
+Date:   Fri Aug 25 03:18:26 2017 +0000
+
+    adjust-signup-login
+
+[33mcommit 712541743f82559f153373cafc9a2a520b22f62f[m
+Merge: 43e0e8a a42f51c
+Author: siraitooru <zabiisann@gmail.com>
+Date:   Fri Aug 25 08:36:09 2017 +0900
+
+    Merge pull request #25 from re004037s/test
+    
+    btn-color-change
+
+[33mcommit a42f51c7410862f02e69e919a01273d6a834a659[m
+Author: sirai tooru <zabiisann@gmail.com>
+Date:   Thu Aug 24 03:38:51 2017 +0000
+
+    top-picture-resize
+
+[33mcommit f7f1f94e6388dc871f57ab19e13b981623afd14a[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Tue Aug 22 17:17:06 2017 +0000
+
+    Add columns to status tables
+
+[33mcommit 0a8702be55db7a46971c1671098f546b0cbfbb49[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Tue Aug 22 16:52:32 2017 +0000
+
+    Modify user-index-page
+
+[33mcommit 832063014e3bd994c996f828ee126d4963035af7[m
+Author: sirai tooru <zabiisann@gmail.com>
+Date:   Tue Aug 22 12:12:19 2017 +0000
+
+    form1
+
+[33mcommit 9072bfa366ec9f06447b7f7cfd1eea51f3089205[m
+Author: sirai tooru <zabiisann@gmail.com>
+Date:   Mon Aug 21 23:50:54 2017 +0000
+
+    btn-color-change
+
+[33mcommit 43e0e8ab9dc67269487fb28bc007bbbeac710745[m
+Merge: b9752ac 8c880cf
+Author: siraitooru <zabiisann@gmail.com>
+Date:   Sun Aug 20 15:30:34 2017 +0900
+
+    Merge pull request #23 from re004037s/develop_shirai7
+    
+    Develop shirai7
+
+[33mcommit 8c880cf1b7b0c69c9fa2287cfae9b15deb2beb53[m
+Merge: beb639c b9752ac
+Author: siraitooru <zabiisann@gmail.com>
+Date:   Sun Aug 20 12:27:28 2017 +0900
+
+    Merge branch 'develop' into develop_shirai7
+
+[33mcommit beb639c83b6763bf28d3f678bf998cda52f8663e[m
+Author: sirai tooru <zabiisann@gmail.com>
+Date:   Sun Aug 20 03:17:12 2017 +0000
+
+    progate完了ボタン実装
+
+[33mcommit b9752ac5da6687dff2fbe2b1036e69153be2b04a[m
+Merge: 1a2a69c 71f21b0
+Author: ryo789 <r.takayama92@gmail.com>
+Date:   Sun Aug 20 11:46:45 2017 +0900
+
+    Merge pull request #24 from re004037s/develop_takayama
+    
+    ログインユーザのアクセス制御
+
+[33mcommit 71f21b014608bb7dce09efa502af37abfbcdd419[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Sun Aug 20 00:19:16 2017 +0000
+
+    Modify logged-in user authorization
+
+[33mcommit 1a2a69cb42d9bba971ea6e7578cdf16dc59c4294[m
+Merge: e1c417b edc598d
+Author: ryo789 <r.takayama92@gmail.com>
+Date:   Sat Aug 19 18:38:38 2017 +0900
+
+    Merge pull request #22 from re004037s/develop_takayama
+    
+    Implement authorization and modify layouts
+
+[33mcommit 034e5192f22a9821e07e98f1494d4d0b696343a0[m
+Author: sirai tooru <zabiisann@gmail.com>
+Date:   Sat Aug 19 09:28:35 2017 +0000
+
+    “btn-separate”
+
+[33mcommit 1da98e1a079d954726bbbbb0bb45f8a3d1e4cfb1[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Sat Aug 19 06:31:03 2017 +0000
+
+    Add feedback form
+
+[33mcommit 83326b26d735f5eec1575d95a9c320b64748d8f2[m
+Author: sirai tooru <zabiisann@gmail.com>
+Date:   Sat Aug 19 02:07:49 2017 +0000
+
+    modify-impressionajax
+
+[33mcommit c4bdd477470324935375608550276363c81f1d66[m
+Author: sirai tooru <zabiisann@gmail.com>
+Date:   Fri Aug 18 17:26:44 2017 +0000
+
+    adjust-charasize
+
+[33mcommit edc598de6caf6bbe2d7eaad7abbdf662c3d1329b[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Fri Aug 18 15:39:33 2017 +0000
+
+    M
+    odify authorization of deleted users
+
+[33mcommit bfe802f79b8d303efcda68b7d21c1ea18f538f31[m
+Author: sirai tooru <zabiisann@gmail.com>
+Date:   Fri Aug 18 04:06:59 2017 +0000
+
+    adjust-size-mypage-userlist
+
+[33mcommit 1034b8e88f79fe074655db58a3f975d2b9c4530c[m
+Merge: 2292f0e e1c417b
+Author: sirai tooru <zabiisann@gmail.com>
+Date:   Thu Aug 17 21:40:16 2017 +0000
+
+    Merge branch 'develop' of https://github.com/re004037s/Celebrity into develop_shirai7
+
+[33mcommit 2292f0ea98bbc6a8e40f9f7a5b01f576f839df79[m
+Merge: 86a0cf1 25f1835
+Author: sirai tooru <zabiisann@gmail.com>
+Date:   Thu Aug 17 21:38:39 2017 +0000
+
+    “test0818”
+
+[33mcommit 7908c5cf86d99e7d4bc41ce51f956eef73de4209[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Thu Aug 17 15:43:14 2017 +0000
+
+    Implement authorization and modify layouts
+
+[33mcommit e1c417b8f7784f28e44fd78e920ce2b311a709eb[m
+Merge: 25f1835 e76ee8d
+Author: ryo789 <r.takayama92@gmail.com>
+Date:   Thu Aug 17 23:18:21 2017 +0900
+
+    Merge pull request #21 from re004037s/develop_takayama
+    
+    ユーザ一覧/詳細ページlayout
+
+[33mcommit e76ee8d10981054a18ad0b90148e6cfb64ada1ec[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Thu Aug 17 00:46:34 2017 +0000
+
+    ユーザ一覧/詳細ページlayout
+
+[33mcommit 86a0cf12be1c3a1dc575cbd071338a3dbf4a918f[m
+Author: sirai tooru <zabiisann@gmail.com>
+Date:   Wed Aug 16 13:10:32 2017 +0000
+
+    0816test
+
+[33mcommit 25f1835fcd5448b243dd2a15c90177b4e6817f0d[m
+Merge: 61ff964 3f89e88
+Author: siraitooru <zabiisann@gmail.com>
+Date:   Wed Aug 16 20:44:34 2017 +0900
+
+    Merge pull request #20 from re004037s/layout-test
+    
+    header menu
+
+[33mcommit 3f89e8834f41b04cd85f61de4ccdf637a1cef28c[m
+Author: sirai tooru <zabiisann@gmail.com>
+Date:   Tue Aug 15 12:07:33 2017 +0000
+
+    header menu
+
+[33mcommit 4e876afad709c9838a8cb829c84bdc90aec0ba2e[m
+Author: sirai tooru <zabiisann@gmail.com>
+Date:   Mon Aug 14 14:27:31 2017 +0000
+
+    modify character of header
+
+[33mcommit a3f786abc3e291ad7b7d56a8cc1b8229ba5f01f4[m
+Author: sirai tooru <zabiisann@gmail.com>
+Date:   Mon Aug 14 13:28:49 2017 +0000
+
+    modify-header
+
+[33mcommit 10b32e3944c1da844758534c17eac7a74110aed0[m
+Author: sirai tooru <zabiisann@gmail.com>
+Date:   Sun Aug 13 12:58:42 2017 +0000
+
+    modify chara size
+
+[33mcommit 61ff96487a847a4e10b82b7336f301af00743e83[m
+Merge: cbec498 5824848
+Author: ryo789 <r.takayama92@gmail.com>
+Date:   Sat Aug 12 18:16:14 2017 +0900
+
+    Merge pull request #19 from re004037s/layout-test
+    
+    ヘッダー画像/動画の自動縮小
+
+[33mcommit 58248485e1d72ee6e44e617973f27a664e85a6fe[m
+Author: sirai tooru <zabiisann@gmail.com>
+Date:   Sat Aug 12 08:36:54 2017 +0000
+
+    modify character size5
+
+[33mcommit c4e686ba0ce907b445b37e534848f381e27500fe[m
+Author: sirai tooru <zabiisann@gmail.com>
+Date:   Sat Aug 12 08:36:16 2017 +0000
+
+    modify character size4
+
+[33mcommit 2fadc091411a962487bfe54032e78f89774523aa[m
+Merge: 3f861ef 99b1f19
+Author: sirai tooru <zabiisann@gmail.com>
+Date:   Sat Aug 12 07:06:25 2017 +0000
+
+    modify character size
+
+[33mcommit 5a47e8ad7d36316977b781149fbf2e53990696f7[m
+Author: sirai tooru <zabiisann@gmail.com>
+Date:   Sat Aug 12 04:14:57 2017 +0000
+
+    test
+
+[33mcommit 99b1f1938ce86e79d2c12b99d8044d4c8dd87608[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Sat Aug 12 03:52:06 2017 +0000
+
+    Modify movies layout
+
+[33mcommit 7dd20c0bc716a3090f4dbb2c8e540ce0ca5c3ba0[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Sat Aug 12 03:34:55 2017 +0000
+
+    layout-test
+
+[33mcommit 3f861ef6114f3cc959349e473923f6b021d30158[m
+Merge: a06c8d7 cbec498
+Author: sirai tooru <zabiisann@gmail.com>
+Date:   Fri Aug 11 05:37:37 2017 +0000
+
+    merge refresh
+
+[33mcommit a06c8d75ad97b1aa1d4ff9fe3221712080737ba6[m
+Author: sirai tooru <zabiisann@gmail.com>
+Date:   Fri Aug 11 05:12:13 2017 +0000
+
+    before modify responsive
+
+[33mcommit 82f6d45fbf8965c92cd27c6572271b0e63e79641[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Fri Aug 11 01:26:47 2017 +0000
+
+    Gemfile修正
+
+[33mcommit cbec4980315f6e6f064287e591313d71b7633980[m
+Merge: 3f14e78 5cb05fa
+Author: siraitooru <zabiisann@gmail.com>
+Date:   Fri Aug 11 10:10:17 2017 +0900
+
+    Merge pull request #18 from re004037s/adjust_htmlcss
+    
+    Adjust htmlcss
+
+[33mcommit 5cb05fa26faac8f47b2cbd0a3a3c2570503a4b39[m
+Merge: e2c00fe 3f14e78
+Author: siraitooru <zabiisann@gmail.com>
+Date:   Fri Aug 11 10:10:04 2017 +0900
+
+    Merge branch 'develop' into adjust_htmlcss
+
+[33mcommit 3f14e7838895654e208ce5f827e0b73a81d99696[m
+Merge: 99e70c2 354faa4
+Author: ryo789 <r.takayama92@gmail.com>
+Date:   Thu Aug 10 21:51:08 2017 +0900
+
+    Merge pull request #17 from re004037s/develop_takayama
+    
+    PMチェック済みのため、マージします
+
+[33mcommit 99e70c25990813c5b5ab5aba5459950c6d4705df[m
+Merge: 86007c3 7b241ea
+Author: ryo789 <r.takayama92@gmail.com>
+Date:   Thu Aug 10 00:16:21 2017 +0900
+
+    Merge pull request #15 from re004037s/develop_takayama
+    
+    PRの確認を頂いたため、マージ
+
+[33mcommit 354faa4cb1b6a5c8c89221de9a54e867f4867b2c[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Tue Aug 8 16:47:03 2017 +0000
+
+    Create user_edit/delete
+
+[33mcommit e2c00fe818ddaa30b1c97c34f107207914adf9a3[m
+Author: sugimoto <r.sugimoto0615@gmail.com>
+Date:   Tue Aug 8 05:19:21 2017 +0000
+
+    modify wigth of picture
+
+[33mcommit 7b241eab80f59ad179b2560c4d6ee5fa22f000d0[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Mon Aug 7 16:27:31 2017 +0000
+
+    index/showページ データ表示 & seed.rb作成
+
+[33mcommit 0a316a74940e347eac042dea4aa92101a0e4b0a3[m
+Author: sugimoto <r.sugimoto0615@gmail.com>
+Date:   Mon Aug 7 14:37:08 2017 +0000
+
+    adjust_htmlcss&views
+
+[33mcommit 86007c3449dbdf850c5a8d62bb3f4b94b6086bc0[m
+Merge: bc7d975 089207f
+Author: ryo789 <r.takayama92@gmail.com>
+Date:   Sun Aug 6 20:41:44 2017 +0900
+
+    Merge pull request #14 from re004037s/develop_takayama
+    
+    Develop takayama
+
+[33mcommit 0fa5c13ae09089abde089a05d6c300af0e49fa42[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Sun Aug 6 09:19:28 2017 +0000
+
+    Create count_helper
+
+[33mcommit 9339f73e04710708f0302c09f9b2efacc1478a38[m
+Author: sugimoto <r.sugimoto0615@gmail.com>
+Date:   Sun Aug 6 06:06:27 2017 +0000
+
+    change routes to / path
+
+[33mcommit fc44363921cc2e2d909007723cc34a5a22ffe541[m
+Merge: f229640 089207f
+Author: sugimoto <r.sugimoto0615@gmail.com>
+Date:   Sun Aug 6 05:12:17 2017 +0000
+
+    resolve conflict
+
+[33mcommit f229640668855d5a690ad7c502c5882fb0a0d6cc[m
+Author: sugimoto <r.sugimoto0615@gmail.com>
+Date:   Sun Aug 6 05:06:22 2017 +0000
+
+    done_ajax_temp
+
+[33mcommit 089207ff4b89f5194ebe29adbc2581908de0768f[m
+Merge: e02e3fc bc7d975
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Sun Aug 6 01:24:36 2017 +0000
+
+    Merge remote-tracking branch 'origin/develop' into develop_takayama
+
+[33mcommit e02e3fc5127894fa0069dafd5c1ef4e8cde5be63[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Sun Aug 6 01:20:38 2017 +0000
+
+    DB設計の修正を反映
+
+[33mcommit c7dd1b7809f38edac39a1a5ca7246b779dfe8a15[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Sun Aug 6 01:10:09 2017 +0000
+
+    テーブル修正を実装
+
+[33mcommit 9f88446407ad2813feb77c709bf9cae09c4bd9ec[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Sun Aug 6 00:29:55 2017 +0000
+
+    feedbacksテーブル作成
+
+[33mcommit 2f0cf7d957b928932a241f6ebac45d957aa16091[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Sat Aug 5 23:48:05 2017 +0000
+
+    userモデルからviewへのデータ受け渡し(途中)
+
+[33mcommit bc7d9758711a61474c8b965b02ca872a706e7a5f[m
+Merge: 0ece8fd dd09bd4
+Author: siraitooru <zabiisann@gmail.com>
+Date:   Tue Aug 1 23:55:01 2017 +0900
+
+    Merge pull request #13 from re004037s/develop_shirai7
+    
+    ajax実装
+
+[33mcommit dd09bd449f490c036f50e8da4907afe6be206816[m
+Author: sirai tooru <zabiisann@gmail.com>
+Date:   Tue Aug 1 13:30:50 2017 +0000
+
+    ajax実装
+
+[33mcommit 0ece8fdc7f56dc661d325ec381a08f67200b5e5d[m
+Merge: 3f12e5c 4b5fd24
+Author: RyoHamamoto <djhama1212@gmail.com>
+Date:   Mon Jul 31 14:24:30 2017 +0000
+
+    Merge branch 'develop' of https://github.com/re004037s/Celebrity into develop
+
+[33mcommit 3f12e5c23193210c71548a4d59642baff0c9986c[m
+Author: RyoHamamoto <djhama1212@gmail.com>
+Date:   Mon Jul 31 14:22:39 2017 +0000
+
+    Documents file add
+
+[33mcommit fcea3e7907bee3b89840c3bf12d3634043934819[m
+Author: sugimoto <r.sugimoto0615@gmail.com>
+Date:   Mon Jul 31 09:19:13 2017 +0000
+
+    create ajax_form
+
+[33mcommit 4b5fd240cf2a7a86a5496b4617600c3291a71728[m
+Merge: c610b9a 8bd968a
+Author: ryo789 <r.takayama92@gmail.com>
+Date:   Mon Jul 31 01:03:49 2017 +0900
+
+    Merge pull request #10 from re004037s/develop_takayama
+    
+    基本的なログイン機構の実装
+
+[33mcommit 8248f70fdf31e8ea5cc6bc227bb84a566a361de7[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Sun Jul 30 15:57:24 2017 +0000
+
+    Add portfolio column
+
+[33mcommit 8bd968ab56fe67ff0650c0bd153ecce4e7c24893[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Sun Jul 30 08:29:50 2017 +0000
+
+    Implement basic login
+
+[33mcommit c610b9a0ef8867a08c651a2114593b8fdbbf147d[m
+Merge: 423dd1a b44231a
+Author: ryo789 <r.takayama92@gmail.com>
+Date:   Sun Jul 30 15:03:46 2017 +0900
+
+    Merge pull request #9 from re004037s/develop_shirai5
+    
+    競合解消
+
+[33mcommit b44231a4d51a0b43d47d02fe38fcb19b6bc1a9d1[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Sun Jul 30 06:01:46 2017 +0000
+
+    Resolve some errors
+
+[33mcommit 9c2fa55da8b80319699be70fdd05c9e04fe37412[m
+Merge: 423dd1a 88e7060
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Sun Jul 30 05:45:18 2017 +0000
+
+    Conflict解消したい
+
+[33mcommit 88e70609dff13c10d34f4cadce8535dee8b16db1[m
+Author: sirai tooru <zabiisann@gmail.com>
+Date:   Thu Jul 27 23:39:12 2017 +0000
+
+    modify database.yml
+
+[33mcommit 423dd1ab288b045cf331386b17ce438c345ef3f4[m
+Merge: 2783baa b71e0c3
+Author: ryo789 <r.takayama92@gmail.com>
+Date:   Thu Jul 27 23:44:37 2017 +0900
+
+    Merge pull request #4 from re004037s/develop_takayama
+    
+    7/27 ハマーPM了承済み
+
+[33mcommit b71e0c3a374bf4753e03287bdc432ea33434c09b[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Tue Jul 25 14:27:44 2017 +0000
+
+    テーブル整備
+
+[33mcommit 2783baa06f7821875fd6d425269ee232f21e84d1[m
+Merge: 7d2f0e4 91cb7fe
+Author: ryo789 <r.takayama92@gmail.com>
+Date:   Sat Jul 22 18:40:09 2017 +0900
+
+    Merge pull request #2 from re004037s/develop_takayama
+    
+    ハマーPMチェック済み。
+
+[33mcommit 91cb7fee02cdfc788cc6e430ec91ec5d78b9f0f7[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Thu Jul 20 14:43:09 2017 +0000
+
+    database.ymlへ追記
+
+[33mcommit 700d47ad251f9edef993bbc6d01f0edd5495e55a[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Wed Jul 19 17:19:25 2017 +0000
+
+    ユーザ登録実装
+
+[33mcommit ef8e99ac936f10130f30b28ea5cebf407f4723c3[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Wed Jul 19 16:35:32 2017 +0000
+
+    Create User Model
+
+[33mcommit 9d3478f4ece778b74541285840381d43a18f8fbf[m
+Merge: 6762c03 b4602f6
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Tue Jul 18 15:48:14 2017 +0000
+
+    Merge branch 'develop_takayama' of https://github.com/re004037s/Celebrity into dev-takayama
+
+[33mcommit 6762c037e5d009a084030782aa3281eb1b9cc7d9[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Tue Jul 18 15:39:42 2017 +0000
+
+    PostgreSQLのテスト
+
+[33mcommit b4602f65ff7252b861d2d79d28ccea5027ecf220[m
+Merge: d8b58c8 7d2f0e4
+Author: RyoHamamoto <djhama1212@gmail.com>
+Date:   Mon Jul 17 12:05:42 2017 +0000
+
+    Merge branch 'develop' of https://github.com/re004037s/Celebrity into develop
+
+[33mcommit 7d2f0e48c3d96e74a899674b64ed692d41c5e3d2[m
+Merge: 8114430 8783ae7
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Mon Jul 17 06:44:35 2017 +0000
+
+    Merge branch 'develop' of https://github.com/re004037s/Celebrity into dev-takayama
+
+[33mcommit 811443006d83bb458b4f945920234ec6b38feadb[m
+Author: Ryota Takayama <r.takayama92@gmail.com>
+Date:   Mon Jul 17 06:41:27 2017 +0000
+
+    Create forms and Sessions/Users Controller
+
+[33mcommit d8b58c81be9590f1772d426fbf6e2d91dd868c23[m
+Merge: 8783ae7 52ef2e4
+Author: RyoHamamoto <djhama1212@gmail.com>
+Date:   Mon Jul 17 06:11:18 2017 +0000
+
+    Merge branch 'master' of https://github.com/re004037s/Celebrity into develop
+
+[33mcommit 8783ae702f562d66b168456a19d868c80c238060[m
+Author: sirai tooru <zabiisann@gmail.com>
+Date:   Sat Jul 15 16:26:48 2017 +0000
+
+    check css
+
+[33mcommit 52ef2e4f943e2267492da05dbbcc16c3a8906b20[m
+Merge: 040a979 91e0b70
+Author: RyoHamamoto <djhama1212@gmail.com>
+Date:   Sat Jul 15 17:53:12 2017 +0900
+
+    Merge pull request #1 from re004037s/develop
+    
+    問題ないのでマージ
+
+[33mcommit 91e0b70a03165bec651d394e3697a382d5b482b8[m
+Author: sirai tooru <zabiisann@gmail.com>
+Date:   Wed Jul 12 09:10:01 2017 +0000
+
+    Finish layout and routes
+
+[33mcommit 040a9796cb659bfc4e9ec89edecf6d1c5f570855[m
+Author: RyoHamamoto <djhama1212@gmail.com>
+Date:   Sun Jul 9 09:53:30 2017 +0000
+
+    Gemfile Setting
+
+[33mcommit 70951acb09b38e8176ace427b8da1017e43d13ab[m
+Author: RyoHamamoto <djhama1212@gmail.com>
+Date:   Sun Jul 9 09:49:26 2017 +0000
+
+    Celebrity project create
+
+[33mcommit 456063d86bab6589f6870df720109c945241bc3b[m
+Author: re004037s <re004037@yahoo.co.jp>
+Date:   Thu Jul 6 11:24:19 2017 +0900
+
+    Initial commit

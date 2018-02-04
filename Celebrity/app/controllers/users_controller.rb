@@ -10,14 +10,16 @@ class UsersController < ApplicationController
   
   def show
     @categories = MovieCategory.where(must_view: true).order('sort_order')
+    
     if params[:user_id]
       user = User.find_by(id: params[:user_id])
-      # 不要なデータも表示される
       @user_tags = user.tags
     else
-      @user_tags = current_user.tags
+      user = User.find_by(id: params[:id])
+      @user_tags = user.tags
     end
   end
+  
   
   def update_picture
     @user = current_user
@@ -40,26 +42,31 @@ class UsersController < ApplicationController
   
   def tag_show
     @user = current_user
+    #アド民が個別ユーザーページでタグを登録できないようにする
+    current_user.id
+    user_id_in_param = params[:user][:id]
+
+    if current_user.id.to_s != user_id_in_param
+      flash[:danger] = 'アドミンがユーザーページからユーザーのタグを変更できません'
+      redirect_to @user
+      return
+    end
+  
     tag = @user.tags.create(tag: user_params[:tags])
     tag_name = user_params[:tags]
-    
-    @tag = [] #あいまい検索　追加しました
-    if request.post? then
-      @tag = Tag.where("tag like 't%'")
-    end
-    
     if tag.save
       flash[:success] = 'タグ名： ' + tag_name + ' を追加しました'
       redirect_to @user 
     else
-      # [:tag]でメッセージの配列を取り出し、.join(' / ')で分割した。
-      flash[:danger] = tag.errors.messages[:tag].join(' / ') 
-      redirect_to @user
+    ##[:tag]でメッセージの配列を取り出し、.join(' / ')で分割した。
+    flash[:danger] = tag.errors.messages[:tag].join(' / ') 
+    redirect_to @user
     end
   end
   
   def tag_delete
     @user = current_user
+    # user_id = params[:user_id]
     tag_id = params[:tag_id]
 
     #invalid foreign key error -> modelにdestroy?? 関係の追記が必要？
@@ -70,6 +77,33 @@ class UsersController < ApplicationController
       flash[:success] = '削除失敗'
       redirect_to @user
     end
+  end
+  
+  def tag_related
+    #users tableのid, name, nickname, picture_fileだけ取得する 
+    @hoge  = User.includes(:tags).where(tags:{tag: "#{params[:tag_name]}"}).pluck(:id,:name,:nickname, :picture_file)
+    @hogehoge = @hoge.to_a
+    render json: @hogehoge
+  end
+  
+  def search
+    @fetched_tags = Tag.where('tag LIKE(?)', "#{params[:keyword]}%")
+    render json: @fetched_tags
+  end
+  
+  def tags_belongs_to_user
+    userid = params[:userid];
+    @tags_row = Tag.includes(:users).where('users.id =?', userid).references(:posts)
+    @foo = { userid => @tags_row }
+    render json: @foo
+  end
+  
+  def tag_edit
+    # @tag = Tag.where('tag LIKE(?)', "#{params[:keyword]}%")
+    # @tag = Tag.where("tag like '%'")
+    @tags  = Tag.all
+    
+    # @tag  = User.includes(:tags).where(tags:{tags: })
   end
   
   def new
@@ -118,7 +152,7 @@ class UsersController < ApplicationController
   
     def user_params
 
-      params.require(:user).permit(:name, :nickname, :line_id, :email, :password, :password_confirmation, :portfolio_path, :github_path, :picture_file, :picture)
+      params.require(:user).permit(:tags, :name, :nickname, :line_id, :email, :password, :password_confirmation, :portfolio_path, :github_path, :picture_file, :picture)
 
     end
     
@@ -140,4 +174,7 @@ class UsersController < ApplicationController
       redirect_to root_url if current_user == nil || !current_user.admin
     end
 
+
 end
+
+    

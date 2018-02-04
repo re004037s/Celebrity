@@ -1,0 +1,147 @@
+
+  
+  表示するページを判定
+  
+    <body class="body">
+      ナビゲーションバー
+      <nav class="header navbar navbar-fixed-top">
+  <div class="header-wrapper container">
+    
+    ▼ロゴ
+    <div class="header-logo-wrapper">
+      <a href="/">
+        <img id="logo-header" src="/assets/logo_header-bf2f582862b549415530ede6d4d72045d9a57c262b34cbe85e9bb3bf2f4e9a14.png" alt="Logo header" />
+</a>    </div>
+    
+    ▼リスト
+    <div class="header-list-wrapper">
+      
+      ▼スマホ用
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".bs-navbar-collapse">
+          <span class="sr-only">メニュー</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      
+      ▼ＰＣ用
+      <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+        <ul class="header-menu-list">
+          <li><a href="/users">SALON MEMBERS</a></li>
+          <li> 
+              <a href="/users/3">MY PAGE</a>
+          </li>
+          <li><a rel="nofollow" data-method="delete" href="/logout">LOG OUT</a></li>
+        </ul>
+      </nav>
+      
+    </div><!--▲リスト-->
+  </div>
+</nav>
+      
+      <div class="body-wrapper">
+        
+        コンテンツを読み込み
+        <div class="main-wrapper">
+  <div class="row">
+    <div class="col-md-8">
+      
+      <div class="movies-page--wrapper">
+        <h2 class="page-title">
+          <span>ポートフォリオ の作り方</span>
+        </h2>
+        
+          <div id="m1" class="">
+            <h4 class="movie-title">ポートフォリオ の作り方</h4>
+<div class="movie">
+  <div id="movie-layer" class="movie-layer">セレブエンジニアリング</div>
+  < param = '?rel=0&amp;controls=0&amp' %>
+  <iframe src="https://www.youtube.com/embed/UnwPmOROW2g" frameborder="0" allowfullscreen  oncontextmenu='return false'></iframe>
+</div>
+
+
+
+<script>
+
+$(function () {
+
+  var iframes = document.querySelectorAll("iframe");
+  
+  iframes[0].onload = function() {
+  //console.log('hay')
+  //console.log(iframes);
+  var modal_layer = $('.movie-layer'); 
+  // トップフレーズを表示する
+  //let top_phrase = 'セレブエンジニアリング';
+  // modalを表示する
+  //modal_layer.html(top_phrase);
+  // モーダルのcss設定
+  modal_layer.css();
+  // モーダルを表示状態にする
+  modal_layer.show();
+  
+  // モーダルのcss設定
+  // modal_layer.css(
+  //   {'z-index' : '1',
+  //   'background-color': '#373737',
+  //   'color': '#F8C810',
+  //   'text-align' : 'right',
+  //   'line-height' : '2em',
+  //   'font-size' : '1.5em',
+  //   'position':'relative',
+  //   'top': '34px',
+  //   'height':'30px',
+  //   'width' : '600px',
+  //   'max-width' : '600px'
+  //   }
+  // );
+
+  // HTMLとして出力する
+  $('.movie-title').after(modal_layer);
+  
+  };
+    
+})();
+
+  // モーダルのcss設定
+  // $(window).on('load resize', function(){
+  //   var modal_layer = $('.movie-layer');
+  // //   sW = window.innerWidth;
+  // // 	let adjustLayout = (sW <= 1261) 
+  // // 	? {'width' :'100%', 'font-size' : '1em'} 
+  // // 	: {'width' : '410px'};
+  
+  // //   modal_layer.css(adjustLayout);
+  
+  // });
+</script>
+
+</script>
+        </div>
+      </div>
+    </div>
+    <aside class="col-md-4">
+  <div class="sidebar-wrapper">
+    
+    <div class="sidebar-title">MENU</div>
+    
+    <ul class="sidebar-list">
+        <li><a class="" href="/movie_categories/1">はじめに</a></li>
+        <li><a class="" href="/movie_categories/2">フリーエンジニアとは</a></li>
+        <li><a class="" href="/movie_categories/3">できるエンジニアになる</a></li>
+        <li><a class="" href="/movie_categories/4">就活編</a></li>
+        <li><a class="" href="/movie_categories/5">プログラム学習編</a></li>
+      <li><a class="" href="/progate">Progate進捗入力</a></li>
+      <li><a class="" href="/railstutorial">RailsTutorial進捗入力</a></li>
+      <li><a class="" href="/portfolio_mv">ポートフォリオの作り方</a></li>
+      <li><a href="/qa">よくある質問</a></li>
+      <li><a href="/qiita_posts">Qiita投稿まとめ</a></li>
+      <li><a href="/interview_posts">面談内容共有</a></li>
+    </ul>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </div>

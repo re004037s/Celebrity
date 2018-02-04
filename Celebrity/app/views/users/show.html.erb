@@ -30,6 +30,8 @@
   </div>
 </div>
 
+<script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+
 <script type="text/javascript">
   $('#user_picture').bind('change', function() {
     
@@ -58,41 +60,320 @@
   });
 </script>
 
+
 <div id="tag-controll">
   
-<%= form_for(@user, url: tag_show_path) do |f| %>
-  <%= f.text_field :tags , value:'', placeholder: 'タグを入力【20文字(英字or半角スペース)までOK】' %>
-  <%= f.submit '登録', id:'tag-submit', class: 'btn btn-default active', :disabled => 'true' %>
-<% end %>
+  <%= form_for(@user, url: tag_show_path) do |f| %>
+    <%= f.text_field :tags , value:'', placeholder: 'タグを入力【20文字(英字or半角スペース)までOK】' %>
+    <%= f.submit '登録', id:'tag-submit', class: 'btn btn-default active', :disabled => 'true' %>
+    <%= f.hidden_field :id, :value => "#{@user.id}" %>
+  <% end %>
 
-<p>登録済みのタグ一覧：</p>
-<% @user_tags.each do |user_tag| %>
-  <span class="tag_box">
-    <%=  user_tag.tag %>
-    <%= link_to image_tag('delete_icon.png', :class => 'delete_icon'), delete_tag_path(user_id: current_user.id, tag_id: user_tag.id), :method => :delete %>　<!-- methodでdeleteを指定する--> 
-  </span>
-<% end %>
+  <div class="tag_regestered">
+    <p>登録済みのタグ一覧：</p>
+    <ul>
+      <% @user_tags.each do |user_tag| %>
+        <li class="tag_box">
+          <span class="tag_displayed">
+            <%= user_tag.tag %>
+          </span>
+          <%= link_to image_tag('delete_icon.png', :class => 'delete_icon'), delete_tag_path(user_id: current_user.id, tag_id: user_tag.id), :method => :delete %>　<!-- methodでdeleteを指定する--> 
+        </li>
+      <% end %>
+    </ul>
+  </div>
 
 </div>
 
+
+
+
+<div id="modal-content" class="table-responsive" style="display:none;">
+  <table class="table table-bordered table-hover table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>名前</th>
+        <th>ニックネーム</th>
+        <th class="profile-pic">画像</th>
+        <th>登録タグ</th>
+      </tr>
+    </thead>
+    <tbody id="tags_for_tbody">
+    </tbody>
+  </table>
+</div>
+
+<%= link_to 'タグ一覧ページ', tag_edit_path %>
+
+<div id="modal-content" style="display:none;"></div>
+<div id="modal-overlay" style="background:gray; opacity:0.5;"></div>
+
 <script>
-$('#user_tags').keyup(function() {
+
+//グローバル変数 (関数外)
+let sX_syncerModal = 0 ;
+let sY_syncerModal = 0 ;
+let cnt = 0;
+let w, h, wW, wH, ww, hh = 0;
+
+
+let tag_displayed_objs = document.getElementsByClassName("tag_displayed");
+for(let i = 0, len = tag_displayed_objs.length; i < len; i++){
+  tag_displayed_objs[i].addEventListener(
+    "click", showModalForm
+  );
+  tag_displayed_objs[i].addEventListener(
+    "click", displayUserTagRelation
+  );
+}
+
+
+$(window).resize(function(){
+    var w = $(window).width();
+    var h = $(window).height();
+
+    var cw = $("#modal-content").outerWidth();
+    var ch = $("#modal-content").outerHeight();
+    
+    var sc = $(window).scrollTop();
+    
+    $("#modal-content").css({
+      "left": ((w - cw) / 2 ) + "px",
+      "top": ( h * 1 / 8) + "px"
+    });
+  cnt = 0;
+});
+
+function showModalForm(){
+  if($('#tags_for_tbody').children().remove()){
+    $('#tags_for_tbody').children().remove();
+  };
+  
+
+  //スクロール位置を記録
+  var dElm = document.documentElement , dBody = document.body;
+  sX_syncerModal = dElm.scrollLeft || dBody.scrollLeft;	//現在位置のX座標
+  sY_syncerModal = dElm.scrollTop || dBody.scrollTop;		//現在位置のY座標
+
+	//キーボード操作などにより、オーバーレイが多重起動するのを防止する
+  $(this).blur() ;	//ボタンからフォーカスを外す
+  //if($("#modal-overlay")[0]) return false ;		//新しくモーダルウィンドウを起動しない [下とどちらか選択]
+  if($("#modal-overlay")) $("#modal-overlay").remove() ;		//現在のモーダルウィンドウを削除して新しく起動する [上とどちらか選択]
+  
+
+  
+  if (cnt == 0){
+    var w = $(window).width();
+    var h = $(window).height();
+
+    var cw = $("#modal-content").outerWidth();
+    var ch = $("#modal-content").outerHeight();
+    
+    var sc = $(window).scrollTop();
+    
+    $("#modal-content").css({
+      "left": ((w - cw) / 2 ) + "px",
+      "top": ( h * 1 / 8) + "px"
+    });
+    cnt += 1;
+  }
+  
+  //オーバーレイ用のHTMLコードを、[body]内の最後に生成する
+  $("body").append('<div id="modal-overlay"></div>');
+  
+  //[$modal-content]をフェードインさせる
+  $("#modal-content").fadeIn("slow");
+  
+  //[$modal-overlay]をフェードインさせる
+  $("#modal-overlay").fadeIn("slow");
+  
+  centeringModalSyncer();
+  
+  $(window).resize(centeringModalSyncer);
+  
+  
+  $("#modal-overlay").unbind().click(function(){
+  	//[#modal-overlay]と[#modal-close]をフェードアウトする
+    $("#modal-content, #modal-overlay").fadeOut("slow",function(){
+  	//フェードアウト後、[#modal-overlay]をHTML(DOM)上から削除
+  	  $("#modal-overlay").remove();
+      $('#tags_for_tbody').children().remove();
+      
+      //スクロール位置を移動
+      window.scrollTo( sX_syncerModal , sY_syncerModal );
+    });
+  });
+}
+
+
+
+
+
+
+//センタリングをする関数
+function centeringModalSyncer(){
+
+	//画面(ウィンドウ)の幅を取得し、変数[w]に格納
+	var w = $(window).width();
+
+	//画面(ウィンドウ)の高さを取得し、変数[h]に格納
+	var h = $(window).height();
+	
+	//スマホ対応する場合
+	//画面(ウィンドウ)の高さを取得し、変数[h]に格納
+  //var h = window.innerHeight;
+
+	//コンテンツ(#modal-content)の幅を取得し、変数[cw]に格納
+	var cw = $("#modal-content").outerWidth({margin:true});
+
+	//コンテンツ(#modal-content)の高さを取得し、変数[ch]に格納
+	var ch = $("#modal-content").outerHeight({margin:true});
+
+	//コンテンツ(#modal-content)を真ん中に配置するのに、左端から何ピクセル離せばいいか？を計算して、変数[pxleft]に格納
+	var pxleft = ((w - cw)/2);
+
+	//コンテンツ(#modal-content)を真ん中に配置するのに、上部から何ピクセル離せばいいか？を計算して、変数[pxtop]に格納
+	var pxtop = ((h - ch)/2);
+
+	//[#modal-content]のCSSに[left]の値(pxleft)を設定
+	$("#modal-content").css({"left": pxleft + "px"});
+
+	//[#modal-content]のCSSに[top]の値(pxtop)を設定
+	$("#modal-content").css({"top": pxtop + "px"});
+
+}
+
+
+let availableTags = [];
+$('#user_tags').keyup(function(e) {
+  availableTags = [];
+  e.preventDefault(); //キャンセル可能なイベントをキャンセル
   let text_field_obj = $('#tag-submit').parent('.edit_user').find('#user_tags');
-  let words = text_field_obj.val();
+  let words = $.trim(text_field_obj.val());
+  if(words.length == 0 ){
+    $('#result').find('li').remove();
+    return;
+  };
   if(words.length >= 1 && words.length <= 20){
     $("#tag-submit").prop("disabled", false);
   }else{
     $("#tag-submit").prop("disabled", true);
   }
+  
+
+  //inputに入力した文字列をリアルタイムでajaxリクエストする
+  $.ajax({ //ajax通信で以下のことを行います
+    url: '/users/search', //urlを指定
+    type: 'GET', //メソッドを指定
+    data: ('keyword=' + words), //コントローラーに渡すデータを'keyword=input(入力された文字のことですね)'にするように指定
+    processData: false, //おまじない
+    contentType: false, //おまじない
+    dataType: 'json' //データ形式を指定
+  })
+  //ajax request success時の処理
+  .done(function(response){ //データを受け取ることに成功したら、dataを引数に取って以下のことする(dataには@usersが入っている状態ですね)
+    // $('#result').find('li').remove();  //idがresultの子要素のliを削除する
+    $(response).each(function(i, fetchedTag){ //dataをuserという変数に代入して、以下のことを繰り返し行う(単純なeach文ですね)
+      // $('#result').append('<li>' + fetchedTag.tag + '</li>') //resultというidの要素に対して、<li>ユーザーの名前</li>を追加する。
+      availableTags.push(fetchedTag.tag);
+    });
+    
+    $('#user_tags').autocomplete({
+      source: availableTags,
+    });
+    
+  })
+});
+
+
+function createTd_html(user_info){
+  let tmp = '';
+  for(let i = 0, len = user_info.length; i < len; i++){
+    tmp += '<td>' + user_info[i] + '</td>';
+  }
+  return tmp;
+}
+
+let tags_arrays = [];
+function displayUserTagRelation() {
+  $('.tag_appeared').off('click');
+  let clicked_tag_name = $.trim($(this).text());
+    //clickしたタグ名に紐づくユーザー情報をリアルタイムでajaxリクエストする
+  $.ajax({ //ajax通信で以下のことを行います
+    url: '/users/tag_related', //urlを指定
+    type: 'GET', //メソッドを指定
+    data: ('tag_name=' + clicked_tag_name), 
+    contentType: false, //おまじない
+    dataType: 'json' //データ形式を指定
+  })
+  //ajax request success時の処理
+  .done(function(res){ 
+      
+    $(res).each(function(i, user_info){
+      let user_id = user_info[0]
+      let picture_file = user_info[3];
+      if (picture_file == null){
+         user_info[3] = '<img src="' + "/assets/default.png" + '" />'
+      }
+      
+      let _tr_html = '<tr>';
+      _tr_html += createTd_html(user_info);
+      _tr_html += '<td id="' + user_id   + '" class="tag_regestered_in_modal">' + '' + '</td>';
+      _tr_html += '</tr>';
+       
+      $('#tags_for_tbody').append(_tr_html) 
+      
+      //user_id をキーにしてuserに紐づくタグを取得する  
+      $.ajax({ //ajax通信で以下のことを行います
+        url: '/users/tags_belongs_to_user', //urlを指定
+        type: 'GET', //メソッドを指定
+        data: ('userid=' + user_id), 
+        contentType: false, //おまじない
+        dataType: 'json' //データ形式を指定
+      })
+      
+      .done(function(tags_row){
+        $(tags_row).each(function(i, tag_row){
+          for(let key in tag_row){
+            let _tag_field = '<ul>';
+            for(let j in tag_row[key]){
+              _tag_field += '<li style="font-size: 1.5em;"'+ 'class="'+ 'tag_appeared__userid_' + key +'">'
+              _tag_field += '<span class="tag_displayed"><a href="#">' + tag_row[key][j].tag + '</a></span>' 
+              _tag_field += '</li>'
+            }
+            _tag_field += '</ul>';
+            $('#' + key  + '').append(_tag_field);
+            
+            //click event をつけて再帰的にこのajaxを実行させる
+            let tag_appeared_obj = $(".tag_appeared__userid_" + key);
+            tag_appeared_obj.click(showModalForm);
+            tag_appeared_obj.click(displayUserTagRelation)
+            
+            
+          }
+          
+        })
+        
+      })
+      
+    });
+  })
+}
+
+  $(window).scroll(function() {
+  let scroll_y = $(window).scrollTop();
+  $('#modal-layer').offset({ top: scroll_y, left: 0 });
 });
 
   $('.delete_icon').css('width', '15');
-  $('.tag_box').css('border', 'solid 1px #000000');
-  $('.tag_box').css('margin', '0 3px 0 0');
-  $('.tag_box').css('padding', '2 2');
-  $('.tag_box').css('font-size', '1.3em');
-  $('#tag-controll').css('width', '60%');
-  $('#tag-controll').css('margin', '1em auto');
+  // $('.tag_box').css('border', 'solid 1px #000000');
+  // $('.tag_box').css('margin', '0 3px 0 0');
+  // $('.tag_box').css('padding', '2 2');
+  // $('.tag_box').css('font-size', '1.3em');
+  // $('#tag-controll').css('width', '60%');
+  // $('#tag-controll').css('margin', '1em auto');
+  
 </script>
 
 <% if current_user.try(:admin) == true %>
@@ -414,6 +695,7 @@ $('#user_tags').keyup(function() {
       <% end %>
     </td>
   </tr>
+  
 </table>
 <table class="txt1 table table-bordered table-condensed table-status">
   <tr>
