@@ -140,6 +140,26 @@ User.create(name: 'ベーブルース',
             existence: true,
             line_id: 43210)
 
+# 一般 user
+User.create(name: '大谷 翔平',
+            nickname: '二刀流',
+            email: 'otani@gmail.com',
+            password: 'password',
+            password_confirmation: 'password',
+            admin: false,
+            existence: true,
+            line_id: 98765)
+            
+# 一般 user
+User.create(name: 'ベーブルース',
+            nickname: 'ベビーフェイス',
+            email: 'baby@gmail.com',
+            password: 'password',
+            password_confirmation: 'password',
+            admin: false,
+            existence: true,
+            line_id: 43210)
+
 
 User.where(id: 1..2).each do |user|
     HtmlCssStatus.create(user_id: user.id)
