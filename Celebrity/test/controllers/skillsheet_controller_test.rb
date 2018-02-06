@@ -1,8 +1,8 @@
 require 'test_helper'
 
 class SkillsheetControllerTest < ActionDispatch::IntegrationTest
-  test "should get upload" do
-    get skillsheet_upload_url
+  test "should get index" do
+    get skillsheet_index_url
     assert_response :success
   end
 

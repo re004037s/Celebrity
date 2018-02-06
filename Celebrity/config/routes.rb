@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'skillsheet/upload'
+  get 'skillsheet/index'
 
   get 'password_resets/new'
   get 'password_resets/edit'

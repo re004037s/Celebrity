@@ -1,4 +1,4 @@
 class SkillsheetController < ApplicationController
-  def upload
+  def index
   end
 end
