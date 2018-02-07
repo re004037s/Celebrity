@@ -38,47 +38,52 @@
   
     <!--2.通常の表示-->
     <body class="body">
-      <!--ナビゲーションバー-->
-      <%= render 'layouts/navbar' %>
-      
-      <div class="body-wrapper">
-        <!--トップ画像-->
-        <div class="img-top-wrapper">
-          <%= image_tag "img_top.png", id: "img-top" %>
-        </div>
-        <!--アラートメッセージ-->
-        <% flash.each do |message_type, message| %>
-          <div class="alert alert-<%= message_type %>"><%= message %></div>
-        <% end %>
+      <div class="container-fluid">
         
-        <!-- 2-1.サイドバーあり-->
-        <% if content_for?(:with_sidebar) %>
+        <!--ナビゲーションバー-->
+        <%= render 'layouts/navbar' %>
         
-          <div class="main-wrapper">
-            <div class="row">
-              <div class="col-md-8">
-                
-                <%= yield :with_sidebar %>
-                
-              </div>
-              
-              <!--サイドバー-->
-              <aside class="col-md-4">
-                <%= render 'layouts/aside' %>
-              </aside>
-            </div>
+        <div class="body-wrapper">
+          <!--トップ画像-->
+          <div class="img-top-wrapper">
+            <%= image_tag "img_top.png", id: "img-top" %>
           </div>
+          <!--アラートメッセージ-->
+          <% flash.each do |message_type, message| %>
+            <div class="alert alert-<%= message_type %>"><%= message %></div>
+          <% end %>
           
-        <% else %>
+          <!-- 2-1.サイドバーあり-->
+          <% if content_for?(:with_sidebar) %>
+          
+            <div class="main-wrapper">
+              <div class="row">
+                <div class="col-md-8">
+                  
+                  <%= yield :with_sidebar %>
+                  
+                </div>
+                
+                <!--サイドバー-->
+                <aside class="col-md-4">
+                  <%= render 'layouts/aside' %>
+                </aside>
+              </div>
+            </div>
+            
+          <% else %>
+          
+            <!--2-2.サイドバーなし-->
+            <%= yield %>
+          
+          <% end %>
+        </div><!-- body -->
+    
+        <!--フッター-->
+        <%= render 'layouts/footer' %>
         
-          <!--2-2.サイドバーなし-->
-          <%= yield %>
-        
-        <% end %>
-      </div><!-- body -->
-  
-      <!--フッター-->
-      <%= render 'layouts/footer' %>
+      </div>
+      
     </body>
   <% end %><!-- if content_for?(:entrance) -->
 </html>
