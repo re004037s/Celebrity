@@ -2,7 +2,8 @@
   <div class="com-text">
     <p>【<%= comment.user.nickname %>さんのコメント】</p>
     <p><%= comment.content %></p>
-    <p>［投稿日時： <%= comment.created_at %>］
+    <p>［投稿日時： <%= comment.created_at.year %>年<%= comment.created_at.month %>月<%= comment.created_at.day %>日  
+        <%= comment.created_at.hour %>:<%= comment.created_at.min %>］
       <% if current_user == comment.user %>
         <%= link_to "削除", "/comments/#{comment.id}/destroy", method: "post",
          data: { confirm: "本当に削除しますか？" } %>
