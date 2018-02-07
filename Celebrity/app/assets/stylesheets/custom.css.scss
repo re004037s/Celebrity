@@ -141,7 +141,7 @@ $background-grey: #f4f4f4;
     content: "";
     top: 0;
     left: 0;
-    width: 480px;
+    max-width: 480px;
     height: 35px;
     background-color: #000;
     color: #f4f4f4;
@@ -183,7 +183,7 @@ $background-grey: #f4f4f4;
 
 
 .top-index--wrapper {
-  width: 543px;
+  width: 84.8%;
   margin: 0 auto;
   margin-top: 30px;
 }
