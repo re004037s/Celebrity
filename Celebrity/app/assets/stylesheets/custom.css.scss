@@ -21,7 +21,51 @@ $background-grey: #f4f4f4;
 @import "tables";  //テーブル
 @import "parts";  //ボタンや矢印など
 
-@import "responsive";  //レスポンシブ関連の設定
+
+// ＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊
+
+// 【開発メンバーのみなさんへお願い】
+
+// ただいまページ全体のレイアウトを調整中のため、
+// みなさんにお願いしたいことがあります。
+
+
+// このページの末尾に、ページごとにクラスを作成しました。
+
+// 今後、ＣＳＳの記述が必要な場合は、編集ファイルに該当するクラスの｛｝内に記述してください。
+
+// 該当するクラスが無い、または新規ページの場合、
+
+// 下記の記述ルールに従って新しいクラスを作成し、
+
+// ページのソース全体を、そのクラスを当てた<div>タグで囲ってください。
+
+// （クラス内に記述することで、他ページへの意図しない影響を抑えます。）
+
+// ※※そのクラス外のＣＳＳの編集は、原則避けてください。
+// ※※クラス内の要素（タグ）に設定するクラス名やid名は、現時点では任意で構いません。。
+
+
+// ーーークラス名設定のルールーーー
+// クラス名：[ディレクトリ名]-[ファイル名]--wrapper
+
+// （例：staticpages-index--wrapperの場合）
+// 上記の例の場合、static_pagesフォルダのindexファイルを指します。
+// ーーーーーーーーーーーーーーーー
+
+// ーーーソース記述のルールーーー
+// <div class="staticpages-index--wrapper">（１行目）
+
+//   〜〜各ページのソース〜〜
+  
+// </div>（最後の行）
+// ーーーーーーーーーーーーーーーー
+
+// お手数をおかけしますが、どうかご協力をお願いします！
+
+//何か不明な点があれば、春海に聞いてください( ´∀｀)
+
+// ＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊
 
 
 
@@ -97,7 +141,8 @@ $background-grey: #f4f4f4;
     content: "";
     top: 0;
     left: 0;
-    width: 480px;
+    // max-width: 480px;
+    width: 100%;
     height: 35px;
     background-color: #000;
     color: #f4f4f4;
@@ -139,7 +184,7 @@ $background-grey: #f4f4f4;
 
 
 .top-index--wrapper {
-  width: 543px;
+  width: 84.8%;
   margin: 0 auto;
   margin-top: 30px;
 }
@@ -385,3 +430,52 @@ div#centering{
 li.first-child {
   margin-right: 2.5em;
 }
+
+
+
+
+//＊＊＊＊＊＊こちらに記述してください＊＊＊＊＊＊
+
+
+// ログイン後のトップページ
+.top-index--wrapper {
+  
+}
+
+// 動画管理ページ
+.movies-index--wrapper {
+  
+}
+
+// サロンメンバー一覧
+.users-index--wrapper {
+  
+}
+
+// マイページ
+.users-show--wrapper {
+  
+}
+
+// プロゲート進捗
+.staticpages-progate--wrapper {
+  
+}
+
+// チュートリアル進捗 
+.staticpages-railstutorial--wrapper {
+  
+}
+
+// 動画閲覧ページ
+.moviecategories-show--wrapper {
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+
+//＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊
+
+
+
+@import "responsive";  //レスポンシブ関連の設定
