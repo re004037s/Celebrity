@@ -12,5 +12,4 @@ class SkillsheetController < ApplicationController
   def edit
   end
   
-  
 end
