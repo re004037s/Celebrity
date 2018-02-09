@@ -17,7 +17,6 @@ class UsersController < ApplicationController
     else
       @user_tags = current_user.tags
     end
-    
   end
   
   def update_picture

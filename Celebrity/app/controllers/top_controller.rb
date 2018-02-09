@@ -3,9 +3,24 @@ class TopController < ApplicationController
   before_action :set_movie_categories, only: [:index]
   
   def index
+    @user = current_user
+    @feedback = Feedback.where(user_id: @user).count
+    @must_movie = Movie.where(movie_category_id: MovieCategory.where(must_view: true).ids).count
+    @html = @user.html_css_status.schedule_date
+    @javasc = @user.javascript_status.schedule_date
+    @ruby = @user.ruby_status.schedule_date
+    @rails = @user.rubyonrails_status.schedule_date
+    @tutorial = @user.railstutorial_status.schedule_date
+    if 
+      @user.try(:admin) || @feedback < @must_movie || @feedback == @must_movie &&
+      @html.present? && @javasc.present? && @ruby.present? && @rails.present? && @tutorial.present?
+      elsif
+      @feedback == @must_movie && @html.blank? || @javasc.blank? || @ruby.blank? || @rails.blank? || @tutorial.blank?
+      redirect_to @user
+    end
+    
     @new_movies = Movie.all.where(['created_at > ?', Date.today.prev_day(7)])
     current_user_html = current_user.html_css_status
-    
     current_user_rubyonrails = current_user.rubyonrails_status
          current_user_html = current_user.html_css_status
          current_user_javascript = current_user.javascript_status

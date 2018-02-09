@@ -1,26 +1,30 @@
-<h2 class="page-title">
-  <span>動画管理</span>
-</h2>
+<div class="movies-index--wrapper">
+  
+  <h2 class="page-title">
+    <span>動画管理</span>
+  </h2>
+  
+  <div class="center">
+    <%= link_to '動画を追加する', new_movie_path, class: 'btn btn-default active' %>
+    <%= link_to 'カテゴリを追加する', new_movie_category_path, class: 'btn btn-default active' %>
+    <%= link_to 'カテゴリの順番を変更する', movie_categories_path, class: 'btn btn-default active' %>
+  </div>
 
-<div class="center">
-  <%= link_to '動画を追加する', new_movie_path, class: 'btn btn-default active' %>
-  <%= link_to 'カテゴリを追加する', new_movie_category_path, class: 'btn btn-default active' %>
-  <%= link_to 'カテゴリの順番を変更する', movie_categories_path, class: 'btn btn-default active' %>
-</div>
-
-<table class="table table-bordered table-striped table-index">
-  <% @categories.each do |category| %>
-    <thead>
-      <tr>
-        <th class="table-header"><%= link_to category.name, edit_movie_category_path(category) %></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% category.movies.order('sort_order').each do |movie| %>
+  <table class="table table-bordered table-striped table-index">
+    <% @categories.each do |category| %>
+      <thead>
         <tr>
-          <td class="left">【<%= movie.sort_order %>】<%=link_to movie.title, edit_movie_path(movie) %></td>
+          <th class="table-header"><%= link_to category.name, edit_movie_category_path(category) %></th>
         </tr>
-      <% end %>
-    </tbody>
-  <% end %>
-</table>
+      </thead>
+      <tbody>
+        <% category.movies.order('sort_order').each do |movie| %>
+          <tr>
+            <td class="left">【<%= movie.sort_order %>】<%=link_to movie.title, edit_movie_path(movie) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    <% end %>
+  </table>
+
+</div>
