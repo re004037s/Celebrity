@@ -172,5 +172,11 @@
         </tr>
       </tbody>
     </table>
+    <% hide = 'hide' %>
+    <div id="link_portfolio_mv" class="<%= hide unless railstutorial_comp? %>">
+      <p class="text-center">
+        <%= link_to "NEXT：ポートフォリオの作り方", portfolio_mv_path, class: "txt1 btn btn-lg btn-default active"%>
+      </p>
+    </div>
   </div>
- <% end %>
+<% end %>
