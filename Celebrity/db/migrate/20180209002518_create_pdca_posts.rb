@@ -9,5 +9,6 @@ class CreatePdcaPosts < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
+    add_index :pdca_posts, [:user_id, :created_at]
   end
 end
