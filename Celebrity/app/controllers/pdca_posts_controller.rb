@@ -1,0 +1,2 @@
+class PdcaPostsController < ApplicationController
+end
