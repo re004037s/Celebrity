@@ -157,7 +157,7 @@
   </table>
   
   <% hide = 'hide' %>
-  <div id="link_portfolio_mv" class="<%= hide unless railstutorial_comp? %>">
+  <div id="link_portfolio_mv" class="<%= hide unless railstutorial_comp? %> next-btn">
     <p class="text-center">
       <%= link_to "NEXT：ポートフォリオの作り方", portfolio_mv_path, class: "txt1 btn btn-lg btn-default active"%>
     </p>
@@ -166,8 +166,8 @@
 </div>
   
 <script>
-  let button_max_num = $('table').find('.btn').length;
-  MYAPP.BUTTON.set_max_num(button_max_num);
+  let rails_button_max_num = $('table').find('.btn').length;
+  MYAPP.BUTTON.set_max_num(rails_button_max_num);
 </script>
 
 <% end %>
