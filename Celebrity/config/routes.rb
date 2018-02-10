@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   end
   resources :qiita_posts
   resources :interview_posts
+  resources :pdca_posts
   
   # resources :tags #userページに飛びたいのでいらない
   # resources :user_tags #追加

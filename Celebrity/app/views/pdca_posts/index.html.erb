@@ -1,0 +1,39 @@
+<div class="pdcaposts-index--wrapper">
+<div class="row">
+  <aside class="col-md-3">
+      <h4 class="form-title">
+       <span>PDCA報告フォーム</span>
+      </h4>
+    <section class="user_info">
+      <%= render 'form' %>
+    </section>
+  </aside>
+  <div class="col-md-9">
+      <h2 class="page-title">
+       <span>PDCA報告</span>
+      </h2>
+  <ol>
+  <% @pdcaposts.each do |pdcapost| %>
+    <li id="pdcapost-<%= pdcapost.id %>">
+      <!--<%= link_to pdcapost.user.picture_file, pdcapost.user %>-->
+      <span type="text" class=""><%= link_to pdcapost.user.nickname, pdcapost.user %></span><br/>
+      <p>Plan</p>
+      <textarea class=""><%= pdcapost.plan %></textarea>
+      <p>Do</p>
+      <textarea class=""><%= pdcapost.do %></textarea>
+      <p>Check</p>
+      <textarea class=""><%= pdcapost.check %></textarea>
+      <p>Action</p>
+      <textarea class=""><%= pdcapost.action %></textarea>
+      <p class="timestamp">
+        Posted <%= time_ago_in_words(pdcapost.created_at) %> ago.
+      </p>
+    </li>
+  <% end %>
+  </ol>
+  <div class="center">
+    <%= paginate @pdcaposts %>
+  </div>
+  </div>
+  </div>
+  </div>
