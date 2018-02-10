@@ -9,6 +9,7 @@ MYAPP.BUTTON = (function(){
   
   // private method
   set_max_num = function(max_num){
+      ;
     this._max_num = max_num;
   },
   is_all_watched = function(){
@@ -20,6 +21,7 @@ MYAPP.BUTTON = (function(){
     }
   },
   show_next_button = function(){
+      ;
     if(this.is_all_watched()){
       //全部完了の場合にNEXTボタンを非表示-> 表示にする処理
       showNextButton();
@@ -44,15 +46,15 @@ MYAPP.BUTTON = (function(){
 }());
 
 function showNextButton(){
-  $("#link_portfolio_mv").show();
-  $("#link_portfolio_mv").toggleClass('hide');
+  $(".next-btn").show();
+  $(".next-btn").toggleClass('hide');
 }
 function hideNextButton(){
-  $("#link_portfolio_mv").hide();
-  $("#link_portfolio_mv").toggleClass('hide');
+  $(".next-btn").hide();
+  $(".next-btn").toggleClass('hide');
 }
 function activateAsideLink(){
-  let next_button_text = $('#link_portfolio_mv').find('a').text();
+  let next_button_text = $('.next-btn').find('a').text();
   let aside_lists = $('.sidebar-list').find('li');
   for(let i = 0, len = aside_lists.length; i < len; i++){
     var listText = aside_lists[i].innerText;
@@ -63,7 +65,7 @@ function activateAsideLink(){
   }
 }
 function inactivateAsideLink(){
-  let next_button_text = $('#link_portfolio_mv').find('a').text();
+  let next_button_text = $('.next-btn').find('a').text();
   let aside_lists = $('.sidebar-list').find('li');
   for(let i = 0, len = aside_lists.length; i < len; i++){
     var listText = aside_lists[i].innerText;
