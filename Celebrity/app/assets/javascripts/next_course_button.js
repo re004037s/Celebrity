@@ -9,7 +9,6 @@ MYAPP.BUTTON = (function(){
   
   // private method
   set_max_num = function(max_num){
-      ;
     this._max_num = max_num;
   },
   is_all_watched = function(){
@@ -21,13 +20,12 @@ MYAPP.BUTTON = (function(){
     }
   },
   show_next_button = function(){
-      ;
     if(this.is_all_watched()){
       //全部完了の場合にNEXTボタンを非表示-> 表示にする処理
       showNextButton();
       //asideの活性化
       activateAsideLink();
-     
+       
     }else{
       //未完了がある場合にNEXTボタンを表示-> 非表示にする処理
       hideNextButton();
@@ -60,6 +58,7 @@ function activateAsideLink(){
     var listText = aside_lists[i].innerText;
     if(next_button_text.indexOf(listText) > -1){
       $(aside_lists[i]).find('a').removeClass('disabled');
+      MYAPP.POPUP.show_popup(next_button_text + ' がオープンしました');
       return;
     }
   }
@@ -71,6 +70,7 @@ function inactivateAsideLink(){
     var listText = aside_lists[i].innerText;
     if(next_button_text.indexOf(listText) > -1){
       $(aside_lists[i]).find('a').addClass('disabled');
+      MYAPP.POPUP.show_popup(next_button_text + ' をクローズしました');
       return;
     }
   }
