@@ -4,15 +4,17 @@ class PdcaPostsController < ApplicationController
   
     def index
       @pdcaposts = PdcaPost.all.page(params[:page])
+      @pdcapost = PdcaPost.new
     end
     
     def create
-      @pdcapost = current_user.qiita_posts.build(pdcapost_params)
+      @pdcapost = current_user.pdca_posts.build(pdcapost_params)
       if @pdcapost.save
         flash[:success] = "PDCA報告が投稿されました"
         redirect_to pdca_posts_url
       else
-        render 'new'
+        flash[:danger] = "PDCA報告が投稿されませんでした"
+        redirect_to :back
       end
     end
     
@@ -36,7 +38,7 @@ class PdcaPostsController < ApplicationController
   private
 
     def pdcapost_params
-      params.require(:pdca_post).permit(:plan, :do, :check, :action)
+      params.require(:pdca_post).permit(:plan, :do, :check, :action, :user_id)
     end
     
 end

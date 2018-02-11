@@ -1,13 +1,12 @@
- <%= form_for(@pdcapost) do |f| %>
-     <%= f.label :plan, "Plan", class: 'txt1' %>
-      <%= f.text_area :title, class: 'form-control' %>
+    <%= f.label :plan, "Plan", class: 'txt1' %>
+      <%= f.text_area :plan, class: 'form-control' %>
       <%= f.label :do, "Do", class: 'txt1' %>
-      <%= f.text_area :title, class: 'form-control' %>
+      <%= f.text_area :do, class: 'form-control' %>
       <%= f.label :check, "Check", class: 'txt1' %>
-      <%= f.text_area :title, class: 'form-control' %>
+      <%= f.text_area :check, class: 'form-control' %>
       <%= f.label :action, "Action", class: 'txt1' %>
-      <%= f.text_area :title, class: 'form-control' %>
+      <%= f.text_area :action, class: 'form-control' %>
+      <%= f.hidden_field :user_id, :value => current_user.id %>
     <div class="center mt_20">
         <%= f.submit '登録', {class: 'btn btn-default active post-regist' }%>
   　</div>
-    <% end %>
