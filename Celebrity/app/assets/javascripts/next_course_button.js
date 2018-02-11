@@ -70,7 +70,8 @@ function inactivateAsideLink(){
     var listText = aside_lists[i].innerText;
     if(next_button_text.indexOf(listText) > -1){
       $(aside_lists[i]).find('a').addClass('disabled');
-      MYAPP.POPUP.show_popup(next_button_text + ' をクローズしました');
+      // ロジックを変更する必要があるため一旦コメントアウト
+      // MYAPP.POPUP.show_popup(next_button_text + ' をクローズしました');
       return;
     }
   }
