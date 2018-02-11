@@ -17,7 +17,7 @@
   position: absolute;
   top: 0;
   bottom: 0;
-  left: -15px;
+  left: 0;
   z-index: 1;
   
   width: 100%;
@@ -43,7 +43,7 @@
 }
 
 .header-menu-list {
-  overflow-x: scroll;
+  //overflow-x: scroll;
   
   ul {
     white-space: nowrap;
