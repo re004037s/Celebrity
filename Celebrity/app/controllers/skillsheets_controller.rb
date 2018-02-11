@@ -1,13 +1,15 @@
-class SkillsheetController < ApplicationController
+class SkillsheetsController < ApplicationController
   
   def index
-    @iuser = current_user
+    @users = User.page(params[:page])
   end
   
   
   def new
-    @skillsheet = Skillsheet.new
-    @skillsheet.name = ""
+  end
+  
+  def show
+    @users = User.page(params[:page])
   end
 
   def create
