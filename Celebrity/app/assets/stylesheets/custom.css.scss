@@ -305,12 +305,6 @@ $background-grey: #f4f4f4;
 
 /*
 
-
-
-
-
-
-
 .panel {
   margin-top: 20px;
 }
@@ -449,6 +443,10 @@ li.first-child {
 
 // サロンメンバー一覧
 .users-index--wrapper {
+  
+  td {
+    word-break: break-word;
+  }
   
 }
 
