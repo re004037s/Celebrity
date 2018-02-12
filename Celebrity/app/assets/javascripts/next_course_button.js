@@ -45,11 +45,11 @@ MYAPP.BUTTON = (function(){
 
 function showNextButton(){
   $(".next-btn").show();
-  $(".next-btn").toggleClass('hide');
+  $(".next-btn").removeClass('hide');
 }
 function hideNextButton(){
   $(".next-btn").hide();
-  $(".next-btn").toggleClass('hide');
+  $(".next-btn").addClass('hide');
 }
 function activateAsideLink(){
   let next_button_text = $('.next-btn').find('a').text();
@@ -58,7 +58,7 @@ function activateAsideLink(){
     var listText = aside_lists[i].innerText;
     if(next_button_text.indexOf(listText) > -1){
       $(aside_lists[i]).find('a').removeClass('disabled');
-      MYAPP.POPUP.show_popup(next_button_text + ' がオープンしました');
+      MYAPP.POPUP.show(next_button_text + ' がオープンしました');
       return;
     }
   }

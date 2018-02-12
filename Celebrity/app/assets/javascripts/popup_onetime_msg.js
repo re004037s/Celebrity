@@ -86,7 +86,7 @@ MYAPP.POPUP = (function(){
       "left" : centerW + "px"
     });
   },
-  show_popup = function(msg){
+  show = function(msg){
     this.set_message(msg)
     this.init();
     this.addCSS();
@@ -105,7 +105,7 @@ MYAPP.POPUP = (function(){
     get_message: get_message,
     get_alert_content_id: get_alert_content_id,
     get_modal_bg_id: get_modal_bg_id,
-    show_popup: show_popup,
+    show: show,
     addCSS: addCSS,
     offsetToCenter: offsetToCenter,
   };
