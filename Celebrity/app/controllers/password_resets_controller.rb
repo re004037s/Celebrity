@@ -8,7 +8,7 @@ class PasswordResetsController < ApplicationController
 
   def create
     @user = User.find_by(email: params[:password_reset][:email].downcase)
-    if User.find_by(existence: true) == true #existanceがtureかfalseで判断
+    if User.find_by(existence: true) #existanceがtureかfalseで判断
       if @user
         @user.create_reset_digest
         @user.send_password_reset_email
