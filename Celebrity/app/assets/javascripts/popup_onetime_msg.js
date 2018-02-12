@@ -3,9 +3,9 @@ var MYAPP = MYAPP || {};
 MYAPP.POPUP = (function(){
   
   // private member
-  let _message;
-  let _modal_bg_id = "modal-bg";
-  let _alert_content_id = "alert_content";
+  var _message;
+  var _modal_bg_id = "modal-bg";
+  var _alert_content_id = "alert_content";
   
   // private method
   init = function(){
@@ -29,7 +29,7 @@ MYAPP.POPUP = (function(){
   },
   
   append_modal_DOM = function(){
-    let _html = '<div class="alert alert-info">';
+    var _html = '<div class="alert alert-info">';
     _html += '<strong id="' + this.get_alert_content_id() + '">';
     _html += this.get_message();
     _html += '</strong>';
@@ -37,7 +37,7 @@ MYAPP.POPUP = (function(){
     $('body').append(_html);
   },
   append_modal_bg_DOM = function(){
-    let _html = '<div id="' + this.get_modal_bg_id() + '"></div>';
+    var _html = '<div id="' + this.get_modal_bg_id() + '"></div>';
     $('body').append(_html);
   },
   remove_modal_DOM = function(){

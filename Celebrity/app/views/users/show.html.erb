@@ -34,7 +34,7 @@
   <script type="text/javascript">
     $('#user_picture').bind('change', function() {
       
-    let size_in_megabytes = this.files[0].size/1024/1024;
+    var size_in_megabytes = this.files[0].size/1024/1024;
     
     // 画像未選択の場合
     if (size_in_megabytes === null){
@@ -80,8 +80,8 @@
   
 <script>
 $('#user_tags').keyup(function() {
-  let text_field_obj = $('#tag-submit').parent('.edit_user').find('#user_tags');
-  let words = text_field_obj.val();
+  var text_field_obj = $('#tag-submit').parent('.edit_user').find('#user_tags');
+  var words = text_field_obj.val();
   if(words.length >= 1 && words.length <= 20){
     $("#tag-submit").prop("disabled", false);
   }else{

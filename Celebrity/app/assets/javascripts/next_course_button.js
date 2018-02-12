@@ -12,7 +12,7 @@ MYAPP.BUTTON = (function(){
     this._max_num = max_num;
   },
   is_all_watched = function(){
-    let comp_length = $('.btn-comp').length;
+    var comp_length = $('.btn-comp').length;
     if(comp_length === this._max_num){
       return true;
     }else{
@@ -52,9 +52,9 @@ function hideNextButton(){
   $(".next-btn").addClass('hide');
 }
 function activateAsideLink(){
-  let next_button_text = $('.next-btn').find('a').text();
-  let aside_lists = $('.sidebar-list').find('li');
-  for(let i = 0, len = aside_lists.length; i < len; i++){
+  var next_button_text = $('.next-btn').find('a').text();
+  var aside_lists = $('.sidebar-list').find('li');
+  for(var i = 0, len = aside_lists.length; i < len; i++){
     var listText = aside_lists[i].innerText;
     if(next_button_text.indexOf(listText) > -1){
       $(aside_lists[i]).find('a').removeClass('disabled');
@@ -64,9 +64,9 @@ function activateAsideLink(){
   }
 }
 function inactivateAsideLink(){
-  let next_button_text = $('.next-btn').find('a').text();
-  let aside_lists = $('.sidebar-list').find('li');
-  for(let i = 0, len = aside_lists.length; i < len; i++){
+  var next_button_text = $('.next-btn').find('a').text();
+  var aside_lists = $('.sidebar-list').find('li');
+  for(var i = 0, len = aside_lists.length; i < len; i++){
     var listText = aside_lists[i].innerText;
     if(next_button_text.indexOf(listText) > -1){
       $(aside_lists[i]).find('a').addClass('disabled');
