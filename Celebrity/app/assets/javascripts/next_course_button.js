@@ -5,7 +5,7 @@ var MYAPP = MYAPP || {};
 MYAPP.BUTTON = (function(){
   
   // private member
-  let _max_num;
+  var _max_num;
   
   // private method
   set_max_num = function(max_num){
