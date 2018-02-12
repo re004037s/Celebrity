@@ -11,6 +11,9 @@ ja:
       less_than_x_minutes:
         one:   "1分"
         other: "%{count}分"
+      x_minutes:
+        one:   "1分"
+        other: "%{count}分"
       about_x_hours:
         one:   "約1時間"
         other: "約%{count}時間"

@@ -1,6 +1,9 @@
 <div class="pdcaposts-index--wrapper">
   <div class="row">
-    <aside class="col-md-3">
+    <h2 class="page-title">
+         <span>PDCA報告</span>
+    </h2>
+    <aside class="col-md-4">
         <h4 class="form-title">
          <span>PDCA報告フォーム</span>
         </h4>
@@ -10,10 +13,7 @@
          <% end %>
       </section>
     </aside>
-    <div class="col-md-9">
-        <h2 class="page-title">
-         <span>PDCA報告</span>
-        </h2>
+    <div class="col-md-8">
     <ul>
     <% @pdcaposts.each do |pdcapost| %>
       <li id="pdcapost-<%= pdcapost.id %>" class="">

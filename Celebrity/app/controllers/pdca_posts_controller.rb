@@ -13,7 +13,7 @@ class PdcaPostsController < ApplicationController
         flash[:success] = "PDCA報告が投稿されました"
         redirect_to pdca_posts_url
       else
-        flash[:danger] = "PDCA報告が投稿されませんでした"
+        flash[:danger] = "全てのPDCA項目を入力してから報告してください"
         redirect_to :back
       end
     end
