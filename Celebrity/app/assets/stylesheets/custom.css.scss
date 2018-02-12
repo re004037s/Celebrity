@@ -482,6 +482,24 @@ li.first-child {
     width: 100%;
   }
   
+  ul, li{
+    list-style-type: none;
+  }
+  
+  .report{
+    margin: 15px auto;
+    padding: 0px 100px;
+    display: flex;
+  }
+  
+  .icon {
+    width: 50px;
+  	height: 50px;
+  	border-radius: 50%;
+  	background-color: #FFF;
+  	margin-right: 15px;
+  }
+  
   .form-title {
     text-align: center;
     font-family: serif;
@@ -505,16 +523,28 @@ li.first-child {
 	background: #FFFFFF;
 	color: black;
 	border: 0px solid #777;
-	margin: auto;
+	
 	padding: 5px 10px;
 	border-radius: 15px;
 	width: 400px;
 	clear: both;
 }
 
+.update_button {
+  float: right;
+}
+
 .edit, .delete{
   float: right;
   margin: 0px 5px 5px 5px;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
 }
   
 }
