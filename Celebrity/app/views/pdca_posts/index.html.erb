@@ -39,7 +39,7 @@
         <% end %>
         <input type="button" class='btn btn-default active post-regist hide update_button' value='キャンセル' onclick="hide_edit(this);return false;"  %>
         <span class="timestamp">
-          Posted <%= time_ago_in_words(pdcapost.updated_at) %> ago.
+          <%= date_format(pdcapost.created_at) %>
         </span>
         <% if pdcapost.user_id == current_user.id %>
         <span>
