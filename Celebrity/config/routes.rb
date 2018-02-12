@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'skillsheet/index'
 
   get 'password_resets/new'
   get 'password_resets/edit'
@@ -34,6 +33,7 @@ Rails.application.routes.draw do
   end
   resources :qiita_posts
   resources :interview_posts
+  resources :skillsheets
   
   # resources :tags #userページに飛びたいのでいらない
   # resources :user_tags #追加
