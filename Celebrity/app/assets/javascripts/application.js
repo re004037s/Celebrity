@@ -12,8 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-
-//= require tag-it
 //= require_self
 //= require bootstrap
 
