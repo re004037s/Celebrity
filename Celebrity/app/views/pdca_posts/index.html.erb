@@ -89,20 +89,20 @@ var defaultHTML;
         cancel_button.addClass('show');
       };
       
-      function hide_edit(e){
-        var update_button = $(e).parent().children('form').children('input[type="submit"]');
-        var textarea = $(e).parent().children('form').children('textarea');
-        var edit_link = $(e).parent().children('span').children('a');
-        var delete_link = $(e).parent().children('a');
-        textarea.prop("disabled", true);
-        $(e).removeClass('show');
-        $(e).addClass('hide');
-        update_button.removeClass('show');
-        update_button.addClass('hide');
-        delete_link.removeClass('hide');
-        delete_link.addClass('show');
-        edit_link.removeClass('hide');
-        edit_link.addClass('show');
-      };
+      // function hide_edit(e){
+      //   var update_button = $(e).parent().children('form').children('input[type="submit"]');
+      //   var textarea = $(e).parent().children('form').children('textarea');
+      //   var edit_link = $(e).parent().children('span').children('a');
+      //   var delete_link = $(e).parent().children('a');
+      //   textarea.prop("disabled", true);
+      //   $(e).removeClass('show');
+      //   $(e).addClass('hide');
+      //   update_button.removeClass('show');
+      //   update_button.addClass('hide');
+      //   delete_link.removeClass('hide');
+      //   delete_link.addClass('show');
+      //   edit_link.removeClass('hide');
+      //   edit_link.addClass('show');
+      // };
   
 </script>

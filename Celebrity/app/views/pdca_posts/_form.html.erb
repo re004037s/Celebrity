@@ -1,13 +1,13 @@
       <%= f.label :date, "Date", class: 'txt1' %>
       <%= f.date_field :date, class: 'form-control' %>
       <%= f.label :plan, "Plan", class: 'txt1' %>
-      <%= f.text_area :plan, class: 'form-control' %>
+      <%= f.text_area :plan, class: 'form-control', placeholder: "目標を入力してください" %>
       <%= f.label :do, "Do", class: 'txt1' %>
-      <%= f.text_area :do, class: 'form-control' %>
+      <%= f.text_area :do, class: 'form-control', placeholder: "目標に対して実行したことを入力してください" %>
       <%= f.label :check, "Check", class: 'txt1' %>
-      <%= f.text_area :check, class: 'form-control' %>
+      <%= f.text_area :check, class: 'form-control', placeholder: "実行したことに対して評価を入力してください" %>
       <%= f.label :action, "Action", class: 'txt1' %>
-      <%= f.text_area :action, class: 'form-control' %>
+      <%= f.text_area :action, class: 'form-control', placeholder: "評価に対して改善策を入力してください" %>
       <%= f.hidden_field :user_id, :value => current_user.id %>
     <div class="center mt_20">
         <%= f.submit '登録', {class: 'btn btn-default active post-regist' }%>
