@@ -26,6 +26,8 @@
         <div class="left_balloon">
         <span type="text" class=""><%= link_to pdcapost.user.nickname, pdcapost.user %></span><br/>
         <%= form_for (pdcapost) do |f| %>
+        <%= f.label :date, "Date", class: 'txt1' %>
+        <%= f.date_field :date, class: 'form-control', style: 'line-height: 12px;', disabled: true %>
         <%= f.label :plan, "Plan", class: 'txt1' %>
         <%= f.text_area :plan, :value => pdcapost.plan, class: 'form-control', disabled: true %>
         <%= f.label :do, "Do", class: 'txt1' %>

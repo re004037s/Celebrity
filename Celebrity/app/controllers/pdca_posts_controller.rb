@@ -43,7 +43,7 @@ class PdcaPostsController < ApplicationController
   private
 
     def pdcapost_params
-      params.require(:pdca_post).permit(:plan, :do, :check, :action, :user_id)
+      params.require(:pdca_post).permit(:date, :plan, :do, :check, :action, :user_id)
     end
     
 end
