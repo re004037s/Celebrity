@@ -24,7 +24,8 @@ class PdcaPostsController < ApplicationController
       flash[:success] = "PDCA報告が更新されました"
       redirect_to pdca_posts_url
     else
-      render 'edit'
+      flash[:danger] = "全てのPDCA項目を入力してから更新してください"
+      redirect_to :back
     end
   end
 

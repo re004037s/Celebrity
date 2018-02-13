@@ -486,6 +486,11 @@ li.first-child {
     list-style-type: none;
   }
   
+  input[type="date"].form-control {
+    line-height:12px; 
+    width:50%;
+  }
+  
   .report{
     margin: 15px auto;
     padding: 0px 50px;
@@ -549,6 +554,19 @@ li.first-child {
 
 .show {
   display: block;
+}
+
+@media screen and (max-width:480px){
+  .report{
+    margin: 15px auto;
+    display: flex;
+    padding: 0;
+  }
+  
+  input[type="date"].form-control {
+    line-height:12px; 
+    width:100%;
+  }
 }
   
 }

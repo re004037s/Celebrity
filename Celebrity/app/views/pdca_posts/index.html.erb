@@ -29,7 +29,7 @@
                 </span><br/>
                 <%= form_for (pdcapost) do |f| %>
                   <%= f.label :date, "Date", class: 'txt1' %>
-                  <%= f.date_field :date, class: 'form-control', style: 'line-height:12px;  width:50%;', disabled: true %>
+                  <%= f.date_field :date, class: 'form-control', disabled: true %>
                   <%= f.label :plan, "Plan", class: 'txt1' %>
                   <%= f.text_area :plan, :value => pdcapost.plan, class: 'form-control', disabled: true %>
                   <%= f.label :do, "Do", class: 'txt1' %>
@@ -41,7 +41,7 @@
                   <%= f.hidden_field :id, :value => pdcapost.id %>
                   <%= f.submit '更新', {class: 'btn btn-default active post-regist hide update_button' }%>
                 <% end %>
-                <input type="button" class='btn btn-default active post-regist hide update_button' value='キャンセル' onclick="hide_edit(this);return false;"  %>
+                <input type="button" class='btn btn-default active post-regist hide update_button' value='キャンセル' onclick="HTMLRestore();return false;"  %>
                 <span class="timestamp">
                   <%= date_format(pdcapost.created_at) %>
                 </span>
@@ -64,6 +64,14 @@
   </div>
 </div>
 <script>
+var defaultHTML;
+       window.onload = function(){
+          defaultHTML = document.body.innerHTML;
+        }
+        // HTML記述を初期状態に戻す
+        function HTMLRestore() {
+          document.body.innerHTML = defaultHTML;
+        }
     
       function show_edit(e){
         var update_button = $(e).parent().parent().children('form').children('input[type="submit"]');
