@@ -11,12 +11,10 @@
     </thead>
           
           
- <% @users.each do |user| %>
-        <% if user.existence %>
-          <tr>
-            <td><%= user.nickname %></td>
-              
-                <td><%= link_to user.skillsheet, user_path(user, user_id: user.id) if user.skillsheet %></td>
-              
-              <% end %>
-              <% end %>
+  <% @users.each do |user| %>
+    <% if user.existence %>
+      <tr>
+        <td><%= user.nickname %></td>
+        <td><%= link_to user.skillsheet, user_path(user, user_id: user.id) if user.skillsheet %></td>
+    <% end %>
+  <% end %>
