@@ -3,7 +3,7 @@ class PdcaPostsController < ApplicationController
     # before_action :correct_user,   only: [:edit, :update, :destroy]
   
     def index
-      @pdcaposts = PdcaPost.all.page(params[:page])
+      @pdcaposts = PdcaPost.all.page(params[:page]).per(15)
       @pdcapost = PdcaPost.new
     end
     
