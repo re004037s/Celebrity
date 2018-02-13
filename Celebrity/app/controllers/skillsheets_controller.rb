@@ -26,15 +26,6 @@ class SkillsheetsController < ApplicationController
   end
 
   def create
-    @skillsheet = Skillsheet.new(skillsheet_paprams)
-    @skillsheet.name = params[:skillsheet][:excel].original_filename
-    @skillsheet.picture = params[:skillsheet][:excel].read
-
-    if @skillsheet.save
-      redirect_to root_path
-    else
-      render 'new'
-    end
   end
 
   private
