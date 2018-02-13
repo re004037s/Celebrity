@@ -220,8 +220,6 @@ ActiveRecord::Schema.define(version: 20180207131044) do
     t.text     "tag"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "color"
-    t.binary   "icon"
   end
 
   create_table "user_movie_statuses", force: :cascade do |t|

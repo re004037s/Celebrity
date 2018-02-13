@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   post '/login', to:'sessions#create'
   delete '/logout', to:'sessions#destroy'
   
-  
+  get 'skillsheets/index'
+  get 'skillsheets/download'
   
   resources :users do
       member do
@@ -42,6 +43,7 @@ Rails.application.routes.draw do
   patch '/tag_edit', to:'users#tag_edit' #追加
   patch '/tag_show', to:'users#tag_show' #追加 sugi
   delete '/delete_tag', to: 'users#tag_delete' #temp post⇨deleteに変更しshow.htmlと統一
+  patch '/post_skillsheet', to: 'users#update_skillsheet'
   root 'top#index'
 
   get '/progate', to: 'static_pages#progate'
