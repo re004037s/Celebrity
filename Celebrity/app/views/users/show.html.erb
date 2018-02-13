@@ -64,6 +64,7 @@
   <%= form_for(@user, url: tag_show_path) do |f| %>
     <%= f.text_field :tags , value:'', placeholder: 'タグを入力【20文字(英字or半角スペース)までOK】' %>
     <%= f.submit '登録', id:'tag-submit', class: 'btn btn-default active', :disabled => 'true' %>
+    <%= f.hidden_field :id, :value => "#{@user.id}" %>
   <% end %>
   
   <p>登録済みのタグ一覧：</p>
