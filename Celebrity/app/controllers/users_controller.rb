@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     user_id_in_param = params[:user][:id]
 
     if current_user.id != user_id_in_param.to_i
-      flash[:danger] = 'アドミンがユーザーページからユーザーのタグを変更できません'
+      flash[:danger] = 'アドミンがユーザーページからユーザー情報を変更できません'
       redirect_to @user
       return
     end
