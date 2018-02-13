@@ -22,8 +22,8 @@ class UsersController < ApplicationController
   def update_picture
     @user = current_user
     user_id_in_param = params[:user][:id]
-    
-    if current_user.id != user_id_in_param
+
+    if current_user.id != user_id_in_param.to_i
       flash[:danger] = 'アドミンがユーザーページからユーザーのタグを変更できません'
       redirect_to @user
       return
