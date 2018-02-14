@@ -11,9 +11,10 @@ $background-grey: #f4f4f4;
 @import "mixin";  //オリジナル設定のクラス
 
 /* カスタムフォントの設定 */
-@include font-face('flopdesign-kana', font_url('flopdesign-kana/flopdesign-kana'), null, null, eot ttf);
-@include font-face('Open Sans', 'https://fonts.googleapis.com/css?family=Open+Sans', null, null, ttf otf);
-@include font-face('Prata', 'https://fonts.googleapis.com/css?family=Prata', null, null, ttf otf);
+@include font-face('flopdesign-kana', font_url('flopdesign-kana/flopdesign-kana'), null, null, ttf); //ヒラギノ Type
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300'); //Helvetica Type
+@import url('https://fonts.googleapis.com/css?family=Prata'); //Bodoni72 Type
+
 
 /*共通設定のインポート*/
 @import "common";  //全体
@@ -25,7 +26,6 @@ $background-grey: #f4f4f4;
 @import "forms";  //フォーム
 @import "tables";  //テーブル
 @import "parts";  //ボタンや矢印など
-
 
 
 
