@@ -7,20 +7,21 @@
   ⬇︎<br><br>
   <%= link_to "ここからダウンロード！", {:controller => "skillsheets",:action=>"download" }, {method: :get, class: "btn btn-default active"} %>
   </h4>
-  
+ 
   <br><br>
+  <div class="panel panel-default panel-body mg_auto wh_30" style=width:70%;>
   ① ダウンロード後、スキルシートを編集して下さい<br>
   ②「ファイルを選択」ボタンから編集したスキルシートを選択して下さい<br>
   ③「登録する」ボタンを押すと、スキルシートが自分の欄に登録されます<br><br><br>
-
-  <div id="upload-my-picture" class="mg_auto wh_30">
+    <div class="mg_auto wh_30">
     <%= form_for(@user, url: post_skillsheet_path, multipart: true, :id => 'form_id' ) do |f| %>
-      <%= f.file_field :file %>
-    <%= f.submit '登録する', id: 'fileuploader', class: 'btn btn-default active fileuploader', data:{disable_with:'cannot upload…'} %>
+      <%= f.file_field :file %><br>
+      <%= f.submit '登録する', id: 'fileuploader', class: 'btn btn-primary active fileuploader', data:{disable_with:'cannot upload…'} %>
     <% end %>
+    </div>
   </div>
 
-  <br><br>
+  <br><br><br>
   <table class="table table-bordered table-striped table-index">
     <thead>
       <tr>
