@@ -94,7 +94,6 @@ var defaultHTML;
       };
       
       $("#form").on('submit', function(e){
-
         // validation用のメッセージなどの配列を用意
         var validationMessages = [];
         
@@ -118,11 +117,9 @@ var defaultHTML;
           formvalidations.innerHTML = '全てのPDCA項目を入力してから報告してください';
           return false;
         }
-        
       });
       
       $(".form").on('submit', function(e){
-
         // validation用のメッセージなどの配列を用意
         var validationMessages = [];
         
