@@ -8,13 +8,15 @@
         <span>PDCA報告フォーム</span>
       </h4>
       <section class="user_info form_balloon">
-        <%= form_for(@pdcapost) do |f| %>
+        <div id="formvalidations"></div>
+        <%= form_for(@pdcapost, html: {id: 'form'}) do |f| %>
           <%= render partial: 'form', locals: {f: f} %>
         <% end %>
       </section>
     </aside>
     <div class="col-md-8">
       <ul>
+        <div id="validations"></div>
         <% @pdcaposts.each do |pdcapost| %>
           <li id="pdcapost-<%= pdcapost.id %>" class="">
             <div class="report">
@@ -27,7 +29,7 @@
                 <span type="text" class="">
                   <%= pdcapost.user.nickname %>
                 </span><br/>
-                <%= form_for (pdcapost) do |f| %>
+                <%= form_for pdcapost,  html: {class: 'form'} do |f| %>
                   <%= f.label :date, "Date", class: 'txt1' %>
                   <%= f.date_field :date, class: 'form-control', disabled: true %>
                   <%= f.label :plan, "Plan", class: 'txt1' %>
@@ -90,5 +92,61 @@ var defaultHTML;
         cancel_button.removeClass('hide');
         cancel_button.addClass('show');
       };
-  
+      
+      $("#form").on('submit', function(e){
+
+        // validation用のメッセージなどの配列を用意
+        var validationMessages = [];
+        
+        validationMessages = $(e)[0].currentTarget.getElementsByClassName('form-control');
+        
+        var error_number = 0;
+        
+        $.each(validationMessages,function(index,val){
+          if(!val.value){
+            val.style.backgroundColor = '#FFE2F3';
+            error_number = error_number + 1;
+          }
+        });
+        
+        var form_errormessages = document.getElementById('#formvalidations');
+        
+        if(error_number == 0){
+          return true;
+        }else{
+          formvalidations.style.color = 'red';
+          formvalidations.innerHTML = '全てのPDCA項目を入力してから報告してください';
+          return false;
+        }
+        
+      });
+      
+      $(".form").on('submit', function(e){
+
+        // validation用のメッセージなどの配列を用意
+        var validationMessages = [];
+        
+        validationMessages = $(e)[0].currentTarget.getElementsByClassName('form-control');
+        
+        var error_number = 0;
+        
+        $.each(validationMessages,function(index,val){
+          if(!val.value){
+            val.style.backgroundColor = '#FFE2F3';
+            error_number = error_number + 1;
+          }
+        });
+        
+        var errormessages = document.getElementById('#validations');
+        
+        if(error_number == 0){
+          return true;
+        }else{
+          validations.style.color = 'red';
+          validations.innerHTML = '全てのPDCA項目を入力してから更新してください';
+          return false;
+        }
+        
+      })
+      
 </script>
