@@ -9,7 +9,7 @@
     [ <%= @user.name %> ]
   </h3>
 
-  <div class="center">
+  <div class="center" style="display:none">
     <% if @user.picture_file %>
     <%= image_tag(get_image_user_path) %>
     <% else %>
@@ -17,7 +17,7 @@
     <% end %>
   </div>
 
-  <div class="center mt_20">
+  <div class="center mt_20" style="display:none">
     <button class="edit-my-picture btn btn-default active">写真を編集する</button>
   
     <div id="upload-my-picture" class="mg_auto wh_30">
@@ -59,7 +59,7 @@
     });
   </script>
 
-  <div id="tag-controll">
+  <div id="tag-controll" style="display:none">
     
   <%= form_for(@user, url: tag_show_path) do |f| %>
     <%= f.text_field :tags , value:'', placeholder: 'タグを入力【20文字(英字or半角スペース)までOK】' %>
