@@ -1,11 +1,12 @@
 // カスタムフォント
 
-@mixin font-face($name, $path, $weight: null, $style: null, $exts: otf ttf) {
+@mixin font-face($name, $path, $weight: null, $style: null, $exts: otf ttf eot woff) {
   $src: null;
 
   $formats: (
-    otf: "opentype",
-    ttf: "truetype"
+    otf:  "opentype",
+    ttf:  "truetype",
+    eot:  "embedded-opentype"
   );
   
   @each $ext in $exts {
@@ -18,5 +19,6 @@
     font-style:  $style;
     font-weight: $weight;
     src: $src;
+    font-display: swap;
   }
 }
