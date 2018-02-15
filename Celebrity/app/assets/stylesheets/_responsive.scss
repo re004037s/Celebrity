@@ -1,13 +1,26 @@
 //スマホ・タブレット用（992px未満）
 
-// @media (max-width: 991px) {
+@media (max-width: 991px) {
   
-//   .header-wrapper{
-//     height: 50px;
-//   }
+  // .header-wrapper{
+  //   height: 50px;
+  // }
   
-//   .footer-wrapper {
-//     height: 70px;
-//   }
+  // .footer-wrapper {
+  //   height: 70px;
+  // }
   
-// }
+  .sidebar-wrapper {
+    margin: 0 auto;
+  }
+  
+  .top-index--wrapper {
+    margin: 0 auto;
+  }
+  
+  .moviecategories-show--wrapper {
+    margin: 0 auto;
+  }
+  
+}
+
