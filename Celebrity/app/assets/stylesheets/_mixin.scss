@@ -1,11 +1,12 @@
 // カスタムフォント
 
-@mixin font-face($name, $path, $weight: null, $style: null, $exts: otf ttf) {
+@mixin font-face($name, $path, $weight: null, $style: null, $exts: otf ttf eot woff) {
   $src: null;
 
   $formats: (
-    otf: "opentype",
-    ttf: "truetype"
+    otf:  "opentype",
+    ttf:  "truetype",
+    eot:  "embedded-opentype"
   );
   
   @each $ext in $exts {
@@ -18,5 +19,11 @@
     font-style:  $style;
     font-weight: $weight;
     src: $src;
+    font-display: swap;
   }
 }
+
+body { font-family: "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "flopdesign-kana", "Meiryo", "メイリオ", "MS P", sans-serif; }
+
+.sidebar-title { font-family: 'Prata', serif; }
+.page-title { font-family: 'Prata', serif; }

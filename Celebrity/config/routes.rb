@@ -35,6 +35,11 @@ Rails.application.routes.draw do
   resources :qiita_posts
   resources :interview_posts
   resources :skillsheets
+  resources :pdca_posts do 
+    collection do
+        get 'get_image'
+    end
+  end
   
   # resources :tags #userページに飛びたいのでいらない
   # resources :user_tags #追加
@@ -53,6 +58,7 @@ Rails.application.routes.draw do
   post '/comments/create', to: 'portfolio_comments#create'
   post '/comments/:id/destroy', to: 'portfolio_comments#destroy'
   get '/qa', to: 'static_pages#qa'
+  get '/pdca_post/get_image/:id', to: 'pdca_posts#get_image'
   get '/portfolio_mv', to: 'static_pages#portfolio_mv'
   # post '/tag_show', to: 'users#tag_show'#ルーティング指定したけどエラー
   patch '/html_css_status', to: 'html_css_statuses#update'

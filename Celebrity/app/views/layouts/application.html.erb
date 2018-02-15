@@ -10,7 +10,7 @@
     <%= csrf_meta_tags %>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -62,12 +62,12 @@
               
                 <div class="row">
                   
-                  <div class="col-md-8">
+                  <div class="col-md-7">
                     <%= yield :with_sidebar %>
                   </div>
                   
                   <!--サイドバー-->
-                  <aside class="col-md-4">
+                  <aside class="col-md-5">
                     <%= render 'layouts/aside' %>
                   </aside>
                 </div>

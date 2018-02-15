@@ -1,0 +1,2 @@
+module PdcaPostsHelper
+end
