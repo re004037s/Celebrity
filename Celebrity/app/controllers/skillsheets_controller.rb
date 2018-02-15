@@ -15,22 +15,9 @@ class SkillsheetsController < ApplicationController
       :type => 'application/excel',
       :filename => 'スキルシート(sample).xls'
     )
-   end
-  
-  def update_skillsheet
-    @user = current_user
-    unless params[:user].try(:[],:file) == nil
-      upload_skillsheet = user_params[:file]
-      if @user.update_columns(skillsheet: upload_skillsheet)
-        #@user.update(skillsheet_path: params[:file]) 
-        flash[:success] = 'ファイルを保存しました！'
-        redirect_to skillsheets_path
-      else
-        flash[:error] = 'ファイルの保存に失敗しました！'
-        redirect_to skillsheets_path
-      end
-    end
   end
+  
+  
   
   def new
   end
