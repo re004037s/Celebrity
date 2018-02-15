@@ -471,6 +471,107 @@ li.first-child {
   margin: 0 auto;
 }
 
+// PDCA報告ページ 
+.pdcaposts-index--wrapper {
+  
+  p {
+    margin: auto;
+  }
+  
+  textarea {
+    width: 100%;
+  }
+  
+  ul, li{
+    list-style-type: none;
+  }
+  
+  input[type="date"].form-control {
+    line-height:12px; 
+    width:50%;
+  }
+  
+  .report{
+    margin: 15px auto;
+    padding: 0px 50px;
+    display: flex;
+  }
+  
+  .icon {
+    width: 50px;
+  	height: 50px;
+  	border-radius: 50%;
+  	background-color: #FFF;
+  	margin-right: 15px;
+  }
+  
+  .form-title {
+    text-align: center;
+    font-family: serif;
+     margin: 20px auto; 
+  }
+  
+  .form_balloon {
+	position: relative;
+	background: #FFFFFF;
+	color: black;
+	border: 0px solid #777;
+	margin: auto;
+	padding: 5px 10px;
+	border-radius: 15px;
+	width: 350px;
+	clear: both;
+}
+
+.date_field {
+  line-height: 12px;
+}
+  
+  .left_balloon {
+	position: relative;
+	background: #FFFFFF;
+	color: black;
+	border: 0px solid #777;
+	
+	padding: 5px 10px;
+	border-radius: 15px;
+	width: 450px;
+	clear: both;
+}
+
+.update_button {
+  float: right;
+  margin-left: 5px;
+}
+
+.edit, .delete{
+  float: right;
+  margin: 0px 5px 5px 5px;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+@media screen and (max-width:480px){
+  .report{
+    margin: 15px auto;
+    display: flex;
+    padding: 0;
+  }
+  
+  input[type="date"].form-control {
+    line-height:12px; 
+    width:100%;
+  }
+}
+  
+}
+
 
 //＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊
 

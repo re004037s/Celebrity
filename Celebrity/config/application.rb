@@ -18,5 +18,6 @@ module Celebrity
     config.autoload_paths += Dir[Rails.root.join('app', 'uploaders')]
     config.autoload_paths += %W(#{config.root}/lib)
     config.enable_dependency_loading = true
+    config.i18n.default_locale = :ja
   end
 end
