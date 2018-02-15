@@ -1,4 +1,5 @@
 class RailstutorialStatusesController < ApplicationController
+  before_action :correct_user_for_edit, only:[:update_schedule, :update]
   
   def update_schedule
     @schedule_date = params[:date]
@@ -113,4 +114,14 @@ class RailstutorialStatusesController < ApplicationController
       end
     end
   end
+  
+  private
+    #adminがedit,updateをするのを制限する 
+    def correct_user_for_edit
+      @user = User.find(params[:railstutorial_status][:id])
+      flash[:danger] = "アドミンは一般ユーザーの個別情報を編集できません"
+      redirect_to root_url unless current_user?(@user)
+    end    
+  
+  
 end

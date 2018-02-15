@@ -1,5 +1,6 @@
 class RubyStatusesController < ApplicationController
    before_action :progate_check
+   before_action :correct_user_for_edit, only:[:update_schedule, :update]
 
   def update_schedule
     @schedule_date = params[:date]
@@ -67,4 +68,12 @@ class RubyStatusesController < ApplicationController
           @progate_comp_flag = false
       end
     end
+    
+    #adminがedit,updateをするのを制限する 
+    def correct_user_for_edit
+      @user = User.find(params[:ruby_status][:id])
+      flash[:danger] = "アドミンは一般ユーザーの個別情報を編集できません"
+      redirect_to root_url unless current_user?(@user)
+    end
+    
 end

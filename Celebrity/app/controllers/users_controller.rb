@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   before_action :correct_user, only: [:show, :edit, :update]
   before_action :existence_user, only: [:show, :edit, :update]
   before_action :administrator_user, only: :new
+  before_action :correct_user_for_edit,
+    only:[:edit, :update, :update_picture, :tag_show, :tag_delete]
   
   def index
     @users = User.page(params[:page])
@@ -117,15 +119,20 @@ class UsersController < ApplicationController
   private
   
     def user_params
-
       params.require(:user).permit(:name, :nickname, :line_id, :email, :password, :password_confirmation, :portfolio_path, :github_path, :picture_file, :picture)
-
     end
     
     # ログイン済み or 管理ユーザであれば true を返す
     def correct_user
       @user = User.find(params[:id])
       redirect_to root_url unless current_user?(@user) || current_user.admin
+    end
+   
+    #adminがedit,updateをするのを制限する 
+    def correct_user_for_edit
+      @user = User.find(params[:id])
+      flash[:danger] = "アドミンは一般ユーザーの個別情報を編集できません"
+      redirect_to root_url unless current_user?(@user)
     end
     
     # アクセスしようとしているページが削除ユーザのものである場合はルートURLへリダイレクト
@@ -134,10 +141,9 @@ class UsersController < ApplicationController
       redirect_to root_url unless existence_user?(@user)
     end
 
-
     # 管理者かどうか確認
     def administrator_user
       redirect_to root_url if current_user == nil || !current_user.admin
     end
-
+    
 end
