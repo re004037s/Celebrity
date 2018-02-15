@@ -92,7 +92,7 @@ User.create(name: 'ベーブルース',
             password: 'password',
             password_confirmation: 'password',
             admin: false,
-            existence: true,
+            existence: false,
             line_id: 43210)
 
 

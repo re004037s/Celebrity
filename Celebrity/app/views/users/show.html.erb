@@ -3,13 +3,13 @@
   <h2 class="page-title">
     <span>MY PAGE</span>
   </h2>
-
+  
   <h3 class="center">
     <%= @user.nickname %>
     [ <%= @user.name %> ]
   </h3>
-
-  <div class="center">
+  <h4 style="color: red;">現在プロフィール写真投稿機能及びタグ機能は修正中のため一旦非表示にしております。ご不便をお掛けして申し訳ございません。</h4>
+  <div class="center" style="display:none">
     <% if @user.picture_file %>
     <%= image_tag(get_image_user_path) %>
     <% else %>
@@ -17,10 +17,9 @@
     <% end %>
   </div>
 
-  <div class="center mt_20">
-    
-   
-    
+
+  <div class="center mt_20" style="display:none">
+
     <button class="edit-my-picture btn btn-default active">写真を編集する</button>
   
     <div id="upload-my-picture" class="mg_auto wh_30">
@@ -36,7 +35,9 @@
       <% end %>
     </div>
   </div>
+  
  <div class="picture_resize">
+   
   <script type="text/javascript">
     $('#user_picture').bind('change', function() {
       
@@ -64,8 +65,11 @@
      
     });
   </script>
- </div>
-  <div id="tag-controll">
+
+
+
+  <div id="tag-controll" style="display:none">
+
     
   <%= form_for(@user, url: tag_show_path) do |f| %>
     <%= f.text_field :tags , value:'', placeholder: 'タグを入力【20文字(英字or半角スペース)までOK】' %>

@@ -8,14 +8,19 @@ class PasswordResetsController < ApplicationController
 
   def create
     @user = User.find_by(email: params[:password_reset][:email].downcase)
-    if @user
-      @user.create_reset_digest
-      @user.send_password_reset_email
+    if @user.try(:existence) #existanceがtureかfalseで判断
+      if @user
+        @user.create_reset_digest
+        @user.send_password_reset_email
    
-      flash[:info] = "パスワード再設定用のメールが送信されました。"
-      redirect_to login_url
+        flash[:info] = "パスワード再設定用のメールが送信されました。"
+        redirect_to login_url
+      else
+        flash.now[:danger] = "メールアドレスが無効です。"
+        render 'new'
+      end
     else
-      flash.now[:danger] = "メールアドレスが無効です。"
+      flash.now[:info] = "ユーザが存在しません" #elseの場合 "ユーザが存在しません。" と表示する
       render 'new'
     end
   end
@@ -23,8 +28,8 @@ class PasswordResetsController < ApplicationController
   def edit
   end
   
-   def update
-    if params[:user][:password].empty?                  
+  def update
+    if params[:user][:password].empty?               
       @user.errors.add(:password, :blank)
       render 'edit'
     elsif @user.update_attributes(user_params)  
