@@ -1,7 +1,17 @@
 .page-title {
   text-align: center;
   font-size: 30px;
-  font-family: serif;
+  margin: 20px auto;
+  span {
+    padding: 0 0.5em;
+    padding-bottom: 0.2em;
+    border-bottom: 2px solid black;
+  }
+}
+
+.page-title-jp {
+  text-align: center;
+  font-size: 30px;
   margin: 20px auto;
   span {
     padding: 0 0.5em;

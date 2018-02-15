@@ -8,7 +8,13 @@ $background-grey: #f4f4f4;
 
 /*定義した変数やクラスのインポート*/
 @import "variables"; //ベースカラーなどの設定
-@import "classes";  //オリジナル設定のクラス
+@import "mixin";  //オリジナル設定のクラス
+
+/* カスタムフォントの設定 */
+@include font-face('flopdesign-kana', font_url('flopdesign-kana/flopdesign-kana'), null, null, ttf); //ヒラギノ Type
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300'); //Helvetica Type
+@import url('https://fonts.googleapis.com/css?family=Prata'); //Bodoni72 Type
+
 
 /*共通設定のインポート*/
 @import "common";  //全体
@@ -20,6 +26,8 @@ $background-grey: #f4f4f4;
 @import "forms";  //フォーム
 @import "tables";  //テーブル
 @import "parts";  //ボタンや矢印など
+
+
 
 
 // ＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊
@@ -184,8 +192,8 @@ $background-grey: #f4f4f4;
 
 
 .top-index--wrapper {
-  width: 84.8%;
-  margin: 0 auto;
+  width: 97.0%;
+  // margin: 0 auto;
   margin-top: 30px;
 }
 
@@ -199,6 +207,8 @@ $background-grey: #f4f4f4;
 }
 
 .produce-list {
+  width: 90%;
+  margin: 0 auto;
   margin-top: 50px;
   
   li {
@@ -468,7 +478,7 @@ li.first-child {
 // 動画閲覧ページ
 .moviecategories-show--wrapper {
   max-width: 480px;
-  margin: 0 auto;
+  //margin: 0 auto;
 }
 
 // PDCA報告ページ 

@@ -10,14 +10,14 @@
   position: relative;
   height: 100px;
   margin: 0 auto;
-  max-width: 960px;
+  max-width: 1000px;
 }
 
 .header-logo-wrapper {
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 0;
+  left: -5px;
   z-index: 1;
   
   width: 100%;
@@ -51,13 +51,14 @@
   }
   
   li {
+    font-family: 'Open Sans', sans-serif;
     display: inline-block;
-    margin: 0 15px;
+    margin: 0 18px;
     
     a {
       color: #ccc;
       font-size: 13px;
-      font-weight: 300;
+      // font-weight: 300;
       
       &:hover {
         background-color: rgba(0,0,0,0);
