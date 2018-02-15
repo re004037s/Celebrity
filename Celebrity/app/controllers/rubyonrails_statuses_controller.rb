@@ -153,8 +153,12 @@ class RubyonrailsStatusesController < ApplicationController
     #adminがedit,updateをするのを制限する 
     def correct_user_for_edit
       @user = User.find(params[:rubyonrails_status][:id])
-      flash[:danger] = "アドミンは一般ユーザーの個別情報を編集できません"
-      redirect_to root_url unless current_user?(@user)
+      if current_user?(@user)
+        flash[:info] = "完了予定日を #{params[:date]} に設定しました"
+      else
+        flash[:danger] = "アドミンは一般ユーザーの個別情報を編集できません"
+        redirect_to root_url 
+      end
     end
     
     

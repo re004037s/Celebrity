@@ -1,5 +1,5 @@
 class UserMovieStatusesController < ApplicationController
-  before_action :correct_user_for_edit, only:[:update_schedule, :update]
+  before_action :correct_user_for_edit, only:[:update_schedule]
   
   def update_schedule
     @schedule_date = params[:date]
@@ -11,9 +11,12 @@ class UserMovieStatusesController < ApplicationController
     #adminがedit,updateをするのを制限する 
     def correct_user_for_edit
       @user = User.find(params[:user_movie_status][:id])
-      flash[:danger] = "アドミンは一般ユーザーの個別情報を編集できません"
-      redirect_to root_url unless current_user?(@user)
-    end    
-  
+      if current_user?(@user)
+        flash[:info] = "完了予定日を #{params[:date]} に設定しました"
+      else
+        flash[:danger] = "アドミンは一般ユーザーの個別情報を編集できません"
+        redirect_to root_url 
+      end
+    end
   
 end
