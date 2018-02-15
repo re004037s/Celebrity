@@ -15,7 +15,7 @@ class SkillsheetsController < ApplicationController
       :type => 'application/excel',
       :filename => 'スキルシート(sample).xls'
     )
-  end
+   end
   
   def update_skillsheet
     @user = current_user
