@@ -18,23 +18,29 @@
   </div>
 
   <div class="center mt_20">
+    
+   
+    
     <button class="edit-my-picture btn btn-default active">写真を編集する</button>
   
     <div id="upload-my-picture" class="mg_auto wh_30">
+    
+       
+         
       <%= form_for(@user, url: post_pic_path, :id => 'form_id' ) do |f| %>
       <div class="form-group has-error">
         <span id="__has-warning" style="color: red;">画像を選択してください</span>
-        <%= f.file_field :picture, accept: 'image/*' %>
+        <%= f.file_field :picture, accept: 'image/*'%>
         <%= f.submit '画像をアップロード', id: 'fileuploader', class: 'btn btn-default active fileuploader', :disabled => 'true' %>
       </div>
       <% end %>
     </div>
   </div>
-
+ <div class="picture_resize">
   <script type="text/javascript">
     $('#user_picture').bind('change', function() {
       
-    var size_in_megabytes = this.files[0].size/1024/1024;
+   # var size_in_megabytes = this.files[0].size/1024/1024;
     
     // 画像未選択の場合
     if (size_in_megabytes === null){
@@ -58,7 +64,7 @@
      
     });
   </script>
-
+ </div>
   <div id="tag-controll">
     
   <%= form_for(@user, url: tag_show_path) do |f| %>
