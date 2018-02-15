@@ -131,8 +131,11 @@ class UsersController < ApplicationController
     #adminがedit,updateをするのを制限する 
     def correct_user_for_edit
       @user = User.find(params[:id])
-      flash[:danger] = "アドミンは一般ユーザーの個別情報を編集できません"
-      redirect_to root_url unless current_user?(@user)
+      if current_user?(@user)
+      else
+        flash[:danger] = "アドミンは一般ユーザーの個別情報を編集できません"
+        redirect_to root_url 
+      end
     end
     
     # アクセスしようとしているページが削除ユーザのものである場合はルートURLへリダイレクト

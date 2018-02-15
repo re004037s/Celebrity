@@ -4,9 +4,15 @@ class RubyStatusesController < ApplicationController
 
   def update_schedule
     @schedule_date = params[:date]
-    @ruby_status = current_user.ruby_status
-    @ruby_status.update_attributes(schedule_date: @schedule_date)
-    redirect_to current_user
+    if @schedule_date == ""
+      flash[:danger] = "完了予定日がブランクです。完了予定日を選択してください"
+      redirect_to current_user
+    else
+      @status = current_user.ruby_status
+      @status.update_attributes(schedule_date: @schedule_date)
+      flash[:info] = "完了予定日を #{params[:date]} に設定しました"
+      redirect_to current_user
+    end
   end
 
   def update
@@ -73,7 +79,6 @@ class RubyStatusesController < ApplicationController
     def correct_user_for_edit
       @user = User.find(params[:ruby_status][:id])
       if current_user?(@user)
-        flash[:info] = "完了予定日を #{params[:date]} に設定しました"
       else
         flash[:danger] = "アドミンは一般ユーザーの個別情報を編集できません"
         redirect_to root_url 
