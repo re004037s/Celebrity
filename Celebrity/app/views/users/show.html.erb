@@ -59,7 +59,7 @@
     });
   </script>
 
-  <div id="tag-controll" style="display:none">
+<div id="tag-controll" style="display:none">
     
   <%= form_for(@user, url: tag_show_path) do |f| %>
     <%= f.text_field :tags , value:'', placeholder: 'タグを入力【20文字(英字or半角スペース)までOK】' %>
@@ -76,7 +76,18 @@
     </span>
   <% end %>
   
-  </div>
+</div>
+
+<ul id="article-tags"></ul>
+<!--TODO:application.jsで読み込み後、関数がundefiedになるためここで読み込む-->
+<!--ネットワークコストがかかるため、パフォーマンス低下の原因となっている-->
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+<script src="https://rawgit.com/aehlke/tag-it/master/js/tag-it.js"></script>
+<script>
+    $('#article-tags').tagit();
+</script>  
+  
+  
   
 <script>
 $('#user_tags').keyup(function() {
