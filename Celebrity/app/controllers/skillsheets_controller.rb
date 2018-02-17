@@ -17,7 +17,25 @@ class SkillsheetsController < ApplicationController
     )
   end
   
+  def update_skillsheet
+    @user = current_user
+    unless params[:user].try(:[],:file) == nil
+      upload_skillsheet = skillsheet_params[:file]
+      if @user.update_columns(skillsheet: upload_skillsheet)
+        #@user.update(skillsheet_path: params[:file]) 
+        flash[:success] = 'ファイルを保存しました！'
+        redirect_to skillsheets_path
+      else
+        flash[:error] = 'ファイルの保存に失敗しました！'
+        redirect_to skillsheets_path
+      end
+    end
+  end
   
+  def get_skillsheet
+    @skillsheet = current_user
+    send_data(@skillsheet.file)
+  end
   
   def new
   end
@@ -31,8 +49,10 @@ class SkillsheetsController < ApplicationController
 
   private
 
-    def skillsheet_paprams
-      params.require(:image).permit(:name, :picture)
-    end
+    
+    def skillsheet_params
 
+      params.require(:user).permit(:name, :nickname, :line_id, :email, :password, :password_confirmation, :portfolio_path, :github_path, :picture_file, :picture, :file)
+
+    end
 end
