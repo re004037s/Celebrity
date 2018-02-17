@@ -87,8 +87,9 @@
 <script src="https://rawgit.com/aehlke/tag-it/master/js/tag-it.js"></script>
 <script>
 var suggestedInterests = [
-  "c++", "java", "php", "javascript", "ruby", "python", "c", "RubyOnRails",
-  "cobol", "vim", "emacs", "scala", "c#"
+  "C++", "JAVA", "PHP", "Javascript", "Ruby", "Python", "C", "RubyOnRails",
+  "cobol", "vim", "emacs", "Scala", "C#", "HTML", "CSS", "VisualBasic.NET",
+  "golang", "Swift", "Shell", "R",
 ]
   
 $('#interest-tags').tagit({
@@ -121,7 +122,9 @@ $('#interest-tags').tagit({
     //TODO:alert to user
   },
   afterTagRemoved: function(event, ui) {
-    ajax_delete_tag_in_DB(ui.tagLabel);
+    var tag_id = $(ui.tag[0]).find('input:hidden[name="tag_id"]').val();
+    debugger
+    ajax_delete_tag_in_DB(tag_id);
     console.log(ui.tagLabel + " を削除しました");
   }
 
@@ -156,7 +159,7 @@ function ajax_insert_new_tag_to_DB(tagLabel){
   
 }
 
-function ajax_delete_tag_in_DB(tagLabel){
+function ajax_delete_tag_in_DB(tag_id){
   $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
     var token;
     if (!options.crossDomain) {
@@ -170,7 +173,7 @@ function ajax_delete_tag_in_DB(tagLabel){
   $.ajax({ //ajax通信で以下のことを行います
     url: '/tag_delete', //urlを指定
     type: 'DELETE', //メソッドを指定
-    data: ('tag_name=' + tagLabel), //コントローラーに渡すデータを'keyword=input(入力された文字のことですね)'にするように指定
+    data: ('tag_id=' + tag_id), //コントローラーに渡すデータを'keyword=input(入力された文字のことですね)'にするように指定
     dataType: 'json' //データ形式を指定
   })
   
@@ -180,37 +183,14 @@ function ajax_delete_tag_in_DB(tagLabel){
   })
   
 }
-
-    
 </script>  
 
-<!--@tagからjavascriptに直接値を渡せなかったため一度出力している-->
-<ul id="tag_from_db" style="display:none">
 <% @tags_h.each do |key, value| %>
-  <li><%= key %><%= value %></li>
-<% end %>
-</ul>
-
 <script>
-// DBから既存のタグを出力する
-var lists = $('#tag_from_db').find('li');
-debugger
-if(lists){
-  for(var i = 0, len = lists.length; i < len; i++){
-  let tag_name = $(lists[i])[0].textContent;
-  $("#interest-tags").tagit("createTag", tag_name, 100);
-  
-  $(".tagit-close")[i].append(hidden_html);
-  }
-}
+  $("#interest-tags").tagit("createTag", "<%= key %>");
+  $(".tagit-close").last().append('<input type="hidden" name="tag_id" value="'+ <%= value %> + '">');
 </script>
-
-  
-
-
-
-
-
+<% end %>
   
 <script>
 $('#user_tags').keyup(function() {
