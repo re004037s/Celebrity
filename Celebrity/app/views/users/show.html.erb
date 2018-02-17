@@ -78,13 +78,75 @@
   
 </div>
 
-<ul id="article-tags"></ul>
+<%#= form_for(@user, url: create_tags_path, remote:true) do |f| %>
+  <%# @user.errors.any? %>
+<ul id="interest-tags"></ul>
+<%# end %>
+<!--tag-it.jsに関する注意点-->
 <!--TODO:application.jsで読み込み後、関数がundefiedになるためここで読み込む-->
 <!--ネットワークコストがかかるため、パフォーマンス低下の原因となっている-->
 <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
 <script src="https://rawgit.com/aehlke/tag-it/master/js/tag-it.js"></script>
 <script>
-    $('#article-tags').tagit();
+var suggestedInterests = [
+  "c++", "java", "php", "javascript", "ruby", "python", "c", "RubyOnRails",
+  "cobol", "vim", "emacs", "scala", "c#"
+]
+  
+$('#interest-tags').tagit({
+  
+  placeholderText:"興味のある言語やツールのタグをつけよう",
+  fieldName:"user[tag_list]",
+  singleField: true,
+  removeConfirmation: true,  //バックスペース1回押すとremoveClassが適用。対象タグに色がつく
+  caseSensitive: false,      //大文字小文字を区別しない。
+  tagLimit: 2,               //最大登録タグ数
+  availableTags: suggestedInterests,
+  
+  afterTagAdded: function(event, ui) {
+    //TODO:alert to user
+    // console.log(ui.tagLabel + " を登録しました");
+    ajax_insert_new_tag_to_DB(ui.tagLabel)
+    
+  },
+  onTagExists: function(event, ui) {
+    //TODO:alert to user
+    var duplicated_tag_name = ui.existingTag[0].children[0].textContent;
+    console.log(duplicated_tag_name + " はすでに登録されています");
+    return;
+  },
+  onTagClicked: function(event, ui) {
+    console.log(ui.tagLabel + " をクリックしました");
+    //TODO:show modal window
+  },
+  onTagLimitExceeded: function(event, ui) {
+    console.log("登録できるタグは最大で2個までです");
+    //TODO:alert to user
+  }
+
+  
+});
+
+$('.tagit-new').css('width','100%');
+
+function ajax_insert_new_tag_to_DB(tagLabel){
+  // ajax submit
+  $.ajax({ //ajax通信で以下のことを行います
+    url: '/users/create_tags', //urlを指定
+    type: 'POST', //メソッドを指定
+    data: ('tag_name=' + tagLabel), //コントローラーに渡すデータを'keyword=input(入力された文字のことですね)'にするように指定
+    processData: false, //おまじない
+    contentType: false, //おまじない
+    dataType: 'json' //データ形式を指定
+  })
+  
+  //ajax request success時の処理
+  .done(function(response){ //データを受け取ることに成功したら、dataを引数に取って以下のことする(dataには@usersが入っている状態ですね)
+    debugger
+    
+  })
+}    
+    
 </script>  
   
   

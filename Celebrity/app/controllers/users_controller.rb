@@ -72,6 +72,10 @@ class UsersController < ApplicationController
     end
   end
   
+  def create_tags
+    debugger;
+  end
+  
   def new
     @user = User.new
   end
@@ -118,7 +122,7 @@ class UsersController < ApplicationController
   
     def user_params
 
-      params.require(:user).permit(:name, :nickname, :line_id, :email, :password, :password_confirmation, :portfolio_path, :github_path, :picture_file, :picture)
+      params.require(:user).permit(:name, :nickname, :line_id, :email, :password, :password_confirmation, :portfolio_path, :github_path, :picture_file, :picture,:tag_list)
 
     end
     
