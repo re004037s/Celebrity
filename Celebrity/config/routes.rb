@@ -41,11 +41,12 @@ Rails.application.routes.draw do
   # resources :user_tags #追加
   # post 'tag_show', to:'users#tag_show'
   post '/tag_new', to: 'users#tag_new'
+  delete '/tag_delete', to: 'users#tag_delete'
   
   patch '/post_pic', to:'users#update_picture'
   patch '/tag_edit', to:'users#tag_edit' #追加
   patch '/tag_show', to:'users#tag_show' #追加 sugi
-  delete '/delete_tag', to: 'users#tag_delete' #temp post⇨deleteに変更しshow.htmlと統一
+  # delete '/delete_tag', to: 'users#tag_delete' #temp post⇨deleteに変更しshow.htmlと統一
   root 'top#index'
 
   get '/progate', to: 'static_pages#progate'

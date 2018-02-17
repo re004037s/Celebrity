@@ -98,11 +98,13 @@ $('#interest-tags').tagit({
   singleField: true,
   removeConfirmation: true,  //バックスペース1回押すとremoveClassが適用。対象タグに色がつく
   caseSensitive: false,      //大文字小文字を区別しない。
-  tagLimit: 2,               //最大登録タグ数
+  tagLimit: 10,               //最大登録タグ数
   availableTags: suggestedInterests,
   
   afterTagAdded: function(event, ui) {
-    ajax_insert_new_tag_to_DB(ui.tagLabel)
+    // debugger
+    // ajax_insert_new_tag_to_DB(ui.tagLabel)
+    console.log("POSTED");
   },
   onTagExists: function(event, ui) {
     //TODO:alert to user
@@ -115,11 +117,14 @@ $('#interest-tags').tagit({
     //TODO:show modal window
   },
   onTagLimitExceeded: function(event, ui) {
-    console.log("登録できるタグは最大で2個までです");
+    console.log("登録できるタグは最大で10個までです");
     //TODO:alert to user
+  },
+  afterTagRemoved: function(event, ui) {
+    ajax_delete_tag_in_DB(ui.tagLabel);
+    console.log(ui.tagLabel + " を削除しました");
   }
 
-  
 });
 
 $('.tagit-new').css('width','100%');
@@ -149,24 +154,53 @@ function ajax_insert_new_tag_to_DB(tagLabel){
   })
   // TODO:error case
   
-}    
+}
+
+function ajax_delete_tag_in_DB(tagLabel){
+  $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
+    var token;
+    if (!options.crossDomain) {
+      token = $('meta[name="csrf-token"]').attr('content');
+      if (token) {
+           return jqXHR.setRequestHeader('X-CSRF-Token', token);
+       }
+    }
+  });
+
+  $.ajax({ //ajax通信で以下のことを行います
+    url: '/tag_delete', //urlを指定
+    type: 'DELETE', //メソッドを指定
+    data: ('tag_name=' + tagLabel), //コントローラーに渡すデータを'keyword=input(入力された文字のことですね)'にするように指定
+    dataType: 'json' //データ形式を指定
+  })
+  
+  .done(function(res){ //データを受け取ることに成功したら、dataを引数に取って以下のことする(dataには@usersが入っている状態ですね)
+    if(res === 200)console.log("deleted");
+    if(res === 500)alert("httpstatus 500: internal server errror");
+  })
+  
+}
+
     
 </script>  
 
 <!--@tagからjavascriptに直接値を渡せなかったため一度出力している-->
 <ul id="tag_from_db" style="display:none">
-<% @tags.each do |t| %>
-  <li><%= t %></li>
+<% @tags_h.each do |key, value| %>
+  <li><%= key %><%= value %></li>
 <% end %>
 </ul>
 
 <script>
 // DBから既存のタグを出力する
 var lists = $('#tag_from_db').find('li');
+debugger
 if(lists){
   for(var i = 0, len = lists.length; i < len; i++){
   let tag_name = $(lists[i])[0].textContent;
-  $("#interest-tags").tagit("createTag", tag_name);
+  $("#interest-tags").tagit("createTag", tag_name, 100);
+  
+  $(".tagit-close")[i].append(hidden_html);
   }
 }
 </script>

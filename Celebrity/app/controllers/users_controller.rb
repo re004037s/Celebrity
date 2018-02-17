@@ -11,8 +11,8 @@ class UsersController < ApplicationController
   def show
     @categories = MovieCategory.where(must_view: true).order('sort_order')
     @user = User.find_by(id: params[:id])
-    # @tags = Tag.includes(:users).where(id: params[:id]).pluck(:tag)
-    @tags = @user.tags.limit(2).pluck(:tag)
+    tags = @user.tags.limit(10).pluck(:tag,:id)
+    @tags_h = Hash[*tags.flatten]
   end
   
   def update_picture
@@ -60,11 +60,11 @@ class UsersController < ApplicationController
 
     #invalid foreign key error -> modelにdestroy?? 関係の追記が必要？
     if @user.user_tags.find_by(id: tag_id).delete #tags ⇨ user_tags（中間テーブル）に変更
-      flash[:success] = 'タグ を削除しました'
-      redirect_to @user
+      # flash[:success] = 'タグ を削除しました'
+      # redirect_to @user
     else
-      flash[:success] = '削除失敗'
-      redirect_to @user
+      # flash[:success] = '削除失敗'
+      # redirect_to @user
     end
   end
   
