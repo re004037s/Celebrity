@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     @categories = MovieCategory.where(must_view: true).order('sort_order')
     @user = User.find_by(id: params[:id])
     # @tags = Tag.includes(:users).where(id: params[:id]).pluck(:tag)
-    @tags = @user.tags.pluck(:tag)
+    @tags = @user.tags.limit(2).pluck(:tag)
   end
   
   def update_picture

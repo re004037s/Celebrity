@@ -144,7 +144,6 @@ function ajax_insert_new_tag_to_DB(tagLabel){
   })
   
   .done(function(res){ //データを受け取ることに成功したら、dataを引数に取って以下のことする(dataには@usersが入っている状態ですね)
-    debugger
     if(res === 200)console.log("saved");
     if(res === 500)alert("httpstatus 500: internal server errror");
   })
@@ -154,9 +153,29 @@ function ajax_insert_new_tag_to_DB(tagLabel){
     
 </script>  
 
-<% @tags.each do |tag| %>
-  <%= tag %>
+<!--@tagからjavascriptに直接値を渡せなかったため一度出力している-->
+<ul id="tag_from_db" style="display:none">
+<% @tags.each do |t| %>
+  <li><%= t %></li>
 <% end %>
+</ul>
+
+<script>
+// DBから既存のタグを出力する
+var lists = $('#tag_from_db').find('li');
+if(lists){
+  for(var i = 0, len = lists.length; i < len; i++){
+  let tag_name = $(lists[i])[0].textContent;
+  $("#interest-tags").tagit("createTag", tag_name);
+  }
+}
+</script>
+
+  
+
+
+
+
 
   
 <script>
