@@ -11,7 +11,7 @@
 
   <div class="center">
     <% if @user.picture_file %>
-    <%= image_tag(get_image_user_path) %>
+    <%= image_tag(get_image_user_path, class: "picture_resize") %>
     <% else %>
     <%= image_tag('default.png') %>
     <% end %>
@@ -19,7 +19,7 @@
 
   <div class="center mt_20">
     <button class="edit-my-picture btn btn-default active">写真を編集する</button>
-  
+    
     <div id="upload-my-picture" class="mg_auto wh_30">
       <%= form_for(@user, url: post_pic_path, :id => 'form_id' ) do |f| %>
       <div class="form-group has-error">
@@ -30,9 +30,11 @@
       <% end %>
     </div>
   </div>
- <div class = picture_resize>
-   
+
+  
   <script type="text/javascript">
+  
+    
     $('#user_picture').bind('change', function() {
       
     var size_in_megabytes = this.files[0].size/1024/1024;
@@ -59,8 +61,7 @@
      
     });
   </script>
-  
-  </div>
+
 
   <div id="tag-controll">
     
