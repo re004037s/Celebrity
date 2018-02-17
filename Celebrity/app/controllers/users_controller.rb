@@ -72,8 +72,18 @@ class UsersController < ApplicationController
     end
   end
   
-  def create_tags
-    debugger;
+  def tag_new
+    @user = current_user
+    tag_name = params[:tag_name]
+    tag = @user.tags.create(tag: tag_name)
+    
+    if tag.save
+      render json: '200'
+    else
+      flash[:danger] = tag.errors.messages[:tag].join(' / ')
+      render json: '500'
+    end
+    
   end
   
   def new

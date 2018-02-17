@@ -130,20 +130,31 @@ $('#interest-tags').tagit({
 $('.tagit-new').css('width','100%');
 
 function ajax_insert_new_tag_to_DB(tagLabel){
-  // ajax submit
+  // NOTE:rails のhelperを使用していないため CSRF用のTOKENをヘッダーに含める必要がある。
+  $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
+    var token;
+    if (!options.crossDomain) {
+      token = $('meta[name="csrf-token"]').attr('content');
+      if (token) {
+           return jqXHR.setRequestHeader('X-CSRF-Token', token);
+       }
+    }
+  });
+
   $.ajax({ //ajax通信で以下のことを行います
-    url: '/users/create_tags', //urlを指定
+    url: '/tag_new', //urlを指定
     type: 'POST', //メソッドを指定
     data: ('tag_name=' + tagLabel), //コントローラーに渡すデータを'keyword=input(入力された文字のことですね)'にするように指定
-    processData: false, //おまじない
-    contentType: false, //おまじない
+    // processData: false, //おまじない
+    // contentType: false, //おまじない
     dataType: 'json' //データ形式を指定
   })
   
   //ajax request success時の処理
-  .done(function(response){ //データを受け取ることに成功したら、dataを引数に取って以下のことする(dataには@usersが入っている状態ですね)
+  .done(function(res){ //データを受け取ることに成功したら、dataを引数に取って以下のことする(dataには@usersが入っている状態ですね)
     debugger
-    
+    if(res === 200)console.log("saved");
+    if(res === 500)alert("httpstatus 500: internal server errror");
   })
 }    
     

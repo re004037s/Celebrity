@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   resources :users do
       member do
         get 'get_image'
-        # post 'post_tag' //WIP
     end
   end
   resources :account_activations, only: [:edit]
@@ -41,7 +40,7 @@ Rails.application.routes.draw do
   # resources :tags #userページに飛びたいのでいらない
   # resources :user_tags #追加
   # post 'tag_show', to:'users#tag_show'
-  patch '/create_tags', to:'users#create_tags' 
+  post '/tag_new', to: 'users#tag_new'
   
   patch '/post_pic', to:'users#update_picture'
   patch '/tag_edit', to:'users#tag_edit' #追加
