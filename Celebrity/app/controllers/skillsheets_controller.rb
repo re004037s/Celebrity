@@ -52,7 +52,7 @@ class SkillsheetsController < ApplicationController
     
     def skillsheet_params
 
-      params.require(:user).permit(:name, :nickname, :line_id, :email, :password, :password_confirmation, :portfolio_path, :github_path, :picture_file, :picture, :file)
+      params.require(:user).permit(:name, :nickname, :file)
 
     end
 end
