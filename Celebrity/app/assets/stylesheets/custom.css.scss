@@ -463,6 +463,13 @@ li.first-child {
 // マイページ
 .users-show--wrapper {
   
+  .picture_resize{
+  object-fit: picture_resize;
+   margin: auto;
+  width: 266px;
+  height: 266px;
+}
+  
 }
 
 // プロゲート進捗

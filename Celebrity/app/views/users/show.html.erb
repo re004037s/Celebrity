@@ -3,23 +3,23 @@
   <h2 class="page-title">
     <span>MY PAGE</span>
   </h2>
-  
+
   <h3 class="center">
     <%= @user.nickname %>
     [ <%= @user.name %> ]
   </h3>
-  <h4 style="color: red;">現在プロフィール写真投稿機能及びタグ機能は修正中のため一旦非表示にしております。ご不便をお掛けして申し訳ございません。</h4>
-  <div class="center" style="display:none">
+
+  <div class="center">
     <% if @user.picture_file %>
-    <%= image_tag(get_image_user_path) %>
+    <%= image_tag(get_image_user_path, class: "picture_resize") %>
     <% else %>
     <%= image_tag('default.png') %>
     <% end %>
   </div>
 
-  <div class="center mt_20" style="display:none">
+  <div class="center mt_20">
     <button class="edit-my-picture btn btn-default active">写真を編集する</button>
-  
+    
     <div id="upload-my-picture" class="mg_auto wh_30">
       <%= form_for(@user, url: post_pic_path, :id => 'form_id' ) do |f| %>
       <div class="form-group has-error">
@@ -31,7 +31,10 @@
     </div>
   </div>
 
+  
   <script type="text/javascript">
+  
+    
     $('#user_picture').bind('change', function() {
       
     var size_in_megabytes = this.files[0].size/1024/1024;
@@ -59,7 +62,8 @@
     });
   </script>
 
-  <div id="tag-controll" style="display:none">
+
+  <div id="tag-controll">
     
   <%= form_for(@user, url: tag_show_path) do |f| %>
     <%= f.text_field :tags , value:'', placeholder: 'タグを入力【20文字(英字or半角スペース)までOK】' %>
