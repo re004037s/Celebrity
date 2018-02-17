@@ -10,13 +10,9 @@ class UsersController < ApplicationController
   
   def show
     @categories = MovieCategory.where(must_view: true).order('sort_order')
-    if params[:user_id]
-      user = User.find_by(id: params[:user_id])
-      # 不要なデータも表示される
-      @user_tags = user.tags
-    else
-      @user_tags = current_user.tags
-    end
+    @user = User.find_by(id: params[:id])
+    # @tags = Tag.includes(:users).where(id: params[:id]).pluck(:tag)
+    @tags = @user.tags.pluck(:tag)
   end
   
   def update_picture

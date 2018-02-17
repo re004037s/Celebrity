@@ -67,19 +67,17 @@
   <% end %>
   
   <p>登録済みのタグ一覧：</p>
-  <% @user_tags.each do |user_tag| %>
+  <%# @user_tags.each do |user_tag| %>
     <span class="tag_box">
-      <%=  user_tag.tag %>
-      <%= link_to image_tag('delete_icon.png', :class => 'delete_icon'),
+      <%#=  user_tag.tag %>
+      <%#= link_to image_tag('delete_icon.png', :class => 'delete_icon'),
                   delete_tag_path(user_id: current_user.id, tag_id: user_tag.id),
                                                                   :method => :delete %>　<!-- methodでdeleteを指定する--> 
     </span>
-  <% end %>
+  <%# end %>
   
 </div>
 
-<%#= form_for(@user, url: create_tags_path, remote:true) do |f| %>
-  <%# @user.errors.any? %>
 <ul id="interest-tags"></ul>
 <%# end %>
 <!--tag-it.jsに関する注意点-->
@@ -104,10 +102,7 @@ $('#interest-tags').tagit({
   availableTags: suggestedInterests,
   
   afterTagAdded: function(event, ui) {
-    //TODO:alert to user
-    // console.log(ui.tagLabel + " を登録しました");
     ajax_insert_new_tag_to_DB(ui.tagLabel)
-    
   },
   onTagExists: function(event, ui) {
     //TODO:alert to user
@@ -145,22 +140,24 @@ function ajax_insert_new_tag_to_DB(tagLabel){
     url: '/tag_new', //urlを指定
     type: 'POST', //メソッドを指定
     data: ('tag_name=' + tagLabel), //コントローラーに渡すデータを'keyword=input(入力された文字のことですね)'にするように指定
-    // processData: false, //おまじない
-    // contentType: false, //おまじない
     dataType: 'json' //データ形式を指定
   })
   
-  //ajax request success時の処理
   .done(function(res){ //データを受け取ることに成功したら、dataを引数に取って以下のことする(dataには@usersが入っている状態ですね)
     debugger
     if(res === 200)console.log("saved");
     if(res === 500)alert("httpstatus 500: internal server errror");
   })
+  // TODO:error case
+  
 }    
     
 </script>  
-  
-  
+
+<% @tags.each do |tag| %>
+  <%= tag %>
+<% end %>
+
   
 <script>
 $('#user_tags').keyup(function() {
