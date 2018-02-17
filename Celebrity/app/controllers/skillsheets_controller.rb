@@ -22,9 +22,10 @@ class SkillsheetsController < ApplicationController
   end
   
   def update_skillsheet
+    
     unless params[:user].try(:[],:file) == nil
       upload_skillsheet = skillsheet_params[:file]
-      if @user.update_columns(skillsheet: upload_skillsheet)
+      if current_user.update_columns(skillsheet: upload_skillsheet)
         #@user.update(skillsheet_path: params[:file]) 
         flash[:success] = 'ファイルを保存しました！'
         redirect_to skillsheets_path
