@@ -1,4 +1,8 @@
 class SkillsheetsController < ApplicationController
+  before_action :logged_in_user, only: [:index, :show, :edit, :update]
+  before_action :correct_user, only: [:show, :edit, :update]
+  before_action :existence_user, only: [:show, :edit, :update]
+  before_action :administrator_user, only: :new
   
   def index
     @user = current_user
@@ -18,7 +22,6 @@ class SkillsheetsController < ApplicationController
   end
   
   def update_skillsheet
-    @user = current_user
     unless params[:user].try(:[],:file) == nil
       upload_skillsheet = skillsheet_params[:file]
       if @user.update_columns(skillsheet: upload_skillsheet)
