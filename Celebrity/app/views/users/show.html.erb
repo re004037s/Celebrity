@@ -114,13 +114,10 @@ $('#interest-tags').tagit({
   },
   onTagExists: function(event, ui) {
     var duplicated_tag_name = ui.existingTag[0].children[0].textContent;
-    console.log(duplicated_tag_name + " はすでに登録されています");
   },
   onTagClicked: function(event, ui) {
-    console.log(ui.tagLabel + " をクリックしました");
   },
   onTagLimitExceeded: function(event, ui) {
-    alert("登録できるタグは最大で10個までです");
   },
   afterTagRemoved: function(event, ui) {
     var tag_id = $(ui.tag[0]).find('input:hidden[name="tag_id"]').val();
