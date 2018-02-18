@@ -87,7 +87,6 @@ $('#interest-tags').tagit({
   afterTagAdded: function(event, ui) {
     // FUTURE FIX: onload時にインサートが実行されてしまうため一時回避策
     if(tag_cnt >= <%= @tags_count %>){
-      debugger
       ajax_insert_new_tag_to_DB(ui.tagLabel);
     }
     tag_cnt += 1;
