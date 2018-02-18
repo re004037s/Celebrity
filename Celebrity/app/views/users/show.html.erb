@@ -8,6 +8,8 @@
     <%= @user.nickname %>
     [ <%= @user.name %> ]
   </h3>
+  
+<h4 style="color: red;">現在タグ機能は修正中のため一旦非表示にしております。ご不便をお掛けして申し訳ございません。</h4>
 
   <div class="center">
     <% if @user.picture_file %>
@@ -63,8 +65,8 @@
   </script>
 
 
-  <div id="tag-controll">
-    
+ <div id="tag-controll" style="display:none">
+ 
   <%= form_for(@user, url: tag_show_path) do |f| %>
     <%= f.text_field :tags , value:'', placeholder: 'タグを入力【20文字(英字or半角スペース)までOK】' %>
     <%= f.submit '登録', id:'tag-submit', class: 'btn btn-default active', :disabled => 'true' %>
@@ -80,7 +82,8 @@
     </span>
   <% end %>
   
-  </div>
+  </div> 
+  
   
 <script>
 $('#user_tags').keyup(function() {

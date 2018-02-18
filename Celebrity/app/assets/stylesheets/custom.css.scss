@@ -464,10 +464,11 @@ li.first-child {
 .users-show--wrapper {
   
   .picture_resize{
-  object-fit: picture_resize;
    margin: auto;
-  width: 310px;
-  height: 266px;
+   max-width: 200px;
+   max-height: 200px;
+   background-size: cover;
+   
 }
   
 }
