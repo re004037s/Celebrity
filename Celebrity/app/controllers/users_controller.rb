@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   def show
     @categories = MovieCategory.where(must_view: true).order('sort_order')
     @user = User.find_by(id: params[:id])
+    @tags_count = @user.tags.count
     tags = @user.tags.limit(10).pluck(:tag,:id)
     @tags_h = Hash[*tags.flatten]
   end

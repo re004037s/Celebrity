@@ -91,10 +91,11 @@ var suggestedInterests = [
   "cobol", "vim", "emacs", "Scala", "C#", "HTML", "CSS", "VisualBasic.NET",
   "golang", "Swift", "Shell", "R",
 ]
-  
+var tag_cnt = 0;
+
 $('#interest-tags').tagit({
   
-  placeholderText:"興味のある言語やツールのタグをつけよう",
+  placeholderText:"興味のある言語やツールのタグをつけよう。最大10個まで",
   fieldName:"user[tag_list]",
   singleField: true,
   removeConfirmation: true,  //バックスペース1回押すとremoveClassが適用。対象タグに色がつく
@@ -103,29 +104,26 @@ $('#interest-tags').tagit({
   availableTags: suggestedInterests,
   
   afterTagAdded: function(event, ui) {
-    // debugger
-    // ajax_insert_new_tag_to_DB(ui.tagLabel)
-    console.log("POSTED");
+    // FUTURE FIX: onload時にインサートが実行されてしまうため一時回避策
+    if(tag_cnt >= <%= @tags_count %>){
+      debugger
+      ajax_insert_new_tag_to_DB(ui.tagLabel);
+    }
+    tag_cnt += 1;
   },
   onTagExists: function(event, ui) {
-    //TODO:alert to user
     var duplicated_tag_name = ui.existingTag[0].children[0].textContent;
     console.log(duplicated_tag_name + " はすでに登録されています");
-    return;
   },
   onTagClicked: function(event, ui) {
     console.log(ui.tagLabel + " をクリックしました");
-    //TODO:show modal window
   },
   onTagLimitExceeded: function(event, ui) {
-    console.log("登録できるタグは最大で10個までです");
-    //TODO:alert to user
+    alert("登録できるタグは最大で10個までです");
   },
   afterTagRemoved: function(event, ui) {
     var tag_id = $(ui.tag[0]).find('input:hidden[name="tag_id"]').val();
-    debugger
     ajax_delete_tag_in_DB(tag_id);
-    console.log(ui.tagLabel + " を削除しました");
   }
 
 });
@@ -144,18 +142,17 @@ function ajax_insert_new_tag_to_DB(tagLabel){
     }
   });
 
-  $.ajax({ //ajax通信で以下のことを行います
-    url: '/tag_new', //urlを指定
-    type: 'POST', //メソッドを指定
-    data: ('tag_name=' + tagLabel), //コントローラーに渡すデータを'keyword=input(入力された文字のことですね)'にするように指定
-    dataType: 'json' //データ形式を指定
+  $.ajax({ 
+    url: '/tag_new', 
+    type: 'POST', 
+    data: ('tag_name=' + tagLabel), 
+    dataType: 'json' 
   })
   
-  .done(function(res){ //データを受け取ることに成功したら、dataを引数に取って以下のことする(dataには@usersが入っている状態ですね)
+  .done(function(res){ 
     if(res === 200)console.log("saved");
     if(res === 500)alert("httpstatus 500: internal server errror");
   })
-  // TODO:error case
   
 }
 
@@ -170,14 +167,14 @@ function ajax_delete_tag_in_DB(tag_id){
     }
   });
 
-  $.ajax({ //ajax通信で以下のことを行います
-    url: '/tag_delete', //urlを指定
-    type: 'DELETE', //メソッドを指定
-    data: ('tag_id=' + tag_id), //コントローラーに渡すデータを'keyword=input(入力された文字のことですね)'にするように指定
-    dataType: 'json' //データ形式を指定
+  $.ajax({
+    url: '/tag_delete', 
+    type: 'DELETE', 
+    data: ('tag_id=' + tag_id), 
+    dataType: 'json' 
   })
   
-  .done(function(res){ //データを受け取ることに成功したら、dataを引数に取って以下のことする(dataには@usersが入っている状態ですね)
+  .done(function(res){ 
     if(res === 200)console.log("deleted");
     if(res === 500)alert("httpstatus 500: internal server errror");
   })
@@ -185,12 +182,14 @@ function ajax_delete_tag_in_DB(tag_id){
 }
 </script>  
 
+<!--登録済みタグの表示-->
 <% @tags_h.each do |key, value| %>
 <script>
   $("#interest-tags").tagit("createTag", "<%= key %>");
   $(".tagit-close").last().append('<input type="hidden" name="tag_id" value="'+ <%= value %> + '">');
 </script>
 <% end %>
+
   
 <script>
 $('#user_tags').keyup(function() {
