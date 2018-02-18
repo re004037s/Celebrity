@@ -35,38 +35,10 @@ class UsersController < ApplicationController
     send_data(@image.picture_file)
   end
   
-  def tag_show
-    @user = current_user
-    tag = @user.tags.create(tag: user_params[:tags])
-    tag_name = user_params[:tags]
-    
-    @tag = [] #あいまい検索　追加しました
-    if request.post? then
-      @tag = Tag.where("tag like 't%'")
-    end
-    
-    if tag.save
-      flash[:success] = 'タグ名： ' + tag_name + ' を追加しました'
-      redirect_to @user 
-    else
-      # [:tag]でメッセージの配列を取り出し、.join(' / ')で分割した。
-      flash[:danger] = tag.errors.messages[:tag].join(' / ') 
-      redirect_to @user
-    end
-  end
-  
   def tag_delete
     @user = current_user
     tag_id = params[:tag_id]
-
-    #invalid foreign key error -> modelにdestroy?? 関係の追記が必要？
-    if @user.user_tags.find_by(id: tag_id).delete #tags ⇨ user_tags（中間テーブル）に変更
-      # flash[:success] = 'タグ を削除しました'
-      # redirect_to @user
-    else
-      # flash[:success] = '削除失敗'
-      # redirect_to @user
-    end
+    @user.user_tags.find_by(id: tag_id).delete #tags ⇨ user_tags（中間テーブル）に変更
   end
   
   def tag_new
