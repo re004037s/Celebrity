@@ -44,9 +44,7 @@
             <td><% if user.skillsheet == nil %>      
                   not now…
                 <% else %>
-                　<%= link_to user.skillsheet, target: '_blank' do %>
-                  スキルシートを開く
-                  <% end %>
+                　<%= link_to 'ダウンロード', get_skillsheet_path %>
                 <% end %>
             </td>
           </tr>

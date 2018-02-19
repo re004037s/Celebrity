@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   resources :qiita_posts
   resources :interview_posts
   resources :skillsheets
+  get '/get_skillsheet', to: 'skillsheets#get_skillsheet'
   resources :pdca_posts do 
     collection do
         get 'get_image'

@@ -1,6 +1,6 @@
 class SkillsheetUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
-  process resize_to_limit: [100, 100]
+  # process resize_to_limit: [100, 100]
   storage :file
   
   def default_url
