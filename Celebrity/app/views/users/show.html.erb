@@ -9,7 +9,7 @@
     [ <%= @user.name %> ]
   </h3>
   
-<h4 style="color: red;">現在タグ機能は修正中のため一旦非表示にしております。ご不便をお掛けして申し訳ございません。</h4>
+<h4 class="tag-message" style="">現在タグ機能は修正中のため一旦非表示にしております。ご不便をお掛けして申し訳ございません。</h4>
 
   <div class="center">
     <% if @user.picture_file %>
@@ -20,7 +20,7 @@
   </div>
 
   <div class="center mt_20">
-    <button class="edit-my-picture btn btn-default active">写真を編集する</button>
+    <!--<button class="edit-my-picture btn btn-default active">写真を編集する</button>-->
     
     <div id="upload-my-picture" class="mg_auto wh_30">
       <%= form_for(@user, url: post_pic_path, :id => 'form_id' ) do |f| %>
