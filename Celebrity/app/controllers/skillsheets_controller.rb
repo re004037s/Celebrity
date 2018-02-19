@@ -25,7 +25,7 @@ class SkillsheetsController < ApplicationController
     
     unless params[:user].try(:[],:file) == nil
       upload_skillsheet = skillsheet_params[:file]
-      raise encoded_skillsheet = upload_skillsheet.read.force_encoding("UTF-8").encoding.inspect
+      encoded_skillsheet = upload_skillsheet.read.force_encoding("UTF-8")
       if current_user.update_columns(skillsheet: encoded_skillsheet)
         flash[:success] = 'ファイルを保存しました！'
         redirect_to skillsheets_path
@@ -41,7 +41,6 @@ class SkillsheetsController < ApplicationController
     send_data(
       @user.skillsheet,
       :type => 'application/excel',
-      
       #skillsheet.xlsとしているが、アップロード時に格納したファイル名を変数で取得し代入すべき。
       #アップロードファイルの拡張子と下記の固定値の拡張子が異なる場合エラーになる。
       :filename => 'skillsheet.xls' 
