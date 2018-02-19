@@ -19,6 +19,8 @@ class UsersController < ApplicationController
     end
   end
   
+  
+  
   def update_picture
     @user = current_user
     unless params[:user].try(:[],:picture) == nil
@@ -118,7 +120,7 @@ class UsersController < ApplicationController
   
     def user_params
 
-      params.require(:user).permit(:name, :nickname, :line_id, :email, :password, :password_confirmation, :portfolio_path, :github_path, :picture_file, :picture)
+      params.require(:user).permit(:name, :nickname, :line_id, :email, :password, :password_confirmation, :portfolio_path, :github_path, :picture_file, :picture, {skillsheet: []})
 
     end
     

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get 'password_resets/new'
   get 'password_resets/edit'
 
@@ -8,12 +9,13 @@ Rails.application.routes.draw do
   get '/login', to:'sessions#new'
   post '/login', to:'sessions#create'
   delete '/logout', to:'sessions#destroy'
-  
-  
-  
+  get 'skillsheets/index'
+  get 'skillsheets/download'
+  get 'skillsheets/update_skillsheet'
   resources :users do
       member do
         get 'get_image'
+        get 'get_skillsheet'
         # post 'post_tag' //WIP
     end
   end
@@ -32,7 +34,9 @@ Rails.application.routes.draw do
   end
   resources :qiita_posts
   resources :interview_posts
-  resources :pdca_posts do 
+  resources :skillsheets
+  get '/get_skillsheet', to: 'skillsheets#get_skillsheet'
+  resources :pdca_posts do
     collection do
         get 'get_image'
     end
@@ -45,6 +49,7 @@ Rails.application.routes.draw do
   patch '/tag_edit', to:'users#tag_edit' #追加
   patch '/tag_show', to:'users#tag_show' #追加 sugi
   delete '/delete_tag', to: 'users#tag_delete' #temp post⇨deleteに変更しshow.htmlと統一
+  patch '/post_skillsheet', to: 'skillsheets#update_skillsheet'
   root 'top#index'
 
   get '/progate', to: 'static_pages#progate'
