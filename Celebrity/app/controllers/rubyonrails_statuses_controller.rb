@@ -1,11 +1,18 @@
 class RubyonrailsStatusesController < ApplicationController
    before_action :progate_check
+   before_action :correct_user_for_edit, only:[:update_schedule, :update]
 
   def update_schedule
     @schedule_date = params[:date]
-    @rubyonrails_status = current_user.rubyonrails_status
-    @rubyonrails_status.update_attributes(schedule_date: @schedule_date)
-    redirect_to current_user
+    if @schedule_date == ""
+      flash[:danger] = "完了予定日がブランクです。完了予定日を選択してください"
+      redirect_to current_user
+    else
+      @status = current_user.rubyonrails_status
+      @status.update_attributes(schedule_date: @schedule_date)
+      flash[:info] = "完了予定日を #{params[:date]} に設定しました"
+      redirect_to current_user
+    end
   end
 
 
@@ -148,4 +155,16 @@ class RubyonrailsStatusesController < ApplicationController
           @progate_comp_flag = false
       end
     end
+    
+    #adminがedit,updateをするのを制限する 
+    def correct_user_for_edit
+      @user = User.find(params[:rubyonrails_status][:id])
+      if current_user?(@user)
+      else
+        flash[:danger] = "アドミンは一般ユーザーの個別情報を編集できません"
+        redirect_to root_url 
+      end
+    end
+    
+    
 end
