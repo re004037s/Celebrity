@@ -3,35 +3,39 @@
   <h2 class="page-title">
     <span>MY PAGE</span>
   </h2>
-  
+
   <h3 class="center">
     <%= @user.nickname %>
     [ <%= @user.name %> ]
   </h3>
-  <h4 style="color: red;">現在プロフィール写真投稿機能及びタグ機能は修正中のため一旦非表示にしております。ご不便をお掛けして申し訳ございません。</h4>
-  <div class="center" style="display:none">
+
+  <div class="center">
     <% if @user.picture_file %>
-    <%= image_tag(get_image_user_path) %>
+    <%= image_tag(get_image_user_path, class: "picture_resize") %>
     <% else %>
     <%= image_tag('default.png') %>
     <% end %>
   </div>
 
-  <div class="center mt_20" style="display:none">
-    <button class="edit-my-picture btn btn-default active">写真を編集する</button>
-  
+  <div class="center mt_20">
+    <!--<button class="edit-my-picture btn btn-default active">写真を編集する</button>-->
+    
     <div id="upload-my-picture" class="mg_auto wh_30">
       <%= form_for(@user, url: post_pic_path, :id => 'form_id' ) do |f| %>
       <div class="form-group has-error">
         <span id="__has-warning" style="color: red;">画像を選択してください</span>
         <%= f.file_field :picture, accept: 'image/*' %>
         <%= f.submit '画像をアップロード', id: 'fileuploader', class: 'btn btn-default active fileuploader', :disabled => 'true' %>
+        <%= f.hidden_field :id, :value => "#{@user.id}" %>      
       </div>
       <% end %>
     </div>
   </div>
 
+  
   <script type="text/javascript">
+  
+    
     $('#user_picture').bind('change', function() {
       
     var size_in_megabytes = this.files[0].size/1024/1024;
@@ -59,44 +63,114 @@
     });
   </script>
 
-  <div id="tag-controll" style="display:none">
-    
-  <%= form_for(@user, url: tag_show_path) do |f| %>
-    <%= f.text_field :tags , value:'', placeholder: 'タグを入力【20文字(英字or半角スペース)までOK】' %>
-    <%= f.submit '登録', id:'tag-submit', class: 'btn btn-default active', :disabled => 'true' %>
-  <% end %>
-  
-  <p>登録済みのタグ一覧：</p>
-  <% @user_tags.each do |user_tag| %>
-    <span class="tag_box">
-      <%=  user_tag.tag %>
-      <%= link_to image_tag('delete_icon.png', :class => 'delete_icon'),
-                  delete_tag_path(user_id: current_user.id, tag_id: user_tag.id),
-                                                                  :method => :delete %>　<!-- methodでdeleteを指定する--> 
-    </span>
-  <% end %>
-  
-  </div>
-  
+<ul id="interest-tags"></ul>
+<!--tag-it.jsに関する注意点-->
+<!--TODO:application.jsで読み込み後、関数がundefiedになるためここで読み込む-->
+<!--ネットワークコストがかかるため、パフォーマンス低下の原因となっている-->
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+<script src="https://rawgit.com/aehlke/tag-it/master/js/tag-it.js"></script>
 <script>
-$('#user_tags').keyup(function() {
-  var text_field_obj = $('#tag-submit').parent('.edit_user').find('#user_tags');
-  var words = text_field_obj.val();
-  if(words.length >= 1 && words.length <= 20){
-    $("#tag-submit").prop("disabled", false);
-  }else{
-    $("#tag-submit").prop("disabled", true);
+var suggestedInterests = [
+  "C++", "JAVA", "PHP", "Javascript", "Ruby", "Python", "C", "RubyOnRails",
+  "cobol", "vim", "emacs", "Scala", "C#", "HTML", "CSS", "VisualBasic.NET",
+  "golang", "Swift", "Shell", "R",
+  "Slack", "cloud9", "Qiita"
+]
+var tag_cnt = 0;
+
+$('#interest-tags').tagit({
+  
+  placeholderText:"興味のある言語やツールのタグをつけよう。最大10個まで",
+  fieldName:"user[tag_list]",
+  singleField: true,
+  removeConfirmation: true,  //バックスペース1回押すとremoveClassが適用。対象タグに色がつく
+  caseSensitive: false,      //大文字小文字を区別しない。
+  tagLimit: 10,               //最大登録タグ数
+  availableTags: suggestedInterests,
+  
+  afterTagAdded: function(event, ui) {
+    // FUTURE FIX: onload時にインサートが実行されてしまうため一時回避策
+    if(tag_cnt >= <%= @tags_count %>){
+      ajax_insert_new_tag_to_DB(ui.tagLabel);
+    }
+    tag_cnt += 1;
+  },
+  onTagExists: function(event, ui) {
+    var duplicated_tag_name = ui.existingTag[0].children[0].textContent;
+  },
+  onTagClicked: function(event, ui) {
+  },
+  onTagLimitExceeded: function(event, ui) {
+  },
+  afterTagRemoved: function(event, ui) {
+    var tag_id = $(ui.tag[0]).find('input:hidden[name="tag_id"]').val();
+    ajax_delete_tag_in_DB(tag_id);
   }
+
 });
 
-  $('.delete_icon').css('width', '15px');
-  $('.tag_box').css('border', 'solid 1px #000000');
-  $('.tag_box').css('margin', '0 3px 0 0');
-  $('.tag_box').css('padding', '2px 2px');
-  $('.tag_box').css('font-size', '1.3em');
-  $('#tag-controll').css('width', '60%');
-  $('#tag-controll').css('margin', '1em auto');
+$('.tagit-new').css('width','100%');
+
+function ajax_insert_new_tag_to_DB(tagLabel){
+  // NOTE:rails のhelperを使用していないため CSRF用のTOKENをヘッダーに含める必要がある。
+  $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
+    var token;
+    if (!options.crossDomain) {
+      token = $('meta[name="csrf-token"]').attr('content');
+      if (token) {
+           return jqXHR.setRequestHeader('X-CSRF-Token', token);
+       }
+    }
+  });
+
+  $.ajax({ 
+    url: '/tag_new', 
+    type: 'POST', 
+    data: ('tag_name=' + tagLabel), 
+    dataType: 'json' 
+  })
+  
+  .done(function(res){ 
+    if(res === 200)console.log("saved");
+    if(res === 500)alert("httpstatus 500: internal server errror");
+  })
+  
+}
+
+function ajax_delete_tag_in_DB(tag_id){
+  $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
+    var token;
+    if (!options.crossDomain) {
+      token = $('meta[name="csrf-token"]').attr('content');
+      if (token) {
+           return jqXHR.setRequestHeader('X-CSRF-Token', token);
+       }
+    }
+  });
+
+  $.ajax({
+    url: '/tag_delete', 
+    type: 'DELETE', 
+    data: ('tag_id=' + tag_id), 
+    dataType: 'json' 
+  })
+  
+  .done(function(res){ 
+    if(res === 200)console.log("deleted");
+    if(res === 500)alert("httpstatus 500: internal server errror");
+  })
+  
+}
+</script>  
+
+<!--登録済みタグの表示-->
+<% @tags_h.each do |key, value| %>
+<script>
+  $("#interest-tags").tagit("createTag", "<%= key %>");
+  $(".tagit-close").last().append('<input type="hidden" name="tag_id" value="'+ <%= value %> + '">');
 </script>
+<% end %>
+
 
 <% if current_user.try(:admin) == true %>
 <% elsif Feedback.where(user_id: current_user).count == 
@@ -122,6 +196,7 @@ $('#user_tags').keyup(function() {
       </td>
       <td width="20%">
         <%= f.submit "登録", class: "btn btn-default active" %>
+        <%= f.hidden_field :id, :value => "#{@user.id}" %>
         <% end %>
       </td>
     </tr>
@@ -175,6 +250,7 @@ $('#user_tags').keyup(function() {
       </td>
       <td width="20%">
         <%= f.submit "登録", class: "btn btn-default active" %>
+        <%= f.hidden_field :id, :value => "#{@user.id}" %>
         <% end %>
       </td>
     </tr>
@@ -228,6 +304,7 @@ $('#user_tags').keyup(function() {
       </td>
       <td width="20%">
         <%= f.submit "登録", class: "btn btn-default active" %>
+        <%= f.hidden_field :id, :value => "#{@user.id}" %>
         <% end %>
       </td>
     </tr>
@@ -345,6 +422,7 @@ $('#user_tags').keyup(function() {
       </td>
       <td width="20%">
         <%= f.submit "登録", class: "btn btn-default active" %>
+        <%= f.hidden_field :id, :value => "#{@user.id}" %>
         <% end %>
       </td>
     </tr>
@@ -368,6 +446,7 @@ $('#user_tags').keyup(function() {
       </td>
       <td width="20%">
         <%= f.submit "登録", class: "btn btn-default active" %>
+        <%= f.hidden_field :id, :value => "#{@user.id}" %>
         <% end %>
       </td>
     </tr>

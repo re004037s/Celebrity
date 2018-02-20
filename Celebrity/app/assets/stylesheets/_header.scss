@@ -24,7 +24,10 @@
   height: 100%;
   
   a {
-    height: 100%;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    height: 100px;
   }
 }
 

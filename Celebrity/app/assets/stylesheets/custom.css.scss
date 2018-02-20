@@ -463,6 +463,20 @@ li.first-child {
 // マイページ
 .users-show--wrapper {
   
+  .tag-message {
+    color: red;
+    text-align: center;
+    line-height: 60px;
+  }
+  
+  .picture_resize{
+   margin: auto;
+   max-width: 200px;
+   max-height: 200px;
+   background-size: cover;
+   
+}
+  
 }
 
 // プロゲート進捗

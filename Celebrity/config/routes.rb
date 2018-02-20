@@ -16,7 +16,6 @@ Rails.application.routes.draw do
       member do
         get 'get_image'
         get 'get_skillsheet'
-        # post 'post_tag' //WIP
     end
   end
   resources :account_activations, only: [:edit]
@@ -42,9 +41,9 @@ Rails.application.routes.draw do
     end
   end
   
-  # resources :tags #userページに飛びたいのでいらない
-  # resources :user_tags #追加
-  # post 'tag_show', to:'users#tag_show'
+  post '/tag_new', to: 'users#tag_new'
+  delete '/tag_delete', to: 'users#tag_delete'
+  
   patch '/post_pic', to:'users#update_picture'
   patch '/tag_edit', to:'users#tag_edit' #追加
   patch '/tag_show', to:'users#tag_show' #追加 sugi
