@@ -19,8 +19,6 @@ Rails.application.routes.draw do
     end
   end
   resources :account_activations, only: [:edit]
-  # patch '/users/:id/update_picture', to: 'users#update_picture'
-    
   resources :feedbacks, only: [:create, :update, :destroy]
   resources :comments, only: [:create, :destroy]
   resources :password_resets,     only: [:new, :create, :edit, :update]
