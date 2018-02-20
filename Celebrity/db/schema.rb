@@ -233,8 +233,6 @@ ActiveRecord::Schema.define(version: 20180212234917) do
     t.text     "tag"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "color"
-    t.binary   "icon"
   end
 
   create_table "user_movie_statuses", force: :cascade do |t|
@@ -270,6 +268,7 @@ ActiveRecord::Schema.define(version: 20180212234917) do
     t.datetime "reset_sent_at"
     t.string   "line_id"
     t.binary   "skillsheet"
+    t.string   "skillsheet_name"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
