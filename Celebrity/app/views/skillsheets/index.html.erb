@@ -42,9 +42,9 @@
                 <td><%= link_to user.name, user_path(user, user_id: user.id) %></td>
               <% end %>
             <td><% if user.skillsheet == nil %>      
-                  not now…
+                  未登録
                 <% else %>
-                　<%= link_to 'ダウンロード', get_skillsheet_path %>
+                　<%= link_to "#{@user.skillsheet_name}", get_skillsheet_path %>
                 <% end %>
             </td>
           </tr>
