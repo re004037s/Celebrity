@@ -7,6 +7,7 @@ class SkillsheetsController < ApplicationController
   def index
     @user = current_user
     @users = User.page(params[:page])
+    logger.fatal("errrrrrorr")
   end
   
   def download
