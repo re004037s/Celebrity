@@ -1,6 +1,6 @@
 class RubyonrailsStatusesController < ApplicationController
    before_action :progate_check
-   before_action :correct_user_for_edit, only:[:update_schedule, :update]
+   before_action :correct_user_for_edit, only:[:update_schedule]
 
   def update_schedule
     @schedule_date = params[:date]
