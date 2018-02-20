@@ -115,6 +115,7 @@ class UsersController < ApplicationController
     end
    
     #adminがedit,updateをするのを制限する 
+    #bug fixed
     def correct_user_for_edit
       user_id = params[:id]
       user_id ||= params[:user][:id]
