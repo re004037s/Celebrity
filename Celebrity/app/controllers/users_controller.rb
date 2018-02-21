@@ -18,6 +18,8 @@ class UsersController < ApplicationController
     @tags_h = Hash[*tags.flatten]
   end
   
+  
+  
   def update_picture
     @user = current_user
     unless params[:user].try(:[],:picture) == nil
@@ -102,7 +104,8 @@ class UsersController < ApplicationController
   private
   
     def user_params
-      params.require(:user).permit(:name, :nickname, :line_id, :email, :password, :password_confirmation, :portfolio_path, :github_path, :picture_file, :picture,:tag_list)
+      params.require(:user).permit(:name, :nickname, :line_id, :email, :password, :password_confirmation, :portfolio_path,
+        :github_path, :picture_file, :picture, :tag_list, :skillsheet, :skillsheet_name)
     end
     
     # ログイン済み or 管理ユーザであれば true を返す
@@ -112,10 +115,11 @@ class UsersController < ApplicationController
     end
    
     #adminがedit,updateをするのを制限する 
+    #bug fixed
     def correct_user_for_edit
       user_id = params[:id]
       user_id ||= params[:user][:id]
-      
+
       @user = User.find(user_id)
       if current_user?(@user)
       else
@@ -126,7 +130,7 @@ class UsersController < ApplicationController
     
     # アクセスしようとしているページが削除ユーザのものである場合はルートURLへリダイレクト
     def existence_user
-      @user = User.find(params[:id])
+      @user = User.find(params[:id]) 
       redirect_to root_url unless existence_user?(@user)
     end
 
