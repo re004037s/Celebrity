@@ -113,7 +113,10 @@ class UsersController < ApplicationController
    
     #adminがedit,updateをするのを制限する 
     def correct_user_for_edit
-      @user = User.find(params[:id])
+      user_id = params[:id]
+      user_id ||= params[:user][:id]
+      
+      @user = User.find(user_id)
       if current_user?(@user)
       else
         flash[:danger] = "アドミンは一般ユーザーの個別情報を編集できません"

@@ -1,5 +1,6 @@
 class HtmlCssStatusesController < ApplicationController
   before_action :progate_check
+  before_action :correct_user_for_edit, only:[:update_schedule]
   
   def update_schedule
     @schedule_date = params[:date]
@@ -92,4 +93,15 @@ class HtmlCssStatusesController < ApplicationController
           @progate_comp_flag = false
       end
     end
+    
+    #adminがedit,updateをするのを制限する 
+    def correct_user_for_edit
+      @user = User.find(params[:html_css_status][:id])
+      if current_user?(@user)
+      else
+        flash[:danger] = "アドミンは一般ユーザーの個別情報を編集できません"
+        redirect_to root_url 
+      end
+    end
+    
 end
