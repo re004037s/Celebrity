@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   before_action :correct_user, only: [:show, :edit, :update]
   before_action :existence_user, only: [:show, :edit, :update]
   before_action :administrator_user, only: :new
+  before_action :correct_user_for_edit,
+    only:[:edit, :update, :update_picture, :tag_show, :tag_delete]
   
   def index
     @users = User.page(params[:page])
@@ -10,13 +12,10 @@ class UsersController < ApplicationController
   
   def show
     @categories = MovieCategory.where(must_view: true).order('sort_order')
-    if params[:user_id]
-      user = User.find_by(id: params[:user_id])
-      # 不要なデータも表示される
-      @user_tags = user.tags
-    else
-      @user_tags = current_user.tags
-    end
+    @user = User.find_by(id: params[:id])
+    @tags_count = @user.tags.count
+    tags = @user.tags.limit(10).pluck(:tag,:id)
+    @tags_h = Hash[*tags.flatten]
   end
   
   def update_picture
@@ -38,38 +37,24 @@ class UsersController < ApplicationController
     send_data(@image.picture_file)
   end
   
-  def tag_show
-    @user = current_user
-    tag = @user.tags.create(tag: user_params[:tags])
-    tag_name = user_params[:tags]
-    
-    @tag = [] #あいまい検索　追加しました
-    if request.post? then
-      @tag = Tag.where("tag like 't%'")
-    end
-    
-    if tag.save
-      flash[:success] = 'タグ名： ' + tag_name + ' を追加しました'
-      redirect_to @user 
-    else
-      # [:tag]でメッセージの配列を取り出し、.join(' / ')で分割した。
-      flash[:danger] = tag.errors.messages[:tag].join(' / ') 
-      redirect_to @user
-    end
-  end
-  
   def tag_delete
     @user = current_user
     tag_id = params[:tag_id]
-
-    #invalid foreign key error -> modelにdestroy?? 関係の追記が必要？
-    if @user.user_tags.find_by(id: tag_id).delete #tags ⇨ user_tags（中間テーブル）に変更
-      flash[:success] = 'タグ を削除しました'
-      redirect_to @user
+    @user.user_tags.find_by(id: tag_id).delete #tags ⇨ user_tags（中間テーブル）に変更
+  end
+  
+  def tag_new
+    @user = current_user
+    tag_name = params[:tag_name]
+    tag = @user.tags.create(tag: tag_name)
+    
+    if tag.save
+      render json: '200'
     else
-      flash[:success] = '削除失敗'
-      redirect_to @user
+      flash[:danger] = tag.errors.messages[:tag].join(' / ')
+      render json: '500'
     end
+    
   end
   
   def new
@@ -117,15 +102,26 @@ class UsersController < ApplicationController
   private
   
     def user_params
-
-      params.require(:user).permit(:name, :nickname, :line_id, :email, :password, :password_confirmation, :portfolio_path, :github_path, :picture_file, :picture)
-
+      params.require(:user).permit(:name, :nickname, :line_id, :email, :password, :password_confirmation, :portfolio_path, :github_path, :picture_file, :picture,:tag_list)
     end
     
     # ログイン済み or 管理ユーザであれば true を返す
     def correct_user
       @user = User.find(params[:id])
       redirect_to root_url unless current_user?(@user) || current_user.admin
+    end
+   
+    #adminがedit,updateをするのを制限する 
+    def correct_user_for_edit
+      user_id = params[:id]
+      user_id ||= params[:user][:id]
+      
+      @user = User.find(user_id)
+      if current_user?(@user)
+      else
+        flash[:danger] = "アドミンは一般ユーザーの個別情報を編集できません"
+        redirect_to root_url 
+      end
     end
     
     # アクセスしようとしているページが削除ユーザのものである場合はルートURLへリダイレクト
@@ -134,10 +130,9 @@ class UsersController < ApplicationController
       redirect_to root_url unless existence_user?(@user)
     end
 
-
     # 管理者かどうか確認
     def administrator_user
       redirect_to root_url if current_user == nil || !current_user.admin
     end
-
+    
 end

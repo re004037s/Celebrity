@@ -18,6 +18,19 @@ module ApplicationHelper
   #   path = controller_path + '#' + action_name
   #   path.in?(['sessions#new', 'users#new', 'password_resets#edit', 'password_resets#new'])
   # end
+  def railstutorial_comp?
+    if current_user.railstutorial_status.chapter1 && current_user.railstutorial_status.chapter2 && 
+        current_user.railstutorial_status.chapter3 && current_user.railstutorial_status.chapter4 && 
+        current_user.railstutorial_status.chapter5 && current_user.railstutorial_status.chapter6 && 
+        current_user.railstutorial_status.chapter7 && current_user.railstutorial_status.chapter8 &&
+        current_user.railstutorial_status.chapter9 && current_user.railstutorial_status.chapter10 &&
+        current_user.railstutorial_status.chapter11 && current_user.railstutorial_status.chapter12 && 
+        current_user.railstutorial_status.chapter13 && current_user.railstutorial_status.chapter14
+          return true
+            else
+          return false
+    end
+  end
 
   def progatetask_tutolialday_comp?
          current_user_html = current_user.html_css_status
@@ -55,6 +68,10 @@ module ApplicationHelper
           else
           return false
          end
+  end
+  
+  def date_format(datetime)
+    time_ago_in_words(datetime) + '前'
   end
 
 end

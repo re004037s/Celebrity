@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  plan: MyText
+  do: MyText
+  check: MyText
+  action: MyText
+  user: one
+
+two:
+  plan: MyText
+  do: MyText
+  check: MyText
+  action: MyText
+  user: two

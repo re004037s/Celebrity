@@ -1,13 +1,46 @@
 //スマホ・タブレット用（992px未満）
 
-// @media (max-width: 991px) {
+@media (max-width: 991px) {
   
-//   .header-wrapper{
-//     height: 50px;
-//   }
+  .header {
+    height: 50px;
+  }
+  .header-wrapper {
+    height: 50px;
+  }
+  .body-wrapper {
+    margin-top: 50px;
+  }
+  .header-logo-wrapper a {
+    top: -10px;
+    bottom: 0;
+    left: -10px;
+    height: 75px;
+  }
   
-//   .footer-wrapper {
-//     height: 70px;
-//   }
+  .footer {
+    height: 30px;
+  }
+  .footer-wrapper {
+    
+  }
+  #logo-footer {
+    top: -18px;
+    height: 60px;
+    
+  }
   
-// }
+  .sidebar-wrapper {
+    margin: 0 auto;
+  }
+  
+  .top-index--wrapper {
+    margin: 0 auto;
+  }
+  
+  .moviecategories-show--wrapper {
+    margin: 0 auto;
+  }
+  
+}
+

@@ -1,10 +1,17 @@
 class RailstutorialStatusesController < ApplicationController
+  before_action :correct_user_for_edit, only:[:update_schedule]
   
   def update_schedule
     @schedule_date = params[:date]
-    @railstutorial_status = current_user.railstutorial_status
-    @railstutorial_status.update_attributes(schedule_date: @schedule_date)
-    redirect_to current_user
+    if @schedule_date == ""
+      flash[:danger] = "完了予定日がブランクです。完了予定日を選択してください"
+      redirect_to current_user
+    else
+      @status = current_user.railstutorial_status
+      @status.update_attributes(schedule_date: @schedule_date)
+      flash[:info] = "完了予定日を #{params[:date]} に設定しました"
+      redirect_to current_user
+    end
   end
   
   def update
@@ -113,4 +120,17 @@ class RailstutorialStatusesController < ApplicationController
       end
     end
   end
+  
+  private
+    #adminがedit,updateをするのを制限する 
+    def correct_user_for_edit
+      @user = User.find(params[:railstutorial_status][:id])
+      if current_user?(@user)
+      else
+        flash[:danger] = "アドミンは一般ユーザーの個別情報を編集できません"
+        redirect_to root_url 
+      end
+    end
+  
+  
 end

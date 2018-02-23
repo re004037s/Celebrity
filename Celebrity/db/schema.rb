@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20180212093944) do
+=======
+ActiveRecord::Schema.define(version: 20180212234917) do
+>>>>>>> dfc345561ded582eb48d7696cce974041d67218e
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -112,6 +116,19 @@ ActiveRecord::Schema.define(version: 20180212093944) do
     t.integer  "sort_order"
     t.index ["deleted_at"], name: "index_movies_on_deleted_at", using: :btree
     t.index ["movie_category_id"], name: "index_movies_on_movie_category_id", using: :btree
+  end
+
+  create_table "pdca_posts", force: :cascade do |t|
+    t.text     "plan"
+    t.text     "do"
+    t.text     "check"
+    t.text     "action"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.date     "date"
+    t.index ["user_id", "created_at"], name: "index_pdca_posts_on_user_id_and_created_at", using: :btree
+    t.index ["user_id"], name: "index_pdca_posts_on_user_id", using: :btree
   end
 
   create_table "qiita_posts", force: :cascade do |t|
@@ -268,6 +285,7 @@ ActiveRecord::Schema.define(version: 20180212093944) do
   add_foreign_key "feedbacks", "users"
   add_foreign_key "interview_posts", "users"
   add_foreign_key "movies", "movie_categories"
+  add_foreign_key "pdca_posts", "users"
   add_foreign_key "qiita_posts", "users"
   add_foreign_key "user_tags", "tags"
   add_foreign_key "user_tags", "users"

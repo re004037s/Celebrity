@@ -6,6 +6,9 @@ class StaticPagesController < ApplicationController
   def qa
   end
   
+  def portfolio_mv
+  end
+  
   def progate
     @html_css_status = HtmlCssStatus.find_or_create_by(user_id: current_user.id)
     @javascript_status = JavascriptStatus.find_or_create_by(user_id: current_user.id)

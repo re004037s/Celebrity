@@ -421,15 +421,17 @@
       </table>
       
     <% hide = 'hide' %>
-    <div id="link_railstutorial" class="<%= hide unless progatetask_tutolialday_comp? %>">
+    <div id="link_railstutorial" class="<%= hide unless progatetask_tutolialday_comp? %> next-btn">
       <p class="text-center">
-        <%= link_to "NEXT：Rails Tutorial", railstutorial_path, class: "txt1 btn btn-lg btn-default active"%>
+        <%= link_to "NEXT：RailsTutorial進捗入力", railstutorial_path, class: "txt1 btn btn-lg btn-default active"%>
       </p>
     </div>
   </div>
   
   <script>
     $('.hide').hide();
+    var progate_button_max_num = $('table').find('.btn').length;
+    MYAPP.BUTTON.set_max_num(progate_button_max_num);
   </script>
 
 <% end %>

@@ -9,6 +9,7 @@
         <% end %>
       </div>
       
+      
       <!--▼リスト-->
       <div class="header-list-wrapper">
         
@@ -22,10 +23,9 @@
           </button>
         </div>
         
-        <!--▼ＰＣ用-->
-        <nav class="" role="navigation">
+        <nav class="header-menu-list" role="navigation">
           <!--<nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">-->
-          <ul class="header-menu-list">
+          <ul class="">
             <% if current_user.try(:admin) %>
               <li><%= link_to 'MOVIES EDIT', movies_path %></li>
               <li><%= link_to 'SIGN UP', signup_path %></li>
