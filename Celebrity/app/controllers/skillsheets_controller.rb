@@ -37,7 +37,6 @@ class SkillsheetsController < ApplicationController
   end
   
   def get_skillsheet
-    @user = current_user
     send_data(
       @user.skillsheet,
       :type => 'application/excel',
