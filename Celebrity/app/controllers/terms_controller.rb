@@ -18,12 +18,13 @@ class TermsController < ApplicationController
   
   def index
     #@terms = Term.all.page(params[:page])
-    @terms = Term.page(params[:page]).search(params[:search]).order('id')
+    # @terms = Term.page().partiallysearch(params[:key])
+    @terms = Term.search(params[:search]).order('id')
   end
   
-  def ajax_term_list
-    @terms = Term.partiallysearch(params[:key])
-    render json: @terms
+  def ajax_search
+    @terms = Term.page().partiallysearch(params[:key])
+    render json:@terms
   end
   
   def edit

@@ -5,8 +5,7 @@
 <div class="right">
   <%= form_tag(terms_path, method: :get) do %>
     <p>
-      <%= text_field_tag :search, params[:search], placeholder: "キーワード", size: 25 %>
-      <%= submit_tag "検索", :name => nil %>
+      <%= text_field_tag :search, params[:search], placeholder: "キーワード検索", size: 25 %>
     </p>
   <% end %>
 </div>
@@ -17,17 +16,10 @@
   </div>
 <% end %>
 
-<div class="center">
-  <%= paginate @terms %>
+<div id="term_show">
+  <%= render(:partial => 'searched', :object => @terms) %>
 </div>
 
-<!---->
-<div id="term_list">
-</div>
-
-<div class="center">
-  <%= paginate @terms %>
-</div>
 
 <script>
 $('#search').on('keyup', function() {
@@ -48,15 +40,13 @@ function ajax_term_search(input){
   });
   
   $.ajax({ 
-    url: 'terms/ajax_term_list', 
+    url: 'terms/ajax_search', 
     type: 'GET', 
     data: ('key=' + input), 
     dataType: 'json' 
   })
-  
-  .done(function(res){ 
-  debugger
-  
+  .done(function(response){
+    debugger  
   })
   
 }

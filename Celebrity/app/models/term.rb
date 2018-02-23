@@ -7,6 +7,10 @@ class Term < ApplicationRecord
   end
 
   def self.partiallysearch(key)
+    if key == nil
+      return nil
+    else
       where(['content LIKE ?', "%#{key}%"])
+    end
   end
 end

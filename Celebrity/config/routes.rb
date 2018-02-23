@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   resources :interview_posts
   resources :terms do
     collection do
-      get 'ajax_term_list'
+      get 'ajax_search'
     end
   end
   resources :pdca_posts do 

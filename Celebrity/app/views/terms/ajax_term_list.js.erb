@@ -1,5 +1,0 @@
-<% if @terms.nil? %>
-  $("#not_exist").html("<%= escape_javascript(render 'terms/not_exist', terms: @terms) %>");
-<% else %>
-  $("#term_list").html("<%= escape_javascript(render 'terms/term_list', terms: @terms) %>");
-<% end %>
