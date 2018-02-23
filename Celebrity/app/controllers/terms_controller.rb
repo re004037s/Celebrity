@@ -21,9 +21,10 @@ class TermsController < ApplicationController
     @terms = Term.page(params[:page]).search(params[:search]).order('id')
   end
   
-  # def ajax_term_list
-  #   @terms = Term.search(params[:search]).page(params[:page])
-  # end
+  def ajax_term_list
+    @terms = Term.partiallysearch(params[:key])
+    render json: @terms
+  end
   
   def edit
     @term = Term.find(params[:id])
@@ -49,6 +50,6 @@ class TermsController < ApplicationController
   private
 
     def term_params
-      params.require(:term).permit(:name, :content)
+      params.require(:term).permit(:name, :content, :key)
     end
 end

@@ -1,27 +1,3 @@
-<script>
-  var
-  preFunc = null,
-  preInput = '',
-  input = '',
-  ajaxPost = function(input)
-  {
-    $.ajax({
-      url: "ajax_term_list",
-      type: "GET",
-      data: ("search=" + input)
-    });
-  };
-  
-  $('#inc_search').on('keyup', function() {
-    input = $.trim($(this).val());   //前後の不要な空白を削除
-    if(preInput !== input){
-      clearTimeout(preFunc);
-      preFunc = setTimeout(ajaxPost(input), 500);
-    }
-    preInput = input;
-  });
-</script>
-
 <h2 class="page-title">
   <span>IT用語解説</span>
 </h2>
@@ -35,8 +11,6 @@
   <% end %>
 </div>
 
-<!--<input id="inc_search" type="text">-->
-
 <% if current_user.try(:admin) %>
   <div class="center">
     <%= link_to '新規登録', new_term_path, class: 'txt1' %>
@@ -47,14 +21,44 @@
   <%= paginate @terms %>
 </div>
 
+<!---->
 <div id="term_list">
-  <% if @terms.blank? %>
-    <%= render partial: 'not_exist' %>
-  <% else %>
-    <%= render partial: 'term_list' %>
-  <% end %>
 </div>
 
 <div class="center">
   <%= paginate @terms %>
 </div>
+
+<script>
+$('#search').on('keyup', function() {
+  input = $.trim($(this).val());   //前後の不要な空白を削除
+  ajax_term_search(input);
+});
+  
+function ajax_term_search(input){
+  // NOTE:rails のhelperを使用していないため CSRF用のTOKENをヘッダーに含める必要がある。
+  $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
+    var token;
+    if (!options.crossDomain) {
+      token = $('meta[name="csrf-token"]').attr('content');
+      if (token) {
+           return jqXHR.setRequestHeader('X-CSRF-Token', token);
+       }
+    }
+  });
+  
+  $.ajax({ 
+    url: 'terms/ajax_term_list', 
+    type: 'GET', 
+    data: ('key=' + input), 
+    dataType: 'json' 
+  })
+  
+  .done(function(res){ 
+  debugger
+  
+  })
+  
+}
+  
+</script>
