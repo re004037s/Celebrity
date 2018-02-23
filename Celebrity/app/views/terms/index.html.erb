@@ -1,6 +1,41 @@
+<script>
+  var
+  preFunc = null,
+  preInput = '',
+  input = '',
+  ajaxPost = function(input)
+  {
+    $.ajax({
+      url: "ajax_term_list",
+      type: "GET",
+      data: ("search=" + input)
+    });
+  };
+  
+  $('#inc_search').on('keyup', function() {
+    input = $.trim($(this).val());   //前後の不要な空白を削除
+    if(preInput !== input){
+      clearTimeout(preFunc);
+      preFunc = setTimeout(ajaxPost(input), 500);
+    }
+    preInput = input;
+  });
+</script>
+
 <h2 class="page-title">
   <span>IT用語解説</span>
 </h2>
+
+<div class="right">
+  <%= form_tag(terms_path, method: :get) do %>
+    <p>
+      <%= text_field_tag :search, params[:search], placeholder: "キーワード", size: 25 %>
+      <%= submit_tag "検索", :name => nil %>
+    </p>
+  <% end %>
+</div>
+
+<!--<input id="inc_search" type="text">-->
 
 <% if current_user.try(:admin) %>
   <div class="center">
@@ -12,27 +47,12 @@
   <%= paginate @terms %>
 </div>
 
-<!-- 用語集 bootstrap アコーディオン -->
-<div class="panel-group" id="sampleAccordion">
-  <% @terms.each do |term| %>
-    <div class="panel panel-default">
-  		<div class="panel-heading">
-  			<h3 class="panel-title " style="display:inline">
-  				<a style="display:inline" data-toggle="collapse" data-parent="#sampleAccordion" href="#sampleAccordionCollapse<%= term.id %>">
-  					<%= simple_format(term.name) %>
-  				</a>
-  			</h3>
-  			<% if current_user.try(:admin) %>
-  			  <span><%= link_to '編集', edit_term_path(term) %></span>
-  			<% end %>
-  		</div>
-  		<div id="sampleAccordionCollapse<%= term.id %>" class="panel-collapse collapse">
-  			<div class="panel-body">
-  			  <%= simple_format(term.content) %>
-  			</div>
-  		</div>
-  	</div>
-	<% end %>
+<div id="term_list">
+  <% if @terms.blank? %>
+    <%= render partial: 'not_exist' %>
+  <% else %>
+    <%= render partial: 'term_list' %>
+  <% end %>
 </div>
 
 <div class="center">

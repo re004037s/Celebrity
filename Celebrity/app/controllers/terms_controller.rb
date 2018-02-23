@@ -17,8 +17,13 @@ class TermsController < ApplicationController
   end
   
   def index
-    @terms = Term.all.page(params[:page]).order("id ASC")
+    #@terms = Term.all.page(params[:page])
+    @terms = Term.page(params[:page]).search(params[:search]).order('id')
   end
+  
+  # def ajax_term_list
+  #   @terms = Term.search(params[:search]).page(params[:page])
+  # end
   
   def edit
     @term = Term.find(params[:id])

@@ -32,8 +32,11 @@ Rails.application.routes.draw do
   end
   resources :qiita_posts
   resources :interview_posts
-  resources :terms
-  
+  resources :terms do
+    collection do
+      get  :ajax_term_list
+    end
+  end
   # resources :tags #userページに飛びたいのでいらない
   # resources :user_tags #追加
   # post 'tag_show', to:'users#tag_show'
