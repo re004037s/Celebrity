@@ -1,0 +1,26 @@
+<h2 class="page-title">
+  <span>IT用語 編集</span>
+</h2>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@term) do |f| %>
+      <%= render partial: 'shared/error_messages', locals: {object: @term } %>
+
+      <%= f.label :name, "用語", class: 'txt1' %>
+      <%= f.text_area :name, class: 'form-control', rows: 2 %>
+      
+      <%= f.label :content, '解説', class: 'txt1' %>
+      <%= f.text_area :content, class: 'form-control', rows: 15 %>
+
+      <div class="center mt_20">
+        <%= f.submit "更新", class: 'btn btn-default active' %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="center mt_20">
+  <%= link_to "削除", @term, class: "btn btn-danger", method: :delete,
+                                   data: { confirm: "本当に削除しますか?" } %>
+</div>

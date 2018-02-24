@@ -1,0 +1,22 @@
+<!-- 用語集 bootstrap アコーディオン -->
+<div class="panel-group" id="sampleAccordion">
+  
+    <% searched.each do |term| %>
+    <div class="panel panel-default">
+    	<div class="panel-heading">
+    		<h3 class="panel-title " style="display:inline">
+    		<%= simple_format(term.name) %>
+    		<% if current_user.try(:admin) %>
+    		  <span><%= link_to '編集', edit_term_path(term) %></span>
+    		<% end %>
+    		</h3>
+    	</div>
+    	<div>
+    		<div class="panel-body">
+    		  <%= simple_format(term.content) %>
+    		</div>
+    	</div>
+  	</div>
+	<% end %>
+	
+</div>
