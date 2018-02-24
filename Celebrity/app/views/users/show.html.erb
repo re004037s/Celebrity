@@ -27,6 +27,7 @@
         <%= f.file_field :picture, accept: 'image/*' %>
         <%= f.hidden_field :id, :value => "#{@user.id}" %>
         <%= f.submit '画像をアップロード', id: 'fileuploader', class: 'btn btn-default active fileuploader', :disabled => 'true' %>
+        <%= f.hidden_field :id, :value => "#{@user.id}" %>      
       </div>
       <% end %>
     </div>
