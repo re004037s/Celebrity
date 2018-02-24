@@ -1,0 +1,55 @@
+<div style=text-align:center;>
+  <h2 class="page-title">
+    <span>スキルシート一覧</span>
+  </h2>
+  <br>
+  <h4>【下記ボタンからスキルシートのフォーマットをダウンロード出来ます】<br><br>
+  ⬇︎<br><br>
+  <%= link_to "ここからダウンロード！", {:controller => "skillsheets",:action=>"download" }, {method: :get, class: "btn btn-default active"} %>
+  </h4>
+ 
+  <br><br>
+  <div class="panel panel-default panel-body mg_auto wh_30" style=width:70%;>
+  ① ダウンロード後、スキルシートを編集して下さい<br>
+  ②「ファイルを選択」ボタンから編集したスキルシートを選択して下さい<br>
+  ③「登録する」ボタンを押すと、スキルシートが自分の欄に登録されます<br><br><br>
+    <div class="mg_auto wh_30">
+    <%= form_for(@user, url: post_skillsheet_path, multipart: true, :id => 'form_id' ) do |f| %>
+      <%= f.file_field :file %><br>
+      <%= f.submit '登録する', id: 'fileuploader', class: 'btn btn-primary active fileuploader', data:{disable_with:'cannot upload…'} %>
+    <% end %>
+    </div>
+  </div>
+
+  <br><br><br>
+  <table class="table table-bordered table-striped table-index">
+    <thead>
+      <tr>
+        <th width=25% class="table-header">ユーザ名</th>
+          <% if current_user.admin %>
+            <th width=25% class="table-header">氏名</th>
+          <% end %>
+        <th class="table-header">スキルシート</th>
+      </tr>
+    </thead>
+        
+    <tbody>
+      <% @users.each do |user| %>
+        <% if user.existence %>
+          <tr>
+            <td><%= user.nickname %></td>
+              <% if current_user.admin %>
+                <td><%= link_to user.name, user_path(user, user_id: user.id) %></td>
+              <% end %>
+            <td><% if user.skillsheet == nil %>      
+                  未登録
+                <% else %>
+                　<%= link_to "#{user.skillsheet_name}", get_skillsheet_path %>
+                <% end %>
+            </td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

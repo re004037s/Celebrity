@@ -274,6 +274,8 @@ ActiveRecord::Schema.define(version: 20180212234917) do
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
     t.string   "line_id"
+    t.binary   "skillsheet"
+    t.string   "skillsheet_name"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
