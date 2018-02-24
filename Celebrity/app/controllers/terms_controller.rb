@@ -17,8 +17,6 @@ class TermsController < ApplicationController
   end
   
   def index
-    #@terms = Term.all.page(params[:page])
-    # @terms = Term.page().partiallysearch(params[:key])
     @terms = Term.search(params[:search]).order('id')
   end
   
