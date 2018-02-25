@@ -81,7 +81,7 @@ var tag_cnt = 0;
 
 $('#interest-tags').tagit({
   
-  placeholderText:"興味のある言語やツールのタグをつけよう。最大10個まで",
+  placeholderText:"好きな言語やツールのタグを登録。最大10個",
   fieldName:"user[tag_list]",
   singleField: true,
   removeConfirmation: true,  //バックスペース1回押すとremoveClassが適用。対象タグに色がつく
@@ -123,7 +123,6 @@ function ajax_insert_new_tag_to_DB(tagLabel, user_id){
        }
     }
   });
-  debugger;
   var param = 'tag_name=' + tagLabel + '&' + 'id=' + user_id;
     
   $.ajax({ 
@@ -150,7 +149,6 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
        }
     }
   });
-  debugger;
   var param = 'tag_id=' + tag_id + '&' + 'id=' + user_id;
 
   $.ajax({
