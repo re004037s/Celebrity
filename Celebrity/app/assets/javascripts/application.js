@@ -15,5 +15,5 @@
 //= require jquery-ui
 //= require_self
 //= require bootstrap
-
+//= require jquery.magnific-popup.min
 //= require_tree .
