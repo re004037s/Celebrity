@@ -81,7 +81,7 @@ var tag_cnt = 0;
 
 $('#interest-tags').tagit({
   
-  placeholderText:"興味のある言語やツールのタグをつけよう。最大10個まで",
+  placeholderText:"好きな言語やツールのタグを登録。最大10個",
   fieldName:"user[tag_list]",
   singleField: true,
   removeConfirmation: true,  //バックスペース1回押すとremoveClassが適用。対象タグに色がつく
@@ -92,7 +92,7 @@ $('#interest-tags').tagit({
   afterTagAdded: function(event, ui) {
     // FUTURE FIX: onload時にインサートが実行されてしまうため一時回避策
     if(tag_cnt >= <%= @tags_count %>){
-      ajax_insert_new_tag_to_DB(ui.tagLabel);
+      ajax_insert_new_tag_to_DB(ui.tagLabel, <%= @user.id %>);
     }
     tag_cnt += 1;
   },
@@ -105,14 +105,14 @@ $('#interest-tags').tagit({
   },
   afterTagRemoved: function(event, ui) {
     var tag_id = $(ui.tag[0]).find('input:hidden[name="tag_id"]').val();
-    ajax_delete_tag_in_DB(tag_id);
+    ajax_delete_tag_in_DB(tag_id, <%= @user.id %>);
   }
 
 });
 
 $('.tagit-new').css('width','100%');
 
-function ajax_insert_new_tag_to_DB(tagLabel){
+function ajax_insert_new_tag_to_DB(tagLabel, user_id){
   // NOTE:rails のhelperを使用していないため CSRF用のTOKENをヘッダーに含める必要がある。
   $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
     var token;
@@ -123,11 +123,12 @@ function ajax_insert_new_tag_to_DB(tagLabel){
        }
     }
   });
-
+  var param = 'tag_name=' + tagLabel + '&' + 'id=' + user_id;
+    
   $.ajax({ 
     url: '/tag_new', 
     type: 'POST', 
-    data: ('tag_name=' + tagLabel), 
+    data: param, 
     dataType: 'json' 
   })
   
@@ -138,7 +139,7 @@ function ajax_insert_new_tag_to_DB(tagLabel){
   
 }
 
-function ajax_delete_tag_in_DB(tag_id){
+function ajax_delete_tag_in_DB(tag_id, user_id){
   $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
     var token;
     if (!options.crossDomain) {
@@ -148,11 +149,12 @@ function ajax_delete_tag_in_DB(tag_id){
        }
     }
   });
+  var param = 'tag_id=' + tag_id + '&' + 'id=' + user_id;
 
   $.ajax({
     url: '/tag_delete', 
     type: 'DELETE', 
-    data: ('tag_id=' + tag_id), 
+    data: param, 
     dataType: 'json' 
   })
   
