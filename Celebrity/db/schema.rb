@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180212234917) do
+ActiveRecord::Schema.define(version: 20180225141950) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,19 +76,24 @@ ActiveRecord::Schema.define(version: 20180212234917) do
 
   create_table "javascript_statuses", force: :cascade do |t|
     t.integer  "user_id"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.date     "schedule_date"
-    t.boolean  "ga_1",          default: false
-    t.boolean  "ga_2",          default: false
-    t.boolean  "ga_3",          default: false
-    t.boolean  "ga_4",          default: false
-    t.boolean  "do_1",          default: false
+    t.boolean  "ga_1",            default: false
+    t.boolean  "ga_2",            default: false
+    t.boolean  "ga_3",            default: false
+    t.boolean  "ga_4",            default: false
+    t.boolean  "do_1",            default: false
     t.date     "ga_1_compd"
     t.date     "ga_2_compd"
     t.date     "ga_3_compd"
     t.date     "ga_4_compd"
     t.date     "do_1_compd"
+    t.date     "ga_1_completion"
+    t.date     "ga_2_completion"
+    t.date     "ga_3_completion"
+    t.date     "ga_4_completion"
+    t.date     "do_1_completion"
     t.index ["user_id"], name: "index_javascript_statuses_on_user_id", using: :btree
   end
 
@@ -175,41 +180,46 @@ ActiveRecord::Schema.define(version: 20180212234917) do
 
   create_table "ruby_statuses", force: :cascade do |t|
     t.integer  "user_id"
-    t.boolean  "ga_1",          default: false
-    t.boolean  "ga_2",          default: false
-    t.boolean  "ga_3",          default: false
-    t.boolean  "ga_4",          default: false
-    t.boolean  "ga_5",          default: false
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.boolean  "ga_1",            default: false
+    t.boolean  "ga_2",            default: false
+    t.boolean  "ga_3",            default: false
+    t.boolean  "ga_4",            default: false
+    t.boolean  "ga_5",            default: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.date     "ga_1_compd"
     t.date     "ga_2_compd"
     t.date     "ga_3_compd"
     t.date     "ga_4_compd"
     t.date     "ga_5_compd"
     t.date     "schedule_date"
+    t.date     "ga_1_completion"
+    t.date     "ga_2_completion"
+    t.date     "ga_3_completion"
+    t.date     "ga_4_completion"
+    t.date     "ga_5_completion"
     t.index ["user_id"], name: "index_ruby_statuses_on_user_id", using: :btree
   end
 
   create_table "rubyonrails_statuses", force: :cascade do |t|
     t.integer  "user_id"
-    t.boolean  "ga_1",          default: false
-    t.boolean  "ga_2",          default: false
-    t.boolean  "ga_3",          default: false
-    t.boolean  "ga_4",          default: false
-    t.boolean  "ga_5",          default: false
-    t.boolean  "ga_6",          default: false
-    t.boolean  "ga_7",          default: false
-    t.boolean  "ga_8",          default: false
-    t.boolean  "ga_9",          default: false
-    t.boolean  "ga_10",         default: false
-    t.boolean  "ga_11",         default: false
-    t.boolean  "do_1",          default: false
-    t.boolean  "do_2",          default: false
-    t.boolean  "do_3",          default: false
-    t.boolean  "do_4",          default: false
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.boolean  "ga_1",             default: false
+    t.boolean  "ga_2",             default: false
+    t.boolean  "ga_3",             default: false
+    t.boolean  "ga_4",             default: false
+    t.boolean  "ga_5",             default: false
+    t.boolean  "ga_6",             default: false
+    t.boolean  "ga_7",             default: false
+    t.boolean  "ga_8",             default: false
+    t.boolean  "ga_9",             default: false
+    t.boolean  "ga_10",            default: false
+    t.boolean  "ga_11",            default: false
+    t.boolean  "do_1",             default: false
+    t.boolean  "do_2",             default: false
+    t.boolean  "do_3",             default: false
+    t.boolean  "do_4",             default: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.date     "ga_1_compd"
     t.date     "ga_2_compd"
     t.date     "ga_3_compd"
@@ -226,6 +236,21 @@ ActiveRecord::Schema.define(version: 20180212234917) do
     t.date     "do_3_compd"
     t.date     "do_4_compd"
     t.date     "schedule_date"
+    t.date     "ga_1_completion"
+    t.date     "ga_2_completion"
+    t.date     "ga_3_completion"
+    t.date     "ga_4_completion"
+    t.date     "ga_5_completion"
+    t.date     "ga_6_completion"
+    t.date     "ga_7_completion"
+    t.date     "ga_8_completion"
+    t.date     "ga_9_completion"
+    t.date     "ga_10_completion"
+    t.date     "ga_11_completion"
+    t.date     "do_1_completion"
+    t.date     "do_2_completion"
+    t.date     "do_3_completion"
+    t.date     "do_4_completion"
     t.index ["user_id"], name: "index_rubyonrails_statuses_on_user_id", using: :btree
   end
 
