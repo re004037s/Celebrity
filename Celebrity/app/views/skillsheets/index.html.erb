@@ -44,7 +44,7 @@
             <td><% if user.skillsheet == nil %>      
                   未登録
                 <% else %>
-                　<%= link_to "#{user.skillsheet_name}", get_skillsheet_path %>
+                　<%= link_to "#{user.skillsheet_name}", get_skillsheet_path(user_id: user.id) %>
                 <% end %>
             </td>
           </tr>

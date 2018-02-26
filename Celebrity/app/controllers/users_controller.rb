@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :existence_user, only: [:show, :edit, :update]
   before_action :administrator_user, only: :new
   before_action :correct_user_for_edit,
-    only:[:edit, :update, :update_picture, :tag_show, :tag_delete]
+    only:[:edit, :update, :update_picture,:tag_new, :tag_show, :tag_delete]
   
   def index
     @users = User.page(params[:page])

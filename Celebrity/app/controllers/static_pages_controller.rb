@@ -19,6 +19,9 @@ class StaticPagesController < ApplicationController
   def railstutorial
     @railstutorial_status = RailstutorialStatus.find_or_create_by(user_id: current_user.id)
   end
+  
+  def glossary
+  end
 
   private
     

@@ -235,6 +235,13 @@ ActiveRecord::Schema.define(version: 20180212234917) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "terms", force: :cascade do |t|
+    t.string   "name"
+    t.string   "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "user_movie_statuses", force: :cascade do |t|
     t.integer  "user_id"
     t.date     "schedule_date"

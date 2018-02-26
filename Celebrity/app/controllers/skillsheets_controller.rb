@@ -37,6 +37,7 @@ class SkillsheetsController < ApplicationController
   end
   
   def get_skillsheet
+    @user = User.find(params[:user_id])
     send_data(
       @user.skillsheet,
       :type => 'application/excel',

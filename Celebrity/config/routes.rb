@@ -33,6 +33,12 @@ Rails.application.routes.draw do
   resources :interview_posts
   resources :skillsheets
   get '/get_skillsheet', to: 'skillsheets#get_skillsheet'
+  resources :terms do
+    collection do
+      get 'ajax_search'
+    end
+  end
+
   resources :pdca_posts do 
     collection do
         get 'get_image'
@@ -58,7 +64,6 @@ Rails.application.routes.draw do
   get '/qa', to: 'static_pages#qa'
   get '/pdca_post/get_image/:id', to: 'pdca_posts#get_image'
   get '/portfolio_mv', to: 'static_pages#portfolio_mv'
-  # post '/tag_show', to: 'users#tag_show'#ルーティング指定したけどエラー
   patch '/html_css_status', to: 'html_css_statuses#update'
   patch '/html_css_status_schedule', to: 'html_css_statuses#update_schedule', as: 'html_css_schedule'
   patch '/javascript_status', to: 'javascript_statuses#update'
