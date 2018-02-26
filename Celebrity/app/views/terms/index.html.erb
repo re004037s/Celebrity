@@ -11,11 +11,10 @@
 </div>
 
 <% isAdmin = current_user.try(:admin) %>
-<% if current_user.try(:admin) %>
-  <div class="center">
-    <%= link_to '新規登録', new_term_path, class: 'txt1' %>
-  </div>
-<% end %>
+
+<div class="center">
+  <%= link_to '新規登録', new_term_path, class: 'txt1' %>
+</div>
 
 <div id="term_show">
   <%= render(:partial => 'searched', :object => @terms) %>
@@ -79,12 +78,10 @@ function termHTMLHelper(res){
     _html += '<div class="panel-heading">';
     _html += '<h3 class="panel-title " style="display:inline">';
     _html += '<p>' + res[i].name +'</p>';
-    
-    if(<%= isAdmin %>){
-      _html += '<span>' + '<a href="/terms/' + res[i].id + '/edit">編集</a>' + '</span>'
-    }
-    
     _html += '</h3>';
+    // if(<%= isAdmin %>){
+    _html += '<span>' + '<a href="/terms/' + res[i].id + '/edit">編集</a>' + '</span>'
+    // }
     _html += '</div>';
     
     _html += '<div><div class="panel-body"><p>' + res[i].content + '</p></div></div>'

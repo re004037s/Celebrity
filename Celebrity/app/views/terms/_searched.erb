@@ -5,11 +5,11 @@
     <div class="panel panel-default">
     	<div class="panel-heading">
     		<h3 class="panel-title " style="display:inline">
-    		<%= simple_format(term.name) %>
-    		<% if current_user.try(:admin) %>
-    		  <span><%= link_to '編集', edit_term_path(term) %></span>
-    		<% end %>
+    		  <%= simple_format(term.name) %>
     		</h3>
+    		<span>
+    		  <%= link_to '編集', edit_term_path(term) %>
+    		</span>
     	</div>
     	<div>
     		<div class="panel-body">

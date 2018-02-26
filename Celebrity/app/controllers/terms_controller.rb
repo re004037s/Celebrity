@@ -1,7 +1,6 @@
 class TermsController < ApplicationController
   before_action :logged_in_user, only: [:index, :new, :edit, :destroy]
-  before_action :admin_user, only: [:new, :edit]
-  
+
   def new
     @term = Term.new
   end
