@@ -456,6 +456,8 @@ li.first-child {
   
   td {
     word-break: break-word;
+  //改行されない処理
+    white-space: nowrap;
   }
   
 }
