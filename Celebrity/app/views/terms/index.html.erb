@@ -1,0 +1,98 @@
+<h2 class="page-title">
+  <span>IT用語解説</span>
+</h2>
+
+<div class="right">
+  <%= form_tag(terms_path, method: :get) do %>
+    <p>
+      <%= text_field_tag :search, params[:search], placeholder: "解説内キーワード検索", size: 25 %>
+    </p>
+  <% end %>
+</div>
+
+<% isAdmin = current_user.try(:admin) %>
+<% if current_user.try(:admin) %>
+  <div class="center">
+    <%= link_to '新規登録', new_term_path, class: 'txt1' %>
+  </div>
+<% end %>
+
+<div id="term_show">
+  <%= render(:partial => 'searched', :object => @terms) %>
+</div>
+
+
+<script>
+$('#search').on('keyup', function() {
+  input = $.trim($(this).val());
+  ajax_term_search(input);
+});
+  
+function ajax_term_search(input){
+  // NOTE:rails のhelperを使用していないため CSRF用のTOKENをヘッダーに含める必要がある。
+  $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
+    var token;
+    if (!options.crossDomain) {
+      token = $('meta[name="csrf-token"]').attr('content');
+      if (token) {
+           return jqXHR.setRequestHeader('X-CSRF-Token', token);
+       }
+    }
+  });
+  
+  $.ajax({ 
+    url: 'terms/ajax_search', 
+    type: 'GET', 
+    data: ('key=' + input), 
+    dataType: 'json' 
+  })
+  .done(function(res){
+    // 既存のDOMを削除
+    $('.panel-group').remove();
+    
+    //レスポンスデータを元にDOMを生成
+    var _html = '<div class="panel-group" id="sampleAccordion">';
+    _html += termHTMLHelper(res);
+    _html += '</div>'
+    
+    // DOMを表示
+    $('#term_show').append(_html);
+    
+  })
+  
+}
+
+function termHTMLHelper(res){
+  var _html = ''
+  var len = res.length;
+  
+  if(len < 1){
+    return _html += '<div class="alert alert-danger" role="alert">検索結果は0件です</div>';
+  }
+  
+  _html += '<div class="alert alert-success" role="alert">' + len + '件該当しました</div>';
+  
+  for(var i = 0; i < len; i++){
+    
+    _html += '<div class="panel panel-default">';
+    
+    _html += '<div class="panel-heading">';
+    _html += '<h3 class="panel-title " style="display:inline">';
+    _html += '<p>' + res[i].name +'</p>';
+    
+    if(<%= isAdmin %>){
+      _html += '<span>' + '<a href="/terms/' + res[i].id + '/edit">編集</a>' + '</span>'
+    }
+    
+    _html += '</h3>';
+    _html += '</div>';
+    
+    _html += '<div><div class="panel-body"><p>' + res[i].content + '</p></div></div>'
+  	_html += '</div>';
+    
+  }
+  return _html;
+}
+
+  
+</script>

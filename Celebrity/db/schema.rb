@@ -260,6 +260,13 @@ ActiveRecord::Schema.define(version: 20180225141950) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "terms", force: :cascade do |t|
+    t.string   "name"
+    t.string   "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "user_movie_statuses", force: :cascade do |t|
     t.integer  "user_id"
     t.date     "schedule_date"
@@ -292,6 +299,8 @@ ActiveRecord::Schema.define(version: 20180225141950) do
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
     t.string   "line_id"
+    t.binary   "skillsheet"
+    t.string   "skillsheet_name"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 

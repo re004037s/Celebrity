@@ -4,9 +4,15 @@ class HtmlCssStatusesController < ApplicationController
   
   def update_schedule
     @schedule_date = params[:date]
-    @html_css_status = current_user.html_css_status
-    @html_css_status.update_attributes(schedule_date: @schedule_date)
-    redirect_to current_user
+    if @schedule_date == ""
+      flash[:danger] = "完了予定日がブランクです。完了予定日を選択してください"
+      redirect_to current_user
+    else
+      @status = current_user.html_css_status
+      @status.update_attributes(schedule_date: @schedule_date)
+      flash[:info] = "完了予定日を #{params[:date]} に設定しました"
+      redirect_to current_user
+    end
   end
 
   

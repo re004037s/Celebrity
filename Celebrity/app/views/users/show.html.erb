@@ -27,6 +27,7 @@
         <%= f.file_field :picture, accept: 'image/*' %>
         <%= f.hidden_field :id, :value => "#{@user.id}" %>
         <%= f.submit '画像をアップロード', id: 'fileuploader', class: 'btn btn-default active fileuploader', :disabled => 'true' %>
+        <%= f.hidden_field :id, :value => "#{@user.id}" %>      
       </div>
       <% end %>
     </div>
@@ -80,7 +81,7 @@ var tag_cnt = 0;
 
 $('#interest-tags').tagit({
   
-  placeholderText:"興味のある言語やツールのタグをつけよう。最大10個まで",
+  placeholderText:"好きな言語やツールのタグを登録。最大10個",
   fieldName:"user[tag_list]",
   singleField: true,
   removeConfirmation: true,  //バックスペース1回押すとremoveClassが適用。対象タグに色がつく
@@ -91,7 +92,7 @@ $('#interest-tags').tagit({
   afterTagAdded: function(event, ui) {
     // FUTURE FIX: onload時にインサートが実行されてしまうため一時回避策
     if(tag_cnt >= <%= @tags_count %>){
-      ajax_insert_new_tag_to_DB(ui.tagLabel);
+      ajax_insert_new_tag_to_DB(ui.tagLabel, <%= @user.id %>);
     }
     tag_cnt += 1;
   },
@@ -104,14 +105,14 @@ $('#interest-tags').tagit({
   },
   afterTagRemoved: function(event, ui) {
     var tag_id = $(ui.tag[0]).find('input:hidden[name="tag_id"]').val();
-    ajax_delete_tag_in_DB(tag_id);
+    ajax_delete_tag_in_DB(tag_id, <%= @user.id %>);
   }
 
 });
 
 $('.tagit-new').css('width','100%');
 
-function ajax_insert_new_tag_to_DB(tagLabel){
+function ajax_insert_new_tag_to_DB(tagLabel, user_id){
   // NOTE:rails のhelperを使用していないため CSRF用のTOKENをヘッダーに含める必要がある。
   $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
     var token;
@@ -122,11 +123,12 @@ function ajax_insert_new_tag_to_DB(tagLabel){
        }
     }
   });
-
+  var param = 'tag_name=' + tagLabel + '&' + 'id=' + user_id;
+    
   $.ajax({ 
     url: '/tag_new', 
     type: 'POST', 
-    data: ('tag_name=' + tagLabel), 
+    data: param, 
     dataType: 'json' 
   })
   
@@ -137,7 +139,7 @@ function ajax_insert_new_tag_to_DB(tagLabel){
   
 }
 
-function ajax_delete_tag_in_DB(tag_id){
+function ajax_delete_tag_in_DB(tag_id, user_id){
   $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
     var token;
     if (!options.crossDomain) {
@@ -147,11 +149,12 @@ function ajax_delete_tag_in_DB(tag_id){
        }
     }
   });
+  var param = 'tag_id=' + tag_id + '&' + 'id=' + user_id;
 
   $.ajax({
     url: '/tag_delete', 
     type: 'DELETE', 
-    data: ('tag_id=' + tag_id), 
+    data: param, 
     dataType: 'json' 
   })
   
@@ -170,19 +173,75 @@ function ajax_delete_tag_in_DB(tag_id){
   $(".tagit-close").last().append('<input type="hidden" name="tag_id" value="'+ <%= value %> + '">');
 </script>
 <% end %>
-
-
-<% if current_user.try(:admin) == true %>
-<% elsif Feedback.where(user_id: current_user).count == 
-  Movie.where(movie_category_id: MovieCategory.where(must_view: true).ids).count &&
-  current_user.html_css_status.schedule_date.blank? ||
-  current_user.javascript_status.schedule_date.blank? ||
-  current_user.ruby_status.schedule_date.blank? ||
-  current_user.rubyonrails_status.schedule_date.blank? ||
-  current_user.railstutorial_status.schedule_date.blank? %>
-  <p style="background-color:#FFCACA; color: red; font-size: 30px; text-align: center; 
-  margin: 60px 0 25px; text-shadow: 0 1px 0 #999, 0 2px 0 #999">まずは下記の完了予定日を登録して下さい</p>
-<% end %>
+  
+  <table class="txt1 table-condensed table-status-schedule">
+     <tr valign="baseline">
+       <td width="60%">
+        <h3 class="txt3">[Progate] HTML&CSS</h3>
+        完了予定日：<%= @user.html_css_status.try(:schedule_date) if @user.html_css_status.schedule_date.present? %>
+        </td>
+        <td>
+        <%= form_for(@user.html_css_status, url: html_css_schedule_path ) do |f| %>
+        <input style="width:100%" type="date" name="date">
+        </td>
+        <td width="20%">
+        <%= f.submit "登録", class: "btn btn-default active" %>
+        <%= f.hidden_field :id, :value => "#{@user.id}" %>
+        <% end %>
+        </td>
+    </tr>
+  </table>
+  <table class="txt1 table table-bordered table-striped table-condensed table-status">
+    <thead>
+      <tr>
+        <th class="table-header">コース</th>
+        <th class="table-header">ステータス</th>
+        <th class="table-header">完了日</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>学習コース/初級</td>
+        <td class="center"><%= @user.html_css_status.try(:ga_beginner) ? '完了' : '未' %></td>
+        <td><%= @user.html_css_status.try(:ga_beginner_compd) %></td>
+      </tr>
+      <tr>
+        <td>学習コース/中級</td>
+        <td class="center"><%= @user.html_css_status.try(:ga_middle) ? '完了' : '未' %></td>
+        <td><%= @user.html_css_status.try(:ga_middle_compd) %></td>
+      </tr>
+      <tr>
+        <td>学習コース/上級</td>
+        <td class="center"><%= @user.html_css_status.try(:ga_advanced) ? '完了' : '未' %></td>
+        <td><%= @user.html_css_status.try(:ga_advanced_compd) %></td>
+      </tr>
+      <tr>
+        <td>道場コース/初級</td>
+        <td class="center"><%= @user.html_css_status.try(:do_beginner) ? '完了' : '未' %></td>
+        <td><%= @user.html_css_status.try(:do_beginner_compd) %></td>
+      </tr>
+      <tr>
+        <td>道場コース/中級</td>
+        <td class="center"><%= @user.html_css_status.try(:do_middle) ? '完了' : '未' %></td>
+        <td><%= @user.html_css_status.try(:do_middle_compd) %></td>
+      </tr>
+      <tr>
+        <td>道場コース/上級</td>
+        <td class="center"><%= @user.html_css_status.try(:do_advanced) ? '完了' : '未' %></td>
+        <td><%= @user.html_css_status.try(:do_advanced_compd) %></td>
+      </tr>
+      <tr>
+        <td>実践コース 1</td>
+        <td class="center"><%= @user.html_css_status.try(:ji_1) ? '完了' : '未' %></td>
+        <td><%= @user.html_css_status.try(:ji_1_compd) %></td>
+      </tr>
+      <tr>
+        <td>実践コース 2</td>
+        <td class="center"><%= @user.html_css_status.try(:ji_2) ? '完了' : '未' %></td>
+        <td><%= @user.html_css_status.try(:ji_2_compd) %></td>
+      </tr>
+    </tbody>
+  </table>
   
   <table class="txt1 table-condensed table-status-schedule">
      <tr valign="baseline">
@@ -191,6 +250,7 @@ function ajax_delete_tag_in_DB(tag_id){
       </td>
     </tr>
   </table>
+  
   <table class="txt1 table table-bordered table-striped table-condensed table-status">
     <thead>
       <tr>
@@ -281,6 +341,7 @@ function ajax_delete_tag_in_DB(tag_id){
       </td>
     </tr>
   </table>
+  
   <table class="txt1 table table-bordered table-striped table-condensed table-status">
     <thead>
       <tr>

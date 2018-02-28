@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :existence_user, only: [:show, :edit, :update]
   before_action :administrator_user, only: :new
   before_action :correct_user_for_edit,
-    only:[:edit, :update, :update_picture, :tag_show, :tag_delete]
+    only:[:edit, :update, :update_picture,:tag_new, :tag_show, :tag_delete]
   
   def index
     @users = User.page(params[:page])
@@ -17,6 +17,8 @@ class UsersController < ApplicationController
     tags = @user.tags.limit(10).pluck(:tag,:id)
     @tags_h = Hash[*tags.flatten]
   end
+  
+  
   
   def update_picture
     @user = current_user
@@ -102,7 +104,8 @@ class UsersController < ApplicationController
   private
   
     def user_params
-      params.require(:user).permit(:name, :nickname, :line_id, :email, :password, :password_confirmation, :portfolio_path, :github_path, :picture_file, :picture,:tag_list)
+      params.require(:user).permit(:name, :nickname, :line_id, :email, :password, :password_confirmation, :portfolio_path,
+        :github_path, :picture_file, :picture, :tag_list, :skillsheet, :skillsheet_name)
     end
     
     # ログイン済み or 管理ユーザであれば true を返す
@@ -112,10 +115,10 @@ class UsersController < ApplicationController
     end
    
     #adminがedit,updateをするのを制限する 
+    #bug fixed
     def correct_user_for_edit
       user_id = params[:id]
       user_id ||= params[:user][:id]
-      
       @user = User.find(user_id)
       if current_user?(@user)
       else
@@ -126,7 +129,7 @@ class UsersController < ApplicationController
     
     # アクセスしようとしているページが削除ユーザのものである場合はルートURLへリダイレクト
     def existence_user
-      @user = User.find(params[:id])
+      @user = User.find(params[:id]) 
       redirect_to root_url unless existence_user?(@user)
     end
 
