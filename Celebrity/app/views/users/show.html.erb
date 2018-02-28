@@ -188,16 +188,6 @@ function ajax_delete_tag_in_DB(tag_id){
      <tr valign="baseline">
       <td width="60%">
         <h3 class="txt3">[Progate] JavaScript</h3>
-        完了予定日：<%= @user.javascript_status.try(:schedule_date) if @user.javascript_status.schedule_date.present? %><span class="font-schedule"></h3>
-      </td>
-      <td>
-        <%= form_for(@user.javascript_status, url: javascript_schedule_path ) do |f| %>
-        <input style="width:100%" type="date" name="date">
-      </td>
-      <td width="20%">
-        <%= f.submit "登録", class: "btn btn-default active" %>
-        <%= f.hidden_field :id, :value => "#{@user.id}" %>
-        <% end %>
       </td>
     </tr>
   </table>
@@ -217,7 +207,7 @@ function ajax_delete_tag_in_DB(tag_id){
         <td>
           <%= @user.javascript_status.try(:ga_1_completion) if @user.javascript_status.schedule_date.present? %><span class="font-schedule">
           <%= form_for(@user.javascript_status, url: javascript_completion_path ) do |f| %>
-            <input style="width:100%" type="date" name="date">
+            <input style="width:60%" type="date" name="date">
             <%= f.submit "登録", class: "btn btn-default active" %>
             <%= f.hidden_field :id, :value => "#{@user.id}"%>
             <%= f.hidden_field :course, :value => "javascript_ga_1"%>
@@ -231,7 +221,7 @@ function ajax_delete_tag_in_DB(tag_id){
         <td>
           <%= @user.javascript_status.try(:ga_2_completion)%>
           <%= form_for(@user.javascript_status, url: javascript_completion_path ) do |f| %>
-            <input style="width:100%" type="date" name="date">
+            <input style="width:60%" type="date" name="date">
             <%= f.submit "登録", class: "btn btn-default active" %>
             <%= f.hidden_field :id, :value => "#{@user.id}"%>
             <%= f.hidden_field :course, :value => "javascript_ga_2"%>
@@ -245,7 +235,7 @@ function ajax_delete_tag_in_DB(tag_id){
         <td>
           <%= @user.javascript_status.try(:ga_3_completion)%>
           <%= form_for(@user.javascript_status, url: javascript_completion_path ) do |f| %>
-            <input style="width:100%" type="date" name="date">
+            <input style="width:60%" type="date" name="date">
             <%= f.submit "登録", class: "btn btn-default active" %>
             <%= f.hidden_field :id, :value => "#{@user.id}"%>
             <%= f.hidden_field :course, :value => "javascript_ga_3"%>
@@ -259,7 +249,7 @@ function ajax_delete_tag_in_DB(tag_id){
         <td>
           <%= @user.javascript_status.try(:ga_4_completion)%>
           <%= form_for(@user.javascript_status, url: javascript_completion_path ) do |f| %>
-            <input style="width:100%" type="date" name="date">
+            <input style="width:60%" type="date" name="date">
             <%= f.submit "登録", class: "btn btn-default active" %>
             <%= f.hidden_field :id, :value => "#{@user.id}"%>
             <%= f.hidden_field :course, :value => "javascript_ga_4"%>
@@ -273,7 +263,7 @@ function ajax_delete_tag_in_DB(tag_id){
         <td>
           <%= @user.javascript_status.try(:do_1_completion)%>
           <%= form_for(@user.javascript_status, url: javascript_completion_path ) do |f| %>
-            <input style="width:100%" type="date" name="date">
+            <input style="width:60%" type="date" name="date">
             <%= f.submit "登録", class: "btn btn-default active" %>
             <%= f.hidden_field :id, :value => "#{@user.id}"%>
             <%= f.hidden_field :course, :value => "javascript_do_1"%>
@@ -288,16 +278,6 @@ function ajax_delete_tag_in_DB(tag_id){
      <tr valign="baseline">
       <td width="60%">
         <h3 class="txt3">[Progate] Ruby</h3>
-        完了予定日：<%= @user.ruby_status.try(:schedule_date) if @user.ruby_status.schedule_date.present? %></span></h3>
-      </td>
-      <td>
-        <%= form_for(@user.ruby_status, url: ruby_schedule_path ) do |f| %>
-        <input style="width:100%" type="date" name="date">
-      </td>
-      <td width="20%">
-        <%= f.submit "登録", class: "btn btn-default active" %>
-        <%= f.hidden_field :id, :value => "#{@user.id}" %>
-        <% end %>
       </td>
     </tr>
   </table>
@@ -317,7 +297,7 @@ function ajax_delete_tag_in_DB(tag_id){
         <td>
           <%= @user.ruby_status.try(:ga_1_completion) %>
           <%= form_for(@user.ruby_status, url: ruby_completion_path ) do |f| %>
-            <input style="width:100%" type="date" name="date">
+            <input style="width:60%" type="date" name="date">
             <%= f.submit "登録", class: "btn btn-default active" %>
             <%= f.hidden_field :id, :value => "#{@user.id}"%>
             <%= f.hidden_field :course, :value => "ruby_ga_1"%>
@@ -331,7 +311,7 @@ function ajax_delete_tag_in_DB(tag_id){
         <td>
           <%= @user.ruby_status.try(:ga_2_completion) %>
           <%= form_for(@user.ruby_status, url: ruby_completion_path ) do |f| %>
-            <input style="width:100%" type="date" name="date">
+            <input style="width:60%" type="date" name="date">
             <%= f.submit "登録", class: "btn btn-default active" %>
             <%= f.hidden_field :id, :value => "#{@user.id}"%>
             <%= f.hidden_field :course, :value => "ruby_ga_2"%>
@@ -345,7 +325,7 @@ function ajax_delete_tag_in_DB(tag_id){
         <td>
           <%= @user.ruby_status.try(:ga_3_completion) %>
           <%= form_for(@user.ruby_status, url: ruby_completion_path ) do |f| %>
-            <input style="width:100%" type="date" name="date">
+            <input style="width:60%" type="date" name="date">
             <%= f.submit "登録", class: "btn btn-default active" %>
             <%= f.hidden_field :id, :value => "#{@user.id}"%>
             <%= f.hidden_field :course, :value => "ruby_ga_3"%>
@@ -359,7 +339,7 @@ function ajax_delete_tag_in_DB(tag_id){
         <td>
           <%= @user.ruby_status.try(:ga_4_completion) %>
           <%= form_for(@user.ruby_status, url: ruby_completion_path ) do |f| %>
-            <input style="width:100%" type="date" name="date">
+            <input style="width:60%" type="date" name="date">
             <%= f.submit "登録", class: "btn btn-default active" %>
             <%= f.hidden_field :id, :value => "#{@user.id}"%>
             <%= f.hidden_field :course, :value => "ruby_ga_4"%>
@@ -373,7 +353,7 @@ function ajax_delete_tag_in_DB(tag_id){
         <td>
           <%= @user.ruby_status.try(:ga_5_completion) %>
           <%= form_for(@user.ruby_status, url: ruby_completion_path ) do |f| %>
-            <input style="width:100%" type="date" name="date">
+            <input style="width:60%" type="date" name="date">
             <%= f.submit "登録", class: "btn btn-default active" %>
             <%= f.hidden_field :id, :value => "#{@user.id}"%>
             <%= f.hidden_field :course, :value => "ruby_ga_5"%>
@@ -388,16 +368,6 @@ function ajax_delete_tag_in_DB(tag_id){
      <tr valign="baseline">
       <td width="60%">
         <h3 class="txt3">[Progate] Ruby on Rails</h3>
-        完了予定日：<%= @user.rubyonrails_status.try(:schedule_date) if @user.rubyonrails_status.schedule_date.present? %></span></h3>
-      </td>
-      <td>
-        <%= form_for(@user.rubyonrails_status, url: rubyonrails_schedule_path ) do |f| %>
-        <input style="width:100%" type="date" name="date">
-      </td>
-      <td width="20%">
-        <%= f.submit "登録", class: "btn btn-default active" %>
-        <%= f.hidden_field :id, :value => "#{@user.id}" %>
-        <% end %>
       </td>
     </tr>
   </table>
@@ -417,7 +387,7 @@ function ajax_delete_tag_in_DB(tag_id){
         <td>
           <%= @user.rubyonrails_status.try(:ga_1_completion) %>
           <%= form_for(@user.rubyonrails_status, url: rubyonrails_completion_path ) do |f| %>
-            <input style="width:100%" type="date" name="date">
+            <input style="width:60%" type="date" name="date">
             <%= f.submit "登録", class: "btn btn-default active" %>
             <%= f.hidden_field :id, :value => "#{@user.id}"%>
             <%= f.hidden_field :course, :value => "rubyonrails_ga_1"%>
@@ -432,7 +402,7 @@ function ajax_delete_tag_in_DB(tag_id){
         <td>
           <%= @user.rubyonrails_status.try(:ga_2_completion) %>
           <%= form_for(@user.rubyonrails_status, url: rubyonrails_completion_path ) do |f| %>
-            <input style="width:100%" type="date" name="date">
+            <input style="width:60%" type="date" name="date">
             <%= f.submit "登録", class: "btn btn-default active" %>
             <%= f.hidden_field :id, :value => "#{@user.id}"%>
             <%= f.hidden_field :course, :value => "rubyonrails_ga_2"%>
@@ -447,7 +417,7 @@ function ajax_delete_tag_in_DB(tag_id){
         <td>
           <%= @user.rubyonrails_status.try(:ga_3_completion) %>
           <%= form_for(@user.rubyonrails_status, url: rubyonrails_completion_path ) do |f| %>
-            <input style="width:100%" type="date" name="date">
+            <input style="width:60%" type="date" name="date">
             <%= f.submit "登録", class: "btn btn-default active" %>
             <%= f.hidden_field :id, :value => "#{@user.id}"%>
             <%= f.hidden_field :course, :value => "rubyonrails_ga_3"%>
@@ -462,7 +432,7 @@ function ajax_delete_tag_in_DB(tag_id){
         <td>
           <%= @user.rubyonrails_status.try(:ga_4_completion) %>
           <%= form_for(@user.rubyonrails_status, url: rubyonrails_completion_path ) do |f| %>
-            <input style="width:100%" type="date" name="date">
+            <input style="width:60%" type="date" name="date">
             <%= f.submit "登録", class: "btn btn-default active" %>
             <%= f.hidden_field :id, :value => "#{@user.id}"%>
             <%= f.hidden_field :course, :value => "rubyonrails_ga_4"%>
@@ -477,7 +447,7 @@ function ajax_delete_tag_in_DB(tag_id){
         <td>
           <%= @user.rubyonrails_status.try(:ga_5_completion) %>
           <%= form_for(@user.rubyonrails_status, url: rubyonrails_completion_path ) do |f| %>
-            <input style="width:100%" type="date" name="date">
+            <input style="width:60%" type="date" name="date">
             <%= f.submit "登録", class: "btn btn-default active" %>
             <%= f.hidden_field :id, :value => "#{@user.id}"%>
             <%= f.hidden_field :course, :value => "rubyonrails_ga_5"%>
@@ -492,7 +462,7 @@ function ajax_delete_tag_in_DB(tag_id){
         <td>
           <%= @user.rubyonrails_status.try(:ga_6_completion) %>
           <%= form_for(@user.rubyonrails_status, url: rubyonrails_completion_path ) do |f| %>
-            <input style="width:100%" type="date" name="date">
+            <input style="width:60%" type="date" name="date">
             <%= f.submit "登録", class: "btn btn-default active" %>
             <%= f.hidden_field :id, :value => "#{@user.id}"%>
             <%= f.hidden_field :course, :value => "rubyonrails_ga_6"%>
@@ -507,7 +477,7 @@ function ajax_delete_tag_in_DB(tag_id){
         <td>
           <%= @user.rubyonrails_status.try(:ga_7_completion) %>
           <%= form_for(@user.rubyonrails_status, url: rubyonrails_completion_path ) do |f| %>
-            <input style="width:100%" type="date" name="date">
+            <input style="width:60%" type="date" name="date">
             <%= f.submit "登録", class: "btn btn-default active" %>
             <%= f.hidden_field :id, :value => "#{@user.id}"%>
             <%= f.hidden_field :course, :value => "rubyonrails_ga_7"%>
@@ -522,7 +492,7 @@ function ajax_delete_tag_in_DB(tag_id){
         <td>
           <%= @user.rubyonrails_status.try(:ga_8_completion) %>
           <%= form_for(@user.rubyonrails_status, url: rubyonrails_completion_path ) do |f| %>
-            <input style="width:100%" type="date" name="date">
+            <input style="width:60%" type="date" name="date">
             <%= f.submit "登録", class: "btn btn-default active" %>
             <%= f.hidden_field :id, :value => "#{@user.id}"%>
             <%= f.hidden_field :course, :value => "rubyonrails_ga_8"%>
@@ -537,7 +507,7 @@ function ajax_delete_tag_in_DB(tag_id){
         <td>
           <%= @user.rubyonrails_status.try(:ga_9_completion) %>
           <%= form_for(@user.rubyonrails_status, url: rubyonrails_completion_path ) do |f| %>
-            <input style="width:100%" type="date" name="date">
+            <input style="width:60%" type="date" name="date">
             <%= f.submit "登録", class: "btn btn-default active" %>
             <%= f.hidden_field :id, :value => "#{@user.id}"%>
             <%= f.hidden_field :course, :value => "rubyonrails_ga_9"%>
@@ -552,7 +522,7 @@ function ajax_delete_tag_in_DB(tag_id){
         <td>
           <%= @user.rubyonrails_status.try(:ga_10_completion) %>
           <%= form_for(@user.rubyonrails_status, url: rubyonrails_completion_path ) do |f| %>
-            <input style="width:100%" type="date" name="date">
+            <input style="width:60%" type="date" name="date">
             <%= f.submit "登録", class: "btn btn-default active" %>
             <%= f.hidden_field :id, :value => "#{@user.id}"%>
             <%= f.hidden_field :course, :value => "rubyonrails_ga_10"%>
@@ -567,7 +537,7 @@ function ajax_delete_tag_in_DB(tag_id){
         <td>
           <%= @user.rubyonrails_status.try(:ga_11_completion) %>
           <%= form_for(@user.rubyonrails_status, url: rubyonrails_completion_path ) do |f| %>
-            <input style="width:100%" type="date" name="date">
+            <input style="width:60%" type="date" name="date">
             <%= f.submit "登録", class: "btn btn-default active" %>
             <%= f.hidden_field :id, :value => "#{@user.id}"%>
             <%= f.hidden_field :course, :value => "rubyonrails_ga_11"%>
@@ -582,7 +552,7 @@ function ajax_delete_tag_in_DB(tag_id){
         <td>
           <%= @user.rubyonrails_status.try(:do_1_completion) %>
           <%= form_for(@user.rubyonrails_status, url: rubyonrails_completion_path ) do |f| %>
-            <input style="width:100%" type="date" name="date">
+            <input style="width:60%" type="date" name="date">
             <%= f.submit "登録", class: "btn btn-default active" %>
             <%= f.hidden_field :id, :value => "#{@user.id}"%>
             <%= f.hidden_field :course, :value => "rubyonrails_do_1"%>
@@ -598,7 +568,7 @@ function ajax_delete_tag_in_DB(tag_id){
           <%= @user.rubyonrails_status.try(:do_2_completion) %>
           <%= @user.rubyonrails_status.try(:do_1_completion) %>
           <%= form_for(@user.rubyonrails_status, url: rubyonrails_completion_path ) do |f| %>
-            <input style="width:100%" type="date" name="date">
+            <input style="width:60%" type="date" name="date">
             <%= f.submit "登録", class: "btn btn-default active" %>
             <%= f.hidden_field :id, :value => "#{@user.id}"%>
             <%= f.hidden_field :course, :value => "rubyonrails_do_2"%>
@@ -614,7 +584,7 @@ function ajax_delete_tag_in_DB(tag_id){
           <%= @user.rubyonrails_status.try(:do_3_completion) %>
           <%= @user.rubyonrails_status.try(:do_1_completion) %>
           <%= form_for(@user.rubyonrails_status, url: rubyonrails_completion_path ) do |f| %>
-            <input style="width:100%" type="date" name="date">
+            <input style="width:60%" type="date" name="date">
             <%= f.submit "登録", class: "btn btn-default active" %>
             <%= f.hidden_field :id, :value => "#{@user.id}"%>
             <%= f.hidden_field :course, :value => "rubyonrails_do_3"%>
@@ -630,7 +600,7 @@ function ajax_delete_tag_in_DB(tag_id){
           <%= @user.rubyonrails_status.try(:do_4_completion) %>
           <%= @user.rubyonrails_status.try(:do_1_completion) %>
           <%= form_for(@user.rubyonrails_status, url: rubyonrails_completion_path ) do |f| %>
-            <input style="width:100%" type="date" name="date">
+            <input style="width:60%" type="date" name="date">
             <%= f.submit "登録", class: "btn btn-default active" %>
             <%= f.hidden_field :id, :value => "#{@user.id}"%>
             <%= f.hidden_field :course, :value => "rubyonrails_do_4"%>
