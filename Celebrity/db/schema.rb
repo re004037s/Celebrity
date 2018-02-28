@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180225141950) do
+ActiveRecord::Schema.define(version: 20180228063723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,16 +36,16 @@ ActiveRecord::Schema.define(version: 20180225141950) do
 
   create_table "html_css_statuses", force: :cascade do |t|
     t.integer  "user_id"
-    t.boolean  "ga_beginner",       default: false
-    t.boolean  "ga_middle",         default: false
-    t.boolean  "ga_advanced",       default: false
-    t.boolean  "do_beginner",       default: false
-    t.boolean  "do_middle",         default: false
-    t.boolean  "do_advanced",       default: false
-    t.boolean  "ji_1",              default: false
-    t.boolean  "ji_2",              default: false
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.boolean  "ga_beginner",            default: false
+    t.boolean  "ga_middle",              default: false
+    t.boolean  "ga_advanced",            default: false
+    t.boolean  "do_beginner",            default: false
+    t.boolean  "do_middle",              default: false
+    t.boolean  "do_advanced",            default: false
+    t.boolean  "ji_1",                   default: false
+    t.boolean  "ji_2",                   default: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.date     "ga_beginner_compd"
     t.date     "ga_middle_compd"
     t.date     "ga_advanced_compd"
@@ -55,6 +55,14 @@ ActiveRecord::Schema.define(version: 20180225141950) do
     t.date     "ji_1_compd"
     t.date     "ji_2_compd"
     t.date     "schedule_date"
+    t.date     "ga_beginner_completion"
+    t.date     "ga_middle_completion"
+    t.date     "ga_advanced_completion"
+    t.date     "do_beginner_completion"
+    t.date     "do_middle_completion"
+    t.date     "do_advanced_completion"
+    t.date     "ji_1_completion"
+    t.date     "ji_2_completion"
     t.index ["user_id"], name: "index_html_css_statuses_on_user_id", using: :btree
   end
 
