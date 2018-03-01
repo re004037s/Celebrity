@@ -107,6 +107,7 @@ $background-grey: #f4f4f4;
 .form-control {
    width: 100%;
    height: auto;
+   
   }
   
   
@@ -189,6 +190,7 @@ $background-grey: #f4f4f4;
   color: white;
   font-weight: 400;
   text-align: center;
+  white-space: nowrap;
 }
 
 
@@ -431,10 +433,12 @@ div#centering{
 // 面談内容共有ページ
 .att p {
   padding-left: 1em;
+  
 }
 
 li.first-child {
   margin-right: 2.5em;
+  
 }
 
 
