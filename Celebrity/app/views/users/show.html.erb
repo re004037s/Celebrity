@@ -328,7 +328,7 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
         <td>学習コース 1</td>
         <td class="center"><%= @user.javascript_status.try(:ga_1) ? '完了' : '未' %></td>
         <td>
-          <%= @user.javascript_status.try(:ga_1_completion) if @user.javascript_status.schedule_date.present? %><span class="font-schedule">
+          <%= @user.javascript_status.try(:ga_1_completion) if @user.javascript_status.ga_1_completion.present? %><span class="font-schedule">
           <%= form_for(@user.javascript_status, url: javascript_completion_path ) do |f| %>
             <input style="width:60%" type="date" name="date">
             <%= f.submit "登録", class: "btn btn-default active" %>
@@ -342,7 +342,7 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
         <td>学習コース 2</td>
         <td class="center"><%= @user.javascript_status.try(:ga_2) ? '完了' : '未' %></td>
         <td>
-          <%= @user.javascript_status.try(:ga_2_completion)%>
+          <%= @user.javascript_status.try(:ga_2_completion) if @user.javascript_status.ga_2_completion.present? %>
           <%= form_for(@user.javascript_status, url: javascript_completion_path ) do |f| %>
             <input style="width:60%" type="date" name="date">
             <%= f.submit "登録", class: "btn btn-default active" %>
@@ -356,7 +356,7 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
         <td>学習コース 3</td>
         <td class="center"><%= @user.javascript_status.try(:ga_3) ? '完了' : '未' %></td>
         <td>
-          <%= @user.javascript_status.try(:ga_3_completion)%>
+          <%= @user.javascript_status.try(:ga_3_completion) if @user.javascript_status.ga_3_completion.present? %>
           <%= form_for(@user.javascript_status, url: javascript_completion_path ) do |f| %>
             <input style="width:60%" type="date" name="date">
             <%= f.submit "登録", class: "btn btn-default active" %>
@@ -370,7 +370,7 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
         <td>学習コース 4</td>
         <td class="center"><%= @user.javascript_status.try(:ga_4) ? '完了' : '未' %></td>
         <td>
-          <%= @user.javascript_status.try(:ga_4_completion)%>
+          <%= @user.javascript_status.try(:ga_4_completion) if @user.javascript_status.ga_4_completion.present? %>
           <%= form_for(@user.javascript_status, url: javascript_completion_path ) do |f| %>
             <input style="width:60%" type="date" name="date">
             <%= f.submit "登録", class: "btn btn-default active" %>
@@ -384,7 +384,7 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
         <td>道場コース 1</td>
         <td class="center"><%= @user.javascript_status.try(:do_1) ? '完了' : '未' %></td>
         <td>
-          <%= @user.javascript_status.try(:do_1_completion)%>
+          <%= @user.javascript_status.try(:do_1_completion) if @user.javascript_status.do_1_completion.present? %>
           <%= form_for(@user.javascript_status, url: javascript_completion_path ) do |f| %>
             <input style="width:60%" type="date" name="date">
             <%= f.submit "登録", class: "btn btn-default active" %>
@@ -419,7 +419,7 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
         <td>学習コース 1</td>
         <td class="center"><%= @user.ruby_status.try(:ga_1) ? '完了' : '未' %></td>
         <td>
-          <%= @user.ruby_status.try(:ga_1_completion) %>
+          <%= @user.ruby_status.try(:ga_1_completion) if @user.ruby_status.ga_1_completion.present? %>
           <%= form_for(@user.ruby_status, url: ruby_completion_path ) do |f| %>
             <input style="width:60%" type="date" name="date">
             <%= f.submit "登録", class: "btn btn-default active" %>
@@ -433,7 +433,7 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
         <td>学習コース 2</td>
         <td class="center"><%= @user.ruby_status.try(:ga_2) ? '完了' : '未' %></td>
         <td>
-          <%= @user.ruby_status.try(:ga_2_completion) %>
+          <%= @user.ruby_status.try(:ga_2_completion) if @user.ruby_status.ga_2_completion.present? %>
           <%= form_for(@user.ruby_status, url: ruby_completion_path ) do |f| %>
             <input style="width:60%" type="date" name="date">
             <%= f.submit "登録", class: "btn btn-default active" %>
@@ -447,7 +447,7 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
         <td>学習コース 3</td>
         <td class="center"><%= @user.ruby_status.try(:ga_3) ? '完了' : '未' %></td>
         <td>
-          <%= @user.ruby_status.try(:ga_3_completion) %>
+          <%= @user.ruby_status.try(:ga_3_completion) if @user.ruby_status.ga_3_completion.present? %>
           <%= form_for(@user.ruby_status, url: ruby_completion_path ) do |f| %>
             <input style="width:60%" type="date" name="date">
             <%= f.submit "登録", class: "btn btn-default active" %>
@@ -461,7 +461,7 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
         <td>学習コース 4</td>
         <td class="center"><%= @user.ruby_status.try(:ga_4) ? '完了' : '未' %></td>
         <td>
-          <%= @user.ruby_status.try(:ga_4_completion) %>
+          <%= @user.ruby_status.try(:ga_4_completion) if @user.ruby_status.ga_4_completion.present? %>
           <%= form_for(@user.ruby_status, url: ruby_completion_path ) do |f| %>
             <input style="width:60%" type="date" name="date">
             <%= f.submit "登録", class: "btn btn-default active" %>
@@ -475,7 +475,7 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
         <td>学習コース 5</td>
         <td class="center"><%= @user.ruby_status.try(:ga_5) ? '完了' : '未' %></td>
         <td>
-          <%= @user.ruby_status.try(:ga_5_completion) %>
+          <%= @user.ruby_status.try(:ga_5_completion) if @user.ruby_status.ga_5_completion.present? %>
           <%= form_for(@user.ruby_status, url: ruby_completion_path ) do |f| %>
             <input style="width:60%" type="date" name="date">
             <%= f.submit "登録", class: "btn btn-default active" %>
@@ -509,7 +509,7 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
         <td>学習コース 1</td>
         <td class="center"><%= @user.rubyonrails_status.try(:ga_1) ? '完了' : '未' %></td>
         <td>
-          <%= @user.rubyonrails_status.try(:ga_1_completion) %>
+          <%= @user.rubyonrails_status.try(:ga_1_completion) if @user.rubyonrails_status.ga_1_completion.present? %>
           <%= form_for(@user.rubyonrails_status, url: rubyonrails_completion_path ) do |f| %>
             <input style="width:60%" type="date" name="date">
             <%= f.submit "登録", class: "btn btn-default active" %>
@@ -524,7 +524,7 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
         <td>学習コース 2</td>
         <td class="center"><%= @user.rubyonrails_status.try(:ga_2) ? '完了' : '未' %></td>
         <td>
-          <%= @user.rubyonrails_status.try(:ga_2_completion) %>
+          <%= @user.rubyonrails_status.try(:ga_2_completion) if @user.rubyonrails_status.ga_2_completion.present? %>
           <%= form_for(@user.rubyonrails_status, url: rubyonrails_completion_path ) do |f| %>
             <input style="width:60%" type="date" name="date">
             <%= f.submit "登録", class: "btn btn-default active" %>
@@ -539,7 +539,7 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
         <td>学習コース 3</td>
         <td class="center"><%= @user.rubyonrails_status.try(:ga_3) ? '完了' : '未' %></td>
         <td>
-          <%= @user.rubyonrails_status.try(:ga_3_completion) %>
+          <%= @user.rubyonrails_status.try(:ga_3_completion) if @user.rubyonrails_status.ga_3_completion.present? %>
           <%= form_for(@user.rubyonrails_status, url: rubyonrails_completion_path ) do |f| %>
             <input style="width:60%" type="date" name="date">
             <%= f.submit "登録", class: "btn btn-default active" %>
@@ -554,7 +554,7 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
         <td>学習コース 4</td>
         <td class="center"><%= @user.rubyonrails_status.try(:ga_4) ? '完了' : '未' %></td>
         <td>
-          <%= @user.rubyonrails_status.try(:ga_4_completion) %>
+          <%= @user.rubyonrails_status.try(:ga_4_completion) if @user.rubyonrails_status.ga_4_completion.present? %>
           <%= form_for(@user.rubyonrails_status, url: rubyonrails_completion_path ) do |f| %>
             <input style="width:60%" type="date" name="date">
             <%= f.submit "登録", class: "btn btn-default active" %>
@@ -569,7 +569,7 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
         <td>学習コース 5</td>
         <td class="center"><%= @user.rubyonrails_status.try(:ga_5) ? '完了' : '未' %></td>
         <td>
-          <%= @user.rubyonrails_status.try(:ga_5_completion) %>
+          <%= @user.rubyonrails_status.try(:ga_5_completion) if @user.rubyonrails_status.ga_5_completion.present? %>
           <%= form_for(@user.rubyonrails_status, url: rubyonrails_completion_path ) do |f| %>
             <input style="width:60%" type="date" name="date">
             <%= f.submit "登録", class: "btn btn-default active" %>
@@ -584,7 +584,7 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
         <td>学習コース 6</td>
         <td class="center"><%= @user.rubyonrails_status.try(:ga_6) ? '完了' : '未' %></td>
         <td>
-          <%= @user.rubyonrails_status.try(:ga_6_completion) %>
+          <%= @user.rubyonrails_status.try(:ga_6_completion) if @user.rubyonrails_status.ga_6_completion.present? %>
           <%= form_for(@user.rubyonrails_status, url: rubyonrails_completion_path ) do |f| %>
             <input style="width:60%" type="date" name="date">
             <%= f.submit "登録", class: "btn btn-default active" %>
@@ -599,7 +599,7 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
         <td>学習コース 7</td>
         <td class="center"><%= @user.rubyonrails_status.try(:ga_7) ? '完了' : '未' %></td>
         <td>
-          <%= @user.rubyonrails_status.try(:ga_7_completion) %>
+          <%= @user.rubyonrails_status.try(:ga_7_completion) if @user.rubyonrails_status.ga_7_completion.present? %>
           <%= form_for(@user.rubyonrails_status, url: rubyonrails_completion_path ) do |f| %>
             <input style="width:60%" type="date" name="date">
             <%= f.submit "登録", class: "btn btn-default active" %>
@@ -614,7 +614,7 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
         <td>学習コース 8</td>
         <td class="center"><%= @user.rubyonrails_status.try(:ga_8) ? '完了' : '未' %></td>
         <td>
-          <%= @user.rubyonrails_status.try(:ga_8_completion) %>
+          <%= @user.rubyonrails_status.try(:ga_8_completion) if @user.rubyonrails_status.ga_8_completion.present? %>
           <%= form_for(@user.rubyonrails_status, url: rubyonrails_completion_path ) do |f| %>
             <input style="width:60%" type="date" name="date">
             <%= f.submit "登録", class: "btn btn-default active" %>
@@ -629,7 +629,7 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
         <td>学習コース 9</td>
         <td class="center"><%= @user.rubyonrails_status.try(:ga_9) ? '完了' : '未' %></td>
         <td>
-          <%= @user.rubyonrails_status.try(:ga_9_completion) %>
+          <%= @user.rubyonrails_status.try(:ga_9_completion) if @user.rubyonrails_status.ga_9_completion.present? %>
           <%= form_for(@user.rubyonrails_status, url: rubyonrails_completion_path ) do |f| %>
             <input style="width:60%" type="date" name="date">
             <%= f.submit "登録", class: "btn btn-default active" %>
@@ -644,7 +644,7 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
         <td>学習コース 10</td>
         <td class="center"><%= @user.rubyonrails_status.try(:ga_10) ? '完了' : '未' %></td>
         <td>
-          <%= @user.rubyonrails_status.try(:ga_10_completion) %>
+          <%= @user.rubyonrails_status.try(:ga_10_completion) if @user.rubyonrails_status.ga_10_completion.present? %>
           <%= form_for(@user.rubyonrails_status, url: rubyonrails_completion_path ) do |f| %>
             <input style="width:60%" type="date" name="date">
             <%= f.submit "登録", class: "btn btn-default active" %>
@@ -659,7 +659,7 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
         <td>学習コース 11</td>
         <td class="center"><%= @user.rubyonrails_status.try(:ga_11) ? '完了' : '未' %></td>
         <td>
-          <%= @user.rubyonrails_status.try(:ga_11_completion) %>
+          <%= @user.rubyonrails_status.try(:ga_11_completion) if @user.rubyonrails_status.ga_11_completion.present? %>
           <%= form_for(@user.rubyonrails_status, url: rubyonrails_completion_path ) do |f| %>
             <input style="width:60%" type="date" name="date">
             <%= f.submit "登録", class: "btn btn-default active" %>
@@ -674,7 +674,7 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
         <td>道場コース 1</td>
         <td class="center"><%= @user.rubyonrails_status.try(:do_1) ? '完了' : '未' %></td>
         <td>
-          <%= @user.rubyonrails_status.try(:do_1_completion) %>
+          <%= @user.rubyonrails_status.try(:do_1_completion) if @user.rubyonrails_status.do_1_completion.present? %>
           <%= form_for(@user.rubyonrails_status, url: rubyonrails_completion_path ) do |f| %>
             <input style="width:60%" type="date" name="date">
             <%= f.submit "登録", class: "btn btn-default active" %>
@@ -689,8 +689,7 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
         <td>道場コース 2</td>
         <td class="center"><%= @user.rubyonrails_status.try(:do_2) ? '完了' : '未' %></td>
         <td>
-          <%= @user.rubyonrails_status.try(:do_2_completion) %>
-          <%= @user.rubyonrails_status.try(:do_1_completion) %>
+          <%= @user.rubyonrails_status.try(:do_2_completion) if @user.rubyonrails_status.do_2_completion.present? %>
           <%= form_for(@user.rubyonrails_status, url: rubyonrails_completion_path ) do |f| %>
             <input style="width:60%" type="date" name="date">
             <%= f.submit "登録", class: "btn btn-default active" %>
@@ -705,8 +704,7 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
         <td>道場コース 3</td>
         <td class="center"><%= @user.rubyonrails_status.try(:do_3) ? '完了' : '未' %></td>
         <td>
-          <%= @user.rubyonrails_status.try(:do_3_completion) %>
-          <%= @user.rubyonrails_status.try(:do_1_completion) %>
+          <%= @user.rubyonrails_status.try(:do_3_completion) if @user.rubyonrails_status.do_3_completion.present? %>
           <%= form_for(@user.rubyonrails_status, url: rubyonrails_completion_path ) do |f| %>
             <input style="width:60%" type="date" name="date">
             <%= f.submit "登録", class: "btn btn-default active" %>
@@ -721,8 +719,7 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
         <td>道場コース 4</td>
         <td class="center"><%= @user.rubyonrails_status.try(:do_4) ? '完了' : '未' %></td>
         <td>
-          <%= @user.rubyonrails_status.try(:do_4_completion) %>
-          <%= @user.rubyonrails_status.try(:do_1_completion) %>
+          <%= @user.rubyonrails_status.try(:do_4_completion) if @user.rubyonrails_status.do_4_completion.present? %>
           <%= form_for(@user.rubyonrails_status, url: rubyonrails_completion_path ) do |f| %>
             <input style="width:60%" type="date" name="date">
             <%= f.submit "登録", class: "btn btn-default active" %>
