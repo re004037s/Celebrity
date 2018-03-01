@@ -186,6 +186,7 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
       <tr>
         <th class="table-header">コース</th>
         <th class="table-header">ステータス</th>
+        <th class="table-header">完了予定日</th>
         <th class="table-header">完了日</th>
       </tr>
     </thead>
@@ -194,12 +195,12 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
         <td>学習コース/初級</td>
         <td class="center"><%= @user.html_css_status.try(:ga_beginner) ? '完了' : '未' %></td>
         <td>
-          <%= @user.html_css_status.try(:ga_1_completion) if @user.html_css_status.schedule_date.present? %><span class="font-schedule">
-          <%= form_for(@user.html_css_status, url: javascript_completion_path ) do |f| %>
+          <%= @user.html_css_status.try(:ga_beginner_completion) if @user.html_css_status.ga_beginner_completion.present? %><span class="font-schedule">
+          <%= form_for(@user.html_css_status, url: html_css_completion_path ) do |f| %>
             <input style="width:60%" type="date" name="date">
             <%= f.submit "登録", class: "btn btn-default active" %>
             <%= f.hidden_field :id, :value => "#{@user.id}"%>
-            <%= f.hidden_field :course, :value => "javascript_ga_1"%>
+            <%= f.hidden_field :course, :value => "html_css_ga_beginner"%>
           <% end %>
         </td>
         <td><%= @user.html_css_status.try(:ga_beginner_compd) %></td>
@@ -207,36 +208,99 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
       <tr>
         <td>学習コース/中級</td>
         <td class="center"><%= @user.html_css_status.try(:ga_middle) ? '完了' : '未' %></td>
+        <td>
+          <%= @user.html_css_status.try(:ga_middle_completion) if @user.html_css_status.ga_middle_completion.present? %><span class="font-schedule">
+          <%= form_for(@user.html_css_status, url: html_css_completion_path ) do |f| %>
+            <input style="width:60%" type="date" name="date">
+            <%= f.submit "登録", class: "btn btn-default active" %>
+            <%= f.hidden_field :id, :value => "#{@user.id}"%>
+            <%= f.hidden_field :course, :value => "html_css_ga_middle"%>
+          <% end %>
+        </td>
         <td><%= @user.html_css_status.try(:ga_middle_compd) %></td>
       </tr>
       <tr>
         <td>学習コース/上級</td>
         <td class="center"><%= @user.html_css_status.try(:ga_advanced) ? '完了' : '未' %></td>
+        <td>
+          <%= @user.html_css_status.try(:ga_advanced_completion) if @user.html_css_status.ga_advanced_completion.present? %><span class="font-schedule">
+          <%= form_for(@user.html_css_status, url: html_css_completion_path ) do |f| %>
+            <input style="width:60%" type="date" name="date">
+            <%= f.submit "登録", class: "btn btn-default active" %>
+            <%= f.hidden_field :id, :value => "#{@user.id}"%>
+            <%= f.hidden_field :course, :value => "html_css_ga_advanced"%>
+          <% end %>
+        </td>
         <td><%= @user.html_css_status.try(:ga_advanced_compd) %></td>
       </tr>
       <tr>
         <td>道場コース/初級</td>
         <td class="center"><%= @user.html_css_status.try(:do_beginner) ? '完了' : '未' %></td>
+        <td>
+          <%= @user.html_css_status.try(:do_beginner_completion) if @user.html_css_status.do_beginner_completion.present? %><span class="font-schedule">
+          <%= form_for(@user.html_css_status, url: html_css_completion_path ) do |f| %>
+            <input style="width:60%" type="date" name="date">
+            <%= f.submit "登録", class: "btn btn-default active" %>
+            <%= f.hidden_field :id, :value => "#{@user.id}"%>
+            <%= f.hidden_field :course, :value => "html_css_do_beginner"%>
+          <% end %>
+        </td>
         <td><%= @user.html_css_status.try(:do_beginner_compd) %></td>
       </tr>
       <tr>
         <td>道場コース/中級</td>
         <td class="center"><%= @user.html_css_status.try(:do_middle) ? '完了' : '未' %></td>
+        <td>
+          <%= @user.html_css_status.try(:do_middle_completion) if @user.html_css_status.do_middle_completion.present? %><span class="font-schedule">
+          <%= form_for(@user.html_css_status, url: html_css_completion_path ) do |f| %>
+            <input style="width:60%" type="date" name="date">
+            <%= f.submit "登録", class: "btn btn-default active" %>
+            <%= f.hidden_field :id, :value => "#{@user.id}"%>
+            <%= f.hidden_field :course, :value => "html_css_do_middle"%>
+          <% end %>
+        </td>
         <td><%= @user.html_css_status.try(:do_middle_compd) %></td>
       </tr>
       <tr>
         <td>道場コース/上級</td>
         <td class="center"><%= @user.html_css_status.try(:do_advanced) ? '完了' : '未' %></td>
+        <td>
+          <%= @user.html_css_status.try(:do_advanced_completion) if @user.html_css_status.do_advanced_completion.present? %><span class="font-schedule">
+          <%= form_for(@user.html_css_status, url: html_css_completion_path ) do |f| %>
+            <input style="width:60%" type="date" name="date">
+            <%= f.submit "登録", class: "btn btn-default active" %>
+            <%= f.hidden_field :id, :value => "#{@user.id}"%>
+            <%= f.hidden_field :course, :value => "html_css_do_advanced"%>
+          <% end %>
+        </td>
         <td><%= @user.html_css_status.try(:do_advanced_compd) %></td>
       </tr>
       <tr>
         <td>実践コース 1</td>
         <td class="center"><%= @user.html_css_status.try(:ji_1) ? '完了' : '未' %></td>
+        <td>
+          <%= @user.html_css_status.try(:ji_1_completion) if @user.html_css_status.ji_1_completion.present? %><span class="font-schedule">
+          <%= form_for(@user.html_css_status, url: html_css_completion_path ) do |f| %>
+            <input style="width:60%" type="date" name="date">
+            <%= f.submit "登録", class: "btn btn-default active" %>
+            <%= f.hidden_field :id, :value => "#{@user.id}"%>
+            <%= f.hidden_field :course, :value => "html_css_ji_1"%>
+          <% end %>
+        </td>
         <td><%= @user.html_css_status.try(:ji_1_compd) %></td>
       </tr>
       <tr>
         <td>実践コース 2</td>
         <td class="center"><%= @user.html_css_status.try(:ji_2) ? '完了' : '未' %></td>
+        <td>
+          <%= @user.html_css_status.try(:ji_2_completion) if @user.html_css_status.ji_2_completion.present? %><span class="font-schedule">
+          <%= form_for(@user.html_css_status, url: html_css_completion_path ) do |f| %>
+            <input style="width:60%" type="date" name="date">
+            <%= f.submit "登録", class: "btn btn-default active" %>
+            <%= f.hidden_field :id, :value => "#{@user.id}"%>
+            <%= f.hidden_field :course, :value => "html_css_ji_2"%>
+          <% end %>
+        </td>
         <td><%= @user.html_css_status.try(:ji_2_compd) %></td>
       </tr>
     </tbody>
