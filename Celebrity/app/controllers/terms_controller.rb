@@ -1,5 +1,7 @@
 class TermsController < ApplicationController
   before_action :logged_in_user, only: [:index, :new, :edit, :destroy]
+  #before_action :admin_user, only:[:destroy]
+  #before_action :correct_user,   only: [:destroy]
 
   def new
     @term = Term.new
@@ -48,6 +50,11 @@ class TermsController < ApplicationController
   private
 
     def term_params
-      params.require(:term).permit(:name, :content, :key)
+      params.require(:term).permit(:name, :content, :key, :create_user_id, :user_id)
     end
+    
+    # def correct_user
+    #   @user = User.find_by(params[:create_user_id])
+    #   redirect_to(root_url) if @user.id == current_user.id
+    # end
 end

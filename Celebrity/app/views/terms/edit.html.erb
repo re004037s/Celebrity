@@ -12,7 +12,9 @@
       
       <%= f.label :content, '解説', class: 'txt1' %>
       <%= f.text_area :content, class: 'form-control', rows: 15 %>
-
+      
+      <%= f.hidden_field :user_id, :value => current_user.id %>
+      
       <div class="center mt_20">
         <%= f.submit "更新", class: 'btn btn-default active' %>
       </div>
@@ -20,7 +22,3 @@
   </div>
 </div>
 
-<div class="center mt_20">
-  <%= link_to "削除", @term, class: "btn btn-danger", method: :delete,
-                                   data: { confirm: "本当に削除しますか?" } %>
-</div>

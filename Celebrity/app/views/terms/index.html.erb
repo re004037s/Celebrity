@@ -32,8 +32,8 @@ function ajax_term_search(input){
     if (!options.crossDomain) {
       token = $('meta[name="csrf-token"]').attr('content');
       if (token) {
-           return jqXHR.setRequestHeader('X-CSRF-Token', token);
-       }
+          return jqXHR.setRequestHeader('X-CSRF-Token', token);
+      }
     }
   });
   
@@ -80,9 +80,12 @@ function termHTMLHelper(res){
     _html += '<span>' + '<a href="/terms/' + res[i].id + '/edit">編集</a>' + '</span>'    // }
     _html += '</div>';
     
-    _html += '<div><div class="panel-body"><p>' + res[i].content + '</p></div></div>'
+    _html += '<div>'
+    _html += '<div class="panel-body"><p>' + res[i].content + '</p></div></div>'
+    //_html += '<div><p>最終更新者：' + res[i].user_id + '</p></div>'
   	_html += '</div>';
     
+   
   }
   return _html;
 }
