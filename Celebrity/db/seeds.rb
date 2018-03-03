@@ -95,6 +95,14 @@ User.create(name: 'ベーブルース',
             existence: false,
             line_id: 43210)
 
+User.create(name: 'ゲストユーザー',
+            nickname: 'ゲスト',
+            email: 'guest@gmail.com',
+            password: 'password',
+            password_confirmation: 'password',
+            admin: true,
+            existence: true,
+            line_id: 23456)
 
 User.where(id: 1..2).each do |user|
     HtmlCssStatus.create(user_id: user.id)

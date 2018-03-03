@@ -3,16 +3,18 @@
     <span>スキルシート一覧</span>
   </h2>
   <br>
-  <h4>【下記ボタンからスキルシートのフォーマットをダウンロード出来ます】<br><br>
+  <h4>【下記ボタンからスキルシートのテンプレートをダウンロード出来ます】<br><br>
   ⬇︎<br><br>
-  <%= link_to "ここからダウンロード！", {:controller => "skillsheets",:action=>"download" }, {method: :get, class: "btn btn-default active"} %>
+  <%= link_to "テンプレートダウンロード!", {:controller => "skillsheets",:action=>"download" }, {method: :get, class: "btn-lg btn-default active"} %>
   </h4>
  
   <br><br>
   <div class="panel panel-default panel-body mg_auto wh_30" style=width:70%;>
-  ① ダウンロード後、スキルシートを編集して下さい<br>
-  ②「ファイルを選択」ボタンから編集したスキルシートを選択して下さい<br>
-  ③「登録する」ボタンを押すと、スキルシートが自分の欄に登録されます<br><br><br>
+  <ul>
+    <li>① ダウンロード後、スキルシートを編集して下さい</li>
+    <li>②「ファイルを選択」ボタンから編集したスキルシートを選択して下さい</li>
+    <li>③「登録する」ボタンを押すと、スキルシートが自分の欄に登録されます</li>
+  </ul>
     <div class="mg_auto wh_30">
     <%= form_for(@user, url: post_skillsheet_path, multipart: true, :id => 'form_id' ) do |f| %>
       <%= f.file_field :file %><br>
