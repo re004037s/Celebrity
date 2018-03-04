@@ -77,9 +77,9 @@ function termHTMLHelper(res){
     _html += '<h3 class="panel-title " style="display:inline">';
     _html += '<p>' + res[i].name +'</p>';
     _html += '</h3>';
-    _html += '<span>' + '<a href="/terms/' + res[i].id + '/edit">編集</a>' + '</span>'    // }
+    _html += '<span>' + '<a href="/terms/' + res[i].id + '/edit">編集</a>' + '</span>';
+    _html += '<span style="margin-left: 0.5em;">' + '<a data-confirm="本当に削除しますか??" data-method="delete" href="/terms/' + res[i].id + '">削除</a>' + '</span>';
     _html += '</div>';
-    
     _html += '<div>'
     _html += '<div class="panel-body"><p>' + res[i].content + '</p></div></div>'
     //_html += '<div><p>最終更新者：' + res[i].user_id + '</p></div>'
