@@ -23,7 +23,20 @@ class TermsController < ApplicationController
   
   def ajax_search
     @terms = Term.page().partiallysearch(params[:key])
-    render json:@terms
+    @nicknames = []
+    
+    for term in @terms
+      nickname = User.find(term.user_id).nickname
+      @nicknames.push(nickname)
+    end
+    @nicknames
+    
+    # respond_to do |f|
+    #   f.json { render json: [@posts.to_json(:include => [:comments, :images]), [user: @user.to_json]] }
+    # end
+
+    
+    render json: [@terms, @nicknames]
   end
   
   def edit
