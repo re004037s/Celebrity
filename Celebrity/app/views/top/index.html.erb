@@ -19,23 +19,25 @@
     <h4 style="color:red;"><%= @alert_message_mv + "まだ見終わっていない動画があります" if @alert_message_mv.present? %></h4>
     
     <div id="inline-popups">
-      <a href="#test-popup" data-effect="mfp-zoom-in">Zoom</a>
+      <a id="hoge" href="#test-popup" data-effect="mfp-zoom-in">Zoom</a>
       <!--<button id="open-popup" class="white-popup" data-effect="mfp-zoom-in">ボタンのラベル</button> -->
     </div>
-    <div id="test-popup" class="white-popup mfp-with-anim mfp-hide">You may put any HTML here. This is dummy copy. It is not meant to be read. It has been placed here solely to demonstrate the look and feel of finished, typeset text. Only for show. He who searches for meaning here will be sorely disappointed.</div>
+    <div id="test-popup" class="white-popup mfp-with-anim mfp-hide">  
+      小松さんからのメッセージ<br>
+      You may put any HTML here. This is dummy copy. It is not meant to be read. It has been placed here solely to demonstrate the look and feel of finished, typeset text. Only for show. He who searches for meaning here will be sorely disappointed.
+    </div>
     
+    <!-- TODO: jsファイルがローカルから読み込まれないため都度cdn読み込みをしている-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
     <script>
-      // Inline popups
       $('#inline-popups').magnificPopup({
         delegate: 'a',
-        removalDelay: 500, 
+        removalDelay: 500,
         callbacks: {
           beforeOpen: function() {
              this.st.mainClass = this.st.el.attr('data-effect');
-          }
+          },
         },
-        midClick: true
       });
     </script>
   
