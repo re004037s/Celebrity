@@ -19,6 +19,8 @@
 </div>
 
 
+<% isAdmin = current_user.try(:admin) %>
+
 <script>
 $('#search').on('keyup', function() {
   input = $.trim($(this).val());
@@ -62,6 +64,7 @@ function ajax_term_search(input){
 function termHTMLHelper(res){
   var _html = ''
   var len = res.length;
+  var isAdmin = <%= isAdmin %>;
   
   if(len < 1){
     return _html += '<div class="alert alert-danger" role="alert">検索結果は0件です</div>';
@@ -78,17 +81,24 @@ function termHTMLHelper(res){
     _html += '<p>' + res[i].name +'</p>';
     _html += '</h3>';
     _html += '<span>' + '<a href="/terms/' + res[i].id + '/edit">編集</a>' + '</span>';
-    _html += '<span style="margin-left: 0.5em;">' + '<a data-confirm="本当に削除しますか??" data-method="delete" href="/terms/' + res[i].id + '">削除</a>' + '</span>';
+
+    var isCreatedUser = (function(created_user_id, current_user_id){ //下で順番に指定した引数の名前（関数内）
+      return bool = (created_user_id === current_user_id) ? true : false;
+    }(res[i].create_user_id, <%= current_user.id %>)) //順番に引数として代入する
+
+    if( isAdmin || isCreatedUser){
+      _html += '<span style="margin-left: 0.5em;">' + '<a data-confirm="本当に削除しますか??" data-method="delete" href="/terms/' + res[i].id + '">削除</a>' + '</span>';
+    }
+
     _html += '</div>';
     _html += '<div>'
     _html += '<div class="panel-body"><p>' + res[i].content + '</p></div></div>'
-    //_html += '<div><p>最終更新者：' + res[i].user_id + '</p></div>'
+    // _html += '<div><p>最終更新者：' + res[i].user_id + '</p></div>'
   	_html += '</div>';
     
    
   }
   return _html;
 }
-
   
 </script>
