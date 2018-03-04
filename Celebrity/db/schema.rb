@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180212234917) do
+ActiveRecord::Schema.define(version: 20180303064958) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -238,8 +238,12 @@ ActiveRecord::Schema.define(version: 20180212234917) do
   create_table "terms", force: :cascade do |t|
     t.string   "name"
     t.string   "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "user_id"
+    t.integer  "create_user_id", default: 0, null: false
+    t.index ["create_user_id"], name: "index_terms_on_create_user_id", using: :btree
+    t.index ["user_id"], name: "index_terms_on_user_id", using: :btree
   end
 
   create_table "user_movie_statuses", force: :cascade do |t|
@@ -285,6 +289,7 @@ ActiveRecord::Schema.define(version: 20180212234917) do
   add_foreign_key "movies", "movie_categories"
   add_foreign_key "pdca_posts", "users"
   add_foreign_key "qiita_posts", "users"
+  add_foreign_key "terms", "users"
   add_foreign_key "user_tags", "tags"
   add_foreign_key "user_tags", "users"
 end
