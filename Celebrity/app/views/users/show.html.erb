@@ -134,6 +134,10 @@ function ajax_insert_new_tag_to_DB(tagLabel, user_id){
   
   .done(function(res){ 
     if(res === 200)console.log("saved");
+    var obj = $('.tagit-choice').last().find('.tagit-label');
+    obj[0].click(function(){
+      $('#open-popup')[0].click();
+    });
     if(res === 500)alert("httpstatus 500: internal server errror");
   })
   
@@ -159,20 +163,56 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
   })
   
   .done(function(res){ 
-    if(res === 200)console.log("deleted");
-    if(res === 500)alert("httpstatus 500: internal server errror");
+    if(res === 200){
+      console.log("deleted");
+      return;
+    }
+    if(res === 500){
+      alert("httpstatus 500: internal server errror");
+    }
   })
   
 }
-</script>  
+</script>
+
+<button id="open-popup" style="display:none">Open popup</button>
+<div id="my-popup" class="mfp-hide white-popup">
+  Inline popup
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+<script>
+$('#open-popup').magnificPopup({
+ items: [
+    {
+      // ここにHTMLとか代入して行く
+      src: '<div>HTML string</div>',
+      type: 'inline'
+    },
+    {
+      src: '#my-popup',
+      type: 'inline'
+    }
+  ],
+});
+</script>
 
 <!--登録済みタグの表示-->
 <% @tags_h.each do |key, value| %>
 <script>
   $("#interest-tags").tagit("createTag", "<%= key %>");
+  var objs = $('#interest-tags').find('.tagit-label')
+  var last_tagit_label = $('.tagit-label').last();
+  last_tagit_label.click(function(){
+    $('#open-popup')[0].click();
+  });
   $(".tagit-close").last().append('<input type="hidden" name="tag_id" value="'+ <%= value %> + '">');
 </script>
 <% end %>
+
+<script>
+  
+</script>
   
   <table class="txt1 table-condensed table-status-schedule">
      <tr valign="baseline">
