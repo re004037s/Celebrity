@@ -14,6 +14,8 @@
         <%= f.label :content, '解説', class: 'txt1 mt_20' %>
         <%= f.text_area :content, class: 'form-control', rows: 15 %>
         
+        <%= f.hidden_field :create_user_id, :value => current_user.id %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
         <div class="center mt_20">
           <%= f.submit '登録', {class: 'btn btn-default active post-regist' }%>
         </div>
