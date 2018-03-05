@@ -38,6 +38,7 @@ Rails.application.routes.draw do
       get 'ajax_search'
     end
   end
+
   resources :pdca_posts do 
     collection do
         get 'get_image'
