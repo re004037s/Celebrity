@@ -46,7 +46,7 @@
             <td><% if user.skillsheet == nil %>      
                   未登録
                 <% else %>
-                　<%= link_to "#{user.skillsheet_name}", get_skillsheet_path(user_id: user.id) %>
+                　<%= link_to "#{user.skillsheet_name}", get_skillsheet_path(user_id: user.id), class: "#{'disabled' if current_user}" %>
                 <% end %>
             </td>
           </tr>
