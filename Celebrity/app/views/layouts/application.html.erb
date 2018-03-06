@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html>
+  
+  
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,7 +22,8 @@
     <%= favicon_link_tag('favicon32.png') %>
   </head>
   
-  <!--ページ（yield）によってソースを条件分岐-->
+
+  <!--▼body-->
   
   <!--1.ログイン時など-->
   <% if content_for?(:entrance) %>
@@ -57,25 +60,24 @@
                 <div class="alert alert-<%= message_type %>"><%= message %></div>
               <% end %>
               
-              <!-- 2-1.サイドバーあり-->
-              <% if content_for?(:with_sidebar) %>
+              <!--サイドバーの有無で分岐-->
+              <% if content_for?(:without_sidebar) %>
               
+                <!--2-1.サイドバーなし-->
+                <%= yield :without_sidebar %>
+                
+              <% else %>
+              
+                <!--2-2.サイドバーあり-->
                 <div class="row">
-                  
                   <div class="col-md-7">
-                    <%= yield :with_sidebar %>
+                    <%= yield %>
                   </div>
-                  
                   <!--サイドバー-->
                   <aside class="col-md-5">
                     <%= render 'layouts/aside' %>
                   </aside>
                 </div>
-                
-              <% else %>
-              
-                <!--2-2.サイドバーなし-->
-                <%= yield %>
               
               <% end %>
         
