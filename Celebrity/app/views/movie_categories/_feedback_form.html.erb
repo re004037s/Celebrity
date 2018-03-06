@@ -5,11 +5,21 @@
     <p id="has-error<%= sort_order %>" class="movie-feedback-form--error-message"></p>
     <!--感想入力フォーム-->
     <div class="">
+<<<<<<< HEAD
 
+=======
+      <!--提出済みの感想を初期値にセットする-->
+      <% if current_user.feedbacks.find_by(movie_id: movie_id) %>
+       <% @feedback.feedback = current_user.feedbacks.find_by(movie_id: movie_id).feedback %>
+      <% else %>
+        <% @feedback.feedback = '' %>
+      <% end %>
+      
+>>>>>>> master
       <%= f.text_area :feedback, :id => "textarea#{sort_order}", :class => "movie-feedback-form--textarea",
         :size => "7x7", :maxlength => "500", :placeholder => "100-500文字で入力してください", required: true, 
         :onchange => "Limit#{sort_order}(event)", :onkeyup => "Limit#{sort_order}(event)" %>
-    <%= f.hidden_field :movie_id, :value => movie_id %>
+      <%= f.hidden_field :movie_id, :value => movie_id %>
     </div>
     <!--送信ボタン-->
     <div id="feedback-btn<%= sort_order %>" class="center">

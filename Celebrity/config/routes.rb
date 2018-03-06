@@ -38,6 +38,7 @@ Rails.application.routes.draw do
       get 'ajax_search'
     end
   end
+
   resources :pdca_posts do 
     collection do
         get 'get_image'
@@ -66,12 +67,16 @@ Rails.application.routes.draw do
   get '/portfolio_mv', to: 'static_pages#portfolio_mv'
   patch '/html_css_status', to: 'html_css_statuses#update'
   patch '/html_css_status_schedule', to: 'html_css_statuses#update_schedule', as: 'html_css_schedule'
+  patch '/html_css_status_completion', to: 'html_css_statuses#update_completion', as: 'html_css_completion'
   patch '/javascript_status', to: 'javascript_statuses#update'
   patch '/javascript_status_schedule', to: 'javascript_statuses#update_schedule', as: 'javascript_schedule'
+  patch '/javascript_status_completion', to: 'javascript_statuses#update_completion', as: 'javascript_completion'
   patch '/ruby_status', to: 'ruby_statuses#update'
   patch '/ruby_status_schedule', to: 'ruby_statuses#update_schedule', as: 'ruby_schedule'
+  patch '/ruby_status_completion', to: 'ruby_statuses#update_completion', as: 'ruby_completion'
   patch '/rubyonrails_status', to: 'rubyonrails_statuses#update'
   patch '/rubyonrails_status_schedule', to: 'rubyonrails_statuses#update_schedule', as: 'rubyonrails_schedule'
+  patch '/rubyonrails_status_completion', to: 'rubyonrails_statuses#update_completion', as: 'rubyonrails_completion'
   patch '/railstutorial_status', to: 'railstutorial_statuses#update'
   patch '/railstutorial_status_schedule', to: 'railstutorial_statuses#update_schedule', as: 'railstutorial_schedule'
   patch '/user_movie_status', to: 'user_movie_statuses#update'

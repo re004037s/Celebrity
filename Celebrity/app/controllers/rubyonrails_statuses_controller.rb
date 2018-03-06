@@ -1,6 +1,6 @@
 class RubyonrailsStatusesController < ApplicationController
    before_action :progate_check
-   before_action :correct_user_for_edit, only:[:update_schedule]
+   before_action :correct_user_for_edit, only:[:update_schedule, :update_completion]
 
   def update_schedule
     @schedule_date = params[:date]
@@ -15,6 +15,64 @@ class RubyonrailsStatusesController < ApplicationController
     end
   end
 
+  # 完了予定日の更新
+  def update_completion
+    @completion_date = params[:date]
+    if @completion_date == ""
+      flash[:danger] = "完了予定日がブランクです。完了予定日を選択してください"
+      redirect_to current_user
+    else
+      @course = params[:rubyonrails_status][:course]
+      @status = current_user.rubyonrails_status
+      if @course == 'rubyonrails_ga_1'
+        @status.update_attributes(ga_1_completion: @completion_date)
+      end
+      if @course == 'rubyonrails_ga_2'
+        @status.update_attributes(ga_2_completion: @completion_date)
+      end
+      if @course == 'rubyonrails_ga_3'
+        @status.update_attributes(ga_3_completion: @completion_date)
+      end
+      if @course == 'rubyonrails_ga_4'
+        @status.update_attributes(ga_4_completion: @completion_date)
+      end
+      if @course == 'rubyonrails_ga_5'
+        @status.update_attributes(ga_5_completion: @completion_date)
+      end
+      if @course == 'rubyonrails_ga_6'
+        @status.update_attributes(ga_6_completion: @completion_date)
+      end
+      if @course == 'rubyonrails_ga_7'
+        @status.update_attributes(ga_7_completion: @completion_date)
+      end
+      if @course == 'rubyonrails_ga_8'
+        @status.update_attributes(ga_8_completion: @completion_date)
+      end
+      if @course == 'rubyonrails_ga_9'
+        @status.update_attributes(ga_9_completion: @completion_date)
+      end
+      if @course == 'rubyonrails_ga_10'
+        @status.update_attributes(ga_10_completion: @completion_date)
+      end
+      if @course == 'rubyonrails_ga_11'
+        @status.update_attributes(ga_11_completion: @completion_date)
+      end
+      if @course == 'rubyonrails_do_1'
+        @status.update_attributes(do_1_completion: @completion_date)
+      end
+      if @course == 'rubyonrails_do_2'
+        @status.update_attributes(do_2_completion: @completion_date)
+      end
+      if @course == 'rubyonrails_do_3'
+        @status.update_attributes(do_3_completion: @completion_date)
+      end
+      if @course == 'rubyonrails_do_4'
+        @status.update_attributes(do_4_completion: @completion_date)
+      end
+      flash[:info] = "完了予定日を #{params[:date]} に設定しました"
+      redirect_to current_user
+    end
+  end
 
   def update
     require 'date'

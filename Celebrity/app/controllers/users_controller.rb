@@ -119,6 +119,7 @@ class UsersController < ApplicationController
     def correct_user_for_edit
       user_id = params[:id]
       user_id ||= params[:user][:id]
+
       @user = User.find(user_id)
       if current_user?(@user)
       else
