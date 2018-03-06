@@ -53,6 +53,7 @@ Rails.application.routes.draw do
   delete '/delete_tag', to: 'users#tag_delete' #temp post⇨deleteに変更しshow.htmlと統一
   patch '/post_skillsheet', to: 'skillsheets#update_skillsheet'
   root 'top#index'
+  post 'top#index', to: 'top#update_information', as: 'update_information'
 
   get '/progate', to: 'static_pages#progate'
   post '/progate', to: 'static_pages#progate'

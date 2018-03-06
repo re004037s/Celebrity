@@ -18,6 +18,17 @@
     <h4 style="color:red;"><%= @alert_messages_railstutorial + "→【railsチュートリアル】" if @alert_messages_railstutorial.present? %></h4>
     <h4 style="color:red;"><%= @alert_message_mv + "まだ見終わっていない動画があります" if @alert_message_mv.present? %></h4>
     
+    <!-- 管理者のみお知らせ入力フォームを表示 -->
+    <% if current_user.admin %>
+      <%= form_for(@input_information, url: update_information_path) do |f| %>
+        <%= f.label :info, "表示したいお知らせを入力してください", class: 'txt1' %>
+        <%= f.text_area :info, class: 'form-control'%>
+        <%= f.label :display_period, "表示期日を設定してください", class: 'txt1' %>
+        <%= f.date_field :display_period, style:"width:40%", class: 'form-control'%>
+        <%= f.submit "登録", class: "btn btn-default active" %>
+      <% end %>
+    <% end %>
+    
     <!-- 期間中のお知らせがあればお知らせ確認ボタンを表示 -->
     <% if !@information.empty? %>
       <div id="inline-popups">
