@@ -482,9 +482,16 @@ li.first-child {
    max-width: 200px;
    max-height: 200px;
    background-size: cover;
-   
-}
+  }
   
+}
+
+// よくある質問
+.staticpages-qa--wrapper {
+  img {
+    width: 100%;
+    height: auto;
+  }
 }
 
 // プロゲート進捗
