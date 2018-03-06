@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180212234917) do
+ActiveRecord::Schema.define(version: 20180305143550) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,13 @@ ActiveRecord::Schema.define(version: 20180212234917) do
     t.date     "ji_2_compd"
     t.date     "schedule_date"
     t.index ["user_id"], name: "index_html_css_statuses_on_user_id", using: :btree
+  end
+
+  create_table "information", force: :cascade do |t|
+    t.text     "info"
+    t.date     "display_period"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "interview_posts", force: :cascade do |t|
