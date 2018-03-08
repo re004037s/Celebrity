@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-    
+    has_many :user, :class_name => "Term", :foreign_key => 'user_id'
+    has_many :create_user, :class_name => "Term", :foreign_key => 'create_user_id'
     has_many :qiita_posts, dependent: :destroy
     has_many :interview_posts, dependent: :destroy
     has_many :pdca_posts, dependent: :destroy
@@ -12,7 +13,7 @@ class User < ApplicationRecord
 
     
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
-    validates :email, presence: true, length: { maximum: 255 },
+    validates :email, presence: true, length: { maximum: 50 },
                format: { with: VALID_EMAIL_REGEX },
                uniqueness: { case_sensitive: false }
     
@@ -123,5 +124,3 @@ class User < ApplicationRecord
        SecureRandom.urlsafe_base64
     end
 end
-
-

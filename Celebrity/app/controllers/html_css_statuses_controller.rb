@@ -1,6 +1,6 @@
 class HtmlCssStatusesController < ApplicationController
   before_action :progate_check
-  before_action :correct_user_for_edit, only:[:update_schedule]
+  before_action :correct_user_for_edit, only:[:update_schedule, :update_completion]
   
   def update_schedule
     @schedule_date = params[:date]
@@ -15,6 +15,43 @@ class HtmlCssStatusesController < ApplicationController
     end
   end
 
+  # 完了予定日の更新
+  def update_completion
+    @completion_date = params[:date]
+    if @completion_date == ""
+      flash[:danger] = "完了予定日がブランクです。完了予定日を選択してください"
+      redirect_to current_user
+    else
+      @course = params[:html_css_status][:course]
+      @status = current_user.html_css_status
+      if @course == 'html_css_ga_beginner'
+        @status.update_attributes(ga_beginner_completion: @completion_date)
+      end
+      if @course == 'html_css_ga_middle'
+        @status.update_attributes(ga_middle_completion: @completion_date)
+      end
+      if @course == 'html_css_ga_advanced'
+        @status.update_attributes(ga_advanced_completion: @completion_date)
+      end
+      if @course == 'html_css_do_beginner'
+        @status.update_attributes(do_beginner_completion: @completion_date)
+      end
+      if @course == 'html_css_do_middle'
+        @status.update_attributes(do_middle_completion: @completion_date)
+      end
+      if @course == 'html_css_do_advanced'
+        @status.update_attributes(do_advanced_completion: @completion_date)
+      end
+      if @course == 'html_css_ji_1'
+        @status.update_attributes(ji_1_completion: @completion_date)
+      end
+      if @course == 'html_css_ji_2'
+        @status.update_attributes(ji_2_completion: @completion_date)
+      end
+      flash[:info] = "完了予定日を #{params[:date]} に設定しました"
+      redirect_to current_user
+    end
+  end
   
   def update
     require 'date'

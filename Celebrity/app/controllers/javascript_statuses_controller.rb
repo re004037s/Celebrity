@@ -1,6 +1,6 @@
 class JavascriptStatusesController < ApplicationController
   before_action :progate_check
-  before_action :correct_user_for_edit, only:[:update_schedule]
+  before_action :correct_user_for_edit, only:[:update_schedule, :update_completion]
   
   def update_schedule
     @schedule_date = params[:date]
@@ -15,6 +15,35 @@ class JavascriptStatusesController < ApplicationController
     end
   end
 
+  # 完了予定日の更新
+  def update_completion
+    @completion_date = params[:date]
+    if @completion_date == ""
+      flash[:danger] = "完了予定日がブランクです。完了予定日を選択してください"
+      redirect_to current_user
+    else
+      @course = params[:javascript_status][:course]
+      @status = current_user.javascript_status
+      if @course == 'javascript_ga_1'
+        @status.update_attributes(ga_1_completion: @completion_date)
+      end
+      if @course == 'javascript_ga_2'
+        @status.update_attributes(ga_2_completion: @completion_date)
+      end
+      if @course == 'javascript_ga_3'
+        @status.update_attributes(ga_3_completion: @completion_date)
+      end
+      if @course == 'javascript_ga_4'
+        @status.update_attributes(ga_4_completion: @completion_date)
+      end
+      if @course == 'javascript_do_1'
+        @status.update_attributes(do_1_completion: @completion_date)
+      end
+      flash[:info] = "完了予定日を #{params[:date]} に設定しました"
+      redirect_to current_user
+    end
+  end
+  
   
   def update
     require 'date'

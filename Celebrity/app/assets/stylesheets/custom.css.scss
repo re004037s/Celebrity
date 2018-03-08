@@ -107,6 +107,7 @@ $background-grey: #f4f4f4;
 .form-control {
    width: 100%;
    height: auto;
+   
   }
   
   
@@ -122,6 +123,7 @@ $background-grey: #f4f4f4;
     margin-bottom: 15px;
     font-size: 24px;
     color: #373737;
+    white-space: nowrap;
   }
   
 }
@@ -170,7 +172,7 @@ $background-grey: #f4f4f4;
 /* ユーザ一覧&詳細ページ */
 
 .table-index {
-  width: 80%;
+  width: 100%;
   table-layout: fixed;
   margin: 0 auto;
   text-align: center;  
@@ -188,6 +190,7 @@ $background-grey: #f4f4f4;
   color: white;
   font-weight: 400;
   text-align: center;
+  white-space: nowrap;
 }
 
 
@@ -195,6 +198,7 @@ $background-grey: #f4f4f4;
   width: 97.0%;
   // margin: 0 auto;
   margin-top: 30px;
+ 
 }
 
 
@@ -429,10 +433,12 @@ div#centering{
 // 面談内容共有ページ
 .att p {
   padding-left: 1em;
+  
 }
 
 li.first-child {
   margin-right: 2.5em;
+  
 }
 
 
@@ -456,6 +462,8 @@ li.first-child {
   
   td {
     word-break: break-word;
+  //改行されない処理
+    white-space: nowrap;
   }
   
 }
@@ -493,6 +501,7 @@ li.first-child {
 .moviecategories-show--wrapper {
   max-width: 480px;
   //margin: 0 auto;
+   white-space: nowrap;
 }
 
 // PDCA報告ページ 
@@ -596,10 +605,7 @@ li.first-child {
   
 }
 
-// 用語登録ページ
-// .terms-new--wrapper{
-  
-// }
+
 
 //＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊
 

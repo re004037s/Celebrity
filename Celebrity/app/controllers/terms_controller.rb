@@ -1,7 +1,6 @@
 class TermsController < ApplicationController
   before_action :logged_in_user, only: [:index, :new, :edit, :destroy]
-  before_action :admin_user, only: [:new, :edit]
-  
+
   def new
     @term = Term.new
   end
@@ -22,7 +21,13 @@ class TermsController < ApplicationController
   
   def ajax_search
     @terms = Term.page().partiallysearch(params[:key])
-    render json:@terms
+    @nicknames = []
+    
+    for term in @terms
+      nickname = User.find(term.user_id).nickname
+      @nicknames.push(nickname)
+    end
+    render json: [@terms, @nicknames]
   end
   
   def edit
@@ -49,6 +54,7 @@ class TermsController < ApplicationController
   private
 
     def term_params
-      params.require(:term).permit(:name, :content, :key)
+      params.require(:term).permit(:name, :content, :key, :create_user_id, :user_id)
     end
+    
 end

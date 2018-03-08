@@ -12,11 +12,21 @@
             <th width=10% class="table-header">氏名</th>
             <th width=15% class="table-header">メアド</th>
           <% end %>
-        <th width=10% class="table-header">動画視聴率</th>
+        <th width=15% class="table-header">動画視聴率</th>
         <th width=10% class="table-header">Progate</th>
-        <th width=10% class="table-header">Rails Tutorial</th>
+        <th width=15% class="table-header">Rails Tutorial</th>
         <th class="table-header">ポートフォリオ</th>
         <th class="table-header">GitHub</th>
+           <script>
+        function check() {
+            var getText = document.form.text1.value;
+            if (getText.length >= 4) {
+                alert("文字数が制限をこえています");
+            } else {
+                alert("okです");
+            }
+        }
+    </script>
       </tr>
     </thead>
     
