@@ -60,17 +60,26 @@
                 <div class="alert alert-<%= message_type %>"><%= message %></div>
               <% end %>
               
+              <!--サイドバー表示の可否で分岐-->
+              <% if content_for?(:without_sidebar) %>
+                
+                <!--サイドバーなし-->
+                <%= yield :without_sidebar %>
+              
+              <% else %>
+              
                 <!--2-2.サイドバーあり-->
                 <div class="row">
                   <div class="col-md-7">
                     <%= yield %>
                   </div>
-                  <!--サイドバー-->
+                  
                   <aside class="col-md-5">
                     <%= render 'layouts/aside' %>
                   </aside>
                 </div>
               
+              <% end %>
         
           </div><!-- container-fluid -->
         </div><!-- main-wrapper -->
