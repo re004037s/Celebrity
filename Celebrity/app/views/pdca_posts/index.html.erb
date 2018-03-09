@@ -89,6 +89,12 @@
 var defaultHTML;
        window.onload = function(){
           defaultHTML = document.body.innerHTML;
+          
+          var ta = document.getElementsByTagName("textarea");
+          $.each(ta, function(index, value){
+            var tah = value.scrollHeight + 'px';
+            value.style.height = tah;
+          });
         }
         // HTML記述を初期状態に戻す
         function HTMLRestore() {
