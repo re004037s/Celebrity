@@ -1,0 +1,13 @@
+<h2 class="page-title-jp">
+  <span>お知らせ一覧</span>
+</h2>
+
+<div class="top-index--wrapper">
+  <%= form_for(@input_information, url: {:action => 'create'}) do |f| %>
+    <%= f.label :info, "表示したいお知らせを入力してください", class: 'txt1' %>
+    <%= f.text_area :info, class: 'form-control'%>
+    <%= f.label :display_period, "表示期日を設定してください", class: 'txt1' %>
+    <%= f.date_field :display_period, style:"width:40%", class: 'form-control'%>
+    <%= f.submit "登録", class: "btn btn-default active" %>
+  <% end %>
+</div>

@@ -15,5 +15,8 @@
     <li><%= link_to 'スキルシート一覧', skillsheets_path %></li>
     <li><%= link_to 'IT用語解説', terms_path %></li>
     <li><%= link_to 'PDCA報告', pdca_posts_path %></li>
+    <% if current_user.admin %>
+    <li><%= link_to 'お知らせ編集', information_path %></li>
+    <% end %>
   </ul>
 </div>

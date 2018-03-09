@@ -3,7 +3,6 @@ class TopController < ApplicationController
   before_action :set_movie_categories, only: [:index]
   
   def index
-    @input_information = Information.new
     # 期限切れでないお知らせ一覧を取得
     @information = Information.all.where("display_period >= (?)" , Date.today)
     @new_movies = Movie.all.where(['created_at > ?', Date.today.prev_day(7)])
@@ -178,40 +177,10 @@ class TopController < ApplicationController
     end
    end
   end
-
-  # お知らせ更新用
-  def update_information
-    # 入力情報取得
-    @information = Information.new(input_information_params)
-    if !@information.info.empty? && !@information.display_period.nil?
-      # 過去日付でなければ入力可能
-      if @information.display_period >= Date.today
-        if @information.save
-          flash[:info] = "お知らせの入力完了いたしました"
-        else
-          flash[:danger] = "お知らせ保存時にエラーが発生しました"
-        end
-      else
-        flash[:danger] = "期間は未来の日付を入力してください"
-      end
-    elsif @information.info.empty? && @information.display_period.nil?
-      flash[:danger] = "お知らせ内容と期日が未入力です"
-    elsif @information.info.empty?
-      flash[:danger] = "お知らせ内容が未入力です"
-    elsif @information.display_period.nil?
-      flash[:danger] = "期日が未入力です"
-    else
-    end
-    redirect_to root_url
-  end
   
   private
   
     def set_movie_categories
       @categories_all = MovieCategory.all.order('sort_order')
-    end
-    
-    def input_information_params
-      params.require(:information).permit(:info, :display_period)
     end
 end
