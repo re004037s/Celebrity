@@ -62,8 +62,29 @@
     
     <!-- 期間中のお知らせがあればページ読み込み時に強制表示 -->
     <% if !@information.empty? %>
+      <!-- 必要な情報の読み込み TODO:ここで読むと若干表示に間があるので別の場所に移す -->
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+      <script type="text/javascript" src="jquery.js"></script>
+      <script type="text/javascript" src="https://github.com/carhartl/jquery-cookie/src/jquery.cookie.js"></script>
       <script>
-        $('#hoge')[0].click();
+          $('#hoge')[0].click();
+          //alert('JavaScriptのアラート1');
+          //cokkieのaccessの値で判定
+  	     // if($.cookie("access")){//accessの値がない場合
+  	     //   alert('JavaScriptのアラート2');
+        //     $('#hoge')[0].click();
+        //     $(window).load(function(){
+        //   		//accessというキーで適当な値をcookieに保存。X日間有効
+        //   		$.cookie("access","foo", { expires: 1 });
+        //   	})
+  	     // }
+  	     // else{
+  	     //   alert('JavaScriptのアラート3');
+  	     //   $('#hoge')[0].click();
+  	     // }
+  	     // //accessというキーで適当な値をcookieに保存。X日間有効
+      		// $.cookie("access","foo", { expires: 1 });
+  	     // alert('JavaScriptのアラート');
       </script>
     <% end %>
   

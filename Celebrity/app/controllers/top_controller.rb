@@ -184,10 +184,15 @@ class TopController < ApplicationController
     # 入力情報取得
     @information = Information.new(input_information_params)
     if !@information.info.empty? && !@information.display_period.nil?
-      if @information.save
-        flash[:info] = "お知らせの入力完了いたしました"
+      # 過去日付でなければ入力可能
+      if @information.display_period >= Date.today
+        if @information.save
+          flash[:info] = "お知らせの入力完了いたしました"
+        else
+          flash[:danger] = "お知らせ保存時にエラーが発生しました"
+        end
       else
-        flash[:info] = "お知らせ保存時にエラーが発生しました"
+        flash[:danger] = "期間は未来の日付を入力してください"
       end
     elsif @information.info.empty? && @information.display_period.nil?
       flash[:danger] = "お知らせ内容と期日が未入力です"
