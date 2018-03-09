@@ -40,7 +40,7 @@
               </div>
               
               <div>
-                <%= form_for pdcapost,  html: {id: 'pdca-report-form', class: 'form'} do |f| %>
+                <%= form_for pdcapost,  html: {class: 'form'} do |f| %>
                   <%= f.label :date, "Date", class: 'txt1' %>
                   <%= f.date_field :date, class: 'form-control', disabled: true %>
                   <%= f.label :plan, "Plan", class: 'txt1' %>
@@ -54,21 +54,19 @@
                   <%= f.hidden_field :id, :value => pdcapost.id %>
                   
                   <div class="report-form-footer">
-                    <input type="button" id="button-pdca-report-cancel" class='btn btn-sm btn-default post-regist hide update_button'
+                    <input type="button" class='btn btn-sm btn-default post-regist hide cancel-button'
                                                                                 value='キャンセル' onclick="HTMLRestore(); return false;" />
                     <span class="timestamp">
                       <%= date_format(pdcapost.created_at) %>
                     </span>
                     
-                    <%= f.submit '更新', {id: 'button-pdca-edit-submit', class: 'btn btn-sm btn-default post-regist hide update_button' } %>
+                    <%= f.submit '更新', {class: 'btn btn-sm btn-default post-regist hide update-button' } %>
                   
                     <% if pdcapost.user_id == current_user.id %>
-                    <span>
-                      <%= link_to '編集', '#', :onclick=> "show_edit(this); return false;", class: 'btn btn-sm btn-default edit' %>
-                    </span>
-                     <%= link_to '削除', pdcapost, method: :delete, id: 'button-pdca-report-delete', class: 'btn btn-sm btn-danger delete',
-                        data: { confirm: '本当に削除しますか？' } %>
-                  <% end %>
+                      <%= link_to '編集', '#', :onclick => "show_edit(this); return false;", class: 'btn btn-sm btn-default edit-button' %>
+                      <%= link_to '削除', pdcapost, method: :delete, class: 'btn btn-sm btn-danger delete-button',data: { confirm: '本当に削除しますか？' } %>
+                    <% end %>
+                  
                   </div>
                 <% end %>
               </div>
@@ -102,13 +100,13 @@ var defaultHTML;
         }
     
       function show_edit(e){
-        var repo_form = $('#pdca-report-form');
-        
+        var repo_form = $(e).closest("form");
         var textarea = repo_form.children('textarea');
         var text = repo_form.children('input[type="date"]');
-        var update_button = $('#button-pdca-edit-submit');
-        var delete_link = $('#button-pdca-report-delete');
-        var cancel_button = $('#button-pdca-edit-cancel');
+        
+        var update_button = $(e).siblings(".update-button");
+        var delete_link = $(e).siblings(".delete-button");
+        var cancel_button = $(e).siblings(".cancel-button");
         
         textarea.prop("disabled", false);
         text.prop("disabled", false);
