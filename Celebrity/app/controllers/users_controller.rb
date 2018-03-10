@@ -141,7 +141,7 @@ class UsersController < ApplicationController
     end
     
     def comp_movies_user
-      if Feedback.where(user_id: current_user).count == 
+      if current_user.try(:admin) || Feedback.where(user_id: current_user).count == 
          Movie.where(movie_category_id: MovieCategory.where(must_view: true).ids).count
       else
         flash[:danger] = "先に動画を視聴して下さい"

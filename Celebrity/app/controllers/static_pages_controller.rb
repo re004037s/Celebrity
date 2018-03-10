@@ -48,7 +48,9 @@ class StaticPagesController < ApplicationController
     end
     
     def comp_portfolio
-      if current_user.railstutorial_status.nil?
+      
+      if current_user.railstutorial_status.chapter1 &&
+         current_user.railstutorial_status.chapter14
       else 
         flash[:danger] = "先に Rails Tutorial を完了させて下さい"
         redirect_to root_url
