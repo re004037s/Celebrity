@@ -48,6 +48,6 @@ class InterviewPostsController < ApplicationController
 
     def interviewpost_params
       params.require(:interview_post).permit(:title, :language,:experience,
-                                             :type, :day, :summary, :question, :result)
+                                             :type, :day, :question, :result)
     end
 end
