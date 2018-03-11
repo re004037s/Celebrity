@@ -1,31 +1,60 @@
-<h2 class="page-title-jp">
-  <span>Qiita投稿</span>
-</h2>
-
-<div class="center">
-  <%= link_to '新規登録', new_qiita_post_path, class: 'txt1' %>
-</div>
-<table class="table table-bordered table-striped table-index">
-  <thead>
-    <tr>
-      <th width="60%" class="table-header">投稿</th>
-      <th class="table-header">Posted by</th>
-      <th class="table-header">投稿日</th>
-      <th class="table-header"></th>
-    </tr>
-  </thead>
-  <% @qiitaposts.each do |qiitapost| %>
-    <tbody>
-      <tr>
-        <td class="left"><%= link_to qiitapost.title, qiitapost.url, target: '_blank' %></td>
-        <td class="center"><%= qiitapost.user.nickname %></td>
-        <td class="center"><%= qiitapost.created_at.strftime("%Y/%m/%d") %></td>
-        <td class="center"><%= link_to '編集', edit_qiita_post_path(qiitapost) %></td>
-      </tr>
-    </tbody>
-  <% end %>
-</table>
-
-<div class="center">
-  <%= paginate @qiitaposts %>
+<div class="qiitaposts-index--wrapper">
+  
+  <h2 class="page-title-jp">
+    <span>Qiita投稿</span>
+  </h2>
+  
+  <div class="center">
+    <%= link_to '新規登録', new_qiita_post_path, class: 'txt1' %>
+  </div>
+  <table class="table-posts">
+    <thead>
+      <!--<tr>-->
+      <!--  <th width="60%" class="table-header">投稿</th>-->
+      <!--  <th class="table-header">Posted by</th>-->
+      <!--  <th class="table-header">投稿日</th>-->
+      <!--  <th class="table-header"></th>-->
+      <!--</tr>-->
+      <!--<th colspan="4">あああ</th>-->
+    </thead>
+    
+    <% @qiitaposts.each do |qiitapost| %>
+    
+      <tbody class="tr-group">
+        <tr>
+          <!--プロフィール写真-->
+          <td class="td-img" rowspan="2">
+            <% if qiitapost.user.picture_file %>
+              <%= image_tag("/pdca_post/get_image/#{qiitapost.user.id}", :class => "icon") %>
+            <% else %>
+              <%= image_tag('default.png', :class => "icon") %>
+            <% end %>
+          </td>
+          
+          <!--メイン情報-->
+          <td class="td-main">
+            <%= link_to qiitapost.title, qiitapost.url, target: '_blank' %>
+          </td>
+        </tr>
+        <tr>
+          <td class="td-sub">
+            <!--ユーザー名-->
+            by &nbsp; <%= qiitapost.user.nickname %> &nbsp;
+            <!--日付-->
+            <%= qiitapost.created_at.strftime("%Y/%m/%d") %>
+            <!--編集（投稿者のみ表示）-->
+            <% if qiitapost.user_id == current_user.id %> &nbsp;
+              ［<%= link_to '編集', edit_qiita_post_path(qiitapost) %>］
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+      
+    <% end %>
+  </table>
+  
+  <div class="center">
+    <%= paginate @qiitaposts %>
+  </div>
+  
 </div>
