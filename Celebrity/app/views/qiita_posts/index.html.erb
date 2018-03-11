@@ -4,9 +4,6 @@
     <span>Qiita投稿</span>
   </h2>
   
-  <div class="center">
-    <%= link_to '新規登録', new_qiita_post_path, class: 'txt1' %>
-  </div>
   <table class="table-posts">
     <thead>
       <!--<tr>-->
@@ -17,6 +14,10 @@
       <!--</tr>-->
       <!--<th colspan="4">あああ</th>-->
     </thead>
+    
+    <tbody><tr><td class="td-new-post" colspan="2">
+      【<%= link_to '新規投稿', new_qiita_post_path %>】
+    </td></tr></tbody>
     
     <% @qiitaposts.each do |qiitapost| %>
     
@@ -39,7 +40,7 @@
         <tr>
           <td class="td-sub">
             <!--ユーザー名-->
-            by &nbsp; <%= qiitapost.user.nickname %> &nbsp;
+            by <%= qiitapost.user.nickname %> &nbsp;
             <!--日付-->
             <%= qiitapost.created_at.strftime("%Y/%m/%d") %>
             <!--編集（投稿者のみ表示）-->

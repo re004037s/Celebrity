@@ -498,19 +498,48 @@ li.first-child {
   
   
   .table-posts {
-    border: 1px solid #aaa;
+    table-layout: fixed;
+    // border-top: 2px solid #f4f4f4;
     border-collapse: collapse;
     // border-spacing: 0;
     // border-radius: 6px;
     background-color: #fff;
+    margin: 30px auto;
     
-    .tr-group {
-      padding: 10px;
+    .td-new-post {
+      height: 50px;
+      text-align: center;
+      font-size: 1.2em;
+      border-bottom: 5px solid #f4f4f4;
     }
     
+    .tr-group {
+      // height: 90px;
+      border-bottom: 5px solid #f4f4f4;
+    }
+    .td-main {
+      padding: 10px 10px 5px;
+      
+      a {
+        font-size: 1.4em;
+      }
+    }
+    .td-sub {
+      padding: 0 10px 10px;
+      color: #555;
+      font-size: 0.9em;
+    }
+    
+    .td-img {
+      // width: 80px;
+      // height: 80px;
+      padding-left: 10px;
+    }
     .td-img img {
-      width: 80%;
+      max-height: 80px;
+      width: 90%;
       height: auto;
+      margin: auto;
     }
   }
 }
