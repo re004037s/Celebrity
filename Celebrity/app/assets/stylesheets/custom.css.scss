@@ -496,13 +496,9 @@ li.first-child {
 
 .qiitaposts-index--wrapper {
   
-  
   .table-posts {
     table-layout: fixed;
-    // border-top: 2px solid #f4f4f4;
     border-collapse: collapse;
-    // border-spacing: 0;
-    // border-radius: 6px;
     background-color: #fff;
     margin: 30px auto;
     
@@ -512,10 +508,20 @@ li.first-child {
       font-size: 1.2em;
       border-bottom: 5px solid #f4f4f4;
     }
-    
     .tr-group {
-      // height: 90px;
       border-bottom: 5px solid #f4f4f4;
+    }
+    .td-img {
+      width: 80px;
+      // height: 80px;
+      padding-left: 10px;
+      
+      img {
+        max-width: 80px;
+        width: 95%;
+        height: auto;
+        margin: auto;
+      }
     }
     .td-main {
       padding: 10px 10px 5px;
@@ -529,17 +535,56 @@ li.first-child {
       color: #555;
       font-size: 0.9em;
     }
+  }
+}
+
+.interviewposts-index--wrapper {
+  
+  .table-posts {
+    table-layout: fixed;
+    border-collapse: collapse;
+    background-color: #fff;
+    margin: 30px auto;
     
+    .td-new-post {
+      height: 50px;
+      text-align: center;
+      font-size: 1.2em;
+      border-bottom: 5px solid #f4f4f4;
+    }
+    .tr-group {
+      border-bottom: 5px solid #f4f4f4;
+    }
     .td-img {
-      // width: 80px;
+      width: 80px;
       // height: 80px;
       padding-left: 10px;
+      
+      img {
+        max-width: 80px;
+        width: 90%;
+        height: auto;
+        margin: auto;
+      }
     }
-    .td-img img {
-      max-height: 80px;
-      width: 90%;
-      height: auto;
-      margin: auto;
+    .td-main {
+      padding: 10px 10px 5px;
+      
+      a {
+        font-size: 1.4em;
+      }
+    }
+    .td-sub {
+      padding: 0 10px 10px;
+      color: #555;
+      font-size: 0.9em;
+      
+      span {
+        text-align: center;
+        padding: 3px 5px;
+        border-radius: 3px;
+        font-size: 1em;
+      }
     }
   }
 }
