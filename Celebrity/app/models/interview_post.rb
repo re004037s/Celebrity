@@ -8,7 +8,7 @@ class InterviewPost < ApplicationRecord
     validates :experience, presence: true
     validates :type, presence: true
     validates :day, presence: true
-    validates :summary, presence: true
+    # validates :summary, presence: true
     validates :question, presence: true
     validates :result, presence: true
 end
