@@ -7,6 +7,7 @@ class SkillsheetsController < ApplicationController
   def index
     @user = current_user
     @users = User.page(params[:page])
+    @status = {'未登録':1, '就業中':2, '営業中':3}
   end
   
   def download

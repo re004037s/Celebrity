@@ -24,12 +24,24 @@
   <br><br><br>
   <table class="table table-bordered table-striped table-index">
     <thead>
+      営業状況検索
+       <%= form_for(@user) do |f| %>
+         <%= f.check_box :status %>
+         <%= f.label :status, "未登録" %>
+ 
+         <%= f.check_box :status %>
+         <%= f.label :status, "営業中" %>
+ 
+         <%= f.check_box :status %>
+         <%= f.label :status, "就業中" %>
+       <% end %>
       <tr>
         <th width=25% class="table-header">ユーザ名</th>
           <% if current_user.admin %>
             <th width=25% class="table-header">氏名</th>
           <% end %>
         <th class="table-header">スキルシート</th>
+        <th class="table-header">状況</th>
       </tr>
     </thead>
         
@@ -41,14 +53,25 @@
               <% if current_user.admin %>
                 <td><%= link_to user.name, user_path(user, user_id: user.id) %></td>
               <% end %>
-            <td><% if user.skillsheet == nil %>      
-                  未登録
-                <% else %>
-                　<%= link_to "#{user.skillsheet_name}", get_skillsheet_path(user_id: user.id) %>
-                <% end %>
+            <td>
+              <% if user.skillsheet == nil %>      
+                未登録
+              <% else %>
+                <%= link_to "#{user.skillsheet_name}", get_skillsheet_path(user_id: user.id) %>
+              <% end %>
+            </td>
+            <td>
+              <%= form_for(user) do |f| %>
+                <%= f.select :status,{'未登録': '未登録', '営業中': '営業中', '就業中': '就業中'}, {}, :onchange => "kakunin()" %>
+              <% end %>
             </td>
           </tr>
         <% end %>
+        <script>
+           function kakunin(){
+             console.log("OK")
+           }
+         </script>
       <% end %>
     </tbody>
   </table>
