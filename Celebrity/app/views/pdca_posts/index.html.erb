@@ -100,11 +100,11 @@ var defaultHTML;
         }
     
       function show_edit(e){
-        var repo_form = $(e).closest("form");
+        var repo_form = $(e).closest("form"); // closest(): 最も近い親要素を取得
         var textarea = repo_form.children('textarea');
         var text = repo_form.children('input[type="date"]');
         
-        var update_button = $(e).siblings(".update-button");
+        var update_button = $(e).siblings(".update-button"); // siblings(): 全兄弟要素から取得
         var delete_link = $(e).siblings(".delete-button");
         var cancel_button = $(e).siblings(".cancel-button");
         
