@@ -1,7 +1,6 @@
 class StaticPagesController < ApplicationController
   before_action :logged_in_user
   before_action :setting
-  before_action :set_movie_categories
   
   def qa
   end
@@ -39,9 +38,4 @@ class StaticPagesController < ApplicationController
           @progate_comp_flag = false
       end
     end
-    
-    def set_movie_categories
-      @categories_all = MovieCategory.all.order('sort_order')
-    end
-    
 end
