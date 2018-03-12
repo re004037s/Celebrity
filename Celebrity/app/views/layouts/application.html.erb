@@ -22,73 +22,80 @@
     <%= favicon_link_tag('favicon32.png') %>
   </head>
   
+  
+  <!--アラートをyield化-->
+  <% content_for :alert_message do %>
+    <% flash.each do |message_type, message| %>
+      <div class="alert alert-<%= message_type %>"><%= message %></div>
+    <% end %>
+  <% end %>
+  
+  
+  <!--bodyに適用するクラス名の設定-->
+  <%
+  if content_for?(:entrance)
+    classname = 'body-entrance'
+  else
+    classname = 'body'
+  end
+  %>
+  
 
-  <!--▼body-->
-  
-  <!--1.ログイン時など-->
-  <% if content_for?(:entrance) %>
+  <!--body-->
+  <body class="<%= classname %>">
     
-    <body class="body-entrance">
-      <!--アラートメッセージ-->
-      <% flash.each do |message_type, message| %>
-        <div class="alert alert-<%= message_type %>"><%= message %></div>
-      <% end %>
-      
-    <%= yield :entrance %>
-    </body>
+    <% if content_for?(:entrance) %>
     
-  <% else %><!-- if content_for?(:entrance) -->
-  
-    <!--2.通常の表示-->
-    <body class="body">
+      <%= yield :alert_message %>
       
+      
+      <%= yield :entrance %>
+    
+    <%  else %>
+      
+      <!--ナビゲーションバー-->
+      <%= render 'layouts/navbar' %>
+      
+      <div class="body-wrapper">
+        <!--トップ画像-->
+        <div class="img-top-wrapper">
+          <%= image_tag "img_top.png", id: "img-top" %>
+        </div>
         
-        <!--ナビゲーションバー-->
-        <%= render 'layouts/navbar' %>
-        
-        <div class="body-wrapper">
-          <!--トップ画像-->
-          <div class="img-top-wrapper">
-            <%= image_tag "img_top.png", id: "img-top" %>
-          </div>
-          
-          <div class="main-wrapper">
-            <div class="container-fluid">
+        <div class="main-wrapper">
+          <div class="container-fluid">
+            
+            <%= yield :alert_message %>
+            
+            <!--表示を分岐（サイドバーの有無）-->
+            <% if content_for?(:without_sidebar) %>
               
-              <!--アラートメッセージ-->
-              <% flash.each do |message_type, message| %>
-                <div class="alert alert-<%= message_type %>"><%= message %></div>
-              <% end %>
-              
-              <!--サイドバー表示の可否で分岐-->
-              <% if content_for?(:without_sidebar) %>
-                
-                <!--サイドバーなし-->
-                <%= yield :without_sidebar %>
-              
-              <% else %>
-              
-                <!--2-2.サイドバーあり-->
-                <div class="row">
-                  <div class="col-md-7">
-                    <%= yield %>
-                  </div>
-                  
-                  <aside class="col-md-5">
-                    <%= render 'layouts/aside' %>
-                  </aside>
+              <!--yield（サイドバーなし）-->
+              <%= yield :without_sidebar %>
+            
+            <% else %>
+            
+              <div class="row">
+                <!--yield（デフォルト）-->
+                <div class="col-md-7">
+                  <%= yield %>
                 </div>
-              
-              <% end %>
+                <!--サイドバー-->
+                <aside class="col-md-5">
+                  <%= render 'layouts/aside' %>
+                </aside>
+              </div>
+            
+            <% end %>
         
           </div><!-- container-fluid -->
         </div><!-- main-wrapper -->
-        
       </div><!-- body-wrapper -->
-  
+
       <!--フッター-->
       <%= render 'layouts/footer' %>
-        
-    </body>
-  <% end %><!-- if content_for?(:entrance) -->
+    
+    <% end %><!-- content_for?(:entrance) -->
+      
+  </body>
 </html>
