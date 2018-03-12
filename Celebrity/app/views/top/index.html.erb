@@ -1,4 +1,3 @@
-<% content_for :with_sidebar do %>
   <h2 class="page-title-jp">
     <span>はじめに</span>
   </h2>
@@ -63,42 +62,46 @@
   	      }
       </script>
     <% end %>
+
+  <h2 class="page-title-jp">
+    <span>はじめに</span>
+  </h2>
   
-    <ol class="produce-list">
-      <li>このサイトのカリキュラムをこなすことで、フリーになるためのスキルが最短で身につきます。</li>
-      <li>まずはマインドセットを動画で学習します。一覧の最初の動画から順に動画を視聴してください。各動画を見た後に、感想を記入して送信してください。(全動画を視聴後、マイページに移動出来ます。)</li>
-      <li>次に、プログラミングの基礎を身につけます。プログラミング学習サイト「Progate」を使い、「HTML & CSS」「JavaScript」「Ruby」「Ruby on Rails5」のコースを全て終了させてください。</li>
-      <li>次に、「Ruby on Rails チュートリアル」1章〜14章まで全て終了させてください。アプリケーション開発の基礎について学習することができます。</li>
-      <li>チュートリアルが完了したら、面談などで使用するポートフォリオ（自作のWebアプリケーション）を作成します。作り方等詳細については動画で確認してください。</li>
-    </ol>
+
+  <ol class="produce-list">
+    <li>このサイトのカリキュラムをこなすことで、フリーになるためのスキルが最短で身につきます。</li>
+    <li>まずはマインドセットを動画で学習します。一覧の最初の動画から順に動画を視聴してください。各動画を見た後に、感想を記入して送信してください。(全動画を視聴後、マイページに移動出来ます。)</li>
+    <li>次に、プログラミングの基礎を身につけます。プログラミング学習サイト「Progate」を使い、「HTML & CSS」「JavaScript」「Ruby」「Ruby on Rails5」のコースを全て終了させてください。</li>
+    <li>次に、「Ruby on Rails チュートリアル」1章〜14章まで全て終了させてください。アプリケーション開発の基礎について学習することができます。</li>
+    <li>チュートリアルが完了したら、面談などで使用するポートフォリオ（自作のWebアプリケーション）を作成します。作り方等詳細については動画で確認してください。</li>
+  </ol>
+    
+  <div class="information">
+    
+    <div class="information-head">新着動画</div>
+    
+    <div class="information-body">
+      <% if @new_movies.present? %>
       
-    <div class="information">
-      
-      <div class="information-head">新着動画</div>
-      
-      <div class="information-body">
-        <% if @new_movies.present? %>
+        <div class="information-title">
+          <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+          まだ視聴していない動画はありませんか！？
+        </div>
+        <ul class="information-list">
+          <% @new_movies.each do |movie| %>
+            <li><%= movie.title %></li>
+          <% end %>
+        </ul>
         
-          <div class="information-title">
-            <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
-            まだ視聴していない動画はありませんか！？
-          </div>
-          <ul class="information-list">
-            <% @new_movies.each do |movie| %>
-              <li><%= movie.title %></li>
-            <% end %>
-          </ul>
-          
-        <% else %>
+      <% else %>
+      
+        <div class="information-title">
+          <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
+          <p class="inline">直近1週間に投稿された動画はありません。</p>              
+        </div>
         
-          <div class="information-title">
-            <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
-            <p class="inline">直近1週間に投稿された動画はありません。</p>              
-          </div>
-          
-        <% end %>
-      </div>
+      <% end %>
     </div>
-      
   </div>
-<% end %>
+    
+</div>

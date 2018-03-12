@@ -1,6 +1,5 @@
 class TopController < ApplicationController
   before_action :logged_in_user
-  before_action :set_movie_categories, only: [:index]
   
   def index
     # 期限切れでないお知らせ一覧を取得

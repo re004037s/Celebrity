@@ -1,25 +1,34 @@
-<h2 class="page-title">
-  <span>IT用語解説</span>
-</h2>
+<div class="terms-index--wrapper">
+  <div class="container-fluid">
+    
+    <h2 class="page-title">
+      <span>IT用語解説</span>
+    </h2>
+    
+    <div class="right">
+      <%= form_tag(terms_path, method: :get) do %>
+        <p>
+          <%= text_field_tag :search, params[:search], placeholder: "解説内キーワード検索", size: 25 %>
+        </p>
+      <% end %>
+    </div>
+    
+    <div class="center">
+      <%= link_to '新規登録', new_term_path, class: 'txt1' %>
+    </div>
+    
+    <div id="term_show">
+      <%= render(:partial => 'searched', :object => @terms) %>
+    </div>
+    
+    
+    <% isAdmin = current_user.try(:admin) %>
 
-<div class="right">
-  <%= form_tag(terms_path, method: :get) do %>
-    <p>
-      <%= text_field_tag :search, params[:search], placeholder: "解説内キーワード検索", size: 25 %>
-    </p>
-  <% end %>
+    
+  </div>
 </div>
 
-<div class="center">
-  <%= link_to '新規登録', new_term_path, class: 'txt1' %>
-</div>
 
-<div id="term_show">
-  <%= render(:partial => 'searched', :object => @terms) %>
-</div>
-
-
-<% isAdmin = current_user.try(:admin) %>
 
 <script>
 $('#search').on('keyup', function() {

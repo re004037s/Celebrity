@@ -1,4 +1,5 @@
 module ApplicationHelper
+    
   def movie_comp?
     last_movie = MovieCategory.where(must_view: true).order('sort_order').last.movies.order('sort_order').last
     if (current_user.feedbacks.find_by(movie_id: last_movie.id) &&
