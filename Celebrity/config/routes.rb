@@ -57,6 +57,8 @@ Rails.application.routes.draw do
   
   get '/information', to: 'information#show'
   post '/information', to: 'information#create', as: 'create_information'
+  patch '/information', to: 'information#update'
+  delete '/information', to: 'information#destroy'
 
   get '/progate', to: 'static_pages#progate'
   post '/progate', to: 'static_pages#progate'

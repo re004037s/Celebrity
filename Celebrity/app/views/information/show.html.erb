@@ -11,3 +11,67 @@
     <%= f.submit "登録", class: "btn btn-default active" %>
   <% end %>
 </div>
+
+<table class="txt1 table-condensed table-status-schedule">
+   <tr valign="baseline">
+    <td>
+      <h3 class="txt3">登録済みお知らせ一覧</h3>
+    <td>
+  </tr>
+</table>
+<table class="txt1 table table-bordered table-striped table-condensed table-status">
+  <thead>
+    <tr>
+      <th class="table-header">お知らせ内容</th>
+      <th class="table-header">表示期日</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @information.each do |info| %>
+      <%= form_for(info, html: {class: 'form'}) do |f| %>
+        <tr>
+          <td><%= f.text_area :info, :value => info.info, class: 'form-control', disabled: true %></td>
+          <td><%= f.date_field :display_period, :value => info.display_period, class: 'form-control', disabled: true %></td>
+          <td>
+            <%= f.hidden_field :id, :value => info.id %>
+            <%= f.submit '更新', {class: 'btn btn-default active post-regist hide update_button' }%>
+            <input type="button" class='btn btn-default active post-regist hide update_button' value='キャンセル' onclick="HTMLRestore();return false;"  %>
+            <%= link_to '編集', '#', :onclick=> "show_edit(this);return false;", class: 'edit' %>
+            <%= link_to '削除', info, method: :delete, class: 'delete',
+              data: { confirm: '本当に削除しますか？' }%>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<script>
+var defaultHTML;
+      window.onload = function(){
+        defaultHTML = document.body.innerHTML;
+      }
+      // HTML記述を初期状態に戻す
+      function HTMLRestore() {
+        document.body.innerHTML = defaultHTML;
+      }
+    
+      function show_edit(e){
+        //debugger
+        var update_button = $(e).closest('tr').find('input[type="submit"]');
+        var textarea = $(e).closest('tr').find('textarea');
+        var text = $(e).closest('tr').find('input[type="date"]');
+        var delete_link = $(e).next();
+        var cancel_button = $(e).closest('tr').find('input[type="button"]');
+        textarea.prop("disabled", false);
+        text.prop("disabled", false);
+        $(e).removeClass('show');
+        $(e).addClass('hide');
+        delete_link.removeClass('show');
+        delete_link.addClass('hide');
+        update_button.removeClass('hide');
+        update_button.addClass('show');
+        cancel_button.removeClass('hide');
+        cancel_button.addClass('show');
+      };
+</script>

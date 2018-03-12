@@ -3,6 +3,7 @@ class InformationController < ApplicationController
     
     def show
         @input_information = Information.new
+        @information = Information.all.where("display_period >= (?)" , Date.today)
     end
     
     # お知らせの項目追加
@@ -30,6 +31,26 @@ class InformationController < ApplicationController
         end
         # 同ページを再読み込み
         redirect_to(:back)
+    end
+    
+    def update
+      # idはinformation内に格納されている
+      @Information = Information.find(params[:information][:id])
+      if @Information.update_attributes(input_information_params)
+        flash[:success] = "お知らせが更新されました"
+        redirect_to information_url
+      else
+        flash[:danger] = "お知らせを取得できませんでした"
+        redirect_to :back
+      end
+    end
+    
+    def destroy
+      # idはformat内に文字列で格納されている
+      @Information = Information.find(params[:format].to_i)
+      @Information.destroy
+      flash[:success] = "お知らせが削除されました"
+      redirect_to information_url
     end
   
   private
