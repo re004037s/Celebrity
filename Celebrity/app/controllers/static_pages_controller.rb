@@ -50,8 +50,7 @@ class StaticPagesController < ApplicationController
     end
     
     def comp_portfolio
-      if current_user.id == 3 || current_user.id == 4 ||
-         railstutorial_comp?
+      if railstutorial_comp?
       else 
         flash[:danger] = "先に Rails Tutorial を完了させて下さい"
         redirect_to root_url
@@ -68,8 +67,7 @@ class StaticPagesController < ApplicationController
     end
     
     def comp_railstutorial
-      if current_user.id == 3 || current_user.id == 4 ||
-         progatetask_tutolialday_comp?
+      if progatetask_tutolialday_comp?
       else
         flash[:danger] = "先に Progate を完了させて下さい"
         redirect_to root_url
