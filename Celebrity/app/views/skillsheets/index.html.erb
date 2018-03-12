@@ -38,20 +38,23 @@
     <tbody>
       <% @users.each do |user| %>
         <% if user.existence %>
+        　<% is_my_skill_sheet = (current_user.id === user_id) ? true : false %>
           <tr>
             <td><%= user.nickname %></td>
               <% if current_user.admin %>
-                <td><%= link_to user.name, user_path(user, user_id: user.id) %></td>
+              <td><%= link_to user.name, user_path(user, user_id: user.id) %></td>
               <% end %>
-            <td><% if user.skillsheet == nil %>      
-                  未登録
-                <% else %>
-                　<%= link_to "#{user.skillsheet_name}", get_skillsheet_path(user_id: user.id), class: "#{'disabled' if current_user}" %>
+                <% if is_my_skillsheet || current_user.admin %>
+                  <!-- 文字列+リンクを出力する -->
+               　  <%= link_to "#{user.skillsheet_name}", get_skillsheet_path(user_id: user.id) %>
+                  <% else %>
+                  <!-- 文字列だけ出力する -->
+                  <%= "#{user.skillsheet_name}" %>
                 <% end %>
             </td>
           </tr>
-        <% end %>
-      <% end %>
+    　　<% end %>
+  　　<% end %>
     </tbody>
   </table>
 </div>
