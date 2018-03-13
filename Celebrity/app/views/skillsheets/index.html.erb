@@ -36,6 +36,10 @@
  
          <%= f.check_box :status %>
          <%= f.label :status, "就業中" %>
+         
+         <p>
+          <%= submit_tag "検索", size: 25 %>
+         </p><br>
        <% end %>
       <tr>
         <th width=25% class="table-header">ユーザ名</th>
@@ -64,7 +68,11 @@
             </td>
             <td>
               <%= form_for(user) do |f| %>
-                <%= f.select :status,{'未登録': '未登録', '営業中': '営業中', '就業中': '就業中'}, {}, :onchange => "kakunin()" %>
+                <% if user.id != current_user.id %>
+                  <%= f.select :status,{'未登録': '未登録', '営業中': '営業中', '就業中': '就業中'}, {}, :disabled => true, :onchange => "kakunin()" %>
+                <% else %>
+                  <%= f.select :status,{'未登録': '未登録', '営業中': '営業中', '就業中': '就業中'}, {}, :disabled => false, :onchange => "kakunin()" %>
+                <% end %>
               <% end %>
             </td>
           </tr>
