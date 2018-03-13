@@ -465,7 +465,17 @@ li.first-child {
   //改行されない処理
     white-space: nowrap;
   }
-  
+  .icon-comment {
+    font-size: 1.8em;
+    text-decoration: none;
+   vertical-align:middle;
+  }
+  span.icon-comment {
+    color: #888;
+  }
+  a.icon-comment {
+    color : #222;
+  }
 }
 
 // マイページ
