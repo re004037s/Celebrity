@@ -19,6 +19,10 @@ class SessionsController < ApplicationController
       UserMovieStatus.create(user_id: user.id) if user.user_movie_status.nil?
       
       redirect_to root_url
+    
+      if user.try(:guest)
+         redirect_to skillsheets_path
+      end
     else
       # エラーメッセージを作成する
       flash.now[:danger] = 'メールアドレスとパスワードの組み合わせが不正です'
