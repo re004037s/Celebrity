@@ -63,7 +63,8 @@ User.create(name: '鈴木 一郎',
             password_confirmation: 'password',
             admin: true,
             existence: true,
-            line_id: 12345)
+            line_id: 12345,
+            guest: false)
             
 # 一般 user
 User.create(name: '松井 秀喜',
@@ -73,7 +74,8 @@ User.create(name: '松井 秀喜',
             password_confirmation: 'password',
             admin: false,
             existence: true,
-            line_id: 67890)
+            line_id: 67890,
+            guest: false)
 
 # 一般 user
 User.create(name: '大谷 翔平',
@@ -83,7 +85,8 @@ User.create(name: '大谷 翔平',
             password_confirmation: 'password',
             admin: false,
             existence: true,
-            line_id: 98765)
+            line_id: 98765,
+            guest: false)
             
 # 一般 user
 User.create(name: 'ベーブルース',
@@ -93,7 +96,18 @@ User.create(name: 'ベーブルース',
             password_confirmation: 'password',
             admin: false,
             existence: false,
-            line_id: 43210)
+            line_id: 43210,
+            guest: false)
+            
+User.create(name: 'ゲストユーザー',
+            nickname: 'ゲスト',
+            email: 'guest@gmail.com',
+            password: 'password',
+            password_confirmation: 'password',
+            admin: true,
+            existence: true,
+            line_id: 23456,
+            guest: true)
 
 
 User.where(id: 1..2).each do |user|
@@ -116,3 +130,12 @@ User.where(id: 3..4).each do |user|
     RailstutorialStatus.create(user_id: user.id, schedule_date: '2019-01-01')
     UserMovieStatus.create(user_id: user.id, schedule_date: '2019-01-01')
 end
+
+User.where(id: 5).each do |user|
+    HtmlCssStatus.create(user_id: user.id)
+    JavascriptStatus.create(user_id: user.id)
+    RubyStatus.create(user_id: user.id)
+    RubyonrailsStatus.create(user_id: user.id)
+    RailstutorialStatus.create(user_id: user.id)
+    UserMovieStatus.create(user_id: user.id)
+end 

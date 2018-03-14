@@ -314,7 +314,7 @@ ActiveRecord::Schema.define(version: 20180313130347) do
     t.binary   "skillsheet"
     t.string   "skillsheet_name"
     t.string   "status"
-    t.boolean  "gest",            default: false
+    t.boolean  "guest",           default: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
