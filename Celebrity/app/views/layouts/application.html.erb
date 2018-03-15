@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html>
+  
+  
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,73 +22,80 @@
     <%= favicon_link_tag('favicon32.png') %>
   </head>
   
-  <!--ページ（yield）によってソースを条件分岐-->
   
-  <!--1.ログイン時など-->
-  <% if content_for?(:entrance) %>
-    
-    <body class="body-entrance">
-      <!--アラートメッセージ-->
-      <% flash.each do |message_type, message| %>
-        <div class="alert alert-<%= message_type %>"><%= message %></div>
-      <% end %>
-      
-    <%= yield :entrance %>
-    </body>
-    
-  <% else %><!-- if content_for?(:entrance) -->
+  <!--アラートをyield化-->
+  <% content_for :alert_message do %>
+    <% flash.each do |message_type, message| %>
+      <div class="alert alert-<%= message_type %>"><%= message %></div>
+    <% end %>
+  <% end %>
   
-    <!--2.通常の表示-->
-    <body class="body">
+  
+  <!--bodyに適用するクラス名の設定-->
+  <%
+  if content_for?(:entrance)
+    classname = 'body-entrance'
+  else
+    classname = 'body'
+  end
+  %>
+  
+
+  <!--body-->
+  <body class="<%= classname %>">
+    
+    <% if content_for?(:entrance) %>
+    
+      <%= yield :alert_message %>
       
+      
+      <%= yield :entrance %>
+    
+    <%  else %>
+      
+      <!--ナビゲーションバー-->
+      <%= render 'layouts/navbar' %>
+      
+      <div class="body-wrapper">
+        <!--トップ画像-->
+        <div class="img-top-wrapper">
+          <%= image_tag "img_top.png", id: "img-top" %>
+        </div>
         
-        <!--ナビゲーションバー-->
-        <%= render 'layouts/navbar' %>
-        
-        <div class="body-wrapper">
-          <!--トップ画像-->
-          <div class="img-top-wrapper">
-            <%= image_tag "img_top.png", id: "img-top" %>
-          </div>
-          
-          <div class="main-wrapper">
-            <div class="container-fluid">
+        <div class="main-wrapper">
+          <div class="container-fluid">
+            
+            <%= yield :alert_message %>
+            
+            <!--表示を分岐（サイドバーの有無）-->
+            <% if content_for?(:without_sidebar) %>
               
-              <!--アラートメッセージ-->
-              <% flash.each do |message_type, message| %>
-                <div class="alert alert-<%= message_type %>"><%= message %></div>
-              <% end %>
-              
-              <!-- 2-1.サイドバーあり-->
-              <% if content_for?(:with_sidebar) %>
-              
-                <div class="row">
-                  
-                  <div class="col-md-7">
-                    <%= yield :with_sidebar %>
-                  </div>
-                  
-                  <!--サイドバー-->
-                  <aside class="col-md-5">
-                    <%= render 'layouts/aside' %>
-                  </aside>
+              <!--yield（サイドバーなし）-->
+              <%= yield :without_sidebar %>
+            
+            <% else %>
+            
+              <div class="row">
+                <!--yield（デフォルト）-->
+                <div class="col-md-7">
+                  <%= yield %>
                 </div>
-                
-              <% else %>
-              
-                <!--2-2.サイドバーなし-->
-                <%= yield %>
-              
-              <% end %>
+                <!--サイドバー-->
+                <aside class="col-md-5">
+                  <%= render 'layouts/aside' %>
+                </aside>
+              </div>
+            
+            <% end %>
         
           </div><!-- container-fluid -->
         </div><!-- main-wrapper -->
-        
       </div><!-- body-wrapper -->
-  
+
       <!--フッター-->
       <%= render 'layouts/footer' %>
-        
-    </body>
-  <% end %><!-- if content_for?(:entrance) -->
+    
+    <% end %><!-- content_for?(:entrance) -->
+      
+  </body>
 </html>

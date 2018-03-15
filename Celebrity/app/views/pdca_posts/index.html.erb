@@ -1,34 +1,45 @@
 <div class="pdcaposts-index--wrapper">
-  <div class="row">
-    <h2 class="page-title">
-      <span>PDCA報告</span>
-    </h2>
-    <aside class="col-md-4">
-      <h4 class="form-title">
-        <span>PDCA報告フォーム</span>
-      </h4>
-      <section class="user_info form_balloon">
-        <div id="formvalidations"></div>
-        <%= form_for(@pdcapost, html: {id: 'form'}) do |f| %>
-          <%= render partial: 'form', locals: {f: f} %>
-        <% end %>
-      </section>
-    </aside>
-    <div class="col-md-8">
-      <ul>
-        <div id="validations"></div>
-        <% @pdcaposts.each do |pdcapost| %>
-          <li id="pdcapost-<%= pdcapost.id %>" class="">
-            <div class="report">
-              <% if pdcapost.user.picture_file %>
-                <%= image_tag("/pdca_post/get_image/#{pdcapost.user.id}", :class => "icon") %>
-              <% else %>
-                <%= image_tag('default.png', :class => "icon") %>
-              <% end %>
-              <div class="left_balloon">
-                <span type="text" class="">
-                  <%= pdcapost.user.nickname %>
-                </span><br/>
+  
+  <h2 class="page-title-jp">
+    <span>PDCA報告</span>
+  </h2>
+    
+  <!--投稿フォーム-->
+  <div class="form-wrapper container-fluid">
+    <!--タイトル-->
+    <h4 class="form-title">
+      <span>PDCA報告フォーム</span>
+    </h4>
+    <!--フォーム-->
+    <section class="user_info form_balloon">
+      <div id="formvalidations"></div>
+      <%= form_for(@pdcapost, html: {id: 'form'}) do |f| %>
+        <%= render partial: 'form', locals: {f: f} %>
+      <% end %>
+    </section>
+  </div>
+  
+  <!--投稿の一覧-->
+  <div class="posts-wrapper container-fluid">
+    <ul>
+      <div id="validations"></div>
+      <% @pdcaposts.each do |pdcapost| %>
+        <li id="pdcapost-<%= pdcapost.id %>" class="">
+          <div class="report">
+            
+            <% if pdcapost.user.picture_file %>
+              <%= image_tag("/pdca_post/get_image/#{pdcapost.user.id}", :class => "icon") %>
+            <% else %>
+              <%= image_tag('default.png', :class => "icon") %>
+            <% end %>
+            
+            <div class="left_balloon">
+              <!--投稿者名-->
+              <div>
+                <span type="text"><%= pdcapost.user.nickname %></span>
+              </div>
+              
+              <div>
                 <%= form_for pdcapost,  html: {class: 'form'} do |f| %>
                   <%= f.label :date, "Date", class: 'txt1' %>
                   <%= f.date_field :date, class: 'form-control', disabled: true %>
@@ -41,30 +52,37 @@
                   <%= f.label :action, "Action", class: 'txt1' %>
                   <%= f.text_area :action, :value => pdcapost.action, class: 'form-control', disabled: true %>
                   <%= f.hidden_field :id, :value => pdcapost.id %>
-                  <%= f.submit '更新', {class: 'btn btn-default active post-regist hide update_button' }%>
-                <% end %>
-                <input type="button" class='btn btn-default active post-regist hide update_button' value='キャンセル' onclick="HTMLRestore();return false;"  %>
-                <span class="timestamp">
-                  <%= date_format(pdcapost.created_at) %>
-                </span>
-                <% if pdcapost.user_id == current_user.id %>
-                  <span>
-                    <%= link_to '編集', '#', :onclick=> "show_edit(this);return false;", class: 'edit' %>
-                  </span>
-                   <%= link_to '削除', pdcapost, method: :delete, class: 'delete',
-                      data: { confirm: '本当に削除しますか？' } %>
+                  
+                  <div class="report-form-footer">
+                    <input type="button" class='btn btn-sm btn-default post-regist hide cancel-button'
+                                                                                value='キャンセル' onclick="HTMLRestore(); return false;" />
+                    <span class="timestamp">
+                      <%= date_format(pdcapost.created_at) %>
+                    </span>
+                    
+                    <%= f.submit '更新', {class: 'btn btn-sm btn-default post-regist hide update-button' } %>
+                  
+                    <% if pdcapost.user_id == current_user.id %>
+                      <%= link_to '編集', '#', :onclick => "show_edit(this); return false;", class: 'btn btn-sm btn-default edit-button' %>
+                      <%= link_to '削除', pdcapost, method: :delete, class: 'btn btn-sm btn-danger delete-button',data: { confirm: '本当に削除しますか？' } %>
+                    <% end %>
+                  
+                  </div>
                 <% end %>
               </div>
+
             </div>
-          </li>
-      <% end %>
-      </ul>
-      <div class="center">
-        <%= paginate @pdcaposts %>
-      </div>
+          </div>
+        </li>
+    <% end %>
+    </ul>
+    <div class="center">
+      <%= paginate @pdcaposts %>
     </div>
   </div>
 </div>
+
+
 <script>
 var defaultHTML;
        window.onload = function(){
@@ -82,11 +100,14 @@ var defaultHTML;
         }
     
       function show_edit(e){
-        var update_button = $(e).parent().parent().children('form').children('input[type="submit"]');
-        var textarea = $(e).parent().parent().children('form').children('textarea');
-        var text = $(e).parent().parent().children('form').children('input[type="date"]');
-        var delete_link = $(e).parent().next();
-        var cancel_button = $(e).parent().parent().children('input');
+        var repo_form = $(e).closest("form"); // closest(): 最も近い親要素を取得
+        var textarea = repo_form.children('textarea');
+        var text = repo_form.children('input[type="date"]');
+        
+        var update_button = $(e).siblings(".update-button"); // siblings(): 全兄弟要素から取得
+        var delete_link = $(e).siblings(".delete-button");
+        var cancel_button = $(e).siblings(".cancel-button");
+        
         textarea.prop("disabled", false);
         text.prop("disabled", false);
         $(e).removeClass('show');

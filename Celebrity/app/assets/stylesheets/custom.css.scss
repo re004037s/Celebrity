@@ -462,10 +462,26 @@ li.first-child {
   
   td {
     word-break: break-word;
-  //改行されない処理
+    box-sizing:border-box;
+    //改行されない処理
     white-space: nowrap;
+    overflow: hidden;
+    
+    div {
+      display: inline-block;
+    }
   }
-  
+  .icon-comment {
+    font-size: 1.8em;
+    text-decoration: none;
+   vertical-align:middle;
+  }
+  span.icon-comment {
+    color: #aaa;
+  }
+  a.icon-comment {
+    color : #222;
+  }
 }
 
 // マイページ
@@ -482,9 +498,111 @@ li.first-child {
    max-width: 200px;
    max-height: 200px;
    background-size: cover;
-   
-}
+  }
   
+}
+
+// よくある質問
+.staticpages-qa--wrapper {
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.qiitaposts-index--wrapper {
+  
+  .table-posts {
+    table-layout: fixed;
+    border-collapse: collapse;
+    background-color: #fff;
+    margin: 30px auto;
+    
+    .td-new-post {
+      height: 50px;
+      text-align: center;
+      font-size: 1.2em;
+      border-bottom: 5px solid #f4f4f4;
+    }
+    .tr-group {
+      border-bottom: 5px solid #f4f4f4;
+    }
+    .td-img {
+      width: 80px;
+      // height: 80px;
+      padding-left: 10px;
+      
+      img {
+        max-width: 80px;
+        width: 95%;
+        height: auto;
+        margin: auto;
+      }
+    }
+    .td-main {
+      padding: 10px 10px 5px;
+      
+      a {
+        font-size: 1.4em;
+      }
+    }
+    .td-sub {
+      padding: 0 10px 10px;
+      color: #555;
+      font-size: 0.9em;
+    }
+  }
+}
+
+.interviewposts-index--wrapper {
+  
+  .table-posts {
+    table-layout: fixed;
+    border-collapse: collapse;
+    background-color: #fff;
+    margin: 30px auto;
+    
+    .td-new-post {
+      height: 50px;
+      text-align: center;
+      font-size: 1.2em;
+      border-bottom: 5px solid #f4f4f4;
+    }
+    .tr-group {
+      border-bottom: 5px solid #f4f4f4;
+    }
+    .td-img {
+      width: 80px;
+      // height: 80px;
+      padding-left: 10px;
+      
+      img {
+        max-width: 80px;
+        width: 90%;
+        height: auto;
+        margin: auto;
+      }
+    }
+    .td-main {
+      padding: 10px 10px 5px;
+      
+      a {
+        font-size: 1.4em;
+      }
+    }
+    .td-sub {
+      padding: 0 10px 10px;
+      color: #555;
+      font-size: 0.9em;
+      
+      span {
+        text-align: center;
+        padding: 3px 5px;
+        border-radius: 3px;
+        font-size: 1em;
+      }
+    }
+  }
 }
 
 // プロゲート進捗
@@ -507,6 +625,13 @@ li.first-child {
 // PDCA報告ページ 
 .pdcaposts-index--wrapper {
   
+  .form-wrapper {
+    margin: 50px auto;
+  }
+  .posts-wrapper {
+    margin: 30px auto;
+  }
+  
   p {
     margin: auto;
   }
@@ -520,13 +645,13 @@ li.first-child {
   }
   
   input[type="date"].form-control {
-    line-height:12px; 
-    width:50%;
+    line-height: 12px; 
+    width: 50%;
   }
   
   .report{
     margin: 15px auto;
-    padding: 0px 50px;
+    // padding: 0px 50px;
     display: flex;
   }
   
@@ -540,68 +665,72 @@ li.first-child {
   
   .form-title {
     text-align: center;
-    font-family: serif;
+    // font-family: serif;
      margin: 20px auto; 
   }
   
   .form_balloon {
-	position: relative;
-	background: #FFFFFF;
-	color: black;
-	border: 0px solid #777;
-	margin: auto;
-	padding: 5px 10px;
-	border-radius: 15px;
-	width: 350px;
-	clear: both;
-}
-
-.date_field {
-  line-height: 12px;
-}
+  	position: relative;
+  	background: #FFFFFF;
+  	color: black;
+  	border: 0px solid #777;
+  	margin: auto;
+  	padding: 15px 10px;
+  	border-radius: 15px;
+  	width: 80%;
+  	clear: both;
+  }
   
+  .date_field {
+    line-height: 12px;
+  }
+    
   .left_balloon {
-	position: relative;
-	background: #FFFFFF;
-	color: black;
-	border: 0px solid #777;
-	
-	padding: 5px 10px;
-	border-radius: 15px;
-	width: 450px;
-	clear: both;
-}
-
-.update_button {
-  float: right;
-  margin-left: 5px;
-}
-
-.edit, .delete{
-  float: right;
-  margin: 0px 5px 5px 5px;
-}
-
-.hide {
-  display: none;
-}
-
-.show {
-  display: block;
-}
-
-@media screen and (max-width:480px){
-  .report{
-    margin: 15px auto;
-    display: flex;
-    padding: 0;
+  	position: relative;
+  	background: #FFFFFF;
+  	color: black;
+  	border: 0px solid #777;
+  	
+  	padding: 10px;
+  	border-radius: 15px;
+  	width: 80%;
+  	clear: both;
+  	
+  	.report-form-footer {
+  	  margin-top: 10px;
+  	}
   }
   
-  input[type="date"].form-control {
-    line-height:12px; 
-    width:100%;
+  .update-button, .cancel-button {
+    float: right;
+    margin-left: 5px;
   }
-}
+  
+  .edit-button, .delete-button{
+    float: right;
+    margin: 0px 5px 5px 5px;
+  }
+  
+  .hide {
+    display: none;
+  }
+  
+  .show {
+    display: block;
+  }
+  
+  @media screen and (max-width:480px){
+    .report{
+      margin: 15px auto;
+      display: flex;
+      padding: 0;
+    }
+    
+    input[type="date"].form-control {
+      line-height:12px; 
+      width:100%;
+    }
+  }
   
 }
 

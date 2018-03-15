@@ -7,6 +7,7 @@ class StaticPagesController < ApplicationController
   before_action :comp_portfolio, only: :portfolio_mv
   before_action :comp_progate, only: :progate
   before_action :comp_railstutorial, only: :railstutorial
+
   
   def qa
   end
@@ -44,6 +45,7 @@ class StaticPagesController < ApplicationController
           @progate_comp_flag = false
       end
     end
+
     
     def set_movie_categories
       @categories_all = MovieCategory.all.order('sort_order')
