@@ -27,7 +27,7 @@
         <li id="pdcapost-<%= pdcapost.id %>" class="">
           <div class="report">
             <% if pdcapost.user.picture_file %>
-              <%= image_tag("/pdca_post/get_image/#{pdcapost.user.id}", :class => "icon") %>
+              <%= image_tag("/pdca_posts/get_image/?id=#{pdcapost.user.id}", :class => "icon") %>
             <% else %>
               <%= image_tag('default.png', :class => "icon") %>
             <% end %>
