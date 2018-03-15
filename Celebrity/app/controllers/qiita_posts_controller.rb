@@ -40,7 +40,11 @@ class QiitaPostsController < ApplicationController
     flash[:success] = "Qiitaが削除されました"
     redirect_to qiita_posts_url
   end
-
+  
+  def get_image
+    @image = User.find(params[:id])
+    send_data(@image.picture_file)
+  end
   
   private
 

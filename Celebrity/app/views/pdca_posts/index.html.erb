@@ -26,7 +26,6 @@
       <% @pdcaposts.each do |pdcapost| %>
         <li id="pdcapost-<%= pdcapost.id %>" class="">
           <div class="report">
-            
             <% if pdcapost.user.picture_file %>
               <%= image_tag("/pdca_post/get_image/#{pdcapost.user.id}", :class => "icon") %>
             <% else %>
