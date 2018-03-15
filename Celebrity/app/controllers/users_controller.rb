@@ -59,6 +59,12 @@ class UsersController < ApplicationController
     
   end
   
+  #ステータス（未登録・営業中・就業中）を登録する
+  def register_status
+    @status = User.new(params.require(:sutatus).permit(:status))
+    @status.save
+  end
+  
   def new
     @user = User.new
   end
@@ -104,7 +110,7 @@ class UsersController < ApplicationController
   private
   
     def user_params
-      params.require(:user).permit(:name, :nickname, :line_id, :email, :status, :password, :password_confirmation, :portfolio_path,
+      params.require(:user).permit(:name, :nickname, :line_id, :email, :guest, :status, :password, :password_confirmation, :portfolio_path,
         :github_path, :picture_file, :picture, :tag_list, :skillsheet, :skillsheet_name)
     end
     
