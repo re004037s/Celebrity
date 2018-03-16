@@ -16,18 +16,17 @@
           
           <div class="banner">
             <button type="button" class="menu-button-for-sp drawer-toggle drawer-hamburger">
-              <span class="sr-only">toggle navigation</span>
               <span class="drawer-hamburger-icon"></span>
             </button>
             
-            <nav class="header-menu-list drawer-nav" role="navigation">
-              <ul class="drawer-menu">
+            <nav class="menu-nav drawer-nav" role="navigation">
+              <ul class="menu-ul drawer-menu">
                 <% if current_user.try(:admin) %>
-                  <li><%= link_to 'MOVIES EDIT', movies_path, class: "drawer-menu-item" %></li>
-                  <li><%= link_to 'SIGN UP', signup_path, class: "drawer-menu-item" %></li>
+                  <li class="menu-li"><%= link_to 'MOVIES EDIT', movies_path, class: "drawer-menu-item" %></li>
+                  <li class="menu-li"><%= link_to 'SIGN UP', signup_path, class: "drawer-menu-item" %></li>
                 <% end %>
-                <li><%= link_to 'SALON MEMBERS', users_path, class: "drawer-menu-item" %></li>
-                <li> 
+                <li class="menu-li"><%= link_to 'SALON MEMBERS', users_path, class: "drawer-menu-item" %></li>
+                <li class="menu-li"> 
                   <% if Feedback.where(user_id: current_user).count == 
                           Movie.where(movie_category_id: MovieCategory.where(must_view: true).ids).count ||
                           current_user.try(:admin) %>
@@ -36,7 +35,7 @@
                     <sapn class="caption" title="先に動画を視聴して下さい。">MY PAGE</span>
                   <% end %>
                 </li>
-                <li><%= link_to 'LOG OUT', logout_path, class: "drawer-menu-item", method: :delete %></li>
+                <li class="menu-li"><%= link_to 'LOG OUT', logout_path, class: "drawer-menu-item", method: :delete %></li>
                 
               </ul>
             </nav>

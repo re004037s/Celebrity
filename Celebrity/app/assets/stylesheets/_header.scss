@@ -45,15 +45,19 @@
   z-index: 2;
 }
 
-.header-menu-list {
+.menu-button-for-sp {
+  display: none;
+}
+
+.menu-nav {
   //overflow-x: scroll;
   
-  ul {
+  .menu-ul {
     white-space: nowrap;
     margin: auto 0;
   }
   
-  li {
+  .menu-li {
     font-family: 'Open Sans', sans-serif;
     display: inline-block;
     margin: 0 18px;
@@ -70,6 +74,7 @@
     }
   }
   
+  
   .caption {
     color: #4d4d4d;
     font-size: 15px;
@@ -77,4 +82,52 @@
     cursor: pointer;
   }
   
+  
+  
+  
+}
+
+
+  
+
+// ドロワー関連の調整
+
+// ボタンのカラー
+.drawer-hamburger-icon,
+.drawer-hamburger-icon:before,
+.drawer-hamburger-icon:after {
+  background-color: #ddd;
+}
+// ボタンの幅
+.drawer-hamburger {
+  width: 2.8rem;
+}
+
+.drawer--right.drawer-open .drawer-nav,
+.drawer--right .drawer-hamburger,
+.drawer--right.drawer-open .drawer-navbar .drawer-hamburger {
+  right: 0.8rem;
+}
+// リストの幅
+.drawer-nav {
+  width: 18rem;
+}
+
+.drawer--right .drawer-nav {
+  right: -17.6rem;
+}
+
+
+.header-list-wrapper {
+  
+  
+  @media(max-width: 767px) {
+    
+    
+    
+    .menu-li {
+      display: block;
+    }
+  
+  }
 }

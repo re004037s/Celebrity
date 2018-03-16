@@ -1,9 +1,7 @@
 // PC用（998px以上）
 @media(min-width: 768px) {
-  // ハンバーガーメニュー
-  .menu-button-for-sp {
-    display: none;
-  }
+  
+  
 }
 
 //スマホ・タブレット用（997px以下）
@@ -18,7 +16,7 @@
   
   // ハンバーガーメニュー
   .menu-button-for-sp {
-    
+    display: block;
   }
   
   
