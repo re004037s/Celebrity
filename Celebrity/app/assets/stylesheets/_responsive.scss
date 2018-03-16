@@ -1,6 +1,13 @@
-//スマホ・タブレット用（992px未満）
+// PC用（998px以上）
+@media(min-width: 768px) {
+  // ハンバーガーメニュー
+  .menu-button-for-sp {
+    display: none;
+  }
+}
 
-@media (max-width: 991px) {
+//スマホ・タブレット用（997px以下）
+@media (max-width: 767px) {
   
   .header {
     height: 50px;
@@ -8,6 +15,14 @@
   .header-wrapper {
     height: 50px;
   }
+  
+  // ハンバーガーメニュー
+  .menu-button-for-sp {
+    
+  }
+  
+  
+  
   .body-wrapper {
     margin-top: 50px;
   }

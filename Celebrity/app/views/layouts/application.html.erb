@@ -11,6 +11,8 @@
 
     <%= csrf_meta_tags %>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- drawer.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/css/drawer.min.css">
 
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
@@ -19,6 +21,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/iScroll/5.2.0/iscroll.min.js"></script>
+    <!-- drawer.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/js/drawer.min.js"></script>
     <%= favicon_link_tag('favicon32.png') %>
   </head>
   
@@ -77,11 +83,11 @@
             
               <div class="row">
                 <!--yield（デフォルト）-->
-                <div class="col-md-7">
+                <div class="col-sm-7">
                   <%= yield %>
                 </div>
                 <!--サイドバー-->
-                <aside class="col-md-5">
+                <aside class="col-sm-5">
                   <%= render 'layouts/aside' %>
                 </aside>
               </div>

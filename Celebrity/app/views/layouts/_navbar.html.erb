@@ -12,41 +12,45 @@
       
       <!--▼リスト-->
       <div class="header-list-wrapper">
-        
-        <!--▼スマホ用-->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".bs-navbar-collapse">
-            <span class="sr-only">メニュー</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
+        <div class="drawer drawer--right">
+          
+          <div class="banner">
+            <button type="button" class="menu-button-for-sp drawer-toggle drawer-hamburger">
+              <span class="sr-only">toggle navigation</span>
+              <span class="drawer-hamburger-icon"></span>
+            </button>
+            
+            <nav class="header-menu-list drawer-nav" role="navigation">
+              <ul class="drawer-menu">
+                <% if current_user.try(:admin) %>
+                  <li><%= link_to 'MOVIES EDIT', movies_path, class: "drawer-menu-item" %></li>
+                  <li><%= link_to 'SIGN UP', signup_path, class: "drawer-menu-item" %></li>
+                <% end %>
+                <li><%= link_to 'SALON MEMBERS', users_path, class: "drawer-menu-item" %></li>
+                <li> 
+                  <% if Feedback.where(user_id: current_user).count == 
+                          Movie.where(movie_category_id: MovieCategory.where(must_view: true).ids).count ||
+                          current_user.try(:admin) %>
+                    <%= link_to 'MY PAGE', current_user, class: "drawer-menu-item" %>
+                  <% else %>
+                    <sapn class="caption" title="先に動画を視聴して下さい。">MY PAGE</span>
+                  <% end %>
+                </li>
+                <li><%= link_to 'LOG OUT', logout_path, class: "drawer-menu-item", method: :delete %></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
         </div>
-        
-        <nav class="header-menu-list" role="navigation">
-          <!--<nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">-->
-          <ul class="">
-            <% if current_user.try(:admin) %>
-              <li><%= link_to 'MOVIES EDIT', movies_path %></li>
-              <li><%= link_to 'SIGN UP', signup_path %></li>
-            <% end %>
-            <li><%= link_to 'SALON MEMBERS', users_path %></li>
-            <li> 
-              <% if Feedback.where(user_id: current_user).count == 
-                      Movie.where(movie_category_id: MovieCategory.where(must_view: true).ids).count ||
-                      current_user.try(:admin) %>
-                <%= link_to 'MY PAGE', current_user %>
-              <% else %>
-                <sapn style="color: #4d4d4d; font-size: 15px; margin: 25px 10px 0px; cursor: pointer;"
-                title="先に動画を視聴して下さい">MY PAGE</span>
-              <% end %>
-            </li>
-            <li><%= link_to 'LOG OUT', logout_path, method: :delete %></li>
-          </ul>
-        </nav>
-        
       </div><!--▲リスト-->
     
     </div>
   </div>
 </nav>
+
+<script>
+  $(document).ready(function() {
+    $('.drawer').drawer();
+  });
+</script>
