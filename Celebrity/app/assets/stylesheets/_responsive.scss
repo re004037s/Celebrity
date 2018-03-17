@@ -8,10 +8,14 @@
 @media (max-width: 767px) {
   
   .header {
-    height: 50px;
+    height: 60px;
   }
   .header-wrapper {
-    height: 50px;
+    // height: 60px;
+  }
+  #logo-header {
+    height: 85%;
+    width: auto;
   }
   
   // ハンバーガーメニュー
@@ -22,11 +26,10 @@
   
   
   .body-wrapper {
-    margin-top: 50px;
+    margin-top: 60px;
   }
   .header-logo-wrapper a {
-    top: -10px;
-    bottom: 0;
+    top: -3px;
     left: -10px;
     height: 75px;
   }

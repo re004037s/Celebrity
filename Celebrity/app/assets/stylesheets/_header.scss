@@ -34,7 +34,7 @@
 #logo-header {
   height: 100%;
   width: auto;
-  min-width: 300px;
+  min-width: 250px;
 
 }
 
@@ -88,46 +88,16 @@
 }
 
 
-  
-
-// ドロワー関連の調整
-
-// ボタンのカラー
-.drawer-hamburger-icon,
-.drawer-hamburger-icon:before,
-.drawer-hamburger-icon:after {
-  background-color: #ddd;
-}
-// ボタンの幅
-.drawer-hamburger {
-  width: 2.8rem;
-}
-
-.drawer--right.drawer-open .drawer-nav,
-.drawer--right .drawer-hamburger,
-.drawer--right.drawer-open .drawer-navbar .drawer-hamburger {
-  right: 0.8rem;
-}
-// リストの幅
-.drawer-nav {
-  width: 18rem;
-}
-
-.drawer--right .drawer-nav {
-  right: -17.6rem;
-}
-
 
 .header-list-wrapper {
-  
-  
+
   @media(max-width: 767px) {
-    
-    
-    
     .menu-li {
       display: block;
+      
+      a {
+        color: #373737;
+      }
     }
-  
   }
 }
