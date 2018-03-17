@@ -1,0 +1,42 @@
+// リストの設定
+.drawer-nav {
+  background-color: #f4f4f4;
+  padding-top: 10px;
+}
+
+@media (max-width: 767px) {
+  // ボタンのカラー
+  .drawer-hamburger-icon,
+  .drawer-hamburger-icon:before,
+  .drawer-hamburger-icon:after {
+    background-color: #f4f4f4;
+  }
+  // ボタンの幅
+  .drawer-hamburger {
+    width: 2.8rem;
+  }
+  
+  // ボタンの位置
+  .drawer--right.drawer-open .drawer-nav,
+  .drawer--right .drawer-hamburger,
+  .drawer--right.drawer-open .drawer-navbar .drawer-hamburger {
+    right: 0.8rem;
+  }
+  // ボタンの位置（開いた時）
+  .drawer--right.drawer-open .drawer-hamburger {
+    right: 18rem;
+  }
+  
+  // オープン時のリストの幅
+  .drawer-nav {
+    width: 18rem;
+  }
+  // リストの位置調整
+  .drawer--right .drawer-nav {
+    right: -18rem;
+  }
+  // リストの位置調整
+  .drawer--right.drawer-open .drawer-nav {
+    right: 0rem;
+  }
+}

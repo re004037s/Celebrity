@@ -19,23 +19,23 @@
               <span class="drawer-hamburger-icon"></span>
             </button>
             
-            <nav class="menu-nav drawer-nav" role="navigation">
-              <ul class="menu-ul drawer-menu">
+            <nav class="menu-nav" role="navigation">
+              <ul class="menu-ul">
                 <% if current_user.try(:admin) %>
-                  <li class="menu-li"><%= link_to 'MOVIES EDIT', movies_path, class: "drawer-menu-item" %></li>
-                  <li class="menu-li"><%= link_to 'SIGN UP', signup_path, class: "drawer-menu-item" %></li>
+                  <li class="menu-li"><%= link_to 'MOVIES EDIT', movies_path, class: "" %></li>
+                  <li class="menu-li"><%= link_to 'SIGN UP', signup_path, class: "" %></li>
                 <% end %>
-                <li class="menu-li"><%= link_to 'SALON MEMBERS', users_path, class: "drawer-menu-item" %></li>
+                <li class="menu-li"><%= link_to 'SALON MEMBERS', users_path, class: "" %></li>
                 <li class="menu-li"> 
                   <% if Feedback.where(user_id: current_user).count == 
                           Movie.where(movie_category_id: MovieCategory.where(must_view: true).ids).count ||
                           current_user.try(:admin) %>
-                    <%= link_to 'MY PAGE', current_user, class: "drawer-menu-item" %>
+                    <%= link_to 'MY PAGE', current_user, class: "" %>
                   <% else %>
                     <sapn class="caption" title="先に動画を視聴して下さい。">MY PAGE</span>
                   <% end %>
                 </li>
-                <li class="menu-li"><%= link_to 'LOG OUT', logout_path, class: "drawer-menu-item", method: :delete %></li>
+                <li class="menu-li"><%= link_to 'LOG OUT', logout_path, class: "", method: :delete %></li>
                 
               </ul>
             </nav>
@@ -49,7 +49,35 @@
 </nav>
 
 <script>
-  $(document).ready(function() {
-    $('.drawer').drawer();
+(function() {
+  
+  
+  // 画面幅でクラスを操作
+  $(window).on("load resize", function() {
+    
+    var windowWidth = $(window).width();
+
+    // PCでの挙動
+    if(windowWidth >= 768) {
+      $("nav.menu-nav").removeClass("drawer-nav");
+      $("ul.menu-ul").removeClass("drawer-menu");
+      $("li.menu-li > a").removeClass("drawer-menu-item");
+    }
+    
+    // スマホでの挙動
+    if(windowWidth < 768) {
+      $("nav.menu-nav").addClass("drawer-nav");
+      $("ul.menu-ul").addClass("drawer-menu");
+      $("li.menu-li > a").addClass("drawer-menu-item");
+      // ドロワーの制御
+      // $(document).ready(function() {
+        $('.drawer').drawer();
+      // });
+    }
+    
+    // リストを表示
+    $("drawer").css("display", "");
   });
+  
+}());
 </script>
