@@ -14,6 +14,6 @@
     <li><%= link_to '面談内容共有', interview_posts_path %></li>
     <li><%= link_to 'スキルシート一覧', skillsheets_path %></li>
     <li><%= link_to 'IT用語解説', terms_path %></li>
-    <li><%= link_to 'PDCA報告', pdca_posts_path %></li>
+    <li><%= link_to 'PDCA報告', pdca_posts_path class: "#{'disabled' if @status == true}" %></li>
   </ul>
 </div>

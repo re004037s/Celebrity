@@ -2,6 +2,7 @@ class TopController < ApplicationController
   before_action :logged_in_user
   
   def index
+    @guedt = params[:guest]
     
     @new_movies = Movie.all.where(['created_at > ?', Date.today.prev_day(7)])
     current_user_html = current_user.html_css_status
