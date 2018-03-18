@@ -9,14 +9,14 @@
 .img-feed-btn {
   width: 150px;
   height: auto;
-  padding:0;
-  margin:0;
-  background:none;
-  border:0;
-  font-size:0;
-  line-height:0;
-  overflow:visible;
-  cursor:pointer;  
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: 0;
+  font-size: 0;
+  line-height: 0;
+  overflow: visible;
+  cursor: pointer;  
 }
 
 .img-button {
@@ -27,7 +27,17 @@
 }
 
 // ページネーションリンク（"app/views/kaminari/*"）
-.pagenation {
+.pagination {
+  height: 50px;
+  padding: auto 15px;
+  background-color: #fff;
+  
+  font-size: 1.6em;
+  
+  color: #000;
+  
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
   
 }
 
