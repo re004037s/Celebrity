@@ -67,12 +67,13 @@
               <% end %>
             </td>
             <td>
-              <%= form_for(user) do |f| %>
+              <%= form_for(user, url: register_status_path ) do |f| %>
                 <% if user.id != current_user.id %>
                   <%= f.select :status,{'未登録': '未登録', '営業中': '営業中', '就業中': '就業中'}, {}, :disabled => true %>
                 <% else %>
                   <%= f.select :status,{'未登録': '未登録', '営業中': '営業中', '就業中': '就業中'}, {}, :disabled => false %>
                 <% end %>
+                <%= f.hidden_field :id, :value => "#{user.id}" %>
                 <%= submit_tag "登録", size: 25 %>
               <% end %>
             </td>

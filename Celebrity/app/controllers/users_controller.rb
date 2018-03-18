@@ -61,8 +61,15 @@ class UsersController < ApplicationController
   
   #ステータス（未登録・営業中・就業中）を登録する
   def register_status
-    @status = User.new(params.require(:sutatus).permit(:status))
-    @status.save
+    user = User.find(params[:user][:id])
+    if user.update_columns(status: params[:user][:status])
+      flash[:success] = 'ステータスを保存しました！'
+      redirect_to skillsheets_path
+    else
+      flash[:error] = 'ステータスの保存に失敗しました！'
+      redirect_to skillsheets_path
+    end
+    
   end
   
   def new
