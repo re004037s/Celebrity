@@ -47,37 +47,3 @@
     </div>
   </div>
 </nav>
-
-<script>
-(function() {
-  
-  
-  // 画面幅でクラスを操作
-  $(window).on("load resize", function() {
-    
-    var windowWidth = $(window).width();
-
-    // PCでの挙動
-    if(windowWidth >= 768) {
-      $("nav.menu-nav").removeClass("drawer-nav");
-      $("ul.menu-ul").removeClass("drawer-menu");
-      $("li.menu-li > a").removeClass("drawer-menu-item");
-    }
-    
-    // スマホでの挙動
-    if(windowWidth < 768) {
-      $("nav.menu-nav").addClass("drawer-nav");
-      $("ul.menu-ul").addClass("drawer-menu");
-      $("li.menu-li > a").addClass("drawer-menu-item");
-      // ドロワーの制御
-      // $(document).ready(function() {
-        $('.drawer').drawer();
-      // });
-    }
-    
-    // リストを表示
-    $("drawer").css("display", "");
-  });
-  
-}());
-</script>

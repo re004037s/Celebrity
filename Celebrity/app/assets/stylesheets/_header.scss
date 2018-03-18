@@ -93,11 +93,15 @@
 
   @media(max-width: 767px) {
     .menu-li {
-      display: block;
+      // JSで動的に表示するため
+      display: none;
       
       a {
-        color: #373737;
+        color: #373737
       }
+    }
+    .menu-button-for-sp {
+      display: block;
     }
   }
 }
