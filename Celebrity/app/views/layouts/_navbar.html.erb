@@ -31,7 +31,7 @@
               <li><%= link_to 'SIGN UP', signup_path %></li>
             <% end %>
             <% if current_user.try(:guest) %>
-            <li><%= link_to 'SALON MEMBERS', users_path %></li>
+            <li><%= link_to 'SALON MEMBERS', users_path, class: "#{'disabled' if current_user.try(:guest) }" %></li>
             <% end %>
             <li> 
               <% if Feedback.where(user_id: current_user).count == 

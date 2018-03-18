@@ -1,6 +1,13 @@
 class StaticPagesController < ApplicationController
+  include ApplicationHelper
+  
   before_action :logged_in_user
   before_action :setting
+  before_action :set_movie_categories
+  before_action :comp_portfolio, only: :portfolio_mv
+  before_action :comp_progate, only: :progate
+  before_action :comp_railstutorial, only: :railstutorial
+
   
   def qa
   end
@@ -36,6 +43,36 @@ class StaticPagesController < ApplicationController
           @progate_comp_flag = true
       else
           @progate_comp_flag = false
+      end
+    end
+
+    
+    def set_movie_categories
+      @categories_all = MovieCategory.all.order('sort_order')
+    end
+    
+    def comp_portfolio
+      if railstutorial_comp?
+      else 
+        flash[:danger] = "先に Rails Tutorial を完了させて下さい"
+        redirect_to root_url
+      end
+    end
+    
+    def comp_progate
+      if Feedback.where(user_id: current_user).count == 
+         Movie.where(movie_category_id: MovieCategory.where(must_view: true).ids).count
+      else
+        flash[:danger] = "先に動画を視聴して下さい"
+        redirect_to root_url
+      end
+    end
+    
+    def comp_railstutorial
+      if progatetask_tutolialday_comp?
+      else
+        flash[:danger] = "先に Progate を完了させて下さい"
+        redirect_to root_url
       end
     end
 end

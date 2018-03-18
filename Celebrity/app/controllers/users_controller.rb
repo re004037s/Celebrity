@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   before_action :administrator_user, only: :new
   before_action :correct_user_for_edit,
     only:[:edit, :update, :update_picture,:tag_new, :tag_show, :tag_delete]
+  before_action :comp_movies_user, only: :show
   
   def index
     @users = User.page(params[:page])
@@ -145,4 +146,12 @@ class UsersController < ApplicationController
       redirect_to root_url if current_user == nil || !current_user.admin
     end
     
-end
+    def comp_movies_user
+      if current_user.try(:admin) || Feedback.where(user_id: current_user).count == 
+         Movie.where(movie_category_id: MovieCategory.where(must_view: true).ids).count
+      else
+        flash[:danger] = "先に動画を視聴して下さい"
+        redirect_to root_url
+      end
+    end
+ end
