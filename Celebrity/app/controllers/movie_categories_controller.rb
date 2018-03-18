@@ -1,5 +1,8 @@
 class MovieCategoriesController < ApplicationController
+  include MovieCategoriesHelper
+  
   before_action :admin_user, only: [:index, :new, :create, :edit, :update, :destroy, :sort]
+  before_action :comp_movies, only: :show
   
   def index
     @categories = MovieCategory.all.order('sort_order')
@@ -88,5 +91,14 @@ class MovieCategoriesController < ApplicationController
   
     def movie_category_params
       params.require(:movie_category).permit(:name, :sort_order, :must_view)
+    end
+    
+    def comp_movies
+      @category  = MovieCategory.find_by(id: params[:id])
+      if before_category_comp?(@category)
+      else
+        flash[:danger] = "先に前の動画を視聴して下さい"
+        redirect_to root_url
+      end
     end
 end

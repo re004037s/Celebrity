@@ -38,7 +38,7 @@
     <tbody>
       <% @users.each do |user| %>
         <% if user.existence %>
-        　<% is_my_skill_sheet = (current_user.id === user_id) ? true : false %>
+        　<% is_my_skill_sheet = (current_user.id === @user.id) ? true : false %>
           <tr>
             <td><%= user.nickname %></td>
               <% if current_user.admin %>

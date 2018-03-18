@@ -462,10 +462,26 @@ li.first-child {
   
   td {
     word-break: break-word;
-  //改行されない処理
+    box-sizing:border-box;
+    //改行されない処理
     white-space: nowrap;
+    overflow: hidden;
+    
+    div {
+      display: inline-block;
+    }
   }
-  
+  .icon-comment {
+    font-size: 1.8em;
+    text-decoration: none;
+   vertical-align:middle;
+  }
+  span.icon-comment {
+    color: #aaa;
+  }
+  a.icon-comment {
+    color : #222;
+  }
 }
 
 // マイページ

@@ -5,7 +5,7 @@ class SkillsheetsController < ApplicationController
   before_action :administrator_user, only: :new
   
   def index
-    @user = current_user
+    @user = user
     @users = User.page(params[:page])
   end
   

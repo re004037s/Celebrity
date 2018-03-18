@@ -2,11 +2,12 @@ module ApplicationHelper
     
   def movie_comp?
     last_movie = MovieCategory.where(must_view: true).order('sort_order').last.movies.order('sort_order').last
-    if (current_user.feedbacks.find_by(movie_id: last_movie.id) &&
-    current_user.html_css_status.schedule_date &&
-    current_user.javascript_status.schedule_date &&
-    current_user.ruby_status.schedule_date &&
-    current_user.rubyonrails_status.schedule_date)
+    if (current_user.feedbacks.find_by(movie_id: last_movie.id))
+    # 完了予定日の粒度変更により一旦非表示
+    # current_user.html_css_status.schedule_date &&
+    # current_user.javascript_status.schedule_date &&
+    # current_user.ruby_status.schedule_date &&
+    # current_user.rubyonrails_status.schedule_date)
       return true
     else
       return false
