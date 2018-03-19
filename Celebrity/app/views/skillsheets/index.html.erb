@@ -36,24 +36,38 @@
     </thead>
         
     <tbody>
-      <% @users.each do |user| %>
-        <% if user.existence %>
-        　<% is_my_skill_sheet = (current_user.id === @user.id) ? true : false %>
+      <% @existed_users.each do |user| %>
           <tr>
             <td><%= user.nickname %></td>
-              <% if current_user.admin %>
+            
+            <!--　アドミんの場合はユーザーのフルネームを表示させる -->
+            <% if current_user.admin %>
               <td><%= link_to user.name, user_path(user, user_id: user.id) %></td>
-              <% end %>
-                <% if is_my_skillsheet || current_user.admin %>
-                  <!-- 文字列+リンクを出力する -->
-               　  <%= link_to "#{user.skillsheet_name}", get_skillsheet_path(user_id: user.id) %>
-                  <% else %>
-                  <!-- 文字列だけ出力する -->
-                  <%= "#{user.skillsheet_name}" %>
-                <% end %>
+            <% end %>
+            
+            <!-- 未登録（デフォルト）の場合はリンクを生成せずに次のループへ -->
+            <% if is_skillsheet_default?(user.skillsheet_name) %>
+              <td><%= "#{user.skillsheet_name}" %></td>
+              <% next %>
+            <% end %>
+            
+            <!-- アドミンの場合は全てのユーザーのスキルシートへアクセスできる -->
+            <% if current_user.admin %>
+              <td><%= link_to "#{user.skillsheet_name}", get_skillsheet_path(user_id: user.id) %></td>
+              <% next %>
+            <% end %>
+            
+            <!-- 一般ユーザーは自分のスキルシートにのみアクセスできる -->
+            <% if is_my_skill_sheet?(user.id) %>
+              <td><%= link_to "#{user.skillsheet_name}", get_skillsheet_path(user_id: user.id) %></td>
+              <% next %>
+            <% end %>
+            
+            <!-- 一般ユーザーからみたアドミン(登録済み)のスキルシート -->
+            <td><%= "#{user.skillsheet_name}" %></td>
+
             </td>
           </tr>
-    　　<% end %>
   　　<% end %>
     </tbody>
   </table>

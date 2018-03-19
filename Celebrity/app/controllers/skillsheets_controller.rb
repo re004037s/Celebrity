@@ -5,8 +5,8 @@ class SkillsheetsController < ApplicationController
   before_action :administrator_user, only: :new
   
   def index
-    @user = user
-    @users = User.page(params[:page])
+    @user = current_user
+    @existed_users = User.page(params[:page]).select{ |u| u.existence == true}
   end
   
   def download
@@ -47,6 +47,7 @@ class SkillsheetsController < ApplicationController
   
   
   def show
+    debugger
     @users = User.page(params[:page])
   end
 

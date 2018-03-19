@@ -312,7 +312,7 @@ ActiveRecord::Schema.define(version: 20180303064958) do
     t.datetime "reset_sent_at"
     t.string   "line_id"
     t.binary   "skillsheet"
-    t.string   "skillsheet_name"
+    t.string   "skillsheet_name", default: "未登録"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
