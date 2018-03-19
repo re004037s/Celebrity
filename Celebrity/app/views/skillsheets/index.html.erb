@@ -40,7 +40,7 @@
           <tr>
             <td><%= user.nickname %></td>
             
-            <!--　アドミんの場合はユーザーのフルネームを表示させる -->
+            <!--　アドミんの場合はユーザーのフルネームを表示させる. -->
             <% if current_user.admin %>
               <td><%= link_to user.name, user_path(user, user_id: user.id) %></td>
             <% end %>
