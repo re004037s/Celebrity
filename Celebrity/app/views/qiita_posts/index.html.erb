@@ -18,15 +18,14 @@
         </tr>
       </tbody>
       
-      <!--投稿の表示-->
-      <% @qiitaposts.each do |qiitapost| %>
-      
         <tbody class="tr-group">
+          <!--投稿の表示-->
+          <% @qiitaposts.each do |qiitapost| %>
           <tr>
             <!--プロフィール写真-->
             <td class="td-img" rowspan="2">
               <% if qiitapost.user.picture_file %>
-                <%= image_tag("/qiita_post/get_image/#{qiitapost.user.id}", :class => "icon") %>
+                <%= image_tag("/qiita_posts/get_image/?id=#{qiitapost.user.id}", :class => "icon") %>
               <% else %>
                 <%= image_tag('default.png', :class => "icon") %>
               <% end %>
@@ -36,6 +35,7 @@
             <td class="td-main">
               <%= link_to qiitapost.title, qiitapost.url, target: '_blank' %>
             </td>
+            </li>
           </tr>
           <tr>
             <td class="td-sub">
@@ -51,9 +51,9 @@
               <% end %>
             </td>
           </tr>
+          <% end %>
+          <!--@qiitaposts.each do |qiitapost|-->
         </tbody>
-        
-      <% end %><!--@qiitaposts.each do |qiitapost|-->
     </table>
     
     <div class="center">

@@ -17,7 +17,7 @@ class RailstutorialStatusesController < ApplicationController
   def update
     require 'date'
     @railstutorial_status = current_user.railstutorial_status
-    @today = Date.today
+      @today = Date.today
     @course = params[:course]
     @status = params[:status]
 
