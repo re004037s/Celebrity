@@ -5,7 +5,7 @@
       <!--▼ロゴ-->
       <div class="header-logo-wrapper">
         <%= link_to root_path do %>
-          <%= image_tag "logo_header.png", id: "logo-header" %>
+          <%= image_tag "logo_header.png", id: "logo-header", class: "#{'disabled' if current_user.try(:guest) }"%>
         <% end %>
       </div>
       
@@ -31,9 +31,7 @@
               <li><%= link_to 'SIGN UP', signup_path %></li>
               <li><%= link_to 'Information Edit', information_path %></li>
             <% end %>
-            <% if current_user.try(:guest) %>
             <li><%= link_to 'SALON MEMBERS', users_path, class: "#{'disabled' if current_user.try(:guest) }" %></li>
-            <% end %>
             <li> 
               <% if Feedback.where(user_id: current_user).count == 
                       Movie.where(movie_category_id: MovieCategory.where(must_view: true).ids).count ||
