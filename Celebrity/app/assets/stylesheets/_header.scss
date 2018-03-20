@@ -93,11 +93,15 @@
 
   @media(max-width: 767px) {
     .menu-li {
-      display: block;
+      // JSでロード後に解除する
+      display: none;
       
       a {
         color: #373737;
       }
+    }
+    .menu-button-for-sp {
+      display: block;
     }
   }
 }
