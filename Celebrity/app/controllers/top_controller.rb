@@ -2,7 +2,8 @@ class TopController < ApplicationController
   before_action :logged_in_user
   
   def index
-    
+    # 期限切れでないお知らせ一覧を取得
+    @information = Information.all.where("display_period >= (?)" , Date.today)
     @new_movies = Movie.all.where(['created_at > ?', Date.today.prev_day(7)])
     current_user_html = current_user.html_css_status
     current_user_rubyonrails = current_user.rubyonrails_status
@@ -175,4 +176,10 @@ class TopController < ApplicationController
     end
    end
   end
+  
+  private
+  
+    def set_movie_categories
+      @categories_all = MovieCategory.all.order('sort_order')
+    end
 end
