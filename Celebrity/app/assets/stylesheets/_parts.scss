@@ -26,19 +26,27 @@
   max-height: 100%;  
 }
 
-// ページネーションリンク（"app/views/kaminari/*"）
+// ページネーションリンク（"views/kaminari/*"）
 .custom-pagination {
+  
+  list-style: none;
   height: 50px;
-  padding: auto 15px;
-  background-color: #fff;
   
-  font-size: 1.6em;
-  
-  color: #000;
-  
-  border-left: 1px solid #000;
-  border-right: 1px solid #000;
-  
+  li {
+    display: inline-block;
+    padding: auto 15px;
+    background-color: #fff;
+    
+    font-size: 1.6em;
+    
+    color: #000;
+    
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
+  }
+   a {
+     display: block;
+   }
 }
 
 
