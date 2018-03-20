@@ -6,8 +6,7 @@ class SkillsheetsController < ApplicationController
   
   def index
     @user = current_user
-    @users = User.page(params[:page])
-    @existed_users = User.page(params[:page]).select{ |u| u.existence == true}
+    @existed_normal_users = User.page(params[:page]).select{ |u| u.existence == true && u.guest == false }
     @status = {'未登録':1, '就業中':2, '営業中':3}
   end
   

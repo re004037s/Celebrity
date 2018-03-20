@@ -52,7 +52,7 @@
     </thead>
         
     <tbody>
-      <% @users.each do |user| %>
+      <% @existed_normal_users.each do |user| %>
         <% if user.existence %>
           <tr>
             <td><%= user.nickname %></td>
