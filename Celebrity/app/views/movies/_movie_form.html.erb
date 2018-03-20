@@ -1,12 +1,14 @@
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
-    <%= form_for(@movie) do |f| %>
+    <%= form_for(@movie, html:{:id => 'movie-form'}) do |f| %>
     
       <%= f.label :title, "タイトル", class: 'txt3' %>
-      <%= f.text_field :title, class: 'form-control' %>
+      <%= f.text_field :title, class: 'form-control validate[required,maxSize[25]] text-input', :onkeyup => "TitleLength(value);" %>
+      <p id="title-input-length">0文字</p>
 
       <%= f.label :path, "埋め込みURL", class: 'txt3' %>
-      <%= f.text_field :path, class: 'form-control' %>
+      <%= f.text_field :path, class: 'form-control validate[required,maxSize[100] text-input', :onkeyup => "PathLength(value);" %>
+      <p id="path-input-length">0文字</p>
 
       <%= f.label :movie_category_id, 'カテゴリ', class: 'txt3' %>
       <%= f.select :movie_category_id, @categories, class: 'form-control' %>
@@ -17,3 +19,17 @@
     <% end %>
   </div>
 </div>
+
+<script>
+  $(document).ready(function(){
+    $("#movieform").validationEngine();
+  });
+  
+  function TitleLength( str ) {
+    document.getElementById("title-input-length").innerHTML = str.length + "文字";
+  }
+  
+  function PathLength( str ) {
+    document.getElementById("path-input-length").innerHTML = str.length + "文字";
+  }
+</script>
