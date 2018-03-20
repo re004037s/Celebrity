@@ -27,7 +27,10 @@
   <table class="table table-bordered table-striped table-index">
     <thead>
       営業状況検索
+      <!-- ポスト先のURLを指定する -->
        <%= form_for(@user) do |f| %>
+         <!-- check_box の:status と labelの:statusが一意に対応する必要がある。 -->
+         <!-- 要修正：下記のケースだと就業中のラベルをクリックすると未登録にチェックがついてしまう -->
          <%= f.check_box :status %>
          <%= f.label :status, "未登録" %>
  
@@ -67,13 +70,14 @@
               <% end %>
             </td>
             <td>
-              <%= form_for(user) do |f| %>
+              <%= form_for user, :url => { :controller => :skillsheets, :action => :update_business_status } do |f| %>
                 <% if user.id != current_user.id %>
                   <%= f.select :status,{'未登録': '未登録', '営業中': '営業中', '就業中': '就業中'}, {}, :disabled => true %>
                 <% else %>
                   <%= f.select :status,{'未登録': '未登録', '営業中': '営業中', '就業中': '就業中'}, {}, :disabled => false %>
                 <% end %>
                 <%= submit_tag "登録", size: 25 %>
+                <!-- ここでhiddenタグを使う。目的：current_user.idをパラメータに含めて送信する　-->
               <% end %>
             </td>
           </tr>
