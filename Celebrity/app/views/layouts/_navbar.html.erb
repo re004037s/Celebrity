@@ -31,7 +31,9 @@
               <li><%= link_to 'SIGN UP', signup_path %></li>
               <li><%= link_to 'Information Edit', information_path %></li>
             <% end %>
-            <li><%= link_to 'SALON MEMBERS', users_path %></li>
+            <% if current_user.try(:guest) %>
+            <li><%= link_to 'SALON MEMBERS', users_path, class: "#{'disabled' if current_user.try(:guest) }" %></li>
+            <% end %>
             <li> 
               <% if Feedback.where(user_id: current_user).count == 
                       Movie.where(movie_category_id: MovieCategory.where(must_view: true).ids).count ||

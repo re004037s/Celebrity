@@ -7,6 +7,8 @@ class SkillsheetsController < ApplicationController
   def index
     @user = current_user
     @users = User.page(params[:page])
+    @existed_users = User.page(params[:page]).select{ |u| u.existence == true}
+    @status = {'未登録':1, '就業中':2, '営業中':3}
   end
   
   def download
@@ -47,6 +49,7 @@ class SkillsheetsController < ApplicationController
   
   
   def show
+    debugger
     @users = User.page(params[:page])
   end
 

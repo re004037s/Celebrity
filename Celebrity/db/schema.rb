@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180305143550) do
+ActiveRecord::Schema.define(version: 20180313130347) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -319,7 +319,9 @@ ActiveRecord::Schema.define(version: 20180305143550) do
     t.datetime "reset_sent_at"
     t.string   "line_id"
     t.binary   "skillsheet"
-    t.string   "skillsheet_name"
+    t.string   "skillsheet_name", default: "未登録"
+    t.string   "status"
+    t.boolean  "guest",           default: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 

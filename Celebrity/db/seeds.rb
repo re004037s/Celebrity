@@ -63,7 +63,8 @@ User.create(name: '鈴木 一郎',
             password_confirmation: 'password',
             admin: true,
             existence: true,
-            line_id: 12345)
+            line_id: 12345,
+            guest: false)
             
 # 一般 user
 User.create(name: '松井 秀喜',
@@ -73,7 +74,8 @@ User.create(name: '松井 秀喜',
             password_confirmation: 'password',
             admin: false,
             existence: true,
-            line_id: 67890)
+            line_id: 67890,
+            guest: false)
 
 # 一般 user
 User.create(name: '大谷 翔平',
@@ -83,7 +85,8 @@ User.create(name: '大谷 翔平',
             password_confirmation: 'password',
             admin: false,
             existence: true,
-            line_id: 98765)
+            line_id: 98765,
+            guest: false)
             
 # 一般 user
 User.create(name: 'ベーブルース',
@@ -92,9 +95,19 @@ User.create(name: 'ベーブルース',
             password: 'password',
             password_confirmation: 'password',
             admin: false,
+            existence: false,
+            line_id: 43210,
+            guest: false)
+            
+User.create(name: 'ゲストユーザー',
+            nickname: 'ゲスト',
+            email: 'guest@gmail.com',
+            password: 'password',
+            password_confirmation: 'password',
+            admin: true,
             existence: true,
-            line_id: 43210)
-
+            line_id: 23456,
+            guest: true)
 
 User.where(id: 1..2).each do |user|
     HtmlCssStatus.create(user_id: user.id)
@@ -103,20 +116,14 @@ User.where(id: 1..2).each do |user|
     RubyonrailsStatus.create(user_id: user.id)
     RailstutorialStatus.create(user_id: user.id)
     UserMovieStatus.create(user_id: user.id)
-end 
-
-User.where(id: 3..4).each do |user|
-    for i in 1..Movie.where(movie_category_id: MovieCategory.where(must_view: true).ids).count
-    Feedback.create(feedback: 'a'*100, movie_id: i, user_id: user.id)
-    end
-    HtmlCssStatus.create(user_id: user.id, ga_beginner: true, ga_middle: true, ga_advanced: true,
-      do_beginner: true, do_middle: true, do_advanced: true, ji_1: true, ji_2: true, schedule_date: '2019-01-01')
-    JavascriptStatus.create(user_id: user.id, ga_1: true,  ga_2: true, ga_3: true, ga_4: true, do_1: true, schedule_date: '2019-01-01')
-    RubyStatus.create(user_id: user.id, ga_1: true,  ga_2: true, ga_3: true, ga_4: true, ga_5: true, schedule_date: '2019-01-01')
-    RubyonrailsStatus.create(user_id: user.id, ga_1: true, ga_2: true, ga_3: true, ga_4: true, ga_5: true, ga_6: true, ga_7: true,
-      ga_8: true, ga_9: true, ga_10: true, ga_11: true, do_1: true, do_2: true, do_3: true, do_4: true, schedule_date: '2019-01-01')
-    RailstutorialStatus.create(user_id: user.id, chapter1: true, chapter2: true, chapter3: true, chapter4: true, chapter5: true,
-      chapter6: true, chapter7: true, chapter8: true, chapter9: true, chapter10: true, chapter11: true, chapter12: true,
-      chapter13: true, chapter14: true, schedule_date: '2019-01-01')
-    UserMovieStatus.create(user_id: user.id, schedule_date: '2019-01-01')
 end
+
+User.where(id: 5).each do |user|
+    HtmlCssStatus.create(user_id: user.id)
+    JavascriptStatus.create(user_id: user.id)
+    RubyStatus.create(user_id: user.id)
+    RubyonrailsStatus.create(user_id: user.id)
+    RailstutorialStatus.create(user_id: user.id)
+    UserMovieStatus.create(user_id: user.id)
+end  
+
