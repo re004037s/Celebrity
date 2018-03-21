@@ -1,10 +1,14 @@
-.body-wrapper {
+.behind-header {
+  max-width: 1366px;
+  height: 100px;
+  background-color: #000;
   margin: 0 auto;
-  margin-top: 100px;
-  background-color: #f4f4f4;
 }
 
-
+.body-wrapper {
+  margin: 0 auto;
+  background-color: #f4f4f4;
+}
 
 .main-wrapper {
   padding-top: 50px;

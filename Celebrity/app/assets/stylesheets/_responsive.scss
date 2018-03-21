@@ -2,15 +2,15 @@
 
 @media (max-width: 991px) {
   
-  .header {
+  .header, .behind-header {
     height: 50px;
   }
   .header-wrapper {
     height: 50px;
   }
-  .body-wrapper {
-    margin-top: 50px;
-  }
+  // .body-wrapper {
+  //   margin-top: 50px;
+  // }
   .header-logo-wrapper a {
     top: -10px;
     bottom: 0;
