@@ -4,7 +4,9 @@
   
   <ul class="sidebar-list">
     <% all_movie_categories.each do |category| %>
+      <% unless current_user.try(:guest) %>
       <li><%= link_to category.name, movie_category_path(category), class: "#{'disabled' unless before_category_comp?(category)}" %></li>
+      <% end %>
     <% end %>
     <li><%= link_to 'Progate進捗入力', progate_path, class: "#{'disabled' unless movie_comp?}" %></li>
     <li><%= link_to 'RailsTutorial進捗入力', railstutorial_path, class: "#{'disabled' unless progatetask_tutolialday_comp?}" %></li>
