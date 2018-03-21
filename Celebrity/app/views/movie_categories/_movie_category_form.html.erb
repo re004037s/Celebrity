@@ -1,11 +1,12 @@
 <div class="category-form">
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
-      <%= form_for(@movie_category) do |f| %>
+      <%= form_for(@movie_category, html:{:id => 'movie-category-form'}) do |f| %>
 
         <div class="form-group">
           <%= f.label :name, 'カテゴリ名', class: 'txt3' %>
-          <%= f.text_field :name, class: 'form-control' %>
+          <%= f.text_field :name, class: 'form-control validate[required,maxSize[12]] text-input', :onkeyup => "NameLength(value);" %>
+          <p id="name-input-length">0文字</p>
         </div>
 
         <div class="form-inline">
@@ -20,3 +21,13 @@
     </div>
   </div>
 </div>
+
+<script>
+  $(document).ready(function(){
+    $("#movie-category-form").validationEngine();
+  });
+  
+  function NameLength( str ) {
+    document.getElementById("name-input-length").innerHTML = str.length + "文字";
+  }
+</script>

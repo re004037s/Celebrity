@@ -14,12 +14,17 @@
         <li class="mt_20">【言語】<%= @interviewpost.language %> </li>
         <li class="mt_20">【フリー or 転職】<%= @interviewpost.type %></li>
         <div class="att">
+<<<<<<< HEAD
           <!--<li class="mt_20">【案件概要】</li>-->
           <!--<li><%= simple_format(@interviewpost.summary) %></li>-->
+=======
+          <li class="mt_20">【案件概要】</li>
+          <li style="word-wrap:break-word;"><%= simple_format(@interviewpost.summary) %></li>
+>>>>>>> feature/add_validation_to_all_pages
         </div>        
         <div class="att">
           <li class="mt_20">【面談での質問内容・回答】</li>
-          <li><%= simple_format(@interviewpost.question) %></li>
+          <li style="word-wrap:break-word;"><%= simple_format(@interviewpost.question) %></li>
         </div>
         <li class="mt_20">【合否】<%= @interviewpost.result %></li>
       </ul>

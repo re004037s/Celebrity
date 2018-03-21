@@ -1,8 +1,6 @@
-    <%= render partial: 'shared/error_messages', locals: {object: @interviewpost } %>
-    
-    <%= f.label :title, "案件タイトル（15文字程度）", class: 'txt1 mt_20' %>
-    <%= f.text_field :title, class: 'form-control' %>
+<%= render partial: 'shared/error_messages', locals: {object: @interviewpost } %>
 
+<<<<<<< HEAD
     <div class="mt_20">
       <%= f.label :experience, '経験年数', class: 'txt1' %>
       <%= f.select :experience, [["半年未満", "半年未満"], ["1年未満", "1年未満"], 
@@ -32,3 +30,59 @@
       <%= f.label :result, '合否', class: 'txt1' %>
       <%= f.select :result, [["", ""], ["合格", "合格"], ["不合格", "不合格"]] ,class: 'form-control' %>
     </div>
+=======
+<%= f.label :title, "案件タイトル（15文字程度）", class: 'txt1 mt_20' %>
+<%= f.text_field :title, class: 'form-control validate[required,maxSize[15]] text-input' , :onkeyup => "countLength(value, 'titlelength');"%>
+<p id="titlelength">0文字</p>
+
+<div class="mt_20">
+  <%= f.label :experience, '経験年数', class: 'txt1' %>
+  <%= f.select :experience, [["半年未満", "半年未満"], ["1年未満", "1年未満"], 
+                             ["2年未満",  "2年未満"], ["2年以上", "2年以上"]] ,class:"form-control" %>
+</div>
+<div class="mt_20">
+  <%= f.label :day, '面談日', class: 'txt1' %>
+  <%= f.date_field :day, class: 'form-control validate[required] text-input' %>
+</div>
+<div class="mt_20">
+  <%= f.label :language, '言語', class: 'txt1 mt_20' %>
+  <%= f.text_field :language, class: 'form-control validate[required,maxSize[30]] text-input', :onkeyup => "LanguageLength(value);" %>
+  <p id="language-input-length">0文字</p>
+</div>
+<div class="mt_20">
+  <%= f.label :type, 'フリー or 転職', class: 'txt1' %>
+  <%= f.select :type, [["フリー", "フリー"], ["転職", "転職"]] ,class: 'form-control' %>
+</div>
+<div class="mt_20">
+  <%= f.label :summary, '案件概要', class: 'txt1' %>
+  <%= f.text_area :summary, rows: 5,  placeholder: "Java/建設会社でのシステム開発/保守・・・", class: 'form-control validate[required,maxSize[300]] text-input', :onkeyup => "SummaryLength(value);" %>
+  <p id="summary-input-length">0文字</p>
+</div>
+<div class="mt_20">
+  <%= f.label :question, '面談での質問内容・回答', class: 'txt1' %>
+  <%= f.text_area :question, rows: 15, class: 'form-control validate[required,maxSize[1500]] text-input', :onkeyup => "QuestionLength(value);" %>
+  <p id="question-input-length">0文字</p>
+</div>
+<div class="mt_20">
+  <%= f.label :result, '合否', class: 'txt1' %>
+  <%= f.select :result, [["合格", "合格"], ["不合格", "不合格"]] ,class: 'form-control' %>
+</div>
+
+<script>
+  function countLength( text, field ) {
+    document.getElementById(field).innerHTML = text.length + "文字";
+  }
+  
+  function LanguageLength( str ) {
+    document.getElementById("language-input-length").innerHTML = str.length + "文字";
+  }
+  
+  function SummaryLength( str ) {
+    document.getElementById("summary-input-length").innerHTML = str.length + "文字";
+  }
+  
+  function QuestionLength( str ) {
+    document.getElementById("question-input-length").innerHTML = str.length + "文字";
+  }
+</script>
+>>>>>>> feature/add_validation_to_all_pages
