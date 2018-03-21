@@ -8,13 +8,7 @@ class InterviewPost < ApplicationRecord
     validates :experience, presence: true
     validates :type, presence: true
     validates :day, presence: true
-<<<<<<< HEAD
-    # validates :summary, presence: true
-    validates :question, presence: true
-    # validates :result, presence: true
-=======
     validates :summary, presence: true, length: { maximum: 300 }
     validates :question, presence: true, length: { maximum: 1500 }
     validates :result, presence: true
->>>>>>> feature/add_validation_to_all_pages
 end
