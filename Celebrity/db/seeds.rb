@@ -104,7 +104,7 @@ User.create(name: 'ゲストユーザー',
             email: 'guest@gmail.com',
             password: 'password',
             password_confirmation: 'password',
-            admin: true,
+            admin: false,
             existence: true,
             line_id: 23456,
             guest: true)

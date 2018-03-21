@@ -6,9 +6,8 @@ class SkillsheetsController < ApplicationController
   
   def index
     @user = current_user
-    @users = User.page(params[:page])
-    @existed_users = User.page(params[:page]).select{ |u| u.existence == true}
-    @status = {'未登録':1, '就業中':2, '営業中':3}
+    @existed_normal_users = User.page(params[:page]).select{ |u| u.existence == true && u.guest == false }
+    @statuses = {'未登録':1, '就業中':2, '営業中':3}
   end
   
   def download
@@ -48,9 +47,13 @@ class SkillsheetsController < ApplicationController
   end
   
   
-  def show
-    debugger
-    @users = User.page(params[:page])
+  def update_business_status
+    # paramsの中にstatusが入っています。
+    # paramsの中にuser.idがないので、view側でhiddenタグを使って、user.idを送信してください。
+    
+    # 該当カラムの値をupdateしてください
+    # 成功した場合はindex.htmlにページ遷移する
+    # 失敗した場合はindex.htmlをrenderする（たぶん）
   end
 
   private
@@ -58,7 +61,7 @@ class SkillsheetsController < ApplicationController
     
     def skillsheet_params
 
-      params.require(:user).permit(:name, :nickname, :file)
+      params.require(:user).permit(:name, :nickname, :file, statuses:[])
 
     end
 end

@@ -32,6 +32,8 @@ Rails.application.routes.draw do
     
   resources :skillsheets
   get '/get_skillsheet', to: 'skillsheets#get_skillsheet'
+  get '/index', to: 'skillsheets#index'
+  patch '/update_business_status', to: 'skillsheets#update_business_status'
   resources :terms do
     collection do
       get 'ajax_search'
