@@ -28,25 +28,32 @@
 
 // ページネーションリンク（"views/kaminari/*"）
 .custom-pagination {
-  
+
   list-style: none;
   height: 50px;
+  margin: 20px auto;
+  letter-spacing: -4px;
   
   li {
     display: inline-block;
-    padding: auto 15px;
-    background-color: #fff;
+    letter-spacing: normal;
+    // padding: auto 15px;
+    // background-color: #fff;
+    border-left: 2px solid #c0c0c0;
+    border-right: 2px solid #c0c0c0;
+    line-height: 50px;
     
-    font-size: 1.6em;
-    
-    color: #000;
-    
-    border-left: 1px solid #000;
-    border-right: 1px solid #000;
-  }
-   a {
+    a {
      display: block;
+     text-decoration: none;
+    // line-height: 50px;
+    // color: #000;
+    // font-size: 3em;
    }
+   .current {
+     
+   }
+  }
 }
 
 
