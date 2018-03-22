@@ -32,3 +32,11 @@ ja:
       over_x_years:
         one:   "1年以上"
         other: "%{count}年以上"
+  
+  views:
+    pagination:
+      first: "&laquo; First"
+      last: "Last &raquo;"
+      next: "Next &rsaquo;"
+      previous: "&lsaquo; Prev"
+      truncate: "&hellip;"
