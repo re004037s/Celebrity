@@ -40,6 +40,7 @@
     z-index: 50;
     
   }
+  // ゴリゴリ書かないと効かない！？
   a:link { text-decoration: none; }
   a:visited { text-decoration: none; }
   a:hover {background-color: rgba(0, 0, 0, 0) !important; text-decoration: none; }
@@ -77,6 +78,15 @@
 
 // for SP (SmartPhone)
 @media screen and (max-width: 767px) {
+  
+  .header {
+    height: 50px;
+  }
+  .link-to-top {
+    height: 65px;
+    top: -8px;
+    left: -10px;
+  }
   
   .content {
     padding: 10px;
@@ -153,71 +163,4 @@
     -webkit-transform: translateY(-11px) rotate(45deg);
     transform: translateY(-11px) rotate(45deg);
   }
-}
-
-
-
-// .header{
-//   background-color: #000;
-//   margin: 0 auto;
-//   height: 100px;
-//   max-width: 1366px;
-//   overflow: hidden;
-// }
-  
-// .header-wrapper{
-//   position: relative;
-//   height: 100px;
-//   margin: 0 auto;
-//   max-width: 1000px;
-// }
-
-
-
-// .header-list-wrapper {
-//   position: absolute;
-//   bottom: 0;
-//   right: 0;
-//   z-index: 2;
-// }
-
-// .header-menu-list {
-//   //overflow-x: scroll;
-  
-//   ul {
-//     white-space: nowrap;
-//     margin: auto 0;
-//   }
-  
-//   li {
-//     font-family: 'Open Sans', sans-serif;
-//     display: inline-block;
-//     margin: 0 18px;
-    
-//     a {
-//       color: #ccc;
-//       font-size: 13px;
-//       // font-weight: 300;
-      
-//       &:hover {
-//         background-color: rgba(0,0,0,0);
-//         text-decoration: none;
-//       }
-//     }
-//   } 
-// }
-
-@media screen and (max-width: 767px) {
-  
-  .header {
-    height: 50px;
-  }
-  
-  .link-to-top {
-    height: 65px;
-    top: -8px;
-    // bottom: -10px;
-    left: -10px;
-  }
-  
 }
