@@ -33,28 +33,183 @@ class TopController < ApplicationController
          else
          @finish_flag = 0
          end
-
-    if current_user_html.schedule_date
+         
+    current_user_html = current_user.html_css_status
+    if current_user_html.ga_beginner_completion
       if (current_user_html.ga_beginner && current_user_html.ga_middle && 
         current_user_html.ga_advanced && current_user_html.do_beginner && 
         current_user_html.do_middle && current_user_html.do_advanced && 
         current_user_html.ji_1 && current_user_html.ji_2) != true
-          if current_user_html.schedule_date == Date.today + 3
-            @alert_messages_html = "完了予定日まであと3日です"
-            elsif current_user_html.schedule_date == Date.today + 2
-            @alert_messages_html = "完了予定日まであと2日です"
-            elsif current_user_html.schedule_date == Date.today + 1
-            @alert_messages_html = "完了予定日まであと1日です"
-            elsif current_user_html.schedule_date == Date.today
-            @alert_messages_html = "今日が完了予定日です"
-            elsif current_user_html.schedule_date < Date.today
-            @alert_messages_html = "完了予定日を過ぎています"
+          if current_user_html.ga_beginner_completion == Date.today + 3
+            @ga_beginner_completion = "完了予定日まであと3日です"
+            elsif current_user_html.ga_beginner_completion == Date.today + 2
+            @ga_beginner_completion = "完了予定日まであと2日です"
+            elsif current_user_html.ga_beginner_completion == Date.today + 1
+            @ga_beginner_completion = "完了予定日まであと1日です"
+            elsif current_user_html.ga_beginner_completion == Date.today
+            @ga_beginner_completion = "今日が完了予定日です"
+            elsif current_user_html.ga_beginner_completion < Date.today
+            @ga_beginner_completion = "完了予定日を過ぎています"
             else
-            @alert_messages_html = ""
+            @ga_beginner_completion = ""
           end
       end
-    end
+    end    
+
+    current_user_html = current_user.html_css_status
+    if current_user_html.ga_middle_completion
+      if (current_user_html.ga_beginner && current_user_html.ga_middle && 
+        current_user_html.ga_advanced && current_user_html.do_beginner && 
+        current_user_html.do_middle && current_user_html.do_advanced && 
+        current_user_html.ji_1 && current_user_html.ji_2) != true
+          if current_user_html.ga_middle_completion == Date.today + 3
+            @ga_middle_completion = "完了予定日まであと3日です"
+            elsif current_user_html.ga_middle_completion == Date.today + 2
+            @ga_middle_completion = "完了予定日まであと2日です"
+            elsif current_user_html.ga_middle_completion == Date.today + 1
+            @ga_middle_completion = "完了予定日まであと1日です"
+            elsif current_user_html.ga_middle_completion == Date.today
+            @ga_middle_completion = "今日が完了予定日です"
+            elsif current_user_html.ga_middle_completion < Date.today
+            @ga_middle_completion = "完了予定日を過ぎています"
+            else
+            @ga_middle_completion = ""
+          end
+      end
+    end    
+
+    current_user_html = current_user.html_css_status
+    if current_user_html.ga_advanced_completion
+      if (current_user_html.ga_beginner && current_user_html.ga_middle && 
+        current_user_html.ga_advanced && current_user_html.do_beginner && 
+        current_user_html.do_middle && current_user_html.do_advanced && 
+        current_user_html.ji_1 && current_user_html.ji_2) != true
+          if current_user_html.ga_advanced_completion == Date.today + 3
+            @ga_advanced_completion = "完了予定日まであと3日です"
+            elsif current_user_html.ga_advanced_completion == Date.today + 2
+            @ga_advanced_completion = "完了予定日まであと2日です"
+            elsif current_user_html.ga_advanced_completion == Date.today + 1
+            @ga_advanced_completion = "完了予定日まであと1日です"
+            elsif current_user_html.ga_advanced_completion == Date.today
+            @ga_advanced_completion = "今日が完了予定日です"
+            elsif current_user_html.ga_advanced_completion < Date.today
+            @ga_advanced_completion = "完了予定日を過ぎています"
+            else
+            @ga_advanced_completion = ""
+          end
+      end
+    end    
+
+    current_user_html = current_user.html_css_status
+    if current_user_html.do_beginner_completion
+      if (current_user_html.ga_beginner && current_user_html.ga_middle && 
+        current_user_html.ga_advanced && current_user_html.do_beginner && 
+        current_user_html.do_middle && current_user_html.do_advanced && 
+        current_user_html.ji_1 && current_user_html.ji_2) != true
+          if current_user_html.do_beginner_completion == Date.today + 3
+            @do_beginner_completion = "完了予定日まであと3日です"
+            elsif current_user_html.do_beginner_completion == Date.today + 2
+            @do_beginner_completion = "完了予定日まであと2日です"
+            elsif current_user_html.do_beginner_completion == Date.today + 1
+            @do_beginner_completion = "完了予定日まであと1日です"
+            elsif current_user_html.do_beginner_completion == Date.today
+            @do_beginner_completion = "今日が完了予定日です"
+            elsif current_user_html.do_beginner_completion < Date.today
+            @do_beginner_completion = "完了予定日を過ぎています"
+            else
+            @do_beginner_completion = ""
+          end
+      end
+    end    
+
+    current_user_html = current_user.html_css_status
+    if current_user_html.do_middle_completion
+      if (current_user_html.ga_beginner && current_user_html.ga_middle && 
+        current_user_html.ga_advanced && current_user_html.do_beginner && 
+        current_user_html.do_middle && current_user_html.do_advanced && 
+        current_user_html.ji_1 && current_user_html.ji_2) != true
+          if current_user_html.do_middle_completion == Date.today + 3
+            @do_middle_completion = "完了予定日まであと3日です"
+            elsif current_user_html.do_middle_completion == Date.today + 2
+            @do_middle_completion = "完了予定日まであと2日です"
+            elsif current_user_html.do_middle_completion == Date.today + 1
+            @do_middle_completion = "完了予定日まであと1日です"
+            elsif current_user_html.do_middle_completion == Date.today
+            @do_middle_completion = "今日が完了予定日です"
+            elsif current_user_html.do_middle_completion < Date.today
+            @do_middle_completion = "完了予定日を過ぎています"
+            else
+            @do_middle_completion = ""
+          end
+      end
+    end    
     
+    current_user_html = current_user.html_css_status
+    if current_user_html.do_advanced_completion
+      if (current_user_html.ga_beginner && current_user_html.ga_middle && 
+        current_user_html.ga_advanced && current_user_html.do_beginner && 
+        current_user_html.do_middle && current_user_html.do_advanced && 
+        current_user_html.ji_1 && current_user_html.ji_2) != true
+          if current_user_html.do_advanced_completion == Date.today + 3
+            @do_advanced_completion = "完了予定日まであと3日です"
+            elsif current_user_html.do_advanced_completion == Date.today + 2
+            @do_advanced_completion = "完了予定日まであと2日です"
+            elsif current_user_html.do_advanced_completion == Date.today + 1
+            @do_advanced_completion = "完了予定日まであと1日です"
+            elsif current_user_html.do_advanced_completion == Date.today
+            @do_advanced_completion = "今日が完了予定日です"
+            elsif current_user_html.do_advanced_completion < Date.today
+            @do_advanced_completion = "完了予定日を過ぎています"
+            else
+            @do_advanced_completion = ""
+          end
+      end
+    end    
+    
+    current_user_html = current_user.html_css_status
+    if current_user_html.ji_1_completion
+      if (current_user_html.ga_beginner && current_user_html.ga_middle && 
+        current_user_html.ga_advanced && current_user_html.do_beginner && 
+        current_user_html.do_middle && current_user_html.do_advanced && 
+        current_user_html.ji_1 && current_user_html.ji_2) != true
+          if current_user_html.ji_1_completion == Date.today + 3
+            @ji_1_completion = "完了予定日まであと3日です"
+            elsif current_user_html.ji_1_completion == Date.today + 2
+            @ji_1_completion = "完了予定日まであと2日です"
+            elsif current_user_html.ji_1_completion == Date.today + 1
+            @ji_1_completion = "完了予定日まであと1日です"
+            elsif current_user_html.ji_1_completion == Date.today
+            @ji_1_completion = "今日が完了予定日です"
+            elsif current_user_html.ji_1_completion < Date.today
+            @ji_1_completion = "完了予定日を過ぎています"
+            else
+            @ji_1_completion = ""
+          end
+      end
+    end    
+
+    current_user_html = current_user.html_css_status
+    if current_user_html.ji_2_completion
+      if (current_user_html.ga_beginner && current_user_html.ga_middle && 
+        current_user_html.ga_advanced && current_user_html.do_beginner && 
+        current_user_html.do_middle && current_user_html.do_advanced && 
+        current_user_html.ji_1 && current_user_html.ji_2) != true
+          if current_user_html.ji_2_completion == Date.today + 3
+            @ji_2_completion = "完了予定日まであと3日です"
+            elsif current_user_html.ji_2_completion == Date.today + 2
+            @ji_2_completion = "完了予定日まであと2日です"
+            elsif current_user_html.ji_2_completion == Date.today + 1
+            @ji_2_completion = "完了予定日まであと1日です"
+            elsif current_user_html.ji_2_completion == Date.today
+            @ji_2_completion = "今日が完了予定日です"
+            elsif current_user_html.ji_2_completion < Date.today
+            @ji_2_completion = "完了予定日を過ぎています"
+            else
+            @ji_2_completion = ""
+          end
+      end
+    end    
+
     current_user_javascript = current_user.javascript_status
     if current_user_javascript.schedule_date
       if (current_user_javascript.ga_1 && current_user_javascript.ga_2 &&
@@ -75,7 +230,6 @@ class TopController < ApplicationController
           end
       end
     end
-    
     
     current_user_ruby = current_user.ruby_status
     if current_user_ruby.schedule_date
