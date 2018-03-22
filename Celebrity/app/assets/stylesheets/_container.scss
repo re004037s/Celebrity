@@ -1,3 +1,8 @@
+// $screen-sm: 767px;
+// $header-height: 100px !default;
+
+
+
 .behind-header {
   max-width: 1366px;
   height: 100px;
@@ -25,3 +30,12 @@
   
 }
 
+
+
+@media (max-width: 767px) {
+  
+  .behind-header {
+    height: 50px;
+  }
+  
+}
