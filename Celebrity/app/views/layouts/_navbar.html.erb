@@ -13,12 +13,16 @@
     </div>
     
     <nav class="nav-wrap">
-      <ul class="nav">
+      <ul class="nav-ul">
+        <li><%= link_to 'TOP', root_path %></li>
+        
+        <!--adminのみ表示-->
         <% if current_user.try(:admin) %>
           <li><%= link_to 'MOVIES EDIT', movies_path %></li>
+          <li><%= link_to 'INFO EDIT', information_path %></li>
           <li><%= link_to 'SIGN UP', signup_path %></li>
-          <li><%= link_to 'INFORMATION EDIT', information_path %></li>
         <% end %>
+        
         <li><%= link_to 'SALON MEMBERS', users_path %></li>
         <li> 
           <% if Feedback.where(user_id: current_user).count == 

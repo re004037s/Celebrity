@@ -12,6 +12,11 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300'); //Helvetica Type
 @import url('https://fonts.googleapis.com/css?family=Prata'); //Bodoni72 Type
 
+body { font-family: "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "flopdesign-kana", "Meiryo", "メイリオ", "MS P", sans-serif; }
+
+.sidebar-title { font-family: 'Prata', serif; }
+.page-title { font-family: 'Prata', serif; }
+.nav-ul li { font-family: 'Open Sans', serif; }
 
 /*共通設定のインポート*/
 @import "common";  //全体
