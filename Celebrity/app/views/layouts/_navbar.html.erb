@@ -14,10 +14,23 @@
     
     <nav class="nav-wrap">
       <ul class="nav">
-        <li><a href="#">ABOUT</a></li>
-        <li><a href="#">SERVICE</a></li>
-        <li><a href="#">BLOG</a></li>
-        <li><a href="#">CONTACT</a></li>
+        <% if current_user.try(:admin) %>
+          <li><%= link_to 'MOVIES EDIT', movies_path %></li>
+          <li><%= link_to 'SIGN UP', signup_path %></li>
+          <li><%= link_to 'Information Edit', information_path %></li>
+        <% end %>
+        <li><%= link_to 'SALON MEMBERS', users_path %></li>
+        <li> 
+          <% if Feedback.where(user_id: current_user).count == 
+                  Movie.where(movie_category_id: MovieCategory.where(must_view: true).ids).count ||
+                  current_user.try(:admin) %>
+            <%= link_to 'MY PAGE', current_user %>
+          <% else %>
+            <sapn style="color: #4d4d4d; font-size: 15px; margin: 25px 10px 0px; cursor: pointer;"
+            title="先に動画を視聴して下さい">MY PAGE</span>
+          <% end %>
+        </li>
+        <li><%= link_to 'LOG OUT', logout_path, method: :delete %></li>
       </ul>
     </nav>
     
