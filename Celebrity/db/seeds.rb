@@ -15,7 +15,7 @@ Movie.create!(title: 'フリーランスになるまでの1年計画',
 Movie.create!(title: 'フリーランスエンジニアなった方がいい理由',
               path: 'https://www.youtube.com/embed/ThaP8mxsmjs',
               movie_category_id: 2, sort_order: 1)
-Movie.create!(title: 'なぜプログラミングを勉強したら短期間で月収50万円になれるのか？',
+Movie.create!(title: '短期間のプログラミング学習で月収50万円の理由',
               path: 'https://www.youtube.com/embed/lj_PJMauzNU',
               movie_category_id: 2, sort_order: 2)
 Movie.create!(title: 'PDCA(1)',

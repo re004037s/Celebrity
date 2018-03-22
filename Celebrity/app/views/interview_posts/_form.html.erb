@@ -23,18 +23,13 @@
   <%= f.select :type, [["フリー", "フリー"], ["転職", "転職"]] ,class: 'form-control' %>
 </div>
 <div class="mt_20">
-  <%= f.label :summary, '案件概要', class: 'txt1' %>
-  <%= f.text_area :summary, rows: 5,  placeholder: "Java/建設会社でのシステム開発/保守・・・", class: 'form-control validate[required,maxSize[300]] text-input', :onkeyup => "SummaryLength(value);" %>
-  <p id="summary-input-length">0文字</p>
-</div>
-<div class="mt_20">
   <%= f.label :question, '面談での質問内容・回答', class: 'txt1' %>
   <%= f.text_area :question, rows: 15, class: 'form-control validate[required,maxSize[1500]] text-input', :onkeyup => "QuestionLength(value);" %>
   <p id="question-input-length">0文字</p>
 </div>
 <div class="mt_20">
   <%= f.label :result, '合否', class: 'txt1' %>
-  <%= f.select :result, [["合格", "合格"], ["不合格", "不合格"]] ,class: 'form-control' %>
+  <%= f.select :result, [["", ""], ["合格", "合格"], ["不合格", "不合格"]] ,class: 'form-control' %>
 </div>
 
 <script>
