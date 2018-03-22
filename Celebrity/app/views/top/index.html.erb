@@ -1,71 +1,67 @@
-  <h2 class="page-title-jp">
-    <span>はじめに</span>
-  </h2>
+<div class="top-index--wrapper">
+  <div class="welcome-message--wrapper">
+    <p><%= current_user.nickname %>さんこんにちは！</p>
+    <p>今日も一日頑張りましょう♪</p>
+  </div>
     
-  <div class="top-index--wrapper">
-    <div class="welcome-message--wrapper">
-      <p><%= current_user.nickname %>さんこんにちは！</p>
-      <p>今日も一日頑張りましょう♪</p>
+  <% day = Date.today %>
+  <!--ここにアラート入れる-->
+  <!--完了予定日の参照変更中のため一旦コメントアウト
+  <h4 style="color:red;"><%= @alert_messages_html + "→【Progate:HTML&CSSコース】" if @alert_messages_html.present? %></h4>
+  <h4 style="color:red;"><%= @alert_messages_javascript + "→【Progate:javascriptコース】" if @alert_messages_javascript.present? %></h4>
+  <h4 style="color:red;"><%= @alert_messages_ruby + "→【Progate:rubyコース】" if @alert_messages_ruby.present? %></h4>
+  <h4 style="color:red;"><%= @alert_messages_rubyonrails + "→【Progate:ruby on railsコース】" if @alert_messages_rubyonrails.present? %></h4>
+  -->
+  <h4 style="color:red;"><%= @alert_messages_railstutorial + "→【railsチュートリアル】" if @alert_messages_railstutorial.present? %></h4>
+  <h4 style="color:red;"><%= @alert_message_mv + "まだ見終わっていない動画があります" if @alert_message_mv.present? %></h4>
+  
+  <!-- 期間中のお知らせがあればお知らせ確認ボタンを表示 -->
+  <% if !@information.empty? %>
+    <div id="inline-popups">
+      <h4><a id="hoge" href="#test-popup" data-effect="mfp-zoom-in">お知らせ</a></h4>
+      
+      <!--<button id="open-popup" class="white-popup" data-effect="mfp-zoom-in">ボタンのラベル</button> -->
     </div>
-      
-    <% day = Date.today %>
-    <!--ここにアラート入れる-->
-    <!--完了予定日の参照変更中のため一旦コメントアウト
-    <h4 style="color:red;"><%= @alert_messages_html + "→【Progate:HTML&CSSコース】" if @alert_messages_html.present? %></h4>
-    <h4 style="color:red;"><%= @alert_messages_javascript + "→【Progate:javascriptコース】" if @alert_messages_javascript.present? %></h4>
-    <h4 style="color:red;"><%= @alert_messages_ruby + "→【Progate:rubyコース】" if @alert_messages_ruby.present? %></h4>
-    <h4 style="color:red;"><%= @alert_messages_rubyonrails + "→【Progate:ruby on railsコース】" if @alert_messages_rubyonrails.present? %></h4>
-    -->
-    <h4 style="color:red;"><%= @alert_messages_railstutorial + "→【railsチュートリアル】" if @alert_messages_railstutorial.present? %></h4>
-    <h4 style="color:red;"><%= @alert_message_mv + "まだ見終わっていない動画があります" if @alert_message_mv.present? %></h4>
     
-    <!-- 期間中のお知らせがあればお知らせ確認ボタンを表示 -->
-    <% if !@information.empty? %>
-      <div id="inline-popups">
-        <h4><a id="hoge" href="#test-popup" data-effect="mfp-zoom-in">お知らせ</a></h4>
-        
-        <!--<button id="open-popup" class="white-popup" data-effect="mfp-zoom-in">ボタンのラベル</button> -->
-      </div>
-      
-      <div id="test-popup" class="white-popup mfp-with-anim mfp-hide">
-        <% i = 1 %>
-          <% @information.each do |info| %>
-          <h5 align="left">【お知らせ<%= i %>】</h5>
-          <span type="text">
-            <%= info.info %>
-          </span><br/>
-          <% i = i + 1 %>
-        <% end %>
-      </div>
-    <% end %>
-    <!-- TODO: jsファイルがローカルから読み込まれないため都度cdn読み込みをしている-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
-    <script>
-      $('#inline-popups').magnificPopup({
-        delegate: 'a',
-        removalDelay: 500,
-        callbacks: {
-          beforeOpen: function() {
-             this.st.mainClass = this.st.el.attr('data-effect');
-          },
+    <div id="test-popup" class="white-popup mfp-with-anim mfp-hide">
+      <% i = 1 %>
+        <% @information.each do |info| %>
+        <h5 align="left">【お知らせ<%= i %>】</h5>
+        <span type="text">
+          <%= info.info %>
+        </span><br/>
+        <% i = i + 1 %>
+      <% end %>
+    </div>
+  <% end %>
+  <!-- TODO: jsファイルがローカルから読み込まれないため都度cdn読み込みをしている-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+  <script>
+    $('#inline-popups').magnificPopup({
+      delegate: 'a',
+      removalDelay: 500,
+      callbacks: {
+        beforeOpen: function() {
+           this.st.mainClass = this.st.el.attr('data-effect');
         },
-      });
+      },
+    });
+  </script>
+  
+  <!-- 期間中のお知らせがあればページ読み込み時に強制表示 -->
+  <% if !@information.empty? %>
+    <!-- 必要な情報の読み込み TODO:ここで読むと若干表示に間があるので別の場所に移す -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script>
+        //cokkieのaccessの値で判定
+        if(!$.cookie("info")){
+	        // 未読の場合はお知らせ表示
+          $('#hoge')[0].click();
+          // 既読を一日間保持
+          $.cookie("info","readed", { expires: 1 });
+	      }
     </script>
-    
-    <!-- 期間中のお知らせがあればページ読み込み時に強制表示 -->
-    <% if !@information.empty? %>
-      <!-- 必要な情報の読み込み TODO:ここで読むと若干表示に間があるので別の場所に移す -->
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-      <script>
-          //cokkieのaccessの値で判定
-          if(!$.cookie("info")){
-  	        // 未読の場合はお知らせ表示
-            $('#hoge')[0].click();
-            // 既読を一日間保持
-            $.cookie("info","readed", { expires: 1 });
-  	      }
-      </script>
-    <% end %>
+  <% end %>
 
   <h2 class="page-title-jp">
     <span>はじめに</span>

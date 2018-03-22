@@ -46,10 +46,9 @@
 
 .nav {
   a {
-    color: #000;
     text-decoration: none;
     font-size: 14px;
-    color: #448aff;
+    color: #f4f4f4;
   }
   li {
     display: inline-block;
@@ -66,11 +65,23 @@
 @media screen and (min-width: 768px) {
   .nav-wrap {
     display: block !important;
+    
+    .nav {
+      background-color: rgba(0, 0, 0, 0);
+    }
+    li {
+      
+      a {
+        
+      }
+    }
   }
 }
+
 .content {
   padding: 20px;
 }
+
 @media screen and (max-width: 767px) {
   .nav-button {
     display: block;
@@ -95,7 +106,7 @@
       display: block;
       margin: 1em 2em;
       a {
-        color: #fff;
+        color: #f4f4f4;
         font-size: 18px;
       }
     }
