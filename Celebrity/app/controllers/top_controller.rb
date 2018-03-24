@@ -37,10 +37,7 @@ class TopController < ApplicationController
     # [Progate] HTML&CSSのパート
     current_user_html = current_user.html_css_status
     if current_user_html.ga_beginner_completion
-      if (current_user_html.ga_beginner && current_user_html.ga_middle && 
-        current_user_html.ga_advanced && current_user_html.do_beginner && 
-        current_user_html.do_middle && current_user_html.do_advanced && 
-        current_user_html.ji_1 && current_user_html.ji_2) != true
+      if current_user_html.ga_beginner != true
           if current_user_html.ga_beginner_completion == Date.today + 3
             @ga_beginner_completion = "完了予定日まであと3日です"
             elsif current_user_html.ga_beginner_completion == Date.today + 2
@@ -59,10 +56,7 @@ class TopController < ApplicationController
 
     current_user_html = current_user.html_css_status
     if current_user_html.ga_middle_completion
-      if (current_user_html.ga_beginner && current_user_html.ga_middle && 
-        current_user_html.ga_advanced && current_user_html.do_beginner && 
-        current_user_html.do_middle && current_user_html.do_advanced && 
-        current_user_html.ji_1 && current_user_html.ji_2) != true
+      if current_user_html.ga_middle != true
           if current_user_html.ga_middle_completion == Date.today + 3
             @ga_middle_completion = "完了予定日まであと3日です"
             elsif current_user_html.ga_middle_completion == Date.today + 2
@@ -81,10 +75,7 @@ class TopController < ApplicationController
 
     current_user_html = current_user.html_css_status
     if current_user_html.ga_advanced_completion
-      if (current_user_html.ga_beginner && current_user_html.ga_middle && 
-        current_user_html.ga_advanced && current_user_html.do_beginner && 
-        current_user_html.do_middle && current_user_html.do_advanced && 
-        current_user_html.ji_1 && current_user_html.ji_2) != true
+      if current_user_html.ga_advanced != true
           if current_user_html.ga_advanced_completion == Date.today + 3
             @ga_advanced_completion = "完了予定日まであと3日です"
             elsif current_user_html.ga_advanced_completion == Date.today + 2
@@ -103,10 +94,7 @@ class TopController < ApplicationController
 
     current_user_html = current_user.html_css_status
     if current_user_html.do_beginner_completion
-      if (current_user_html.ga_beginner && current_user_html.ga_middle && 
-        current_user_html.ga_advanced && current_user_html.do_beginner && 
-        current_user_html.do_middle && current_user_html.do_advanced && 
-        current_user_html.ji_1 && current_user_html.ji_2) != true
+      if current_user_html.do_beginner != true
           if current_user_html.do_beginner_completion == Date.today + 3
             @do_beginner_completion = "完了予定日まであと3日です"
             elsif current_user_html.do_beginner_completion == Date.today + 2
@@ -125,10 +113,7 @@ class TopController < ApplicationController
 
     current_user_html = current_user.html_css_status
     if current_user_html.do_middle_completion
-      if (current_user_html.ga_beginner && current_user_html.ga_middle && 
-        current_user_html.ga_advanced && current_user_html.do_beginner && 
-        current_user_html.do_middle && current_user_html.do_advanced && 
-        current_user_html.ji_1 && current_user_html.ji_2) != true
+      if current_user_html.do_middle != true
           if current_user_html.do_middle_completion == Date.today + 3
             @do_middle_completion = "完了予定日まであと3日です"
             elsif current_user_html.do_middle_completion == Date.today + 2
@@ -147,10 +132,7 @@ class TopController < ApplicationController
     
     current_user_html = current_user.html_css_status
     if current_user_html.do_advanced_completion
-      if (current_user_html.ga_beginner && current_user_html.ga_middle && 
-        current_user_html.ga_advanced && current_user_html.do_beginner && 
-        current_user_html.do_middle && current_user_html.do_advanced && 
-        current_user_html.ji_1 && current_user_html.ji_2) != true
+      if current_user_html.do_advanced != true
           if current_user_html.do_advanced_completion == Date.today + 3
             @do_advanced_completion = "完了予定日まであと3日です"
             elsif current_user_html.do_advanced_completion == Date.today + 2
@@ -169,10 +151,7 @@ class TopController < ApplicationController
     
     current_user_html = current_user.html_css_status
     if current_user_html.ji_1_completion
-      if (current_user_html.ga_beginner && current_user_html.ga_middle && 
-        current_user_html.ga_advanced && current_user_html.do_beginner && 
-        current_user_html.do_middle && current_user_html.do_advanced && 
-        current_user_html.ji_1 && current_user_html.ji_2) != true
+      if current_user_html.ji_1 != true
           if current_user_html.ji_1_completion == Date.today + 3
             @ji_1_completion = "完了予定日まであと3日です"
             elsif current_user_html.ji_1_completion == Date.today + 2
@@ -191,10 +170,7 @@ class TopController < ApplicationController
 
     current_user_html = current_user.html_css_status
     if current_user_html.ji_2_completion
-      if (current_user_html.ga_beginner && current_user_html.ga_middle && 
-        current_user_html.ga_advanced && current_user_html.do_beginner && 
-        current_user_html.do_middle && current_user_html.do_advanced && 
-        current_user_html.ji_1 && current_user_html.ji_2) != true
+      if current_user_html.ji_2 != true
           if current_user_html.ji_2_completion == Date.today + 3
             @ji_2_completion = "完了予定日まであと3日です"
             elsif current_user_html.ji_2_completion == Date.today + 2
@@ -214,9 +190,7 @@ class TopController < ApplicationController
     # [Progate] JavaScriptのパート
     current_user_javascript = current_user.javascript_status
     if current_user_javascript.ga_1_completion
-      if (current_user_javascript.ga_1 && current_user_javascript.ga_2 &&
-          current_user_javascript.ga_3 && current_user_javascript.ga_4 &&
-          current_user_javascript.do_1 ) != true
+      if current_user_javascript.ga_1 != true
           if current_user_javascript.ga_1_completion == Date.today + 3
             @js_ga_1_completion = "完了予定日まであと3日です"
             elsif current_user_javascript.ga_1_completion == Date.today + 2
@@ -235,9 +209,7 @@ class TopController < ApplicationController
 
     current_user_javascript = current_user.javascript_status
     if current_user_javascript.ga_2_completion
-      if (current_user_javascript.ga_1 && current_user_javascript.ga_2 &&
-          current_user_javascript.ga_3 && current_user_javascript.ga_4 &&
-          current_user_javascript.do_1 ) != true
+      if current_user_javascript.ga_2 != true
           if current_user_javascript.ga_2_completion == Date.today + 3
             @js_ga_2_completion = "完了予定日まであと3日です"
             elsif current_user_javascript.ga_2_completion == Date.today + 2
@@ -256,9 +228,7 @@ class TopController < ApplicationController
 
     current_user_javascript = current_user.javascript_status
     if current_user_javascript.ga_3_completion
-      if (current_user_javascript.ga_1 && current_user_javascript.ga_2 &&
-          current_user_javascript.ga_3 && current_user_javascript.ga_4 &&
-          current_user_javascript.do_1 ) != true
+      if current_user_javascript.ga_3 != true
           if current_user_javascript.ga_3_completion == Date.today + 3
             @js_ga_3_completion = "完了予定日まであと3日です"
             elsif current_user_javascript.ga_3_completion == Date.today + 2
@@ -277,9 +247,7 @@ class TopController < ApplicationController
 
     current_user_javascript = current_user.javascript_status
     if current_user_javascript.ga_4_completion
-      if (current_user_javascript.ga_1 && current_user_javascript.ga_2 &&
-          current_user_javascript.ga_3 && current_user_javascript.ga_4 &&
-          current_user_javascript.do_1 ) != true
+      if current_user_javascript.ga_4 != true
           if current_user_javascript.ga_4_completion == Date.today + 3
             @js_ga_4_completion = "完了予定日まであと3日です"
             elsif current_user_javascript.ga_4_completion == Date.today + 2
@@ -298,9 +266,7 @@ class TopController < ApplicationController
 
     current_user_javascript = current_user.javascript_status
     if current_user_javascript.do_1_completion
-      if (current_user_javascript.ga_1 && current_user_javascript.ga_2 &&
-          current_user_javascript.ga_3 && current_user_javascript.ga_4 &&
-          current_user_javascript.do_1 ) != true
+      if current_user_javascript.do_1 != true
           if current_user_javascript.do_1_completion == Date.today + 3
             @js_do_1_completion = "完了予定日まであと3日です"
             elsif current_user_javascript.do_1_completion == Date.today + 2
@@ -320,9 +286,7 @@ class TopController < ApplicationController
     # [Progate] Rubyのパート
     current_user_ruby = current_user.ruby_status
     if current_user_ruby.ga_1_completion
-      if (current_user_ruby.ga_1 && current_user_ruby.ga_2 && 
-          current_user_ruby.ga_3 && current_user_ruby.ga_4 && 
-          current_user_ruby.ga_5) != true
+      if current_user_ruby.ga_1 != true
           if current_user_ruby.ga_1_completion == Date.today + 3
             @ruby_ga_1_completion = "完了予定日まであと3日です"
             elsif current_user_ruby.ga_1_completion == Date.today + 2
@@ -341,9 +305,7 @@ class TopController < ApplicationController
     
     current_user_ruby = current_user.ruby_status
     if current_user_ruby.ga_2_completion
-      if (current_user_ruby.ga_1 && current_user_ruby.ga_2 && 
-          current_user_ruby.ga_3 && current_user_ruby.ga_4 && 
-          current_user_ruby.ga_5) != true
+      if current_user_ruby.ga_2 != true
           if current_user_ruby.ga_2_completion == Date.today + 3
             @ruby_ga_2_completion = "完了予定日まであと3日です"
             elsif current_user_ruby.ga_2_completion == Date.today + 2
@@ -362,9 +324,7 @@ class TopController < ApplicationController
     
     current_user_ruby = current_user.ruby_status
     if current_user_ruby.ga_3_completion
-      if (current_user_ruby.ga_1 && current_user_ruby.ga_2 && 
-          current_user_ruby.ga_3 && current_user_ruby.ga_4 && 
-          current_user_ruby.ga_5) != true
+      if current_user_ruby.ga_3 != true
           if current_user_ruby.ga_3_completion == Date.today + 3
             @ruby_ga_3_completion = "完了予定日まであと3日です"
             elsif current_user_ruby.ga_3_completion == Date.today + 2
@@ -383,9 +343,7 @@ class TopController < ApplicationController
     
     current_user_ruby = current_user.ruby_status
     if current_user_ruby.ga_4_completion
-      if (current_user_ruby.ga_1 && current_user_ruby.ga_2 && 
-          current_user_ruby.ga_3 && current_user_ruby.ga_4 && 
-          current_user_ruby.ga_5) != true
+      if current_user_ruby.ga_4 != true
           if current_user_ruby.ga_4_completion == Date.today + 3
             @ruby_ga_4_completion = "完了予定日まであと3日です"
             elsif current_user_ruby.ga_4_completion == Date.today + 2
@@ -404,9 +362,7 @@ class TopController < ApplicationController
     
     current_user_ruby = current_user.ruby_status
     if current_user_ruby.ga_5_completion
-      if (current_user_ruby.ga_1 && current_user_ruby.ga_2 && 
-          current_user_ruby.ga_3 && current_user_ruby.ga_4 && 
-          current_user_ruby.ga_5) != true
+      if current_user_ruby.ga_5 != true
           if current_user_ruby.ga_5_completion == Date.today + 3
             @ruby_ga_5_completion = "完了予定日まであと3日です"
             elsif current_user_ruby.ga_5_completion == Date.today + 2
@@ -426,14 +382,7 @@ class TopController < ApplicationController
     # [Progate] Ruby on Railsのパート
     current_user_rubyonrails = current_user.rubyonrails_status
     if current_user_rubyonrails.ga_1_completion
-      if (current_user_rubyonrails.ga_1 && current_user_rubyonrails.ga_2 && 
-        current_user_rubyonrails.ga_3 && current_user_rubyonrails.ga_4 && 
-        current_user_rubyonrails.ga_5 && current_user_rubyonrails.ga_6 && 
-        current_user_rubyonrails.ga_7 && current_user_rubyonrails.ga_8 &&
-        current_user_rubyonrails.ga_9 && current_user_rubyonrails.ga_10 &&
-        current_user_rubyonrails.ga_11 && current_user_rubyonrails.do_1 &&
-        current_user_rubyonrails.do_2 && current_user_rubyonrails.do_3 &&
-        current_user_rubyonrails.do_4) != true
+      if current_user_rubyonrails.ga_1 != true
           if current_user_rubyonrails.ga_1_completion == Date.today + 3
             @rails_ga_1_completion = "完了予定日まであと3日です"
             elsif current_user_rubyonrails.ga_1_completion == Date.today + 2
@@ -452,14 +401,7 @@ class TopController < ApplicationController
 
     current_user_rubyonrails = current_user.rubyonrails_status
     if current_user_rubyonrails.ga_2_completion
-      if (current_user_rubyonrails.ga_1 && current_user_rubyonrails.ga_2 && 
-        current_user_rubyonrails.ga_3 && current_user_rubyonrails.ga_4 && 
-        current_user_rubyonrails.ga_5 && current_user_rubyonrails.ga_6 && 
-        current_user_rubyonrails.ga_7 && current_user_rubyonrails.ga_8 &&
-        current_user_rubyonrails.ga_9 && current_user_rubyonrails.ga_10 &&
-        current_user_rubyonrails.ga_11 && current_user_rubyonrails.do_1 &&
-        current_user_rubyonrails.do_2 && current_user_rubyonrails.do_3 &&
-        current_user_rubyonrails.do_4) != true
+      if current_user_rubyonrails.ga_2 != true
           if current_user_rubyonrails.ga_2_completion == Date.today + 3
             @rails_ga_2_completion = "完了予定日まであと3日です"
             elsif current_user_rubyonrails.ga_2_completion == Date.today + 2
@@ -478,14 +420,7 @@ class TopController < ApplicationController
 
     current_user_rubyonrails = current_user.rubyonrails_status
     if current_user_rubyonrails.ga_3_completion
-      if (current_user_rubyonrails.ga_1 && current_user_rubyonrails.ga_2 && 
-        current_user_rubyonrails.ga_3 && current_user_rubyonrails.ga_4 && 
-        current_user_rubyonrails.ga_5 && current_user_rubyonrails.ga_6 && 
-        current_user_rubyonrails.ga_7 && current_user_rubyonrails.ga_8 &&
-        current_user_rubyonrails.ga_9 && current_user_rubyonrails.ga_10 &&
-        current_user_rubyonrails.ga_11 && current_user_rubyonrails.do_1 &&
-        current_user_rubyonrails.do_2 && current_user_rubyonrails.do_3 &&
-        current_user_rubyonrails.do_4) != true
+      if current_user_rubyonrails.ga_3 != true
           if current_user_rubyonrails.ga_3_completion == Date.today + 3
             @rails_ga_3_completion = "完了予定日まであと3日です"
             elsif current_user_rubyonrails.ga_3_completion == Date.today + 2
@@ -504,14 +439,7 @@ class TopController < ApplicationController
     
     current_user_rubyonrails = current_user.rubyonrails_status
     if current_user_rubyonrails.ga_4_completion
-      if (current_user_rubyonrails.ga_1 && current_user_rubyonrails.ga_2 && 
-        current_user_rubyonrails.ga_3 && current_user_rubyonrails.ga_4 && 
-        current_user_rubyonrails.ga_5 && current_user_rubyonrails.ga_6 && 
-        current_user_rubyonrails.ga_7 && current_user_rubyonrails.ga_8 &&
-        current_user_rubyonrails.ga_9 && current_user_rubyonrails.ga_10 &&
-        current_user_rubyonrails.ga_11 && current_user_rubyonrails.do_1 &&
-        current_user_rubyonrails.do_2 && current_user_rubyonrails.do_3 &&
-        current_user_rubyonrails.do_4) != true
+      if current_user_rubyonrails.ga_4 != true
           if current_user_rubyonrails.ga_4_completion == Date.today + 3
             @rails_ga_4_completion = "完了予定日まであと3日です"
             elsif current_user_rubyonrails.ga_4_completion == Date.today + 2
@@ -530,14 +458,7 @@ class TopController < ApplicationController
     
     current_user_rubyonrails = current_user.rubyonrails_status
     if current_user_rubyonrails.ga_5_completion
-      if (current_user_rubyonrails.ga_1 && current_user_rubyonrails.ga_2 && 
-        current_user_rubyonrails.ga_3 && current_user_rubyonrails.ga_4 && 
-        current_user_rubyonrails.ga_5 && current_user_rubyonrails.ga_6 && 
-        current_user_rubyonrails.ga_7 && current_user_rubyonrails.ga_8 &&
-        current_user_rubyonrails.ga_9 && current_user_rubyonrails.ga_10 &&
-        current_user_rubyonrails.ga_11 && current_user_rubyonrails.do_1 &&
-        current_user_rubyonrails.do_2 && current_user_rubyonrails.do_3 &&
-        current_user_rubyonrails.do_4) != true
+      if current_user_rubyonrails.ga_5 != true
           if current_user_rubyonrails.ga_5_completion == Date.today + 3
             @rails_ga_5_completion = "完了予定日まであと3日です"
             elsif current_user_rubyonrails.ga_5_completion == Date.today + 2
@@ -556,14 +477,7 @@ class TopController < ApplicationController
     
     current_user_rubyonrails = current_user.rubyonrails_status
     if current_user_rubyonrails.ga_6_completion
-      if (current_user_rubyonrails.ga_1 && current_user_rubyonrails.ga_2 && 
-        current_user_rubyonrails.ga_3 && current_user_rubyonrails.ga_4 && 
-        current_user_rubyonrails.ga_5 && current_user_rubyonrails.ga_6 && 
-        current_user_rubyonrails.ga_7 && current_user_rubyonrails.ga_8 &&
-        current_user_rubyonrails.ga_9 && current_user_rubyonrails.ga_10 &&
-        current_user_rubyonrails.ga_11 && current_user_rubyonrails.do_1 &&
-        current_user_rubyonrails.do_2 && current_user_rubyonrails.do_3 &&
-        current_user_rubyonrails.do_4) != true
+      if current_user_rubyonrails.ga_6 != true
           if current_user_rubyonrails.ga_6_completion == Date.today + 3
             @rails_ga_6_completion = "完了予定日まであと3日です"
             elsif current_user_rubyonrails.ga_6_completion == Date.today + 2
@@ -582,14 +496,7 @@ class TopController < ApplicationController
     
     current_user_rubyonrails = current_user.rubyonrails_status
     if current_user_rubyonrails.ga_7_completion
-      if (current_user_rubyonrails.ga_1 && current_user_rubyonrails.ga_2 && 
-        current_user_rubyonrails.ga_3 && current_user_rubyonrails.ga_4 && 
-        current_user_rubyonrails.ga_5 && current_user_rubyonrails.ga_6 && 
-        current_user_rubyonrails.ga_7 && current_user_rubyonrails.ga_8 &&
-        current_user_rubyonrails.ga_9 && current_user_rubyonrails.ga_10 &&
-        current_user_rubyonrails.ga_11 && current_user_rubyonrails.do_1 &&
-        current_user_rubyonrails.do_2 && current_user_rubyonrails.do_3 &&
-        current_user_rubyonrails.do_4) != true
+      if current_user_rubyonrails.ga_7 != true
           if current_user_rubyonrails.ga_7_completion == Date.today + 3
             @rails_ga_7_completion = "完了予定日まであと3日です"
             elsif current_user_rubyonrails.ga_7_completion == Date.today + 2
@@ -608,14 +515,7 @@ class TopController < ApplicationController
     
     current_user_rubyonrails = current_user.rubyonrails_status
     if current_user_rubyonrails.ga_8_completion
-      if (current_user_rubyonrails.ga_1 && current_user_rubyonrails.ga_2 && 
-        current_user_rubyonrails.ga_3 && current_user_rubyonrails.ga_4 && 
-        current_user_rubyonrails.ga_5 && current_user_rubyonrails.ga_6 && 
-        current_user_rubyonrails.ga_7 && current_user_rubyonrails.ga_8 &&
-        current_user_rubyonrails.ga_9 && current_user_rubyonrails.ga_10 &&
-        current_user_rubyonrails.ga_11 && current_user_rubyonrails.do_1 &&
-        current_user_rubyonrails.do_2 && current_user_rubyonrails.do_3 &&
-        current_user_rubyonrails.do_4) != true
+      if current_user_rubyonrails.ga_8 != true
           if current_user_rubyonrails.ga_8_completion == Date.today + 3
             @rails_ga_8_completion = "完了予定日まであと3日です"
             elsif current_user_rubyonrails.ga_8_completion == Date.today + 2
@@ -634,14 +534,7 @@ class TopController < ApplicationController
     
     current_user_rubyonrails = current_user.rubyonrails_status
     if current_user_rubyonrails.ga_9_completion
-      if (current_user_rubyonrails.ga_1 && current_user_rubyonrails.ga_2 && 
-        current_user_rubyonrails.ga_3 && current_user_rubyonrails.ga_4 && 
-        current_user_rubyonrails.ga_5 && current_user_rubyonrails.ga_6 && 
-        current_user_rubyonrails.ga_7 && current_user_rubyonrails.ga_8 &&
-        current_user_rubyonrails.ga_9 && current_user_rubyonrails.ga_10 &&
-        current_user_rubyonrails.ga_11 && current_user_rubyonrails.do_1 &&
-        current_user_rubyonrails.do_2 && current_user_rubyonrails.do_3 &&
-        current_user_rubyonrails.do_4) != true
+      if current_user_rubyonrails.ga_9 != true
           if current_user_rubyonrails.ga_9_completion == Date.today + 3
             @rails_ga_9_completion = "完了予定日まであと3日です"
             elsif current_user_rubyonrails.ga_9_completion == Date.today + 2
@@ -660,14 +553,7 @@ class TopController < ApplicationController
     
     current_user_rubyonrails = current_user.rubyonrails_status
     if current_user_rubyonrails.ga_10_completion
-      if (current_user_rubyonrails.ga_1 && current_user_rubyonrails.ga_2 && 
-        current_user_rubyonrails.ga_3 && current_user_rubyonrails.ga_4 && 
-        current_user_rubyonrails.ga_5 && current_user_rubyonrails.ga_6 && 
-        current_user_rubyonrails.ga_7 && current_user_rubyonrails.ga_8 &&
-        current_user_rubyonrails.ga_9 && current_user_rubyonrails.ga_10 &&
-        current_user_rubyonrails.ga_11 && current_user_rubyonrails.do_1 &&
-        current_user_rubyonrails.do_2 && current_user_rubyonrails.do_3 &&
-        current_user_rubyonrails.do_4) != true
+      if current_user_rubyonrails.ga_10 != true
           if current_user_rubyonrails.ga_10_completion == Date.today + 3
             @rails_ga_10_completion = "完了予定日まであと3日です"
             elsif current_user_rubyonrails.ga_10_completion == Date.today + 2
@@ -686,14 +572,7 @@ class TopController < ApplicationController
     
     current_user_rubyonrails = current_user.rubyonrails_status
     if current_user_rubyonrails.ga_11_completion
-      if (current_user_rubyonrails.ga_1 && current_user_rubyonrails.ga_2 && 
-        current_user_rubyonrails.ga_3 && current_user_rubyonrails.ga_4 && 
-        current_user_rubyonrails.ga_5 && current_user_rubyonrails.ga_6 && 
-        current_user_rubyonrails.ga_7 && current_user_rubyonrails.ga_8 &&
-        current_user_rubyonrails.ga_9 && current_user_rubyonrails.ga_10 &&
-        current_user_rubyonrails.ga_11 && current_user_rubyonrails.do_1 &&
-        current_user_rubyonrails.do_2 && current_user_rubyonrails.do_3 &&
-        current_user_rubyonrails.do_4) != true
+      if current_user_rubyonrails.ga_11 != true
           if current_user_rubyonrails.ga_11_completion == Date.today + 3
             @rails_ga_11_completion = "完了予定日まであと3日です"
             elsif current_user_rubyonrails.ga_11_completion == Date.today + 2
@@ -712,14 +591,7 @@ class TopController < ApplicationController
     
     current_user_rubyonrails = current_user.rubyonrails_status
     if current_user_rubyonrails.do_1_completion
-      if (current_user_rubyonrails.ga_1 && current_user_rubyonrails.ga_2 && 
-        current_user_rubyonrails.ga_3 && current_user_rubyonrails.ga_4 && 
-        current_user_rubyonrails.ga_5 && current_user_rubyonrails.ga_6 && 
-        current_user_rubyonrails.ga_7 && current_user_rubyonrails.ga_8 &&
-        current_user_rubyonrails.ga_9 && current_user_rubyonrails.ga_10 &&
-        current_user_rubyonrails.ga_11 && current_user_rubyonrails.do_1 &&
-        current_user_rubyonrails.do_2 && current_user_rubyonrails.do_3 &&
-        current_user_rubyonrails.do_4) != true
+      if current_user_rubyonrails.do_1 != true
           if current_user_rubyonrails.do_1_completion == Date.today + 3
             @rails_do_1_completion = "完了予定日まであと3日です"
             elsif current_user_rubyonrails.do_1_completion == Date.today + 2
@@ -738,14 +610,7 @@ class TopController < ApplicationController
     
     current_user_rubyonrails = current_user.rubyonrails_status
     if current_user_rubyonrails.do_2_completion
-      if (current_user_rubyonrails.ga_1 && current_user_rubyonrails.ga_2 && 
-        current_user_rubyonrails.ga_3 && current_user_rubyonrails.ga_4 && 
-        current_user_rubyonrails.ga_5 && current_user_rubyonrails.ga_6 && 
-        current_user_rubyonrails.ga_7 && current_user_rubyonrails.ga_8 &&
-        current_user_rubyonrails.ga_9 && current_user_rubyonrails.ga_10 &&
-        current_user_rubyonrails.ga_11 && current_user_rubyonrails.do_1 &&
-        current_user_rubyonrails.do_2 && current_user_rubyonrails.do_3 &&
-        current_user_rubyonrails.do_4) != true
+      if current_user_rubyonrails.do_2 != true
           if current_user_rubyonrails.do_2_completion == Date.today + 3
             @rails_do_2_completion = "完了予定日まであと3日です"
             elsif current_user_rubyonrails.do_2_completion == Date.today + 2
@@ -764,14 +629,7 @@ class TopController < ApplicationController
 
     current_user_rubyonrails = current_user.rubyonrails_status
     if current_user_rubyonrails.do_3_completion
-      if (current_user_rubyonrails.ga_1 && current_user_rubyonrails.ga_2 && 
-        current_user_rubyonrails.ga_3 && current_user_rubyonrails.ga_4 && 
-        current_user_rubyonrails.ga_5 && current_user_rubyonrails.ga_6 && 
-        current_user_rubyonrails.ga_7 && current_user_rubyonrails.ga_8 &&
-        current_user_rubyonrails.ga_9 && current_user_rubyonrails.ga_10 &&
-        current_user_rubyonrails.ga_11 && current_user_rubyonrails.do_1 &&
-        current_user_rubyonrails.do_2 && current_user_rubyonrails.do_3 &&
-        current_user_rubyonrails.do_4) != true
+      if current_user_rubyonrails.do_3 != true
           if current_user_rubyonrails.do_3_completion == Date.today + 3
             @rails_do_3_completion = "完了予定日まであと3日です"
             elsif current_user_rubyonrails.do_3_completion == Date.today + 2
@@ -790,14 +648,7 @@ class TopController < ApplicationController
     
     current_user_rubyonrails = current_user.rubyonrails_status
     if current_user_rubyonrails.do_4_completion
-      if (current_user_rubyonrails.ga_1 && current_user_rubyonrails.ga_2 && 
-        current_user_rubyonrails.ga_3 && current_user_rubyonrails.ga_4 && 
-        current_user_rubyonrails.ga_5 && current_user_rubyonrails.ga_6 && 
-        current_user_rubyonrails.ga_7 && current_user_rubyonrails.ga_8 &&
-        current_user_rubyonrails.ga_9 && current_user_rubyonrails.ga_10 &&
-        current_user_rubyonrails.ga_11 && current_user_rubyonrails.do_1 &&
-        current_user_rubyonrails.do_2 && current_user_rubyonrails.do_3 &&
-        current_user_rubyonrails.do_4) != true
+      if current_user_rubyonrails.do_4 != true
           if current_user_rubyonrails.do_4_completion == Date.today + 3
             @rails_do_4_completion = "完了予定日まであと3日です"
             elsif current_user_rubyonrails.do_4_completion == Date.today + 2
