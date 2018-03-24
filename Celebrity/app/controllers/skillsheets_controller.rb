@@ -4,10 +4,16 @@ class SkillsheetsController < ApplicationController
   before_action :existence_user, only: [:show, :edit, :update]
   before_action :administrator_user, only: :new
   
+  
   def index
     @user = current_user
     @existed_normal_users = User.page(params[:page]).select{ |u| u.existence == true && u.guest == false }
-    @statuses = {'未登録':1, '就業中':2, '営業中':3}
+  end
+  
+  def search
+    @user = current_user
+    @existed_normal_users = User.page(params[:page]).select{ |u| u.existence == true && u.guest == false && params[:status].include?(u.status)}
+    render action: :index
   end
   
   def download
