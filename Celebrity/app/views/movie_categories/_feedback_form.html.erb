@@ -15,14 +15,8 @@
       <% else %>
         <% @feedback.feedback = '' %>
       <% end %>
-<<<<<<< HEAD
-
-      <%= f.text_area :feedback, :id => "textarea#{sort_order}", :class => "movie-feedback-form--textarea",
-=======
-      
       <%= f.text_area :feedback, :id => "textarea#{sort_order}",
         :class => "movie-feedback-form--textarea  validate[required,minSize[100],maxSize[500]] text-input",
->>>>>>> feature/add_validation_to_all_pages
         :size => "7x7", :maxlength => "500", :placeholder => "100-500文字で入力してください", required: true, 
         :onchange => "Limit#{sort_order}(event)", :onkeyup => "Limit#{sort_order}(event)" %>
       <%= f.hidden_field :movie_id, :value => movie_id %>
