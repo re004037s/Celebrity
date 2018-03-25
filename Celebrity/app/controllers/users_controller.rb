@@ -105,7 +105,7 @@ class UsersController < ApplicationController
   
     def user_params
       params.require(:user).permit(:name, :nickname, :line_id, :email, :password, :password_confirmation, :portfolio_path,
-        :github_path, :picture_file, :picture, :tag_list, :skillsheet, :skillsheet_name)
+        :github_path, :picture_file, :picture, :tag_list, :skillsheet, :skillsheet_name, :venture_user, :free_engineer_user)
     end
     
     # ログイン済み or 管理ユーザであれば true を返す
