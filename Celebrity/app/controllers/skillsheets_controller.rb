@@ -60,7 +60,9 @@ class SkillsheetsController < ApplicationController
     # 該当カラムの値をupdateしてください
     # 成功した場合はindex.htmlにページ遷移する
     # 失敗した場合はindex.htmlをrenderする（たぶん）
-
+    
+    @user = current_user
+    render action: :index
     #@status = params[:status]いとう
     #render 'skillsheets/index'いとう
   end

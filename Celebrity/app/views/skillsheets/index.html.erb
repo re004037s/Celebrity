@@ -79,6 +79,7 @@
                 <% end %>
                 <%= submit_tag "登録", size: 25 %>
                 <!-- ここでhiddenタグを使う。目的：current_user.idをパラメータに含めて送信する　-->
+                <%= f.hidden_field :user_id, value: current_user.id %>
               <% end %>
             </td>
           </tr>
