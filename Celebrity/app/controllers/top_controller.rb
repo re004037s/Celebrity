@@ -1,5 +1,11 @@
 class TopController < ApplicationController
+  include ApplicationHelper
+  
   before_action :logged_in_user
+  before_action :movie_schedule_date
+  before_action :progate_comp_date
+  before_action :railstutorial_comp_date
+  before_action :portfolio_comp_path
   
   def index
     # 期限切れでないお知らせ一覧を取得
@@ -182,4 +188,33 @@ class TopController < ApplicationController
     def set_movie_categories
       @categories_all = MovieCategory.all.order('sort_order')
     end
+    
+    def movie_schedule_date
+      link = "<a href=\"#{url_for(current_user)}\"> こちらから</a>"
+      if current_user.user_movie_status.schedule_date.nil?
+        flash.now[:danger] = "動画視聴の完了予定日を入力して下さい#{link}".html_safe
+      end
+    end
+    
+    def progate_comp_date 
+      if movie_comp? && progate_completion?
+        flash[:danger] = "Progateの完了予定日を入力して下さい"
+        redirect_to current_user
+      end
+    end
+    
+    def railstutorial_comp_date
+      if progate_compd? && railstutorial_completion?
+        flash[:danger] = "Railsチュートリアルの完了予定日を入力して下さい"
+        redirect_to current_user
+      end
+    end
+    
+    def portfolio_comp_path
+      if railstutorial_comp? && portfolio_completion?
+        flash[:danger] = "ポートフォリオのURLを登録して下さい"
+        redirect_to edit_user_path(current_user)
+      end
+    end
+    
 end
