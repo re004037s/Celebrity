@@ -451,7 +451,10 @@ li.first-child {
 
 // ログイン後のトップページ
 .top-index--wrapper {
-  
+  .messages-wrap h4 {
+     color: #f00;
+     white-space: nowrap;
+  }
 }
 
 // 動画管理ページ
