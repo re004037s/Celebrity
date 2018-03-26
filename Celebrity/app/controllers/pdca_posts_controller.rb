@@ -13,7 +13,7 @@ class PdcaPostsController < ApplicationController
         flash[:success] = "PDCA報告が投稿されました"
         redirect_to pdca_posts_url
       else
-        flash[:danger] = "全てのPDCA項目を入力してから報告してください"
+        flash[:danger] = "全てのPDCA項目を５００文字以内で入力してから報告してください"
         redirect_to :back
       end
     end
@@ -24,12 +24,13 @@ class PdcaPostsController < ApplicationController
       flash[:success] = "PDCA報告が更新されました"
       redirect_to pdca_posts_url
     else
-      flash[:danger] = "全てのPDCA項目を入力してから更新してください"
+      flash[:danger] = "全てのPDCA項目を５００文字以内で入力してから更新してください"
       redirect_to :back
     end
   end
 
   def destroy
+    debugger
     @pdcapost = PdcaPost.find(params[:id])
     @pdcapost.destroy
     flash[:success] = "PDCA報告が削除されました"

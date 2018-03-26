@@ -3,18 +3,41 @@
 
 <div class="form-entrance-login">
   <div class="form-entrance--wrapper">
-    <%= form_for(:session, url: login_path) do |f| %>
+    <%= form_for(:session, url: login_path, html:{:id => 'sessions-new-form'}) do |f| %>
       
       <%= f.label :email, 'ログインID（ご登録いただいたメールアドレス）', class: 'form-entrance--label' %>
-      <%= f.email_field :email, class: 'form-entrance--textbox' %>
+      <%= f.email_field :email, class: 'form-entrance--textbox  validate[required,maxSize[50],custom[email]',
+      :onkeyup => "EmailLength(value);"%>
+      <p id="email-input-length">0文字</p>
 
       <%= f.label :password, 'パスワード', class: 'form-entrance--label'%>
-      <%= f.password_field :password, class: 'form-entrance--textbox' %>
+      <%= f.password_field :password, class: 'form-entrance--textbox  validate[required,minSize[6]] text-input',
+      :onkeyup => "PasswordLength(value);" %>
+      <p id="password-input-length">0文字</p>
+      
       <%= link_to "パスワードを忘れた方はコチラ", new_password_reset_path, class: 'form-entrance--link' %>
 
       <%= image_submit_tag("button_login.png", class: "form-entrance--button") %>
     <% end %>
   </div>
 </div>
+
+<script>
+  $(document).ready(function(){
+    $("#sessions-new-form").validationEngine({
+    });
+  });
+  
+  function EmailLength( str ) {
+    document.getElementById("email-input-length").innerHTML = str.length + "文字";
+  }
+  
+  function PasswordLength( str ) {
+    document.getElementById("password-input-length").innerHTML = str.length + "文字";
+  }
+  
+  $('form').validationEngine({validationEventTrigger:'keyup'});
+  
+</script>
 
 <% end %>

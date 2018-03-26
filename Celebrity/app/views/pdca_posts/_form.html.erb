@@ -1,14 +1,46 @@
       <%= f.label :date, "Date", class: 'txt1' %>
-      <%= f.date_field :date, class: 'form-control' %>
+      <%= f.date_field :date, class: 'form-control validate[required] text-input' %>
+      
       <%= f.label :plan, "Plan", class: 'txt1' %>
-      <%= f.text_area :plan, class: 'form-control', placeholder: "計画を入力してください" %>
+      <%= f.text_area :plan, class: 'form-control validate[required,maxSize[1000]] text-input', :onkeyup => "PlanLength(value);",
+      placeholder: "計画を入力してください" %>
+      <p id="plan-input-length">0文字</p>
+      
       <%= f.label :do, "Do", class: 'txt1' %>
-      <%= f.text_area :do, class: 'form-control', placeholder: "計画通りに実行できたか振り返ってみてください" %>
+      <%= f.text_area :do, class: 'form-control validate[required,maxSize[1000]] text-input', :onkeyup => "DoLength(value);",
+      placeholder: "計画通りに実行できたか振り返ってみてください" %>
+      <p id="do-input-length">0文字</p>
+      
       <%= f.label :check, "Check", class: 'txt1' %>
-      <%= f.text_area :check, class: 'form-control', placeholder: "実行したことに対して評価をしてみてください" %>
+      <%= f.text_area :check, class: 'form-control validate[required,maxSize[1000]] text-input', :onkeyup => "CheckLength(value);",
+      placeholder: "実行したことに対して評価をしてみてください" %>
+      <p id="check-input-length">0文字</p>
+      
       <%= f.label :action, "Action", class: 'txt1' %>
-      <%= f.text_area :action, class: 'form-control', placeholder: "評価した結果、どう改善したらよくなるか考えてみてください" %>
+      <%= f.text_area :action, class: 'form-control validate[required,maxSize[1000]] text-input', :onkeyup => "ActionLength(value);",
+      placeholder: "評価した結果、どう改善したらよくなるか考えてみてください" %>
+      <p id="action-input-length">0文字</p>
+      
       <%= f.hidden_field :user_id, :value => current_user.id %>
+      
     <div class="center mt_20">
         <%= f.submit '登録', {class: 'btn btn-default active post-regist' }%>
   　</div>
+  　
+<script>
+  function PlanLength( str ) {
+    document.getElementById("plan-input-length").innerHTML = str.length + "文字";
+  }
+  
+  function DoLength( str ) {
+    document.getElementById("do-input-length").innerHTML = str.length + "文字";
+  }
+  
+  function CheckLength( str ) {
+    document.getElementById("check-input-length").innerHTML = str.length + "文字";
+  }
+  
+  function ActionLength( str ) {
+    document.getElementById("action-input-length").innerHTML = str.length + "文字";
+  }
+</script>

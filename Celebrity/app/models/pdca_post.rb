@@ -4,9 +4,9 @@ class PdcaPost < ApplicationRecord
   with_options presence: true do
     validates :user_id
     validates :date
-    validates :plan
-    validates :do
-    validates :check
-    validates :action
+    validates :plan, length: { maximum: 1000 }
+    validates :do, length: { maximum: 1000 }
+    validates :check, length: { maximum: 1000 }
+    validates :action, length: { maximum: 1000 }
   end
 end

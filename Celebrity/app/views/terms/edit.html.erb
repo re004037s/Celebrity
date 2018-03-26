@@ -4,14 +4,8 @@
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@term) do |f| %>
-      <%= render partial: 'shared/error_messages', locals: {object: @term } %>
-
-      <%= f.label :name, "用語", class: 'txt1' %>
-      <%= f.text_area :name, class: 'form-control', rows: 2 %>
-      
-      <%= f.label :content, '解説', class: 'txt1' %>
-      <%= f.text_area :content, class: 'form-control', rows: 15 %>
+    <%= form_for(@term, html:{:id => 'term-edit-form'}) do |f| %>
+      <%= render partial: 'form', locals: {f: f} %>
       
       <%= f.hidden_field :user_id, :value => current_user.id %>
       
@@ -21,4 +15,10 @@
     <% end %>
   </div>
 </div>
+
+<script>
+  $(document).ready(function(){
+    $("#term-edit-form").validationEngine();
+  });
+</script>
 

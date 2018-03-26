@@ -4,14 +4,16 @@
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@qiitapost) do |f| %>
+    <%= form_for(@qiitapost, html:{:id => 'giitapost-new-form'}) do |f| %>
       <%= render partial: 'shared/error_messages', locals: {object: @qiitapost } %>
       
       <%= f.label :title, "タイトル", class: 'txt1' %>
-      <%= f.text_field :title, class: 'form-control' %>
+      <%= f.text_field :title, class: 'form-control validate[required,maxSize[25]] text-input', :onkeyup => "TitleLength(value);" %>
+      <p id="title-input-length">0文字</p>
       
       <%= f.label :url, '投稿URL', class: 'txt1 mt_20' %>
-      <%= f.text_field :url, class: 'form-control' %>
+      <%= f.text_field :url, class: 'form-control validate[required,maxSize[100]] text-input', :onkeyup => "UrlLength(value);" %>
+      <p id="url-input-length">0文字</p>
       
       <div class="center mt_20">
         <%= f.submit '登録', {class: 'btn btn-default active post-regist' }%>
@@ -19,3 +21,17 @@
     <% end %>
   </div>
 </div>
+
+<script>
+  $(document).ready(function(){
+    $("#giitapost-new-form").validationEngine();
+  });
+  
+  function TitleLength( str ) {
+    document.getElementById("title-input-length").innerHTML = str.length + "文字";
+  }
+  
+  function UrlLength( str ) {
+    document.getElementById("url-input-length").innerHTML = str.length + "文字";
+  }
+</script>

@@ -8,17 +8,21 @@ class User < ApplicationRecord
     before_save { self.email = email.downcase }
     default_scope -> { order(:created_at) }
     mount_uploader :picture, PictureUploader #画像アップロード用に追加
-    validates :name, presence: true, length: { maximum: 50 }
-    validates :nickname, presence: true, length: { maximum: 50 }
-
+    validates :name, presence: true, length: { maximum: 10 }
+    validates :nickname, presence: true, length: { maximum: 10 }
     
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
     validates :email, presence: true, length: { maximum: 50 },
                format: { with: VALID_EMAIL_REGEX },
                uniqueness: { case_sensitive: false }
     
+    validates :line_id, presence: true, length: {maximum: 20}
+    
     has_secure_password
-    validates :password, presence: true, length: { minimum: 6 }
+    validates :password, presence: true, length: { minimum: 6}
+    
+    validates :portfolio_path, length: {maximum: 100}, format: /\A#{URI::regexp(%w(http https))}\z/, :allow_blank => true
+    validates :github_path, length: {maximum: 100}, format: /\A#{URI::regexp(%w(http https))}\z/, :allow_blank => true
     
     has_one :html_css_status
     has_one :javascript_status
