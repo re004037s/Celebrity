@@ -5,11 +5,6 @@ class UsersController < ApplicationController
   before_action :administrator_user, only: :new
   before_action :correct_user_for_edit,
     only:[:update_picture,:tag_new, :tag_show, :tag_delete]
-<<<<<<< HEAD
-  #before_action :comp_movies_user, only: :show
-=======
-  # before_action :comp_movies_user, only: :show
->>>>>>> 動画カテゴリの修正
   
   def index
     @users = User.page(params[:page])
