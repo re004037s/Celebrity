@@ -4,8 +4,9 @@ class UsersController < ApplicationController
   before_action :existence_user, only: [:show, :edit, :update]
   before_action :administrator_user, only: :new
   before_action :correct_user_for_edit,
-    only:[:edit, :update, :update_picture,:tag_new, :tag_show, :tag_delete]
-
+    only:[:update_picture,:tag_new, :tag_show, :tag_delete]
+  #before_action :comp_movies_user, only: :show
+  
   def index
     @users = User.page(params[:page])
   end
@@ -18,7 +19,16 @@ class UsersController < ApplicationController
     @tags_h = Hash[*tags.flatten]
   end
   
-  
+  # def update_course
+  #   @user = User.find_by(id: params[:id])
+  #   if @user.update_columns(venture_user: params[:venture_user], free_engineer_user: params[:free_engineer_user])
+  #     flash[:success] = 'ユーザ情報を更新しました'
+  #     redirect_to @user 
+  #   else
+  #     flash[:error] = '画像の保存に失敗しました！'
+  #     redirect_to @user  
+  #   end
+  # end
   
   def update_picture
     @user = current_user
@@ -86,11 +96,20 @@ class UsersController < ApplicationController
   end
   
   def update
-    if @user.update_attributes(user_params)
-      flash[:success] = 'ユーザ情報を更新しました'
-      redirect_to @user
+    if current_user?(@user)
+      if @user.update_attributes(user_params)
+        flash[:success] = 'ユーザ情報を更新しました'
+        redirect_to @user
+      else
+        render 'edit'
+      end
     else
-      render 'edit'
+      if @user.update_columns({venture_user: user_params[:venture_user], free_engineer_user: user_params[:free_engineer_user]})
+        flash[:success] = 'ユーザ情報を更新しました'
+        redirect_to @user
+      else
+        render 'edit'
+      end
     end
   end
   
@@ -147,4 +166,4 @@ class UsersController < ApplicationController
         redirect_to root_url
       end
     end
- end
+end

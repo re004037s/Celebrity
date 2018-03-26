@@ -6,6 +6,7 @@
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@user, html:{:id => 'user-edit-form'}) do |f| %>
       <%= render partial: 'shared/error_messages', locals: { object: @user } %>
+<<<<<<< HEAD
     
       <%= f.label :name, "氏名", class: 'form-entrance--label' %>
       <%= f.text_field :name, class: 'form-entrance--textbox validate[required,maxSize[10]] text-input', :onkeyup => "NameLength(value);" %>
@@ -30,14 +31,50 @@
       <%= f.label :password_confirmation, "パスワード確認", class: 'form-entrance--label' %>
       <%= f.password_field :password_confirmation, class: 'form-entrance--textbox validate[required,minSize[6]] text-input', :onkeyup => "PasswordConfirmationLength(value);" %>
       <p id="password-confirmation-input-length">0文字</p>
+=======
+>>>>>>> コースの変更をユーザ編集に追加
       
-      <%= f.label :portfolio_path, "ポートフォリオURL" %>
-      <%= f.text_field :portfolio_path, class: 'form-control validate[maxSize[100],custom[url]] text-input', :onkeyup => "PortfolioPathLength(value);" %>
-      <p id="portfolio-path-input-length">0文字</p>
+      <% if current_user?(@user) %>
+        <%= f.label :name, "氏名", class: 'form-entrance--label' %>
+        <%= f.text_field :name, class: 'form-entrance--textbox validate[required,maxSize[10]] text-input', :onkeyup => "NameLength(value);" %>
+        <p id="name-input-length">0文字</p>
+  
+        <%= f.label :nickname, "ニックネーム", class: 'form-entrance--label' %>
+        <%= f.text_field :nickname, class: 'form-entrance--textbox validate[required,maxSize[10]] text-input', :onkeyup => "NickNameLength(value);" %>
+        <p id="nickname-input-length">0文字</p>
+  
+        <%= f.label :email, 'Email', class: 'form-entrance--label' %>
+        <%= f.email_field :email, class: 'form-entrance--textbox validate[required,maxSize[50]] text-input', :onkeyup => "EmailLength(value);" %>
+        <p id="email-input-length">0文字</p>
+        
+        <%= f.label :line_id, "LINE ID", class: 'form-entrance--label' %>
+        <%= f.text_field :line_id, class: 'form-entrance--textbox validate[required,maxSize[20]] text-input', :onkeyup => "LineIdLength(value);" %>
+        <p id="lineid-input-length">0文字</p>
+  
+        <%= f.label :password, 'パスワード', class: 'form-entrance--label' %>
+        <%= f.password_field :password, class: 'form-entrance--textbox validate[required,minSize[6],maxSize[18]] text-input', :onkeyup => "PasswordLength(value);" %>
+        <p id="password-input-length">0文字</p>
+  
+        <%= f.label :password_confirmation, "パスワード確認", class: 'form-entrance--label' %>
+        <%= f.password_field :password_confirmation, class: 'form-entrance--textbox validate[required,minSize[6],maxSize[18]] text-input', :onkeyup => "PasswordConfirmationLength(value);" %>
+        <p id="password-confirmation-input-length">0文字</p>
+        
+        <%= f.label :portfolio_path, "ポートフォリオURL" %>
+        <%= f.text_field :portfolio_path, class: 'form-control validate[maxSize[100],custom[url]] text-input', :onkeyup => "PortfolioPathLength(value);" %>
+        <p id="portfolio-path-input-length">0文字</p>
+        
+        <%= f.label :github_path, "GitHubURL" %>
+        <%= f.text_field :github_path, class: 'form-control validate[maxSize[100],custom[url]] text-input', :onkeyup => "GithubPathLength(value);" %>
+        <p id="github-path-input-length">0文字</p>
+      <% end %>
       
-      <%= f.label :github_path, "GitHubURL" %>
-      <%= f.text_field :github_path, class: 'form-control validate[maxSize[100],custom[url]] text-input', :onkeyup => "GithubPathLength(value);" %>
-      <p id="github-path-input-length">0文字</p>
+      <% if current_user.try(:admin) %>
+        <%= f.label :free_engineer_user, "フリーエンジニアコース", class: 'form-entrance--label' %>
+        <%= f.check_box :free_engineer_user, {class: 'form-entrance--textbox'}, "true", "false" %>
+        
+        <%= f.label :venture_user, "ITベンチャー起業コース", class: 'form-entrance--label' %>
+        <%= f.check_box :venture_user, {class: 'form-entrance--textbox'}, "true", "false" %>
+      <% end %>
       
       <%= f.submit "編集する", class: "btn btn-default active" %>
     <% end %>
