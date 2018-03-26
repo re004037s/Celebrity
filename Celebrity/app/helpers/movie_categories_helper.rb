@@ -2,7 +2,11 @@ module MovieCategoriesHelper
   
   # 全動画カテゴリの呼び出し
   def all_movie_categories
-    MovieCategory.all.order('sort_order')
+    MovieCategory.where(free_engineer_movie: true).order('sort_order')
+  end
+  
+  def venture_movie_categories
+    MovieCategory.where(venture_movie: true).order('sort_order')
   end
   
   # 動画カテゴリ毎の閲覧状況を判定

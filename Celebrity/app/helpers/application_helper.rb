@@ -1,7 +1,7 @@
 module ApplicationHelper
     
   def movie_comp?
-    last_movie = MovieCategory.where(must_view: true).order('sort_order').last.movies.order('sort_order').last
+    last_movie = MovieCategory.where(must_view: true).where(free_engineer_movie: true).order('sort_order').last.movies.order('sort_order').last
     if (current_user.feedbacks.find_by(movie_id: last_movie.id))
     # 完了予定日の粒度変更により一旦非表示
     # current_user.html_css_status.schedule_date &&
