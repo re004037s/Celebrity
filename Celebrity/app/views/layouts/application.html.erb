@@ -25,6 +25,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Validation-Engine/2.6.4/jquery-1.8.2.min.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Validation-Engine/2.6.4/languages/jquery.validationEngine-ja.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Validation-Engine/2.6.4/jquery.validationEngine.min.js" type="text/javascript" charset="utf-8"></script>
+    <!--ポップアップ表示関連(top/index.html.erb)-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 
     
     <%= favicon_link_tag('favicon32.png') %>
@@ -64,7 +67,11 @@
       <!--ナビゲーションバー-->
       <%= render 'layouts/navbar' %>
       
+      <!--ヘッダーの裏に配置-->
+      <div class="behind-header"></div>
+      
       <div class="body-wrapper">
+        
         <!--トップ画像-->
         <div class="img-top-wrapper">
           <%= image_tag "img_top.png", id: "img-top" %>
