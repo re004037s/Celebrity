@@ -24,11 +24,11 @@
       <p id="lineid-input-length">0文字</p>
 
       <%= f.label :password, 'パスワード', class: 'form-entrance--label' %>
-      <%= f.password_field :password, class: 'form-entrance--textbox validate[required,minSize[6],maxSize[18]] text-input', :onkeyup => "PasswordLength(value);" %>
+      <%= f.password_field :password, class: 'form-entrance--textbox validate[required,minSize[6]] text-input', :onkeyup => "PasswordLength(value);" %>
       <p id="password-input-length">0文字</p>
 
       <%= f.label :password_confirmation, "パスワード確認", class: 'form-entrance--label' %>
-      <%= f.password_field :password_confirmation, class: 'form-entrance--textbox validate[required,minSize[6],maxSize[18]] text-input', :onkeyup => "PasswordConfirmationLength(value);" %>
+      <%= f.password_field :password_confirmation, class: 'form-entrance--textbox validate[required,minSize[6]] text-input', :onkeyup => "PasswordConfirmationLength(value);" %>
       <p id="password-confirmation-input-length">0文字</p>
       
       <%= f.label :portfolio_path, "ポートフォリオURL" %>

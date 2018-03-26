@@ -11,7 +11,7 @@
       <p id="email-input-length">0文字</p>
 
       <%= f.label :password, 'パスワード', class: 'form-entrance--label'%>
-      <%= f.password_field :password, class: 'form-entrance--textbox  validate[required,minSize[6],maxSize[18]] text-input',
+      <%= f.password_field :password, class: 'form-entrance--textbox  validate[required,minSize[6]] text-input',
       :onkeyup => "PasswordLength(value);" %>
       <p id="password-input-length">0文字</p>
       
