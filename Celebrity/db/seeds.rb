@@ -83,7 +83,9 @@ User.create(name: '大谷 翔平',
             password_confirmation: 'password',
             admin: false,
             existence: true,
-            line_id: 98765)
+            line_id: 98765,
+            venture_user: true,
+            free_engineer_user: false)
             
 # 一般 user
 User.create(name: 'ベーブルース',
@@ -93,8 +95,21 @@ User.create(name: 'ベーブルース',
             password_confirmation: 'password',
             admin: false,
             existence: true,
-            line_id: 43210)
-
+            line_id: 43210,
+            venture_user: false,
+            free_engineer_user: true)
+            
+# 一般 user
+User.create(name: '松坂 大輔',
+            nickname: '平成の怪物',
+            email: 'matsu@gmail.com',
+            password: 'password',
+            password_confirmation: 'password',
+            admin: false,
+            existence: true,
+            line_id: 12345,
+            venture_user: true,
+            free_engineer_user: true)
 
 User.where(id: 1..2).each do |user|
     HtmlCssStatus.create(user_id: user.id)
@@ -105,7 +120,7 @@ User.where(id: 1..2).each do |user|
     UserMovieStatus.create(user_id: user.id)
 end 
 
-User.where(id: 3..4).each do |user|
+User.where(id: 3..5).each do |user|
     for i in 1..Movie.where(movie_category_id: MovieCategory.where(must_view: true).ids).count
     Feedback.create(feedback: 'a'*100, movie_id: i, user_id: user.id)
     end
