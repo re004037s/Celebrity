@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'skillsheets/index'
   get 'skillsheets/download'
   get 'skillsheets/update_skillsheet'
+  get 'skillsheets/search'#追記
   resources :users do
       member do
         get 'get_image'
