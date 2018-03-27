@@ -1,0 +1,2 @@
+class DefectForm < ApplicationRecord
+end
