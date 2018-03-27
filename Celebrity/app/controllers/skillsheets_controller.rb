@@ -64,7 +64,6 @@ class SkillsheetsController < ApplicationController
     @user = current_user
     render action: :index
     #@status = params[:status]いとう
-    #render 'skillsheets/index'いとう
   end
 
   private

@@ -42,7 +42,7 @@
          <%= check_box_tag "status[]", "就業中" %>
          <%= label_tag :status, "就業中" %><br>
          
-         <!-- hidden_field(オブジェクト名, プロパティ名 [, オプション]) いとう-->
+         
          <%= submit_tag '検索'%><p>
        <% end %>
       <tr>
@@ -60,15 +60,31 @@
         <% if user.existence %>
           <tr>
             <td><%= user.nickname %></td>
-              <% if current_user.admin %>
+              <!--　アドミんの場合はユーザーのフルネームを表示させる -->
+            <% if current_user.admin %>
                 <td><%= link_to user.name, user_path(user, user_id: user.id) %></td>
               <% end %>
-            <td>
-              <% if user.skillsheet == nil %>      
-                未登録
+            
+            <!-- 未登録（デフォルト）の場合はリンクを生成せずに次のループへ -->
+            <% if is_skillsheet_default?(user.skillsheet_name) %>
+              <td><%= "#{user.skillsheet_name}" %></td>
+              <% next %>
+            <% end %>
+            <!-- アドミンの場合は全てのユーザーのスキルシートへアクセスできる -->
+            <% if current_user.admin %>
+              <td><%= link_to "#{user.skillsheet_name}", get_skillsheet_path(user_id: user.id) %></td>
+              <% next %>
+            <% end %>
+            
+            <!-- 一般ユーザーは自分のスキルシートにのみアクセスできる -->
+            <% if is_my_skill_sheet?(user.id) %>
+              <td><%= link_to "#{user.skillsheet_name}", get_skillsheet_path(user_id: user.id) %></td>
               <% else %>
-                <%= link_to "#{user.skillsheet_name}", get_skillsheet_path(user_id: user.id) %>
-              <% end %>
+            
+            
+            <!-- 一般ユーザーからみたアドミン(登録済み)のスキルシート -->
+            <td><%= "#{user.skillsheet_name}" %></td>
+            <% end %>
             </td>
             <td>
               <%= form_for user, :url => { :controller => :skillsheets, :action => :update_business_status } do |f| %>
@@ -79,6 +95,7 @@
                 <% end %>
                 <%= submit_tag "登録", size: 25 %>
                 <!-- ここでhiddenタグを使う。目的：current_user.idをパラメータに含めて送信する　-->
+                <!-- hidden_field(オブジェクト名, プロパティ名 [, オプション]) いとう-->
                 <%= f.hidden_field :user_id, value: current_user.id %>
               <% end %>
             </td>
