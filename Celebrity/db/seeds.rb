@@ -109,7 +109,6 @@ User.create(name: 'ゲストユーザー',
             line_id: 23456,
             guest: true)
 
-
 User.where(id: 1..2).each do |user|
     HtmlCssStatus.create(user_id: user.id)
     JavascriptStatus.create(user_id: user.id)
@@ -117,18 +116,6 @@ User.where(id: 1..2).each do |user|
     RubyonrailsStatus.create(user_id: user.id)
     RailstutorialStatus.create(user_id: user.id)
     UserMovieStatus.create(user_id: user.id)
-end 
-
-User.where(id: 3..4).each do |user|
-    for i in 1..Movie.where(movie_category_id: MovieCategory.where(must_view: true).ids).count
-    Feedback.create(feedback: 'a'*100, movie_id: i, user_id: user.id)
-    end
-    HtmlCssStatus.create(user_id: user.id, schedule_date: '2019-01-01')
-    JavascriptStatus.create(user_id: user.id, schedule_date: '2019-01-01')
-    RubyStatus.create(user_id: user.id, schedule_date: '2019-01-01')
-    RubyonrailsStatus.create(user_id: user.id, schedule_date: '2019-01-01')
-    RailstutorialStatus.create(user_id: user.id, schedule_date: '2019-01-01')
-    UserMovieStatus.create(user_id: user.id, schedule_date: '2019-01-01')
 end
 
 User.where(id: 5).each do |user|
@@ -138,4 +125,5 @@ User.where(id: 5).each do |user|
     RubyonrailsStatus.create(user_id: user.id)
     RailstutorialStatus.create(user_id: user.id)
     UserMovieStatus.create(user_id: user.id)
-end 
+end  
+

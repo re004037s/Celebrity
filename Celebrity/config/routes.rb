@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'skillsheets/index'
   get 'skillsheets/download'
   get 'skillsheets/update_skillsheet'
+  get 'skillsheets/search'#追記
   resources :users do
       member do
         get 'get_image'
@@ -29,10 +30,11 @@ Rails.application.routes.draw do
   resources :movie_categories do
     get 'sort', on: :collection
   end
-  resources :qiita_posts
-  resources :interview_posts
+    
   resources :skillsheets
   get '/get_skillsheet', to: 'skillsheets#get_skillsheet'
+  get '/index', to: 'skillsheets#index'
+  patch '/update_business_status', to: 'skillsheets#update_business_status'
   resources :terms do
     collection do
       get 'ajax_search'
@@ -44,6 +46,24 @@ Rails.application.routes.draw do
         get 'get_image'
     end
   end
+  
+  resources :qiita_posts do
+    collection do
+        get 'get_image'
+    end
+  end
+  
+  resources :interview_posts do
+    collection do
+        get 'get_image'
+    end
+  end
+  
+  # resources :qiita_posts do
+  #   collection do
+  #       get 'get_image'
+  #   end
+  # end
   
   post '/tag_new', to: 'users#tag_new'
   delete '/tag_delete', to: 'users#tag_delete'
