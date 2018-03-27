@@ -11,7 +11,7 @@ module MovieCategoriesHelper
   
   # 動画カテゴリ毎の閲覧状況を判定
   def before_category_comp?(category)
-    if category.sort_order == 1 || !MovieCategory.find_by(sort_order: category.sort_order - 1).must_view || !MovieCategory.find_by(sort_order: category.sort_order).must_view
+    if category.sort_order == 1 || category.sort_order == MovieCategory.where(must_view: true).where(venture_movie: true).minimum(:sort_order) || !MovieCategory.find_by(sort_order: category.sort_order - 1).must_view || !MovieCategory.find_by(sort_order: category.sort_order).must_view
       return true
     end
     target_movie_ids = MovieCategory.find_by(sort_order: category.sort_order - 1).movies.pluck(:id)

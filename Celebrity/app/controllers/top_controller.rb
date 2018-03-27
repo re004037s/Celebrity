@@ -697,88 +697,29 @@ class TopController < ApplicationController
       end
     end
     
-    # movie_ids = current_user.feedbacks.pluck(:movie_id)
-    # current_user_movie = current_user.user_movie_status
-    
-    if current_user.free_engineer_user && current_user.venture_user
     movie_ids = current_user.feedbacks.pluck(:movie_id)
     current_user_movie = current_user.user_movie_status
-      last_movie_id1 = MovieCategory.where(must_view: true).where(venture_movie: true).where(free_engineer_movie: false).order('sort_order').last.movies.order('sort_order').last.id
-      last_movie_id2 = MovieCategory.where(must_view: true).where(venture_movie: false).where(free_engineer_movie: true).order('sort_order').last.movies.order('sort_order').last.id
-      last_movie_id3 = MovieCategory.where(must_view: true).order('sort_order').last.movies.order('sort_order').last.id
-      if current_user_movie.schedule_date
-        if movie_ids.include?(last_movie_id)
-          @alert_message_mv = ""
-        elsif
-          current_user_movie.schedule_date == Date.today + 3
-          @alert_message_mv = "【完了予定日3日前】"
-        elsif
-          current_user_movie.schedule_date == Date.today + 2
-          @alert_message_mv = "【完了予定日2日前】"
-        elsif
-          current_user_movie.schedule_date == Date.today + 1
-          @alert_message_mv = "【完了予定日1日前】"
-        elsif
-          current_user_movie.schedule_date == Date.today
-          @alert_message_mv = "【本日完了予定日】"
-        elsif
-          current_user_movie.schedule_date < Date.today
-          @alert_message_mv = "【完了予定日を過ぎました】"
-        else
-          @alert_message_mv = ""
-        end
-      end
-    elsif current_user.free_engineer_user
-      movie_ids = current_user.feedbacks.pluck(:movie_id)
-      current_user_movie = current_user.user_movie_status
-      last_movie_id = MovieCategory.where(must_view: true).where(venture_movie: false).where(free_engineer_movie: true).order('sort_order').last.movies.order('sort_order').last.id
-      if current_user_movie.schedule_date
-        if movie_ids.include?(last_movie_id)
-          @alert_message_mv = ""
-        elsif
-          current_user_movie.schedule_date == Date.today + 3
-          @alert_message_mv = "【完了予定日3日前】"
-        elsif
-          current_user_movie.schedule_date == Date.today + 2
-          @alert_message_mv = "【完了予定日2日前】"
-        elsif
-          current_user_movie.schedule_date == Date.today + 1
-          @alert_message_mv = "【完了予定日1日前】"
-        elsif
-          current_user_movie.schedule_date == Date.today
-          @alert_message_mv = "【本日完了予定日】"
-        elsif
-          current_user_movie.schedule_date < Date.today
-          @alert_message_mv = "【完了予定日を過ぎました】"
-        else
-          @alert_message_mv = ""
-        end
-      end
-    elsif current_user.venture_user
-      movie_ids = current_user.feedbacks.pluck(:movie_id)
-      current_user_movie = current_user.user_movie_status
-      last_movie_id = MovieCategory.where(must_view: true).where(venture_movie: true).where(free_engineer_movie: false).order('sort_order').last.movies.order('sort_order').last.id
-      if current_user_movie.schedule_date
-        if movie_ids.include?(last_movie_id)
-          @alert_message_mv = ""
-        elsif
-          current_user_movie.schedule_date == Date.today + 3
-          @alert_message_mv = "【完了予定日3日前】"
-        elsif
-          current_user_movie.schedule_date == Date.today + 2
-          @alert_message_mv = "【完了予定日2日前】"
-        elsif
-          current_user_movie.schedule_date == Date.today + 1
-          @alert_message_mv = "【完了予定日1日前】"
-        elsif
-          current_user_movie.schedule_date == Date.today
-          @alert_message_mv = "【本日完了予定日】"
-        elsif
-          current_user_movie.schedule_date < Date.today
-          @alert_message_mv = "【完了予定日を過ぎました】"
-        else
-          @alert_message_mv = ""
-        end
+    last_movie_id = MovieCategory.where(must_view: true).order('sort_order').last.movies.order('sort_order').last.id
+    if current_user_movie.schedule_date
+      if movie_ids.include?(last_movie_id)
+        @alert_message_mv = ""
+      elsif
+        current_user_movie.schedule_date == Date.today + 3
+        @alert_message_mv = "【完了予定日3日前】"
+      elsif
+        current_user_movie.schedule_date == Date.today + 2
+        @alert_message_mv = "【完了予定日2日前】"
+      elsif
+        current_user_movie.schedule_date == Date.today + 1
+        @alert_message_mv = "【完了予定日1日前】"
+      elsif
+        current_user_movie.schedule_date == Date.today
+        @alert_message_mv = "【本日完了予定日】"
+      elsif
+        current_user_movie.schedule_date < Date.today
+        @alert_message_mv = "【完了予定日を過ぎました】"
+      else
+        @alert_message_mv = ""
       end
     end
   end
