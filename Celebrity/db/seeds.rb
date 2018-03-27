@@ -1,9 +1,10 @@
 # MovieCategoryテーブル
-MovieCategory.create!(name: 'はじめに',               sort_order: 1, must_view: true)
-MovieCategory.create!(name: 'フリーエンジニアとは',   sort_order: 2, must_view: true)
-MovieCategory.create!(name: 'できるエンジニアになる', sort_order: 3, must_view: true)
-MovieCategory.create!(name: '就活編',                 sort_order: 4, must_view: true)
-MovieCategory.create!(name: 'プログラム学習編',       sort_order: 5, must_view: true)
+MovieCategory.create!(name: 'はじめに',               sort_order: 1, must_view: true, venture_movie: false, free_engineer_movie: true)
+MovieCategory.create!(name: 'フリーエンジニアとは',   sort_order: 2, must_view: true, venture_movie: false, free_engineer_movie: true)
+MovieCategory.create!(name: 'できるエンジニアになる', sort_order: 3, must_view: true, venture_movie: false, free_engineer_movie: true)
+MovieCategory.create!(name: '就活編',                 sort_order: 4, must_view: true, venture_movie: false, free_engineer_movie: true)
+MovieCategory.create!(name: 'プログラム学習編',       sort_order: 5, must_view: true, venture_movie: false, free_engineer_movie: true)
+MovieCategory.create!(name: '起業とは',               sort_order: 6, must_view: true, venture_movie: true, free_engineer_movie: false)
 
 # Movieテーブル
 Movie.create!(title: 'まずはじめに',
@@ -54,6 +55,9 @@ Movie.create!(title: 'GitHub講習(3)',
 Movie.create!(title: 'プログラミング演習',
               path: 'https://www.youtube.com/embed/K2FRGtAk6p8',
               movie_category_id: 5, sort_order: 6)
+Movie.create!(title: '月商800万の女性起業家にインタビュー',
+              path: 'https://www.youtube.com/embed/AlOWowUxZw8',
+              movie_category_id: 6, sort_order: 1)
 
 # Admin user
 User.create(name: '鈴木 一郎',
@@ -73,7 +77,9 @@ User.create(name: '松井 秀喜',
             password_confirmation: 'password',
             admin: false,
             existence: true,
-            line_id: 67890)
+            line_id: 67890,
+            venture_user: true,
+            free_engineer_user: false)
 
 # 一般 user
 User.create(name: '大谷 翔平',
@@ -84,8 +90,8 @@ User.create(name: '大谷 翔平',
             admin: false,
             existence: true,
             line_id: 98765,
-            venture_user: true,
-            free_engineer_user: false)
+            venture_user: false,
+            free_engineer_user: true)
             
 # 一般 user
 User.create(name: 'ベーブルース',
@@ -96,7 +102,7 @@ User.create(name: 'ベーブルース',
             admin: false,
             existence: true,
             line_id: 43210,
-            venture_user: false,
+            venture_user: true,
             free_engineer_user: true)
             
 # 一般 user
@@ -111,7 +117,7 @@ User.create(name: '松坂 大輔',
             venture_user: true,
             free_engineer_user: true)
 
-User.where(id: 1..2).each do |user|
+User.where(id: 1..4).each do |user|
     HtmlCssStatus.create(user_id: user.id)
     JavascriptStatus.create(user_id: user.id)
     RubyStatus.create(user_id: user.id)
@@ -120,8 +126,8 @@ User.where(id: 1..2).each do |user|
     UserMovieStatus.create(user_id: user.id)
 end 
 
-User.where(id: 3..5).each do |user|
-    for i in 1..Movie.where(movie_category_id: MovieCategory.where(must_view: true).ids).count
+User.where(id: 5).each do |user|
+    for i in 1..Movie.where(movie_category_id: MovieCategory.where(must_view: true).where(free_engineer_movie: true).ids).count
     Feedback.create(feedback: 'a'*100, movie_id: i, user_id: user.id)
     end
     HtmlCssStatus.create(user_id: user.id, ga_beginner: true, ga_middle: true, ga_advanced: true,
