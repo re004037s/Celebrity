@@ -9,14 +9,14 @@
 .img-feed-btn {
   width: 150px;
   height: auto;
-  padding:0;
-  margin:0;
-  background:none;
-  border:0;
-  font-size:0;
-  line-height:0;
-  overflow:visible;
-  cursor:pointer;  
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: 0;
+  font-size: 0;
+  line-height: 0;
+  overflow: visible;
+  cursor: pointer;  
 }
 
 .img-button {
@@ -25,6 +25,61 @@
   max-width: 100%;
   max-height: 100%;  
 }
+
+// ページネーションリンク（"views/kaminari/*"）
+.custom-pagination {
+  
+  $height: 45px;
+
+  list-style: none;
+  height: $height;
+  margin: 20px auto;
+  letter-spacing: -5px;
+  padding-left: 0; //bootstrap?対策
+  
+  li {
+    display: inline-block;
+    letter-spacing: normal;
+    background-color: #fff;
+    border-left: 1px solid #c0c0c0;
+    border-right: 1px solid #c0c0c0;
+    line-height: $height;
+    vertical-align: top; // レイアウト崩れ防止
+    
+    &:first-child {
+      border-left: 2px solid #c0c0c0;
+    }
+    &:last-child {
+      border-right: 2px solid #c0c0c0;
+    }
+    &.current {
+      background-color: #c0c0c0;
+      * {
+        color: #fff;
+      }
+    }
+    &.first, &.prev, &.next, &.last {
+      * {
+        font-size: 30px;
+      }
+    }
+    
+    span, a {
+      color: #000;
+      font-size: 20px;
+    }
+    
+    span {
+      display: block;
+      margin: 0 12px;
+    }
+    a {
+     text-decoration: none;
+    }
+  }
+  
+}
+
 
 // パネル（panelsの代替）
 .information {
