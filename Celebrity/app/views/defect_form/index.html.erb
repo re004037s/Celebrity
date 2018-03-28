@@ -1,0 +1,42 @@
+<div class="defectforms-index--wrapper">
+  
+  <h2 class="page-title-jp">
+    <span>不具合報告フォーム</span>
+  </h2>
+    
+  <!--投稿フォーム-->
+  <div class="form-wrapper container-fluid">
+    <!--タイトル-->
+    <h4 class="form-title">
+      <span>不具合報告フォーム</span>
+    </h4>
+    <!--フォーム-->
+    <section class="user_info form_balloon">
+      <div id="formvalidations"></div>
+      <%= form_for(@defectform, html: {id: 'form'}) do |f| %>
+        <%= render partial: 'form', locals: {f: f} %>
+      <% end %>
+    </section>
+  </div>
+              <div>
+                <%= form_for defectform,  html: {class: 'form'} do |f| %>
+                  <%= f.label :name, "名前", class: 'txt1' %>
+                  <%= f.text_field :name, class: 'form-control', disabled: true %>
+                  <%= f.label :mail, "メールアドレス", class: 'txt1' %>
+                  <%= f.text_area :mail, :value => defectform.mail, class: 'form-control', disabled: true %>
+                  <%= f.label :type, "種別", class: 'txt1' %>
+                  <%= f.text_area :do, :value => defectform.do, class: 'form-control', disabled: true %>
+                  <%= f.label :contants, "内容", class: 'txt1' %>
+                  <%= f.text_area :contants, :value => defectform.contants, class: 'form-control', disabled: true %>
+                  
+                  <div class="report-form-footer">
+                    <input type="button" class='btn btn-sm btn-default post-regist hide cancel-button'
+                                                                                value='キャンセル' onclick="HTMLRestore(); return false;" />
+                    <span class="timestamp">
+                      <%= date_format(defectform.created_at) %>
+                    </span>
+                    
+                    <%= f.submit '送信', {class: 'btn btn-sm btn-default post-regist hide update-button' } %>
+                                      </div>
+                <% end %>
+                                                      </div>

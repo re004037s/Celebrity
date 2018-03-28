@@ -44,6 +44,12 @@ Rails.application.routes.draw do
     end
   end
   
+  resources :defect_form do 
+    collection do
+        get 'index'
+    end
+  end  
+  
   resources :qiita_posts do
     collection do
         get 'get_image'
@@ -86,6 +92,7 @@ Rails.application.routes.draw do
   get '/qa', to: 'static_pages#qa'
   get '/pdca_post/get_image/:id', to: 'pdca_posts#get_image'
   get '/portfolio_mv', to: 'static_pages#portfolio_mv'
+  get '/defect_form', to: 'defect_form#index'
   patch '/html_css_status', to: 'html_css_statuses#update'
   patch '/html_css_status_schedule', to: 'html_css_statuses#update_schedule', as: 'html_css_schedule'
   patch '/html_css_status_completion', to: 'html_css_statuses#update_completion', as: 'html_css_completion'
