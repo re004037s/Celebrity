@@ -174,19 +174,6 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
 </script>
 <% end %>
   
-  <%# if current_user.try(:admin) %>
-    <%#= form_for(@user, url: post_course_path) do |f| %>
-      <%#= render partial: 'shared/error_messages', locals: { object: @user } %>
-      <%#= f.label :free_engineer_user, "フリーエンジニアコース", class: 'form-entrance--label' %>
-      <%#= f.check_box :free_engineer_user, {class: 'form-entrance--textbox'}, "true", "false" %>
-      
-      <%#= f.label :venture_user, "ITベンチャー起業コース", class: 'form-entrance--label' %>
-      <%#= f.check_box :venture_user, {class: 'form-entrance--textbox'}, "true", "false" %>
-
-      <%#= f.submit "コース変更", class: "btn btn-default active" %>
-    <%# end %>
-  <%# end %>
-  
   <table class="txt1 table-condensed table-status-schedule">
      <tr valign="baseline">
        <td width="80%">
