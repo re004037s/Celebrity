@@ -91,7 +91,7 @@ class MovieCategoriesController < ApplicationController
   private
   
     def movie_category_params
-      params.require(:movie_category).permit(:name, :sort_order, :must_view, :venture_movie, :free_engineer_movie)
+      params.require(:movie_category).permit(:name, :sort_order, :must_view, :subject)
     end
     
     def comp_movies
@@ -105,16 +105,17 @@ class MovieCategoriesController < ApplicationController
     
     def viewing_restriction
       @category = MovieCategory.find_by(id: params[:id])
-      if @category.free_engineer_movie
-        unless current_user.free_engineer_user
-          flash[:danger] = "動画の視聴権限がありません。"
-          redirect_to root_url
+
+        if @category.subject == "free"
+          unless current_user.free_engineer_user
+            flash[:danger] = "動画の視聴権限がありません。"
+            redirect_to root_url
+          end
+        elsif @category.subject == "venture"
+          unless current_user.venture_user
+            flash[:danger] = "動画の視聴権限がありません。"
+            redirect_to root_url
+          end
         end
-      else
-        unless current_user.venture_user
-          flash[:danger] = "動画の視聴権限がありません。"
-          redirect_to root_url
-        end
-      end
     end
 end

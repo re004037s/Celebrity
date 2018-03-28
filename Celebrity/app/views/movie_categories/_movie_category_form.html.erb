@@ -15,17 +15,21 @@
             感想送信を必須にする
           </label>
         </div>
-        <div class="form-inline">
-          <label class="checkbox-inline">
-            <%= f.check_box :venture_movie, {}, 'true', 'false' %>
-            ITベンチャー起業コースの動画
-          </label>
-        </div>
-        <div class="form-inline">
-          <label class="checkbox-inline">
-            <%= f.check_box :free_engineer_movie, {}, 'true', 'false' %>
-            フリーエンジニアコースの動画
-          </label>
+        
+        <div class="form-group">
+          <label class="txt3">コース選択</label>
+          <div class="form-inline">
+            <label class="checkbox-inline">
+              <%= f.radio_button :subject, "free" %>
+              フリーエンジニア養成コース
+            </label>
+          </div>
+          <div class="form-inline">
+            <label class="checkbox-inline">
+              <%= f.radio_button :subject, "venture"%>
+              ITベンチャー起業コース
+            </label>
+          </div>
         </div>
   
         <%= f.submit "登録", class: "btn-log btn btn-default active" %>
@@ -42,4 +46,6 @@
   function NameLength( str ) {
     document.getElementById("name-input-length").innerHTML = str.length + "文字";
   }
+  
+
 </script>

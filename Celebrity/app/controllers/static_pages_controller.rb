@@ -61,17 +61,17 @@ class StaticPagesController < ApplicationController
     
     def comp_progate
       if current_user.free_engineer_user && current_user.venture_user
-        unless Feedback.where(user_id: current_user).count == Movie.where(movie_category_id: MovieCategory.where(must_view: true).ids).count
+        unless Feedback.where(user_id: current_user).count == Movie.where(movie_category_id: MovieCategory.where(must_view: true).where(subject: 'free').ids).count
           flash[:danger] = "先に動画を視聴して下さい"
           redirect_to root_url
         end
       elsif current_user.free_engineer_user
-        unless Feedback.where(user_id: current_user).count == Movie.where(movie_category_id: MovieCategory.where(must_view: true).where(free_engineer_movie: true).ids).count
+        unless Feedback.where(user_id: current_user).count == Movie.where(movie_category_id: MovieCategory.where(must_view: true).where(subject: 'free').ids).count
           flash[:danger] = "先に動画を視聴して下さい"
           redirect_to root_url
         end
       elsif current_user.venture_user
-        unless Feedback.where(user_id: current_user).count == Movie.where(movie_category_id: MovieCategory.where(must_view: true).where(venture_movie: true).ids).count
+        unless Feedback.where(user_id: current_user).count == Movie.where(movie_category_id: MovieCategory.where(must_view: true).where(subject: 'venture').ids).count
           flash[:danger] = "先に動画を視聴して下さい"
           redirect_to root_url
         end
