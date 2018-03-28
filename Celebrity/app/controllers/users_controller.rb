@@ -6,7 +6,6 @@ class UsersController < ApplicationController
   before_action :correct_user_for_edit,
     only:[:edit, :update, :update_picture,:tag_new, :tag_show, :tag_delete]
   before_action :comp_movies_user, only: :show
-  before_action :check_guest_user, only: :show
   
   def index
     @users = User.page(params[:page])
@@ -19,7 +18,8 @@ class UsersController < ApplicationController
     tags = @user.tags.limit(10).pluck(:tag,:id)
     @tags_h = Hash[*tags.flatten]
   end
-
+  
+  
   
   def update_picture
     @user = current_user
@@ -153,10 +153,5 @@ class UsersController < ApplicationController
         flash[:danger] = "先に動画を視聴して下さい"
         redirect_to root_url
       end
-    end
-  
-    def check_guest_user
-      @user = User.find(params[:status]) 
-      redirect_to root_url unless current_user?(@user)
     end
  end
