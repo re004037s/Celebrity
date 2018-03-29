@@ -50,58 +50,68 @@
           <% if current_user.admin %>
             <th width=25% class="table-header">氏名</th>
           <% end %>
-        <th class="table-header">スキルシート</th>
         <th class="table-header">状況</th>
+        <th class="table-header">スキルシート</th>
       </tr>
     </thead>
         
+    <!--　currentuserがadminだったらこのテーブルを表示させる-->
     <tbody>
+      <!--テーブルに表示させたいユーザーを取得、eachで表示させる-->
       <% @existed_normal_users.each do |user| %>
-        <% if user.existence %>
-          <tr>
-            <td><%= user.nickname %></td>
-              <!--　アドミんの場合はユーザーのフルネームを表示させる -->
-            <% if current_user.admin %>
-                <td><%= link_to user.name, user_path(user, user_id: user.id) %></td>
-              <% end %>
-            
-            <!-- 未登録（デフォルト）の場合はリンクを生成せずに次のループへ -->
-            <% if is_skillsheet_default?(user.skillsheet_name) %>
-              <td><%= "#{user.skillsheet_name}" %></td>
-              <% next %>
-            <% end %>
-            <!-- アドミンの場合は全てのユーザーのスキルシートへアクセスできる -->
-            <% if current_user.admin %>
-              <td><%= link_to "#{user.skillsheet_name}", get_skillsheet_path(user_id: user.id) %></td>
-              <% next %>
-            <% end %>
-            
-            <!-- 一般ユーザーは自分のスキルシートにのみアクセスできる -->
-            <% if is_my_skill_sheet?(user.id) %>
-              <td><%= link_to "#{user.skillsheet_name}", get_skillsheet_path(user_id: user.id) %></td>
+        <tr>
+          <td><%= user.nickname %></td>
+          
+          <!--　admin の場合はユーザーのフルネームを表示させる -->
+          <% if current_user.admin %>
+              <td><%= link_to user.name, user_path(user, user_id: user.id) %></td>
+          <% end %>
+          <td>
+            <!--共通-->
+            <%= form_for user, :url => { :controller => :skillsheets, :action => :update_business_status } do |f| %>
+              <% if user.id != current_user.id %>
+                <%= f.select :status,{'未登録': '未登録', '営業中': '営業中', '就業中': '就業中'}, {}, :disabled => true %>
               <% else %>
-            
-            
-            <!-- 一般ユーザーからみたアドミン(登録済み)のスキルシート -->
-            <td><%= "#{user.skillsheet_name}" %></td>
-            <% end %>
-            </td>
-            <td>
-              <%= form_for user, :url => { :controller => :skillsheets, :action => :update_business_status } do |f| %>
-                <% if user.id != current_user.id %>
-                  <%= f.select :status,{'未登録': '未登録', '営業中': '営業中', '就業中': '就業中'}, {}, :disabled => true %>
-                <% else %>
-                  <%= f.select :status,{'未登録': '未登録', '営業中': '営業中', '就業中': '就業中'}, {}, :disabled => false %>
-                <% end %>
-                <%= submit_tag "登録", size: 25 %>
-                <!-- ここでhiddenタグを使う。目的：current_user.idをパラメータに含めて送信する　-->
-                <!-- hidden_field(オブジェクト名, プロパティ名 [, オプション]) いとう-->
-                <%= f.hidden_field :user_id, value: current_user.id %>
+                <%= f.select :status,{'未登録': '未登録', '営業中': '営業中', '就業中': '就業中'}, {}, :disabled => false %>
               <% end %>
-            </td>
-          </tr>
-        <% end %>
+              <%= submit_tag "登録", size: 25 %>
+              <!-- ここでhiddenタグを使う。目的：current_user.idをパラメータに含めて送信する　-->
+              <!-- hidden_field(オブジェクト名, プロパティ名 [, オプション]) いとう-->
+              <%= f.hidden_field :user_id, value: current_user.id %>
+            <% end %>
+          </td>
+          
+          <!-- 未登録（デフォルト）の場合はリンクを生成せずに次のループへ -->
+          <% if is_skillsheet_default?(user.skillsheet_name) %>
+            <td><%= "#{user.skillsheet_name}" %></td>
+            <% next %>
+          <% end %>
+          <!-- アドミンの場合は全てのユーザーのスキルシートへアクセスできる -->
+          <% if current_user.admin %>
+            <td><%= link_to "#{user.skillsheet_name}", get_skillsheet_path(user_id: user.id) %></td>
+            <% next %>
+          <% end %>
+          
+          <!-- 一般ユーザーは自分のスキルシートにのみアクセスできる -->
+          <% if is_my_skill_sheet?(user.id) %>
+            <td><%= link_to "#{user.skillsheet_name}", get_skillsheet_path(user_id: user.id) %></td>
+            <% else %>
+          
+          <!-- 一般ユーザーからみたアドミン(登録済み)のスキルシート -->
+          <td><%= "#{user.skillsheet_name}" %></td>
+          <% end %>
+          </td>
+        </tr>
       <% end %>
     </tbody>
+    
+    <!-- guestだったらこのテーブル表示させる-->
+    <tbody>
+      
+    </tbody>
+    
+        
+    
+    
   </table>
 </div>
