@@ -1,9 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-/*ベースカラー*/
-$frame-grey: #373737;
-$background-grey: #f4f4f4;
 
 
 /*定義した変数やクラスのインポート*/
@@ -15,6 +12,11 @@ $background-grey: #f4f4f4;
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300'); //Helvetica Type
 @import url('https://fonts.googleapis.com/css?family=Prata'); //Bodoni72 Type
 
+body { font-family: "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "flopdesign-kana", "Meiryo", "メイリオ", "MS P", sans-serif; }
+
+.sidebar-title { font-family: 'Prata', serif; }
+.page-title { font-family: 'Prata', serif; }
+.nav-ul li { font-family: 'Open Sans', serif; }
 
 /*共通設定のインポート*/
 @import "common";  //全体
@@ -449,7 +451,10 @@ li.first-child {
 
 // ログイン後のトップページ
 .top-index--wrapper {
-  
+  .messages-wrap h4 {
+     color: #f00;
+     white-space: nowrap;
+  }
 }
 
 // 動画管理ページ
