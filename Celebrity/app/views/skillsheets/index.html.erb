@@ -40,8 +40,10 @@
          <%= label_tag :status, "営業中" %>
  
          <%= check_box_tag "status[]", "就業中" %>
-         <%= label_tag :status, "就業中" %><br>
-         
+         <%= label_tag :status, "就業中" %>
+        
+         <%= check_box_tag "status[]", "未経験", "就業中" %>
+         <%= label_tag :status, "全て" %><br>
          
          <%= submit_tag '検索'%><p>
        <% end %>

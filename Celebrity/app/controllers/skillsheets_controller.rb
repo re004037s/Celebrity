@@ -11,8 +11,9 @@ class SkillsheetsController < ApplicationController
   end
   
   def search
+    byebug
     @user = current_user
-    @existed_normal_users = User.page(params[:page]).select{ |u| u.existence == true && u.guest == false && params[:status].include?(u.status)}
+    @existed_normal_users = User.page(params[:page]).select{ |u| u.existence == true && u.guest == false && params[:status].try(:include?, u.status)}
     render action: :index
   end
   
@@ -54,10 +55,10 @@ class SkillsheetsController < ApplicationController
   
   
   def update_business_status
-    @status = User.find_by(status: params[:user][:status])
-    if @status.update(params.require(:user).permit(:status))
-    redirect_to  skillsheets_path
-    end
+    # @status = User.find_by(status: params[:user][:status])
+    # if @status.update(params.require(:user).permit(:status))
+    # redirect_to  skillsheets_path
+    # end
     # @user = current_user
     # @existed_normal_users = User.page(params[:page]).select{ |u| u.existence == true && u.guest == false }
     
