@@ -5,7 +5,9 @@ class UsersController < ApplicationController
   before_action :administrator_user, only: :new
   before_action :correct_user_for_edit,
     only:[:edit, :update, :update_picture,:tag_new, :tag_show, :tag_delete]
-
+  before_action :comp_movies_user, only: :show
+  before_action :check_guest_user
+  
   def index
     @users = User.page(params[:page])
   end
@@ -152,5 +154,7 @@ class UsersController < ApplicationController
         flash[:danger] = "先に動画を視聴して下さい"
         redirect_to root_url
       end
+      
     end
- end
+    
+end

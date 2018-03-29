@@ -55,26 +55,17 @@ class SkillsheetsController < ApplicationController
   
   
   def update_business_status
-    # @status = User.find_by(status: params[:user][:status])
-    # if @status.update(params.require(:user).permit(:status))
-    # redirect_to  skillsheets_path
-    # end
-    # @user = current_user
-    # @existed_normal_users = User.page(params[:page]).select{ |u| u.existence == true && u.guest == false }
+    @user = User.find_by(id: params[:user][:user_id])
+    @new_status = params[:user][:status]
+
+    if @user.update_columns(status: @new_status)
+      flash[:success] = '成功'
+      redirect_to skillsheets_path
+    else
+      flash[:danger] = '失敗'
+      redirect_to skillsheets_path
+    end
     
-    # @user_id = params[:user][:status]
-    # @user_status = params[:user][:user_id]
-    # @user_status = User.update(user_status_params)
-    # if @user_status = User.update(user_status_params)
-      
-    # paramsの中にstatusが入っています。
-    # paramsの中にuser.idがないので、view側でhiddenタグを使って、user.idを送信してください。
-    
-    # 該当カラムの値をupdateしてください
-    # 成功した場合はindex.htmlにページ遷移する
-    # 失敗した場合はindex.htmlをrenderする（たぶん）
-    # render action: :index
-    #@status = params[:status]いとう
   end
 
   private
