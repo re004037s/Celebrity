@@ -6,6 +6,8 @@ MovieCategory.create!(name: '就活編',                 sort_order: 4, must_vie
 MovieCategory.create!(name: 'プログラム学習編',       sort_order: 5, must_view: true, subject: 'free')
 MovieCategory.create!(name: '起業とは',               sort_order: 6, must_view: true, subject: 'venture')
 MovieCategory.create!(name: 'マーケティング',         sort_order: 7, must_view: true, subject: 'venture')
+MovieCategory.create!(name: 'インタビュー',           sort_order: 8, must_view: false, subject: 'free')
+MovieCategory.create!(name: '海外へ',                 sort_order: 9, must_view: false, subject: 'venture')
 
 
 # Movieテーブル
@@ -66,7 +68,13 @@ Movie.create!(title: '成功したいなら若いうちに海外を見た方が�
 Movie.create!(title: '有能と無能のたった一つの違い',
               path: 'https://www.youtube.com/embed/NMCWSKLH1JA',
               movie_category_id: 7, sort_order: 1)
-
+Movie.create!(title: 'フリーエンジニアになった杉本さん',
+              path: 'https://www.youtube.com/embed/-JSiv6FYtb0',
+              movie_category_id: 8, sort_order: 1)
+Movie.create!(title: '海外に行った方がいい理由',
+              path: 'https://www.youtube.com/embed/MvuTQCBE9NU',
+              movie_category_id: 9, sort_order: 1)
+              
 # Admin user
 User.create(name: '鈴木 一郎',
             nickname: 'イチロー',
