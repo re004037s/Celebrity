@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper
   
-  before_action :check_guest_user
+  #before_action :check_guest_user(「このページは動作していません」のエラーになる)
   
   
   def logged_in_user

@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   before_action :correct_user_for_edit,
     only:[:edit, :update, :update_picture,:tag_new, :tag_show, :tag_delete]
   before_action :comp_movies_user, only: :show
-  
+  before_action :check_guest_user
   
   
   def index
