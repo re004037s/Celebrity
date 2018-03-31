@@ -8,7 +8,5 @@ class InterviewPost < ApplicationRecord
     validates :experience, presence: true
     validates :type, presence: true
     validates :day, presence: true
-    validates :summary, presence: true, length: { maximum: 300 }
     validates :question, presence: true, length: { maximum: 1500 }
-    validates :result, presence: true
 end
