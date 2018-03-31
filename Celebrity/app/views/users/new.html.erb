@@ -32,6 +32,12 @@
       <%= f.password_field :password_confirmation, class: 'form-entrance--textbox validate[required,minSize[6]] text-input', :onkeyup => "PasswordConfirmationLength(value);" %>
       <p id="password-confirmation-input-length">0文字</p>
       
+      <%= f.label :venture_user, "ITベンチャー起業コース", class: 'form-entrance--label' %>
+      <%= f.check_box :venture_user, {class: 'form-entrance--textbox'}, "true", "false" %>
+      
+      <%= f.label :free_engineer_user, "フリーエンジニアコース", class: 'form-entrance--label' %>
+      <%= f.check_box :free_engineer_user, {class: 'form-entrance--textbox'}, "true", "false" %>
+      
       <%= f.submit "登録", class: "btn btn-default active btn-block form-kari-button" %>
       <!--画像を差し込む場合は下記を加工してください。-->
       <!--<= image_submit_tag("button_xxxxx.png", class: "form-entrance--button") %>-->
