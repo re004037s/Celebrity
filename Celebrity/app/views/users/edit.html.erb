@@ -30,6 +30,14 @@
         <%= f.label :password_confirmation, "パスワード確認", class: 'form-entrance--label' %>
         <%= f.password_field :password_confirmation, class: 'form-entrance--textbox validate[required,minSize[6]] text-input', :onkeyup => "PasswordConfirmationLength(value);" %>
         <p id="password-confirmation-input-length">0文字</p>
+        
+        <%= f.label :portfolio_path, "ポートフォリオURL" %>
+        <%= f.text_field :portfolio_path, class: 'form-control validate[maxSize[100],custom[url]] text-input', :onkeyup => "PortfolioPathLength(value);" %>
+        <p id="portfolio-path-input-length">0文字</p>
+      
+        <%= f.label :github_path, "GitHubURL" %>
+        <%= f.text_field :github_path, class: 'form-control validate[maxSize[100],custom[url]] text-input', :onkeyup => "GithubPathLength(value);" %>
+        <p id="github-path-input-length">0文字</p>
       <% end %>
       
       <% if current_user.try(:admin) %>
