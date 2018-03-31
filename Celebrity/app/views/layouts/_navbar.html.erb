@@ -16,28 +16,12 @@
       <ul class="nav-ul">
         <li><%= link_to 'TOP', root_path %></li>
         
-<<<<<<< HEAD
         <!--adminのみ表示-->
         <% if current_user.try(:admin) %>
           <li><%= link_to 'MOVIES EDIT', movies_path %></li>
           <li><%= link_to 'INFO EDIT', information_path %></li>
           <li><%= link_to 'SIGN UP', signup_path %></li>
         <% end %>
-=======
-        <nav class="header-menu-list" role="navigation">
-          <!--<nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">-->
-          <ul class="">
-            <% if current_user.try(:admin) %>
-              <li><%= link_to 'MOVIES EDIT', movies_path %></li>
-              <li><%= link_to 'SIGN UP', signup_path %></li>
-              <li><%= link_to 'Information Edit', information_path %></li>
-            <% end %>
-            <li><%= link_to 'SALON MEMBERS', users_path %></li>
-            <li><%= link_to 'MY PAGE', current_user %></li>
-            <li><%= link_to 'LOG OUT', logout_path, method: :delete %></li>
-          </ul>
-        </nav>
->>>>>>> 動画カテゴリの修正
         
         <!--全ユーザー-->
         <li><%= link_to 'SALON MEMBERS', users_path %></li>
