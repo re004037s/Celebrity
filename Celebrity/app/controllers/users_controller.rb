@@ -24,17 +24,6 @@ class UsersController < ApplicationController
     @tags_h = Hash[*tags.flatten]
   end
   
-  # def update_course
-  #   @user = User.find_by(id: params[:id])
-  #   if @user.update_columns(venture_user: params[:venture_user], free_engineer_user: params[:free_engineer_user])
-  #     flash[:success] = 'ユーザ情報を更新しました'
-  #     redirect_to @user 
-  #   else
-  #     flash[:error] = '画像の保存に失敗しました！'
-  #     redirect_to @user  
-  #   end
-  # end
-  
   def update_picture
     @user = current_user
     unless params[:user].try(:[],:picture) == nil

@@ -13,6 +13,7 @@ module ApplicationHelper
   #     return false
   #   end  
   # end
+  #以下に変更しました。
   
   def movie_comp?
     if current_user.free_engineer_user && current_user.venture_user
