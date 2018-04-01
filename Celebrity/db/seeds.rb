@@ -95,10 +95,9 @@ User.create(name: '松井 秀喜',
             admin: false,
             existence: true,
             line_id: 67890,
-            guest: false)
-            venture_user: true,
+            guest: false,
+            venture_user: false,
             free_engineer_user: false)
-
 # 一般 user
 User.create(name: '大谷 翔平',
             nickname: '二刀流',
@@ -108,7 +107,7 @@ User.create(name: '大谷 翔平',
             admin: false,
             existence: true,
             line_id: 98765,
-            guest: false)
+            guest: false,
             venture_user: false,
             free_engineer_user: true)
             
@@ -130,12 +129,7 @@ User.create(name: 'ゲストユーザー',
             password_confirmation: 'password',
             admin: false,
             existence: true,
-<<<<<<< HEAD
-            line_id: 23456,
-            guest: true)
-            line_id: 43210)
-
-=======
+            guest: true,
             line_id: 43210,
             venture_user: true,
             free_engineer_user: true)
@@ -249,7 +243,7 @@ User.create(name: '松井 秀喜',
             admin: false,
             existence: true,
             line_id: 67890,
-            guest: false)
+            guest: false,
             venture_user: true,
             free_engineer_user: false)
 
@@ -262,7 +256,7 @@ User.create(name: '大谷 翔平',
             admin: false,
             existence: true,
             line_id: 98765,
-            guest: false)
+            guest: false,
             venture_user: false,
             free_engineer_user: true)
             
@@ -284,12 +278,7 @@ User.create(name: 'ゲストユーザー',
             password_confirmation: 'password',
             admin: false,
             existence: true,
-<<<<<<< HEAD
-            line_id: 23456,
-            guest: true)
-            line_id: 43210)
-
-=======
+            guest: true,
             line_id: 43210,
             venture_user: true,
             free_engineer_user: true)
@@ -368,5 +357,5 @@ User.where(id: 5).each do |user|
       chapter6: true, chapter7: true, chapter8: true, chapter9: true, chapter10: true, chapter11: true, chapter12: true,
       chapter13: true, chapter14: true, schedule_date: '2019-01-01')
     UserMovieStatus.create(user_id: user.id, schedule_date: '2019-01-01')
+ end
 end
-
