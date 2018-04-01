@@ -3,6 +3,7 @@ class MovieCategoriesController < ApplicationController
   
   before_action :admin_user, only: [:index, :new, :create, :edit, :update, :destroy, :sort]
   before_action :comp_movies, only: :show
+  before_action :viewing_restriction, only: :show
   
   def index
     @categories = MovieCategory.all.order('sort_order')
@@ -90,7 +91,7 @@ class MovieCategoriesController < ApplicationController
   private
   
     def movie_category_params
-      params.require(:movie_category).permit(:name, :sort_order, :must_view)
+      params.require(:movie_category).permit(:name, :sort_order, :must_view, :subject)
     end
     
     def comp_movies
@@ -100,5 +101,21 @@ class MovieCategoriesController < ApplicationController
         flash[:danger] = "先に前の動画を視聴して下さい"
         redirect_to root_url
       end
+    end
+    
+    def viewing_restriction
+      @category = MovieCategory.find_by(id: params[:id])
+
+        if @category.subject == "free"
+          unless current_user.free_engineer_user
+            flash[:danger] = "動画の視聴権限がありません。"
+            redirect_to root_url
+          end
+        elsif @category.subject == "venture"
+          unless current_user.venture_user
+            flash[:danger] = "動画の視聴権限がありません。"
+            redirect_to root_url
+          end
+        end
     end
 end

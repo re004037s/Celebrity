@@ -4,22 +4,25 @@ class UsersController < ApplicationController
   before_action :existence_user, only: [:show, :edit, :update]
   before_action :administrator_user, only: :new
   before_action :correct_user_for_edit,
-    only:[:edit, :update, :update_picture,:tag_new, :tag_show, :tag_delete]
-  before_action :comp_movies_user, only: :show
+    only:[:update_picture,:tag_new, :tag_show, :tag_delete]
   
   def index
     @users = User.page(params[:page])
   end
   
   def show
-    @categories = MovieCategory.where(must_view: true).order('sort_order')
     @user = User.find_by(id: params[:id])
+    if @user.free_engineer_user && @user.venture_user
+      @categories = MovieCategory.where(must_view: true).order('sort_order')
+    elsif @user.free_engineer_user
+      @categories = MovieCategory.where(must_view: true).where(subject: 'free').order('sort_order')
+    elsif @user.venture_user
+      @categories = MovieCategory.where(must_view: true).where(subject: 'venture').order('sort_order')
+    end
     @tags_count = @user.tags.count
     tags = @user.tags.limit(10).pluck(:tag,:id)
     @tags_h = Hash[*tags.flatten]
   end
-  
-  
   
   def update_picture
     @user = current_user
@@ -87,11 +90,20 @@ class UsersController < ApplicationController
   end
   
   def update
-    if @user.update_attributes(user_params)
-      flash[:success] = 'ユーザ情報を更新しました'
-      redirect_to @user
+    if current_user?(@user)
+      if @user.update_attributes(user_params)
+        flash[:success] = 'ユーザ情報を更新しました'
+        redirect_to @user
+      else
+        render 'edit'
+      end
     else
-      render 'edit'
+      if @user.update_columns({venture_user: user_params[:venture_user], free_engineer_user: user_params[:free_engineer_user]})
+        flash[:success] = 'ユーザ情報を更新しました'
+        redirect_to @user
+      else
+        render 'edit'
+      end
     end
   end
   
@@ -106,7 +118,7 @@ class UsersController < ApplicationController
   
     def user_params
       params.require(:user).permit(:name, :nickname, :line_id, :email, :password, :password_confirmation, :portfolio_path,
-        :github_path, :picture_file, :picture, :tag_list, :skillsheet, :skillsheet_name)
+        :github_path, :picture_file, :picture, :tag_list, :skillsheet, :skillsheet_name, :venture_user, :free_engineer_user)
     end
     
     # ログイン済み or 管理ユーザであれば true を返す
@@ -148,4 +160,4 @@ class UsersController < ApplicationController
         redirect_to root_url
       end
     end
- end
+end

@@ -1,9 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-/*ベースカラー*/
-$frame-grey: #373737;
-$background-grey: #f4f4f4;
 
 
 /*定義した変数やクラスのインポート*/
@@ -15,10 +12,15 @@ $background-grey: #f4f4f4;
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300'); //Helvetica Type
 @import url('https://fonts.googleapis.com/css?family=Prata'); //Bodoni72 Type
 
+body { font-family: "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "flopdesign-kana", "Meiryo", "メイリオ", "MS P", sans-serif; }
+
+.sidebar-title { font-family: 'Prata', serif; }
+.page-title { font-family: 'Prata', serif; }
+.nav-ul li { font-family: 'Open Sans', serif; }
 
 /*共通設定のインポート*/
 @import "common";  //全体
-@import "header";  //ヘッダー
+// @import "header";  //ヘッダー
 @import "container";  //メインコンテンツ
 @import "footer";  //フッター
 @import "sidebar";  //サイドバー
@@ -75,6 +77,174 @@ $background-grey: #f4f4f4;
 
 // ＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊
 
+//ヘッダー
+
+.header {
+  position: fixed;
+  top: 0;
+  height: 100px;
+  width: 100%;
+  max-width: 1366px;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.9);
+}
+.content-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+  
+.link-to-top {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  height: 100px;
+  
+  #logo-header {
+    height: 100%;
+    width: auto;
+  }
+}
+
+.nav-button {
+  display: none;
+}
+
+.nav-ul {
+  a {
+    text-decoration: none;
+    font-size: 14px;
+    color: #cecdcd;
+    z-index: 50;
+    
+  }
+  // ゴリゴリ書かないと効かない！？
+  a:link { text-decoration: none; }
+  a:visited { text-decoration: none; }
+  a:hover {background-color: rgba(0, 0, 0, 0) !important; text-decoration: none; }
+  a:active { text-decoration: none; }
+  
+  li {
+    display: inline-block;
+  }
+}
+.nav-wrap.open {
+  display: block;
+}
+.nav-wrap.close {
+  display: none;
+}
+
+// for PC
+@media screen and (min-width: 768px) {
+  .nav-wrap {
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    
+    .nav-ul {
+      background-color: rgba(0, 0, 0, 0);
+    }
+    li {
+      margin: auto 15px;
+    }
+  }
+}
+
+
+
+// for SP (SmartPhone)
+@media screen and (max-width: 767px) {
+  
+  .header {
+    height: 50px;
+  }
+  .link-to-top {
+    height: 65px;
+    top: -8px;
+    left: -10px;
+  }
+  
+  .content {
+    padding: 10px;
+  }
+  .nav-button {
+    display: block;
+    cursor: pointer;
+  }
+  .nav-wrap {
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: none;
+    z-index: 20;
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    height: 100%;
+    .nav-ul {
+      height: 100%;
+      position: relative;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+    li {
+      display: block;
+      margin: 2em 2em;
+      
+      a {
+        font-size: 18px;
+      }
+    }
+  }
+  /*メニューボタンのエフェクト*/
+  .nav-button,
+  .nav-button span {
+    display: inline-block;
+    transition: all 0.4s;
+    box-sizing: border-box;
+  }
+  .nav-button {
+    z-index: 30;
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    // bottom: 0;
+    width: 26px;
+    height: 26px;
+  }
+  .nav-button span {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: #ddd;
+    // border-radius: 4px;
+  }
+  .nav-button span:nth-of-type(1) {
+    top: 0;
+  }
+  .nav-button span:nth-of-type(2) {
+    top: 11px; // ＝（ボタンの高さ/2）ー（バーの幅/2）
+  }
+  .nav-button span:nth-of-type(3) {
+    bottom: 0;
+  }
+  .nav-button.active span:nth-of-type(1) {
+    -webkit-transform: translateY(11px) rotate(-45deg);
+    transform: translateY(11px) rotate(-45deg);
+  }
+  .nav-button.active span:nth-of-type(2) {
+    opacity: 0;
+  }
+  .nav-button.active span:nth-of-type(3) {
+    -webkit-transform: translateY(-11px) rotate(45deg);
+    transform: translateY(-11px) rotate(45deg);
+  }
+}
 
 
 .disabled {
@@ -455,7 +625,10 @@ li.first-child {
 
 // ログイン後のトップページ
 .top-index--wrapper {
-  
+  .messages-wrap h4 {
+     color: #f00;
+     white-space: nowrap;
+  }
 }
 
 // 動画管理ページ

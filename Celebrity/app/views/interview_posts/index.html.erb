@@ -72,32 +72,6 @@
 
   </div>
 </div>
-<<<<<<< HEAD
-
-=======
-<table class="table table-bordered table-striped table-index">
-  <thead>
-    <tr>
-      <th width="30%" class="table-header">案件</th>
-      <th class="table-header">言語</th>
-      <th class="table-header">経験年数</th>
-      <th class="table-header">フリー or 転職</th>
-      <th class="table-header">Posted by</th>
-    </tr>
-  </thead>
-  <% @interviewposts.each do |interviewpost| %>
-    <tbody>
-      <tr>
-        <td class="left"><%= link_to interviewpost.title, interviewpost %></td>
-        <td class="center" style="word-wrap:break-word;"><%= interviewpost.language %></td>
-        <td class="center"><%= interviewpost.experience %></td>
-        <td class="center"><%= interviewpost.type %></td>
-        <td class="center" style="word-wrap:break-word;"><%= interviewpost.user.nickname %></td>
-      </tr>
-    </tbody>
-  <% end %>
-</table>
->>>>>>> feature/add_validation_to_all_pages
 <div class="center">
   <%= paginate @interviewposts %>
 </div>
