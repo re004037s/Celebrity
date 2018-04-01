@@ -61,8 +61,22 @@
         <th class="table-header">スキルシート</th>
       </tr>
     </thead>
-        
+    <% if current_user.guest %>
+<tbody>
+      <!--テーブルに表示させたいユーザーを取得、eachで表示させる-->
+      <% @openning_business_user.each do |obuser| %>
+        <tr>
+          <td><%= obuser.nickname %></td>
+          
+            <td><%= link_to "#{obuser.skillsheet_name}", get_skillsheet_path(obuser_id: obuser.id) %></td>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+    <% end %>    
+
     <!--　currentuserがadminだったらこのテーブルを表示させる-->
+  <% unless current_user.guest %>  
     <tbody>
       <!--テーブルに表示させたいユーザーを取得、eachで表示させる-->
       <% @existed_normal_users.each do |user| %>
@@ -120,6 +134,7 @@
             });
       </script>
     </tbody>
+  <% end %>
     
     <!-- guestだったらこのテーブル表示させる-->
     <tbody>
