@@ -1,17 +1,40 @@
 module ApplicationHelper
     
+  # def movie_comp?
+  #   last_movie = MovieCategory.where(must_view: true).where(free_engineer_movie: true).order('sort_order').last.movies.order('sort_order').last
+  #   if (current_user.feedbacks.find_by(movie_id: last_movie.id))
+  #   # 完了予定日の粒度変更により一旦非表示
+  #   # current_user.html_css_status.schedule_date &&
+  #   # current_user.javascript_status.schedule_date &&
+  #   # current_user.ruby_status.schedule_date &&
+  #   # current_user.rubyonrails_status.schedule_date)
+  #     return true
+  #   else
+  #     return false
+  #   end  
+  # end
+  #以下に変更しました。
+  
   def movie_comp?
-    last_movie = MovieCategory.where(must_view: true).order('sort_order').last.movies.order('sort_order').last
-    if (current_user.feedbacks.find_by(movie_id: last_movie.id))
-    # 完了予定日の粒度変更により一旦非表示
-    # current_user.html_css_status.schedule_date &&
-    # current_user.javascript_status.schedule_date &&
-    # current_user.ruby_status.schedule_date &&
-    # current_user.rubyonrails_status.schedule_date)
-      return true
-    else
-      return false
-    end  
+    if current_user.free_engineer_user && current_user.venture_user
+      if Feedback.where(user_id: current_user).count >= Movie.where(movie_category_id: MovieCategory.where(must_view: true).where(subject: 'free').ids).count
+        return true
+      else
+        return false
+      end
+    elsif current_user.free_engineer_user
+      if Feedback.where(user_id: current_user).count == Movie.where(movie_category_id: MovieCategory.where(must_view: true).where(subject: 'free').ids).count
+        return true
+      else
+        return false
+      end
+    elsif current_user.venture_user
+      if Feedback.where(user_id: current_user).count == Movie.where(movie_category_id: MovieCategory.where(must_view: true).where(subject: 'venture').ids).count
+        return true
+      else
+        return false
+      end
+    end
   end
   
   # アクションを判定して条件分岐（viewのソースを変更）
