@@ -12,7 +12,6 @@ class SkillsheetsController < ApplicationController
   end
   
   def search
-    byebug
     @user = current_user
     @existed_normal_users = User.page(params[:page]).select{ |u| u.existence == true && u.guest == false && params[:status].try(:include?, u.status)}
     render action: :index

@@ -27,23 +27,28 @@
   <table class="table table-bordered table-striped table-index">
     <thead>
 
-      営業状況検索
+      営業状況検索<br>
       <!-- ポスト先のURLを指定する -->
 
-       <%= form_tag( skillsheets_search_path, method: :get ) do %>
+       <%= form_tag( skillsheets_search_path, method: :get ) do%>
        <!-- check_box の:status と labelの:statusが一意に対応する必要がある。 -->
         <!-- 要修正：下記のケースだと就業中のラベルをクリックすると未登録にチェックがついてしまう -->
-         <%= check_box_tag "status[]", "未登録" %>
+         <%= check_box_tag "checkall" %>
+         <%= label_tag :status, "全て" %>
+         
+         <%= check_box_tag "status[]", "未登録", false, class: 'row_check' %>
          <%= label_tag :status, "未登録" %>
  
-         <%= check_box_tag "status[]", "営業中" %>
+         <%= check_box_tag "status[]", "営業中", false, class: 'row_check'  %>
          <%= label_tag :status, "営業中" %>
  
-         <%= check_box_tag "status[]", "就業中" %>
-         <%= label_tag :status, "就業中" %>
-        
-         <%= check_box_tag "status[]", "未経験", "就業中" %>
-         <%= label_tag :status, "全て" %><br>
+         <%= check_box_tag "status[]", "就業中", false, class: 'row_check'  %>
+         <%= label_tag :status, "就業中" %><br>
+         
+         <label><%#= f.check_box :status, "未登録" %></label>
+         <label><%#= f.check_box :status, { class: :row_check} %></label>
+         <label><%#= f.check_box :status, { class: :row_check} %></label>
+         <label><%#= f.check_box :status, { class: :row_check} %></label>
          
          <%= submit_tag '検索'%><p>
        <% end %>
@@ -105,6 +110,15 @@
           </td>
         </tr>
       <% end %>
+      <script>
+      var checkall = document.getElementById('checkall');
+        checkall.addEventListener('click', function () {
+      var checkboxes = document.getElementsByClassName('row_check');
+      for (i in checkboxes) {
+        checkboxes[i].checked = this.checked;
+      }
+            });
+      </script>
     </tbody>
     
     <!-- guestだったらこのテーブル表示させる-->
