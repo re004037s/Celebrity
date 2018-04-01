@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class DefectFormTest < ActiveSupport::TestCase
+class DefectFormsControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end
