@@ -1,7 +1,6 @@
 <div class="sidebar-wrapper">
-  
+  <% unless current_user.guest %>
   <div class="sidebar-title">MENU</div>
-  
   <ul class="sidebar-list">
     <% if current_user.free_engineer_user %>
       <% free_movie_categories.each do |category| %>
@@ -26,4 +25,5 @@
     <li><%= link_to 'IT用語解説', terms_path, class: "#{'disabled' if current_user.try(:guest) }" %></li>
     <li><%= link_to 'PDCA報告', pdca_posts_path, class: "#{'disabled' if current_user.try(:guest) }" %></li>
   </ul>
+  <% end %>
 </div>
