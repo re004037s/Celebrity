@@ -26,10 +26,10 @@
   <br><br><br>
   <table class="table table-bordered table-striped table-index">
     <thead>
+      <% unless current_user.guest %>
 
       営業状況検索<br>
       <!-- ポスト先のURLを指定する -->
-
        <%= form_tag( skillsheets_search_path, method: :get ) do%>
        <!-- check_box の:status と labelの:statusが一意に対応する必要がある。 -->
         <!-- 要修正：下記のケースだと就業中のラベルをクリックすると未登録にチェックがついてしまう -->
@@ -45,19 +45,17 @@
          <%= check_box_tag "status[]", "就業中", false, class: 'row_check'  %>
          <%= label_tag :status, "就業中" %><br>
          
-         <label><%#= f.check_box :status, "未登録" %></label>
-         <label><%#= f.check_box :status, { class: :row_check} %></label>
-         <label><%#= f.check_box :status, { class: :row_check} %></label>
-         <label><%#= f.check_box :status, { class: :row_check} %></label>
-         
          <%= submit_tag '検索'%><p>
        <% end %>
+      <% end %>
       <tr>
         <th width=25% class="table-header">ユーザ名</th>
           <% if current_user.admin %>
             <th width=25% class="table-header">氏名</th>
           <% end %>
+          <% unless current_user.guest %>
         <th class="table-header">状況</th>
+          <% end %>
         <th class="table-header">スキルシート</th>
       </tr>
     </thead>
