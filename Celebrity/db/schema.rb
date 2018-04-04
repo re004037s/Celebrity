@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180313130347) do
+ActiveRecord::Schema.define(version: 20180328114548) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -112,6 +112,7 @@ ActiveRecord::Schema.define(version: 20180313130347) do
     t.datetime "updated_at",                 null: false
     t.integer  "sort_order"
     t.boolean  "must_view",  default: false
+    t.string   "subject"
     t.index ["deleted_at"], name: "index_movie_categories_on_deleted_at", using: :btree
   end
 
@@ -301,10 +302,10 @@ ActiveRecord::Schema.define(version: 20180313130347) do
     t.string   "nickname"
     t.string   "email"
     t.string   "password_digest"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
-    t.boolean  "admin",           default: false
-    t.boolean  "existence",       default: true
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.boolean  "admin",              default: false
+    t.boolean  "existence",          default: true
     t.string   "portfolio_path"
     t.string   "github_path"
     t.binary   "picture_file"
@@ -312,9 +313,17 @@ ActiveRecord::Schema.define(version: 20180313130347) do
     t.datetime "reset_sent_at"
     t.string   "line_id"
     t.binary   "skillsheet"
+<<<<<<< HEAD
     t.string   "skillsheet_name", default: "未登録"
     t.string   "status",          default: "未登録"
     t.boolean  "guest",           default: false
+=======
+    t.string   "skillsheet_name",    default: "未登録"
+    t.string   "status",             default: "未登録"
+    t.boolean  "guest",              default: false
+    t.boolean  "venture_user",       default: false, null: false
+    t.boolean  "free_engineer_user", default: true,  null: false
+>>>>>>> a6508b38d69945bf7cc66433a733dd278f5d1974
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 

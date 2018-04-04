@@ -1,54 +1,52 @@
-<nav class="header navbar navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="header-wrapper">
+<div class="header">
+  <div class="content-wrap">
     
-      <!--▼ロゴ-->
-      <div class="header-logo-wrapper">
-        <%= link_to root_path do %>
-          <%= image_tag "logo_header.png", id: "logo-header", class: "#{'disabled' if current_user.try(:guest) }"%>
-        <% end %>
-      </div>
-      
-      
-      <!--▼リスト-->
-      <div class="header-list-wrapper">
-        
-        <!--▼スマホ用-->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".bs-navbar-collapse">
-            <span class="sr-only">メニュー</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        </div>
-        
-        <nav class="header-menu-list" role="navigation">
-          <!--<nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">-->
-          <ul class="">
-            <% if current_user.try(:admin) %>
-              <li><%= link_to 'MOVIES EDIT', movies_path %></li>
-              <li><%= link_to 'SIGN UP', signup_path %></li>
-            <% end %>
-            <% unless current_user.try(:guest) %>
-            <li><%= link_to 'SALON MEMBERS', users_path, class: "#{'disabled' if current_user.try(:guest) }" %></li>
-            <% end %>
-            <li> 
-              <% if Feedback.where(user_id: current_user).count == 
-                      Movie.where(movie_category_id: MovieCategory.where(must_view: true).ids).count ||
-                      current_user.try(:admin) %>
-                <%= link_to 'MY PAGE', current_user %>
-              <% else %>
-                <sapn style="color: #4d4d4d; font-size: 15px; margin: 25px 10px 0px; cursor: pointer;"
-                title="先に動画を視聴して下さい">MY PAGE</span>
-              <% end %>
-            </li>
-            <li><%= link_to 'LOG OUT', logout_path, method: :delete %></li>
-          </ul>
-        </nav>
-        
-      </div><!--▲リスト-->
+    <!--▼ロゴ-->
+    <%= link_to root_path, class: "link-to-top" do %>
+      <%= image_tag "logo_header.png", id: "logo-header" %>
+    <% end %>
     
+    <div class="nav-button" >
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
+    
+    <nav class="nav-wrap">
+      <ul class="nav-ul">
+        <% unless current_user.try(:guest) %>
+        <li><%= link_to 'TOP', root_path %></li>
+        <% end %>
+        
+        <!--adminのみ表示-->
+        <% if current_user.try(:admin) %>
+          <li><%= link_to 'MOVIES EDIT', movies_path %></li>
+          <li><%= link_to 'INFO EDIT', information_path %></li>
+          <li><%= link_to 'SIGN UP', signup_path %></li>
+        <% end %>
+        
+        <!--全ユーザー-->
+        <% unless current_user.try(:guest) %>
+        <li><%= link_to 'SALON MEMBERS', users_path %></li>
+        <li><%= link_to 'MY PAGE', current_user %></li>
+        <% end %>
+        <li><%= link_to 'LOG OUT', logout_path, method: :delete %></li>
+      </ul>
+    </nav>
+    
   </div>
-</nav>
+</div>
+
+<script>
+  (function() {
+    $('.nav-button').on('click',function(){
+      if( $(this).hasClass('active') ){
+        $(this).removeClass('active');
+        $('.nav-wrap').addClass('close').removeClass('open');
+      }else {
+        $(this).addClass('active');
+        $('.nav-wrap').addClass('open').removeClass('close'); 
+      }
+    });
+  }());
+</script>

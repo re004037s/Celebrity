@@ -1,10 +1,18 @@
-<%= form_tag('/comments/create') do %>
+<%= form_tag('/comments/create', html:{:id => 'comment-form'}) do %>
   <% user_id %>
-  <textarea name="content" cols=35 rows=30 wrap="hard" 
-  placeholder="（例）サロン内メンバーのスケジュールを管理する為のポートフォリオ" required></textarea>
+  <textarea class="validate[required,maxSize[200]] text-input" name="content" cols=35 rows=30 wrap="hard" 
+  placeholder="（例）サロン内メンバーのスケジュールを管理する為のポートフォリオ" required onkeyup="CommentLength(value);"></textarea>
+  <p id="comment-input-length">0文字</p>
   <input name="user_page_id" type="hidden" value=<%= user_id %> >
   <input type="submit" value="投稿する">
 <% end %>
   
+<script>
+  $(document).ready(function(){
+    $("#comment-form").validationEngine();
+  });
   
-  
+  function CommentLength( str ) {
+    document.getElementById("comment-input-length").innerHTML = str.length + "文字";
+  }
+</script>

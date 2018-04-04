@@ -15,29 +15,46 @@
     </div>
   <% end %>
   
-  <% if @category.sort_order == MovieCategory.where(must_view: true).count %>
   
-    <div id="mypage_link" class="<%= hide if !current_user.before_fb_comp?(@category.movies.count + 1, @category.id) && @category.must_view %>">
-      <div class="txt1">
-        おめでとうございます！<br>
-        課題となる動画視聴はこれで完了です。<br>
-        次はProgate完了予定日の登録に進みましょう！<br>
+  <% if (current_user.free_engineer_user && current_user.venture_user) || current_user.venture_user %>
+    <% if @category.sort_order == MovieCategory.where(must_view: true).count %>
+      <div id="mypage_link" class="<%= hide if !current_user.before_fb_comp?(@category.movies.count + 1, @category.id) && @category.must_view %>">
+        <div class="txt1">
+          おめでとうございます！<br>
+          課題となる動画視聴はこれで完了です。<br>
+          次はProgate完了予定日の登録に進みましょう！<br>
+        </div>
+        <p class="text-center">  
+          <%= link_to "完了予定日を登録", current_user, class: "txt1 btn btn-lg btn-default active" %>
+        </p>
       </div>
-      <p class="text-center">  
-        <%= link_to "完了予定日を登録", current_user, class: "txt1 btn btn-lg btn-default active" %>
-      </p>
-    </div>
-    
-  <% elsif @category.sort_order != MovieCategory.count %>
-  
-    <div id="next_category_link" class="<%= hide if !current_user.before_fb_comp?(@category.movies.count + 1, @category.id) && @category.must_view %>">
-      <p class="text-center">
-        <%= link_to "NEXT：#{@next_category.name}", movie_category_path(@next_category), class: "txt1 btn btn-lg btn-default active" %>
-      </p>
-    </div>
-    
+    <% elsif @category.sort_order != MovieCategory.count %>
+      <div id="next_category_link" class="<%= hide if !current_user.before_fb_comp?(@category.movies.count + 1, @category.id) && @category.must_view %>">
+        <p class="text-center">
+          <%= link_to "NEXT：#{@next_category.name}", movie_category_path(@next_category), class: "txt1 btn btn-lg btn-default active" %>
+        </p>
+      </div>
+    <% end %>
+  <% elsif current_user.free_engineer_user %>
+    <% if @category.sort_order == MovieCategory.where(must_view: true).where(subject: 'free').count %>
+      <div id="mypage_link" class="<%= hide if !current_user.before_fb_comp?(@category.movies.count + 1, @category.id) && @category.must_view %>">
+        <div class="txt1">
+          おめでとうございます！<br>
+          課題となる動画視聴はこれで完了です。<br>
+          次はProgate完了予定日の登録に進みましょう！<br>
+        </div>
+        <p class="text-center">  
+          <%= link_to "完了予定日を登録", current_user, class: "txt1 btn btn-lg btn-default active" %>
+        </p>
+      </div>
+    <% elsif @category.sort_order != MovieCategory.count %>
+      <div id="next_category_link" class="<%= hide if !current_user.before_fb_comp?(@category.movies.count + 1, @category.id) && @category.must_view %>">
+        <p class="text-center">
+          <%= link_to "NEXT：#{@next_category.name}", movie_category_path(@next_category), class: "txt1 btn btn-lg btn-default active" %>
+        </p>
+      </div>
+    <% end %>
   <% end %>
-  
 </div>
     
 <script>

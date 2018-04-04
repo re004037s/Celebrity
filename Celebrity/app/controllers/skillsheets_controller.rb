@@ -8,11 +8,12 @@ class SkillsheetsController < ApplicationController
   def index
     @user = current_user
     @existed_normal_users = User.page(params[:page]).select{ |u| u.existence == true && u.guest == false }
+    @openning_business_user = User.page(params[:page]).select{ |u| u.existence == true && u.guest == false && u.status == "営業中" }
   end
   
   def search
     @user = current_user
-    @existed_normal_users = User.page(params[:page]).select{ |u| u.existence == true && u.guest == false && params[:status].include?(u.status)}
+    @existed_normal_users = User.page(params[:page]).select{ |u| u.existence == true && u.guest == false && params[:status].try(:include?, u.status)}
     render action: :index
   end
   
@@ -54,25 +55,26 @@ class SkillsheetsController < ApplicationController
   
   
   def update_business_status
-    # paramsの中にstatusが入っています。
-    # paramsの中にuser.idがないので、view側でhiddenタグを使って、user.idを送信してください。
+    @user = User.find_by(id: params[:user][:user_id])
+    @new_status = params[:user][:status]
+
+    if @user.update_columns(status: @new_status)
+      flash[:success] = '成功'
+      redirect_to skillsheets_path
+    else
+      flash[:danger] = '失敗'
+      redirect_to skillsheets_path
+    end
     
-    # 該当カラムの値をupdateしてください
-    # 成功した場合はindex.htmlにページ遷移する
-    # 失敗した場合はindex.htmlをrenderする（たぶん）
-    
-    @user = current_user
-    render action: :index
-    #@status = params[:status]いとう
-    #render 'skillsheets/index'いとう
   end
 
   private
 
-    
     def skillsheet_params
-
       params.require(:user).permit(:name, :nickname, :file, statuses:[])
-
     end
+    
+    # def user_status_params
+    #   params.require(:)
+    # end
 end

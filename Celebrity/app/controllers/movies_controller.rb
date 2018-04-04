@@ -29,7 +29,6 @@ class MoviesController < ApplicationController
   end
   
   def update
-    @user = user
     @movie = Movie.find_by(id: params[:id])
     before_update_category_id = @movie.movie_category_id
     before_update_sort_order  = @movie.sort_order

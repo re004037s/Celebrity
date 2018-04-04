@@ -1,25 +1,24 @@
-<div class="terms-new--wrapper">
-  <h2 class="page-title">
-    <span>IT用語 新規登録</span>
-  </h2>
-  
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-      <%= form_for(@term) do |f| %>
-        <%= render partial: 'shared/error_messages', locals: {object: @term } %>
-        
-        <%= f.label :name, "用語", class: 'txt1' %>
-        <%= f.text_area :name, class: 'form-control', rows: 2 %>
-        
-        <%= f.label :content, '解説', class: 'txt1 mt_20' %>
-        <%= f.text_area :content, class: 'form-control', rows: 15 %>
-        
-        <%= f.hidden_field :create_user_id, :value => current_user.id %>
-        <%= f.hidden_field :user_id, :value => current_user.id %>
-        <div class="center mt_20">
-          <%= f.submit '登録', {class: 'btn btn-default active post-regist' }%>
-        </div>
-      <% end %>
-    </div>
+<h2 class="page-title">
+  <span>IT用語 新規登録</span>
+</h2>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@term, html:{:id => 'term-new-form'}) do |f| %>
+      <%= render partial: 'form', locals: {f: f} %>
+      
+      <%= f.hidden_field :create_user_id, :value => current_user.id %>
+      <%= f.hidden_field :user_id, :value => current_user.id %>
+      
+      <div class="center mt_20">
+        <%= f.submit '登録', {class: 'btn btn-default active post-regist' }%>
+      </div>
+    <% end %>
   </div>
 </div>
+
+<script>
+  $(document).ready(function(){
+    $("#term-new-form").validationEngine();
+  });
+</script>

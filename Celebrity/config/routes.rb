@@ -68,6 +68,7 @@ Rails.application.routes.draw do
   post '/tag_new', to: 'users#tag_new'
   delete '/tag_delete', to: 'users#tag_delete'
   
+  # patch '/post_course', to:'users#update_course'
   patch '/post_pic', to:'users#update_picture'
   patch '/tag_edit', to:'users#tag_edit' #追加
   patch '/tag_show', to:'users#tag_show' #追加 sugi
@@ -75,6 +76,11 @@ Rails.application.routes.draw do
   patch '/post_skillsheet', to: 'skillsheets#update_skillsheet'
   patch '/register_status', to: 'users#register_status'
   root 'top#index'
+  
+  get '/information', to: 'information#show'
+  post '/information', to: 'information#create', as: 'create_information'
+  patch '/information', to: 'information#update'
+  delete '/information', to: 'information#destroy'
 
   get '/progate', to: 'static_pages#progate'
   post '/progate', to: 'static_pages#progate'

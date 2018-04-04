@@ -755,6 +755,8 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
       <td class="center"><%= count_rails_tutorial(@user) %>章</td>
     </tr>
   </table>
+
+  
   
   <table class="txt1 table-condensed table-status-schedule">
      <tr valign="baseline">
@@ -774,7 +776,7 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
     </tr>
   </table>
   
-  <table class="txt1 table table-bordered table-striped table-condensed table-status">
+  <table class="txt1 table table-bordered table-striped table-condensed table-status" style="table-layout: fixed;">
     <thead>
       <tr>
         <th width=25% class="table-header">動画名</th>
@@ -789,7 +791,7 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
           <tr>
             <td><%= movie.title %></td>
             <td class="center"><%= feedback.present? ? '完了' : '未' %></td>
-            <td><%= feedback.present? ? feedback.feedback : '-' %></td>
+            <td style="word-wrap:break-word;"><%= feedback.present? ? feedback.feedback : '-' %></td>
           </tr>
         </tbody>
       <% end %>
