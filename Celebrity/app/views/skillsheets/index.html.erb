@@ -93,24 +93,7 @@
               <% if user.id != current_user.id %>
                 <%= f.select :status,{'未登録': '未登録', '営業中': '営業中', '就業中': '就業中'}, {}, :disabled => true %>
               <% else %>
-<<<<<<< HEAD
-                <%= link_to "#{user.skillsheet_name}", get_skillsheet_path(user_id: user.id) %>
-              <% end %>
-            </td>
-            <td>
-              <%= form_for user, :url => { :controller => :skillsheets, :action => :update_business_status } do |f| %>
-                <% if user.id != current_user.id %>
-                  <%= f.select :status,{'未登録': '未登録', '営業中': '営業中', '就業中': '就業中'}, {}, :disabled => true %>
-                <% else %>
-                  <%= f.select :status,{'未登録': '未登録', '営業中': '営業中', '就業中': '就業中'}, {}, :disabled => false %>
-                <% end %>
-                <%= f.hidden_field :id, :value => "#{user.id}" %>
-                <%= submit_tag "登録", size: 25 %>
-                <!-- ここでhiddenタグを使う。目的：current_user.idをパラメータに含めて送信する　-->
-                <%= f.hidden_field :user_id, value: current_user.id %>
-=======
                 <%= f.select :status,{'未登録': '未登録', '営業中': '営業中', '就業中': '就業中'}, {}, :disabled => false %>
->>>>>>> a6508b38d69945bf7cc66433a733dd278f5d1974
               <% end %>
               <%= submit_tag "登録", size: 25 %>
               <!-- ここでhiddenタグを使う。目的：current_user.idをパラメータに含めて送信する　-->

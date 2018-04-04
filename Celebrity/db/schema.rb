@@ -66,6 +66,13 @@ ActiveRecord::Schema.define(version: 20180328114548) do
     t.index ["user_id"], name: "index_html_css_statuses_on_user_id", using: :btree
   end
 
+  create_table "information", force: :cascade do |t|
+    t.text     "info"
+    t.date     "display_period"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
   create_table "interview_posts", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "title"
@@ -313,17 +320,11 @@ ActiveRecord::Schema.define(version: 20180328114548) do
     t.datetime "reset_sent_at"
     t.string   "line_id"
     t.binary   "skillsheet"
-<<<<<<< HEAD
-    t.string   "skillsheet_name", default: "未登録"
-    t.string   "status",          default: "未登録"
-    t.boolean  "guest",           default: false
-=======
     t.string   "skillsheet_name",    default: "未登録"
     t.string   "status",             default: "未登録"
     t.boolean  "guest",              default: false
     t.boolean  "venture_user",       default: false, null: false
     t.boolean  "free_engineer_user", default: true,  null: false
->>>>>>> a6508b38d69945bf7cc66433a733dd278f5d1974
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
