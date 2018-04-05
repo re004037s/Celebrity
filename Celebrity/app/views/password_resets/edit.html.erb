@@ -1,3 +1,5 @@
+<% content_for :entrance do %>
+
 <% provide(:title, 'Reset password') %>
 <h2 class="page-title-jp">
   <span>パスワード変更</span>
@@ -39,3 +41,5 @@
   
   $('form').validationEngine({validationEventTrigger:'keyup'});
 </script>
+
+<% end %>
