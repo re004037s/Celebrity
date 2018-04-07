@@ -4,6 +4,7 @@ class MovieCategoriesController < ApplicationController
   before_action :admin_user, only: [:index, :new, :create, :edit, :update, :destroy, :sort]
   before_action :comp_movies, only: :show
   before_action :viewing_restriction, only: :show
+  before_action :check_guest_user
   
   def index
     @categories = MovieCategory.all.order('sort_order')
