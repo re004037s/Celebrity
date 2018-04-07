@@ -69,3 +69,9 @@ ul, li{
   text-align: left;
   list-style-type: none;
 }
+
+input[type=checkbox] {
+  -webkit-transform-origin: right bottom;
+  -webkit-transform: scale( 2 , 2 );
+  margin-left: 20px;
+}
