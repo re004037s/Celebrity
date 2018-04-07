@@ -91,6 +91,7 @@ Rails.application.routes.draw do
   post '/comments/create', to: 'portfolio_comments#create'
   post '/comments/:id/destroy', to: 'portfolio_comments#destroy'
   get '/qa', to: 'static_pages#qa'
+  get '/faq', to: 'static_pages#faq'
   get '/pdca_post/get_image/:id', to: 'pdca_posts#get_image'
   get '/portfolio_mv', to: 'static_pages#portfolio_mv'
   get '/defect_forms/get_image/:id', to: 'defect_forms#get_image'
