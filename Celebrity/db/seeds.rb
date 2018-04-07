@@ -20,6 +20,7 @@ Movie.create!(title: 'フリーランスになるまでの1年計画',
 Movie.create!(title: 'フリーランスエンジニアなった方がいい理由',
               path: 'https://www.youtube.com/embed/ThaP8mxsmjs',
               movie_category_id: 2, sort_order: 1)
+
 Movie.create!(title: 'なぜプログラミング',
               path: 'https://www.youtube.com/embed/lj_PJMauzNU',
               movie_category_id: 2, sort_order: 2)
