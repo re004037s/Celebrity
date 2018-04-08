@@ -23,6 +23,7 @@ gem 'kaminari'
 gem "paranoia", '~> 2.2'
 gem 'jquery-ui-rails'
 gem 'whenever', :require => false
+gem 'slack-api'
 
 
 group :development, :test do
