@@ -19,4 +19,5 @@ production:
 
 test:
   <<: *default
+  encoding: utf-8
   database: celebrity_test
