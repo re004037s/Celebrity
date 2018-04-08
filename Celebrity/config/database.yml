@@ -16,3 +16,7 @@ production:
   database: celebrity_development
   username: postgres
   password:
+
+test:
+  <<: *default
+  database: celebrity_test

@@ -52,6 +52,7 @@ group :test do
   gem 'capybara'                 #ユーザー操作のシュミレータ(Rails5.1以降では標準サポートなのでgemの追加は不要)
   gem "poltergeist"               #テストでJSをサポートするためのドライバ
   gem "database_cleaner"         #テストでJSを実行した後にtestDBをクリーンアップする(Rails5.1ではシステムテストを行う場合不要)
+  gem "spring-commands-rspec" #rspecでspringを使うためのgem
 end
 
 
@@ -59,6 +60,6 @@ group :production do
   gem 'pg', '~> 0.18'
   gem 'therubyracer'
 end
- 
+
 # Windows環境ではtzinfo-dataというgemを含める必要があります
 gem 'tzinfo-data', platforms: [:ruby, :mingw, :mswin, :x64_mingw, :jruby]
