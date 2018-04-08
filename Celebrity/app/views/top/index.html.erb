@@ -53,16 +53,21 @@
   </div>
     
   <!--お知らせ-->
-  <div id="test-popup" class="white-popup mfp-with-anim mfp-hide">
-    <% i = 1 %>
-    <% @information.each do |info| %>
-      <h5 align="left">【お知らせ<%= i %>】</h5>
-      <span type="text">
-        <%= info.info %>
-      </span><br/>
-      <% i = i + 1 %>
-    <% end %>
-  </div>
+  <% if !@information.empty? %>
+      <div id="inline-popups">
+        <h4><a id="hoge" href="#test-popup" data-effect="mfp-zoom-in">お知らせ</a></h4>
+      </div>
+    <div id="test-popup" class="white-popup mfp-with-anim mfp-hide">
+      <% i = 1 %>
+      <% @information.each do |info| %>
+        <h5 align="left">【お知らせ<%= i %>】</h5>
+        <span type="text">
+          <%= info.info %>
+        </span><br/>
+        <% i = i + 1 %>
+      <% end %>
+    </div>
+  <% end %>
 
   <script>
     $('#inline-popups').magnificPopup({
@@ -114,8 +119,22 @@
           まだ視聴していない動画はありませんか！？
         </div>
         <ul class="information-list">
-          <% @new_movies.each do |movie| %>
-            <li><%= movie.title %></li>
+          <% if current_user.free_engineer_user && current_user.venture_user %>
+            <% @new_movies.each do |movie| %>
+              <li><%= movie.title %></li>
+            <% end %>
+          <% elsif current_user.free_engineer_user %>
+            <% @new_movies.each do |movie| %>
+              <% if MovieCategory.find(movie.movie_category_id).subject == 'free' %>
+                <li><%= movie.title %></li>
+              <% end %>
+            <% end %>
+          <% elsif current_user.venture_user %>
+            <% @new_movies.each do |movie| %>
+              <% if MovieCategory.find(movie.movie_category_id).subject == 'venture' %>
+                <li><%= movie.title %></li>
+              <% end %>
+            <% end %>
           <% end %>
         </ul>
         

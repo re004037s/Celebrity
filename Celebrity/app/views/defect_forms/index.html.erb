@@ -1,0 +1,36 @@
+<div class="defectforms-index--wrapper">
+  
+   <h2 class="page-title-jp">
+     <span>不具合報告フォーム</span>
+   </h2>
+    
+  <!--投稿フォーム-->
+  <div class="form-wrapper container-fluid">
+    <!--タイトル-->
+    <h4 class="form-title">
+      <span>不具合報告フォーム</span>
+    </h4>
+  <div>
+    <h5>
+      お名前&nbsp;&nbsp;&nbsp;&nbsp;:  <%= current_user.name %>
+    </h5>
+    
+    <h5>
+      アドレス&nbsp;: <%= current_user.email %>
+    </h5>
+    
+  </div>
+    <%= form_tag({ :controller => 'defect_forms', :action => 'notify_to_slack' }, { :method => :post, :id => '' }) do %>
+    <h5>種別&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;
+    <%= select_tag :type, options_for_select(
+    ['デザインの不具合', '表示されない', '更新されない','読み込みが遅い','ファイルがアップロード出来ない','その他'], 
+    class: 'select_action')  %>
+    </h5>
+    
+    <h5>内容&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;
+    <%= text_area :contents, :contents, placeholder: "投稿内容を記入してください。" , class: 'form-control'%>
+    </h5>  
+    <%= submit_tag '送信する' , class: "btn btn-primary"  %>
+    <% end %>
+  </div>
+</div>
