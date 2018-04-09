@@ -18,8 +18,10 @@ class ApplicationController < ActionController::Base
   end
   
   def check_guest_user
-    flash[:danger] = 'ゲストユーザーには閲覧権限がありません'
-    redirect_to controller: 'skillsheets', action: 'index' if guest_user?
+    if guest_user?
+     flash[:danger] = 'ゲストユーザーには閲覧権限がありません'
+     redirect_to controller: 'skillsheets', action: 'index'
+    end
   end
   
 end
