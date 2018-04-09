@@ -28,7 +28,7 @@
     <thead>
       <% unless current_user.guest %>
 
-      営業状況検索<br>
+      営業状況検索<br><br>
       <!-- ポスト先のURLを指定する -->
        <%= form_tag( skillsheets_search_path, method: :get ) do%>
        <!-- check_box の:status と labelの:statusが一意に対応する必要がある。 -->
@@ -48,6 +48,7 @@
          <%= submit_tag '検索'%><p>
        <% end %>
       <% end %>
+      <br>
       <tr>
         <th width=25% class="table-header">ユーザ名</th>
           <% if current_user.admin %>

@@ -1,5 +1,5 @@
 <div class="sidebar-wrapper">
-  <% unless current_user.guest %>
+  
   <div class="sidebar-title">MENU</div>
   <ul class="sidebar-list">
     <% if current_user.free_engineer_user %>
@@ -13,7 +13,7 @@
       <% end %>
     <% end %>
    
-   
+   <% unless current_user.guest %>
     <li><%= link_to 'Progate進捗入力', progate_path, class: "#{'disabled' unless movie_comp?}" %></li>
     <!--<li><%#= link_to 'Progate進捗入力', progate_path %></li>-->
     <li><%= link_to 'RailsTutorial進捗入力', railstutorial_path, class: "#{'disabled' unless progatetask_tutolialday_comp?}" %></li>
@@ -24,9 +24,9 @@
     <li><%= link_to 'スキルシート一覧', skillsheets_path %></li>
     <li><%= link_to 'IT用語解説', terms_path, class: "#{'disabled' if current_user.try(:guest) }" %></li>
     <li><%= link_to 'PDCA報告', pdca_posts_path, class: "#{'disabled' if current_user.try(:guest) }" %></li>
-    <li><%= link_to 'IT用語解説', terms_path %></li>
-    <li><%= link_to 'PDCA報告', pdca_posts_path %></li>
     <li><%= link_to '不具合報告', defect_forms_path  %></li>
-  </ul>
   <% end %>
+    <li><%= link_to 'スキルシート一覧', skillsheets_path %></li>
+  </ul>
+  
 </div>
