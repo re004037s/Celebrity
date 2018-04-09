@@ -101,13 +101,31 @@ module UsersHelper
   end
   
   def percent_movie(user)
-    enable_movies    = Movie.where(movie_category_id: MovieCategory.where(must_view: true).try(:pluck,:id))
-    movie_count      = enable_movies.try(:count)
-    enable_movie_ids = enable_movies.try(:pluck,:id)
-    sent_count       = user.feedbacks.where(movie_id: enable_movie_ids).try(:count)
-
-    return 0 if movie_count == 0 || movie_count.nil?
-    return sent_count * 100 / movie_count
+    if user.free_engineer_user && user.venture_user
+      enable_movies    = Movie.where(movie_category_id: MovieCategory.where(must_view: true).try(:pluck,:id))
+      movie_count      = enable_movies.try(:count)
+      enable_movie_ids = enable_movies.try(:pluck,:id)
+      sent_count       = user.feedbacks.where(movie_id: enable_movie_ids).try(:count)
+  
+      return 0 if movie_count == 0 || movie_count.nil?
+      return sent_count * 100 / movie_count
+    elsif user.free_engineer_user
+      enable_movies    = Movie.where(movie_category_id: MovieCategory.where(must_view: true).where(subject: 'free').try(:pluck,:id))
+      movie_count      = enable_movies.try(:count)
+      enable_movie_ids = enable_movies.try(:pluck,:id)
+      sent_count       = user.feedbacks.where(movie_id: enable_movie_ids).try(:count)
+  
+      return 0 if movie_count == 0 || movie_count.nil?
+      return sent_count * 100 / movie_count
+    elsif user.venture_user
+      enable_movies    = Movie.where(movie_category_id: MovieCategory.where(must_view: true).where(subject: 'venture').try(:pluck,:id))
+      movie_count      = enable_movies.try(:count)
+      enable_movie_ids = enable_movies.try(:pluck,:id)
+      sent_count       = user.feedbacks.where(movie_id: enable_movie_ids).try(:count)
+  
+      return 0 if movie_count == 0 || movie_count.nil?
+      return sent_count * 100 / movie_count
+    end
   end
 
 end
