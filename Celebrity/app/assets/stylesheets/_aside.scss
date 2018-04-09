@@ -1,0 +1,27 @@
+// アコーディング用
+.accordion-item {
+  position: relative;
+  border-bottom:1px solid #ccc;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.question {
+  font-size: 18px;
+  margin: 6px;
+  padding: 10px;
+}
+
+.accordion-item span {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  color: #B3B3B3;
+  font-size: 20px;
+}
+
+.answer {
+  display: none;
+  background-color: #E6E6E6;
+  margin-left: 2em;
+}
