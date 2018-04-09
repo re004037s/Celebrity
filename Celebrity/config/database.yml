@@ -19,5 +19,6 @@ production:
 
 test:
   <<: *default
+  template: template0
   encoding: utf-8
   database: celebrity_test
