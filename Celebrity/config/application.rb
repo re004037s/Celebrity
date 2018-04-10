@@ -19,5 +19,12 @@ module Celebrity
     config.autoload_paths += %W(#{config.root}/lib)
     config.enable_dependency_loading = true
     config.i18n.default_locale = :ja
+
+    config.generators do |g|
+      g.test_framework :rspec,
+      fixtures: false, #テストデータベースにレコードを作成するファイルの作成をスキップ(factoryを使うため)
+      view_specs: false, #フィーチャースペックを使うのでビュースペックを作成しないことを指定
+      routing_specs: false #ルーティングのスペックを作成しないことを指定
+    end
   end
 end

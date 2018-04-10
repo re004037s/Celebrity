@@ -16,9 +16,11 @@
       <li>③「登録する」ボタンを押すと、スキルシートが自分の欄に登録されます<li>
     </ul>
     <div class="mg_auto wh_30">
-    <%= form_for(@user, url: post_skillsheet_path, multipart: true, :id => 'form_id' ) do |f| %>
-      <%= f.file_field :file %><br>
-      <%= f.submit '登録する', id: 'fileuploader', class: 'btn btn-primary active fileuploader', data:{disable_with:'cannot upload…'} %>
+    <% unless current_user.guest %>
+      <%= form_for(@user, url: post_skillsheet_path, multipart: true, :id => 'form_id' ) do |f| %>
+        <%= f.file_field :file %><br>
+        <%= f.submit '登録する', id: 'fileuploader', class: 'btn btn-primary active fileuploader', data:{disable_with:'cannot upload…'} %>
+      <% end %>
     <% end %>
     </div>
   </div>
@@ -91,10 +93,11 @@
             <%= form_for user, :url => { :controller => :skillsheets, :action => :update_business_status } do |f| %>
               <% if user.id != current_user.id %>
                 <%= f.select :status,{'未登録': '未登録', '営業中': '営業中', '就業中': '就業中'}, {}, :disabled => true %>
+                <%= submit_tag "登録", size: 25, :disabled => true %>
               <% else %>
                 <%= f.select :status,{'未登録': '未登録', '営業中': '営業中', '就業中': '就業中'}, {}, :disabled => false %>
+                <%= submit_tag "登録", size: 25, :disabled => false %>
               <% end %>
-              <%= submit_tag "登録", size: 25 %>
               <!-- ここでhiddenタグを使う。目的：current_user.idをパラメータに含めて送信する　-->
               <!-- hidden_field(オブジェクト名, プロパティ名 [, オプション]) いとう-->
               <%= f.hidden_field :user_id, value: current_user.id %>
