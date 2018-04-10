@@ -12,7 +12,7 @@ $(function() {
       //出ている部分をスライドアップして隠す
       $answer.slideUp();
       //横っちょにある開閉ボタンを↓に変える
-      $(this).children('span').text('↓');
+      $(this).children('span').text('∨');
     }
     else {
       //出隠れ部分が隠れている場合の処理
@@ -22,7 +22,7 @@ $(function() {
       //出す部分をスライドダウンして表示させる
       $answer.slideDown();
       //横っちょにある開閉ボタンを↑に変える
-      $(this).children('span').text('↑');
+      $(this).children('span').text('∧');
     }
   });
 });

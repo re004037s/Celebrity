@@ -4,8 +4,8 @@
          
   <ul class="sidebar-list">
     <div class="accordion-item mdl-list__item">
-      <h4 class="question">動画一覧</h4>
-      <span>↓</span>
+      <div class="question">動画一覧</div>
+      <span>∨</span>
 			<div class="answer">
       <% if current_user.free_engineer_user %>
         <% free_movie_categories.each do |category| %>
@@ -20,7 +20,6 @@
       </div>
 		</div>
     <li><%= link_to 'Progate進捗入力', progate_path, class: "#{'disabled' unless movie_comp?}" %></li>
-    <!--<li><%#= link_to 'Progate進捗入力', progate_path %></li>-->
     <li><%= link_to 'RailsTutorial進捗入力', railstutorial_path, class: "#{'disabled' unless progatetask_tutolialday_comp?}" %></li>
     <li><%= link_to 'ポートフォリオの作り方', portfolio_mv_path, class: "#{'disabled' unless railstutorial_comp?}" %></li>
     <li><%= link_to 'よくある質問', qa_path %></li>
