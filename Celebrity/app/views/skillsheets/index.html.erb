@@ -93,10 +93,11 @@
             <%= form_for user, :url => { :controller => :skillsheets, :action => :update_business_status } do |f| %>
               <% if user.id != current_user.id %>
                 <%= f.select :status,{'未登録': '未登録', '営業中': '営業中', '就業中': '就業中'}, {}, :disabled => true %>
+                <%= submit_tag "登録", size: 25, :disabled => true %>
               <% else %>
                 <%= f.select :status,{'未登録': '未登録', '営業中': '営業中', '就業中': '就業中'}, {}, :disabled => false %>
+                <%= submit_tag "登録", size: 25, :disabled => false %>
               <% end %>
-              <%= submit_tag "登録", size: 25 %>
               <!-- ここでhiddenタグを使う。目的：current_user.idをパラメータに含めて送信する　-->
               <!-- hidden_field(オブジェクト名, プロパティ名 [, オプション]) いとう-->
               <%= f.hidden_field :user_id, value: current_user.id %>
