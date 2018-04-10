@@ -76,7 +76,11 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new(user_params)
-    if @user.save
+    if @user.try(:guest)
+      @user.save
+      log_in @user
+      redirect_to skillsheets_path and return
+    elsif @user.save
       # 作成ユーザに紐付く進捗テーブルレコードの作成（nil回避）
       HtmlCssStatus.create(user_id: @user.id)
       JavascriptStatus.create(user_id: @user.id)
@@ -88,7 +92,7 @@ class UsersController < ApplicationController
       log_in @user
       flash[:success] = 'Welcome to the セレブエンジニアサロン'
       redirect_to root_path
-    else
+    elsif
       render 'new'
     end
   end
