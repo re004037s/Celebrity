@@ -47,7 +47,7 @@
             <td><%= count_rails_tutorial(user) %>章完了</td>
             <td>
               <div class="td-wrap">
-                <% if user.try(:portfolio_path).nil? %>
+                <% if user.try(:portfolio_path).blank? %>
                   <div>
                     <%= image_tag "button_portfolio1.png", class: 'img-button' %>
                   </div>
@@ -68,7 +68,7 @@
             </td>
             <td>
               <div class="td-wrap">
-                <% if user.try(:github_path).nil? %>
+                <% if user.try(:github_path).blank? %>
                   <%= image_tag "button_github1.png", class: 'img-button' %>
                 <% else %>
                   　<%= link_to user.github_path, target: '_blank' do %>
