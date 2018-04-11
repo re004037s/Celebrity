@@ -53,9 +53,7 @@
       <br>
       <tr>
         <th width=25% class="table-header">ユーザ名</th>
-          <% if current_user.admin %>
             <th width=25% class="table-header">氏名</th>
-          <% end %>
           <% unless current_user.guest %>
         <th class="table-header">状況</th>
           <% end %>
@@ -68,7 +66,7 @@
       <% @openning_business_user.each do |obuser| %>
         <tr>
           <td><%= obuser.nickname %></td>
-          
+          <td><%= link_to obuser.name, user_path(obuser, obuser_id: obuser.id) %></td>
             <td><%= link_to "#{obuser.skillsheet_name}", get_skillsheet_path(obuser_id: obuser.id) %></td>
           </td>
         </tr>
@@ -76,7 +74,6 @@
     </tbody>
     <% end %>    
 
-    <!--　currentuserがadminだったらこのテーブルを表示させる-->
   <% unless current_user.guest %>  
     <tbody>
       <!--テーブルに表示させたいユーザーを取得、eachで表示させる-->
@@ -84,10 +81,7 @@
         <tr>
           <td><%= user.nickname %></td>
           
-          <!--　admin の場合はユーザーのフルネームを表示させる -->
-          <% if current_user.admin %>
               <td><%= link_to user.name, user_path(user, user_id: user.id) %></td>
-          <% end %>
           <td>
             <!--共通-->
             <%= form_for user, :url => { :controller => :skillsheets, :action => :update_business_status } do |f| %>
