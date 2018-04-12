@@ -6,4 +6,9 @@ module SkillsheetHelper
   def is_skillsheet_default?(user_skillsheet_name)
     return (user_skillsheet_name === "未登録") ? true : false
   end
+  
+  def is_obskillsheet_default?(obuser_skillsheet_name)
+    return (obuser_skillsheet_name === "未登録") ? true : false
+  end
+  
 end

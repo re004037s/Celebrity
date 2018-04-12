@@ -67,6 +67,10 @@
         <tr>
           <td><%= obuser.nickname %></td>
           <td><%= link_to obuser.name, user_path(obuser, obuser_id: obuser.id) %></td>
+          <% if is_obskillsheet_default?(obuser.skillsheet_name) %>
+            <td><%= "#{obuser.skillsheet_name}" %></td>
+            <% next %>
+          <% end %>
             <td><%= link_to "#{obuser.skillsheet_name}", get_skillsheet_path(obuser_id: obuser.id) %></td>
           </td>
         </tr>
@@ -131,14 +135,6 @@
       </script>
     </tbody>
   <% end %>
-    
-    <!-- guestだったらこのテーブル表示させる-->
-    <tbody>
-
-    </tbody>
-    
-        
-    
     
   </table>
 </div>
