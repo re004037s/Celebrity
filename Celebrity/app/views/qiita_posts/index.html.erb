@@ -17,10 +17,10 @@
           </td>
         </tr>
       </tbody>
-      
+        
+      <!--投稿の表示-->
+      <% @qiitaposts.each do |qiitapost| %>
         <tbody class="tr-group">
-          <!--投稿の表示-->
-          <% @qiitaposts.each do |qiitapost| %>
           <tr>
             <!--プロフィール写真-->
             <td class="td-img" rowspan="2">
@@ -47,9 +47,8 @@
               <% end %>
             </td>
           </tr>
-          <% end %>
-          <!--@qiitaposts.each do |qiitapost|-->
         </tbody>
+      <% end %><!--@qiitaposts.each do |qiitapost|-->
     </table>
     
     <div class="center">

@@ -18,9 +18,9 @@
         </tr>
       </tbody>
       
-      <tbody class="tr-group">
-          <!--投稿の表示-->
-          <% @interviewposts.each do |interviewpost| %>
+      <!--投稿の表示-->
+      <% @interviewposts.each do |interviewpost| %>
+        <tbody class="tr-group">
           <tr>
             <!--プロフィール写真-->
             <td class="td-img" rowspan="2">
@@ -60,10 +60,8 @@
               <% end %>
             </td>
           </tr>
-          <% end %><!--@interviewposts.each do |interviewpost|-->
         </tbody>
-        
-      
+      <% end %><!--@interviewposts.each do |interviewpost|-->
     </table>
 
   </div>
