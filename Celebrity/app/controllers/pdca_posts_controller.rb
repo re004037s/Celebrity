@@ -30,7 +30,6 @@ class PdcaPostsController < ApplicationController
   end
 
   def destroy
-    debugger
     @pdcapost = PdcaPost.find(params[:id])
     @pdcapost.destroy
     flash[:success] = "PDCA報告が削除されました"
