@@ -59,7 +59,7 @@ class SkillsheetsController < ApplicationController
     @new_status = params[:user][:status]
 
     if @user.update_columns(status: @new_status)
-      flash[:success] = '成功'
+      flash[:success] = 'ステータスを更新しました'
       redirect_to skillsheets_path
     else
       flash[:danger] = '失敗'
