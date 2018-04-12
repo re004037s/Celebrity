@@ -16,8 +16,9 @@ class ApplicationController < ActionController::Base
     redirect_to root_url
   end
   
+  # 画像データの取得
   def show_image
-    @model = params[:model].constantize.find(params[:id])
-    send_data @model[params[:column]], :type => 'image/jpg,image/jpeg,image/png,image/gif', :disposition => 'inline'
+    model = params[:model].constantize.find(params[:id])
+    send_data model[params[:column]], :type => 'image/jpg,image/jpeg,image/png,image/gif', :disposition => 'inline'
   end
 end
