@@ -41,10 +41,6 @@ class QiitaPostsController < ApplicationController
     redirect_to qiita_posts_url
   end
   
-  def get_image
-    @image = User.find(params[:id])
-    send_data(@image.picture_file)
-  end
   
   private
 
