@@ -15,4 +15,9 @@ class ApplicationController < ActionController::Base
     return true if current_user.try(:admin)
     redirect_to root_url
   end
+  
+  def show_image
+    @model = params[:model].constantize.find(params[:id])
+    send_data @model[params[:column]], :type => 'image/jpg,image/jpeg,image/png,image/gif', :disposition => 'inline'
+  end
 end

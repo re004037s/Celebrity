@@ -25,7 +25,7 @@
             <!--プロフィール写真-->
             <td class="td-img" rowspan="2">
               <% if interviewpost.user.picture_file %>
-                <%= image_tag("/interview_posts/get_image/?id=#{interviewpost.user.id}", :class => "icon") %>
+                <%= image_tag(url_for(:controller => 'application', :action => 'show_image', :id => interviewpost.user.id,:model => "User", :column => "picture_file"))%>
               <% else %>
                 <%= image_tag('default.png', :class => "icon") %>
               <% end %>

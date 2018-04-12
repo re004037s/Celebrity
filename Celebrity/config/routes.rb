@@ -8,6 +8,10 @@ Rails.application.routes.draw do
 
   get '/login', to:'sessions#new'
   post '/login', to:'sessions#create'
+  
+  # 画像データの取得
+  get '/show_image', to: 'application#show_image'
+  
   delete '/logout', to:'sessions#destroy'
   get 'skillsheets/index'
   get 'skillsheets/download'
