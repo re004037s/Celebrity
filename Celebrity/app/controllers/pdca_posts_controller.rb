@@ -30,17 +30,12 @@ class PdcaPostsController < ApplicationController
   end
 
   def destroy
-    debugger
     @pdcapost = PdcaPost.find(params[:id])
     @pdcapost.destroy
     flash[:success] = "PDCA報告が削除されました"
     redirect_to pdca_posts_url
   end
   
-  def get_image
-    @image = User.find(params[:id])
-    send_data(@image.picture_file)
-  end
     
   private
 
