@@ -1,0 +1,27 @@
+<div class="faq-index--wrapper">
+  
+   <h2 class="page-title-jp">
+     <span>よくある質問作成</span>
+   </h2>
+    
+
+    
+
+    <%= form_tag({ :controller => 'faqs', :action => 'create' }, { :method => :post, :id => '' }) do %>
+    <h5>種別&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;
+    <%= select_tag :type, options_for_select(
+    ['はじめに', 'プロゲート', 'Railsチュートリアル','ポートフォリオ'], 
+    class: 'select_action')  %>
+    </h5>
+    
+    <h5>Q &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;
+    <%= text_area :question, placeholder: "質問を記入してください。" , class: 'form-control'%>
+    </h5>  
+    
+    <h5>A &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;
+    <%= text_area :answer, placeholder: "解答を記入してください。" , class: 'form-control'%>
+    </h5>  
+    <%= submit_tag '作成' , class: "btn btn-primary"  %>
+    <% end %>
+
+</div>
