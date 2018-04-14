@@ -1,5 +1,6 @@
 class PortfolioCommentsController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
+  before_action :check_guest_user
   
   def portfolio
     @user_id =  params[:id]

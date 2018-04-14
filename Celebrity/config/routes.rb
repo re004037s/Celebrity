@@ -16,6 +16,13 @@ Rails.application.routes.draw do
   get 'skillsheets/index'
   get 'skillsheets/download'
   get 'skillsheets/update_skillsheet'
+  get 'skillsheets/search'#追記
+  resources :users do
+      member do
+        get 'get_image'
+        get 'get_skillsheet'
+    end
+  end
   
   resources :pdca_posts
   resources :defect_forms
@@ -34,6 +41,8 @@ Rails.application.routes.draw do
   end
   resources :skillsheets
   get '/get_skillsheet', to: 'skillsheets#get_skillsheet'
+  get '/index', to: 'skillsheets#index'
+  patch '/update_business_status', to: 'skillsheets#update_business_status'
   resources :terms do
     collection do
       get 'ajax_search'
@@ -56,6 +65,7 @@ Rails.application.routes.draw do
   patch '/tag_show', to:'users#tag_show' #追加 sugi
   delete '/delete_tag', to: 'users#tag_delete' #temp post⇨deleteに変更しshow.htmlと統一
   patch '/post_skillsheet', to: 'skillsheets#update_skillsheet'
+  patch '/register_status', to: 'users#register_status'
   root 'top#index'
   
   get '/information', to: 'information#show'

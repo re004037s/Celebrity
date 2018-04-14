@@ -7,6 +7,7 @@ class StaticPagesController < ApplicationController
   before_action :comp_portfolio, only: :portfolio_mv
   before_action :comp_progate, only: :progate
   before_action :comp_railstutorial, only: :railstutorial
+  before_action :check_guest_user
 
   
   def qa
