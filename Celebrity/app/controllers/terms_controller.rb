@@ -1,5 +1,6 @@
 class TermsController < ApplicationController
   before_action :logged_in_user, only: [:index, :new, :edit, :destroy]
+  before_action :check_guest_user
 
   def new
     @term = Term.new

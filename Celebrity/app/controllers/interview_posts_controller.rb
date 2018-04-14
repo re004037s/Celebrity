@@ -1,5 +1,6 @@
 class InterviewPostsController < ApplicationController
   before_action :logged_in_user, only: [:index, :create, :edit, :destroy]
+  before_action :check_guest_user
   
   def index
     @interviewposts = InterviewPost.all.page(params[:page])

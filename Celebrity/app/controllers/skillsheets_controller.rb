@@ -4,9 +4,17 @@ class SkillsheetsController < ApplicationController
   before_action :existence_user, only: [:show, :edit, :update]
   before_action :administrator_user, only: :new
   
+  
   def index
     @user = current_user
-    @users = User.page(params[:page])
+    @existed_normal_users = User.page(params[:page]).select{ |u| u.existence == true && u.guest == false }
+    @openning_business_user = User.page(params[:page]).select{ |u| u.existence == true && u.guest == false && u.status == "営業中" }
+  end
+  
+  def search
+    @user = current_user
+    @existed_normal_users = User.page(params[:page]).select{ |u| u.existence == true && u.guest == false && params[:status].try(:include?, u.status)}
+    render action: :index
   end
   
   def download
@@ -46,16 +54,27 @@ class SkillsheetsController < ApplicationController
   end
   
   
-  def show
-    @users = User.page(params[:page])
+  def update_business_status
+    @user = User.find_by(id: params[:user][:user_id])
+    @new_status = params[:user][:status]
+
+    if @user.update_columns(status: @new_status)
+      flash[:success] = 'ステータスを更新しました'
+      redirect_to skillsheets_path
+    else
+      flash[:danger] = '失敗'
+      redirect_to skillsheets_path
+    end
+    
   end
 
   private
 
-    
     def skillsheet_params
-
-      params.require(:user).permit(:name, :nickname, :file)
-
+      params.require(:user).permit(:name, :nickname, :file, statuses:[])
     end
+    
+    # def user_status_params
+    #   params.require(:)
+    # end
 end
