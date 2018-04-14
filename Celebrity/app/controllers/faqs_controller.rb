@@ -2,6 +2,7 @@ class FaqsController < ApplicationController
     before_action :admin_user, only:[:index, :create, :edit, :delete ]
     
     def index
+        @faq = Question.all
     end
     
     def new
@@ -9,14 +10,14 @@ class FaqsController < ApplicationController
     end
 
     def create
-    #   @faq = Question.new(question_params)
-    #   if @faq.save
-    #      flash[:success] = "作成しました"
-    #      redirect_to faqs_url
-    #   else
-    #      flash[:danger] = "再度入力して下さい"
-    #      redirect_to :back
-    #   end
+        @faq = Question.new(question_params)
+            if @faq.save
+                flash[:success] = "作成しました"
+                redirect_to faqs_url
+            else
+                flash[:danger] = "再度入力して下さい"
+                redirect_to :back
+            end
     end
     
     def edit
@@ -27,7 +28,7 @@ class FaqsController < ApplicationController
     
  private
   def question_params
-      params.require(:question).permit(:question, :answer)
+      params.require(:question).permit(:question, :answer, :category)
   end
     
 end
