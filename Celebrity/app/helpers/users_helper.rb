@@ -127,5 +127,15 @@ module UsersHelper
       return sent_count * 100 / movie_count
     end
   end
-
+  
+  def get_profile_image(user)
+    if user.picture_file
+      routes = Rails.application.routes.url_helpers
+      path = routes.url_for(:controller => 'application', :action => 'show_image', :id => user.id,:model => "User", :column => "picture_file", :only_path => true)
+    else
+      path = 'default.png'
+    end
+    
+    return path
+  end
 end

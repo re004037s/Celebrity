@@ -18,17 +18,13 @@
         </tr>
       </tbody>
       
-      <tbody class="tr-group">
-          <!--投稿の表示-->
-          <% @interviewposts.each do |interviewpost| %>
+      <!--投稿の表示-->
+      <% @interviewposts.each do |interviewpost| %>
+        <tbody class="tr-group">
           <tr>
             <!--プロフィール写真-->
             <td class="td-img" rowspan="2">
-              <% if interviewpost.user.picture_file %>
-                <%= image_tag("/interview_posts/get_image/?id=#{interviewpost.user.id}", :class => "icon") %>
-              <% else %>
-                <%= image_tag('default.png', :class => "icon") %>
-              <% end %>
+                <%= image_tag(get_profile_image(interviewpost.user), :class => "icon") %>
             </td>
             
             <!--メイン情報-->
@@ -64,10 +60,8 @@
               <% end %>
             </td>
           </tr>
-          <% end %><!--@interviewposts.each do |interviewpost|-->
         </tbody>
-        
-      
+      <% end %><!--@interviewposts.each do |interviewpost|-->
     </table>
 
   </div>
