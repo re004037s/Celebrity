@@ -1,0 +1,16 @@
+<div class="faq-index--wrapper">
+  
+   <h2 class="page-title-jp">
+     <span>よくある質問作成</span>
+   </h2>
+    
+<%= form_for(@question) do |f| %>
+  <%= f.label :question %>
+  <%= f.text_area :question %>
+  <%= f.label :answer %>
+  <%= f.text_area :answer %>
+  <%= f.submit "追加" %>
+<% end %>
+
+
+</div>
