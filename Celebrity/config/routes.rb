@@ -98,4 +98,6 @@ Rails.application.routes.draw do
   patch '/railstutorial_status_schedule', to: 'railstutorial_statuses#update_schedule', as: 'railstutorial_schedule'
   patch '/user_movie_status', to: 'user_movie_statuses#update'
   patch '/user_movie_status_schedule', to: 'user_movie_statuses#update_schedule', as: 'user_movie_schedule'
+  
+  match "*path" => "application#handle_404", via: :all
 end
