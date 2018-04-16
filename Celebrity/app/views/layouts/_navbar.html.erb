@@ -14,7 +14,9 @@
     
     <nav class="nav-wrap">
       <ul class="nav-ul">
+        <% unless current_user.try(:guest) %>
         <li><%= link_to 'TOP', root_path %></li>
+        <% end %>
         
         <!--adminのみ表示-->
         <% if current_user.try(:admin) %>
@@ -24,8 +26,10 @@
         <% end %>
         
         <!--全ユーザー-->
+        <% unless current_user.try(:guest) %>
         <li><%= link_to 'SALON MEMBERS', users_path %></li>
         <li><%= link_to 'MY PAGE', current_user %></li>
+        <% end %>
         <li><%= link_to 'LOG OUT', logout_path, method: :delete %></li>
       </ul>
     </nav>

@@ -1,5 +1,6 @@
 class InterviewPostsController < ApplicationController
   before_action :logged_in_user, only: [:index, :create, :edit, :destroy]
+  before_action :check_guest_user
   
   def index
     @interviewposts = InterviewPost.all.page(params[:page])
@@ -44,10 +45,6 @@ class InterviewPostsController < ApplicationController
     redirect_to interview_posts_path
   end
   
-  def get_image
-    @image = User.find(params[:id])
-    send_data(@image.picture_file)
-  end
 
     private
 

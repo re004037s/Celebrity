@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   before_action :administrator_user, only: :new
   before_action :correct_user_for_edit,
     only:[:update_picture,:tag_new, :tag_show, :tag_delete]
+  before_action :check_guest_user  
   
   def index
     @users = User.page(params[:page])
@@ -63,13 +64,30 @@ class UsersController < ApplicationController
     
   end
   
+  #ステータス（未登録・営業中・就業中）を登録する
+  def register_status
+    user = User.find(params[:user][:id])
+    if user.update_columns(status: params[:user][:status])
+      flash[:success] = 'ステータスを保存しました！'
+      redirect_to skillsheets_path
+    else
+      flash[:error] = 'ステータスの保存に失敗しました！'
+      redirect_to skillsheets_path
+    end
+    
+  end
+  
   def new
     @user = User.new
   end
   
   def create
     @user = User.new(user_params)
-    if @user.save
+    if @user.try(:guest)
+      @user.save
+      log_in @user
+      redirect_to skillsheets_path and return
+    elsif @user.save
       # 作成ユーザに紐付く進捗テーブルレコードの作成（nil回避）
       HtmlCssStatus.create(user_id: @user.id)
       JavascriptStatus.create(user_id: @user.id)
@@ -81,7 +99,7 @@ class UsersController < ApplicationController
       log_in @user
       flash[:success] = 'Welcome to the セレブエンジニアサロン'
       redirect_to root_path
-    else
+    elsif
       render 'new'
     end
   end
@@ -117,8 +135,8 @@ class UsersController < ApplicationController
   private
   
     def user_params
-      params.require(:user).permit(:name, :nickname, :line_id, :email, :password, :password_confirmation, :portfolio_path,
-        :github_path, :picture_file, :picture, :tag_list, :skillsheet, :skillsheet_name, :venture_user, :free_engineer_user)
+      params.require(:user).permit(:name, :nickname, :line_id, :email, :guest, :password, :password_confirmation, :portfolio_path,
+        :github_path, :picture_file, :picture, :tag_list, :skillsheet, :skillsheet_name, :venture_user, :free_engineer_user, :guest)
     end
     
     # ログイン済み or 管理ユーザであれば true を返す
@@ -159,5 +177,7 @@ class UsersController < ApplicationController
         flash[:danger] = "先に動画を視聴して下さい"
         redirect_to root_url
       end
+      
     end
+
 end

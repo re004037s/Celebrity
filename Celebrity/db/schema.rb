@@ -320,7 +320,9 @@ ActiveRecord::Schema.define(version: 20180328114548) do
     t.datetime "reset_sent_at"
     t.string   "line_id"
     t.binary   "skillsheet"
-    t.string   "skillsheet_name"
+    t.string   "skillsheet_name",    default: "未登録"
+    t.string   "status",             default: "未登録"
+    t.boolean  "guest",              default: false
     t.boolean  "venture_user",       default: false, null: false
     t.boolean  "free_engineer_user", default: true,  null: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree

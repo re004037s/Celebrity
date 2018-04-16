@@ -20,7 +20,6 @@ Movie.create!(title: 'フリーランスになるまでの1年計画',
 Movie.create!(title: 'フリーランスエンジニアなった方がいい理由',
               path: 'https://www.youtube.com/embed/ThaP8mxsmjs',
               movie_category_id: 2, sort_order: 1)
-
 Movie.create!(title: 'なぜプログラミング',
               path: 'https://www.youtube.com/embed/lj_PJMauzNU',
               movie_category_id: 2, sort_order: 2)
@@ -84,7 +83,8 @@ User.create(name: '鈴木 一郎',
             password_confirmation: 'password',
             admin: true,
             existence: true,
-            line_id: 12345)
+            line_id: 12345,
+            guest: false)
             
 # 一般 user
 User.create(name: '松井 秀喜',
@@ -95,6 +95,7 @@ User.create(name: '松井 秀喜',
             admin: false,
             existence: true,
             line_id: 67890,
+            guest: false,
             venture_user: true,
             free_engineer_user: false)
 
@@ -107,6 +108,7 @@ User.create(name: '大谷 翔平',
             admin: false,
             existence: true,
             line_id: 98765,
+            guest: false,
             venture_user: false,
             free_engineer_user: true)
             
@@ -117,7 +119,18 @@ User.create(name: 'ベーブルース',
             password: 'password',
             password_confirmation: 'password',
             admin: false,
+            existence: false,
+            line_id: 43210,
+            guest: false)
+            
+User.create(name: 'ゲストユーザー',
+            nickname: 'ゲスト',
+            email: 'guest@gmail.com',
+            password: 'password',
+            password_confirmation: 'password',
+            admin: false,
             existence: true,
+            guest: true,
             line_id: 43210,
             venture_user: true,
             free_engineer_user: true)
@@ -134,6 +147,38 @@ User.create(name: '松坂 大輔',
             venture_user: true,
             free_engineer_user: true)
 
+# 一般 user
+User.create(name: '松田 宣浩',
+            nickname: '熱男',
+            email: 'matsuda@gmail.com',
+            password: 'password',
+            password_confirmation: 'password',
+            admin: false,
+            existence: true,
+            line_id: 19835)
+
+# 一般 user
+User.create(name: '三浦 大輔',
+            nickname: 'ハマの番長',
+            email: 'miura@gmail.com',
+            password: 'password',
+            password_confirmation: 'password',
+            admin: false,
+            existence: true,
+            line_id: 19731)
+
+# 一般 user
+User.create(name: '高橋 由伸',
+            nickname: 'ウルフ',
+            email: 'takahashi@gmail.com',
+            password: 'password',
+            password_confirmation: 'password',
+            admin: false,
+            existence: true,
+            line_id: 19754,
+            portfolio_path: 'https://www.yahoo.co.jp/')
+
+User.where(id: 1..2).each do |user|
 User.where(id: 1..4).each do |user|
     HtmlCssStatus.create(user_id: user.id)
     JavascriptStatus.create(user_id: user.id)
@@ -164,5 +209,5 @@ User.where(id: 5).each do |user|
       chapter6: true, chapter7: true, chapter8: true, chapter9: true, chapter10: true, chapter11: true, chapter12: true,
       chapter13: true, chapter14: true, schedule_date: '2019-01-01')
     UserMovieStatus.create(user_id: user.id, schedule_date: '2019-01-01')
+ end
 end
-

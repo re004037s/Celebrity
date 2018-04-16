@@ -38,6 +38,9 @@
       <%= f.label :free_engineer_user, "フリーエンジニアコース", class: 'form-entrance--label' %>
       <%= f.check_box :free_engineer_user, {class: 'form-entrance--textbox'}, "true", "false" %>
       
+      <%= f.label :guest, "ゲスト権限付与", class: 'form-entrance--label' %>
+      <%= f.check_box :guest, {class: 'form-entrance--textbox'}, "true", "false" %>
+      
       <%= f.submit "登録", class: "btn btn-default active btn-block form-kari-button" %>
       <!--画像を差し込む場合は下記を加工してください。-->
       <!--<= image_submit_tag("button_xxxxx.png", class: "form-entrance--button") %>-->

@@ -1,6 +1,7 @@
 class PdcaPostsController < ApplicationController
     before_action :logged_in_user, only: [:index, :create, :edit, :destroy]
     # before_action :correct_user,   only: [:edit, :update, :destroy]
+    before_action :check_guest_user
   
     def index
       @pdcaposts = PdcaPost.all.page(params[:page]).per(15)
@@ -36,10 +37,6 @@ class PdcaPostsController < ApplicationController
     redirect_to pdca_posts_url
   end
   
-  def get_image
-    @image = User.find(params[:id])
-    send_data(@image.picture_file)
-  end
     
   private
 
