@@ -13,7 +13,7 @@ class QuestionsController < ApplicationController
         @question = Question.new(question_params)
             if @question.save
                 flash[:success] = "作成しました"
-                redirect_to question_url
+                redirect_to questions_url
             else
                 flash[:danger] = "再度入力して下さい"
                 redirect_to :back
