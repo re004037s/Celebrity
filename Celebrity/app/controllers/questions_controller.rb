@@ -2,7 +2,7 @@ class QuestionsController < ApplicationController
         before_action :admin_user, only:[:index, :create, :edit, :delete ]
     
     def index
-        @question = Question.all
+        @questions = Question.all
     end
 
     def new
