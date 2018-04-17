@@ -10,9 +10,9 @@
   <table class="table table-bordered table-striped table-index">
     <thead>
       <tr>
-        <th width=10% class="table-header">ユーザ名</th>
+        <th width=10% class="table-header">氏名</th>
           <% if @current_user.admin %>
-            <th width=10% class="table-header">氏名</th>
+            <th width=10% class="table-header">ユーザ名</th>
             <!--<th width=15% class="table-header">メアド</th>-->
           <% end %>
         <th width=7%  style="font-size: 0.8em;" class="table-header">動画</th>
@@ -37,9 +37,9 @@
       <% @users.each do |user| %>
         <% if user.existence %>
           <tr>
-            <td><%= user.nickname %></td>
+            <td><%= user.name %></td>
               <% if @current_user.admin %>
-                <td><%= link_to user.name, user_path(user, user_id: user.id) %></td>
+                <td><%= link_to user.nickname, user_path(user, user_id: user.id) %></td>
                 <!--<td><= user.email %></td>-->
               <% end %>
             <td><%= percent_movie(user) %>%</td>
