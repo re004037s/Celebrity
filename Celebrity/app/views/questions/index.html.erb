@@ -220,8 +220,16 @@
   		</div>
   	</div>
   	
+	
+      <% @questions.each do |question| %>
+  <%= question.question %>
+  <%= link_to "編集", '/question_edit' %><br>
+  <%= question.answer %><br>
+  
+  <% end %>
+
   	   <%= link_to "新規作成", new_question_path, class: "btn btn-primary"  %>
-  	   <%= link_to "編集", '/question_edit', class: "btn btn-primary" %>
+  	   
   	
   </div>
 </div>

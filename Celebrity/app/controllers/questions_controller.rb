@@ -2,7 +2,8 @@ class QuestionsController < ApplicationController
         before_action :admin_user, only:[:index, :create, :edit, :delete ]
     
     def index
-        @questions = Question.all
+        # @questions = Question.all
+        @questions = Question.all.page(params[:page])
     end
 
     def new
