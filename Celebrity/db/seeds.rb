@@ -179,7 +179,6 @@ User.create(name: '高橋 由伸',
             portfolio_path: 'https://www.yahoo.co.jp/')
 
 User.where(id: 1..2).each do |user|
-User.where(id: 1..4).each do |user|
     HtmlCssStatus.create(user_id: user.id)
     JavascriptStatus.create(user_id: user.id)
     RubyStatus.create(user_id: user.id)
@@ -188,7 +187,7 @@ User.where(id: 1..4).each do |user|
     UserMovieStatus.create(user_id: user.id)
 end
 
-User.where(id: 5).each do |user|
+User.where(id: 3..9).each do |user|
     for i in 1..Movie.where(movie_category_id: MovieCategory.where(must_view: true).where(subject: 'free').ids).count
     Feedback.create(feedback: 'a'*100, movie_id: i, user_id: user.id)
     end
@@ -209,5 +208,5 @@ User.where(id: 5).each do |user|
       chapter6: true, chapter7: true, chapter8: true, chapter9: true, chapter10: true, chapter11: true, chapter12: true,
       chapter13: true, chapter14: true, schedule_date: '2019-01-01')
     UserMovieStatus.create(user_id: user.id, schedule_date: '2019-01-01')
- end
 end
+
