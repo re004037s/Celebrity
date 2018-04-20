@@ -4,7 +4,13 @@
      <span>よくある質問の編集</span>
    </h2>
     
-
+<%= form_for(@question) do |f| %>
+  <%= f.label :question %>
+  <%= f.text_area :question %>
+  <%= f.label :answer %>
+  <%= f.text_area :answer %>
+  <%= f.submit "更新" %>
+<% end %>
 
 
 </div>

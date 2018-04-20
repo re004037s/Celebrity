@@ -22,7 +22,7 @@ class QuestionsController < ApplicationController
     end
     
     def edit
-
+        @question = Question.find(params[:id])
     end
     
     def update
@@ -34,7 +34,7 @@ class QuestionsController < ApplicationController
     
  private
   def question_params
-      params.require(:question).permit(:question, :answer, :category)
+      params.require(:question).permit(:question, :answer, :category, :id)
   end
     
 
