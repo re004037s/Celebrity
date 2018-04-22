@@ -230,14 +230,14 @@
   	<div class="panel panel-default">
   		<div class="panel-heading">
   			<h3 class="panel-title">
-  				<a style="display:block" data-toggle="collapse" data-parent="#sampleAccordion" href="#sampleAccordionCollapse">
+  				<a style="display:block" data-toggle="collapse" data-parent="#sampleAccordion" href="#<%= sampleAccordionCollapse %>">
   Q :<%= question.question %><br>
-  <%= link_to "編集", '/question_edit' %>
+  <%= link_to "編集", edit_question_path(question)  %>
    				</a>
   			</h3>
   		</div>
   		
-  		  		<div id="sampleAccordionCollapse" class="panel-collapse collapse">
+  		  		<div id= <%= sampleAccordionCollapse %> class="panel-collapse collapse">
   			<div class="panel-body">
   A :<%= question.answer %><br>
     			</div>

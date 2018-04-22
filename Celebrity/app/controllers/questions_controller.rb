@@ -25,11 +25,26 @@ class QuestionsController < ApplicationController
         @question = Question.find(params[:id])
     end
     
+    
+    
     def update
-
+        @question = Question.find(params[:id])
+            if @question.update_attributes(question_params)
+                        flash[:success] = "更新しました"
+                redirect_to questions_url
+                    else
+                flash[:danger] = "再度入力して下さい"
+                redirect_to :back
+            end
+        
     end
     
-    def delete
+    def destroy
+                @question = Question.find(params[:id])
+            @question.destroy
+                flash[:success] = "削除されました"
+                       redirect_to questions_url
+        
     end
     
  private

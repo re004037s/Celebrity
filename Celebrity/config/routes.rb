@@ -87,7 +87,7 @@ Rails.application.routes.draw do
   # get '/question/create', to: 'questions#create'
   # get '/question/edit', to: 'questions#edit'
   
-  get '/question_edit', to: 'questions#edit'
+  # get '/question_edit', to: 'questions#edit'
   resources :questions
   # get '/questions', to: 'questions#index'
   # get '/questions/:id/edit', to: 'questions#edit'

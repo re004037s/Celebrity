@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180415085400) do
+ActiveRecord::Schema.define(version: 20180422095637) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,13 +23,6 @@ ActiveRecord::Schema.define(version: 20180415085400) do
     t.integer  "user_page_id"
     t.index ["user_id", "created_at"], name: "index_comments_on_user_id_and_created_at", using: :btree
     t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
-  end
-
-  create_table "faqs", force: :cascade do |t|
-    t.text     "question"
-    t.text     "answer"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "feedbacks", force: :cascade do |t|
@@ -335,11 +328,11 @@ ActiveRecord::Schema.define(version: 20180415085400) do
     t.datetime "reset_sent_at"
     t.string   "line_id"
     t.binary   "skillsheet"
-    t.string   "skillsheet_name"
-    t.boolean  "venture_user",       default: false, null: false
-    t.boolean  "free_engineer_user", default: true,  null: false
+    t.string   "skillsheet_name",    default: "未登録"
     t.string   "status",             default: "未登録"
     t.boolean  "guest",              default: false
+    t.boolean  "venture_user",       default: false, null: false
+    t.boolean  "free_engineer_user", default: true,  null: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 

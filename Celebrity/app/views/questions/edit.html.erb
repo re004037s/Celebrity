@@ -11,6 +11,8 @@
   <%= f.text_area :answer %>
   <%= f.submit "更新" %>
 <% end %>
-
+<%= link_to "戻る", questions_path %>
+  <%= link_to "削除", @question, class: "btn btn-danger", method: :delete,
+                                   data: { confirm: "本当に削除しますか?" } %>
 
 </div>
