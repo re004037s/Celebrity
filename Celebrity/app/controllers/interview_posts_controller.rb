@@ -1,5 +1,6 @@
 class InterviewPostsController < ApplicationController
   before_action :logged_in_user, only: [:index, :create, :edit, :destroy]
+  before_action :check_guest_user
   
   def index
     @interviewposts = InterviewPost.all.page(params[:page])
@@ -43,11 +44,12 @@ class InterviewPostsController < ApplicationController
     flash[:success] = "面談内容が削除されました"
     redirect_to interview_posts_path
   end
+  
 
     private
 
     def interviewpost_params
       params.require(:interview_post).permit(:title, :language,:experience,
-                                             :type, :day, :summary, :question, :result)
+                                             :type, :day, :question, :result)
     end
 end

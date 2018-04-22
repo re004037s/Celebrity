@@ -1,32 +1,71 @@
-<h2 class="page-title-jp">
-  <span>面談内容一覧</span>
-</h2>
+<div class="interviewposts-index--wrapper">
+  <div class="container-fluid">
+    
+    <h2 class="page-title-jp">
+      <span>面談内容一覧</span>
+    </h2>
+    
+    <table class="table-posts">
+      <thead>
+      </thead>
+      
+      <!--新規投稿-->
+      <tbody>
+        <tr>
+          <td class="td-new-post" colspan="2">
+        【<%= link_to '新規投稿', new_interview_post_path %>】
+          </td>
+        </tr>
+      </tbody>
+      
+      <!--投稿の表示-->
+      <% @interviewposts.each do |interviewpost| %>
+        <tbody class="tr-group">
+          <tr>
+            <!--プロフィール写真-->
+            <td class="td-img" rowspan="2">
+                <%= image_tag(get_profile_image(interviewpost.user), :class => "icon") %>
+            </td>
+            
+            <!--メイン情報-->
+            <td class="td-main">
+              <%= link_to interviewpost.title, interviewpost %>
+            </td>
+          </tr>
+          <tr>
+            <td class="td-sub">
+              <!--フリーor転職   ※冗長な記述をお許しください。。。-->
+              <% if interviewpost.type == 'フリー' %>
+                <span class="bg-danger">
+                  <%= interviewpost.type %>
+                </span> &nbsp;
+              <% elsif interviewpost.type == '転職' %>
+                <span class="bg-success">
+                  <%= interviewpost.type %>
+                </span> &nbsp;
+              <% end %>
+              <!--ユーザー名-->
+              by <%= interviewpost.user.nickname %>
+              <!--言語・経験-->
+              （
+              <%= interviewpost.language %>
+              ,
+              <%= interviewpost.experience %>
+              ） &nbsp;
+              <!--編集（投稿者のみ表示）-->
+              <% if interviewpost.user_id == current_user.id %>
+                ［
+                  <%= link_to '編集', edit_interview_post_path(interviewpost) %>
+                ］
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      <% end %><!--@interviewposts.each do |interviewpost|-->
+    </table>
 
-<div class="center">
-  <%= link_to '新規登録', new_interview_post_path %>
+  </div>
 </div>
-<table class="table table-bordered table-striped table-index">
-  <thead>
-    <tr>
-      <th width="30%" class="table-header">案件</th>
-      <th class="table-header">言語</th>
-      <th class="table-header">経験年数</th>
-      <th class="table-header">フリー or 転職</th>
-      <th class="table-header">Posted by</th>
-    </tr>
-  </thead>
-  <% @interviewposts.each do |interviewpost| %>
-    <tbody>
-      <tr>
-        <td class="left"><%= link_to interviewpost.title, interviewpost %></td>
-        <td class="center"><%= interviewpost.language %></td>
-        <td class="center"><%= interviewpost.experience %></td>
-        <td class="center"><%= interviewpost.type %></td>
-        <td class="center"><%= interviewpost.user.nickname %></td>
-      </tr>
-    </tbody>
-  <% end %>
-</table>
 <div class="center">
   <%= paginate @interviewposts %>
 </div>

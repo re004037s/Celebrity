@@ -13,14 +13,27 @@ class MoviesController < ApplicationController
   def create
     params[:movie][:sort_order] = Movie.where(movie_category_id: params[:movie][:movie_category_id]).pluck(:sort_order).max.to_i + 1
     @movie = Movie.new(movie_params)
-    @user = User.all
-    if @movie.save
-      UserMailer.send_when_create(@user, @movie).deliver
-      flash[:success] = '動画を登録しました'
-      redirect_to movies_path
-    else
-      flash.now[:danger] = '登録に失敗しました。もう一度お試しください。'
-      render 'new'
+
+    if MovieCategory.find(@movie.movie_category_id).subject == "free"
+      @user = User.where(free_engineer_user: true)
+      if @movie.save
+        UserMailer.send_when_create(@user, @movie).deliver
+        flash[:success] = '動画を登録しました'
+        redirect_to movies_path
+      else
+        flash.now[:danger] = '登録に失敗しました。もう一度お試しください。'
+        render 'new'
+      end
+    elsif MovieCategory.find(@movie.movie_category_id).subject == "venture"
+      @user = User.where(venture_user: true)
+      if @movie.save
+        UserMailer.send_when_create(@user, @movie).deliver
+        flash[:success] = '動画を登録しました'
+        redirect_to movies_path
+      else
+        flash.now[:danger] = '登録に失敗しました。もう一度お試しください。'
+        render 'new'
+      end
     end
   end
   
@@ -29,7 +42,6 @@ class MoviesController < ApplicationController
   end
   
   def update
-    @user = user
     @movie = Movie.find_by(id: params[:id])
     before_update_category_id = @movie.movie_category_id
     before_update_sort_order  = @movie.sort_order

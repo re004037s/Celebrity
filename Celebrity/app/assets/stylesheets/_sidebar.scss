@@ -15,25 +15,51 @@
 
 .sidebar-list {
   width: 87.30%;
-  border-top: solid 1px #373737;
   list-style: none;
   padding-left: 0;
   margin: 0 auto;
-  margin-top: 42px;
+  border-bottom: solid 1px #373737;
   
+  span {
+    font-size: 15px;
+  }
   
   li {
     padding: 8px 0;
     padding-left: 15px;
-    border-bottom: solid 1px #373737;
+    border-top: solid 1px #373737;
     
     a {
       font-size: 16px;
       color: #000;
     }
     .disabled {
-      //pointer-events: none;
       color: gray;
     }
+  }
+  
+
+  // アコーディング用（aside.jsと併用）
+  .accordion-item {
+    position: relative;
+    cursor: pointer;
+    margin-top: 5px;
+  }
+  .question {
+    font-size: 18px;
+    padding: 8px 0;
+    padding-left: 15px;
+
+  }
+  .accordion-item span {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    color: gray;
+    font-size: 20px;
+  }
+  .answer {
+    display: none;
+    margin-left: 2em;
   }
 }

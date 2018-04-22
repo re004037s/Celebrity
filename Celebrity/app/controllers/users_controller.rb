@@ -4,21 +4,26 @@ class UsersController < ApplicationController
   before_action :existence_user, only: [:show, :edit, :update]
   before_action :administrator_user, only: :new
   before_action :correct_user_for_edit,
-    only:[:edit, :update, :update_picture,:tag_new, :tag_show, :tag_delete]
+    only:[:update_picture,:tag_new, :tag_show, :tag_delete]
+  before_action :check_guest_user  
   
   def index
     @users = User.page(params[:page])
   end
   
   def show
-    @categories = MovieCategory.where(must_view: true).order('sort_order')
     @user = User.find_by(id: params[:id])
+    if @user.free_engineer_user && @user.venture_user
+      @categories = MovieCategory.where(must_view: true).order('sort_order')
+    elsif @user.free_engineer_user
+      @categories = MovieCategory.where(must_view: true).where(subject: 'free').order('sort_order')
+    elsif @user.venture_user
+      @categories = MovieCategory.where(must_view: true).where(subject: 'venture').order('sort_order')
+    end
     @tags_count = @user.tags.count
     tags = @user.tags.limit(10).pluck(:tag,:id)
     @tags_h = Hash[*tags.flatten]
   end
-  
-  
   
   def update_picture
     @user = current_user
@@ -59,13 +64,30 @@ class UsersController < ApplicationController
     
   end
   
+  #ステータス（未登録・営業中・就業中）を登録する
+  def register_status
+    user = User.find(params[:user][:id])
+    if user.update_columns(status: params[:user][:status])
+      flash[:success] = 'ステータスを保存しました！'
+      redirect_to skillsheets_path
+    else
+      flash[:error] = 'ステータスの保存に失敗しました！'
+      redirect_to skillsheets_path
+    end
+    
+  end
+  
   def new
     @user = User.new
   end
   
   def create
     @user = User.new(user_params)
-    if @user.save
+    if @user.try(:guest)
+      @user.save
+      log_in @user
+      redirect_to skillsheets_path and return
+    elsif @user.save
       # 作成ユーザに紐付く進捗テーブルレコードの作成（nil回避）
       HtmlCssStatus.create(user_id: @user.id)
       JavascriptStatus.create(user_id: @user.id)
@@ -77,7 +99,7 @@ class UsersController < ApplicationController
       log_in @user
       flash[:success] = 'Welcome to the セレブエンジニアサロン'
       redirect_to root_path
-    else
+    elsif
       render 'new'
     end
   end
@@ -86,11 +108,20 @@ class UsersController < ApplicationController
   end
   
   def update
-    if @user.update_attributes(user_params)
-      flash[:success] = 'ユーザ情報を更新しました'
-      redirect_to @user
+    if current_user?(@user)
+      if @user.update_attributes(user_params)
+        flash[:success] = 'ユーザ情報を更新しました'
+        redirect_to @user
+      else
+        render 'edit'
+      end
     else
-      render 'edit'
+      if @user.update_columns({venture_user: user_params[:venture_user], free_engineer_user: user_params[:free_engineer_user]})
+        flash[:success] = 'ユーザ情報を更新しました'
+        redirect_to @user
+      else
+        render 'edit'
+      end
     end
   end
   
@@ -104,8 +135,8 @@ class UsersController < ApplicationController
   private
   
     def user_params
-      params.require(:user).permit(:name, :nickname, :line_id, :email, :password, :password_confirmation, :portfolio_path,
-        :github_path, :picture_file, :picture, :tag_list, :skillsheet, :skillsheet_name)
+      params.require(:user).permit(:name, :nickname, :line_id, :email, :guest, :password, :password_confirmation, :portfolio_path,
+        :github_path, :picture_file, :picture, :tag_list, :skillsheet, :skillsheet_name, :venture_user, :free_engineer_user, :guest)
     end
     
     # ログイン済み or 管理ユーザであれば true を返す
@@ -139,4 +170,14 @@ class UsersController < ApplicationController
       redirect_to root_url if current_user == nil || !current_user.admin
     end
     
+    def comp_movies_user
+      if current_user.try(:admin) || Feedback.where(user_id: current_user).count == 
+         Movie.where(movie_category_id: MovieCategory.where(must_view: true).ids).count
+      else
+        flash[:danger] = "先に動画を視聴して下さい"
+        redirect_to root_url
+      end
+      
+    end
+
 end

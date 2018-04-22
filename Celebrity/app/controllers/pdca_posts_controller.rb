@@ -1,6 +1,7 @@
 class PdcaPostsController < ApplicationController
     before_action :logged_in_user, only: [:index, :create, :edit, :destroy]
     # before_action :correct_user,   only: [:edit, :update, :destroy]
+    before_action :check_guest_user
   
     def index
       @pdcaposts = PdcaPost.all.page(params[:page]).per(15)
@@ -13,7 +14,7 @@ class PdcaPostsController < ApplicationController
         flash[:success] = "PDCA報告が投稿されました"
         redirect_to pdca_posts_url
       else
-        flash[:danger] = "全てのPDCA項目を入力してから報告してください"
+        flash[:danger] = "全てのPDCA項目を５００文字以内で入力してから報告してください"
         redirect_to :back
       end
     end
@@ -24,7 +25,7 @@ class PdcaPostsController < ApplicationController
       flash[:success] = "PDCA報告が更新されました"
       redirect_to pdca_posts_url
     else
-      flash[:danger] = "全てのPDCA項目を入力してから更新してください"
+      flash[:danger] = "全てのPDCA項目を５００文字以内で入力してから更新してください"
       redirect_to :back
     end
   end
@@ -36,10 +37,6 @@ class PdcaPostsController < ApplicationController
     redirect_to pdca_posts_url
   end
   
-  def get_image
-    @image = User.find(params[:id])
-    send_data(@image.picture_file)
-  end
     
   private
 

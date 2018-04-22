@@ -181,12 +181,30 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
         <td>
     </tr>
   </table>
+  
+   <!--進捗線を表示-->
+  <progress id="html_css_progress" value="0" max="8"></progress>
+  <output id="html_css_output"></output>
+
+<script>
+    let current_status1 = <%= count_html_css(@user) %>;
+    let total_course_num1 = document.getElementById('html_css_progress').max;
+    
+    function countup() {
+        document.getElementById('html_css_progress').value = current_status1;
+        document.getElementById('html_css_output').value = '進捗率：' + (current_status1 / total_course_num1 * 100).toFixed() + '%';
+    }
+
+    setInterval(countup, 1000);
+</script>
+
   <table class="txt1 table table-bordered table-striped table-condensed table-status">
     <thead>
       <tr>
         <th class="table-header">コース</th>
-        <th class="table-header">ステータス</th>
+        <th class="table-header">状況</th>
         <th class="table-header">完了予定日</th>
+        <th class="table-header">目安(日)</th>
         <th class="table-header">完了日</th>
       </tr>
     </thead>
@@ -203,6 +221,7 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
             <%= f.hidden_field :course, :value => "html_css_ga_beginner"%>
           <% end %>
         </td>
+        <td class="center">約1日</td>
         <td><%= @user.html_css_status.try(:ga_beginner_compd) %></td>
       </tr>
       <tr>
@@ -217,6 +236,7 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
             <%= f.hidden_field :course, :value => "html_css_ga_middle"%>
           <% end %>
         </td>
+        <td class="center">約1日</td>
         <td><%= @user.html_css_status.try(:ga_middle_compd) %></td>
       </tr>
       <tr>
@@ -231,6 +251,7 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
             <%= f.hidden_field :course, :value => "html_css_ga_advanced"%>
           <% end %>
         </td>
+        <td class="center">約1日</td>
         <td><%= @user.html_css_status.try(:ga_advanced_compd) %></td>
       </tr>
       <tr>
@@ -245,6 +266,7 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
             <%= f.hidden_field :course, :value => "html_css_do_beginner"%>
           <% end %>
         </td>
+        <td class="center">約1日</td>
         <td><%= @user.html_css_status.try(:do_beginner_compd) %></td>
       </tr>
       <tr>
@@ -259,6 +281,7 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
             <%= f.hidden_field :course, :value => "html_css_do_middle"%>
           <% end %>
         </td>
+        <td class="center">約1日</td>
         <td><%= @user.html_css_status.try(:do_middle_compd) %></td>
       </tr>
       <tr>
@@ -273,6 +296,7 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
             <%= f.hidden_field :course, :value => "html_css_do_advanced"%>
           <% end %>
         </td>
+        <td class="center">約1日</td>
         <td><%= @user.html_css_status.try(:do_advanced_compd) %></td>
       </tr>
       <tr>
@@ -287,6 +311,7 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
             <%= f.hidden_field :course, :value => "html_css_ji_1"%>
           <% end %>
         </td>
+        <td class="center">約2日</td>
         <td><%= @user.html_css_status.try(:ji_1_compd) %></td>
       </tr>
       <tr>
@@ -301,6 +326,7 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
             <%= f.hidden_field :course, :value => "html_css_ji_2"%>
           <% end %>
         </td>
+        <td class="center">約2日</td>
         <td><%= @user.html_css_status.try(:ji_2_compd) %></td>
       </tr>
     </tbody>
@@ -314,12 +340,29 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
     </tr>
   </table>
   
+  <!--進捗線を表示-->
+  <progress id="javascript_progress" value="0" max="5"></progress>
+  <output id="javascript_output"></output>
+
+<script>
+    let current_status2 = <%= count_javascript(@user) %>;
+    let total_course_num2 = document.getElementById('javascript_progress').max;
+    
+    function countup() {
+        document.getElementById('javascript_progress').value = current_status2;
+        document.getElementById('javascript_output').value = '進捗率：' + (current_status2 / total_course_num2 * 100).toFixed() + '%';
+    }
+
+    setInterval(countup, 1000);
+</script>
+
   <table class="txt1 table table-bordered table-striped table-condensed table-status">
     <thead>
       <tr>
         <th class="table-header">コース</th>
-        <th class="table-header">ステータス</th>
+        <th class="table-header">状況</th>
         <th class="table-header">完了予定日</th>
+        <th class="table-header">目安(日)</th>
         <th class="table-header">完了日</th>
       </tr>
     </thead>
@@ -336,6 +379,7 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
             <%= f.hidden_field :course, :value => "javascript_ga_1"%>
           <% end %>
         </td>
+        <td class="center">約半日</td>
         <td><%= @user.javascript_status.try(:ga_1_compd)%></td>
       </tr>
       <tr>
@@ -349,7 +393,8 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
             <%= f.hidden_field :id, :value => "#{@user.id}"%>
             <%= f.hidden_field :course, :value => "javascript_ga_2"%>
           <% end %>
-          </td>
+        </td>
+        <td class="center">約半日</td>  
         <td><%= @user.javascript_status.try(:ga_2_compd) %></td>
       </tr>
       <tr>
@@ -363,7 +408,8 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
             <%= f.hidden_field :id, :value => "#{@user.id}"%>
             <%= f.hidden_field :course, :value => "javascript_ga_3"%>
           <% end %>
-          </td>
+        </td>
+        <td class="center">約半日</td>  
         <td><%= @user.javascript_status.try(:ga_3_compd)%></td>
       </tr>
       <tr>
@@ -377,7 +423,8 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
             <%= f.hidden_field :id, :value => "#{@user.id}"%>
             <%= f.hidden_field :course, :value => "javascript_ga_4"%>
           <% end %>
-          </td>
+        </td>
+        <td class="center">約半日</td>
         <td><%= @user.javascript_status.try(:ga_4_compd)%></td>
       </tr>      
       <tr>
@@ -391,7 +438,8 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
             <%= f.hidden_field :id, :value => "#{@user.id}"%>
             <%= f.hidden_field :course, :value => "javascript_do_1"%>
           <% end %>
-          </td>
+        </td>
+        <td class="center">約1日</td>
         <td><%= @user.javascript_status.try(:do_1_compd)%></td>
       </tr>
     </tbody>
@@ -404,13 +452,30 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
       </td>
     </tr>
   </table>
+ 
+  <!--進捗線を表示-->
+  <progress id="ruby_progress" value="0" max="5"></progress>
+  <output id="ruby_output"></output>
+
+<script>
+    let current_status3 = <%= count_ruby(@user) %>;
+    let total_course_num3 = document.getElementById('ruby_progress').max;
+    
+    function countup() {
+        document.getElementById('ruby_progress').value = current_status3;
+        document.getElementById('ruby_output').value = '進捗率：' + (current_status3 / total_course_num3 * 100).toFixed() + '%';
+    }
+
+    setInterval(countup, 1000);
+</script>
   
   <table class="txt1 table table-bordered table-striped table-condensed table-status">
     <thead>
       <tr>
         <th class="table-header">コース</th>
-        <th class="table-header">ステータス</th>
+        <th class="table-header">状況</th>
         <th class="table-header">完了予定日</th>
+        <th class="table-header">目安(日)</th>
         <th class="table-header">完了日</th>
       </tr>
     </thead>
@@ -426,7 +491,8 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
             <%= f.hidden_field :id, :value => "#{@user.id}"%>
             <%= f.hidden_field :course, :value => "ruby_ga_1"%>
           <% end %>
-          </td>
+        </td>
+        <td class="center">約1日</td>
         <td><%= @user.ruby_status.try(:ga_1_compd) %></td>
       </tr>
       <tr>
@@ -440,7 +506,8 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
             <%= f.hidden_field :id, :value => "#{@user.id}"%>
             <%= f.hidden_field :course, :value => "ruby_ga_2"%>
           <% end %>
-          </td>
+        </td>
+        <td class="center">約1日</td>
         <td><%= @user.ruby_status.try(:ga_2_compd) %></td>
       </tr>
       <tr>
@@ -454,7 +521,8 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
             <%= f.hidden_field :id, :value => "#{@user.id}"%>
             <%= f.hidden_field :course, :value => "ruby_ga_3"%>
           <% end %>
-          </td>
+        </td>
+        <td class="center">約1日</td>
         <td><%= @user.ruby_status.try(:ga_3_compd) %></td>
       </tr>
       <tr>
@@ -468,7 +536,8 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
             <%= f.hidden_field :id, :value => "#{@user.id}"%>
             <%= f.hidden_field :course, :value => "ruby_ga_4"%>
           <% end %>
-          </td>
+        </td>
+        <td class="center">約1日</td>
         <td><%= @user.ruby_status.try(:ga_4_compd) %></td>
       </tr>
       <tr>
@@ -482,7 +551,8 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
             <%= f.hidden_field :id, :value => "#{@user.id}"%>
             <%= f.hidden_field :course, :value => "ruby_ga_5"%>
           <% end %>
-          </td>
+        </td>
+        <td class="center">約1日</td>
         <td><%= @user.ruby_status.try(:ga_5_compd) %></td>
       </tr>
     </tbody>
@@ -495,12 +565,30 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
       </td>
     </tr>
   </table>
+  
+  <!--進捗線を表示-->
+  <progress id="rubyonrails_progress" value="0" max="15"></progress>
+  <output id="rubyonrails_output"></output>
+
+<script>
+    let current_status4 = <%= count_ruby_on_rails(@user) %>;
+    let total_course_num4 = document.getElementById('rubyonrails_progress').max;
+    
+    function countup() {
+        document.getElementById('rubyonrails_progress').value = current_status4;
+        document.getElementById('rubyonrails_output').value = '進捗率：' + (current_status4 / total_course_num4 * 100).toFixed() + '%';
+    }
+
+    setInterval(countup, 1000);
+</script>
+
   <table class="txt1 table table-bordered table-striped table-condensed table-status">
     <thead>
       <tr>
         <th class="table-header">コース</th>
-        <th class="table-header">ステータス</th>
+        <th class="table-header">状況</th>
         <th class="table-header">完了予定日</th>
+        <th class="table-header">目安(日)</th>
         <th class="table-header">完了日</th>
       </tr>
     </thead>
@@ -516,7 +604,8 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
             <%= f.hidden_field :id, :value => "#{@user.id}"%>
             <%= f.hidden_field :course, :value => "rubyonrails_ga_1"%>
           <% end %>
-          </td>
+        </td>
+        <td class="center">約半日</td>
         <td><%= @user.rubyonrails_status.try(:ga_1_compd) %></td>
       </tr>
   
@@ -531,7 +620,8 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
             <%= f.hidden_field :id, :value => "#{@user.id}"%>
             <%= f.hidden_field :course, :value => "rubyonrails_ga_2"%>
           <% end %>
-          </td>
+        </td>
+        <td class="center">約半日</td>
         <td><%= @user.rubyonrails_status.try(:ga_2_compd) %></td>
       </tr>
   
@@ -546,7 +636,8 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
             <%= f.hidden_field :id, :value => "#{@user.id}"%>
             <%= f.hidden_field :course, :value => "rubyonrails_ga_3"%>
           <% end %>
-          </td>
+        </td>
+        <td class="center">約半日</td>
         <td><%= @user.rubyonrails_status.try(:ga_3_compd) %></td>
       </tr>
   
@@ -561,7 +652,8 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
             <%= f.hidden_field :id, :value => "#{@user.id}"%>
             <%= f.hidden_field :course, :value => "rubyonrails_ga_4"%>
           <% end %>
-          </td>
+        </td>
+        <td class="center">約半日</td>
         <td><%= @user.rubyonrails_status.try(:ga_4_compd) %></td>
       </tr>
   
@@ -576,7 +668,8 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
             <%= f.hidden_field :id, :value => "#{@user.id}"%>
             <%= f.hidden_field :course, :value => "rubyonrails_ga_5"%>
           <% end %>
-          </td>
+        </td>
+        <td class="center">約半日</td>
         <td><%= @user.rubyonrails_status.try(:ga_5_compd) %></td>
       </tr>
   
@@ -591,7 +684,8 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
             <%= f.hidden_field :id, :value => "#{@user.id}"%>
             <%= f.hidden_field :course, :value => "rubyonrails_ga_6"%>
           <% end %>
-          </td>
+        </td>
+        <td class="center">約半日</td>
         <td><%= @user.rubyonrails_status.try(:ga_6_compd) %></td>
       </tr>
   
@@ -606,7 +700,8 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
             <%= f.hidden_field :id, :value => "#{@user.id}"%>
             <%= f.hidden_field :course, :value => "rubyonrails_ga_7"%>
           <% end %>
-          </td>
+        </td>
+        <td class="center">約半日</td>
         <td><%= @user.rubyonrails_status.try(:ga_7_compd) %></td>
       </tr>
   
@@ -621,7 +716,8 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
             <%= f.hidden_field :id, :value => "#{@user.id}"%>
             <%= f.hidden_field :course, :value => "rubyonrails_ga_8"%>
           <% end %>
-          </td>
+        </td>
+        <td class="center">約半日</td>
         <td><%= @user.rubyonrails_status.try(:ga_8_compd) %></td>
       </tr>
   
@@ -636,7 +732,8 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
             <%= f.hidden_field :id, :value => "#{@user.id}"%>
             <%= f.hidden_field :course, :value => "rubyonrails_ga_9"%>
           <% end %>
-          </td>
+        </td>
+        <td class="center">約半日</td>
         <td><%= @user.rubyonrails_status.try(:ga_9_compd) %></td>
       </tr>
   
@@ -651,7 +748,8 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
             <%= f.hidden_field :id, :value => "#{@user.id}"%>
             <%= f.hidden_field :course, :value => "rubyonrails_ga_10"%>
           <% end %>
-          </td>
+        </td>
+        <td class="center">約半日</td>
         <td><%= @user.rubyonrails_status.try(:ga_10_compd) %></td>
       </tr>
   
@@ -666,7 +764,8 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
             <%= f.hidden_field :id, :value => "#{@user.id}"%>
             <%= f.hidden_field :course, :value => "rubyonrails_ga_11"%>
           <% end %>
-          </td>
+        </td>
+        <td class="center">約半日</td>
         <td><%= @user.rubyonrails_status.try(:ga_11_compd) %></td>
       </tr>
   
@@ -681,7 +780,8 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
             <%= f.hidden_field :id, :value => "#{@user.id}"%>
             <%= f.hidden_field :course, :value => "rubyonrails_do_1"%>
           <% end %>
-          </td>
+        </td>
+        <td class="center">約1日</td>
         <td><%= @user.rubyonrails_status.try(:do_1_compd) %></td>
       </tr>
   
@@ -696,7 +796,8 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
             <%= f.hidden_field :id, :value => "#{@user.id}"%>
             <%= f.hidden_field :course, :value => "rubyonrails_do_2"%>
           <% end %>
-          </td>
+        </td>
+        <td class="center">約1日</td>
         <td><%= @user.rubyonrails_status.try(:do_2_compd) %></td>
       </tr>
   
@@ -711,7 +812,8 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
             <%= f.hidden_field :id, :value => "#{@user.id}"%>
             <%= f.hidden_field :course, :value => "rubyonrails_do_3"%>
           <% end %>
-          </td>
+        </td>
+        <td class="center">約1日</td>
         <td><%= @user.rubyonrails_status.try(:do_3_compd) %></td>
       </tr>
   
@@ -726,7 +828,8 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
             <%= f.hidden_field :id, :value => "#{@user.id}"%>
             <%= f.hidden_field :course, :value => "rubyonrails_do_4"%>
           <% end %>
-          </td>
+        </td>
+        <td class="center">約1日</td>
         <td><%= @user.rubyonrails_status.try(:do_4_compd) %></td>
       </tr>
     </tbody>
@@ -737,6 +840,7 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
       <td width="60%">
         <h3 class="txt3">Rails Tutorial</h3>
         完了予定日：<%= @user.railstutorial_status.try(:schedule_date) if @user.railstutorial_status.schedule_date.present? %></span></h3>
+        <br>目安日数：約30日
       </td>
       <td>
         <%= form_for(@user.railstutorial_status, url: railstutorial_schedule_path ) do |f| %>
@@ -749,18 +853,38 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
       </td>
     </tr>
   </table>
+  
+  <!--進捗線を表示-->
+  <progress id="rails_tutorial_progress" value="0" max="14"></progress>
+  <output id="rails_tutorial_output"></output>
+
+<script>
+    let current_status5 = <%= count_rails_tutorial(@user) %>;
+    let total_course_num5 = document.getElementById('rails_tutorial_progress').max;
+    
+    function countup() {
+        document.getElementById('rails_tutorial_progress').value = current_status5;
+        document.getElementById('rails_tutorial_output').value = '進捗率：' + (current_status5 / total_course_num5 * 100).toFixed() + '%';
+    }
+
+    setInterval(countup, 1000);
+</script>
+
   <table class="txt1 table table-bordered table-condensed table-status">
     <tr>
       <td class="table-header">完了した章</td>
       <td class="center"><%= count_rails_tutorial(@user) %>章</td>
     </tr>
   </table>
+
+  
   
   <table class="txt1 table-condensed table-status-schedule">
      <tr valign="baseline">
       <td width="60%">
         <h3 class="txt3">動画視聴</h3>
         完了予定日：<%= @user.user_movie_status.try(:schedule_date) if @user.user_movie_status.schedule_date.present? %></span></h3>
+        <br>目安日数：約2日
       </td>
       <td>
         <%= form_for(@user.user_movie_status, url: user_movie_schedule_path) do |f| %>
@@ -774,11 +898,29 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
     </tr>
   </table>
   
-  <table class="txt1 table table-bordered table-striped table-condensed table-status">
+    <!--進捗線を表示-->
+  <progress id="movie_progress" value="0" max="100"></progress>
+  <output id="movie_output"></output>
+
+<script>
+    var movie_status = [];
+    movie_status = <%= count_movie(@user) %>;
+    // let total_course_num5 = document.getElementById('rails_tutorial_progress').max;
+    
+    function countup() {
+        document.getElementById('movie_progress').max = movie_status[0];
+        document.getElementById('movie_progress').value = movie_status[1];
+        document.getElementById('movie_output').value = '進捗率：' + (movie_status[1] / movie_status[0] * 100).toFixed() + '%';
+    }
+
+    setInterval(countup, 1000);
+</script>
+
+  <table class="txt1 table table-bordered table-striped table-condensed table-status" style="table-layout: fixed;">
     <thead>
       <tr>
         <th width=25% class="table-header">動画名</th>
-        <th width=15% class="table-header">ステータス</th>
+        <th width=15% class="table-header">状況</th>
         <th class="table-header">感想</th>
       </tr>
     </thead>
@@ -789,7 +931,7 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
           <tr>
             <td><%= movie.title %></td>
             <td class="center"><%= feedback.present? ? '完了' : '未' %></td>
-            <td><%= feedback.present? ? feedback.feedback : '-' %></td>
+            <td style="word-wrap:break-word;"><%= feedback.present? ? feedback.feedback : '-' %></td>
           </tr>
         </tbody>
       <% end %>

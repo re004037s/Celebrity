@@ -1,0 +1,19 @@
+      <%= render partial: 'shared/error_messages', locals: {object: @term } %>
+      
+      <%= f.label :name, "用語", class: 'txt1' %>
+      <%= f.text_area :name, class: 'form-control validate[required,maxSize[25]] text-input', :onkeyup => "NameLength(value);", rows: 2 %>
+      <p id="name-input-length">0文字</p>
+      
+      <%= f.label :content, '解説', class: 'txt1 mt_20' %>
+      <%= f.text_area :content, class: 'form-control validate[required,maxSize[100]] text-input', :onkeyup => "ContentLength(value);", rows: 15 %>
+      <p id="content-input-length">0文字</p>
+      
+<script>
+  function NameLength( str ) {
+    document.getElementById("name-input-length").innerHTML = str.length + "文字";
+  }
+  
+  function ContentLength( str ) {
+    document.getElementById("content-input-length").innerHTML = str.length + "文字";
+  }
+</script>

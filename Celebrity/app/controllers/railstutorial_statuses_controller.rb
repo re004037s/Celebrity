@@ -1,5 +1,6 @@
 class RailstutorialStatusesController < ApplicationController
   before_action :correct_user_for_edit, only:[:update_schedule]
+  before_action :check_guest_user
   
   def update_schedule
     @schedule_date = params[:date]
@@ -17,7 +18,7 @@ class RailstutorialStatusesController < ApplicationController
   def update
     require 'date'
     @railstutorial_status = current_user.railstutorial_status
-    @today = Date.today
+      @today = Date.today
     @course = params[:course]
     @status = params[:status]
 

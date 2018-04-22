@@ -1,31 +1,46 @@
 <!--テンプレートのソースを変更-->
 <% content_for :entrance do %>
 
-<div class="form-entrance-signup">
+<div class="form-entrance-signup"class="form-entrance-signup"
   <div class="form-entrance--wrapper">
     <h6 class="form-entrance--title">新規登録</h6>
     
-    <%= form_for(@user, url: signup_path) do |f| %>
+    <%= form_for(@user, url: signup_path, html:{:id => 'user-new-form'}) do |f| %>
       <%= render partial: 'shared/error_messages', locals: { object: @user } %>
     
       <%= f.label :name, "氏名", class: 'form-entrance--label' %>
-      <%= f.text_field :name, class: 'form-entrance--textbox' %>
+      <%= f.text_field :name, class: 'form-entrance--textbox validate[required,maxSize[10]] text-input', :onkeyup => "NameLength(value);" %>
+      <p id="name-input-length">0文字</p>
 
       <%= f.label :nickname, "ニックネーム", class: 'form-entrance--label' %>
-      <%= f.text_field :nickname, class: 'form-entrance--textbox' %>
+      <%= f.text_field :nickname, class: 'form-entrance--textbox validate[required,maxSize[10]] text-input', :onkeyup => "NickNameLength(value);" %>
+      <p id="nickname-input-length">0文字</p>
 
       <%= f.label :email, 'Email', class: 'form-entrance--label' %>
-      <%= f.email_field :email, class: 'form-entrance--textbox' %>
+      <%= f.email_field :email, class: 'form-entrance--textbox validate[required,maxSize[50],custom[email]] text-input', :onkeyup => "EmailLength(value);" %>
+      <p id="email-input-length">0文字</p>
       
       <%= f.label :line_id, "LINE ID", class: 'form-entrance--label' %>
-      <%= f.text_field :line_id, class: 'form-entrance--textbox' %>
+      <%= f.text_field :line_id, class: 'form-entrance--textbox validate[required,maxSize[20]] text-input', :onkeyup => "LineIdLength(value);" %>
+      <p id="lineid-input-length">0文字</p>
 
       <%= f.label :password, 'パスワード', class: 'form-entrance--label' %>
-      <%= f.password_field :password, class: 'form-entrance--textbox' %>
+      <%= f.password_field :password, class: 'form-entrance--textbox validate[required,minSize[6]] text-input', :onkeyup => "PasswordLength(value);" %>
+      <p id="password-input-length">0文字</p>
 
       <%= f.label :password_confirmation, "パスワード確認", class: 'form-entrance--label' %>
-      <%= f.password_field :password_confirmation, class: 'form-entrance--textbox' %>
-
+      <%= f.password_field :password_confirmation, class: 'form-entrance--textbox validate[required,minSize[6]] text-input', :onkeyup => "PasswordConfirmationLength(value);" %>
+      <p id="password-confirmation-input-length">0文字</p>
+      
+      <%= f.label :venture_user, "ITベンチャー起業コース", class: 'form-entrance--label' %>
+      <%= f.check_box :venture_user, {class: 'form-entrance--textbox'}, "true", "false" %>
+      
+      <%= f.label :free_engineer_user, "フリーエンジニアコース", class: 'form-entrance--label' %>
+      <%= f.check_box :free_engineer_user, {class: 'form-entrance--textbox'}, "true", "false" %>
+      
+      <%= f.label :guest, "ゲスト権限付与", class: 'form-entrance--label' %>
+      <%= f.check_box :guest, {class: 'form-entrance--textbox'}, "true", "false" %>
+      
       <%= f.submit "登録", class: "btn btn-default active btn-block form-kari-button" %>
       <!--画像を差し込む場合は下記を加工してください。-->
       <!--<= image_submit_tag("button_xxxxx.png", class: "form-entrance--button") %>-->
@@ -35,4 +50,38 @@
   </div>
 </div>
 
+<script>
+  function NameLength( str ) {
+    document.getElementById("name-input-length").innerHTML = str.length + "文字";
+  }
+  
+  function NickNameLength( str ) {
+    document.getElementById("nickname-input-length").innerHTML = str.length + "文字";
+  }
+  
+  function EmailLength( str ) {
+    document.getElementById("email-input-length").innerHTML = str.length + "文字";
+  }
+  
+  function LineIdLength( str ) {
+    document.getElementById("lineid-input-length").innerHTML = str.length + "文字";
+  }
+  
+  function PasswordLength( str ) {
+    document.getElementById("password-input-length").innerHTML = str.length + "文字";
+  }
+  
+  function PasswordConfirmationLength( str ) {
+    document.getElementById("password-confirmation-input-length").innerHTML = str.length + "文字";
+  }
+  
+  $(document).ready(function(){
+    $("#user-new-form").validationEngine({
+    });
+  });
+  
+  $('form').validationEngine({validationEventTrigger:'keyup'});
+</script>
+
 <% end %>
+

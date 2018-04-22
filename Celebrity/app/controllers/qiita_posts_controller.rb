@@ -40,7 +40,7 @@ class QiitaPostsController < ApplicationController
     flash[:success] = "Qiitaが削除されました"
     redirect_to qiita_posts_url
   end
-
+  
   
   private
 

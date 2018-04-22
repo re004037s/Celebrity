@@ -1,7 +1,14 @@
 class StaticPagesController < ApplicationController
+  include ApplicationHelper
+  
   before_action :logged_in_user
   before_action :setting
   before_action :set_movie_categories
+  before_action :comp_portfolio, only: :portfolio_mv
+  before_action :comp_progate, only: :progate
+  before_action :comp_railstutorial, only: :railstutorial
+  before_action :check_guest_user
+
   
   def qa
   end
@@ -20,9 +27,7 @@ class StaticPagesController < ApplicationController
     @railstutorial_status = RailstutorialStatus.find_or_create_by(user_id: current_user.id)
   end
   
-  def glossary
-  end
-
+  
   private
     
     def setting
@@ -39,9 +44,44 @@ class StaticPagesController < ApplicationController
           @progate_comp_flag = false
       end
     end
+
     
     def set_movie_categories
       @categories_all = MovieCategory.all.order('sort_order')
     end
     
+    def comp_portfolio
+      if railstutorial_comp?
+      else 
+        flash[:danger] = "先に Rails Tutorial を完了させて下さい"
+        redirect_to root_url
+      end
+    end
+    
+    def comp_progate
+      if current_user.free_engineer_user && current_user.venture_user
+        unless Feedback.where(user_id: current_user).count >= Movie.where(movie_category_id: MovieCategory.where(must_view: true).where(subject: 'free').ids).count
+          flash[:danger] = "先に動画を視聴して下さい"
+          redirect_to root_url
+        end
+      elsif current_user.free_engineer_user
+        unless Feedback.where(user_id: current_user).count == Movie.where(movie_category_id: MovieCategory.where(must_view: true).where(subject: 'free').ids).count
+          flash[:danger] = "先に動画を視聴して下さい"
+          redirect_to root_url
+        end
+      elsif current_user.venture_user
+        unless Feedback.where(user_id: current_user).count == Movie.where(movie_category_id: MovieCategory.where(must_view: true).where(subject: 'venture').ids).count
+          flash[:danger] = "先に動画を視聴して下さい"
+          redirect_to root_url
+        end
+      end
+    end
+    
+    def comp_railstutorial
+      if progatetask_tutolialday_comp?
+      else
+        flash[:danger] = "先に Progate を完了させて下さい"
+        redirect_to root_url
+      end
+    end
 end
