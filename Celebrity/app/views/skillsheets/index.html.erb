@@ -52,8 +52,7 @@
       <% end %>
       <br>
       <tr>
-        <th width=25% class="table-header">ユーザ名</th>
-            <th width=25% class="table-header">氏名</th>
+        <th width=25% class="table-header">氏名</th>
           <% unless current_user.guest %>
         <th class="table-header">状況</th>
           <% end %>
@@ -65,7 +64,6 @@
       <!--テーブルに表示させたいユーザーを取得、eachで表示させる-->
       <% @openning_business_user.each do |obuser| %>
         <tr>
-          <td><%= obuser.nickname %></td>
           <td><%= link_to obuser.name, user_path(obuser, obuser_id: obuser.id) %></td>
           <% if is_obskillsheet_default?(obuser.skillsheet_name) %>
             <td><%= "#{obuser.skillsheet_name}" %></td>
@@ -83,9 +81,7 @@
       <!--テーブルに表示させたいユーザーを取得、eachで表示させる-->
       <% @existed_normal_users.each do |user| %>
         <tr>
-          <td><%= user.nickname %></td>
-          
-              <td><%= link_to user.name, user_path(user, user_id: user.id) %></td>
+          <td><%= link_to user.name, user_path(user, user_id: user.id) %></td>
           <td>
             <!--共通-->
             <%= form_for user, :url => { :controller => :skillsheets, :action => :update_business_status } do |f| %>
