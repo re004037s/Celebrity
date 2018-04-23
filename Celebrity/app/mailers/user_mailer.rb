@@ -5,7 +5,7 @@ class UserMailer < ApplicationMailer
     @user = user		
  		
     #user name		
-    @user_name = @user.nickname		
+    @user_name = @user.name		
   		  
     #task names		 
     @task_names = no_complete_tasks
