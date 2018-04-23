@@ -11,21 +11,8 @@ class DefectFormsController < ApplicationController
       flash[:danger] = "送信できませんでした。もう一度送信してください。"
       
      else
-      text = <<-EOC    
-      ---------------------------------
-        不具合報告が来ました。
-
-        ▼名前
-        #{@name}
-        ▼メールアドレス
-        #{@mail}
-        ▼種別
-        #{@type}
-        ▼内容
-        #{@contents}
-        EOC
-
-      Slack.chat_postMessage username: @name,  text: text, channel: "#不具合報告フォーム"
+      notifier = Slack::Notifier.new 'https://hooks.slack.com/services/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', username: @name
+      notifier.ping(@contents)
       flash[:success] = "ご連絡ありがとうございます。対応いたします。"
      end
      redirect_to defect_forms_url

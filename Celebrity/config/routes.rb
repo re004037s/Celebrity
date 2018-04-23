@@ -81,17 +81,7 @@ Rails.application.routes.draw do
   post '/comments/create', to: 'portfolio_comments#create'
   post '/comments/:id/destroy', to: 'portfolio_comments#destroy'
   get '/qa', to: 'static_pages#qa'
-  # get '/question', to: 'questions#index'
-  # get '/question/new', to: 'queations#new'
-  # post '/question/new', to: 'questions#new'
-  # get '/question/create', to: 'questions#create'
-  # get '/question/edit', to: 'questions#edit'
-  
-  # get '/question_edit', to: 'questions#edit'
   resources :questions
-  # get '/questions', to: 'questions#index'
-  # get '/questions/:id/edit', to: 'questions#edit'
-    
   get '/faq/edit', to: 'faqs#edit'
   get '/pdca_post/get_image/:id', to: 'pdca_posts#get_image'
   get '/portfolio_mv', to: 'static_pages#portfolio_mv'

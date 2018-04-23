@@ -12,10 +12,6 @@
       <%= f.text_field :name, class: 'form-entrance--textbox validate[required,maxSize[10]] text-input', :onkeyup => "NameLength(value);" %>
       <p id="name-input-length">0文字</p>
 
-      <%= f.label :nickname, "ニックネーム", class: 'form-entrance--label' %>
-      <%= f.text_field :nickname, class: 'form-entrance--textbox validate[required,maxSize[10]] text-input', :onkeyup => "NickNameLength(value);" %>
-      <p id="nickname-input-length">0文字</p>
-
       <%= f.label :email, 'Email', class: 'form-entrance--label' %>
       <%= f.email_field :email, class: 'form-entrance--textbox validate[required,maxSize[50],custom[email]] text-input', :onkeyup => "EmailLength(value);" %>
       <p id="email-input-length">0文字</p>
@@ -53,10 +49,6 @@
 <script>
   function NameLength( str ) {
     document.getElementById("name-input-length").innerHTML = str.length + "文字";
-  }
-  
-  function NickNameLength( str ) {
-    document.getElementById("nickname-input-length").innerHTML = str.length + "文字";
   }
   
   function EmailLength( str ) {
