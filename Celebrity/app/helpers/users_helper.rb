@@ -128,6 +128,29 @@ module UsersHelper
     end
   end
   
+  #MYPAGEの進捗線用に追加（percent_movieメソッドから呼び出し元によってmovie_countとsent_countだけreturnできるなら不要）
+  def count_movie(user)
+    if user.free_engineer_user && user.venture_user
+      enable_movies    = Movie.where(movie_category_id: MovieCategory.where(must_view: true).try(:pluck,:id))
+      movie_count      = enable_movies.try(:count)
+      enable_movie_ids = enable_movies.try(:pluck,:id)
+      sent_count       = user.feedbacks.where(movie_id: enable_movie_ids).try(:count)
+      return movie_count, sent_count
+    elsif user.free_engineer_user
+      enable_movies    = Movie.where(movie_category_id: MovieCategory.where(must_view: true).where(subject: 'free').try(:pluck,:id))
+      movie_count      = enable_movies.try(:count)
+      enable_movie_ids = enable_movies.try(:pluck,:id)
+      sent_count       = user.feedbacks.where(movie_id: enable_movie_ids).try(:count)
+      return movie_count, sent_count
+    elsif user.venture_user
+      enable_movies    = Movie.where(movie_category_id: MovieCategory.where(must_view: true).where(subject: 'venture').try(:pluck,:id))
+      movie_count      = enable_movies.try(:count)
+      enable_movie_ids = enable_movies.try(:pluck,:id)
+      sent_count       = user.feedbacks.where(movie_id: enable_movie_ids).try(:count)
+      return movie_count, sent_count
+    end
+  end
+  
   def get_profile_image(user)
     if user.picture_file
       routes = Rails.application.routes.url_helpers

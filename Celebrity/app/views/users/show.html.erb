@@ -180,6 +180,23 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
         <td>
     </tr>
   </table>
+  
+   <!--進捗線を表示-->
+  <progress id="html_css_progress" value="0" max="8"></progress>
+  <output id="html_css_output"></output>
+
+<script>
+    let current_status1 = <%= count_html_css(@user) %>;
+    let total_course_num1 = document.getElementById('html_css_progress').max;
+    
+    function countup() {
+        document.getElementById('html_css_progress').value = current_status1;
+        document.getElementById('html_css_output').value = '進捗率：' + (current_status1 / total_course_num1 * 100).toFixed() + '%';
+    }
+
+    setInterval(countup, 1000);
+</script>
+
   <table class="txt1 table table-bordered table-striped table-condensed table-status">
     <thead>
       <tr>
@@ -322,6 +339,22 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
     </tr>
   </table>
   
+  <!--進捗線を表示-->
+  <progress id="javascript_progress" value="0" max="5"></progress>
+  <output id="javascript_output"></output>
+
+<script>
+    let current_status2 = <%= count_javascript(@user) %>;
+    let total_course_num2 = document.getElementById('javascript_progress').max;
+    
+    function countup() {
+        document.getElementById('javascript_progress').value = current_status2;
+        document.getElementById('javascript_output').value = '進捗率：' + (current_status2 / total_course_num2 * 100).toFixed() + '%';
+    }
+
+    setInterval(countup, 1000);
+</script>
+
   <table class="txt1 table table-bordered table-striped table-condensed table-status">
     <thead>
       <tr>
@@ -418,6 +451,22 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
       </td>
     </tr>
   </table>
+ 
+  <!--進捗線を表示-->
+  <progress id="ruby_progress" value="0" max="5"></progress>
+  <output id="ruby_output"></output>
+
+<script>
+    let current_status3 = <%= count_ruby(@user) %>;
+    let total_course_num3 = document.getElementById('ruby_progress').max;
+    
+    function countup() {
+        document.getElementById('ruby_progress').value = current_status3;
+        document.getElementById('ruby_output').value = '進捗率：' + (current_status3 / total_course_num3 * 100).toFixed() + '%';
+    }
+
+    setInterval(countup, 1000);
+</script>
   
   <table class="txt1 table table-bordered table-striped table-condensed table-status">
     <thead>
@@ -515,6 +564,23 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
       </td>
     </tr>
   </table>
+  
+  <!--進捗線を表示-->
+  <progress id="rubyonrails_progress" value="0" max="15"></progress>
+  <output id="rubyonrails_output"></output>
+
+<script>
+    let current_status4 = <%= count_ruby_on_rails(@user) %>;
+    let total_course_num4 = document.getElementById('rubyonrails_progress').max;
+    
+    function countup() {
+        document.getElementById('rubyonrails_progress').value = current_status4;
+        document.getElementById('rubyonrails_output').value = '進捗率：' + (current_status4 / total_course_num4 * 100).toFixed() + '%';
+    }
+
+    setInterval(countup, 1000);
+</script>
+
   <table class="txt1 table table-bordered table-striped table-condensed table-status">
     <thead>
       <tr>
@@ -786,6 +852,23 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
       </td>
     </tr>
   </table>
+  
+  <!--進捗線を表示-->
+  <progress id="rails_tutorial_progress" value="0" max="14"></progress>
+  <output id="rails_tutorial_output"></output>
+
+<script>
+    let current_status5 = <%= count_rails_tutorial(@user) %>;
+    let total_course_num5 = document.getElementById('rails_tutorial_progress').max;
+    
+    function countup() {
+        document.getElementById('rails_tutorial_progress').value = current_status5;
+        document.getElementById('rails_tutorial_output').value = '進捗率：' + (current_status5 / total_course_num5 * 100).toFixed() + '%';
+    }
+
+    setInterval(countup, 1000);
+</script>
+
   <table class="txt1 table table-bordered table-condensed table-status">
     <tr>
       <td class="table-header">完了した章</td>
@@ -814,6 +897,24 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
     </tr>
   </table>
   
+    <!--進捗線を表示-->
+  <progress id="movie_progress" value="0" max="100"></progress>
+  <output id="movie_output"></output>
+
+<script>
+    var movie_status = [];
+    movie_status = <%= count_movie(@user) %>;
+    // let total_course_num5 = document.getElementById('rails_tutorial_progress').max;
+    
+    function countup() {
+        document.getElementById('movie_progress').max = movie_status[0];
+        document.getElementById('movie_progress').value = movie_status[1];
+        document.getElementById('movie_output').value = '進捗率：' + (movie_status[1] / movie_status[0] * 100).toFixed() + '%';
+    }
+
+    setInterval(countup, 1000);
+</script>
+
   <table class="txt1 table table-bordered table-striped table-condensed table-status" style="table-layout: fixed;">
     <thead>
       <tr>
