@@ -40,7 +40,7 @@ class UsersController < ApplicationController
   end
   
   def get_image
-    @image = current_user
+    @image = User.find(params[:id])
     send_data(@image.picture_file)
   end
   
