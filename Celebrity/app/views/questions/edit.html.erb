@@ -6,16 +6,18 @@
     
 	<%= form_for(@question) do |f| %>
  		<%= f.label :category %>
-  		<%= f.text_field :category %>
+  		<%= f.text_field :category ,class: 'question-form' %><br><br>
  		<%= f.label :question %>
-  		<%= f.text_area :question %>
+  		<%= f.text_area :question , class: 'question-form' %><br><br>
   		<%= f.label :answer %>
-  		<%= f.text_area :answer %>
- 		 <%= f.submit "更新" %>
+  		<%= f.text_area :answer , class: 'question-form' %><br>
+ 		<%= f.submit "更新" ,class: "btn btn-success" %>
 	<% end %>
 	
-	<%= link_to "戻る", questions_path %>
-	<%= link_to "削除", @question, class: "btn btn-danger", method: :delete,
+	<div class="question-padding">
+		<%= link_to "戻る", questions_path ,class: "btn btn-info" %>
+		<%= link_to "削除", @question, class: "btn btn-danger", method: :delete,
                                    data: { confirm: "本当に削除しますか?" } %>
+	</div>
 
 </div>

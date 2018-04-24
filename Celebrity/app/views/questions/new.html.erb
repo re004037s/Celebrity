@@ -4,16 +4,19 @@
         <span>よくある質問作成</span>
     </h2>
     
+    
     <%= form_for(@question) do |f| %>
-        <%= f.label :category %>
-        <%= f.text_field :category %>
+        <%= f.label :category %><br>
+        <%= f.text_field :category , class: 'question-form' %><br><br>
         <%= f.label :question %>
-        <%= f.text_area :question %>
+        <%= f.text_area :question , class: 'question-form' %><br><br>
         <%= f.label :answer %>
-        <%= f.text_area :answer %>
-        <%= f.submit "追加" %>
+        <%= f.text_area :answer , class: 'question-form' %><br>
+        <%= f.submit "追加" ,class: "btn btn-primary" %>
     <% end %>
     
-    <%= link_to "戻る", questions_path %>
-
+    <div class="question-padding">
+        <%= link_to "戻る", questions_path ,class: "btn btn-info" %>
+    </div>
+    
 </div>
