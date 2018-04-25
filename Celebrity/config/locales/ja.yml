@@ -50,3 +50,52 @@ ja:
       next: "&rsaquo;"
       last: "&raquo;"
       truncate: "&hellip;"
+  
+  #メッセージの日本語化対応 
+  activerecord:
+    models:
+      user: ユーザー
+      term: 用語
+      qiita_post: Qiita投稿
+      pdca_post: PDCA投稿
+      comment: コメント
+      feedback: フィードバック
+      movie: 動画
+      movie_category: 動画カテゴリ
+      interview_post: 面談投稿
+    attributes:
+      user:
+        name: 氏名
+        nickname: ニックネーム
+        email: Email
+        password: パスワード
+        portfolio_path: ポートフォリオURL
+        github_path: GitHubURL
+        line_id: LINE ID
+        skillsheet_name: スキルシート名
+      term:
+        name: 用語
+        content: 解説
+      qiita_post:
+        title: タイトル
+        url: 投稿URL
+      pdca_post:
+        plan: Plan
+        do: Do
+        check: Check
+        action: Action
+      comment:
+        content: コメント
+      feedback:
+        feedback: フィードバック
+      movie:
+        title: タイトル
+        path: 埋め込みURL
+      movie_category:
+        name: カテゴリ名
+      interview_post:
+        title: 案件名
+        language: 言語
+        question: 質問・回答
+      
+        
