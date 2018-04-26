@@ -61,7 +61,6 @@ ja:
       comment: コメント
       feedback: フィードバック
       movie: 動画
-      movie_category: 動画カテゴリ
       interview_post: 面談投稿
     attributes:
       user:
@@ -91,11 +90,10 @@ ja:
       movie:
         title: タイトル
         path: 埋め込みURL
-      movie_category:
-        name: カテゴリ名
       interview_post:
         title: 案件名
         language: 言語
+        day: 面談日
         question: 質問・回答
       
         
