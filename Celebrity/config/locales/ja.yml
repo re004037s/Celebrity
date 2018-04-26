@@ -57,10 +57,6 @@ ja:
       user: ユーザー
       term: 用語
       qiita_post: Qiita投稿
-      pdca_post: PDCA投稿
-      comment: コメント
-      feedback: フィードバック
-      movie: 動画
       interview_post: 面談投稿
     attributes:
       user:
@@ -78,18 +74,6 @@ ja:
       qiita_post:
         title: タイトル
         url: 投稿URL
-      pdca_post:
-        plan: Plan
-        do: Do
-        check: Check
-        action: Action
-      comment:
-        content: コメント
-      feedback:
-        feedback: フィードバック
-      movie:
-        title: タイトル
-        path: 埋め込みURL
       interview_post:
         title: 案件名
         language: 言語
