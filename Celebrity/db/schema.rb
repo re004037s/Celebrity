@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180427140905) do
+ActiveRecord::Schema.define(version: 20180428135545) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -158,11 +158,20 @@ ActiveRecord::Schema.define(version: 20180427140905) do
     t.index ["user_id"], name: "index_qiita_posts_on_user_id", using: :btree
   end
 
+  create_table "question_categories", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "question_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["question_id"], name: "index_question_categories_on_question_id", using: :btree
+  end
+
   create_table "questions", force: :cascade do |t|
     t.text     "question"
     t.text     "answer"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "category_id"
   end
 
   create_table "railstutorial_statuses", force: :cascade do |t|
@@ -341,6 +350,7 @@ ActiveRecord::Schema.define(version: 20180427140905) do
   add_foreign_key "movies", "movie_categories"
   add_foreign_key "pdca_posts", "users"
   add_foreign_key "qiita_posts", "users"
+  add_foreign_key "question_categories", "questions"
   add_foreign_key "terms", "users"
   add_foreign_key "user_tags", "tags"
   add_foreign_key "user_tags", "users"
