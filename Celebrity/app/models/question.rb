@@ -1,3 +1,3 @@
 class Question < ApplicationRecord
-    belongs_to :question_category, optional: true
+    belongs_to :question_category
 end

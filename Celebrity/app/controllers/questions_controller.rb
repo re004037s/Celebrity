@@ -11,7 +11,7 @@ class QuestionsController < ApplicationController
     end
 
     def create
-        @question = Question.new(question_params)
+        @question = Question.create(question_params)
             if @question.save
                 flash[:success] = "作成しました"
                 redirect_to questions_url
@@ -49,7 +49,7 @@ class QuestionsController < ApplicationController
  private
  
     def question_params
-        params.require(:question).permit(:id, :question, :answer, :category)
+        params.require(:question).permit(:question, :answer, :category_id)
     end
     
     
