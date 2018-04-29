@@ -2,8 +2,9 @@
 <div class="movie">
   <div id="movie-layer" class="movie-layer">セレブエンジニアリング</div>
   <% param = '?rel=0' + '&controls=0' + '&modestbranding=1' %>
-  <iframe src="<%= movie.path + param %>" frameborder="0" allowfullscreen  oncontextmenu='return false'></iframe>
+  <iframe  src="<%= movie.path + param %>" frameborder="0" allowfullscreen  oncontextmenu='return false'></iframe>
 </div>
+
 
 <% if @category.must_view %>
   <div class="mv-btn">
