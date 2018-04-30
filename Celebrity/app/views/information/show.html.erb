@@ -4,10 +4,23 @@
 
 <div class="top-index--wrapper">
   <%= form_for(@input_information, url: {:action => 'create'}) do |f| %>
-    <%= f.label :info, "表示したいお知らせを入力してください", class: 'txt1' %>
+    <%= f.label :info, "表示したいお知らせ・イベントを入力してください", class: 'txt1' %>
     <%= f.text_area :info, class: 'form-control'%>
     <%= f.label :display_period, "表示期日を設定してください", class: 'txt1' %>
     <%= f.date_field :display_period, style:"width:40%", class: 'form-control'%>
+    <%= f.label :info, "開催場所のURL", class: 'txt1' %>
+    <%= f.text_area :info, class: 'form-control'%>
+    <%= f.label :info, "お知らせ・イベントの詳細を入力してください", class: 'txt1' %>
+    <%= f.text_area :info, rows: 15, class: 'form-control validate[required,maxSize[1500]] text-input', :onkeyup => "QuestionLength(value);" %>
+  <p id="question-input-length">0文字</p>
+    <%= f.label :info, "出欠確認をとる", class: 'txt1' %>
+    <%= f.check_box :info, {class: 'form-control'}, "true", "false" %><br>
+    <%= f.label :info, "ITベンチャー起業コース", class: 'txt1' %>
+    <%= f.check_box :info, {class: 'form-control'}, "true", "false" %><br>
+    <%= f.label :info, "フリーエンジニアコース", class: 'txt1' %>
+    <%= f.check_box :info, {class: 'form-control'}, "true", "false" %><br>
+    <%= f.label :info, "お知らせ・イベント投稿時にメールを送信する", class: 'txt1' %>
+    <%= f.check_box :info, {class: 'form-control'}, "true", "false" %><br>
     <%= f.submit "登録", class: "btn btn-default active" %>
   <% end %>
 </div>
