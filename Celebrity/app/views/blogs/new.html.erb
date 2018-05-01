@@ -1,0 +1,18 @@
+<h2 class="page-title-jp">
+  <span>Blog投稿</span>
+</h2>
+<div align="center"><a href="<%= blogs_path %>">Blog一覧</a></div>
+
+
+<div class="top-index--wrapper">
+  <%= form_for(@post_blog, url: {:action => 'create'}) do |f| %>
+    <%= f.label :title, "タイトル", class: 'txt1' %>
+    <%= f.text_field :title, class: 'form-control'%>
+    <%= f.label :body, "記事", class: 'txt1' %>
+    <%= f.text_area :body, class: 'form-control'%>
+    <%= f.label :thumbnail, "サムネイル画像", class: 'txt1' %>
+    <%= f.file_field :thumbnail, id: :thumbnail, accept: 'image/jpg,image/jpeg,image/png,image/gif' %>
+    <%= f.submit "登録", class: "btn btn-default active" %>
+  <% end %>
+</div>
+

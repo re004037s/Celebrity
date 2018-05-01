@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   resources :feedbacks, only: [:create, :update, :destroy]
   resources :comments, only: [:create, :destroy]
   resources :password_resets, only: [:new, :create, :edit, :update]
+  resources :blogs, only: [:new, :create, :index, :edit, :update, :destroy]
   
   resources :movies do
     get 'sort', on: :collection
@@ -72,6 +73,11 @@ Rails.application.routes.draw do
   post '/information', to: 'information#create', as: 'create_information'
   patch '/information', to: 'information#update'
   delete '/information', to: 'information#destroy'
+  
+  # get '/blog', to: 'blogs#new'
+  # post '/blog', to: 'blogs#create', as: 'create_blog'
+  # patch '/blog', to: 'blogs#update'
+  # delete '/blog', to: 'blogs#destroy'
 
   get '/progate', to: 'static_pages#progate'
   post '/progate', to: 'static_pages#progate'
