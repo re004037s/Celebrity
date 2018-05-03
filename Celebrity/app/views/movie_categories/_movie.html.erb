@@ -8,6 +8,7 @@
 </div>
 
 
+
 <% if @category.must_view %>
   <div class="mv-btn">
     <% if current_user.feedbacks.find_by(movie_id: movie.id) %>
