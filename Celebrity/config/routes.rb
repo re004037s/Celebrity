@@ -82,6 +82,7 @@ Rails.application.routes.draw do
   post '/comments/:id/destroy', to: 'portfolio_comments#destroy'
   get '/qa', to: 'static_pages#qa'
   resources :questions
+  resources :question_categories
   get '/faq/edit', to: 'faqs#edit'
   get '/pdca_post/get_image/:id', to: 'pdca_posts#get_image'
   get '/portfolio_mv', to: 'static_pages#portfolio_mv'

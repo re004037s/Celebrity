@@ -3,6 +3,7 @@ class QuestionsController < ApplicationController
     
     def index
         @questions = Question.all.page(params[:page])
+        @questions_category = QuestionCategory.all.page(params[:page])
     end
 
 

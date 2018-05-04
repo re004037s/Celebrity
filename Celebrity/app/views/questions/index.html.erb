@@ -4,6 +4,9 @@
     <span>よくある質問</span>
   </h2>
   
+      <% @question_category.each do |category| %>
+      <%= question_category.name %>
+      <% end %>
   
   <!-- QA bootstrap アコーディオン -->
   
@@ -45,6 +48,7 @@
 
     <div class="question-padding">
   	  <%= link_to "新規作成", new_question_path, class: "btn btn-primary"  %>
+  	  <%= link_to "カテゴリー作成", new_question_category_path, class: "btn btn-primary"  %>
   	</div>
   	   
   </div>
