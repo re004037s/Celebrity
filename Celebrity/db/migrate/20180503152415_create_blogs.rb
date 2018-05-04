@@ -3,7 +3,8 @@ class CreateBlogs < ActiveRecord::Migration[5.0]
     create_table :blogs do |t|
       t.string :title
       t.string :body
-      t.binary :thumbnail
+      t.string :thumbnail
+      t.references :user, foreign_key: true
       t.timestamps
     end
   end

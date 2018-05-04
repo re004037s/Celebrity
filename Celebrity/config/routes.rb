@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   resources :feedbacks, only: [:create, :update, :destroy]
   resources :comments, only: [:create, :destroy]
   resources :password_resets, only: [:new, :create, :edit, :update]
-  resources :blogs, only: [:new, :create, :index, :edit, :update, :destroy]
+  resources :blogs
   
   resources :movies do
     get 'sort', on: :collection

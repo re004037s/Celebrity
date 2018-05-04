@@ -1,11 +1,10 @@
 <h2 class="page-title-jp">
-  <span>Blog投稿</span>
+  <span>Blog編集</span>
 </h2>
 <div align="center"><a href="<%= blogs_path %>">Blog一覧</a></div>
 
-
 <div class="top-index--wrapper">
-  <%= form_for(@blog, url: {:action => 'create'}) do |f| %>
+  <%= form_for(@blog, url: {:action => 'update',:method => 'post'}) do |f| %>
     <%= f.label :title, "タイトル", class: 'txt1' %>
     <%= f.text_field :title, class: 'form-control'%>
     <%= f.label :body, "本文", class: 'txt1' %>
@@ -13,6 +12,6 @@
     <%= f.label :thumbnail, "サムネイル画像", class: 'txt1' %>
     <%= f.file_field :thumbnail, id: :thumbnail, accept: 'image/jpg,image/jpeg,image/png,image/gif' %>
     <%= f.hidden_field :user_id, :value => current_user.id %>
-    <%= f.submit "登録", class: "btn btn-default active" %>
+    <%= f.submit "更新", class: "btn btn-default active" %>
   <% end %>
 </div>

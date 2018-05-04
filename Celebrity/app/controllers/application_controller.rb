@@ -29,4 +29,5 @@ class ApplicationController < ActionController::Base
     model = params[:model].constantize.find(params[:id])
     send_data model[params[:column]], :type => 'image/jpg,image/jpeg,image/png,image/gif', :disposition => 'inline'
   end
+  
 end

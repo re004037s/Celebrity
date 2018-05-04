@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180430134700) do
+ActiveRecord::Schema.define(version: 20180503152415) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,10 +18,11 @@ ActiveRecord::Schema.define(version: 20180430134700) do
   create_table "blogs", force: :cascade do |t|
     t.string   "title"
     t.string   "body"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.binary   "thumbnail"
-    t.string   "thumbnail_name"
+    t.string   "thumbnail"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_blogs_on_user_id", using: :btree
   end
 
   create_table "comments", force: :cascade do |t|
@@ -337,6 +338,7 @@ ActiveRecord::Schema.define(version: 20180430134700) do
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
+  add_foreign_key "blogs", "users"
   add_foreign_key "comments", "users"
   add_foreign_key "feedbacks", "users"
   add_foreign_key "interview_posts", "users"
