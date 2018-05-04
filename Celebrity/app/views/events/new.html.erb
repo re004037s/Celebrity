@@ -1,0 +1,12 @@
+<h1 class="txt2">新規登録</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@eventpost) do |f| %>
+      <%= render partial: 'form', locals: {f: f} %>
+        <div id="centering">
+          <%= f.submit '登録', {class: 'btn btn-primary post-regist' }%>
+        </div>
+    <% end %>
+  </div>
+</div>

@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'events/index'
+
+  get 'events/show'
+
+  get 'events/new'
+
+  get 'events/destroy'
+
   get 'password_resets/new'
   get 'password_resets/edit'
 
@@ -32,6 +40,7 @@ Rails.application.routes.draw do
   resources :feedbacks, only: [:create, :update, :destroy]
   resources :comments, only: [:create, :destroy]
   resources :password_resets, only: [:new, :create, :edit, :update]
+  resources :events
   
   resources :movies do
     get 'sort', on: :collection

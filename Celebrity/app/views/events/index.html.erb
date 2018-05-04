@@ -1,0 +1,54 @@
+<div class="staticpages-qa--wrapper">
+  <div class="container-fluid">
+    
+    <h2 class="page-title-jp">
+      <span>イベント一覧</span>
+    </h2>
+    
+    <table class="table-posts">
+      <thead>
+      </thead>
+     
+      
+      <!--投稿の表示-->
+      <% @eventposts.each do |eventpost| %>
+        <tbody class="tr-group">
+          <tr>
+            <!--イベントの写真後から追加-->
+            <!--<td class="td-img" rowspan="2">-->
+            <!--    <%#= image_tag(get_profile_image(interviewpost.user), :class => "icon") %>-->
+            <!--</td>-->
+            
+            <!--メイン情報-->
+            <td class="td-main">
+                <!--後からリンク追加 -->
+              <%= link_to eventpost.title, events_show_path %>
+            </td>
+          </tr>
+          <tr>
+            <td class="td-sub">
+              <%= eventpost.id %>
+
+              <!--言語・経験-->
+              （
+              <%= eventpost.date %>
+              ,
+              <%= eventpost.text %>
+              ） &nbsp;
+              <!--編集（投稿者のみ表示）-->
+              <%# if interviewpost.user_id == current_user.id %>
+                ［
+                  <%#= link_to '編集', edit_interview_post_path(interviewpost) %>
+                ］
+              <%# end %>
+            </td>
+          </tr>
+        </tbody>
+      <% end %><!--@interviewposts.each do |interviewpost|-->
+    </table>
+
+  </div>
+</div>
+<div class="center">
+  <%= paginate @eventposts %>
+</div>
