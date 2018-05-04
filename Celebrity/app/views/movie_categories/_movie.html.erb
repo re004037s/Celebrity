@@ -1,9 +1,13 @@
 <h4 class="movie-title"><%= movie.title %></h4>
 <div class="movie">
   <div id="movie-layer" class="movie-layer">セレブエンジニアリング</div>
-  <!--<% param = '?modestbranding=1' %>-->
-  <iframe src="<%= movie.path + param %>" frameborder="0" allowfullscreen  oncontextmenu='return false'></iframe>
+  <% param = '?modestbranding=1' %>
+  <div class="iframe-responsive">
+  <iframe width="480" height="340" src="<%= movie.path + param %>" frameborder="0" allowfullscreen  oncontextmenu='return false'></iframe>
 </div>
+</div>
+
+
 
 <% if @category.must_view %>
   <div class="mv-btn">
