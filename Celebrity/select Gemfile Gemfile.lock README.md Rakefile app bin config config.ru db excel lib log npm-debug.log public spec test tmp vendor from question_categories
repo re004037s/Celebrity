@@ -1,0 +1,10 @@
+                                     Table "public.question_categories"
+   Column   |            Type             |                            Modifiers                             
+------------+-----------------------------+------------------------------------------------------------------
+ id         | integer                     | not null default nextval('question_categories_id_seq'::regclass)
+ name       | character varying           | 
+ created_at | timestamp without time zone | not null
+ updated_at | timestamp without time zone | not null
+Indexes:
+    "question_categories_pkey" PRIMARY KEY, btree (id)
+
