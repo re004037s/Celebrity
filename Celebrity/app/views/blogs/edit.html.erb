@@ -4,14 +4,30 @@
 <div align="center"><a href="<%= blogs_path %>">Blog一覧</a></div>
 
 <div class="top-index--wrapper">
-  <%= form_for(@blog, url: {:action => 'update',:method => 'post'}) do |f| %>
+  <%= form_for(@blog, url: {:action => 'update',:method => 'post'}, html:{:id => 'blog-edit-form'}) do |f| %>
     <%= f.label :title, "タイトル", class: 'txt1' %>
-    <%= f.text_field :title, class: 'form-control'%>
+    <%= f.text_field :title, class: 'form-control validate[required] text-input' %>
     <%= f.label :body, "本文", class: 'txt1' %>
-    <%= f.text_area :body, class: 'form-control', rows: 15 %>
+    <%= f.text_area :body, class: 'form-control validate[required] text-input', rows: 15 %>
     <%= f.label :thumbnail, "サムネイル画像", class: 'txt1' %>
-    <%= f.file_field :thumbnail, id: :thumbnail, accept: 'image/jpg,image/jpeg,image/png,image/gif' %>
+    <%= f.file_field :thumbnail, id: :thumbnail, accept: 'image/jpg,image/jpeg,image/png,image/gif', class: 'validate[required]' %>
     <%= f.hidden_field :user_id, :value => current_user.id %>
     <%= f.submit "更新", class: "btn btn-default active" %>
   <% end %>
 </div>
+
+<script>
+$(document).ready(function(){
+    $("#blog-edit-form").validationEngine({
+    });
+  });
+  
+  $('form').validationEngine({validationEventTrigger:'keyup'});
+  
+  $('#blog_thumbnail').bind('change', function() {
+    var size_in_megabytes = this.files[0].size/1024/1024;
+    if (size_in_megabytes > 5) {
+      alert('5MB以下のファイルを選択してください');
+    }
+  });
+</script>
