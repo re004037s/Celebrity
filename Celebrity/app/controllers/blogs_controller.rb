@@ -12,7 +12,6 @@ class BlogsController < ApplicationController
       flash[:success] = "Blogが投稿されました"
       redirect_to blogs_path
     else
-      Rails.logger.info(@blog.errors.inspect)
       flash[:danger] = "Blogの投稿ができませんでした"
       render 'new'
     end
@@ -36,7 +35,6 @@ class BlogsController < ApplicationController
       flash[:success] = "Blogが更新されました"
       redirect_to blogs_path
     else
-      Rails.logger.info(@blog.errors.inspect)
       flash[:danger] = "Blogの更新ができませんでした"
       render 'edit'
     end
