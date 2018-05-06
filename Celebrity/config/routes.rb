@@ -1,12 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'events/index'
-
-  get 'events/show'
-
-  get 'events/new'
-
-  get 'events/destroy'
 
   get 'password_resets/new'
   get 'password_resets/edit'
