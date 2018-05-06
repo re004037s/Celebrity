@@ -64,13 +64,13 @@
       <%= yield :entrance %>
     
     <%  else %>
+      <% if logged_in? %>
+        <!--ナビゲーションバー-->
+        <%= render 'layouts/navbar' %>
       
-      <!--ナビゲーションバー-->
-      <%= render 'layouts/navbar' %>
-      
-      <!--ヘッダーの裏に配置-->
-      <div class="behind-header"></div>
-      
+        <!--ヘッダーの裏に配置-->
+        <div class="behind-header"></div>
+      <% end %>
       <div class="body-wrapper">
         
         <!--トップ画像-->
@@ -90,12 +90,13 @@
               <%= yield :without_sidebar %>
             
             <% else %>
-            
+              
               <div class="row">
                 <!--yield（デフォルト）-->
                 <div class="col-md-7">
                   <%= yield %>
                 </div>
+                
                 <!--サイドバー-->
                 <aside class="col-md-5">
                   <%= render 'layouts/aside' %>
