@@ -56,7 +56,6 @@ Rails.application.routes.draw do
     end
   end
   
-  
   post '/tag_new', to: 'users#tag_new'
   delete '/tag_delete', to: 'users#tag_delete'
   
@@ -73,11 +72,6 @@ Rails.application.routes.draw do
   post '/information', to: 'information#create', as: 'create_information'
   patch '/information', to: 'information#update'
   delete '/information', to: 'information#destroy'
-  
-  # get '/blog', to: 'blogs#new'
-  # post '/blog', to: 'blogs#create', as: 'create_blog'
-  # patch '/blog', to: 'blogs#update'
-  # delete '/blog', to: 'blogs#destroy'
 
   get '/progate', to: 'static_pages#progate'
   post '/progate', to: 'static_pages#progate'
