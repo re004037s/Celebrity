@@ -301,21 +301,25 @@ body { font-family: "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "
 .movie {
   position: relative;
   //width: 100%;
-  width: 480px;
-  height: 340px;
+  //max-width: 480px;
+  //height: 340px;
   //padding-top: 70%;
   margin: 15px auto;
-  iframe {
+
+@media screen and (max-width: 480px) {
+  .iframe-responsive {
+    position: relative;
+    width: 100%;
+    padding: calc(340 / 480 * 100%) 0 0;
+  }
+  .iframe-responsive iframe {
     position: absolute;
-    content: "";
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 1;
-    //max-width: 600px;
-    //max-height: 432px;
   }
+}
   .movie-layer {
     position: absolute;
     content: "";
@@ -335,7 +339,6 @@ body { font-family: "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "
     z-index: 2;
   }
 }
-
 
 
 

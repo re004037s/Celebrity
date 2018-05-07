@@ -44,6 +44,7 @@ Rails.application.routes.draw do
   get '/get_skillsheet', to: 'skillsheets#get_skillsheet'
   get '/index', to: 'skillsheets#index'
   patch '/update_business_status', to: 'skillsheets#update_business_status'
+  
   resources :terms do
     collection do
       get 'ajax_search'
@@ -56,11 +57,9 @@ Rails.application.routes.draw do
     end
   end
   
-  
   post '/tag_new', to: 'users#tag_new'
   delete '/tag_delete', to: 'users#tag_delete'
   
-  # patch '/post_course', to:'users#update_course'
   patch '/post_pic', to:'users#update_picture'
   patch '/tag_edit', to:'users#tag_edit' #追加
   patch '/tag_show', to:'users#tag_show' #追加 sugi
@@ -74,11 +73,6 @@ Rails.application.routes.draw do
   patch '/information', to: 'information#update'
   delete '/information', to: 'information#destroy'
   
-  # get '/blog', to: 'blogs#new'
-  # post '/blog', to: 'blogs#create', as: 'create_blog'
-  # patch '/blog', to: 'blogs#update'
-  # delete '/blog', to: 'blogs#destroy'
-
   get '/progate', to: 'static_pages#progate'
   post '/progate', to: 'static_pages#progate'
   get '/railstutorial', to: 'static_pages#railstutorial'
