@@ -9,9 +9,18 @@
         <div class="center mt_20">
           <h4><%= @eventpost.title %></h4>
         </div>
+        
+        <div class="center">
+        　　<% if @eventpost.picture? %>
+        　　<%= image_tag @eventpost.picture_url  %>
+        　<% else %>
+        　　<%= image_tag 'default.png' %>
+        　<% end %>
+      　</div>
+　
         <li class="mt_20">【開催日】<%= @eventpost.date %></li>
           <div class="att">
-            <li>【面談での質問内容・回答】</li>
+            <li>【詳細】</li>
             <li><%= simple_format(@eventpost.text) %></li><br>
           </div>
       </ul>
