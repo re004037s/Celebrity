@@ -1,0 +1,59 @@
+<div class="blogs-form--wrapper">
+  <div align="center"><a href="<%= blogs_path %>">Blog一覧</a></div>
+  
+  <div class="top-index--wrapper">
+    <%= form_for(@blog, html:{:id => 'blog-form'}) do |f| %>
+      <%= f.label :title, "タイトル", class: 'txt1' %>
+      <%= f.text_field :title, class: 'form-control validate[required,maxSize[20]] text-input', :onkeyup => "TitleLength(value);" %>
+      <p id="title-input-length">0文字</p>
+      
+      <%= f.label :body, "本文", class: 'txt1' %>
+      <%= f.text_area :body, class: 'form-control validate[required,maxSize[3000]] text-input', rows: 15, :onkeyup => "BodyLength(value);" %>
+      <p id="body-input-length">0文字</p>
+      
+      <%= f.label :thumbnail, "サムネイル画像", class: 'txt1' %>
+      <p class="input-file-btn">
+        <!--ファイルを選択-->
+        <% if @blog.thumbnail.blank? %>
+          <%= f.file_field :thumbnail, id: :thumbnail, accept: 'image/jpg,image/jpeg,image/png,image/gif', class: 'validate[required]' %>
+        <% else %>
+          <%= f.file_field :thumbnail, id: :thumbnail, accept: 'image/jpg,image/jpeg,image/png,image/gif' %>
+        <% end %>  
+      </p>
+      <!--<span>選択されていません</span>-->
+      <span><%= @thumbnail_name %></span>
+      <%= f.hidden_field :user_id, :value => current_user.id %>
+      <div>
+        <%= f.submit "更新", class: "btn btn-default active" %>
+      </div>
+    <% end %>
+  </div>
+  
+  <script>
+    function TitleLength( str ) {
+      document.getElementById("title-input-length").innerHTML = str.length + "文字";
+    }
+    
+    function BodyLength( str ) {
+      document.getElementById("body-input-length").innerHTML = str.length + "文字";
+    }
+  
+    $(document).ready(function(){
+      $("#blog-form").validationEngine({});
+    });
+    
+    $('#thumbnail').bind('change', function() {
+      var size_in_megabytes = this.files[0].size/1024/1024;
+      if (size_in_megabytes > 5) {
+        alert('5MB以下のファイルを選択してください');
+      }
+    });
+    
+    $(function() {
+      $('#thumbnail').on('change', function() {
+        var file_name = $(this).prop('files')[0].name;
+        $(this).parent().next().html(file_name);
+      });
+    });
+  </script>
+</div>
