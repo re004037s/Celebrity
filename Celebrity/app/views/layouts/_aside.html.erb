@@ -29,6 +29,7 @@
     <li><%= link_to 'IT用語解説', terms_path, class: "#{'disabled' if current_user.try(:guest) }" %></li>
     <li><%= link_to 'PDCA報告', pdca_posts_path, class: "#{'disabled' if current_user.try(:guest) }" %></li>
     <li><%= link_to '不具合報告', defect_forms_path  %></li>
+    <li><%= link_to 'Blog一覧', blogs_path %></li>
   <% end %>
     <li><%= link_to 'スキルシート一覧', skillsheets_path %></li>
   </ul>

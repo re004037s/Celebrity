@@ -1,0 +1,46 @@
+<h2 class="page-title-jp">
+  <span>Blog投稿</span>
+</h2>
+<div align="center"><a href="<%= blogs_path %>">Blog一覧</a></div>
+
+
+<div class="top-index--wrapper">
+  <%= form_for(@blog, url: {:action => 'create'}, html:{:id => 'blog-new-form'}) do |f| %>
+    <%= f.label :title, "タイトル", class: 'txt1' %>
+    <%= f.text_field :title, class: 'form-control validate[required,maxSize[20]] text-input', :onkeyup => "TitleLength(value);" %>
+    <p id="title-input-length">0文字</p>
+    
+    <%= f.label :body, "本文", class: 'txt1' %>
+    <%= f.text_area :body, class: 'form-control validate[required,maxSize[3000]] text-input', rows: 15, :onkeyup => "BodyLength(value);" %>
+    <p id="body-input-length">0文字</p>
+    
+    <%= f.label :thumbnail, "サムネイル画像", class: 'txt1' %>
+    <%= f.file_field :thumbnail, id: :thumbnail, accept: 'image/jpg,image/jpeg,image/png,image/gif', class: 'validate[required]'  %>
+    
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    
+    <%= f.submit "登録", class: "btn btn-default active" %>
+  <% end %>
+</div>
+
+<script>
+  function TitleLength( str ) {
+    document.getElementById("title-input-length").innerHTML = str.length + "文字";
+  }
+  
+  function BodyLength( str ) {
+    document.getElementById("body-input-length").innerHTML = str.length + "文字";
+  }
+  
+  $(document).ready(function(){
+    $("#blog-new-form").validationEngine({
+    });
+  });
+  
+  $('#thumbnail').bind('change', function() {
+    var size_in_megabytes = this.files[0].size/1024/1024;
+    if (size_in_megabytes > 5) {
+      alert('5MB以下のファイルを選択してください');
+    }
+  });
+</script>

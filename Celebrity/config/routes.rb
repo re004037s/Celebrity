@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   resources :feedbacks, only: [:create, :update, :destroy]
   resources :comments, only: [:create, :destroy]
   resources :password_resets, only: [:new, :create, :edit, :update]
+  resources :blogs
   
   resources :movies do
     get 'sort', on: :collection
@@ -54,7 +55,6 @@ Rails.application.routes.draw do
         get 'get_skillsheet'
     end
   end
-  
   
   post '/tag_new', to: 'users#tag_new'
   delete '/tag_delete', to: 'users#tag_delete'

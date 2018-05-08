@@ -1,0 +1,8 @@
+<% if logged_in? %>
+  <%= render(:partial => 'list', :object => @blogs) %>
+<% else %>
+  <!--テンプレートのソースを変更-->
+  <% content_for :without_sidebar do %>
+    <%= render(:partial => 'list', :object => @blogs) %>
+  <% end %>
+<% end %>
