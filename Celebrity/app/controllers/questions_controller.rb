@@ -9,6 +9,7 @@ class QuestionsController < ApplicationController
 
     def new
         @question = Question.new 
+                @question_categories = QuestionCategory.all
     end
 
     def create
