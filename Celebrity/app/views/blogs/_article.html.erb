@@ -1,0 +1,20 @@
+<div class="blogs-show-wrapper">
+  <div class="title">
+    <%= @blog.title %>
+  </div>
+  <div class="date">
+    <%= @blog.created_at.strftime("%Y/%m/%d") %>
+  </div>
+  
+  <hr>
+  <div class="body">
+    <%= simple_format(@blog.body) %>
+  </div>
+  
+  <div class="thumbnail">
+    <%= image_tag(@blog.thumbnail.url) %>
+  </div>
+  <div class="contributor">
+    by <%= @blog.user.name %>
+  </div>
+</div>
