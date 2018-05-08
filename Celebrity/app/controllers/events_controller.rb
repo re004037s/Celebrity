@@ -26,8 +26,23 @@ class EventsController < ApplicationController
   def edit
     @eventpost = Event.find(params[:id])
   end
+  
+  def update
+    @eventpost = Event.find(params[:id])
+    if @eventpost.update_attributes(eventposts_params)
+      flash[:success] = "イベント内容が更新されました"
+      redirect_to events_path
+    else
+      render 'edit'
+    end
+  end
+  
 
   def destroy
+    @eventpost = Event.find(params[:id])
+    @eventpost.destroy
+    flash[:success] = "イベント内容が削除されました"
+    redirect_to events_path
   end
   
   private

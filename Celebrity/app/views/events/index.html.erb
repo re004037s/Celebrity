@@ -27,20 +27,16 @@
           </tr>
           <tr>
             <td class="td-sub">
-              <%= eventpost.id %>
 
-              <!--言語・経験-->
               （
               <%= eventpost.date %>
-              ,
-              <%= eventpost.text %>
               ） &nbsp;
-              <!--編集（投稿者のみ表示）-->
-              <%# if interviewpost.user_id == current_user.id %>
+              <!--編集（adminのみ表示）-->
+              <% if current_user.try(:admin) %>
                 ［
-                  <%#= link_to '編集', edit_interview_post_path(interviewpost) %>
+                  <%= link_to '編集', edit_event_path(id: eventpost.id) %>
                 ］
-              <%# end %>
+              <% end %>
             </td>
           </tr>
         </tbody>
