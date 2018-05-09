@@ -21,7 +21,7 @@
         <% end %>  
       </p>
       <!--<span>選択されていません</span>-->
-      <span><%= @thumbnail_name %></span>
+      <span>選択済みファイル：<%= @thumbnail_name %></span>
       <%= f.hidden_field :user_id, :value => current_user.id %>
       <div>
         <%= f.submit "更新", class: "btn btn-default active" %>
@@ -52,7 +52,7 @@
     $(function() {
       $('#thumbnail').on('change', function() {
         var file_name = $(this).prop('files')[0].name;
-        $(this).parent().next().html(file_name);
+        $(this).parent().next().html("選択済みファイル：" + file_name);
       });
     });
   </script>
