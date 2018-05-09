@@ -9,7 +9,6 @@ class QuestionsController < ApplicationController
 
     def new
         @question = Question.new 
-                @question_categories = QuestionCategory.all
     end
 
     def create
@@ -54,5 +53,8 @@ class QuestionsController < ApplicationController
         params.require(:question).permit(:question, :answer, :category_id)
     end
     
+    def question_category_params
+        params.require(:question_category).permit(:name)
+    end
     
 end

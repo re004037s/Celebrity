@@ -4,11 +4,12 @@
         <span>よくある質問作成</span>
     </h2>
     
-          <% @question_categories.each do |category| %>
-                <%= category.name %><br>
-      <% end %>
+
     
     <%= form_for(@question) do |f| %>
+    
+          <%= f.label :category_id, 'カテゴリ', class: 'txt3' %>
+      <%= f.collection_select :category_id, QuestionCategory.all, :id,:name %>
 
         <%= f.label :question %>
         <%= f.text_area :question , class: 'question-form' %><br><br>

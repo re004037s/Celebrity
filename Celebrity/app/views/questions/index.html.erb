@@ -13,6 +13,10 @@
       <%= category.name %><br>
       <% end %>
         	  <%= link_to "カテゴリー編集", edit_question_category_path(category), class: "sm-btn btn-success"  %><br>
+        	  
+        	     <% @questions.each do |question| %>
+        	                     Q :<%= question.question %><br>
+        	                       <% end %>
   <% end %>
         </div>
         </div>
