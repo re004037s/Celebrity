@@ -27,6 +27,7 @@ class BlogsController < ApplicationController
   
   def edit
     @blog = Blog.find(params[:id])
+    @thumbnail_name = File.basename(@blog.thumbnail.url)
   end
   
   def update
