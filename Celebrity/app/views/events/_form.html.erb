@@ -7,9 +7,19 @@
     <%= f.label :date, '開催日', class: 'txt1' %>
     <%= f.date_field :date, class: 'form-control validate[required] text-input' %>
     
-    <%= f.label :question, '詳細', class: 'txt1' %>
-  <%= f.text_area :text, rows: 15, placeholder: "場所や概要など", class: 'form-control validate[required,maxSize[1500]] text-input',
-   :onkeyup => "TextLength(value);" %>
+    <%= f.label :text, '詳細', class: 'txt1' %>
+    <%= f.text_area :text, rows: 15, placeholder: "場所や概要など", class: 'form-control validate[required,maxSize[1500]] text-input',
+     :onkeyup => "TextLength(value);" %>
+     
+    <!--なぜかエラー-->
+    <%#= f.label :free, "フリーエンジニアコース", class: 'form-entrance--label' %>
+    <%#= f.check_box :free, {class: 'form-entrance--textbox'}, "true", "false" %>
+   
+    <%#= f.label :venture, "ITベンチャー起業コース", class: 'form-entrance--label' %>
+    <%#= f.check_box :venture, {class: 'form-entrance--textbox'}, "true", "false" %>
+      
+    
+   
   <p id="text-input-length">0文字</p>
   
   
