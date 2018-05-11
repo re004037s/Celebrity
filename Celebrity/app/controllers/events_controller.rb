@@ -17,8 +17,9 @@ class EventsController < ApplicationController
     @eventpost = current_user.events.build(eventposts_params)
     if @eventpost.save
       flash[:success] = "イベントが投稿されました"
-      redirect_to new_event_path
+      redirect_to events_path
     else
+      flash[:danger] = "投稿に失敗しました"
       render 'new'
     end
   end
