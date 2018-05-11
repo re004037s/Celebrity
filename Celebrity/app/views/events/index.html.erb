@@ -33,9 +33,9 @@
               ） &nbsp;
               <!--編集（adminのみ表示）-->
               <% if current_user.try(:admin) %>
-                ［
-                  <%= link_to '編集', edit_event_path(id: eventpost.id) %>
-                ］
+                  <%= link_to '編集', edit_event_path(id: eventpost.id), class: 'btn btn-default active post-update' %>
+                  <%= link_to "削除", event_path(id: eventpost.id), class: "btn btn-danger post-delete", method: :delete,
+                                           data: { confirm: "本当に削除しますか?" } %>
               <% end %>
             </td>
           </tr>

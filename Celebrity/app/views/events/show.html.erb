@@ -29,8 +29,6 @@
   <% if current_user.try(:admin) %>
     <div class="right">
       <%= link_to '編集', edit_event_path, class: 'btn btn-default active post-update' %>
-      <%= link_to "削除", @eventpost, class: "btn btn-danger post-delete", method: :delete,
-                                           data: { confirm: "本当に削除しますか?" } %>
     </div>
   <% end %>
   
