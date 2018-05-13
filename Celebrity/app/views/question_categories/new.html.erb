@@ -1,16 +1,16 @@
 
   
     <h2 class="page-title-jp">
-        <span>よくある質問カテゴリー作成</span>
+      <span>よくある質問カテゴリー作成</span>
     </h2>
     
     <%= form_for(@question_categories) do |f| %>
-        <%= f.label :カテゴリー名 %>
-        <%= f.text_field :name , class: 'question-category-form' %><br><br>
-        <%= f.submit "追加" ,class: "btn btn-primary" %>
+      <%= f.label :カテゴリー名 %>
+      <%= f.text_field :name , class: 'question-category-form' %><br><br>
+      <%= f.submit "追加" ,class: "btn btn-primary" %>
     <% end %>
         
     <div class="question-padding">
-        <%= link_to "戻る", questions_path ,class: "btn btn-info" %>
+      <%= link_to "戻る", questions_path ,class: "btn btn-info" %>
     </div>
     
