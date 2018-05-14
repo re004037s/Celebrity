@@ -1,8 +1,37 @@
+    <%= f.label :picture, "イベント画像選択", class: 'text1' %>
+　　<%= f.file_field :picture , accept: 'image/*' %>
+    
     <%= f.label :title, "イベントタイトル（15文字程度）", class: 'txt1' %>
-    <%= f.text_field :title, class: 'form-control' %>
+    <%= f.text_field :title, placeholder: "リアル勉強会", class: 'form-control' %>
 
     <%= f.label :date, '開催日', class: 'txt1' %>
-    <%= f.text_field :date, placeholder: "2018/01/01", class: 'form-control' %>
-
+    <%= f.date_field :date, class: 'form-control validate[required] text-input' %>
+    
     <%= f.label :text, '詳細', class: 'txt1' %>
-    <%= f.text_field :text, class: 'form-control' %>
+    <%= f.text_area :text, rows: 15, placeholder: "場所や概要など", class: 'form-control validate[required,maxSize[1500]] text-input',
+     :onkeyup => "TextLength(value);" %>
+     
+    <!--なぜかエラー-->
+    <%= f.label :free, "フリーエンジニアコース", class: 'form-entrance--label' %>
+    <%= f.check_box :free, {class: 'form-entrance--textbox'}, "true", "false" %>
+   
+    <%= f.label :venture, "ITベンチャー起業コース", class: 'form-entrance--label' %>
+    <%= f.check_box :venture, {class: 'form-entrance--textbox'}, "true", "false" %>
+      
+    <!--出欠情報入力フォームも追加予定-->
+    
+   
+  <p id="text-input-length">0文字</p>
+  
+  
+
+
+<script>
+  function countLength( text, field ) {
+    document.getElementById(field).innerHTML = text.length + "文字";
+  }
+  
+  function TextLength( str ) {
+    document.getElementById("text-input-length").innerHTML = str.length + "文字";
+  }
+</script>

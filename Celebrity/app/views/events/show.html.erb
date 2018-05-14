@@ -9,22 +9,32 @@
         <div class="center mt_20">
           <h4><%= @eventpost.title %></h4>
         </div>
+        
+        <div class="center">
+        　　<% if @eventpost.picture? %>
+        　　<%= image_tag @eventpost.picture_url  %>
+        　<% else %>
+        　　<%= image_tag 'default.png' %>
+        　<% end %>
+      　</div>
+　
         <li class="mt_20">【開催日】<%= @eventpost.date %></li>
-        <li class="mt_20">【イベント詳細】<%= @eventpost.text %></li>
-        <div class="att">
-        </div>
+          <div class="att">
+            <li>【詳細】</li>
+            <li><%= simple_format(@eventpost.text) %></li><br>
+          </div>
       </ul>
     </div>
   </div>
-  <!--
-  <%# if current_user.try(:admin) || current_user.id == @eventpost.user_id %>
+  <% if current_user.try(:admin) %>
     <div class="right">
-      <%#= link_to '編集', edit_interview_post_path, class: 'btn btn-default active post-update' %>
-      <%#= link_to "削除", @eventpost, class: "btn btn-danger post-delete", method: :delete,
-                                           data: { confirm: "本当に削除しますか?" } %>
+      <%= link_to '編集', edit_event_path, class: 'btn btn-default active post-update' %>
     </div>
-  <%# end %>
-  -->
+  <% end %>
+  
+
+
+  
   <div class="center">
     <%= link_to '戻る', events_path %>
   </div>

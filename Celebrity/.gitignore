@@ -12,7 +12,7 @@ config/database.yml
 config/secrets.yml
 config/environments/*.rb
 config/puma.rb
-
+public/uploads/blog/*
 # Ignore the default SQLite database.
 db/*.sqlite3
 db/*.sqlite3-journal
