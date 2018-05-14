@@ -42,9 +42,7 @@ ActiveRecord::Schema.define(version: 20180511102533) do
     t.text     "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.date     "day"
     t.string   "picture"
-    t.boolean  "type"
     t.boolean  "free"
     t.boolean  "venture"
     t.index ["user_id"], name: "index_events_on_user_id", using: :btree
