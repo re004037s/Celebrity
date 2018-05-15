@@ -1,5 +1,6 @@
 class Event < ApplicationRecord
   has_many :attendances, dependent: :destroy
+  has_many :users, through: :attendances
   mount_uploader :picture, EventsUploader
   default_scope -> { order(created_at: :desc) }
     validates :user_id, presence: true

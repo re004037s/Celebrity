@@ -6,7 +6,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    @attendance_users = Attendance.page(params[:page]).select{ |u| u.existence == true && u.status == true }
+    @attendance_users = User.page(params[:page]).select{ |u| u.existence == true && u.status == true }
     @eventpost = Event.find(params[:id])
   end
 
@@ -47,10 +47,24 @@ class EventsController < ApplicationController
     redirect_to events_path
   end
   
+  
+  def attendance_new
+    @user = current_user
+    attendances_status = params[:status]
+    attendance = @user.attendances.create(attendance: status)
+    
+    if attendance.save
+      render json: '200'
+    else
+      render json: '500'
+    end
+  end
+  
+  
   private
 
     def eventposts_params
-      params.require(:event).permit(:title, :date, :text, :picture, :free, :venture, :status)
+      params.require(:event).permit(:title, :date, :text, :picture, :free, :venture)
       params.require(:attendance).permit(:status)
     end
 end

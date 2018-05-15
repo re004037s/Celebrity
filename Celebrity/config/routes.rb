@@ -60,12 +60,17 @@ Rails.application.routes.draw do
   
   post '/tag_new', to: 'users#tag_new'
   delete '/tag_delete', to: 'users#tag_delete'
+  post '/attendance_new', to: 'events#attendance_new'
+  delete '/attendance_delete', to: 'events#attendance_delete'
   
   # patch '/post_course', to:'users#update_course'
   patch '/post_pic', to:'users#update_picture'
   patch '/tag_edit', to:'users#tag_edit' #追加
   patch '/tag_show', to:'users#tag_show' #追加 sugi
   delete '/delete_tag', to: 'users#tag_delete' #temp post⇨deleteに変更しshow.htmlと統一
+  patch '/attendance_edit', to:'events#attendance_edit' #追加
+  patch '/attendance_show', to:'events#attendance_show' #追加 
+  delete '/delete_attendance', to: 'events#attendance_delete' #
   patch '/post_skillsheet', to: 'skillsheets#update_skillsheet'
   patch '/register_status', to: 'users#register_status'
   root 'top#index'

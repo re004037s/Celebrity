@@ -3,9 +3,9 @@ class User < ApplicationRecord
     has_many :user, :class_name => "Term", :foreign_key => 'user_id'
     has_many :create_user, :class_name => "Term", :foreign_key => 'create_user_id'
     has_many :qiita_posts, dependent: :destroy
-    has_many :interview_posts, dependent: :destroy
     has_many :pdca_posts, dependent: :destroy
     has_many :attendances, dependent: :destroy
+    has_many :events, through: :attendances
     attr_accessor :remember_token, :activation_token, :reset_token
     before_save { self.email = email.downcase }
     default_scope -> { order(:created_at) }

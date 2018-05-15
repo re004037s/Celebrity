@@ -11,7 +11,6 @@
     <%= f.text_area :text, rows: 15, placeholder: "場所や概要など", class: 'form-control validate[required,maxSize[1500]] text-input',
      :onkeyup => "TextLength(value);" %>
      
-    <!--なぜかエラー-->
     <%= f.label :free, "フリーエンジニアコース", class: 'form-entrance--label' %>
     <%= f.check_box :free, {class: 'form-entrance--textbox'}, "true", "false" %>
    
