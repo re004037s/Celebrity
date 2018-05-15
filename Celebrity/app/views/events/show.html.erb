@@ -24,7 +24,20 @@
             <li><%= simple_format(@eventpost.text) %></li><br>
           </div>
       </ul>
+      <div class="col-md-6 col-md-offset-3">
+    <%#= form_for(@eventpost) do |f| %>
+      <%#= f.label :status, "出席する", class: 'form-entrance--label' %>
+      <%#= f.check_box :status, {class: 'form-entrance--textbox'}, "true", "false" %>
+        <div id="centering">
+          <%#= f.submit '登録', {class: 'btn btn-primary post-regist' }%>
+        </div>
+    <%# end %>
+  </div>
     </div>
+    
+    <% @attendance_users.each do |attendance_user| %>
+      <% attendance_user.name %>
+    <% end %>
   </div>
   <% if current_user.try(:admin) %>
     <div class="right">

@@ -6,6 +6,7 @@ class EventsController < ApplicationController
   end
 
   def show
+    @attendance_users = Attendance.page(params[:page]).select{ |u| u.existence == true && u.status == true }
     @eventpost = Event.find(params[:id])
   end
 
@@ -49,7 +50,8 @@ class EventsController < ApplicationController
   private
 
     def eventposts_params
-      params.require(:event).permit(:title, :date, :text, :picture, :free, :venture) 
+      params.require(:event).permit(:title, :date, :text, :picture, :free, :venture, :status)
+
     end
 end
   

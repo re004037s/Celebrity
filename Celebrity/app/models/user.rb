@@ -6,6 +6,7 @@ class User < ApplicationRecord
     has_many :interview_posts, dependent: :destroy
     has_many :pdca_posts, dependent: :destroy
     has_many :events, dependent: :destroy
+    has_many :attendances, dependent: :destroy
     attr_accessor :remember_token, :activation_token, :reset_token
     before_save { self.email = email.downcase }
     default_scope -> { order(:created_at) }

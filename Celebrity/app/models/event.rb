@@ -1,5 +1,5 @@
 class Event < ApplicationRecord
-  belongs_to :user
+  has_many :attendances, dependent: :destroy
   mount_uploader :picture, EventsUploader
   
 end
