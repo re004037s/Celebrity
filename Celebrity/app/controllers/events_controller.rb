@@ -6,7 +6,6 @@ class EventsController < ApplicationController
   end
 
   def show
-    @attendance_users = User.page(params[:page]).select{ |u| u.existence == true && u.status == true }
     @eventpost = Event.find(params[:id])
   end
 
@@ -50,6 +49,7 @@ class EventsController < ApplicationController
   
   def attendance_new
     @user = current_user
+    @sttendance = Attendance.new
     attendances_status = params[:status]
     attendance = @user.attendances.create(attendance: status)
     
