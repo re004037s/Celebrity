@@ -27,9 +27,7 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :events do
-   resources :attendance
-  end
+  resources :events
   resources :pdca_posts
   resources :defect_forms
   resources :qiita_posts

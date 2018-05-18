@@ -25,7 +25,7 @@
           </div>
       </ul>
       <div class="col-md-6 col-md-offset-3">
-    <%= form_for([@eventpost, @eventpost.attendance.build]) do |f| %>
+    <%= form_for(@eventpost) do |f| %>
       <%= f.label :status, "出席する", class: 'form-entrance--label' %>
       
         <div id="centering">
@@ -35,11 +35,7 @@
   </div>
     </div>
     
-    <% if @attendance_users.any? %>
-      <% @attendance_users.each do |attendance_user| %>
-        <% attendance_user.name %>
-      <% end %>
-    <% end %>
+    
   </div>
   <% if current_user.try(:admin) %>
     <div class="right">

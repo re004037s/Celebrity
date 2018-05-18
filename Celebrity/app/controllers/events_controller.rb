@@ -7,6 +7,15 @@ class EventsController < ApplicationController
 
   def show
     @eventpost = Event.find(params[:id])
+    #@attendances = current_user.events.build(attendances_params)
+    #if @attendances.save
+     # flash[:success] = "出席情報が送信されました"
+     # redirect_to event_path
+   # else
+    #  flash[:danger] = "送信に失敗しました"
+    #  render 'show'
+  #  end
+    
   end
 
   def new
@@ -14,7 +23,7 @@ class EventsController < ApplicationController
   end
   
   def create
-    @eventpost = current_user.events.build(eventposts_params)
+    @eventpost = current_user.events.attendances.build(eventposts_params)
     if @eventpost.save
       flash[:success] = "イベントが投稿されました"
       redirect_to events_path
@@ -47,25 +56,14 @@ class EventsController < ApplicationController
   end
   
   
-  def attendance_new
-    @user = current_user
-    @sttendance = Attendance.new
-    attendances_status = params[:status]
-    attendance = @user.attendances.create(attendance: status)
-    
-    if attendance.save
-      render json: '200'
-    else
-      render json: '500'
-    end
-  end
-  
-  
   private
 
     def eventposts_params
       params.require(:event).permit(:title, :date, :text, :picture, :free, :venture)
-      params.require(:attendance).permit(:status)
     end
+    
+    #def attendances_params
+      #params.require(:attendance).permit(:status)
+    #end
 end
   
