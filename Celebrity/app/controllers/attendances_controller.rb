@@ -10,7 +10,7 @@ class AttendancesController < ApplicationController
   private
   
   def attendance_params
-    params.require(:sttendance).permit(:status)
+    params.require(:attendance).permit(:status)
   end
   
 end
