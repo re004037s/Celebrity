@@ -1,6 +1,7 @@
 class Event < ApplicationRecord
   has_many :attendances, dependent: :destroy
   has_many :users, through: :attendances
+  accepts_nested_attributes_for :attendances
   mount_uploader :picture, EventsUploader
   default_scope -> { order(created_at: :desc) }
     validates :title, presence: true, length: { maximum: 150 }
