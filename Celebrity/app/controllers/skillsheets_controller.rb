@@ -25,7 +25,7 @@ class SkillsheetsController < ApplicationController
     send_data(
       data.string,
       :type => 'application/excel',
-      :filename => 'スキルシート(sample).xls'
+      :filename => 'skill_sheet_sample.xls'
     )
   end
   
