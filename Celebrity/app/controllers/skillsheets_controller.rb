@@ -19,7 +19,7 @@ class SkillsheetsController < ApplicationController
   
   def download
     Spreadsheet.client_encoding = "UTF-8"
-    book = Spreadsheet.open Rails.root.join('excel', 'sample.xls').to_path
+    book = Spreadsheet.open Rails.root.join('excel', 'sample1.xls').to_path
     data = StringIO.new ''
     book.write data
     send_data(
