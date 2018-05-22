@@ -2,7 +2,13 @@ class EventsController < ApplicationController
   before_action :logged_in_user, only: [:index, :create, :edit, :destroy]
   
   def index
-    @eventposts = Event.all.page(params[:page])
+    if current_user.free_engineer_user && current_user.venture_user
+      @eventposts = Event.all.page(params[:page])
+    elsif current_user.free_engineer_user
+      @eventposts = Event.where(free: true).page(params[:page])
+    elsif current_user.venture_user
+      @eventposts = Event.where(venture: true).page(params[:page])
+    end
   end
 
   def show
