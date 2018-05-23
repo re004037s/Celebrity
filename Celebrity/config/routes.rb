@@ -36,6 +36,8 @@ Rails.application.routes.draw do
   resources :feedbacks, only: [:create, :update, :destroy]
   resources :comments, only: [:create, :destroy]
   resources :password_resets, only: [:new, :create, :edit, :update]
+  resources :attendances
+  post '/event/:id/reply', to: 'attendances#reply'
   
   resources :blogs
   
