@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     end
   end
   
+  
   resources :events
   resources :pdca_posts
   resources :defect_forms
@@ -78,6 +79,7 @@ Rails.application.routes.draw do
   patch '/information', to: 'information#update'
   delete '/information', to: 'information#destroy'
 
+  post 'events/attendance_submit', to: 'events#attendance_submit'
   get '/progate', to: 'static_pages#progate'
   post '/progate', to: 'static_pages#progate'
   get '/railstutorial', to: 'static_pages#railstutorial'

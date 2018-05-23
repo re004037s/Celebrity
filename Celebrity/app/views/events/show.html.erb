@@ -24,9 +24,13 @@
             <li><%= simple_format(@eventpost.text) %></li><br>
           </div>
       </ul>
+      <%= @eventpost.id %>
       <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@eventpost) do |f| %>
+    <%= form_for(@attendance, :url => {:controller => :events, :action => :attendance_submit}) do |f| %>
       <%= f.label :status, "出席する", class: 'form-entrance--label' %>
+      <%= f.radio_button :status, "true" %>
+      <%= f.hidden_field :event_id, value: params[:id] %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
         <div id="centering">
           <%= f.submit '登録', {class: 'btn btn-primary post-regist' }%>
         </div>
