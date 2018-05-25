@@ -1,4 +1,4 @@
-<div class="staticpages-qa--wrapper">
+<div class="blogs-index--wrapper">
   <div class="container-fluid">
     
     <h2 class="page-title-jp">
@@ -15,9 +15,9 @@
         <tbody class="tr-group">
           <tr>
             <!--イベントの写真後から追加-->
-            <!--<td class="td-img" rowspan="2">-->
-            <!--    <%#= image_tag(get_profile_image(interviewpost.user), :class => "icon") %>-->
-            <!--</td>-->
+            <td class="td-img" rowspan="2">
+                <%= image_tag(eventpost.picture.url, :class => "icon") %>
+            </td>
             
             <!--メイン情報-->
             <td class="td-main">
@@ -40,7 +40,7 @@
             </td>
           </tr>
         </tbody>
-      <% end %><!--@interviewposts.each do |interviewpost|-->
+      <% end %>
     </table>
 
   </div>

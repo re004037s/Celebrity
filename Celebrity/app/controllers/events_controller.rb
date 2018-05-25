@@ -2,28 +2,18 @@ class EventsController < ApplicationController
   before_action :logged_in_user, only: [:index, :create, :edit, :destroy]
   
   def index
-    @eventposts = Event.all.page(params[:page])
+    if current_user.free_engineer_user && current_user.venture_user
+      @eventposts = Event.all.page(params[:page])
+    elsif current_user.free_engineer_user
+      @eventposts = Event.where(free: true).page(params[:page])
+    elsif current_user.venture_user
+      @eventposts = Event.where(venture: true).page(params[:page])
+    end
   end
 
   def show
     @eventpost = Event.find(params[:id])
     @attendance = Attendance.new
-    
-  end
-  
-  def attendance_submit
-    #@eventpost = Event.find(params[:id])
-    @attendance = current_user.attendances.build(attendances_params)
-    if @attendance.save
-      logger.debug @attendance.errors.inspect
-      flash[:success] = "出席情報が送信されました"
-       redirect_to event_path
-    else
-      logger.debug @attendance.errors.inspect
-      flash[:danger] = "送信に失敗しました"
-      render 'show'
-    end
-    
   end
 
   def new
@@ -31,7 +21,7 @@ class EventsController < ApplicationController
   end
   
   def create
-    @eventpost = current_user.events.attendances.build(eventposts_params)
+    @eventpost = Event.new(eventposts_params)
     if @eventpost.save
       flash[:success] = "イベントが投稿されました"
       redirect_to events_path
@@ -70,8 +60,5 @@ class EventsController < ApplicationController
       params.require(:event).permit(:title, :date, :text, :picture, :free, :venture)
     end
     
-    def attendances_params
-      params.require(:attendance).permit(:status)
-    end
 end
   
