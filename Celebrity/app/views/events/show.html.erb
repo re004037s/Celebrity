@@ -11,11 +11,11 @@
         </div>
         
         <div class="center">
-        　　<% if @eventpost.picture? %>
-        　　<%= image_tag @eventpost.picture_url  %>
-        　<% else %>
-        　　<%= image_tag 'default.png' %>
-        　<% end %>
+      　　<% if @eventpost.picture? %>
+      　　    <%= image_tag @eventpost.picture_url  %>
+      　   <% else %>
+      　　    <%= image_tag 'default.png' %>
+      　   <% end %>
       　</div>
 　
         <li class="mt_20">【開催日】<%= @eventpost.date %></li>
@@ -25,31 +25,26 @@
           </div>
       </ul>
       <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@attendance, :url => {:controller => :attendances, :action => :reply}) do |f| %>
-      <%= f.radio_button :status, "true" %>
-      参加
-      <%= f.radio_button :status, "false" %>
-      不参加
-      <%= f.hidden_field :user_id, :value => current_user.id %>
-      <%= f.hidden_field :event_id, :value => @eventpost.id %>
-      
-        <div id="centering">
-          <%= f.submit '登録', {class: 'btn btn-primary post-regist' }%>
-        </div>
-    <% end %>
-  </div>
+        <%= form_for(@attendance, :url => {:controller => :attendances, :action => :reply}) do |f| %>
+          <%= f.radio_button :status, "true" %>
+          参加
+          <%= f.radio_button :status, "false" %>
+          不参加
+          <%= f.hidden_field :user_id, :value => current_user.id %>
+          <%= f.hidden_field :event_id, :value => @eventpost.id %>
+        
+          <div id="centering">
+            <%= f.submit '登録', {class: 'btn btn-primary post-regist' }%>
+          </div>
+        <% end %>
+      </div>
     </div>
-    
-    
   </div>
   <% if current_user.try(:admin) %>
     <div class="right">
       <%= link_to '編集', edit_event_path, class: 'btn btn-default active post-update' %>
     </div>
   <% end %>
-  
-
-
   
   <div class="center">
     <%= link_to '戻る', events_path %>
