@@ -1,6 +1,7 @@
 class MovieCategoriesController < ApplicationController
   include MovieCategoriesHelper
   
+  before_action :logged_in_user
   before_action :admin_user, only: [:index, :new, :create, :edit, :update, :destroy, :sort]
   before_action :comp_movies, only: :show
   before_action :viewing_restriction, only: :show
