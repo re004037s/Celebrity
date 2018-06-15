@@ -31,7 +31,9 @@
     <% elsif @category.sort_order != MovieCategory.count %>
       <div id="next_category_link" class="<%= hide if !current_user.before_fb_comp?(@category.movies.count + 1, @category.id) && @category.must_view %>">
         <p class="text-center">
-          <%= link_to "NEXT：#{@next_category.name}", movie_category_path(@next_category), class: "txt1 btn btn-lg btn-default active" %>
+          <% if !@next_category.blank? %>
+            <%= link_to "NEXT：#{@next_category.name}", movie_category_path(@next_category), class: "txt1 btn btn-lg btn-default active" %>
+          <% end %>
         </p>
       </div>
     <% end %>
@@ -50,7 +52,9 @@
     <% elsif @category.sort_order != MovieCategory.count %>
       <div id="next_category_link" class="<%= hide if !current_user.before_fb_comp?(@category.movies.count + 1, @category.id) && @category.must_view %>">
         <p class="text-center">
-          <%= link_to "NEXT：#{@next_category.name}", movie_category_path(@next_category), class: "txt1 btn btn-lg btn-default active" %>
+          <% if !@next_category.blank? %>
+            <%= link_to "NEXT：#{@next_category.name}", movie_category_path(@next_category), class: "txt1 btn btn-lg btn-default active" %>
+          <% end %>
         </p>
       </div>
     <% end %>
