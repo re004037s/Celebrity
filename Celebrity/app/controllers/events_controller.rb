@@ -14,7 +14,8 @@ class EventsController < ApplicationController
   def show
     @eventpost = Event.find(params[:id])
     @attendance = Attendance.new
-    @attendances_user = User.where(status: true).count
+    @attendances_user = Attendance.where(event_id:  params[:id], status: true).count
+    @attendances_counts = "現在このイベントには#{@attendances_user}人が参加予定です"
   end
 
   def new

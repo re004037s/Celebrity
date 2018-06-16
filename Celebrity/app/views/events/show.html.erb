@@ -1,7 +1,7 @@
 <h2 class="page-title-jp">
   <span>イベント詳細</span>
 </h2>
-<%= @attendances_user %>
+<%= Attendance.where(event_id: params[:id]).where(user_id: current_user.id).count %>
 <div class="main-wrapper">
   <div class="span">
     <div class="well">
@@ -22,14 +22,15 @@
           <div class="att">
             <li>【詳細】</li>
             <li><%= simple_format(@eventpost.text) %></li><br>
+            <li><%= @attendances_counts %></li>
           </div>
       </ul>
       <%= @eventpost.id %>
       <div class="col-md-6 col-md-offset-3">
     <%= form_for(@attendance, :url => {:controller => :attendances, :action => :reply}) do |f| %>
-      <%= f.radio_button :status, "true" %>
+      <%= f.radio_button :status, true %>
       参加
-      <%= f.radio_button :status, "false" %>
+      <%= f.radio_button :status, false %>
       不参加
       <%= f.hidden_field :user_id, :value => current_user.id %>
       <%= f.hidden_field :event_id, :value => @eventpost.id %>
