@@ -1,3 +1,3 @@
 class QuestionCategory < ApplicationRecord
-  has_many :question
+  has_many :questions, :dependent => :delete_all
 end

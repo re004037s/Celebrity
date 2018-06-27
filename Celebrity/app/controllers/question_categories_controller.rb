@@ -1,7 +1,11 @@
 class QuestionCategoriesController < ApplicationController
-  before_action :admin_user, only:[:index, :create, :edit, :delete ]
+  
+  before_action :logged_in_user
+  before_action :admin_user, only:[:create, :edit, :delete ]
   
   def index
+    @questions = Question.all.page(params[:page])
+    @question_categories = QuestionCategory.all
   end
   
   def new
@@ -42,6 +46,10 @@ class QuestionCategoriesController < ApplicationController
   end
   
   private
+  
+    def question_params
+      params.require(:question).permit(:question, :answer, :category_id)
+    end
   
   def question_category_params
     params.require(:question_category).permit(:name)

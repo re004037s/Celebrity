@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180503152415) do
+ActiveRecord::Schema.define(version: 20180623022523) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -177,9 +177,10 @@ ActiveRecord::Schema.define(version: 20180503152415) do
   create_table "questions", force: :cascade do |t|
     t.text     "question"
     t.text     "answer"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "category_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.integer  "question_category_id"
+    t.index ["question_category_id"], name: "index_questions_on_question_category_id", using: :btree
   end
 
   create_table "railstutorial_statuses", force: :cascade do |t|
@@ -359,6 +360,7 @@ ActiveRecord::Schema.define(version: 20180503152415) do
   add_foreign_key "movies", "movie_categories"
   add_foreign_key "pdca_posts", "users"
   add_foreign_key "qiita_posts", "users"
+  add_foreign_key "questions", "question_categories"
   add_foreign_key "terms", "users"
   add_foreign_key "user_tags", "tags"
   add_foreign_key "user_tags", "users"

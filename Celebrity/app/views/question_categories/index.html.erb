@@ -12,7 +12,6 @@
         <% else %>
           <%= category.name %><br>
         <% end %>
-      <%= link_to "カテゴリー編集", edit_question_category_path(category), class: "sm-btn btn-success"  %><br>
       </div>
     </div>
     
@@ -24,15 +23,12 @@
       <% @questions.each do |question| %>
         <% if sampleAccordionCollapse != 0 %>
         	<% sampleAccordionCollapse += 1 %>
-          <% if category.id ==  question.question_category_id %>
+          <% if  category.id ==  question.category_id %>
   	        <div class="panel panel-default">
   	    	    <div class="panel-heading">
   			        <h3 class="panel-title">
   		    		    <a style="display:block" data-toggle="collapse" data-parent="#sampleAccordion" href="#<%= sampleAccordionCollapse %>">
-                  Q :<%= question.question %><br>
-                    <div class="question-padding">
-                      <%= link_to "編集", edit_question_path(question) ,class: "btn btn-success" %>
-                    </div>
+                    Q :<%= question.question %><br>
    				        </a>
   		          </h3>
   	          </div>
@@ -49,10 +45,5 @@
       <% end %>
     </div>
   <% end %>
-
-  <div class="question-padding">
-    <%= link_to "新規作成", new_question_path, class: "btn btn-primary"  %>
-  	<%= link_to "カテゴリー作成", new_question_category_path, class: "btn btn-primary"  %>
-  </div>
-  	 
+  
 </div>
