@@ -153,7 +153,7 @@
                 <li><%= movie.title %></li>
               <% end %>
             <% end %>
-          <% elsif current_user.current_user.staff_user %>
+          <% elsif current_user.staff_user %>
             <% @new_movies.each do |movie| %>
               <% if MovieCategory.find(movie.movie_category_id).subject == 'staff' %>
                 <li><%= movie.title %></li>
