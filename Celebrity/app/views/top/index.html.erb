@@ -119,9 +119,27 @@
           まだ視聴していない動画はありませんか！？
         </div>
         <ul class="information-list">
-          <% if current_user.free_engineer_user && current_user.venture_user %>
+          <% if current_user.free_engineer_user && current_user.venture_user && current_user.staff_user%>
             <% @new_movies.each do |movie| %>
               <li><%= movie.title %></li>
+            <% end %>
+          <% elsif current_user.free_engineer_user && current_user.venture_user %>
+            <% @new_movies.each do |movie| %>
+              <% if MovieCategory.find(movie.movie_category_id).subject == 'free' || 'venture' %>
+                <li><%= movie.title %></li>
+              <% end %>
+            <% end %>
+          <% elsif current_user.free_engineer_user && current_user.staff_user %>
+            <% @new_movies.each do |movie| %>
+              <% if MovieCategory.find(movie.movie_category_id).subject == 'free' || 'staff' %>
+                <li><%= movie.title %></li>
+              <% end %>
+            <% end %>
+          <% elsif current_user.venture_user && current_user.staff_user %>
+            <% @new_movies.each do |movie| %>
+              <% if MovieCategory.find(movie.movie_category_id).subject == 'venture' || 'staff' %>
+                <li><%= movie.title %></li>
+              <% end %>
             <% end %>
           <% elsif current_user.free_engineer_user %>
             <% @new_movies.each do |movie| %>
@@ -132,6 +150,12 @@
           <% elsif current_user.venture_user %>
             <% @new_movies.each do |movie| %>
               <% if MovieCategory.find(movie.movie_category_id).subject == 'venture' %>
+                <li><%= movie.title %></li>
+              <% end %>
+            <% end %>
+          <% elsif current_user.current_user.staff_user %>
+            <% @new_movies.each do |movie| %>
+              <% if MovieCategory.find(movie.movie_category_id).subject == 'staff' %>
                 <li><%= movie.title %></li>
               <% end %>
             <% end %>

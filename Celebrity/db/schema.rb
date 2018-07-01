@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180503152415) do
+ActiveRecord::Schema.define(version: 20180701110409) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -166,6 +166,22 @@ ActiveRecord::Schema.define(version: 20180503152415) do
     t.datetime "updated_at", null: false
     t.index ["user_id", "created_at"], name: "index_qiita_posts_on_user_id_and_created_at", using: :btree
     t.index ["user_id"], name: "index_qiita_posts_on_user_id", using: :btree
+  end
+
+  create_table "question_categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.text     "question"
+    t.text     "answer"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.integer  "question_category_id"
+    t.index ["question_category_id"], name: "index_questions_on_question_category_id", using: :btree
   end
 
   create_table "railstutorial_statuses", force: :cascade do |t|
@@ -335,6 +351,7 @@ ActiveRecord::Schema.define(version: 20180503152415) do
     t.boolean  "guest",              default: false
     t.boolean  "venture_user",       default: false, null: false
     t.boolean  "free_engineer_user", default: true,  null: false
+    t.boolean  "staff_user",         default: true,  null: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
@@ -345,6 +362,7 @@ ActiveRecord::Schema.define(version: 20180503152415) do
   add_foreign_key "movies", "movie_categories"
   add_foreign_key "pdca_posts", "users"
   add_foreign_key "qiita_posts", "users"
+  add_foreign_key "questions", "question_categories"
   add_foreign_key "terms", "users"
   add_foreign_key "user_tags", "tags"
   add_foreign_key "user_tags", "users"

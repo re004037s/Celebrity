@@ -36,6 +36,16 @@ class MoviesController < ApplicationController
         flash.now[:danger] = '登録に失敗しました。もう一度お試しください。'
         render 'new'
       end
+    elsif MovieCategory.find(@movie.movie_category_id).subject == "staff"
+      @user = User.where(staff_user: true)
+      if @movie.save
+        UserMailer.send_when_create(@user, @movie).deliver
+        flash[:success] = '動画を登録しました'
+        redirect_to movies_path
+      else
+        flash.now[:danger] = '登録に失敗しました。もう一度お試しください。'
+        render 'new'
+      end
     end
   end
   
