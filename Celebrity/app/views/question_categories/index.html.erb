@@ -23,7 +23,7 @@
       <% @questions.each do |question| %>
         <% if sampleAccordionCollapse != 0 %>
         	<% sampleAccordionCollapse += 1 %>
-          <% if  category.id ==  question.category_id %>
+          <% if  category.id ==  question.question_category_id %>
   	        <div class="panel panel-default">
   	    	    <div class="panel-heading">
   			        <h3 class="panel-title">
