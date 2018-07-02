@@ -1,16 +1,16 @@
     
     <h2 class="page-title-jp">
-        <span>よくある質問カテゴリー編集</span>
+        <span>よくある質問のカテゴリー編集</span>
     </h2>
     
     <%= form_for(@question_categories) do |f| %>
       <%= f.label :カテゴリー名 %>
       <%= f.text_field :name , class: 'question-category-form' %><br><br>
-      <%= f.submit "更新" ,class: "btn btn-success" %>
+      <%= f.submit "更新する" ,class: "btn btn-success" %>
     <% end %>
                 
     <div class="question-padding">
-      <%= link_to "戻る", questions_path ,class: "btn btn-info" %>
-      <%= link_to "削除", @question_categories, class: "btn btn-danger", method: :delete,
+      <%= link_to "よくある質問ページへ戻る", questions_path ,class: "btn btn-info" %>
+      <%= link_to "カテゴリーを削除する", @question_categories, class: "btn btn-danger", method: :delete,
         data: { confirm: "本当に削除しますか?" } %>
     </div>
