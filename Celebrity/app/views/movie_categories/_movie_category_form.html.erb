@@ -30,7 +30,12 @@
               ITベンチャー起業コース
             </label>
           </div>
-        </div>
+         <div class="form-inline">
+            <label class="checkbox-inline">
+              <%= f.radio_button :subject, "staff"%>
+              スタッフ権限付与
+            </label>
+          </div></div>
   
         <%= f.submit "登録", class: "btn-log btn btn-default active" %>
       <% end %>

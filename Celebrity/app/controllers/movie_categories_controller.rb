@@ -118,6 +118,11 @@ class MovieCategoriesController < ApplicationController
             flash[:danger] = "動画の視聴権限がありません。"
             redirect_to root_url
           end
+        elsif @category.subject == "staff"
+          unless current_user.staff_user
+            flash[:danger] = "動画の視聴権限がありません。"
+            redirect_to root_url
+          end
         end
     end
 end

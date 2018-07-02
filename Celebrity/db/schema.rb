@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20180627141345) do
+=======
+ActiveRecord::Schema.define(version: 20180701130739) do
+>>>>>>> 380b065308ba0c43e52b3793212fa062e27bc2d7
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -351,6 +355,7 @@ ActiveRecord::Schema.define(version: 20180627141345) do
     t.boolean  "guest",              default: false
     t.boolean  "venture_user",       default: false, null: false
     t.boolean  "free_engineer_user", default: true,  null: false
+    t.boolean  "staff_user",         default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
