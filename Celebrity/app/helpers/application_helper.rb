@@ -16,8 +16,26 @@ module ApplicationHelper
   #以下に変更しました。
   
   def movie_comp?
-    if current_user.free_engineer_user && current_user.venture_user
+    if current_user.free_engineer_user && current_user.venture_user && current_user.staff_user
       if Feedback.where(user_id: current_user).count >= Movie.where(movie_category_id: MovieCategory.where(must_view: true).where(subject: 'free').ids).count
+        return true
+      else
+        return false
+      end
+    elsif current_user.free_engineer_user && current_user.venture_user
+      if Feedback.where(user_id: current_user).count >= Movie.where(movie_category_id: MovieCategory.where(must_view: true).where(subject: 'free').ids).count
+        return true
+      else
+        return false
+      end
+    elsif current_user.free_engineer_user && current_user.staff_user
+      if Feedback.where(user_id: current_user).count >= Movie.where(movie_category_id: MovieCategory.where(must_view: true).where(subject: 'free').ids).count
+        return true
+      else
+        return false
+      end
+    elsif current_user.venture_user && current_user.staff_user
+      if Feedback.where(user_id: current_user).count >= Movie.where(movie_category_id: MovieCategory.where(must_view: true).where(subject: 'staff').ids).count
         return true
       else
         return false
@@ -30,6 +48,12 @@ module ApplicationHelper
       end
     elsif current_user.venture_user
       if Feedback.where(user_id: current_user).count >= Movie.where(movie_category_id: MovieCategory.where(must_view: true).where(subject: 'venture').ids).count
+        return true
+      else
+        return false
+      end
+    elsif current_user.staff_user
+      if Feedback.where(user_id: current_user).count >= Movie.where(movie_category_id: MovieCategory.where(must_view: true).where(subject: 'staff').ids).count
         return true
       else
         return false

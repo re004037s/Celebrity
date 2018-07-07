@@ -1,4 +1,6 @@
 class MoviesController < ApplicationController
+  
+  before_action :logged_in_user
   before_action :set_categories, only: [:new, :edit]
   before_action :admin_user
 
@@ -26,6 +28,16 @@ class MoviesController < ApplicationController
       end
     elsif MovieCategory.find(@movie.movie_category_id).subject == "venture"
       @user = User.where(venture_user: true)
+      if @movie.save
+        UserMailer.send_when_create(@user, @movie).deliver
+        flash[:success] = '動画を登録しました'
+        redirect_to movies_path
+      else
+        flash.now[:danger] = '登録に失敗しました。もう一度お試しください。'
+        render 'new'
+      end
+    elsif MovieCategory.find(@movie.movie_category_id).subject == "staff"
+      @user = User.where(staff_user: true)
       if @movie.save
         UserMailer.send_when_create(@user, @movie).deliver
         flash[:success] = '動画を登録しました'

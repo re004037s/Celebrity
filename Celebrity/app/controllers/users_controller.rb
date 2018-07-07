@@ -13,12 +13,20 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find_by(id: params[:id])
-    if @user.free_engineer_user && @user.venture_user
+    if @user.free_engineer_user && @user.venture_user && @user.staff_user
       @categories = MovieCategory.where(must_view: true).order('sort_order')
+    elsif @user.free_engineer_user && @user.venture_user
+      @categories = MovieCategory.where(must_view: true).where(subject: ['free', 'venture']).order('sort_order')
+    elsif @user.free_engineer_user && @user.staff_user
+      @categories = MovieCategory.where(must_view: true).where(subject: ['free', 'staff']).order('sort_order')
+    elsif @user.staff_user && @user.venture_user
+      @categories = MovieCategory.where(must_view: true).where(subject: ['staff', 'venture']).order('sort_order')
     elsif @user.free_engineer_user
       @categories = MovieCategory.where(must_view: true).where(subject: 'free').order('sort_order')
     elsif @user.venture_user
       @categories = MovieCategory.where(must_view: true).where(subject: 'venture').order('sort_order')
+    elsif @user.staff_user
+      @categories = MovieCategory.where(must_view: true).where(subject: 'staff').order('sort_order')
     end
     @tags_count = @user.tags.count
     tags = @user.tags.limit(10).pluck(:tag,:id)
@@ -116,7 +124,7 @@ class UsersController < ApplicationController
         render 'edit'
       end
     else
-      if @user.update_columns({venture_user: user_params[:venture_user], free_engineer_user: user_params[:free_engineer_user]})
+      if @user.update_columns({venture_user: user_params[:venture_user], free_engineer_user: user_params[:free_engineer_user], staff_user: user_params[:staff_user]})
         flash[:success] = 'ユーザ情報を更新しました'
         redirect_to @user
       else
@@ -136,7 +144,7 @@ class UsersController < ApplicationController
   
     def user_params
       params.require(:user).permit(:name, :nickname, :line_id, :email, :guest, :password, :password_confirmation, :portfolio_path,
-        :github_path, :picture_file, :picture, :tag_list, :skillsheet, :skillsheet_name, :venture_user, :free_engineer_user, :guest)
+        :github_path, :picture_file, :picture, :tag_list, :skillsheet, :skillsheet_name, :venture_user, :free_engineer_user, :staff_user, :guest)
     end
     
     # ログイン済み or 管理ユーザであれば true を返す
