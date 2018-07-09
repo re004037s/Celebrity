@@ -4,7 +4,7 @@ class QuestionsController < ApplicationController
     before_action :admin_user, only:[:create, :edit, :delete ]
     
     def index
-      @questions = Question.all.page(params[:page])
+      @questions = Question.all
       @question_categories = QuestionCategory.all
     end
 
@@ -15,6 +15,10 @@ class QuestionsController < ApplicationController
 
     def create
       @question = Question.create(question_params)
+      if QuestionCategory.find_by(id: @question.question_category_id).nil?
+        flash[:danger] = "カテゴリして下さい"
+        redirect_to :back
+      else
         if @question.save
           flash[:success] = "作成しました"
           redirect_to questions_url
@@ -22,6 +26,7 @@ class QuestionsController < ApplicationController
           flash[:danger] = "再度入力して下さい"
           redirect_to :back
         end
+      end
     end
 
 
