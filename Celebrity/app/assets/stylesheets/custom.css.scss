@@ -1,6 +1,11 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+// adminLTE(base)
+@import 'admin-lte/dist/css/AdminLTE.min.css';
+// adminLTE(skin)
+@import 'admin-lte/dist/css/skins/skin-blue.min.css';
+
 
 
 /*定義した変数やクラスのインポート*/
