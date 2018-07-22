@@ -15,5 +15,6 @@
 //= require jquery-ui
 //= require_self
 //= require bootstrap
+//= require admin-lte/dist/js/adminlte.min
 
 //= require_tree .

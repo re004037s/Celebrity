@@ -19,6 +19,9 @@ module Celebrity
     config.autoload_paths += %W(#{config.root}/lib)
     config.enable_dependency_loading = true
     config.i18n.default_locale = :ja
+    
+    # add assets_paths（アセットパスの追加）
+    config.assets.paths << config.root.join('node_modules')
 
     config.generators do |g|
       g.test_framework :rspec,
