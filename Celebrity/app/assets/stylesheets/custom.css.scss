@@ -4,7 +4,7 @@
 // adminLTE(base)
 @import 'admin-lte/dist/css/AdminLTE.min.css';
 // adminLTE(skin)
-@import 'admin-lte/dist/css/skins/skin-blue.min.css';
+@import 'admin-lte/dist/css/skins/skin-purple.min.css';
 
 
 
@@ -24,15 +24,15 @@ body { font-family: "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "
 .nav-ul li { font-family: 'Open Sans', serif; }
 
 /*共通設定のインポート*/
-//@import "common";  //全体
-// @import "header";  //ヘッダー
-// @import "container";  //メインコンテンツ
-// @import "footer";  //フッター
-// @import "sidebar";  //サイドバー
-// @import "texts";  //テキスト
-// @import "forms";  //フォーム
-// @import "tables";  //テーブル
-// @import "parts";  //ボタンや矢印など
+@import "common";  //全体
+@import "header";  //ヘッダー
+@import "container";  //メインコンテンツ
+@import "footer";  //フッター
+@import "sidebar";  //サイドバー
+@import "texts";  //テキスト
+@import "forms";  //フォーム
+@import "tables";  //テーブル
+@import "parts";  //ボタンや矢印など
 
 
 
