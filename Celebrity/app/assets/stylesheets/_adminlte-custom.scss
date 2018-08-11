@@ -22,129 +22,154 @@ $side-form-btn-color: #999; //#999
 
 .custom-skin {
   
-  // ***header**
+  // ***header***
   
-  .main-header .navbar {
+  .main-header{
+    .navbar {
       background-color: $nav-bg-color-light;
-  }
-  .main-header .navbar .nav>li>a {
-      color: $nav-txt-color;
-  }
-  .main-header .navbar .nav>li>a:hover,
-  .main-header .navbar .nav>li>a:active,
-  .main-header .navbar .nav>li>a:focus,
-  .main-header .navbar .nav .open>a,
-  .main-header .navbar .nav .open>a:hover,
-  .main-header .navbar .nav .open>a:focus,
-  .main-header .navbar .nav>.active>a {
-      background: rgba(0,0,0,0.1);
-      color: $nav-txt-color-selected;
-  }
-  .main-header .navbar .sidebar-toggle {
-      color: $nav-txt-color;
-  }
-  .main-header .navbar .sidebar-toggle:hover {
-      background: rgba(0,0,0,0.1);
-      color: $nav-txt-color-selected;
-  }
-  .main-header .navbar .sidebar-toggle {
-      color: $nav-txt-color;
-  }
-  .main-header .navbar .sidebar-toggle:hover {
-      background-color: $nav-bg-color-dark;
-  }
-  @media (max-width:767px) {
-      .main-header .navbar .dropdown-menu li.divider {
-          background-color: rgba(255,255,255,0.1);
-      }
-      .main-header .navbar .dropdown-menu li a {
+      
+      .nav {
+        li a {
           color: $nav-txt-color;
+          
+          &:hover, &:active, &:focus {
+            background: rgba(0, 0, 0, 0.1);
+            color: $nav-txt-color-selected;
+          }
+        }
+        
+        .open {
+          a, a:hover, a:focus {
+            background: rgba(0, 0, 0, 0.1);
+            color: $nav-txt-color-selected;
+          }
+        }
+        
+        .active a {
+          background: rgba(0, 0, 0, 0.1);
+          color: $nav-txt-color-selected;
+        }
+      } //.nav
+      
+      .sidebar-toggle {
+        color: $nav-txt-color;
+        
+        &:hover {
+          background: rgba(0, 0, 0, 0.1);
+          color: $nav-txt-color-selected;
+          background-color: $nav-bg-color-dark;
+        }
+      } //.sidebar-toggle
+      
+      .logo {
+        background-color: $nav-bg-color-dark;
+        border-bottom: 0 solid transparent;
+        color: $nav-txt-color;
+        
+        &:hover {
+          background-color: $nav-logo-hover-color;
+        }
       }
-      .main-header .navbar .dropdown-menu li a:hover {
-          background: $nav-bg-color-dark;
+      
+      li.user-header {
+        background-color: $nav-bg-color-light;
       }
-  }
-  .main-header .logo {
-      background-color: $nav-bg-color-dark;
-      border-bottom: 0 solid transparent;
-      color: $nav-txt-color;
-  }
-  .main-header .logo:hover {
-      background-color: $nav-logo-hover-color;
-  }
-  .main-header li.user-header {
-      background-color: $nav-bg-color-light;
-  }
+      
+    } //.navbar
+  } //.main-header
+  
+  
+  // ***.sidebar-menu***
+  
+  .sidebar-menu {
+    li {
+      &.header {
+        background: $side-header-color;
+        color: $side-header-txt-color;
+      }
+      
+      a {
+        border-left: 3px solid transparent;
+      }
+
+      &:hover a, &.active a, &.menu-open a {
+        background: $side-bg-color-selected;
+        color: $nav-txt-color;
+      }
+      
+      &.active a {
+        border-left-color: $nav-bg-color-light;
+      }
+    } //li
+    
+    .treeview-menu {
+      background: $side-tree-color;
+      margin: 0 1px;
+      
+      li {
+        a {
+          color: $side-tree-txt-color;
+        }
+        
+        &.active a, a:hover {
+          color: $nav-txt-color;
+        }
+      } //li
+    } //.treeview-menu
+  } //.sidebar-menu
+  
+  .sidebar a {
+    color: $side-link-txt-color;
+      
+    &:hover {
+      text-decoration: none;
+    }
+  } //.sidebar a
+  
+  .sidebar-form {
+    border: 1px solid $side-form-color;
+    border-radius: 3px;
+    margin: 10px 10px;
+    
+    input[type="text"], .btn {
+      background-color: $side-form-color;
+      border: 1px solid transparent;
+      box-shadow: none;
+      height: $side-form-input-height;
+    }
+    
+    input[type="text"] {
+      border-bottom-left-radius: 2px;
+      border-bottom-right-radius: 0;
+      border-top-left-radius: 2px;
+      border-top-right-radius: 0;
+      color: $side-form-txt-color;
+      
+      &:focus, &:focus + .input-group-btn .btn {
+        background-color: $side-form-focused-color;
+        color: $side-form-txt-color;
+      }
+    } //input[type="text"]
+    
+    .btn {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 2px;
+      border-top-left-radius: 0;
+      border-top-right-radius: 2px;
+      color: $side-form-btn-color;
+    }
+  } //.sidebar-form
+  
   .content-header {
       background: transparent;
   }
   .wrapper, .main-sidebar, .left-side {
       background-color: $side-bg-color;
   }
-  .user-panel>.info, .user-panel>.info>a {
+  .user-panel {
+    .info, .info a {
       color: $nav-txt-color;
-  }
-  .sidebar-menu>li.header {
-      background: $side-header-color;
-      color: $side-header-txt-color;
-  }
-  .sidebar-menu>li>a {
-      border-left: 3px solid transparent;
-  }
-  .sidebar-menu>li:hover>a, .sidebar-menu>li.active>a, .sidebar-menu>li.menu-open>a {
-      background: $side-bg-color-selected;
-      color: $nav-txt-color;
-  }
-  .sidebar-menu>li.active>a {
-      border-left-color: $nav-bg-color-light;
-  }
-  .sidebar-menu>li>.treeview-menu {
-      background: $side-tree-color;
-      margin: 0 1px;
-  }
-  .sidebar a {
-      color: $side-link-txt-color;
-  }
-  .sidebar a:hover {
-      text-decoration: none;
-  }
-  .sidebar-menu .treeview-menu>li>a {
-      color: $side-tree-txt-color;
-  }
-  .sidebar-menu .treeview-menu>li.active>a, .sidebar-menu .treeview-menu>li>a:hover {
-      color: $nav-txt-color;
-  }
-  .sidebar-form {
-      border: 1px solid $side-form-color;
-      border-radius: 3px;
-      margin: 10px 10px;
-  }
-  .sidebar-form input[type="text"], .sidebar-form .btn {
-      background-color: $side-form-color;
-      border: 1px solid transparent;
-      box-shadow: none;
-      height: 35px;
-  }
-  .sidebar-form input[type="text"] {
-      border-bottom-left-radius: 2px;
-      border-bottom-right-radius: 0;
-      border-top-left-radius: 2px;
-      border-top-right-radius: 0;
-      color: $side-form-txt-color;
-  }
-  .sidebar-form input[type="text"]:focus, .sidebar-form input[type="text"]:focus+.input-group-btn .btn {
-      background-color: $side-form-focused-color;
-      color: $side-form-txt-color;
-  }
-  .sidebar-form input[type="text"]:focus+.input-group-btn .btn {
-      border-left-color: $side-form-focused-color;
-  }
-  .sidebar-form .btn {
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 2px;
-      border-top-left-radius: 0;
-      border-top-right-radius: 2px;
-      color: $side-form-btn-color;
+    }
   }
   
   
@@ -153,5 +178,24 @@ $side-form-btn-color: #999; //#999
   .user-image, .img-circle {
     background-color: #fff;
   }
+  
+  
+  // ***responsive***
+  
+  @media (max-width: $max-sp-width) {
+    .main-header .navbar .dropdown-menu li {
+      &.divider {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+      
+      a {
+        color: $nav-txt-color;
+        
+        &:hover {
+          background: $nav-bg-color-dark;
+        }
+      } //a
+    } //.main-header .navbar .dropdown-menu li
+  } //@media (max-width: $max-sp-width) 
   
 }
