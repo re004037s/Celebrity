@@ -1,0 +1,157 @@
+$max-sp-width: 767px;
+
+// ***header**
+
+$nav-color-light: #222; //#605ca8
+$nav-color-dark: #000; //#555299
+$nav-txt-color: #fff; //#fff
+$nav-txt-color-selected: #f6f6f6; //#f6f6f6
+$nav-logo-hover-color: #111; //#545096
+
+$side-color: #222; //#222d32
+$side-color-selected: #000; //#1e282c
+$side-header-color: #222; //#1a2226
+$side-header-txt-color: #eee; //#4b646f
+$side-link-txt-color: #eee; //#b8c7ce
+$side-tree-color: #222; //#2c3b41
+$side-tree-txt-color: #eee; //#8aa4af
+$side-form-color: #374850; //#374850
+$side-form-focused-color: #fff; //#fff
+$side-form-txt-color: #666; //#666
+$side-form-input-height: 35px; //35px
+$side-form-btn-color: #999; //#999
+
+
+.custom-skin {
+  
+  .main-header .navbar {
+      background-color: $nav-color-light;
+  }
+  .main-header .navbar .nav>li>a {
+      color: $nav-txt-color;
+  }
+  .main-header .navbar .nav>li>a:hover,
+  .main-header .navbar .nav>li>a:active,
+  .main-header .navbar .nav>li>a:focus,
+  .main-header .navbar .nav .open>a,
+  .main-header .navbar .nav .open>a:hover,
+  .main-header .navbar .nav .open>a:focus,
+  .main-header .navbar .nav>.active>a {
+      background: rgba(0,0,0,0.1);
+      color: #f6f6f6;
+  }
+  .main-header .navbar .sidebar-toggle {
+      color: $nav-txt-color;
+  }
+  .main-header .navbar .sidebar-toggle:hover {
+      background: rgba(0,0,0,0.1);
+      color: #f6f6f6;
+  }
+  .main-header .navbar .sidebar-toggle {
+      color: $nav-txt-color;
+  }
+  .main-header .navbar .sidebar-toggle:hover {
+      background-color: $nav-color-dark;
+  }
+  @media (max-width:767px) {
+      .main-header .navbar .dropdown-menu li.divider {
+          background-color: rgba(255,255,255,0.1);
+      }
+      .main-header .navbar .dropdown-menu li a {
+          color: $nav-txt-color;
+      }
+      .main-header .navbar .dropdown-menu li a:hover {
+          background: $nav-color-dark;
+      }
+  }
+  .main-header .logo {
+      background-color: $nav-color-dark;
+      border-bottom: 0 solid transparent;
+      color: $nav-txt-color;
+  }
+  .main-header .logo:hover {
+      background-color: #545096;
+  }
+  .main-header li.user-header {
+      background-color: $nav-color-light;
+  }
+  .content-header {
+      background: transparent;
+  }
+  .wrapper, .main-sidebar, .left-side {
+      background-color: #222d32;
+  }
+  .user-panel>.info, .user-panel>.info>a {
+      color: $nav-txt-color;
+  }
+  .sidebar-menu>li.header {
+      background: #1a2226;
+      color: #4b646f;
+  }
+  .sidebar-menu>li>a {
+      border-left: 3px solid transparent;
+  }
+  .sidebar-menu>li:hover>a, .sidebar-menu>li.active>a, .sidebar-menu>li.menu-open>a {
+      background: #1e282c;
+      color: $nav-txt-color;
+  }
+  .sidebar-menu>li.active>a {
+      border-left-color: $nav-color-light;
+  }
+  .sidebar-menu>li>.treeview-menu {
+      background: #2c3b41;
+      margin: 0 1px;
+  }
+  .sidebar a {
+      color: #b8c7ce;
+  }
+  .sidebar a:hover {
+      text-decoration: none;
+  }
+  .sidebar-menu .treeview-menu>li>a {
+      color: #8aa4af;
+  }
+  .sidebar-menu .treeview-menu>li.active>a, .sidebar-menu .treeview-menu>li>a:hover {
+      color: $nav-txt-color;
+  }
+  .sidebar-form {
+      border: 1px solid #374850;
+      border-radius: 3px;
+      margin: 10px 10px;
+  }
+  .sidebar-form input[type="text"], .sidebar-form .btn {
+      background-color: #374850;
+      border: 1px solid transparent;
+      box-shadow: none;
+      height: 35px;
+  }
+  .sidebar-form input[type="text"] {
+      border-bottom-left-radius: 2px;
+      border-bottom-right-radius: 0;
+      border-top-left-radius: 2px;
+      border-top-right-radius: 0;
+      color: #666;
+  }
+  .sidebar-form input[type="text"]:focus, .sidebar-form input[type="text"]:focus+.input-group-btn .btn {
+      background-color: $side-form-focused-color;
+      color: #666;
+  }
+  .sidebar-form input[type="text"]:focus+.input-group-btn .btn {
+      border-left-color: $side-form-focused-color;
+  }
+  .sidebar-form .btn {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 2px;
+      border-top-left-radius: 0;
+      border-top-right-radius: 2px;
+      color: #999;
+  }
+  
+  
+  // ***other***
+  
+  .user-image, .img-circle {
+    background-color: #fff;
+  }
+  
+}

@@ -20,8 +20,10 @@ module Celebrity
     config.enable_dependency_loading = true
     config.i18n.default_locale = :ja
     
-    # add assets_paths（アセットパスの追加）
-    config.assets.paths << config.root.join('node_modules')
+    # assets_paths
+    config.assets.paths << config.root.join('fonts') # カスタムフォント
+    config.assets.paths << config.root.join('node_modules') # node_modules（各種プラグイン）
+
 
     config.generators do |g|
       g.test_framework :rspec,
