@@ -17,13 +17,22 @@
     <!-- Sidebar Menu -->
     <ul class="sidebar-menu tree" data-widget="tree">
       
-      <li class="header">CONTENTS</li>
+      <!--adminのみ表示-->
+      <% if current_user.try(:admin) %>
+        <li class="header"><i class="fa fa-cog" aria-hidden="true"></i> for Administrator</li>
+        <li><%= link_to '動画', movies_path %></li>
+        <li><%= link_to 'お知らせ', information_path %></li>
+        <li><%= link_to 'ブログ', new_blog_path %></li>
+        <li><%= link_to '新規登録', signup_path %></li>
+      <% end %>
       
       <% unless current_user.guest %>
+      
+        <li class="header"><i class="fa fa-bars" aria-hidden="true"></i> Contents</li>
         
         <!--movies menu-->
         <li class="treeview">
-          <a href="#"><span>動画一覧</span> <i class="fa fa-angle-left pull-right"></i></a>
+          <a href="#"><span>動画一覧</span> <i class="fa fa-caret-down pull-right"></i></a>
           <ul class="treeview-menu">
             <!--for free_engineer_users-->
             <% if current_user.free_engineer_user %>

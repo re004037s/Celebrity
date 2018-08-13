@@ -1,7 +1,10 @@
 <header class="main-header">
   
   <!--logo-->
-  <a href="" class="logo">Celebrity Engineering</a>
+  <!--    <= link_to root_path, class: "link-to-top" do %>-->
+  <!--      <= image_tag "logo_header.png", id: "logo-header" %>-->
+  <!--    < end %>-->
+  <%= link_to 'Celebrity Engineering', root_path, class: "logo" %>
  
   <nav class="navbar navbar-static-top" role="navigation">
     
@@ -46,11 +49,14 @@
               <% end %>
               <p><%= current_user.name %></p>
             </li>
+            
+            <% unless current_user.try(:guest) %>
+            
             <!-- Menu Body -->
             <li class="user-body">
               <div class="row">
                 <div class="col-xs-10 col-xs-offset-1 text-center">
-                  <a href="#">Salon Members</a>
+                  <%= link_to 'SALON MEMBERS', users_path %>
                 </div>
               </div>
             </li>
@@ -58,21 +64,22 @@
             <li class="user-body">
               <div class="row">
                 <div class="col-xs-10 col-xs-offset-1 text-center">
-                  <a href="#">Profile</a>
+                  <%= link_to 'MY PAGE', current_user %>
                 </div>
               </div>
             </li>
-            <!-- Menu Footer-->
-            <li class="user-footer">
-            <!--  <div class="pull-left">-->
-            <!--    <a href="#" class="btn btn-default btn-flat">Profile</a>-->
-            <!--  </div>-->
+            
+            <li class="user-body">
             <div class="row">
-              <div class="col-xs-6 col-xs-offset-3">
-                <a href="#" class="btn btn-default btn-flat center-block">Sign Out</a>
+              <div class="col-xs-6 col-xs-offset-3 text-center">
+                <%= link_to logout_path, method: :delete do %>
+                  <i class="fa fa-sign-out"></i>Sign Out
+                <% end %>
               </div>
             </div>
             </li>
+            
+            <% end %>
           </ul>
         </li>
         <!-- Control Sidebar Toggle Button -->
