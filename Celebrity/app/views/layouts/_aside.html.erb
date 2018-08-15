@@ -1,42 +1,74 @@
-<div class="sidebar-wrapper">
+<aside class="main-sidebar">
   
-  <div class="sidebar-title">MENU</div>
-  <ul class="sidebar-list">
-  <% unless current_user.guest %>  
-    <div class="accordion-item mdl-list__item">
-      <div class="question">動画一覧</div>
-      <span>∨</span>
-			<div class="answer">
-      <% if current_user.free_engineer_user %>
-        <% free_movie_categories.each do |category| %>
-          <li><%= link_to category.name, movie_category_path(category), class: "#{'disabled' unless before_category_comp?(category)}" %></li>
-        <% end %>
+  <section class="sidebar">
+    
+    <!--検索フォーム-->
+    <!--<form method="get" class="sidebar-form" id="sidebar-form">-->
+    <!--  <div class="input-group">-->
+    <!--      <input type="text" name="q" class="form-control" placeholder="Search..." id="search-input">-->
+    <!--      <span class="input-group-btn">-->
+    <!--          <button type="submit" name="search" id="search-btn" class="btn btn-flat">-->
+    <!--              <i class="fa fa-search"></i>-->
+    <!--          </button>-->
+    <!--      </span>-->
+    <!--  </div>-->
+    <!--</form>-->
+    
+    <!-- Sidebar Menu -->
+    <ul class="sidebar-menu tree" data-widget="tree">
+      
+      <!--adminのみ表示-->
+      <% if current_user.try(:admin) %>
+        <li class="header"><i class="fa fa-cog" aria-hidden="true"></i> for Administrator</li>
+        <li><%= link_to '動画', movies_path %></li>
+        <li><%= link_to 'お知らせ', information_path %></li>
+        <li><%= link_to 'ブログ', new_blog_path %></li>
+        <li><%= link_to '新規登録', signup_path %></li>
       <% end %>
-      <% if current_user.venture_user %>
-        <% venture_movie_categories.each do |category| %>
-          <li><%= link_to category.name, movie_category_path(category), class: "#{'disabled' unless before_category_comp?(category)}" %></li>
-        <% end %>
-      <% end %>
-      <% if current_user.staff_user %>
-        <% staff_movie_categories.each do |category| %>
-          <li><%= link_to category.name, movie_category_path(category), class: "#{'disabled' unless before_category_comp?(category)}" %></li>
-        <% end %>
-      <% end %>
-   
-      </div>
-		</div>
-    <li><%= link_to 'Progate進捗入力', progate_path, class: "#{'disabled' unless movie_comp?}" %></li>
-    <li><%= link_to 'RailsTutorial進捗入力', railstutorial_path, class: "#{'disabled' unless progatetask_tutolialday_comp?}" %></li>
-    <li><%= link_to 'ポートフォリオの作り方', portfolio_mv_path, class: "#{'disabled' unless railstutorial_comp? }" %></li>
-    <li><%= link_to 'よくある質問', qa_path, class: "#{'disabled' if current_user.try(:guest) }" %></li>
-    <li><%= link_to 'Qiita投稿まとめ', qiita_posts_path, class: "#{'disabled' if current_user.try(:guest) }" %></li>
-    <li><%= link_to '面談内容共有', interview_posts_path, class: "#{'disabled' if current_user.try(:guest) }" %></li>
-    <li><%= link_to 'IT用語解説', terms_path, class: "#{'disabled' if current_user.try(:guest) }" %></li>
-    <li><%= link_to 'PDCA報告', pdca_posts_path, class: "#{'disabled' if current_user.try(:guest) }" %></li>
-    <li><%= link_to '不具合報告', defect_forms_path  %></li>
-    <li><%= link_to 'Blog一覧', blogs_path %></li>
-  <% end %>
-    <li><%= link_to 'スキルシート一覧', skillsheets_path %></li>
-  </ul>
-  
-</div>
+      
+      <% unless current_user.guest %>
+      
+        <li class="header"><i class="fa fa-bars" aria-hidden="true"></i> Contents</li>
+        
+        <!--movies menu-->
+        <li class="treeview">
+          <a href="#"><span>動画一覧</span> <i class="fa fa-caret-down pull-right"></i></a>
+          <ul class="treeview-menu">
+            <!--for free_engineer_users-->
+            <% if current_user.free_engineer_user %>
+              <% free_movie_categories.each do |category| %>
+                <li><%= link_to category.name, movie_category_path(category), class: "#{'disabled' unless before_category_comp?(category)}" %></li>
+              <% end %>
+            <% end %>
+            <!--for venture users-->
+            <% if current_user.venture_user %>
+              <% venture_movie_categories.each do |category| %>
+                <li><%= link_to category.name, movie_category_path(category), class: "#{'disabled' unless before_category_comp?(category)}" %></li>
+              <% end %>
+            <% end %>
+            <!--for staff_users-->
+            <% if current_user.staff_user %>
+              <% staff_movie_categories.each do |category| %>
+                <li><%= link_to category.name, movie_category_path(category), class: "#{'disabled' unless before_category_comp?(category)}" %></li>
+              <% end %>
+            <% end %>
+          </ul>
+        </li>
+  		
+        <li><%= link_to 'Progate進捗入力', progate_path, class: "#{'disabled' unless movie_comp?}" %></li>
+        <li><%= link_to 'RailsTutorial進捗入力', railstutorial_path, class: "#{'disabled' unless progatetask_tutolialday_comp?}" %></li>
+        <li><%= link_to 'ポートフォリオの作り方', portfolio_mv_path, class: "#{'disabled' unless railstutorial_comp? }" %></li>
+        <li><%= link_to 'よくある質問', qa_path, class: "#{'disabled' if current_user.try(:guest) }" %></li>
+        <li><%= link_to 'Qiita投稿まとめ', qiita_posts_path, class: "#{'disabled' if current_user.try(:guest) }" %></li>
+        <li><%= link_to '面談内容共有', interview_posts_path, class: "#{'disabled' if current_user.try(:guest) }" %></li>
+        <li><%= link_to 'IT用語解説', terms_path, class: "#{'disabled' if current_user.try(:guest) }" %></li>
+        <li><%= link_to 'PDCA報告', pdca_posts_path, class: "#{'disabled' if current_user.try(:guest) }" %></li>
+        <li><%= link_to '不具合報告', defect_forms_path  %></li>
+        <li><%= link_to 'Blog一覧', blogs_path %></li>
+      <% end %><!--unless current_user.guest-->
+      
+      <li><%= link_to 'スキルシート一覧', skillsheets_path %></li>
+    </ul><!-- /.sidebar-menu -->
+
+  </section>
+</aside>

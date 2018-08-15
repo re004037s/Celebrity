@@ -1,65 +1,65 @@
-.sidebar-wrapper {
-  width: 91.25%;
-  margin-left: auto;
-  margin-top: 50px;
+// .sidebar-wrapper {
+//   width: 91.25%;
+//   margin-left: auto;
+//   margin-top: 50px;
   
-}
+// }
 
-.sidebar-title {
-  // font-family: 'Prata', sans-serif;
-  font-size: 24px;
-  padding: 10px auto;
-  text-align: center;
-  border-bottom: solid 2px #373737;
-}
+// .sidebar-title {
+//   // font-family: 'Prata', sans-serif;
+//   font-size: 24px;
+//   padding: 10px auto;
+//   text-align: center;
+//   border-bottom: solid 2px #373737;
+// }
 
-.sidebar-list {
-  width: 87.30%;
-  list-style: none;
-  padding-left: 0;
-  margin: 0 auto;
-  border-bottom: solid 1px #373737;
+// .sidebar-list {
+//   width: 87.30%;
+//   list-style: none;
+//   padding-left: 0;
+//   margin: 0 auto;
+//   border-bottom: solid 1px #373737;
   
-  span {
-    font-size: 15px;
-  }
+//   span {
+//     font-size: 15px;
+//   }
   
-  li {
-    padding: 8px 0;
-    padding-left: 15px;
-    border-top: solid 1px #373737;
+//   li {
+//     padding: 8px 0;
+//     padding-left: 15px;
+//     border-top: solid 1px #373737;
     
-    a {
-      font-size: 16px;
-      color: #000;
-    }
-    .disabled {
-      color: gray;
-    }
-  }
+//     a {
+//       font-size: 16px;
+//       color: #000;
+//     }
+//     .disabled {
+//       color: gray;
+//     }
+//   }
   
 
-  // アコーディング用（aside.jsと併用）
-  .accordion-item {
-    position: relative;
-    cursor: pointer;
-    margin-top: 5px;
-  }
-  .question {
-    font-size: 18px;
-    padding: 8px 0;
-    padding-left: 15px;
+//   // アコーディング用（aside.jsと併用）
+//   .accordion-item {
+//     position: relative;
+//     cursor: pointer;
+//     margin-top: 5px;
+//   }
+//   .question {
+//     font-size: 18px;
+//     padding: 8px 0;
+//     padding-left: 15px;
 
-  }
-  .accordion-item span {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    color: gray;
-    font-size: 20px;
-  }
-  .answer {
-    display: none;
-    margin-left: 2em;
-  }
-}
+//   }
+//   .accordion-item span {
+//     position: absolute;
+//     top: 5px;
+//     right: 5px;
+//     color: gray;
+//     font-size: 20px;
+//   }
+//   .answer {
+//     display: none;
+//     margin-left: 2em;
+//   }
+// }

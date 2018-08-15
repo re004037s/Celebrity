@@ -1,0 +1,245 @@
+$max-sp-width: 767px;
+
+$nav-bg-color: #373737; //#605ca8
+$nav-bg-color-logo: #222; //#555299
+$nav-bg-selected: rgba(0, 0, 0, 0.1);
+$nav-txt-color: #fff; //#fff
+$nav-txt-color-selected: #f6f6f6; //#f6f6f6
+$nav-logo-hover-color: #111; //#545096
+
+$side-bg-color: #373737; //#222d32
+$side-bg-color-selected: #222; //#1e282c
+$side-header-color: #2d2d2d; //#1a2226
+$side-header-txt-color: #888; //#4b646f
+$side-link-txt-color: #eee; //#b8c7ce
+$side-tree-color: #222; //#2c3b41
+$side-tree-txt-color: #eee; //#8aa4af
+$side-form-color: #374850; //#374850
+$side-form-focused-color: #fff; //#fff
+$side-form-txt-color: #666; //#666
+$side-form-input-height: 35px; //35px
+$side-form-btn-color: #999; //#999
+
+///
+$base-bg-color: #f4f4f4;
+$base-img-color: #fff;
+///
+
+
+.custom-skin {
+  
+  // ***header***
+  
+  .main-header{
+    
+    a {
+      text-decoration: none;
+    }
+    
+    // logo
+    a.logo {
+      background-color: $nav-bg-color-logo;
+      border-bottom: 0 solid transparent;
+      color: $nav-txt-color;
+      
+      &:hover {
+        background-color: $nav-logo-hover-color;
+        // text-decoration: none;
+      }
+    }
+    
+    // main-navbar
+    .navbar {
+      background-color: $nav-bg-color;
+      
+      // sidemenu-icon(only sp(mobile))
+      .sidebar-toggle {
+        color: $nav-txt-color;
+        // text-decoration: none;
+        display: none;
+        
+        &:hover {
+          background: rgba(0, 0, 0, 0.1);
+          color: $nav-txt-color-selected;
+          background-color: $nav-bg-color-logo;
+        }
+      } //.sidebar-toggle
+      
+      // dropdown-style
+      ul.nav {
+        > li > a {
+          background-color: $nav-bg-color;
+          color: $nav-txt-color;
+          
+          &:hover, &:active, &:focus {
+            background: $nav-bg-selected;
+            color: $nav-txt-color-selected;
+          }
+        }
+      } //ul.nav
+        
+      .user-body:hover {
+          background: rgba(0, 0, 0, 0.1);
+          // color: $nav-txt-color-selected;
+          // text-decoration: none;
+      }
+      
+      .active a {
+        // background: rgba(0, 0, 0, 0.1);
+        // color: $nav-txt-color-selected;
+      }
+      
+      
+      // login-user
+      li.user-header {
+        background-color: $nav-bg-color;
+      }
+      
+    } //.navbar
+  } //.main-header
+  
+  
+  // ***.sidebar***
+  
+  .main-sidebar .sidebar {
+    
+    // menu
+    .sidebar-menu {
+      
+      li {
+        &.header {
+          // background: $side-header-color;
+          color: $side-header-txt-color;
+        }
+        
+        a {
+          border-left: 3px solid transparent;
+        }
+  
+        &:hover a, &.active a, &.menu-open a {
+          background: $side-bg-color-selected;
+          color: $nav-txt-color;
+        }
+        
+        &.active a {
+          border-left-color: $nav-bg-color;
+        }
+      } //li
+      
+      .treeview-menu {
+        background: $side-tree-color;
+        margin: 0 1px;
+        
+        li {
+          a {
+            color: $side-tree-txt-color;
+          }
+          
+          &.active a, a:hover {
+            color: $nav-txt-color;
+          }
+        } //li
+      } //.treeview-menu
+    } //.sidebar-menu
+    
+    
+    // outside-menu
+    a {
+      color: $side-link-txt-color;
+        
+      &:hover {
+        text-decoration: none;
+      }
+    } //a
+    
+    .sidebar-form {
+      border: 1px solid $side-form-color;
+      border-radius: 3px;
+      margin: 10px 10px;
+      
+      input[type="text"], .btn {
+        background-color: $side-form-color;
+        border: 1px solid transparent;
+        box-shadow: none;
+        height: $side-form-input-height;
+      }
+      
+      input[type="text"] {
+        border-bottom-left-radius: 2px;
+        border-bottom-right-radius: 0;
+        border-top-left-radius: 2px;
+        border-top-right-radius: 0;
+        color: $side-form-txt-color;
+        
+        &:focus, &:focus + .input-group-btn .btn {
+          background-color: $side-form-focused-color;
+          color: $side-form-txt-color;
+        }
+      } //input[type="text"]
+      
+      .btn {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 2px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 2px;
+        color: $side-form-btn-color;
+      }
+    } //.sidebar-form
+  } //.main-sidebar .sidebar
+  
+  
+  
+  .content-header {
+      background: transparent;
+  }
+  .wrapper, .main-sidebar, .left-side {
+      background-color: $side-bg-color;
+  }
+  .user-panel {
+    .info, .info a {
+      color: $nav-txt-color;
+    }
+  }
+  
+  
+  // ***other***
+  
+  .wrapper {
+    max-width: 1250px;
+  }
+  .content-wrapper, .main-footer {
+    background-color: $base-bg-color;
+  }
+  .main-footer {
+    border-top: none;
+  }
+  .user-image, .img-circle {
+    background-color: $base-img-color;
+  }
+  
+  
+  // ***responsive***
+  
+  @media (max-width: $max-sp-width) {
+    .main-header .navbar {
+      .dropdown-menu li {
+        &.divider {
+          background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        a {
+          color: $nav-txt-color;
+          
+          &:hover {
+            background: $nav-bg-color-logo;
+          }
+        } //a
+      } //.dropdown-menu li
+      
+      .sidebar-toggle {
+        display: block;
+      }
+    } //.main-header .navbar
+  } //@media (max-width: $max-sp-width) 
+  
+}
