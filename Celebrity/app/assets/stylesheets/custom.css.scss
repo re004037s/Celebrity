@@ -1,12 +1,12 @@
 @import "bootstrap-sprockets";
 @import "bootstrap-custom";
 
-// adminLTE(base)
-@import 'admin-lte/dist/css/AdminLTE.min.css';
+// adminLTE(base) 外部リンクではなくインライン展開するために.cssは外す
+@import 'admin-lte/dist/css/AdminLTE.min';
 // adminLTE(skin)
 // @import 'admin-lte/dist/css/skins/skin-purple.min.css';
-// font-awesome
-@import 'font-awesome/css/font-awesome.min.css';
+// font-awesome 外部リンクではなくインライン展開するために.cssは外す
+@import 'font-awesome/css/font-awesome.min';
 
 
 
