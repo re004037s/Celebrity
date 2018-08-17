@@ -6,7 +6,7 @@
 // adminLTE(skin)
 // @import 'admin-lte/dist/css/skins/skin-purple.min.css';
 // font-awesome 外部リンクではなくインライン展開するために.cssは外す
-@import 'font-awesome/css/font-awesome.min';
+// @import 'font-awesome/css/font-awesome.min';
 
 
 
@@ -1055,3 +1055,8 @@ li.first-child {
 
 
 //@import "responsive";  //レスポンシブ関連の設定
+
+.main-sidebar{
+  overflow-y: scroll;
+    height: 100%;
+}
