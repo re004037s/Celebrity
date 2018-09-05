@@ -63,13 +63,15 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   host = 'www.celebrity-engineer-members.com'
+  user_name = ENV['USER_NAME']
+  password = ENV['PASSWORD']
   config.action_mailer.default_url_options = { host: host, protocol: 'http' }
   config.action_mailer.smtp_settings = {
     address: 'smtp.gmail.com',
     port: 587,
     domain: 'smtp.gmail.com',
-    user_name: ENV['USER_NAME'],
-    password: ENV['PASSWORD'],
+    user_name: user_name,
+    password: password,
     authentication: 'login',
     enable_starttls_auto: true
   }
