@@ -220,5 +220,28 @@
   		</div>
   	</div>
   	
+  	<br>
+  	
+  	<div class="panel panel-success">
+  	  <div class="panel-heading">
+  	  ポートフォリオ
+  	  </div>
+  	</div>
+  	
+  	<div class="panel panel-default">
+  		<div class="panel-heading">
+  			<h3 class="panel-title">
+  				<a style="display:block" data-toggle="collapse" data-parent="#sampleAccordion" href="#sampleAccordionCollapse10">
+  					Q：<%= @faq.first.question %>
+  				</a>
+  			</h3>
+  		</div>
+  		<div id="sampleAccordionCollapse10" class="panel-collapse collapse">
+  			<div class="panel-body">
+          	A：<%= @faq.first.answer %><br>
+  			</div>
+  		</div>
+  	</div>
+  	
   </div>
 </div>

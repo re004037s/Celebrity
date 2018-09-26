@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'faq/index'
+
   get 'password_resets/new'
   get 'password_resets/edit'
 
@@ -33,6 +35,7 @@ Rails.application.routes.draw do
   resources :comments, only: [:create, :destroy]
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :blogs
+  resources :faq
   
   resources :movies do
     get 'sort', on: :collection

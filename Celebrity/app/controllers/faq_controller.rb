@@ -1,4 +1,4 @@
-class StaticPagesController < ApplicationController
+class FaqController < ApplicationController
   include ApplicationHelper
   
   before_action :logged_in_user
@@ -9,6 +9,19 @@ class StaticPagesController < ApplicationController
   before_action :comp_railstutorial, only: :railstutorial
   before_action :check_guest_user
 
+  
+  def index
+    @faq = Question.all
+  end
+  
+  def new
+  end
+
+  def edit
+  end
+  
+  def show
+  end
   
   def portfolio_mv
   end
