@@ -7,19 +7,19 @@ services:
       - "POSTGRES_USER=postgres"
       # - "POSTGRES_PASSWORD=password"
     volumes:
-      - db_data:/var/lib/postgresql/data
+      - db-data:/var/lib/postgresql/data
 
-  web:
+  app:
     build: .
-    command: cd Celebrity && bundle exec rails s -p 3000 -b '0.0.0.0'
+    command: bundle exec rails s puma
     volumes:
-      - ../celebrity:/rails
-      - bundle:/bundle
+      - ../Celebrity:/rails
+      - bundle:/usr/local/bundle
     ports:
       - "3000:3000"
     depends_on:
       - db
 
 volumes:
-  db_data:
+  db-data:
   bundle:
