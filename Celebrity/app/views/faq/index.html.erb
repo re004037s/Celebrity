@@ -228,20 +228,94 @@
   	  </div>
   	</div>
   	
+  	<% @faqs.each.with_index(10) do |faq, i| %>
   	<div class="panel panel-default">
   		<div class="panel-heading">
   			<h3 class="panel-title">
-  				<a style="display:block" data-toggle="collapse" data-parent="#sampleAccordion" href="#sampleAccordionCollapse10">
-  					Q：<%= @faq.first.question %>
+  				<a style="display:block" data-toggle="collapse" data-parent="#sampleAccordion" href="#sampleAccordionCollapse<%=i%>">
+  					Q：<%= faq.question %>
   				</a>
   			</h3>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal<%=i%>">
+      編集
+      </button>
   		</div>
-  		<div id="sampleAccordionCollapse10" class="panel-collapse collapse">
+  		<div id="sampleAccordionCollapse<%=i%>" class="panel-collapse collapse">
   			<div class="panel-body">
-          	A：<%= @faq.first.answer %><br>
+          	A：<%= faq.answer %><br>
   			</div>
   		</div>
   	</div>
   	
+    <div class="modal fade" id="Modal<%=i%>">
+      <div class="form-entrance-signup" style="width:600px;">
+        <div class="form-entrance--wrapper" style="width:500px;">
+          <div class="modal-header">
+            <h4 class="form-entrance--title">質問の編集</h4>
+            
+          </div>
+          <div class="modal-body">
+            <%= form_for(@faq, url: "faq/#{faq.id}", method: :patch) do |f| %>
+            <%= render partial: 'shared/error_messages', locals: { object: @faq } %>
+      
+            <%= f.label :question, '質問', class: 'txt1' %>
+            <%= f.text_area :question, rows: 3, class: 'form-control validate[required,maxSize[1500]] text-input', :value => faq.question %><br>
+    
+            <%= f.label :answer, '回答', class: 'txt1' %>
+            <%= f.text_area :answer, rows: 10, class: 'form-control validate[required,maxSize[1500]] text-input', :value => faq.answer %>
+    
+            <%= f.hidden_field :id, :value => faq.id %>
+          </div>
+          <div class="modal-footer">
+            <div class="center">
+            <%= f.submit "登録", class: "btn btn-primary", style: "width:80px;" %>
+            <%= link_to "削除", "faq/#{faq.id}", class: "btn btn-danger", style: "width:80px;", method: :delete,
+                                                                     data: { confirm: "本当に削除しますか?" } %>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  	<%end%>
+  	
   </div>
+</div>
+
+
+<% if current_user.try(:admin) %>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal1">
+  	新規作成
+  </button>
+<% end %>
+
+<div class="modal fade" id="Modal1">
+	<div class="modal-dialog">
+		<div class="modal-content">
+      <div class="form-entrance-signup" style="width:700px;">
+          <div class="modal-header">
+      		  <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+            <h6 class="form-entrance--title">新規登録</h6>
+      		</div>
+          <div class="modal-body">
+          <%= form_for(@faq, url: 'faq') do |f| %>
+            <%= render partial: 'shared/error_messages', locals: { object: @faq } %>
+      
+            <%= f.label :question, '質問', class: 'txt1' %>
+            <%= f.text_area :question, rows: 3, class: 'form-control validate[required,maxSize[1500]] text-input', :onkeyup => "QuestionLength(value);" %>
+      
+            <%= f.label :answer, '回答', class: 'txt1' %>
+            <%= f.text_area :answer, rows: 10, class: 'form-control validate[required,maxSize[1500]] text-input', :onkeyup => "QuestionLength(value);" %>
+          </div>
+          <div class="modal-footer">
+            <%= f.submit "登録", class: "btn btn-default active btn-block form-kari-button" %>
+          
+            <%= link_to ">> TOPページへ戻る", login_path, class: 'form-entrance--link' %>
+            <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+          <% end %>
+          </div> 
+			</div>
+		</div>
+	</div>
 </div>
