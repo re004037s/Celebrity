@@ -14,10 +14,10 @@ class UserMailer < ApplicationMailer
   end
 
 
-  def account_activation(user)
-    @user = user
-    mail to: user.email, subject: "Account activation"
-  end
+  # def account_activation(user)
+  #   @user = user
+  #   mail to: user.email, subject: "Account activation"
+  # end
 
 
   def slack_invitation(user)
