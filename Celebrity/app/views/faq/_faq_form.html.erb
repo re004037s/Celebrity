@@ -1,0 +1,51 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+  	<h3 class="panel-title">
+  		<a style="display:block" data-toggle="collapse" data-parent="#sampleAccordion" href="#sampleAccordionCollapse<%=i%>">
+  			Q：<%= faq.question %>
+  		</a>
+  	</h3>
+  	<% if current_user.try(:admin) %>
+		<div style="text-align:right; margin-top:-20px;">
+    <button type="button" class="btn btn-default active" data-toggle="modal" data-target="#Modal<%=i%>">
+      編集
+    </button>
+  </div>
+<% end %>
+  </div>
+  <div id="sampleAccordionCollapse<%=i%>" class="panel-collapse collapse">
+  	<div class="panel-body">
+  	A：<%= simple_format faq.answer %>
+  	</div>
+  </div>
+</div><p>
+  
+<div class="modal fade" id="Modal<%=i%>">
+  <div class="form-entrance-signup" style="width:600px;">
+    <div class="form-entrance--wrapper" style="width:500px;">
+      <div class="modal-header">
+        <h4 class="form-entrance--title">質問の編集</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for(@faq, url: "faq/#{faq.id}", method: :patch) do |f| %>
+        <%= render partial: 'shared/error_messages', locals: { object: @faq } %>
+  
+        <%= f.label :question, '質問', class: 'txt1' %>
+        <%= f.text_area :question, rows: 3, class: 'form-control validate[required,maxSize[1500]] text-input', :value => faq.question %><br>
+
+        <%= f.label :answer, '回答', class: 'txt1' %>
+        <%= f.text_area :answer, rows: 10, class: 'form-control validate[required,maxSize[1500]] text-input', :value => faq.answer %>
+
+        <%= f.hidden_field :id, :value => faq.id %>
+      </div>
+      <div class="modal-footer">
+        <div class="center">
+        <%= f.submit "登録", class: "btn btn-primary", style: "width:80px;" %>　
+        <%= link_to "削除", "faq/#{faq.id}", class: "btn btn-danger", style: "width:80px;", method: :delete,
+                                                                 data: { confirm: "本当に削除しますか?" } %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
