@@ -1,0 +1,39 @@
+<div class="panel panel-success">
+  <div class="panel-heading">
+    <%= faq_cat.title %>
+  </div>
+  <% if current_user.try(:admin) %>
+  	<div style="text-align:right; margin:-38px 15px 0 0;">
+      <button type="button" class="btn btn-default active" data-toggle="modal" data-target="#Modal_title<%=i%>">
+        編集
+      </button>
+    </div>
+  <% end %>
+</div><p>
+  
+<div class="modal fade" id="Modal_title<%=i%>">
+  <div class="form-entrance-signup" style="width:600px;">
+    <div class="form-entrance--wrapper" style="width:500px;">
+      <div class="modal-header">
+        <h4 class="form-entrance--title">質問タイトルの編集</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for(@faq_category, url: "category_update/#{faq_cat.id}", method: :patch) do |f| %>
+        <%= render partial: 'shared/error_messages', locals: { object: @faq_category } %>
+  
+        <%= f.label :title, 'タイトル', class: 'txt1' %>
+        <%= f.text_area :title, rows: 3, class: 'form-control validate[required,maxSize[1500]] text-input', :value => faq_cat.title %><br>
+
+        <%= f.hidden_field :id, :value => faq_cat.id %>
+      </div>
+      <div class="modal-footer">
+        <div class="center">
+        <%= f.submit "登録", class: "btn btn-primary", style: "width:80px;" %>　
+        <%= link_to "削除", "category_destroy/#{faq_cat.id}", class: "btn btn-danger", style: "width:80px;", method: :delete,
+                                                                 data: { confirm: "本当に削除しますか?" } %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
