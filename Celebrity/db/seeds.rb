@@ -76,22 +76,33 @@ Movie.create!(title: '海外に行った方がいい理由',
               movie_category_id: 9, sort_order: 1)
 
 
+# QuestionCategoryテーブル
+QuestionCategory.create!(title: 'はじめに')
+QuestionCategory.create!(title: 'プロゲート')
+QuestionCategory.create!(title: 'Railsチュートリアル')
+QuestionCategory.create!(title: 'ポートフォリオ')
+
 # Questionテーブル
 Question.create!(question: '何から学習を始めればいいですか？',
-                 answer: '【プロゲート】⇨【Railsチュートリアル】⇨【ポートフォリオ】の順番で学習を進めてください。')
+                 answer: '【プロゲート】⇨【Railsチュートリアル】⇨【ポートフォリオ】の順番で学習を進めてください。',
+                 question_category_id: 1)
 Question.create!(question: 'どの項目を学習すればいいですか？',
-                 answer: '【HTML&CSS】,【JavaScript】,【Git】,【Ruby】,【Ruby on Rails5】を学習してください。')
+                 answer: '【HTML&CSS】,【JavaScript】,【Git】,【Ruby】,【Ruby on Rails5】を学習してください。',
+                 question_category_id: 2)
 Question.create!(question: 'わからない問題があります。答えを見てもいいですか？',
-                 answer: 'わからない場合は答えを見ても問題ありません。')
+                 answer: 'わからない場合は答えを見ても問題ありません。',
+                 question_category_id: 2)
 Question.create!(question: '理解できている気がしません。何回か復習した方がいいですか？',
                  answer: 'プロゲートやRailsチュートリアルではパソコンの操作やプログラミングに慣れることが目的です。
-                        完全な理解・暗記・復習は必要ないので次に進めてください。')
+                        完全な理解・暗記・復習は必要ないので次に進めてください。',
+                question_category_id: 2)
 Question.create!(question: 'どこに入力すればいいですか？',
                  answer: 
                         'コマンドラインターミナルに入力するか、ファイル内に入力するかを確認してください。
                         
                         【コマンドラインターミナルに入力する場合】
-                        ・行の頭に「$」が表示されていれば、コマンドラインターミナルであることを示しています。')
+                        ・行の頭に「$」が表示されていれば、コマンドラインターミナルであることを示しています。',
+                question_category_id: 3)
 Question.create!(question: 'Gitについて。',
                  answer: 
                         'チュートリアルでは「Bitbucket」が推奨されていますので、基本は「Bitbucket」を使いましょう。
@@ -102,7 +113,8 @@ Question.create!(question: 'Gitについて。',
                         【セレブエンジニアサロン限定】GitHub講習(2)
                         【セレブエンジニアサロン限定】GitHub講習(3)
                         【セレブエンジニアサロン限定】GitHub講習(4)
-                        【セレブエンジニアサロン限定】GitHub講習(5)')
+                        【セレブエンジニアサロン限定】GitHub講習(5)',
+                question_category_id: 3)
 Question.create!(question: '一度cloud9を閉じて、時間をおき再開すると手順通りに進めなくなりました。',
                  answer: 
                         '再開時にうまく作動しない原因は、下記の作業を飛ばしている可能性があります。
@@ -111,7 +123,8 @@ Question.create!(question: '一度cloud9を閉じて、時間をおき再開す�
                         
                         【コマンドラインに「rails server -b $IP -p $PORT」を入力する】
                         
-                        ＊チュートリアルを始める時には自分の作業ディレクトリに移動し、サーバー接続をしてください。')
+                        ＊チュートリアルを始める時には自分の作業ディレクトリに移動し、サーバー接続をしてください。',
+                question_category_id: 3)
 Question.create!(question: 'エラーが発生します。',
                  answer: 
                         'よくある原因として下記のものがあります。
@@ -123,11 +136,14 @@ Question.create!(question: 'エラーが発生します。',
                         ・無意識に文章を飛ばして読んでいた
                         ・ファイルごとの保存がされていない
                         
-                        上記項目を確認しても解決しない場合、質問してください。')
+                        上記項目を確認しても解決しない場合、質問してください。',
+                question_category_id: 3)
 Question.create!(question: 'ポートフォリオはどのようなものを作成すればいいですか？',
                  answer:
                         '完成したチュートリアルに自分の好きな機能やデザインを追加してください。それがポートフォリオになります。
-                        サロンメンバーの作成済みのポートフォリオも参考になると思います。')
+                        サロンメンバーの作成済みのポートフォリオも参考になると思います。',
+                question_category_id: 4)
+
 
 # Admin user
 User.create(name: '鈴木 一郎',

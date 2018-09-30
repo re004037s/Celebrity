@@ -1,26 +1,26 @@
 <div class="panel panel-default">
   <div class="panel-heading">
   	<h3 class="panel-title">
-  		<a style="display:block" data-toggle="collapse" data-parent="#sampleAccordion" href="#sampleAccordionCollapse<%=i%>">
+  		<a style="display:block" data-toggle="collapse" data-parent="#sampleAccordion" href="#sampleAccordionCollapse<%=faq.id%>">
   			Q：<%= faq.question %>
   		</a>
   	</h3>
   	<% if current_user.try(:admin) %>
-		<div style="text-align:right; margin-top:-20px;">
-    <button type="button" class="btn btn-default active" data-toggle="modal" data-target="#Modal<%=i%>">
-      編集
-    </button>
+		  <div style="text-align:right; margin-top:-20px;">
+        <button type="button" class="btn btn-default active" data-toggle="modal" data-target="#Modal<%=faq.id%>">
+          編集
+        </button>
+     </div>
+    <% end %>
   </div>
-<% end %>
-  </div>
-  <div id="sampleAccordionCollapse<%=i%>" class="panel-collapse collapse">
+  <div id="sampleAccordionCollapse<%=faq.id%>" class="panel-collapse collapse">
   	<div class="panel-body">
   	A：<%= simple_format faq.answer %>
   	</div>
   </div>
 </div><p>
   
-<div class="modal fade" id="Modal<%=i%>">
+<div class="modal fade" id="Modal<%=faq.id%>">
   <div class="form-entrance-signup" style="width:600px;">
     <div class="form-entrance--wrapper" style="width:500px;">
       <div class="modal-header">
@@ -34,7 +34,10 @@
         <%= f.text_area :question, rows: 3, class: 'form-control validate[required,maxSize[1500]] text-input', :value => faq.question %><br>
 
         <%= f.label :answer, '回答', class: 'txt1' %>
-        <%= f.text_area :answer, rows: 10, class: 'form-control validate[required,maxSize[1500]] text-input', :value => faq.answer %>
+        <%= f.text_area :answer, rows: 10, class: 'form-control validate[required,maxSize[1500]] text-input', :value => faq.answer %><br>
+        
+        <%= f.label :question_category_id, 'タイトル', class: 'txt3' %>
+        <%= f.select :question_category_id, options_for_select((@faq_categories).map{|faq_cat| [faq_cat.title, faq_cat.id]}, selected: faq.question_category_id) %>
 
         <%= f.hidden_field :id, :value => faq.id %>
       </div>

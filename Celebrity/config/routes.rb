@@ -57,6 +57,10 @@ Rails.application.routes.draw do
     end
   end
   
+  post '/category_create', to: 'faq#category_create'
+  patch '/category_update/:id', to: 'faq#category_update'
+  delete '/category_destroy/:id', to: 'faq#category_destroy'
+  
   post '/tag_new', to: 'users#tag_new'
   delete '/tag_delete', to: 'users#tag_delete'
   

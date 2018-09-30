@@ -2,78 +2,78 @@
   
   <h2 class="page-title-jp">
     <span>よくある質問</span>
-  </h2>
+  </h2><br>
   
   <!-- QA bootstrap アコーディオン -->
   <div class="panel-group" id="sampleAccordion">
-    <div class="panel panel-success">
-      <div class="panel-heading">
-      はじめに
-      </div>
-    </div>
-    <% @faqs1.each.with_index(1) do |faq, i| %>  	
-      <%= render :partial => "faq_form", :locals => { faq: faq, i: i } %>
-    <%end%>
-    <br>
-    
-    <div class="panel panel-success">
-      <div class="panel-heading">
-        プロゲート
-      </div>
-    </div>
-    <% @faqs2_4.each.with_index(2) do |faq, i| %>  	
-      <%= render :partial => "faq_form", :locals => { faq: faq, i: i } %>
-    <%end%>
-  	<br>
-  	
-  	<div class="panel panel-success">
-  	  <div class="panel-heading">
-  	   Railsチュートリアル
-  	  </div>
-  	</div>
-    <% @faqs5_8.each.with_index(5) do |faq, i| %>  	
-      <%= render :partial => "faq_form", :locals => { faq: faq, i: i } %>
-    <%end%>
-  	<br>
-  	
-  	<div class="panel panel-success">
-  	  <div class="panel-heading">
-  	  ポートフォリオ
-  	  </div>
-  	</div>
-    <% @faqs9.each.with_index(9) do |faq, i| %>  	
-      <%= render :partial => "faq_form", :locals => { faq: faq, i: i } %>
-    <%end%>
-    
-    <% @faqs.each.with_index(10) do |faq, i| %>  	
-      <%= render :partial => "faq_form", :locals => { faq: faq, i: i } %>
-    <%end%>
-  	<br>
+    <% @faq_categories.each.with_index(1) do |faq_cat, i| %>
+      <%= render :partial => "faq_category_form", :locals => { faq_cat: faq_cat, i: i } %>
+      <% @faqs_by_cat = @faqs.where(question_category_id: faq_cat.id) %> 
+      <% @faqs_by_cat.each do |faq| %>  	
+        <%= render :partial => "faq_form", :locals => { faq: faq } %>
+      <%end%><br>
+    <% end %>
+  </div>
+  <br>
 
+<% if current_user.try(:admin) %>
+  <div class="col-xs-offset-4 col-xs-4">
+    <button type="button" class="btn btn-default active btn-block" data-toggle="modal" data-target="#Modal_title_new">
+    	質問タイトルの新規作成
+    </button>
+  </div><br><br>
+<% end %>
 
 <% if current_user.try(:admin) %>
   <div class="col-xs-offset-4 col-xs-4">
     <button type="button" class="btn btn-default active btn-block" data-toggle="modal" data-target="#Modal_new">
-    	新規作成
+    	Ｑ＆Ａの新規作成
     </button>
   </div><br>
 <% end %>
+
+<div class="modal fade" id="Modal_title_new">
+  <div class="form-entrance-signup" style="width:600px;">
+    <div class="form-entrance--wrapper" style="width:500px;">
+      <div class="modal-header">
+        <h6 class="form-entrance--title">質問タイトルの新規作成</h6>
+  		</div>
+      <div class="modal-body">
+      <%= form_for(@faq_category, url: 'category_create') do |f| %>
+        <%= render partial: 'shared/error_messages', locals: { object: @faq_category } %>
+  
+        <%= f.label :title, '質問タイトル', class: 'txt1' %>
+        <%= f.text_area :title, rows: 3, class: 'form-control validate[required,maxSize[1500]] text-input', :onkeyup => "QuestionLength(value);" %>
+  
+      </div>
+      <div class="modal-footer">
+        <%= f.submit "登録", class: "btn btn-default active btn-block form-kari-button" %>
+        <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+      <% end %>
+      </div> 
+		</div>
+	</div>
+</div>
 
 <div class="modal fade" id="Modal_new">
   <div class="form-entrance-signup" style="width:600px;">
     <div class="form-entrance--wrapper" style="width:500px;">
       <div class="modal-header">
-        <h6 class="form-entrance--title">新規登録</h6>
+        <h6 class="form-entrance--title">Ｑ＆Ａの新規作成</h6>
   		</div>
       <div class="modal-body">
       <%= form_for(@faq, url: 'faq') do |f| %>
         <%= render partial: 'shared/error_messages', locals: { object: @faq } %>
   
         <%= f.label :question, '質問', class: 'txt1' %>
-        <%= f.text_area :question, rows: 3, class: 'form-control validate[required,maxSize[1500]] text-input', :onkeyup => "QuestionLength(value);" %>
+        <%= f.text_area :question, rows: 3, class: 'form-control validate[required,maxSize[1500]] text-input', :onkeyup => "QuestionLength(value);" %><br>
   
         <%= f.label :answer, '回答', class: 'txt1' %>
-        <%= f.text_area :answer, rows: 10, class: 'form-control validate[required,maxSize[1500]] text-input', :onkeyup => "QuestionLength(value);" %>
+        <%= f.text_area :answer, rows: 10, class: 'form-control validate[required,maxSize[1500]] text-input', :onkeyup => "QuestionLength(value);" %><br>
+      
+        <%= f.label :question_category_id, 'タイトル', class: 'txt3' %>
+        <%= f.select :question_category_id, options_for_select((@faq_categories).map{|faq_cat| [faq_cat.title, faq_cat.id]}) %>
+      
       </div>
       <div class="modal-footer">
         <%= f.submit "登録", class: "btn btn-default active btn-block form-kari-button" %>
