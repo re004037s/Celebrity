@@ -22,7 +22,7 @@ class UserMailer < ApplicationMailer
 
   def slack_invitation(user)
     @user = user
-    mail to: user.email, subject: "Account activation"
+    mail to: user.email, subject: "【重要】メンバー限定サポートチャンネルへご参加ください！"
   end
 
 
