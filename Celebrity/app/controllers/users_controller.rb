@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   before_action :check_guest_user  
   
   def index
-    @users = User.page(params[:page])
+    @users = User.page(params[:page]).reorder('created_at DESC')
   end
   
   def show
