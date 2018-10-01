@@ -11,20 +11,20 @@ class User < ApplicationRecord
     mount_uploader :picture, PictureUploader #画像アップロード用に追加
     validates :name, presence: true, length: { maximum: 10 }
     # validates :nickname, presence: true, length: { maximum: 10 }
-    
+
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
     validates :email, presence: true, length: { maximum: 50 },
                format: { with: VALID_EMAIL_REGEX },
                uniqueness: { case_sensitive: false }
-    
+
    validates :line_id, length: {maximum: 20}
-    
+
     has_secure_password
     validates :password, presence: true, length: { minimum: 6}
-    
+
     validates :portfolio_path, length: {maximum: 100}, format: /\A#{URI::regexp(%w(http https))}\z/, :allow_blank => true
     validates :github_path, length: {maximum: 100}, format: /\A#{URI::regexp(%w(http https))}\z/, :allow_blank => true
-    
+
     has_one :html_css_status
     has_one :javascript_status
     has_one :ruby_status
@@ -35,7 +35,7 @@ class User < ApplicationRecord
     has_many :user_tags, foreign_key: 'user_id' #user_tagを多く持っている,コメントを削除する動作。has_manyに指定する場合複数形
     has_many :tags, through: :user_tags #:throughでuser_tags(中間テーブル)を通じて、tagを多く持っている.throughを定義する場合、それに関連するもの通過するものは先に関連付けさせる。
     # accepts_nested_attributes_for :user_tags, allow_destroy: true #関連項目も含めて一度に保存、削除するとい意味
-    has_many :comments, dependent: :destroy 
+    has_many :comments, dependent: :destroy
 
     # 渡された文字列のハッシュ値を返す
     def User.digest(string)
@@ -43,11 +43,11 @@ class User < ApplicationRecord
                                                   BCrypt::Engine.cost
         BCrypt::Password.create(string, cost: cost)
     end
-    
+
     def fb_comp?(movie_id)
         !!self.feedbacks.find_by(movie_id: movie_id)
     end
-    
+
     def before_fb_comp?(sort_order, category_id)
         return true if sort_order == 1
         !!self.feedbacks.find_by(movie_id: Movie.where(movie_category_id: category_id, sort_order: sort_order - 1).first.id)
@@ -62,6 +62,10 @@ class User < ApplicationRecord
   # 有効化用のメールを送信する
   def send_activation_email
     UserMailer.account_activation(self).deliver_now
+  end
+
+  def send_slack_invitation_email
+    UserMailer.slack_invitation(self).deliver_now
   end
 
   # パスワード再設定の属性を設定する
@@ -79,7 +83,7 @@ class User < ApplicationRecord
   def password_reset_expired?
     reset_sent_at < 2.hours.ago
   end
-  
+
   # トークンがダイジェストと一致したらtrueを返す
   def authenticated?(attribute, token)
     digest = send("#{attribute}_digest")
@@ -97,33 +101,33 @@ class User < ApplicationRecord
     # 有効化トークンとダイジェストを作成および代入する
     def create_activation_digest
     end
-    
+
     def save_users(savepost_tags)
       current_tags = self.tags.pluck(:name) unless self.tags.nil?
       old_tags = current_tags - savepost_tags
       new_tags = savepost_tags - current_tags
-  
+
       # Destroy old taggings:
       old_tags.each do |old_name|
         self.tags.delete Tag.find_by(name:old_name)
       end
-  
+
       # Create new taggings:
       new_tags.each do |new_name|
         post_tag = Tag.find_or_create_by(name:new_name)
         self.tags << post_tag
       end
     end
-    
+
      # メールアドレスをすべて小文字にする
     def downcase_email
        self.email = email.downcase
     end
- 
+
      # 有効化トークンとダイジェストを作成および代入する
     def create_activation_digest
     end
-      
+
        # ランダムなトークンを返す
     def User.new_token
        SecureRandom.urlsafe_base64

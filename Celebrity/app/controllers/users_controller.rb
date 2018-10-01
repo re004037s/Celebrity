@@ -5,12 +5,12 @@ class UsersController < ApplicationController
   before_action :administrator_user, only: :new
   before_action :correct_user_for_edit,
     only:[:update_picture,:tag_new, :tag_show, :tag_delete]
-  before_action :check_guest_user  
-  
+  before_action :check_guest_user
+
   def index
     @users = User.page(params[:page])
   end
-  
+
   def show
     @user = User.find_by(id: params[:id])
     if @user.free_engineer_user && @user.venture_user && @user.staff_user
@@ -32,46 +32,46 @@ class UsersController < ApplicationController
     tags = @user.tags.limit(10).pluck(:tag,:id)
     @tags_h = Hash[*tags.flatten]
   end
-  
+
   def update_picture
     @user = current_user
     unless params[:user].try(:[],:picture) == nil
       upload_picture = user_params[:picture]
       if @user.update_columns(picture_file: upload_picture.read)
         flash[:success] = '画像を保存しました！'
-        redirect_to @user 
+        redirect_to @user
       else
         flash[:error] = '画像の保存に失敗しました！'
         redirect_to @user
       end
     end
   end
-  
+
   def get_image
     @image = User.find(params[:id])
     send_data(@image.picture_file)
   end
-  
+
   def tag_delete
     @user = current_user
     tag_id = params[:tag_id]
     @user.user_tags.find_by(id: tag_id).delete #tags ⇨ user_tags（中間テーブル）に変更
   end
-  
+
   def tag_new
     @user = current_user
     tag_name = params[:tag_name]
     tag = @user.tags.create(tag: tag_name)
-    
+
     if tag.save
       render json: '200'
     else
       flash[:danger] = tag.errors.messages[:tag].join(' / ')
       render json: '500'
     end
-    
+
   end
-  
+
   #ステータス（未登録・営業中・就業中）を登録する
   def register_status
     user = User.find(params[:user][:id])
@@ -82,13 +82,13 @@ class UsersController < ApplicationController
       flash[:error] = 'ステータスの保存に失敗しました！'
       redirect_to skillsheets_path
     end
-    
+
   end
-  
+
   def new
     @user = User.new
   end
-  
+
   def create
     @user = User.new(user_params)
     if @user.try(:guest)
@@ -96,6 +96,7 @@ class UsersController < ApplicationController
       log_in @user
       redirect_to skillsheets_path and return
     elsif @user.save
+      @user.send_slack_invitation_email
       # 作成ユーザに紐付く進捗テーブルレコードの作成（nil回避）
       HtmlCssStatus.create(user_id: @user.id)
       JavascriptStatus.create(user_id: @user.id)
@@ -103,7 +104,7 @@ class UsersController < ApplicationController
       RubyonrailsStatus.create(user_id: @user.id)
       RailstutorialStatus.create(user_id: @user.id)
       UserMovieStatus.create(user_id: @user.id)
-      
+
       log_in @user
       flash[:success] = 'Welcome to the セレブエンジニアサロン'
       redirect_to root_path
@@ -111,10 +112,10 @@ class UsersController < ApplicationController
       render 'new'
     end
   end
-  
+
   def edit
   end
-  
+
   def update
     if current_user?(@user)
       if @user.update_attributes(user_params)
@@ -132,28 +133,28 @@ class UsersController < ApplicationController
       end
     end
   end
-  
+
   def destroy
     User.find(params[:id]).update_attribute(:existence, false)
     flash[:success] = 'ユーザを削除しました'
     redirect_to users_path
   end
-  
-  
+
+
   private
-  
+
     def user_params
       params.require(:user).permit(:name, :nickname, :line_id, :email, :guest, :password, :password_confirmation, :portfolio_path,
         :github_path, :picture_file, :picture, :tag_list, :skillsheet, :skillsheet_name, :venture_user, :free_engineer_user, :staff_user, :guest)
     end
-    
+
     # ログイン済み or 管理ユーザであれば true を返す
     def correct_user
       @user = User.find(params[:id])
       redirect_to root_url unless current_user?(@user) || current_user.admin
     end
-   
-    #adminがedit,updateをするのを制限する 
+
+    #adminがedit,updateをするのを制限する
     #bug fixed
     def correct_user_for_edit
       user_id = params[:id]
@@ -163,13 +164,13 @@ class UsersController < ApplicationController
       if current_user?(@user)
       else
         flash[:danger] = "アドミンは一般ユーザーの個別情報を編集できません"
-        redirect_to root_url 
+        redirect_to root_url
       end
     end
-    
+
     # アクセスしようとしているページが削除ユーザのものである場合はルートURLへリダイレクト
     def existence_user
-      @user = User.find(params[:id]) 
+      @user = User.find(params[:id])
       redirect_to root_url unless existence_user?(@user)
     end
 
@@ -177,15 +178,15 @@ class UsersController < ApplicationController
     def administrator_user
       redirect_to root_url if current_user == nil || !current_user.admin
     end
-    
+
     def comp_movies_user
-      if current_user.try(:admin) || Feedback.where(user_id: current_user).count == 
+      if current_user.try(:admin) || Feedback.where(user_id: current_user).count ==
          Movie.where(movie_category_id: MovieCategory.where(must_view: true).ids).count
       else
         flash[:danger] = "先に動画を視聴して下さい"
         redirect_to root_url
       end
-      
+
     end
 
 end
