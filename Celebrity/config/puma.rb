@@ -49,8 +49,4 @@ plugin :tmp_restart
 # if Rails.env == 'production'
   bind "unix:///home/ec2-user/rails/Celebrity/Celebrity/tmp/sockets/puma.sock"
   pidfile "/home/ec2-user/rails/Celebrity/Celebrity/tmp/sockets/puma.pid"
-<<<<<<< HEAD
 # end
-=======
-# end
->>>>>>> bec40b3a... small fix
