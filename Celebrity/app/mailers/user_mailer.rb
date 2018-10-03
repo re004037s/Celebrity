@@ -19,10 +19,17 @@ class UserMailer < ApplicationMailer
   #   mail to: user.email, subject: "Account activation"
   # end
 
+  def slack_invitation()
+    @user = User.new
+    @user.name = "akira"
+    @user.email = "capybara1229@gmail.com"
+    @join_url  = 'https://join.slack.com/t/rails-tutorial-sprt/shared_invite/' \
+                 'enQtNDQ3MzE1NTExNDU4LTM2MTIwNDU1NDhkNjMyNGQ5MzRmYTM2ZjZlNzJ' \
+                 'kM2M4NTM3YjVkODMwNmQzZGMyMjI5NWQxMTgzNzg4NWUzZjY'
+    @guide_url = 'https://get.slack.help/hc/ja/categories/200111606' \
+                 '#u12513u12483u12475u12540u12472u12434u36865u20449u12539u25237u31295'
 
-  def slack_invitation(user)
-    @user = user
-    mail to: user.email, subject: "【重要】メンバー限定サポートチャンネルへご参加ください！"
+    mail to: @user.email, subject: "【重要】メンバー限定サポートチャンネルへご参加ください！"
   end
 
 
