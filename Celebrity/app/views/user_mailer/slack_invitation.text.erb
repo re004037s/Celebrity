@@ -1,18 +1,12 @@
-<%
-JOIN_URL = "https://join.slack.com/t/rails-tutorial-sprt/shared_invite/enQtNDQ3MzE1NTExNDU4LTM2MTIwNDU1NDhkNjMyNGQ5MzRmYTM2ZjZlNzJkM2M4NTM3YjVkODMwNmQzZGMyMjI5NWQxMTgzNzg4NWUzZjY"
-
-GUIDE_URL = "https://get.slack.help/hc/ja/categories/200111606#u12513u12483u12475u12540u12472u12434u36865u20449u12539u25237u31295"
-%>
-
-<%= @user_name %>さん、こんにちは！
+<%= @user.name %>さん、こんにちは！
 
 
-セレブエンジニアサロンへご入会いただいた<%= @user_name %>さんに、
+セレブエンジニアサロンへご入会いただいた<%= @user.name %>さんに、
 会員限定サポートチャットへご招待させていただきます。
 
 このチャットルームでは、当サロンのサポートスタッフや、
 すでに現役エンジニアとして経験を重ねる会員の方々が、
-<%= @user_name %>さんのフリーエンジニアへの道をバックアップいたします！
+<%= @user.name %>さんのフリーエンジニアへの道をバックアップいたします！
 
 元々は、課題のひとつである「Railsチュートリアル」の
 サポートのために立ち上げられたものですが、それ以外のこともOKです！
@@ -25,7 +19,7 @@ Railsチュートリアルに関するご質問は、「１〜１４章の各章
 一緒にがんばりましょう！
 
 ▼こちらのリンクからご参加ください！
-<%= JOIN_URL %>
+<%= @join_url %>
 
 
 なお、こちらで使用されているSlackというチャットツールは、
@@ -33,7 +27,7 @@ Railsチュートリアルに関するご質問は、「１〜１４章の各章
 少しずつ慣れていきましょう。
 
 ▼Slack使い方ガイド（公式ページ）
-<%= GUIDE_URL %>
+<%= @guide_url %>
 
 
 ※本メールに心当たりのない方は、大変恐れ入りますが、
