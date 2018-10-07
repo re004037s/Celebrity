@@ -10,9 +10,6 @@ class StaticPagesController < ApplicationController
   before_action :check_guest_user
 
   
-  def qa
-  end
-  
   def portfolio_mv
   end
   
