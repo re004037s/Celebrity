@@ -39,9 +39,9 @@
               <% else %>
                 <td><%= user.name %></td>
               <% end %>
-            <td><%= percent_movie(user) %>%</td>
-            <td><%= percent_progate(user) %>%</td>
-            <td><%= count_rails_tutorial(user) %>章完了</td>
+            <td><%= "#{percent_movie(user)} %" if user == @current_user %></td>
+            <td><%= "#{percent_progate(user)} %" if user == @current_user %></td>
+            <td><%= "#{count_rails_tutorial(user)}章完了" if user == @current_user %></td>
             <td>
               <div class="td-wrap">
                 <% if user.try(:portfolio_path).blank? %>
