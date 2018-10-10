@@ -32,16 +32,16 @@
     
     <tbody>
       <% @users.each do |user| %>
-        <% if user.existence %>
+        <% if user.existence && @current_user.admin ? "" : user == @current_user %>
           <tr>
               <% if @current_user.admin %>
                 <td><%= link_to user.name, user_path(user, user_id: user.id) %></td>
               <% else %>
                 <td><%= user.name %></td>
               <% end %>
-            <td><%= "#{percent_movie(user)} %" if user == @current_user %></td>
-            <td><%= "#{percent_progate(user)} %" if user == @current_user %></td>
-            <td><%= "#{count_rails_tutorial(user)}章完了" if user == @current_user %></td>
+            <td><%= percent_movie(user) %>%</td>
+            <td><%= percent_progate(user) %>%</td>
+            <td><%= count_rails_tutorial(user) %>章完了</td>
             <td>
               <div class="td-wrap">
                 <% if user.try(:portfolio_path).blank? %>
