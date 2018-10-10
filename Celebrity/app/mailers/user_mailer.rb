@@ -19,10 +19,10 @@ class UserMailer < ApplicationMailer
     max_send_number = 99
     @new_movie = movie
     if i == 0
-      mail to: 'kamiyasoichi@hotmail.co.jp', subject:  'セレブエンジニアサロンの新規動画について',
+      mail to: 'test@example.com', subject:  'セレブエンジニアサロンの新規動画について',
       bcc: users.first(max_send_number).map{|u| u.email}
     else
-      mail to: 'kamiyasoichi@hotmail.co.jp', subject:  'セレブエンジニアサロンの新規動画について',
+      mail to: 'test@example.com', subject:  'セレブエンジニアサロンの新規動画について',
       bcc: users[(max_send_number*i)..(max_send_number*(i+1))-1].map{|u| u.email}
     end
   end
