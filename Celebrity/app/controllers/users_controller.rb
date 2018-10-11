@@ -8,7 +8,11 @@ class UsersController < ApplicationController
   before_action :check_guest_user  
   
   def index
-    @users = User.page(params[:page]).reorder('created_at DESC')
+    if @current_user.admin
+      @users = User.page(params[:page]).reorder('created_at DESC')
+    else
+      @users = User.where(id: @current_user.id).page(params[:page])
+    end
   end
   
   def show
