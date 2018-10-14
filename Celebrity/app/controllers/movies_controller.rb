@@ -19,7 +19,10 @@ class MoviesController < ApplicationController
     if MovieCategory.find(@movie.movie_category_id).subject == "free"
       @user = User.where(free_engineer_user: true)
       if @movie.save
-        UserMailer.send_when_create(@user, @movie).deliver
+        #メール1通の最大宛先数99件毎に実行
+        (@user.count/99.to_f).ceil.times do |i|
+          UserMailer.send_when_create(@user, @movie, i).deliver
+        end
         flash[:success] = '動画を登録しました'
         redirect_to movies_path
       else
@@ -29,7 +32,10 @@ class MoviesController < ApplicationController
     elsif MovieCategory.find(@movie.movie_category_id).subject == "venture"
       @user = User.where(venture_user: true)
       if @movie.save
-        UserMailer.send_when_create(@user, @movie).deliver
+        #メール1通の最大宛先数99件毎に実行
+        (@user.count/99.to_f).ceil.times do |i|
+          UserMailer.send_when_create(@user, @movie, i).deliver
+        end
         flash[:success] = '動画を登録しました'
         redirect_to movies_path
       else
@@ -39,7 +45,10 @@ class MoviesController < ApplicationController
     elsif MovieCategory.find(@movie.movie_category_id).subject == "staff"
       @user = User.where(staff_user: true)
       if @movie.save
-        UserMailer.send_when_create(@user, @movie).deliver
+        #メール1通の最大宛先数99件毎に実行
+        (@user.count/99.to_f).ceil.times do |i|
+          UserMailer.send_when_create(@user, @movie, i).deliver
+        end
         flash[:success] = '動画を登録しました'
         redirect_to movies_path
       else
