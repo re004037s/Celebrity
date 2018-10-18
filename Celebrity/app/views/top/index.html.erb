@@ -94,8 +94,8 @@
     </script>
   <% end %>
 
-  <h2 class="page-title-jp">
-    <span>はじめに</span>
+  <h2 class="page-title-j">
+    <span class="page-title-jp">はじめに</span>
   </h2>
   
   <h3 class="study-top">以下のカリキュラムをすることで、フリーになるためのスキルが最短で身に付きます。</h3>
@@ -110,27 +110,36 @@
     </div>
     
     <p class="study-title">プログラミングの基礎を学習</p>
-    <%= link_to 'https://prog-8.com', target:'_blank' do %>
-      <p class="study-detail">プログラミング学習サイト「Progate」を使い、
-        「HTML & CSS」「JavaScript」「Ruby」「Ruby on Rails5」のコースを全て終了させて下さい。</p>
-    <% end %>
+    <div class="study-box">
+      <%= link_to 'https://prog-8.com', class:"#{'disabled' unless movie_comp?}", target:'_blank' do %>
+        <p class="study-detail">プログラミング学習サイト「Progate」を使い、
+          「HTML & CSS」「JavaScript」「Ruby」「Ruby on Rails5」のコースを全て終了させて下さい。</p>
+        <% unless movie_comp? %><span class="study-remark">まずは動画を全てご覧下さい</span><% end %>
+      <% end %>
+    </div>
     <div class="arrow">
       <img src="arrow.png">
     </div>
     
     <p class="study-title">アプリケーション開発の基礎を学習</p>
-    <%= link_to 'https://railstutorial.jp/', target:'_blank' do %>
-      <p class="study-detail">「Ruby on Rails チュートリアル」1章〜14章まで全て終了させて下さい。</p>
-    <% end %>
+    <div class="study-box">
+      <%= link_to 'https://railstutorial.jp/', class:"#{'disabled' unless progatetask_tutolialday_comp?}", target:'_blank' do %>
+        <p class="study-detail">「Ruby on Rails チュートリアル」1章〜14章まで全て終了させて下さい。</p>
+        <% unless movie_comp? %><span class="study-remark">Progateを終わらせて下さい</span><% end %>
+      <% end %>
+    </div>
     <div class="arrow">
       <img src="arrow.png">
     </div>
     
     <p class="study-title">ＷＥＢアプリケーションの作成</p>
-    <%= link_to 'movie_categories/5', target:'_blank' do %>
-      <p class="study-detail">チュートリアルが完了したら、面談等で使用するポートフォリオを作成します。<br>
-        ※作り方等の詳細に関しては動画でご確認下さい</p>
-    <% end %>
+    <div class="study-box">
+      <%= link_to 'movie_categories/5', class:"#{'disabled' unless railstutorial_comp?}", target:'_blank' do %>
+        <p class="study-detail">チュートリアルが完了したら、面談等で使用するポートフォリオを作成します。<br>
+          ※作り方等の詳細に関しては動画でご確認下さい</p>
+        <% unless movie_comp? %><span class="study-remark">チュートリアルを終わらせて下さい</span><% end %>
+      <% end %>
+    </div>
   </div>
     
   <div class="information">
@@ -150,7 +159,7 @@
               <%= link_to "movie_categories/#{movie.movie_category_id}" do %>
                 <div class="information-box">
                   <div class="box-title"><p>【<%= movie.movie_category.name %>】<br><%= movie.title %></p></div>
-                  <span class="frame-cover"></span><div class="frame"><li><iframe frameborder="0" src="<%= movie.path %>"></iframe></li></div>
+                  <span class="frame-cover"></span><div class="frame"><li><iframe frameborder="1" src="<%= movie.path %>"></iframe></li></div>
                 </div>
               <% end %>
             <% end %>
@@ -160,7 +169,7 @@
                 <% if MovieCategory.find(movie.movie_category_id).subject == 'free' || MovieCategory.find(movie.movie_category_id).subject == 'venture' %>
                   <div class="information-box">
                     <div class="box-title"><p>【<%= movie.movie_category.name %>】<br><%= movie.title %></p></div>
-                    <span class="frame-cover"></span><div class="frame"><li><iframe frameborder="0" src="<%= movie.path %>"></iframe></li></div>
+                    <span class="frame-cover"></span><div class="frame"><li><iframe frameborder="1" src="<%= movie.path %>"></iframe></li></div>
                   </div>
                 <% end %>
               <% end %>
@@ -171,7 +180,7 @@
                 <% if MovieCategory.find(movie.movie_category_id).subject == 'free' ||  MovieCategory.find(movie.movie_category_id).subject == 'staff' %>
                   <div class="information-box">
                     <div class="box-title"><p>【<%= movie.movie_category.name %>】<br><%= movie.title %></p></div>
-                    <span class="frame-cover"></span><div class="frame"><li><iframe frameborder="0" src="<%= movie.path %>"></iframe></li></div>
+                    <span class="frame-cover"></span><div class="frame"><li><iframe frameborder="1" src="<%= movie.path %>"></iframe></li></div>
                   </div>
                 <% end %>
               <% end %>
@@ -182,7 +191,7 @@
                 <% if MovieCategory.find(movie.movie_category_id).subject == 'venture' || MovieCategory.find(movie.movie_category_id).subject == 'staff' %>
                   <div class="information-box">
                     <div class="box-title"><p>【<%= movie.movie_category.name %>】<br><%= movie.title %></p></div>
-                    <span class="frame-cover"></span><div class="frame"><li><iframe frameborder="0" src="<%= movie.path %>"></iframe></li></div>
+                    <span class="frame-cover"></span><div class="frame"><li><iframe frameborder="1" src="<%= movie.path %>"></iframe></li></div>
                   </div>
                 <% end %>
               <% end %>
@@ -193,7 +202,7 @@
                 <% if MovieCategory.find(movie.movie_category_id).subject == 'free' %>
                   <div class="information-box">
                     <div class="box-title"><p>【<%= movie.movie_category.name %>】<br><%= movie.title %></p></div>
-                    <span class="frame-cover"></span><div class="frame"><li><iframe frameborder="0" src="<%= movie.path %>"></iframe></li></div>
+                    <span class="frame-cover"></span><div class="frame"><li><iframe frameborder="1" src="<%= movie.path %>"></iframe></li></div>
                   </div>
                 <% end %>
               <% end %>
@@ -204,7 +213,7 @@
                 <% if MovieCategory.find(movie.movie_category_id).subject == 'venture' %>
                   <div class="information-box">
                     <div class="box-title"><p>【<%= movie.movie_category.name %>】<br><%= movie.title %></p></div>
-                    <span class="frame-cover"></span><div class="frame"><li><iframe frameborder="0" src="<%= movie.path %>"></iframe></li></div>
+                    <span class="frame-cover"></span><div class="frame"><li><iframe frameborder="1" src="<%= movie.path %>"></iframe></li></div>
                   </div>
                 <% end %>
               <% end %>
@@ -215,7 +224,7 @@
                 <% if MovieCategory.find(movie.movie_category_id).subject == 'staff' %>
                   <div class="information-box">
                     <div class="box-title"><p>【<%= movie.movie_category.name %>】<br><%= movie.title %></p></div>
-                    <span class="frame-cover"></span><div class="frame"><li><iframe frameborder="0" src="<%= movie.path %>"></iframe></li></div>
+                    <span class="frame-cover"></span><div class="frame"><li><iframe frameborder="1" src="<%= movie.path %>"></iframe></li></div>
                   </div>
                 <% end %>
               <% end %>

@@ -152,6 +152,27 @@
   transition: all .5s;
 }
 
+.study-box {
+  position: relative;
+}
+
+.study-remark {
+  display: none;
+}
+
+.study-box:hover .study-remark {
+  display: block;
+  color: #ff4500;
+  font-size: 13px;
+  background: none repeat scroll 0 0 #EEFFEE;
+  border: 1px solid #CCCCCC;
+  border-radius: 5px;
+  width: 230px;
+  padding: 0.3em;
+  position: absolute;
+  top: 92%;
+}
+
 .arrow {
   text-align: center;
   margin-top: 13px;
