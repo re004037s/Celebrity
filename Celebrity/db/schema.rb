@@ -350,7 +350,7 @@ ActiveRecord::Schema.define(version: 20181017122354) do
     t.boolean  "venture_user",       default: false, null: false
     t.boolean  "free_engineer_user", default: true,  null: false
     t.boolean  "staff_user",         default: false, null: false
-    t.boolean  "it_engineer_users",  default: false, null: false
+    t.boolean  "it_engineer_user",   default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
