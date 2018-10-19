@@ -8,7 +8,11 @@ class UsersController < ApplicationController
   before_action :check_guest_user  
   
   def index
-    @users = User.page(params[:page])
+    if @current_user.admin
+      @users = User.page(params[:page]).reorder('created_at DESC')
+    else
+      @users = User.where(id: @current_user.id).page(params[:page])
+    end
   end
   
   def show
@@ -124,7 +128,7 @@ class UsersController < ApplicationController
         render 'edit'
       end
     else
-      if @user.update_columns({venture_user: user_params[:venture_user], free_engineer_user: user_params[:free_engineer_user], staff_user: user_params[:staff_user]})
+      if @user.update_columns({venture_user: user_params[:venture_user], free_engineer_user: user_params[:free_engineer_user], it_engineer_user: user_params[:it_engineer_user], staff_user: user_params[:staff_user]})
         flash[:success] = 'ユーザ情報を更新しました'
         redirect_to @user
       else
@@ -144,7 +148,7 @@ class UsersController < ApplicationController
   
     def user_params
       params.require(:user).permit(:name, :nickname, :line_id, :email, :guest, :password, :password_confirmation, :portfolio_path,
-        :github_path, :picture_file, :picture, :tag_list, :skillsheet, :skillsheet_name, :venture_user, :free_engineer_user, :staff_user, :guest)
+        :github_path, :picture_file, :picture, :tag_list, :skillsheet, :skillsheet_name, :venture_user, :free_engineer_user, :it_engineer_user, :staff_user, :guest)
     end
     
     # ログイン済み or 管理ユーザであれば true を返す
