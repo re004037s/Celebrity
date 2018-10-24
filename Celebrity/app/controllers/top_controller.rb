@@ -13,27 +13,23 @@ class TopController < ApplicationController
     @information = Information.all.where("display_period >= (?)" , Date.today)
     @new_movies = Movie.all.where(['created_at > ?', Date.today.prev_day(7)])
     
-    #まだ視聴していない動画のsort_orderを取得
+    #まだ視聴していない動画のmovie_category.idを取得
     if @current_user.free_engineer_user && @current_user.venture_user && @current_user.staff_user
-      movie_category_must = MovieCategory.where(must_view: true)
+      must_movie_categories = MovieCategory.where(must_view: true)
     elsif @current_user.free_engineer_user && @current_user.venture_user
-      movie_category_must = MovieCategory.where(must_view: true).where(subject: ['free', 'venture'])
+      must_movie_categories = MovieCategory.where(must_view: true).where(subject: ['free', 'venture'])
     elsif @current_user.free_engineer_user && @current_user.staff_user
-      movie_category_must = MovieCategory.where(must_view: true).where(subject: ['free', 'staff'])
+      must_movie_categories = MovieCategory.where(must_view: true).where(subject: ['free', 'staff'])
     elsif @current_user.staff_user && @current_user.venture_user
-      movie_category_must = MovieCategory.where(must_view: true).where(subject: ['staff', 'venture'])
+      must_movie_categories = MovieCategory.where(must_view: true).where(subject: ['staff', 'venture'])
     elsif @current_user.free_engineer_user
-      movie_category_must = MovieCategory.where(must_view: true).where(subject: 'free')
+      must_movie_categories = MovieCategory.where(must_view: true).where(subject: 'free')
     elsif @current_user.venture_user
-      movie_category_must = MovieCategory.where(must_view: true).where(subject: 'venture')
+      must_movie_categories = MovieCategory.where(must_view: true).where(subject: 'venture')
     elsif @current_user.staff_user
-      movie_category_must = MovieCategory.where(must_view: true).where(subject: 'staff')
+      must_movie_categories = MovieCategory.where(must_view: true).where(subject: 'staff')
     end
-    movie_category_must.each do |movie|
-      if before_category_comp?(movie)
-        @sort_order_num = movie.sort_order
-      end
-    end
+    @incomp_category_id = must_movie_categories.select { |movie_category| before_category_comp?(movie_category) }.last.id
 
     current_user_html = current_user.html_css_status
     current_user_rubyonrails = current_user.rubyonrails_status
