@@ -29,8 +29,14 @@ class TopController < ApplicationController
     elsif @current_user.staff_user
       must_movie_categories = MovieCategory.where(must_view: true).where(subject: 'staff')
     end
-    @incomp_category_id = must_movie_categories.select { |movie_category| before_category_comp?(movie_category) }.last.id
-
+    if must_movie_categories.select { |movie_category| before_category_comp?(movie_category) }.map(&:id) == 
+      [MovieCategory.where(must_view: true).where(subject: 'free').first.id, 
+       MovieCategory.where(must_view: true).where(subject: 'venture').first.id]
+      @incomp_category_id = MovieCategory.where(must_view: true).where(subject: 'free').first.id
+    else
+      @incomp_category_id = must_movie_categories.select { |movie_category| before_category_comp?(movie_category) }.last.id
+    end
+    
     current_user_html = current_user.html_css_status
     current_user_rubyonrails = current_user.rubyonrails_status
          current_user_html = current_user.html_css_status
