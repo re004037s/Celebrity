@@ -91,6 +91,9 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    
+    @label = {venture_user: "ITベンチャー起業コース", free_engineer_user: "フリーエンジニアコース", it_engineer_user: "ITエンジニアコース",
+              staff_user: "スタッフ権限付与", guest: "ゲスト権限付与"}
   end
 
   def create
@@ -117,6 +120,8 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @label = {venture_user: "ITベンチャー起業コース", free_engineer_user: "フリーエンジニアコース", it_engineer_user: "ITエンジニアコース",
+              staff_user: "スタッフ権限付与", guest: "ゲスト権限付与"}
   end
 
   def update

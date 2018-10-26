@@ -37,21 +37,10 @@
       <% end %>
       
       <% if current_user.try(:admin) %>
-        <%= f.label :venture_user, "ITベンチャー起業コース", class: 'form-entrance--label' %>
-        <%= f.check_box :venture_user, {class: 'form-entrance--textbox'}, "true", "false" %>
-        
-        <%= f.label :free_engineer_user, "フリーエンジニアコース", class: 'form-entrance--label' %>
-        <%= f.check_box :free_engineer_user, {class: 'form-entrance--textbox'}, "true", "false" %>
-        
-        <%= f.label :it_engineer_user, "ITエンジニアコース", class: 'form-entrance--label' %>
-        <%= f.check_box :it_engineer_user, {class: 'form-entrance--textbox'}, "true", "false" %>
-        
-        <%= f.label :staff_user, "スタッフ権限付与", class: 'form-entrance--label' %>
-      <%= f.check_box :staff_user, {class: 'form-entrance--textbox'}, "true", "false" %>
-        
-        <%= f.label :guest, "ゲスト権限付与", class: 'form-entrance--label' %>
-      <%= f.check_box :guest, {class: 'form-entrance--textbox'}, "true", "false" %>
-        
+        <% @label.each do |key, value| %>
+        <%= f.label :"#{key}", "#{value}", class: 'form-entrance--label' %>
+        <%= f.check_box :"#{key}", {class: 'form-entrance--textbox'}, "true", "false" %>
+        <% end %>
       <% end %>
       
       <%= f.submit "編集する", class: "btn btn-default active" %>
