@@ -12,33 +12,11 @@ class TopController < ApplicationController
     # 期限切れでないお知らせ一覧を取得
     @information = Information.all.where("display_period >= (?)" , Date.today)
     @new_movies = Movie.all.where(['created_at > ?', Date.today.prev_day(7)])
-    
-    # 視聴必須動画のMovieCategoryを取得
-    if @current_user.free_engineer_user && @current_user.venture_user && @current_user.staff_user
-      must_movie_categories = MovieCategory.where(must_view: true)
-    elsif @current_user.free_engineer_user && @current_user.venture_user
-      must_movie_categories = MovieCategory.where(must_view: true).where(subject: ['free', 'venture'])
-    elsif @current_user.free_engineer_user && @current_user.staff_user
-      must_movie_categories = MovieCategory.where(must_view: true).where(subject: ['free', 'staff'])
-    elsif @current_user.staff_user && @current_user.venture_user
-      must_movie_categories = MovieCategory.where(must_view: true).where(subject: ['staff', 'venture'])
-    elsif @current_user.free_engineer_user
-      must_movie_categories = MovieCategory.where(must_view: true).where(subject: 'free')
-    elsif @current_user.venture_user
-      must_movie_categories = MovieCategory.where(must_view: true).where(subject: 'venture')
-    elsif @current_user.staff_user
-      must_movie_categories = MovieCategory.where(must_view: true).where(subject: 'staff')
-    end
-    # free_engineerコースとventureコースを受講してる場合、free_engineer動画の最初のmovie_category.idを取得
-    if must_movie_categories.select { |movie_category| before_category_comp?(movie_category) }.map(&:id) == 
-      [MovieCategory.where(must_view: true).where(subject: 'free').first.id, 
-       MovieCategory.where(must_view: true).where(subject: 'venture').first.id]
-      @incomp_category_id = MovieCategory.where(must_view: true).where(subject: 'free').first.id
-    else
-    # まだ視聴していない動画のmovie_category.idを取得
-      @incomp_category_id = must_movie_categories.select { |movie_category| before_category_comp?(movie_category) }.last.id
-    end
-    
+
+    # まだ視聴していない視聴必須動画(subject:free)のmovie_category.idを取得
+    @incomp_category_id = MovieCategory.where(subject: 'free', must_view: true).order(:sort_order)
+    .select { |movie_category| before_category_comp?(movie_category) }.last.id
+
     current_user_html = current_user.html_css_status
     current_user_rubyonrails = current_user.rubyonrails_status
          current_user_html = current_user.html_css_status
