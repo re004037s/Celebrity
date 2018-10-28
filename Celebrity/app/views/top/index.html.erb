@@ -156,7 +156,7 @@
         <ul class="information-list">
           <% if current_user.free_engineer_user && current_user.venture_user && current_user.staff_user%>
             <% @new_movies.each do |movie| %>
-              <%= link_to "movie_categories/#{movie.movie_category_id}" do %>
+              <%= link_to movie_category_path(movie.movie_category_id) do %>
                 <div class="information-box">
                   <div class="box-title"><p>【<%= movie.movie_category.name %>】<br><%= movie.title %></p></div>
                   <span class="frame-cover"></span><div class="frame"><li><iframe frameborder="1" src="<%= movie.path %>"></iframe></li></div>
@@ -165,7 +165,7 @@
             <% end %>
           <% elsif current_user.free_engineer_user && current_user.venture_user %>
             <% @new_movies.each do |movie| %>
-              <%= link_to "movie_categories/#{movie.movie_category_id}" do %>
+              <%= link_to movie_category_path(movie.movie_category_id) do %>
                 <% if movie.movie_category&.subject&.in?(['free', 'venture']) %>
                   <div class="information-box">
                     <div class="box-title"><p>【<%= movie.movie_category.name %>】<br><%= movie.title %></p></div>
@@ -176,7 +176,7 @@
             <% end %>
           <% elsif current_user.free_engineer_user && current_user.staff_user %>
             <% @new_movies.each do |movie| %>
-              <%= link_to "movie_categories/#{movie.movie_category_id}" do %>
+              <%= link_to movie_category_path(movie.movie_category_id) do %>
                 <% if movie.movie_category&.subject&.in?(['free', 'staff']) %>
                   <div class="information-box">
                     <div class="box-title"><p>【<%= movie.movie_category.name %>】<br><%= movie.title %></p></div>
@@ -187,7 +187,7 @@
             <% end %>
           <% elsif current_user.venture_user && current_user.staff_user %>
             <% @new_movies.each do |movie| %>
-              <%= link_to "movie_categories/#{movie.movie_category_id}" do %>
+              <%= link_to movie_category_path(movie.movie_category_id) do %>
                 <% if movie.movie_category&.subject&.in?(['venture', 'staff']) %>
                   <div class="information-box">
                     <div class="box-title"><p>【<%= movie.movie_category.name %>】<br><%= movie.title %></p></div>
@@ -198,7 +198,7 @@
             <% end %>
           <% elsif current_user.free_engineer_user %>
             <% @new_movies.each do |movie| %>
-              <%= link_to "movie_categories/#{movie.movie_category_id}" do %>
+              <%= link_to movie_category_path(movie.movie_category_id) do %>
                 <% if movie.movie_category&.subject&.in?(['free']) %>
                   <div class="information-box">
                     <div class="box-title"><p>【<%= movie.movie_category.name %>】<br><%= movie.title %></p></div>
@@ -209,7 +209,7 @@
             <% end %>
           <% elsif current_user.venture_user %>
             <% @new_movies.each do |movie| %>
-              <%= link_to "movie_categories/#{movie.movie_category_id}" do %>
+              <%= link_to movie_category_path(movie.movie_category_id) do %>
                 <% if movie.movie_category&.subject&.in?(['venture']) %>
                   <div class="information-box">
                     <div class="box-title"><p>【<%= movie.movie_category.name %>】<br><%= movie.title %></p></div>
@@ -220,7 +220,7 @@
             <% end %>
           <% elsif current_user.staff_user %>
             <% @new_movies.each do |movie| %>
-              <%= link_to "movie_categories/#{movie.movie_category_id}" do %>
+              <%= link_to movie_category_path(movie.movie_category_id) do %>
                 <% if movie.movie_category&.subject&.in?(['staff']) %>
                   <div class="information-box">
                     <div class="box-title"><p>【<%= movie.movie_category.name %>】<br><%= movie.title %></p></div>
