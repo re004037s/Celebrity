@@ -28,9 +28,9 @@
       <%= f.password_field :password_confirmation, class: 'form-entrance--textbox validate[required,minSize[6]] text-input', :onkeyup => "PasswordConfirmationLength(value);" %>
       <p id="password-confirmation-input-length">0文字</p>
       
-      <% @label.each do |key, value| %>
-      <%= f.label :"#{key}", "#{value}", class: 'form-entrance--label' %>
-      <%= f.check_box :"#{key}", {class: 'form-entrance--textbox'}, "true", "false" %>
+      <% @course.each do |key, value| %>
+        <%= f.label :"#{key}", "#{value}", class: 'form-entrance--label' %>
+        <%= f.check_box :"#{key}", {class: 'form-entrance--textbox'}, "true", "false" %>
       <% end %>
       
       <%= f.submit "登録", class: "btn btn-default active btn-block form-kari-button" %>

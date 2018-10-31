@@ -37,9 +37,9 @@
       <% end %>
       
       <% if current_user.try(:admin) %>
-        <% @label.each do |key, value| %>
-        <%= f.label :"#{key}", "#{value}", class: 'form-entrance--label' %>
-        <%= f.check_box :"#{key}", {class: 'form-entrance--textbox'}, "true", "false" %>
+        <% @course.each do |key, value| %>
+          <%= f.label :"#{key}", "#{value}", class: 'form-entrance--label' %>
+          <%= f.check_box :"#{key}", {class: 'form-entrance--textbox'}, "true", "false" %>
         <% end %>
       <% end %>
       

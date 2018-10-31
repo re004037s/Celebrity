@@ -91,7 +91,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    @label = @user.label
+    @course = @user.courses
   end
 
   def create
@@ -118,7 +118,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @label = @user.label
+    @course = @user.courses
   end
 
   def update
