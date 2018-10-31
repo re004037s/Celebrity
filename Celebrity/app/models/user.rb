@@ -37,6 +37,11 @@ class User < ApplicationRecord
     # accepts_nested_attributes_for :user_tags, allow_destroy: true #関連項目も含めて一度に保存、削除するとい意味
     has_many :comments, dependent: :destroy 
 
+  def label
+    {venture_user: "ITベンチャー起業コース", free_engineer_user: "フリーエンジニアコース",
+      it_engineer_user: "ITエンジニアコース", staff_user: "スタッフ権限付与", guest: "ゲスト権限付与"}
+  end
+
     # 渡された文字列のハッシュ値を返す
     def User.digest(string)
         cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
