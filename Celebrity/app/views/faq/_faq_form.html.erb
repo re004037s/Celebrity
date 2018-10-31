@@ -5,7 +5,7 @@
   			Q：<%= faq.question %>
   		</a>
   	</h3>
-  	<% if current_user.try(:admin) %>
+  	<% if current_user.admin? %>
 		  <div style="text-align:right; margin-top:-20px;">
         <button type="button" class="btn btn-default active" data-toggle="modal" data-target="#Modal<%=faq.id%>">
           編集

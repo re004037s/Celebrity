@@ -4,7 +4,7 @@
     <h2 class="page-title-jp">
       <span>Blog一覧</span>
     </h2>
-    <% if current_user.try(:admin) %>
+    <% if current_user.admin? %>
       <div align="center">
         <%= link_to "Blog投稿", new_blog_path %>
       </div>
@@ -32,7 +32,7 @@
               by <%= blog.user.name %> &nbsp;
               日付
               <%= blog.created_at.strftime("%Y/%m/%d") %> &nbsp;
-              <% if current_user.try(:admin) %>
+              <% if current_user.admin? %>
                 ［
                   <%= link_to '編集', edit_blog_path(blog) %>
                 ］
