@@ -7,7 +7,8 @@ namespace :mail do
           no_complete_tasks = []
           
           st1 = user.html_css_status
-          if st1.try(:schedule_date).present?
+          # if st1.try(:schedule_date).present? この行目は:schedule_dateが使われていないとおもいます。
+          # なのでコメントアウトをしても変わりはないと思うのですが見栄えのため一応外します。
               if (st1.ga_beginner && st1.ga_middle &&
                   st1.ga_advanced && st1.do_beginner &&
                   st1.do_middle && st1.ga_advanced &&
@@ -16,10 +17,10 @@ namespace :mail do
                       no_complete_tasks << "Progate(HTML&CSS)"
                   end        
               end
-          end
+          # end
 
           st2 = user.javascript_status
-          if st2.try(:schedule_date).present?
+          # if st2.try(:schedule_date).present?　理由は上と同じ。
               if (st2.ga_1 && st2.ga_2 &&
                   st2.ga_3 && st2.ga_4 &&
                   st2.do_1) != true
@@ -27,10 +28,10 @@ namespace :mail do
                       no_complete_tasks << "Progate(Javascript)"
                   end        
               end
-          end
+          # end
 
           st3 = user.ruby_status
-          if st3.try(:schedule_date).present?
+          # if st3.try(:schedule_date).present?　理由は上と同じ。
               if (st3.ga_1 && st3.ga_2 &&
                   st3.ga_3 && st3.ga_4 &&
                   st3.ga_5) != true                
@@ -38,10 +39,10 @@ namespace :mail do
                       no_complete_tasks << "Progate(Ruby)"
                   end        
               end
-          end
+          # end
 
           st4 = user.rubyonrails_status
-          if st4.try(:schedule_date).present?
+          # if st4.try(:schedule_date).present?　理由は上と同じ。
               if (st4.ga_1 && st4.ga_2 &&
                   st4.ga_3 && st4.ga_4 &&
                   st4.ga_5 && st4.ga_6 &&
@@ -54,10 +55,11 @@ namespace :mail do
                       no_complete_tasks << "Progate(RubyonRails)"
                   end    
               end
-          end
+          # end
 
           st5 = user.railstutorial_status
-          if st5.try(:schedule_date).present?
+          # if st5.try(:schedule_date).present?　この行目は使われています、なので外せば完了日
+          # を問わず、リマインドメールを送信すると思います。
               if (st5.chapter1 && st5.chapter2 &&
                   st5.chapter3 && st5.chapter4 &&
                   st5.chapter5 && st5.chapter6 &&
@@ -69,38 +71,39 @@ namespace :mail do
                       no_complete_tasks << "Railsチュートリアル"
                   end
               end
-          end
+          # end
+          
           
           if user.free_engineer_user && user.venture_user
             st6 = user.user_movie_status
-            if st6.try(:schedule_date).present?
+            # if st6.try(:schedule_date).present?　上と同じ理由。
               last_movie = MovieCategory.where(must_view: true).order('sort_order').last.movies.order('sort_order').last
               if user.feedbacks.find_by(movie_id: last_movie.id).nil?
                 if st6.schedule_date < Date.today
                   no_complete_tasks << "動画視聴"
                 end
               end
-            end
+            # end
           elsif user.free_engineer_user
             st6 = user.user_movie_status
-            if st6.try(:schedule_date).present?
+            # if st6.try(:schedule_date).present?　上と同じ理由。
               last_movie = MovieCategory.where(must_view: true).where(subject: 'free').order('sort_order').last.movies.order('sort_order').last
               if user.feedbacks.find_by(movie_id: last_movie.id).nil?
                 if st6.schedule_date < Date.today
                   no_complete_tasks << "動画視聴"
                 end
               end
-            end
+            # end
           elsif user.venture_user
             st6 = user.user_movie_status
-            if st6.try(:schedule_date).present?
+            # if st6.try(:schedule_date).present?　上と同じ理由。
               last_movie = MovieCategory.where(must_view: true).where(subject: 'venture').order('sort_order').last.movies.order('sort_order').last
               if user.feedbacks.find_by(movie_id: last_movie.id).nil?
                 if st6.schedule_date < Date.today
                   no_complete_tasks << "動画視聴"
                 end
               end
-            end
+            # end
           end
 
           UserMailer.alert_completion_date(user,no_complete_tasks).deliver_now if no_complete_tasks.present?
