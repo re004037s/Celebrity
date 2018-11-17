@@ -2,7 +2,7 @@
   
   <div class="welcome-message--wrapper">
     <p><%= current_user.name %>さんこんにちは！</p>
-    <p>今日も一日頑張りましょう♪</p>
+    <p>今日も一日頑張りましょう🎶</p>
   </div>
       
   <% #day = Date.today %>
@@ -94,18 +94,53 @@
     </script>
   <% end %>
 
-  <h2 class="page-title-jp">
-    <span>はじめに</span>
+  <h2 class="page-title-j">
+    <span class="page-title-jp">はじめに</span>
   </h2>
   
-
-  <ol class="produce-list">
-    <li>このサイトのカリキュラムをこなすことで、フリーになるためのスキルが最短で身につきます。</li>
-    <li>まずはマインドセットを動画で学習します。一覧の最初の動画から順に動画を視聴してください。各動画を見た後に、感想を記入して送信してください。(全動画を視聴後、マイページに移動出来ます。)</li>
-    <li>次に、プログラミングの基礎を身につけます。プログラミング学習サイト「Progate」を使い、「HTML & CSS」「JavaScript」「Ruby」「Ruby on Rails5」のコースを全て終了させてください。</li>
-    <li>次に、「Ruby on Rails チュートリアル」1章〜14章まで全て終了させてください。アプリケーション開発の基礎について学習することができます。</li>
-    <li>チュートリアルが完了したら、面談などで使用するポートフォリオ（自作のWebアプリケーション）を作成します。作り方等詳細については動画で確認してください。</li>
-  </ol>
+  <h3 class="study-top">以下のカリキュラムをこなすことで、フリーになるためのスキルが最短で身に付きます。</h3>
+  <div class="study-flow">
+    <p class="study-title">マインドセットを動画で学習</p>
+    <%= link_to movie_category_path(@incomp_category_id) do %>
+      <p class="study-detail">動画一覧にある動画を初めから順に視聴して下さい。
+        各動画を見た後に感想を記入して送信して下さい。 ※全動画を視聴後、マイページに移動出来ます</p>
+    <% end %>
+    <div class="arrow">
+      <img src="arrow.png">
+    </div>
+    
+    <p class="study-title">プログラミングの基礎を学習</p>
+    <div class="study-box">
+      <%= link_to 'https://prog-8.com', class:"#{'disabled' unless movie_comp?}" do %>
+        <p class="study-detail">プログラミング学習サイト「Progate」を使い、
+          「HTML & CSS」「JavaScript」「Ruby」「Ruby on Rails5」のコースを全て終了させて下さい。</p>
+        <% unless movie_comp? %><span class="study-remark">まずは動画を全てご覧下さい</span><% end %>
+      <% end %>
+    </div>
+    <div class="arrow">
+      <img src="arrow.png">
+    </div>
+    
+    <p class="study-title">アプリケーション開発の基礎を学習</p>
+    <div class="study-box">
+      <%= link_to 'https://railstutorial.jp/', class:"#{'disabled' unless progatetask_tutolialday_comp?}" do %>
+        <p class="study-detail">「Ruby on Rails チュートリアル」1章〜14章まで全て終了させて下さい。</p>
+        <% unless progatetask_tutolialday_comp? %><span class="study-remark">Progateを終わらせて下さい</span><% end %>
+      <% end %>
+    </div>
+    <div class="arrow">
+      <img src="arrow.png">
+    </div>
+    
+    <p class="study-title">ＷＥＢアプリケーションの作成</p>
+    <div class="study-box">
+      <%= link_to movie_category_path(5), class:"#{'disabled' unless railstutorial_comp?}" do %>
+        <p class="study-detail">チュートリアルが完了したら、面談等で使用するポートフォリオを作成します。<br>
+          ※作り方等の詳細に関しては動画でご確認下さい</p>
+        <% unless railstutorial_comp? %><span class="study-remark">チュートリアルを終わらせて下さい</span><% end %>
+      <% end %>
+    </div>
+  </div>
     
   <div class="information">
     
@@ -121,42 +156,77 @@
         <ul class="information-list">
           <% if current_user.free_engineer_user && current_user.venture_user && current_user.staff_user%>
             <% @new_movies.each do |movie| %>
-              <li><%= movie.title %></li>
+              <%= link_to movie_category_path(movie.movie_category_id) do %>
+                <div class="information-box">
+                  <div class="box-title"><p>【<%= movie.movie_category.name %>】<br><%= movie.title %></p></div>
+                  <span class="frame-cover"></span><div class="frame"><li><iframe frameborder="1" src="<%= movie.path %>"></iframe></li></div>
+                </div>
+              <% end %>
             <% end %>
           <% elsif current_user.free_engineer_user && current_user.venture_user %>
             <% @new_movies.each do |movie| %>
-              <% if MovieCategory.find(movie.movie_category_id).subject == 'free' || MovieCategory.find(movie.movie_category_id).subject == 'venture' %>
-                <li><%= movie.title %></li>
+              <%= link_to movie_category_path(movie.movie_category_id) do %>
+                <% if movie.movie_category&.subject&.in?(['free', 'venture']) %>
+                  <div class="information-box">
+                    <div class="box-title"><p>【<%= movie.movie_category.name %>】<br><%= movie.title %></p></div>
+                    <span class="frame-cover"></span><div class="frame"><li><iframe frameborder="1" src="<%= movie.path %>"></iframe></li></div>
+                  </div>
+                <% end %>
               <% end %>
             <% end %>
           <% elsif current_user.free_engineer_user && current_user.staff_user %>
             <% @new_movies.each do |movie| %>
-              <% if MovieCategory.find(movie.movie_category_id).subject == 'free' ||  MovieCategory.find(movie.movie_category_id).subject == 'staff' %>
-                <li><%= movie.title %></li>
+              <%= link_to movie_category_path(movie.movie_category_id) do %>
+                <% if movie.movie_category&.subject&.in?(['free', 'staff']) %>
+                  <div class="information-box">
+                    <div class="box-title"><p>【<%= movie.movie_category.name %>】<br><%= movie.title %></p></div>
+                    <span class="frame-cover"></span><div class="frame"><li><iframe frameborder="1" src="<%= movie.path %>"></iframe></li></div>
+                  </div>
+                <% end %>
               <% end %>
             <% end %>
           <% elsif current_user.venture_user && current_user.staff_user %>
             <% @new_movies.each do |movie| %>
-              <% if MovieCategory.find(movie.movie_category_id).subject == 'venture' || MovieCategory.find(movie.movie_category_id).subject == 'staff' %>
-                <li><%= movie.title %></li>
+              <%= link_to movie_category_path(movie.movie_category_id) do %>
+                <% if movie.movie_category&.subject&.in?(['venture', 'staff']) %>
+                  <div class="information-box">
+                    <div class="box-title"><p>【<%= movie.movie_category.name %>】<br><%= movie.title %></p></div>
+                    <span class="frame-cover"></span><div class="frame"><li><iframe frameborder="1" src="<%= movie.path %>"></iframe></li></div>
+                  </div>
+                <% end %>
               <% end %>
             <% end %>
           <% elsif current_user.free_engineer_user %>
             <% @new_movies.each do |movie| %>
-              <% if MovieCategory.find(movie.movie_category_id).subject == 'free' %>
-                <li><%= movie.title %></li>
+              <%= link_to movie_category_path(movie.movie_category_id) do %>
+                <% if movie.movie_category&.subject&.in?(['free']) %>
+                  <div class="information-box">
+                    <div class="box-title"><p>【<%= movie.movie_category.name %>】<br><%= movie.title %></p></div>
+                    <span class="frame-cover"></span><div class="frame"><li><iframe frameborder="1" src="<%= movie.path %>"></iframe></li></div>
+                  </div>
+                <% end %>
               <% end %>
             <% end %>
           <% elsif current_user.venture_user %>
             <% @new_movies.each do |movie| %>
-              <% if MovieCategory.find(movie.movie_category_id).subject == 'venture' %>
-                <li><%= movie.title %></li>
+              <%= link_to movie_category_path(movie.movie_category_id) do %>
+                <% if movie.movie_category&.subject&.in?(['venture']) %>
+                  <div class="information-box">
+                    <div class="box-title"><p>【<%= movie.movie_category.name %>】<br><%= movie.title %></p></div>
+                    <span class="frame-cover"></span><div class="frame"><li><iframe frameborder="1" src="<%= movie.path %>"></iframe></li></div>
+                  </div>
+                <% end %>
               <% end %>
             <% end %>
           <% elsif current_user.staff_user %>
             <% @new_movies.each do |movie| %>
-              <% if MovieCategory.find(movie.movie_category_id).subject == 'staff' %>
-                <li><%= movie.title %></li>
+              <%= link_to movie_category_path(movie.movie_category_id) do %>
+                <% if movie.movie_category&.subject&.in?(['staff']) %>
+                  <div class="information-box">
+                    <div class="box-title"><p>【<%= movie.movie_category.name %>】<br><%= movie.title %></p></div>
+                    <span class="frame-cover"></span><div class="frame"><li><iframe frameborder="1" src="<%= movie.path %>"></iframe></li></div>
+                  </div>
+                <% end %>
               <% end %>
             <% end %>
           <% end %>
