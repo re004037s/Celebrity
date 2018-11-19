@@ -36,9 +36,9 @@ class JavascriptStatusesController < ApplicationController
       if @course == 'javascript_ga_4'
         @status.update_attributes(ga_4_completion: @completion_date)
       end
-      if @course == 'javascript_do_1'
-        @status.update_attributes(do_1_completion: @completion_date)
-      end
+      # if @course == 'javascript_do_1'
+      #   @status.update_attributes(do_1_completion: @completion_date)
+      # end
       flash[:info] = "完了予定日を #{params[:date]} に設定しました"
       redirect_to current_user
     end
@@ -84,19 +84,19 @@ class JavascriptStatusesController < ApplicationController
       end
     end 
     
-    if @course == 'javascript_do_1'
-      if @status == 'false'
-        @javascript_status.update_attributes(do_1: true, do_1_compd: @today)
-      else
-        @javascript_status.update_attributes(do_1: false, do_1_compd: nil)
-      end
-    end 
+    # if @course == 'javascript_do_1'
+    #   if @status == 'false'
+    #     @javascript_status.update_attributes(do_1: true, do_1_compd: @today)
+    #   else
+    #     @javascript_status.update_attributes(do_1: false, do_1_compd: nil)
+    #   end
+    # end 
   end
   
   private
   
     def progate_check
-      if current_user.html_css_status.ji_2 \
+      if current_user.html_css_status.do_advanced \
         && current_user.ruby_status.ga_5 \
         && current_user.rubyonrails_status.do_4
           @progate_comp_flag = true

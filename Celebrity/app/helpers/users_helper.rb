@@ -10,8 +10,8 @@ module UsersHelper
       sum += 1 if user.html_css_status.do_beginner
       sum += 1 if user.html_css_status.do_middle
       sum += 1 if user.html_css_status.do_advanced
-      sum += 1 if user.html_css_status.ji_1
-      sum += 1 if user.html_css_status.ji_2
+      # sum += 1 if user.html_css_status.ji_1
+      # sum += 1 if user.html_css_status.ji_2
       return sum
     end
   end
@@ -25,7 +25,7 @@ module UsersHelper
       sum += 1 if user.javascript_status.ga_2
       sum += 1 if user.javascript_status.ga_3
       sum += 1 if user.javascript_status.ga_4
-      sum += 1 if user.javascript_status.do_1      
+      # sum += 1 if user.javascript_status.do_1      
       return sum
     end
   end
@@ -74,7 +74,7 @@ module UsersHelper
     sum += count_javascript(user)
     sum += count_ruby(user)
     sum += count_ruby_on_rails(user)
-    return sum * 100 / 33
+    return sum * 100 / 30
   end
   
   def count_rails_tutorial(user)

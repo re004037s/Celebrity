@@ -92,13 +92,11 @@ module ApplicationHelper
          if ((current_user_html.ga_beginner && current_user_html.ga_middle && 
          current_user_html.ga_advanced && current_user_html.do_beginner && 
          current_user_html.do_middle && current_user_html.do_advanced && 
-         current_user_html.ji_1 && current_user_html.ji_2 &&
          current_user_javascript.ga_1 && current_user_javascript.ga_2 &&
          current_user_javascript.ga_3 && current_user_javascript.ga_4 &&
-         current_user_javascript.do_1 &&
          current_user_ruby.ga_1 && current_user_ruby.ga_2 && 
          current_user_ruby.ga_3 && current_user_ruby.ga_4 && 
-         current_user_ruby.ga_5 &&current_user_rubyonrails.ga_1 &&
+         current_user_ruby.ga_5 && current_user_rubyonrails.ga_1 &&
          current_user_rubyonrails.ga_2 && current_user_rubyonrails.ga_3 &&
          current_user_rubyonrails.ga_4 && current_user_rubyonrails.ga_5 &&
          current_user_rubyonrails.ga_6 && current_user_rubyonrails.ga_7 &&
@@ -129,12 +127,11 @@ module ApplicationHelper
     if current_user.html_css_status.ga_beginner_completion.nil? && current_user.html_css_status.ga_middle_completion.nil? &&
     current_user.html_css_status.ga_advanced_completion.nil? && current_user.html_css_status.do_beginner_completion.nil? &&
     current_user.html_css_status.do_middle_completion.nil? && current_user.html_css_status.do_advanced_completion.nil? &&
-    current_user.html_css_status.ji_1_completion.nil? && current_user.html_css_status.ji_2_completion.nil? &&
     current_user.javascript_status.ga_1_completion.nil? && current_user.javascript_status.ga_2_completion.nil? &&
     current_user.javascript_status.ga_3_completion.nil? && current_user.javascript_status.ga_4_completion.nil? &&
-    current_user.javascript_status.do_1_completion.nil? && current_user.ruby_status.ga_1_completion.nil? &&
-    current_user.ruby_status.ga_2_completion.nil? && current_user.ruby_status.ga_3_completion.nil? &&
-    current_user.ruby_status.ga_4_completion.nil? && current_user.ruby_status.ga_5_completion.nil? &&
+    current_user.ruby_status.ga_1_completion.nil? && current_user.ruby_status.ga_2_completion.nil? &&
+    current_user.ruby_status.ga_3_completion.nil? && current_user.ruby_status.ga_4_completion.nil? &&
+  　current_user.ruby_status.ga_5_completion.nil? &&
     current_user.rubyonrails_status.ga_1_completion.nil? && current_user.rubyonrails_status.ga_2_completion.nil? &&
     current_user.rubyonrails_status.ga_3_completion.nil? && current_user.rubyonrails_status.ga_4_completion.nil? &&
     current_user.rubyonrails_status.ga_5_completion.nil? && current_user.rubyonrails_status.ga_6_completion.nil? &&
@@ -159,10 +156,8 @@ module ApplicationHelper
     if current_user_html.ga_beginner && current_user_html.ga_middle && 
     current_user_html.ga_advanced && current_user_html.do_beginner && 
     current_user_html.do_middle && current_user_html.do_advanced && 
-    current_user_html.ji_1 && current_user_html.ji_2 &&
     current_user_javascript.ga_1 && current_user_javascript.ga_2 &&
     current_user_javascript.ga_3 && current_user_javascript.ga_4 &&
-    current_user_javascript.do_1 &&
     current_user_ruby.ga_1 && current_user_ruby.ga_2 && 
     current_user_ruby.ga_3 && current_user_ruby.ga_4 && 
     current_user_ruby.ga_5 &&current_user_rubyonrails.ga_1 &&

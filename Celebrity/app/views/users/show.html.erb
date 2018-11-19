@@ -182,7 +182,7 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
   </table>
   
    <!--進捗線を表示-->
-  <progress id="html_css_progress" value="0" max="8"></progress>
+  <progress id="html_css_progress" value="0" max="6"></progress>
   <output id="html_css_output"></output>
 
 <script>
@@ -298,36 +298,36 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
         <td class="center">約1日</td>
         <td><%= @user.html_css_status.try(:do_advanced_compd) %></td>
       </tr>
-      <tr>
-        <td>実践コース 1</td>
-        <td class="center"><%= @user.html_css_status.try(:ji_1) ? '完了' : '未' %></td>
-        <td>
-          <%= @user.html_css_status.try(:ji_1_completion) if @user.html_css_status.ji_1_completion.present? %><span class="font-schedule">
-          <%= form_for(@user.html_css_status, url: html_css_completion_path ) do |f| %>
-            <input style="width:60%" type="date" name="date">
-            <%= f.submit "登録", class: "btn btn-default active" %>
-            <%= f.hidden_field :id, :value => "#{@user.id}"%>
-            <%= f.hidden_field :course, :value => "html_css_ji_1"%>
-          <% end %>
-        </td>
-        <td class="center">約2日</td>
-        <td><%= @user.html_css_status.try(:ji_1_compd) %></td>
-      </tr>
-      <tr>
-        <td>実践コース 2</td>
-        <td class="center"><%= @user.html_css_status.try(:ji_2) ? '完了' : '未' %></td>
-        <td>
-          <%= @user.html_css_status.try(:ji_2_completion) if @user.html_css_status.ji_2_completion.present? %><span class="font-schedule">
-          <%= form_for(@user.html_css_status, url: html_css_completion_path ) do |f| %>
-            <input style="width:60%" type="date" name="date">
-            <%= f.submit "登録", class: "btn btn-default active" %>
-            <%= f.hidden_field :id, :value => "#{@user.id}"%>
-            <%= f.hidden_field :course, :value => "html_css_ji_2"%>
-          <% end %>
-        </td>
-        <td class="center">約2日</td>
-        <td><%= @user.html_css_status.try(:ji_2_compd) %></td>
-      </tr>
+      <!--<tr>-->
+      <!--  <td>実践コース 1</td>-->
+      <!--  <td class="center"><%#= @user.html_css_status.try(:ji_1) ? '完了' : '未' %></td>-->
+      <!--  <td>-->
+      <!--    <%#= @user.html_css_status.try(:ji_1_completion) if @user.html_css_status.ji_1_completion.present? %><span class="font-schedule">-->
+      <!--    <%#= form_for(@user.html_css_status, url: html_css_completion_path ) do |f| %>-->
+      <!--      <input style="width:60%" type="date" name="date">-->
+      <!--      <%#= f.submit "登録", class: "btn btn-default active" %>-->
+      <!--      <%#= f.hidden_field :id, :value => "#{@user.id}"%>-->
+      <!--      <%#= f.hidden_field :course, :value => "html_css_ji_1"%>-->
+      <!--    <%# end %>-->
+      <!--  </td>-->
+      <!--  <td class="center">約2日</td>-->
+      <!--  <td><%#= @user.html_css_status.try(:ji_1_compd) %></td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+      <!--  <td>実践コース 2</td>-->
+      <!--  <td class="center"><%#= @user.html_css_status.try(:ji_2) ? '完了' : '未' %></td>-->
+      <!--  <td>-->
+      <!--    <%#= @user.html_css_status.try(:ji_2_completion) if @user.html_css_status.ji_2_completion.present? %><span class="font-schedule">-->
+      <!--    <%#= form_for(@user.html_css_status, url: html_css_completion_path ) do |f| %>-->
+      <!--      <input style="width:60%" type="date" name="date">-->
+      <!--      <%#= f.submit "登録", class: "btn btn-default active" %>-->
+      <!--      <%#= f.hidden_field :id, :value => "#{@user.id}"%>-->
+      <!--      <%#= f.hidden_field :course, :value => "html_css_ji_2"%>-->
+      <!--    <%# end %>-->
+      <!--  </td>-->
+      <!--  <td class="center">約2日</td>-->
+      <!--  <td><%#= @user.html_css_status.try(:ji_2_compd) %></td>-->
+      <!--</tr>-->
     </tbody>
   </table>
   
@@ -340,7 +340,7 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
   </table>
   
   <!--進捗線を表示-->
-  <progress id="javascript_progress" value="0" max="5"></progress>
+  <progress id="javascript_progress" value="0" max="4"></progress>
   <output id="javascript_output"></output>
 
 <script>
@@ -426,21 +426,21 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
         <td class="center">約半日</td>
         <td><%= @user.javascript_status.try(:ga_4_compd)%></td>
       </tr>      
-      <tr>
-        <td>道場コース 1</td>
-        <td class="center"><%= @user.javascript_status.try(:do_1) ? '完了' : '未' %></td>
-        <td>
-          <%= @user.javascript_status.try(:do_1_completion) if @user.javascript_status.do_1_completion.present? %>
-          <%= form_for(@user.javascript_status, url: javascript_completion_path ) do |f| %>
-            <input style="width:60%" type="date" name="date">
-            <%= f.submit "登録", class: "btn btn-default active" %>
-            <%= f.hidden_field :id, :value => "#{@user.id}"%>
-            <%= f.hidden_field :course, :value => "javascript_do_1"%>
-          <% end %>
-        </td>
-        <td class="center">約1日</td>
-        <td><%= @user.javascript_status.try(:do_1_compd)%></td>
-      </tr>
+      <!--<tr>-->
+      <!--  <td>道場コース 1</td>-->
+      <!--  <td class="center"><%#= @user.javascript_status.try(:do_1) ? '完了' : '未' %></td>-->
+      <!--  <td>-->
+      <!--    <%#= @user.javascript_status.try(:do_1_completion) if @user.javascript_status.do_1_completion.present? %>-->
+      <!--    <%#= form_for(@user.javascript_status, url: javascript_completion_path ) do |f| %>-->
+      <!--      <input style="width:60%" type="date" name="date">-->
+      <!--      <%#= f.submit "登録", class: "btn btn-default active" %>-->
+      <!--      <%#= f.hidden_field :id, :value => "#{@user.id}"%>-->
+      <!--      <%#= f.hidden_field :course, :value => "javascript_do_1"%>-->
+      <!--    <%# end %>-->
+      <!--  </td>-->
+      <!--  <td class="center">約1日</td>-->
+      <!--  <td><%#= @user.javascript_status.try(:do_1_compd)%></td>-->
+      <!--</tr>-->
     </tbody>
   </table>
   
