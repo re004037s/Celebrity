@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   end
   
   def admin_user
-    return true if current_user.try(:admin)
+    return true if current_user.admin?
     redirect_to root_url
   end
   
