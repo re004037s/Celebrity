@@ -20,8 +20,7 @@ class User < ApplicationRecord
    validates :line_id, length: {maximum: 20}
     
     has_secure_password
-    validates :password, presence: true, length: { minimum: 6}, on: :create
-    validates :password, presence: true, length: { minimum: 6}, on: :update, allow_blank: true
+    validates :password, presence: true, length: { minimum: 6}
     
     validates :portfolio_path, length: {maximum: 100}, format: /\A#{URI::regexp(%w(http https))}\z/, :allow_blank => true
     validates :github_path, length: {maximum: 100}, format: /\A#{URI::regexp(%w(http https))}\z/, :allow_blank => true
