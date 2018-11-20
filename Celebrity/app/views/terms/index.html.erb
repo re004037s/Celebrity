@@ -22,7 +22,7 @@
     </div>
     
     
-    <% isAdmin = current_user.admin? %>
+    <% isAdmin = current_user.try(:admin) %>
 
     
   </div>

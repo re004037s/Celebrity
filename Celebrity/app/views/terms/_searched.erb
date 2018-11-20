@@ -1,6 +1,6 @@
 <!-- 用語集 bootstrap アコーディオン -->
 <div class="panel-group" id="sampleAccordion">
-  <% isAdmin = current_user.admin? %>
+  <% isAdmin = current_user.try(:admin) %>
   <% searched.each do |term| %>
     <div class="panel panel-default">
     	<div class="panel-heading">
@@ -10,7 +10,7 @@
     		<span>
     		  <%= link_to '編集', edit_term_path(term) %>
     		</span>
-    		<% if current_user.admin?  || term.create_user_id == current_user.id %>
+    		<% if current_user.try(:admin)  || term.create_user_id == current_user.id %>
       		<span>
       		  <%= link_to "削除", term, method: :delete, data: { confirm: "本当に削除しますか?" } %>
       		</span>

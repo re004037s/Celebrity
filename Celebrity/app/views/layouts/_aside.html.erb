@@ -18,7 +18,7 @@
     <ul class="sidebar-menu tree" data-widget="tree">
       
       <!--adminのみ表示-->
-      <% if current_user.admin? %>
+      <% if current_user.try(:admin) %>
         <li class="header"><i class="fa fa-cog" aria-hidden="true"></i> for Administrator</li>
         <li><%= link_to '動画', movies_path %></li>
         <li><%= link_to 'お知らせ', information_path %></li>
