@@ -120,7 +120,7 @@ class UsersController < ApplicationController
   end
   
   def update
-    if current_user?(@user)
+    if current_user?(@user) || current_user.admin?
       if @user.update_attributes(user_params)
         flash[:success] = 'ユーザ情報を更新しました'
         redirect_to @user
@@ -183,7 +183,7 @@ class UsersController < ApplicationController
     end
     
     def comp_movies_user
-      if current_user.try(:admin) || Feedback.where(user_id: current_user).count == 
+      if current_user.admin? || Feedback.where(user_id: current_user).count == 
          Movie.where(movie_category_id: MovieCategory.where(must_view: true).ids).count
       else
         flash[:danger] = "先に動画を視聴して下さい"
