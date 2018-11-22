@@ -34,8 +34,8 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   host = 'xxxx.c9users.io'  # 開発環境のhost名に合わせる
-  user_name = ENV['USER_NAME']
-  password = ENV['PASSWORD']
+  user_name = 'celebrityengineer.members@gmail.com'
+  password = 'celeb-engineers'
   config.action_mailer.default_url_options = { host: host, protocol: 'https' }
   config.action_mailer.smtp_settings = {
     address: 'smtp.gmail.com',
