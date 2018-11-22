@@ -2,7 +2,7 @@
   <div class="panel-heading">
     <%= faq_cat.title %>
   </div>
-  <% if current_user.try(:admin) %>
+  <% if current_user.admin? %>
   	<div style="text-align:right; margin:-38px 15px 0 0;">
       <button type="button" class="btn btn-default active" data-toggle="modal" data-target="#Modal_title<%=i%>">
         編集
