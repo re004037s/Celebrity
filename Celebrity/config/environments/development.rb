@@ -33,7 +33,7 @@ Rails.application.configure do
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
-  host = 'd47b886ffd2d44fdb672752f9766fa00.vfs.cloud9.us-east-2.amazonaws.com'  # 開発環境のhost名に合わせる
+  host = 'xxxx.c9users.io'  # 開発環境のhost名に合わせる
   user_name = 'celebrityengineer.members@gmail.com'
   password = 'celeb-engineers'
   config.action_mailer.default_url_options = { host: host, protocol: 'https' }
