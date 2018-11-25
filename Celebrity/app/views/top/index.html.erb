@@ -119,7 +119,10 @@
       <%= link_to 'https://prog-8.com', class:"#{'disabled' unless movie_comp?}" do %>
         <p class="study-detail">プログラミング学習サイト「Progate」を使い、
           「HTML & CSS」「JavaScript」「Ruby」「Ruby on Rails5」のコースを全て終了させて下さい。</p>
-        <% unless movie_comp? %><span class="study-remark">まずは動画を全てご覧下さい</span>
+        <% unless movie_comp? %>
+          <span class="study-remark">
+            <span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span>&nbsp;まずは動画を全てご覧下さい
+          </span>
         <% else %>
           <span class="study-remark" style="color:#0000cd;">
             <span class="glyphicon glyphicon-hand-up" aria-hidden="true"></span>&ensp;Progateへ移動します
@@ -135,7 +138,10 @@
     <div class="study-box">
       <%= link_to 'https://railstutorial.jp/', class:"#{'disabled' unless progatetask_tutolialday_comp?}" do %>
         <p class="study-detail">「Ruby on Rails チュートリアル」1章〜14章まで全て終了させて下さい。</p>
-        <% unless progatetask_tutolialday_comp? %><span class="study-remark">Progateを終わらせて下さい</span>
+        <% unless progatetask_tutolialday_comp? %>
+          <span class="study-remark">
+            <span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span>&nbsp;Progateを終わらせて下さい
+          </span>
         <% else %>
           <span class="study-remark" style="color:#0000cd;">
             <span class="glyphicon glyphicon-hand-up" aria-hidden="true"></span>&ensp;チュートリアルへ移動します
@@ -152,7 +158,10 @@
       <%= link_to movie_category_path(5), class:"#{'disabled' unless railstutorial_comp?}" do %>
         <p class="study-detail">チュートリアルが完了したら、面談等で使用するポートフォリオを作成します。<br>
           ※作り方等の詳細に関しては動画でご確認下さい</p>
-        <% unless railstutorial_comp? %><span class="study-remark">チュートリアルを終わらせて下さい</span>
+        <% unless railstutorial_comp? %>
+          <span class="study-remark" style="width:250px;">
+            <span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span>&nbsp;チュートリアルを終わらせて下さい
+          </span>             
         <% else %>
           <span class="study-remark" style="color:#0000cd;">
             <span class="glyphicon glyphicon-hand-up" aria-hidden="true"></span>&ensp;説明動画へ移動します
