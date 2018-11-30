@@ -12,7 +12,11 @@ class TopController < ApplicationController
     # 期限切れでないお知らせ一覧を取得
     @information = Information.all.where("display_period >= (?)" , Date.today)
     @new_movies = Movie.all.where(['created_at > ?', Date.today.prev_day(7)])
-
+    
+    
+    questions = Question.all.order(:created_at)
+    @questions = Question.compare_date(questions)
+    
     # まだ視聴していない視聴必須動画(subject:free)のmovie_category.idを取得
     @incomp_category_id = MovieCategory.where(subject: 'free', must_view: true).order(:sort_order)
     .select { |movie_category| before_category_comp?(movie_category) }.last.id
