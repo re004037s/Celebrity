@@ -21,10 +21,10 @@ class TopController < ApplicationController
          if (current_user_html.ga_beginner && current_user_html.ga_middle && 
          current_user_html.ga_advanced && current_user_html.do_beginner && 
          current_user_html.do_middle && current_user_html.do_advanced && 
-         current_user_html.ji_1 && current_user_html.ji_2 &&
+        # current_user_html.ji_1 && current_user_html.ji_2 && # html_cssの実践コースを外します
          current_user_javascript.ga_1 && current_user_javascript.ga_2 &&
          current_user_javascript.ga_3 && current_user_javascript.ga_4 &&
-         current_user_javascript.do_1 &&         
+        # current_user_javascript.do_1 && # javascriptの道場コースを外します　        
          current_user_ruby.ga_1 && current_user_ruby.ga_2 && 
          current_user_ruby.ga_3 && current_user_ruby.ga_4 && 
          current_user_ruby.ga_5 &&current_user_rubyonrails.ga_1 &&
@@ -156,43 +156,45 @@ class TopController < ApplicationController
       end
     end    
     
-    current_user_html = current_user.html_css_status
-    if current_user_html.ji_1_completion
-      if current_user_html.ji_1 != true
-          if current_user_html.ji_1_completion == Date.today + 3
-            @ji_1_completion = "完了予定日まであと3日です"
-            elsif current_user_html.ji_1_completion == Date.today + 2
-            @ji_1_completion = "完了予定日まであと2日です"
-            elsif current_user_html.ji_1_completion == Date.today + 1
-            @ji_1_completion = "完了予定日まであと1日です"
-            elsif current_user_html.ji_1_completion == Date.today
-            @ji_1_completion = "今日が完了予定日です"
-            elsif current_user_html.ji_1_completion < Date.today
-            @ji_1_completion = "完了予定日を過ぎています"
-            else
-            @ji_1_completion = ""
-          end
-      end
-    end    
-
-    current_user_html = current_user.html_css_status
-    if current_user_html.ji_2_completion
-      if current_user_html.ji_2 != true
-          if current_user_html.ji_2_completion == Date.today + 3
-            @ji_2_completion = "完了予定日まであと3日です"
-            elsif current_user_html.ji_2_completion == Date.today + 2
-            @ji_2_completion = "完了予定日まであと2日です"
-            elsif current_user_html.ji_2_completion == Date.today + 1
-            @ji_2_completion = "完了予定日まであと1日です"
-            elsif current_user_html.ji_2_completion == Date.today
-            @ji_2_completion = "今日が完了予定日です"
-            elsif current_user_html.ji_2_completion < Date.today
-            @ji_2_completion = "完了予定日を過ぎています"
-            else
-            @ji_2_completion = ""
-          end
-      end
-    end    
+    # html_cssの実践コースを外します
+    # current_user_html = current_user.html_css_status
+    # if current_user_html.ji_1_completion
+    #   if current_user_html.ji_1 != true
+    #       if current_user_html.ji_1_completion == Date.today + 3
+    #         @ji_1_completion = "完了予定日まであと3日です"
+    #         elsif current_user_html.ji_1_completion == Date.today + 2
+    #         @ji_1_completion = "完了予定日まであと2日です"
+    #         elsif current_user_html.ji_1_completion == Date.today + 1
+    #         @ji_1_completion = "完了予定日まであと1日です"
+    #         elsif current_user_html.ji_1_completion == Date.today
+    #         @ji_1_completion = "今日が完了予定日です"
+    #         elsif current_user_html.ji_1_completion < Date.today
+    #         @ji_1_completion = "完了予定日を過ぎています"
+    #         else
+    #         @ji_1_completion = ""
+    #       end
+    #   end
+    # end
+    
+    # html_cssの実践コースを外します
+    # current_user_html = current_user.html_css_status
+    # if current_user_html.ji_2_completion
+    #   if current_user_html.ji_2 != true
+    #       if current_user_html.ji_2_completion == Date.today + 3
+    #         @ji_2_completion = "完了予定日まであと3日です"
+    #         elsif current_user_html.ji_2_completion == Date.today + 2
+    #         @ji_2_completion = "完了予定日まであと2日です"
+    #         elsif current_user_html.ji_2_completion == Date.today + 1
+    #         @ji_2_completion = "完了予定日まであと1日です"
+    #         elsif current_user_html.ji_2_completion == Date.today
+    #         @ji_2_completion = "今日が完了予定日です"
+    #         elsif current_user_html.ji_2_completion < Date.today
+    #         @ji_2_completion = "完了予定日を過ぎています"
+    #         else
+    #         @ji_2_completion = ""
+    #       end
+    #   end
+    # end    
     
     # [Progate] JavaScriptのパート
     current_user_javascript = current_user.javascript_status
@@ -270,25 +272,26 @@ class TopController < ApplicationController
           end
       end
     end
-
-    current_user_javascript = current_user.javascript_status
-    if current_user_javascript.do_1_completion
-      if current_user_javascript.do_1 != true
-          if current_user_javascript.do_1_completion == Date.today + 3
-            @js_do_1_completion = "完了予定日まであと3日です"
-            elsif current_user_javascript.do_1_completion == Date.today + 2
-            @js_do_1_completion = "完了予定日まであと2日です"
-            elsif current_user_javascript.do_1_completion == Date.today + 1
-            @js_do_1_completion = "完了予定日まであと1日です"
-            elsif current_user_javascript.do_1_completion == Date.today
-            @js_do_1_completion = "今日が完了予定日です"
-            elsif current_user_javascript.do_1_completion < Date.today
-            @js_do_1_completion = "完了予定日を過ぎています"
-            else
-            @js_do_1_completion = ""
-          end
-      end
-    end
+    
+    # javascriptの道場コースを外します
+    # current_user_javascript = current_user.javascript_status
+    # if current_user_javascript.do_1_completion
+    #   if current_user_javascript.do_1 != true
+    #       if current_user_javascript.do_1_completion == Date.today + 3
+    #         @js_do_1_completion = "完了予定日まであと3日です"
+    #         elsif current_user_javascript.do_1_completion == Date.today + 2
+    #         @js_do_1_completion = "完了予定日まであと2日です"
+    #         elsif current_user_javascript.do_1_completion == Date.today + 1
+    #         @js_do_1_completion = "完了予定日まであと1日です"
+    #         elsif current_user_javascript.do_1_completion == Date.today
+    #         @js_do_1_completion = "今日が完了予定日です"
+    #         elsif current_user_javascript.do_1_completion < Date.today
+    #         @js_do_1_completion = "完了予定日を過ぎています"
+    #         else
+    #         @js_do_1_completion = ""
+    #       end
+    #   end
+    # end
     
     # [Progate] Rubyのパート
     current_user_ruby = current_user.ruby_status
