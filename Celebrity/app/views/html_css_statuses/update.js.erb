@@ -46,22 +46,22 @@
   <% end %>
 <% end %>
 
-<% if @course == 'html_css_ji_1' %>
-  <% if @status == 'false' %>
-    $("#html_css_ji_1").html("<%= j(render('html_css_statuses/incomplete', course: @course)) %>");
-  <% else %>
-    $("#html_css_ji_1").html("<%= j(render('html_css_statuses/complete', course: @course)) %>");
-  <% end %>
-<% end %>
+<!--<%# if @course == 'html_css_ji_1' %>-->
+<!--  <%# if @status == 'false' %>-->
+<!--    $("#html_css_ji_1").html("<%#= j(render('html_css_statuses/incomplete', course: @course)) %>");-->
+<!--  <%# else %>-->
+<!--    $("#html_css_ji_1").html("<%#= j(render('html_css_statuses/complete', course: @course)) %>");-->
+<!--  <%# end %>-->
+<!--<%# end %>-->
 
-<% if @course == 'html_css_ji_2' %>
-  <% if @status == 'false' %>
-    $("#html_css_ji_2").html("<%= j(render('html_css_statuses/incomplete', course: @course)) %>");
-    <% if @progate_comp_flag %>
-      $("#link_railstutorial").removeAttr("style");
-      $("#link_railstutorial").removeClass("hide-movie");
-    <% end %>
-  <% else %>
-    $("#html_css_ji_2").html("<%= j(render('html_css_statuses/complete', course: @course)) %>");
-  <% end %>
-<% end %>
+<!--<%# if @course == 'html_css_ji_2' %>-->
+<!--  <%# if @status == 'false' %>-->
+<!--    $("#html_css_ji_2").html("<%#= j(render('html_css_statuses/incomplete', course: @course)) %>");-->
+<!--    <%# if @progate_comp_flag %>-->
+<!--      $("#link_railstutorial").removeAttr("style");-->
+<!--      $("#link_railstutorial").removeClass("hide-movie");-->
+<!--    <%# end %>-->
+<!--  <%# else %>-->
+<!--    $("#html_css_ji_2").html("<%#= j(render('html_css_statuses/complete', course: @course)) %>");-->
+<!--  <%# end %>-->
+<!--<%# end %>-->
