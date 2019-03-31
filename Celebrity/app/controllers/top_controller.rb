@@ -802,7 +802,7 @@ class TopController < ApplicationController
     
     def railstutorial_comp_date
       if progate_compd? && railstutorial_completion?
-        flash[:danger] = "Railsチュートリアルの完了予定日を入力して下さい"
+        flash[:danger] = "誰でも分かる勤怠システムの完了予定日を入力して下さい"
         redirect_to current_user
       end
     end
