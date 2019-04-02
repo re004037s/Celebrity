@@ -50,7 +50,7 @@ class StaticPagesController < ApplicationController
     def comp_portfolio
       if railstutorial_comp?
       else 
-        flash[:danger] = "先に Rails Tutorial を完了させて下さい"
+        flash[:danger] = "先に 誰でも分かる勤怠システム を完了させて下さい"
         redirect_to root_url
       end
     end
