@@ -78,34 +78,3 @@
   <% end %>
 <% end %>
 
-<% if @course == 'chapter11' %>
-  <% if @status == 'false' %>
-    $("#chapter11").html("<%= j(render('railstutorial_statuses/incomplete', course: @course)) %>");
-  <% else %>
-    $("#chapter11").html("<%= j(render('railstutorial_statuses/complete', course: @course)) %>");
-  <% end %>
-<% end %>
-
-<% if @course == 'chapter12' %>
-  <% if @status == 'false' %>
-    $("#chapter12").html("<%= j(render('railstutorial_statuses/incomplete', course: @course)) %>");
-  <% else %>
-    $("#chapter12").html("<%= j(render('railstutorial_statuses/complete', course: @course)) %>");
-  <% end %>
-<% end %>
-
-<% if @course == 'chapter13' %>
-  <% if @status == 'false' %>
-    $("#chapter13").html("<%= j(render('railstutorial_statuses/incomplete', course: @course)) %>");
-  <% else %>
-    $("#chapter13").html("<%= j(render('railstutorial_statuses/complete', course: @course)) %>");
-  <% end %>
-<% end %>
-
-<% if @course == 'chapter14' %>
-  <% if @status == 'false' %>
-    $("#chapter14").html("<%= j(render('railstutorial_statuses/incomplete', course: @course)) %>");
-  <% else %>
-    $("#chapter14").html("<%= j(render('railstutorial_statuses/complete', course: @course)) %>");
-  <% end %>
-<% end %>
