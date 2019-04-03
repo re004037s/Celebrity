@@ -684,9 +684,7 @@ class TopController < ApplicationController
         current_user_railstutorial.chapter3 && current_user_railstutorial.chapter4 && 
         current_user_railstutorial.chapter5 && current_user_railstutorial.chapter6 && 
         current_user_railstutorial.chapter7 && current_user_railstutorial.chapter8 &&
-        current_user_railstutorial.chapter9 && current_user_railstutorial.chapter10 &&
-        current_user_railstutorial.chapter11 && current_user_railstutorial.chapter12 &&
-        current_user_railstutorial.chapter13 && current_user_railstutorial.chapter14) != true
+        current_user_railstutorial.chapter9 && current_user_railstutorial.chapter10 ) != true
           if current_user_railstutorial.schedule_date == Date.today + 3
             @alert_messages_railstutorial = "完了予定日まであと3日です"
             elsif current_user_railstutorial.schedule_date == Date.today + 2
