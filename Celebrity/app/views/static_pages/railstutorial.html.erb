@@ -1,7 +1,7 @@
 <div class="staticpages-railstutorial--wrapper">
   <p class="txt2 text-center">
-    <a href="https://railstutorial.jp/" target="_blank">
-      RailsTutorialはこちら
+    <a href="https://qiita.com/Nukioman/private/754f0538e4b33aa56d2d/" target="_blank">
+      誰でもわかる勤怠システムはこちら
     </a>
   </p>
   <table class="txt1 table table-bordered table-striped table-condensed table-status">
@@ -109,46 +109,6 @@
             <%= render 'railstutorial_statuses/complete', course: 'chapter10' %>
           <% else %>
             <%= render 'railstutorial_statuses/incomplete', course: 'chapter10' %>
-          <% end %>
-        </td>
-      </tr>
-      <tr>
-        <td class="center">11章</td>
-        <td id="chapter11">
-          <% if !@railstutorial_status.chapter11 %>
-            <%= render 'railstutorial_statuses/complete', course: 'chapter11' %>
-          <% else %>
-            <%= render 'railstutorial_statuses/incomplete', course: 'chapter11' %>
-          <% end %>
-        </td>
-      </tr>
-      <tr>
-        <td class="center">12章</td>
-        <td id="chapter12">
-          <% if !@railstutorial_status.chapter12 %>
-            <%= render 'railstutorial_statuses/complete', course: 'chapter12' %>
-          <% else %>
-            <%= render 'railstutorial_statuses/incomplete', course: 'chapter12' %>
-          <% end %>
-        </td>
-      </tr>
-      <tr>
-        <td class="center">13章</td>
-        <td id="chapter13">
-          <% if !@railstutorial_status.chapter13 %>
-            <%= render 'railstutorial_statuses/complete', course: 'chapter13' %>
-          <% else %>
-            <%= render 'railstutorial_statuses/incomplete', course: 'chapter13' %>
-          <% end %>
-        </td>
-      </tr>
-      <tr>
-        <td class="center">14章</td>
-        <td id="chapter14">
-          <% if !@railstutorial_status.chapter14 %>
-            <%= render 'railstutorial_statuses/complete', course: 'chapter14' %>
-          <% else %>
-            <%= render 'railstutorial_statuses/incomplete', course: 'chapter14' %>
           <% end %>
         </td>
       </tr>

@@ -72,9 +72,7 @@ module ApplicationHelper
         current_user.railstutorial_status.chapter3 && current_user.railstutorial_status.chapter4 && 
         current_user.railstutorial_status.chapter5 && current_user.railstutorial_status.chapter6 && 
         current_user.railstutorial_status.chapter7 && current_user.railstutorial_status.chapter8 &&
-        current_user.railstutorial_status.chapter9 && current_user.railstutorial_status.chapter10 &&
-        current_user.railstutorial_status.chapter11 && current_user.railstutorial_status.chapter12 && 
-        current_user.railstutorial_status.chapter13 && current_user.railstutorial_status.chapter14
+        current_user.railstutorial_status.chapter9 && current_user.railstutorial_status.chapter10 
           return true
             else
           return false
@@ -110,9 +108,7 @@ module ApplicationHelper
          current_user.railstutorial_status.chapter3 || current_user.railstutorial_status.chapter4 || 
          current_user.railstutorial_status.chapter5 || current_user.railstutorial_status.chapter6 || 
          current_user.railstutorial_status.chapter7 || current_user.railstutorial_status.chapter8 ||
-         current_user.railstutorial_status.chapter9 || current_user.railstutorial_status.chapter10 ||
-         current_user.railstutorial_status.chapter11 || current_user.railstutorial_status.chapter12 ||
-         current_user.railstutorial_status.chapter13 || current_user.railstutorial_status.chapter14))
+         current_user.railstutorial_status.chapter9 || current_user.railstutorial_status.chapter10))
           return true
           else
           return false

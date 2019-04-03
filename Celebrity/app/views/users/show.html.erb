@@ -837,7 +837,7 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
   <table class="txt1 table-condensed table-status-schedule">
      <tr valign="baseline">
       <td width="60%">
-        <h3 class="txt3">Rails Tutorial</h3>
+        <h3 class="txt3">誰でもわかる勤怠システム</h3>
         完了予定日：<%= @user.railstutorial_status.try(:schedule_date) if @user.railstutorial_status.schedule_date.present? %></span></h3>
         <br>目安日数：約30日
       </td>
@@ -854,7 +854,7 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
   </table>
   
   <!--進捗線を表示-->
-  <progress id="rails_tutorial_progress" value="0" max="14"></progress>
+  <progress id="rails_tutorial_progress" value="0" max="10"></progress>
   <output id="rails_tutorial_output"></output>
 
 <script>

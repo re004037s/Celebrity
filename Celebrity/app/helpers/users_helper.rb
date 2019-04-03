@@ -92,10 +92,10 @@ module UsersHelper
       sum += 1 if user.railstutorial_status.chapter8
       sum += 1 if user.railstutorial_status.chapter9
       sum += 1 if user.railstutorial_status.chapter10
-      sum += 1 if user.railstutorial_status.chapter11
-      sum += 1 if user.railstutorial_status.chapter12
-      sum += 1 if user.railstutorial_status.chapter13
-      sum += 1 if user.railstutorial_status.chapter14
+      # sum += 1 if user.railstutorial_status.chapter11
+      # sum += 1 if user.railstutorial_status.chapter12
+      # sum += 1 if user.railstutorial_status.chapter13
+      # sum += 1 if user.railstutorial_status.chapter14
       return sum
     end
   end
