@@ -42,12 +42,6 @@ class HtmlCssStatusesController < ApplicationController
       if @course == 'html_css_do_advanced'
         @status.update_attributes(do_advanced_completion: @completion_date)
       end
-      if @course == 'html_css_ji_1'
-        @status.update_attributes(ji_1_completion: @completion_date)
-      end
-      if @course == 'html_css_ji_2'
-        @status.update_attributes(ji_2_completion: @completion_date)
-      end
       flash[:info] = "完了予定日を #{params[:date]} に設定しました"
       redirect_to current_user
     end
@@ -105,22 +99,6 @@ class HtmlCssStatusesController < ApplicationController
         @html_css_status.update_attributes(do_advanced: true, do_advanced_compd: @today)
       else
         @html_css_status.update_attributes(do_advanced: false, do_advanced_compd: nil)
-      end
-    end
-
-    if @course == 'html_css_ji_1'
-      if @status == 'false'
-        @html_css_status.update_attributes(ji_1: true, ji_1_compd: @today)
-      else
-        @html_css_status.update_attributes(ji_1: false, ji_1_compd: nil)
-      end
-    end
-
-    if @course == 'html_css_ji_2'
-      if @status == 'false'
-        @html_css_status.update_attributes(ji_2: true, ji_2_compd: @today)
-      else
-        @html_css_status.update_attributes(ji_2: false, ji_2_compd: nil)
       end
     end
   end

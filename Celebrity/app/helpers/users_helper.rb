@@ -10,8 +10,6 @@ module UsersHelper
       sum += 1 if user.html_css_status.do_beginner
       sum += 1 if user.html_css_status.do_middle
       sum += 1 if user.html_css_status.do_advanced
-      sum += 1 if user.html_css_status.ji_1
-      sum += 1 if user.html_css_status.ji_2
       return sum
     end
   end
