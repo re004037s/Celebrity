@@ -397,7 +397,7 @@ function ajax_delete_tag_in_DB(tag_id, user_id){
         <td><%= @user.javascript_status.try(:ga_4_compd)%></td>
       </tr>      
       <tr>
-        <td>学習コース　5</td>
+        <td>学習コース 5</td>
         <td class="center"><%= @user.javascript_status.try(:do_1) ? '完了' : '未' %></td>
         <td>
           <%= @user.javascript_status.try(:do_1_completion) if @user.javascript_status.do_1_completion.present? %>
