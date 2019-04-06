@@ -125,7 +125,6 @@ module ApplicationHelper
     if current_user.html_css_status.ga_beginner_completion.nil? && current_user.html_css_status.ga_middle_completion.nil? &&
     current_user.html_css_status.ga_advanced_completion.nil? && current_user.html_css_status.do_beginner_completion.nil? &&
     current_user.html_css_status.do_middle_completion.nil? && current_user.html_css_status.do_advanced_completion.nil? &&
-    current_user.html_css_status.ji_1_completion.nil? && current_user.html_css_status.ji_2_completion.nil? &&
     current_user.javascript_status.ga_1_completion.nil? && current_user.javascript_status.ga_2_completion.nil? &&
     current_user.javascript_status.ga_3_completion.nil? && current_user.javascript_status.ga_4_completion.nil? &&
     current_user.javascript_status.do_1_completion.nil? && current_user.ruby_status.ga_1_completion.nil? &&
