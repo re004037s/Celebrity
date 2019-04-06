@@ -90,7 +90,6 @@ module ApplicationHelper
          if ((current_user_html.ga_beginner && current_user_html.ga_middle && 
          current_user_html.ga_advanced && current_user_html.do_beginner && 
          current_user_html.do_middle && current_user_html.do_advanced && 
-         current_user_html.ji_1 && current_user_html.ji_2 &&
          current_user_javascript.ga_1 && current_user_javascript.ga_2 &&
          current_user_javascript.ga_3 && current_user_javascript.ga_4 &&
          current_user_javascript.do_1 &&
@@ -154,7 +153,6 @@ module ApplicationHelper
     if current_user_html.ga_beginner && current_user_html.ga_middle && 
     current_user_html.ga_advanced && current_user_html.do_beginner && 
     current_user_html.do_middle && current_user_html.do_advanced && 
-    current_user_html.ji_1 && current_user_html.ji_2 &&
     current_user_javascript.ga_1 && current_user_javascript.ga_2 &&
     current_user_javascript.ga_3 && current_user_javascript.ga_4 &&
     current_user_javascript.do_1 &&
