@@ -106,7 +106,7 @@ class HtmlCssStatusesController < ApplicationController
   private
   
     def progate_check
-      if current_user.c \
+      if current_user.javascript_status.do_1 \
         && current_user.ruby_status.ga_5 \
         && current_user.rubyonrails_status.do_4
           @progate_comp_flag = true
