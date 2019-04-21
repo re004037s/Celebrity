@@ -53,12 +53,15 @@
   </div>
     
   <!--お知らせ-->
-  <% if !@information.empty? %>
+  <% if !@information.empty? || !@questions.empty? %>
       <div id="inline-popups">
         <h4><a id="hoge" href="#test-popup" data-effect="mfp-zoom-in">お知らせ</a></h4>
       </div>
-    <div id="test-popup" class="white-popup mfp-with-anim mfp-hide">
-      <% i = 1 %>
+  <% end %>
+  
+  <div id="test-popup" class="white-popup mfp-with-anim mfp-hide">
+    <% i = 1 %>
+    <% if !@information.empty? %>
       <% @information.each do |info| %>
         <h5 align="left">【お知らせ<%= i %>】</h5>
         <span type="text">
@@ -66,19 +69,35 @@
         </span><br/>
         <% i = i + 1 %>
       <% end %>
-    </div>
-  <% end %>
+    <% end %>
+    <% if !@questions.empty? %>
+      <% @questions.each do |quest| %>
+        <h5 align="left">【お知らせ<%= i %>】</h5>
+        <span type="text">
+          <%= "#{quest.question_category.title}:" %>
+        </span><br/>
+        <span type="text">
+          <%= "Q:#{quest.question}" %>
+        </span><br/>  
+        <span type="text">
+          <%= "A:#{quest.answer}" %>
+        </span><br/>
+        <% i = i + 1 %>
+      <% end %>
+    <% end %>
+  </div>
+
 
   <script>
-    // $('#inline-popups').magnificPopup({
-    //   delegate: 'a',
-    //   removalDelay: 500,
-    //   callbacks: {
-    //     beforeOpen: function() {
-    //       this.st.mainClass = this.st.el.attr('data-effect');
-    //     },
-    //   },
-    // });
+    $('#inline-popups').magnificPopup({
+      delegate: 'a',
+      removalDelay: 500,
+      callbacks: {
+        beforeOpen: function() {
+          this.st.mainClass = this.st.el.attr('data-effect');
+        },
+      },
+    });
   </script>
   
   <!-- 期間中のお知らせがあればページ読み込み時に強制表示 -->
