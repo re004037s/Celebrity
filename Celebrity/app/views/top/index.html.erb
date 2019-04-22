@@ -1,5 +1,4 @@
 <div class="top-index--wrapper">
-  
   <div class="welcome-message--wrapper">
     <p><%= current_user.name %>さんこんにちは！</p>
     <p>今日も一日頑張りましょう🎶</p>
@@ -99,56 +98,119 @@
   </h2>
   
   <h3 class="study-top">以下のカリキュラムをこなすことで、フリーになるためのスキルが最短で身に付きます。</h3>
+  
   <div class="study-flow">
-    <p class="study-title">マインドセットを動画で学習</p>
+    <p class="study-title">フリーエンジニアになる為のマインドセットを動画で学習</p>
     <%= link_to movie_category_path(@incomp_category_id) do %>
-      <p class="study-detail">動画一覧にある動画を初めから順に視聴して下さい。
-        各動画を見た後に感想を記入して送信して下さい。 ※全動画を視聴後、マイページに移動出来ます</p>
+      <p class="study-detail">
+        動画一覧にある動画を初めから順に視聴しましょう。<br>
+        各動画を見た後に感想を記入して送信して下さい。<br>
+        ※全動画を視聴後、マイページに移動出来ます。
+      </p>
     <% end %>
+    
     <div class="arrow">
       <img src="arrow.png">
     </div>
     
     <p class="study-title">プログラミングの基礎を学習</p>
     <div class="study-box">
-      <%= link_to 'https://prog-8.com', class:"#{'disabled' unless movie_comp?}" do %>
-        <p class="study-detail">プログラミング学習サイト「Progate」を使い、
-          「HTML & CSS」「JavaScript」「Ruby」「Ruby on Rails5」のコースを全て終了させて下さい。</p>
-        <% unless movie_comp? %><span class="study-remark">まずは動画を全てご覧下さい</span><% end %>
+      <%= link_to 'https://qiita.com/Nukioman/private/dc19899881806d43e9a7', class:"#{'disabled' unless movie_comp?}" do %>
+        <p class="study-detail">
+          独自の教材でプログラミングの学習を進めましょう。<br>
+          「AWS Cloud9を使ってプログラミングの環境構築をしよう」<br>
+          「HTML & CSSの基礎を学ぼう」<br>
+          「JavaScriptの基礎を学ぼう」<br>
+          「Rubyの基礎を学ぼう」<br>
+          「Rubyの基礎を学ぼう【メソッド編】」<br>
+          「Ruby on Railsで簡単なSNSアプリを作ろう」<br>
+          以上のコースを全て完了して下さい。
+        </p>
+        <% unless movie_comp? %>
+          <span class="study-remark">まずは動画を全てご覧下さい。</span>
+        <% end %>
       <% end %>
     </div>
+    
     <div class="arrow">
       <img src="arrow.png">
     </div>
     
-    <p class="study-title">アプリケーション開発の基礎を学習</p>
+    <p class="study-title">Webアプリケーション開発の基礎を学習</p>
     <div class="study-box">
-      <%= link_to 'https://qiita.com/Nukioman/private/754f0538e4b33aa56d2d/', class:"#{'disabled' unless progatetask_tutolialday_comp?}" do %>
-        <p class="study-detail">誰でもわかる勤怠システム1章〜10章まで全て終了させて下さい。</p>
-        <% unless progatetask_tutolialday_comp? %><span class="study-remark">Progateを終わらせて下さい</span><% end %>
+      <%= link_to 'https://qiita.com/Nukioman/private/dc19899881806d43e9a7', class:"#{'disabled' unless progatetask_tutolialday_comp?}" do %>
+        <p class="study-detail">
+          「誰でもわかる勤怠システムチュートリアル」を1章から10章まで全て完了して下さい。
+        </p>
+        <% unless progatetask_tutolialday_comp? %>
+          <span class="study-remark">プログラミングの基礎コースを全て終わらせましょう。</span>
+        <% end %>
       <% end %>
     </div>
+    
     <div class="arrow">
       <img src="arrow.png">
     </div>
     
-    <p class="study-title">ＷＥＢアプリケーションの作成</p>
+    <p class="study-title">Webアプリケーション開発を実践①</p>
     <div class="study-box">
-      <%= link_to movie_category_path(5), class:"#{'disabled' unless railstutorial_comp?}" do %>
-        <p class="study-detail">チュートリアルが完了したら、面談等で使用するポートフォリオを作成します。<br>
-          ※作り方等の詳細に関しては動画でご確認下さい</p>
-        <% unless railstutorial_comp? %><span class="study-remark">チュートリアルを終わらせて下さい</span><% end %>
+      <%= link_to 'https://qiita.com/Nukioman/private/dc19899881806d43e9a7', class:"#{'disabled' unless progatetask_tutolialday_comp?}" do %>
+        <p class="study-detail">
+          「誰でもわかる勤怠システムチュートリアル」で作成した勤怠システムに機能を加えて、イチから皆さんに開発してもらいます。<br>
+          開発するアプリケーションは「勤怠B」となります。
+        </p>
+      <% end %>
+    </div>
+    
+    <div class="arrow">
+      <img src="arrow.png">
+    </div>
+    
+    <p class="study-title">Webアプリケーション開発を実践②</p>
+    <div class="study-box">
+      <%= link_to 'https://qiita.com/Nukioman/private/dc19899881806d43e9a7', class:"#{'disabled' unless progatetask_tutolialday_comp?}" do %>
+        <p class="study-detail">
+          「勤怠B」で開発したアプリケーションに更なる仕様が加わった、<br>
+          「勤怠A」を開発してもらいます。
+        </p>
+      <% end %>
+    </div>
+    
+    <div class="arrow">
+      <img src="arrow.png">
+    </div>
+    
+    <p class="study-title">人工インターン</p>
+    <div class="study-box">
+      <%= link_to 'https://qiita.com/Nukioman/private/dc19899881806d43e9a7', class:"#{'disabled' unless progatetask_tutolialday_comp?}" do %>
+        <p class="study-detail">
+          ここまでの皆さんの実績をもとに、実際の案件に携わる形式で開発してもらいます。
+        </p>
+      <% end %>
+    </div>
+    
+    <div class="arrow">
+      <img src="arrow.png">
+    </div>
+    
+    <p class="study-title">自身のコンテンツとなるWebアプリケーションを開発</p>
+    <div class="study-box">
+      <%= link_to movie_category_path(5) do %>
+        <p class="study-detail">
+          ここまでのカリキュラムが完了したら、面談等で使用するポートフォリオを作成します。<br>
+          ※作り方等の詳細に関しては動画でご確認下さい
+        </p>
       <% end %>
     </div>
   </div>
     
   <div class="information">
-    
-    <div class="information-head">新着動画</div>
+    <div class="information-head">
+      新着動画
+    </div>
     
     <div class="information-body">
       <% if @new_movies.present? %>
-      
         <div class="information-title">
           <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
           まだ視聴していない動画はありませんか！？
@@ -231,16 +293,12 @@
             <% end %>
           <% end %>
         </ul>
-        
       <% else %>
-      
         <div class="information-title">
           <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
           <p class="inline">直近1週間に投稿された動画はありません。</p>              
         </div>
-        
       <% end %>
     </div>
   </div>
-    
 </div>
