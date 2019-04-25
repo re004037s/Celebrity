@@ -1,7 +1,5 @@
 <aside class="main-sidebar">
-  
   <section class="sidebar">
-    
     <!--検索フォーム-->
     <!--<form method="get" class="sidebar-form" id="sidebar-form">-->
     <!--  <div class="input-group">-->
@@ -16,7 +14,6 @@
     
     <!-- Sidebar Menu -->
     <ul class="sidebar-menu tree" data-widget="tree">
-      
       <!--adminのみ表示-->
       <% if current_user.try(:admin) %>
         <li class="header"><i class="fa fa-cog" aria-hidden="true"></i> for Administrator</li>
@@ -27,9 +24,7 @@
       <% end %>
       
       <% unless current_user.guest %>
-      
         <li class="header"><i class="fa fa-bars" aria-hidden="true"></i> Contents</li>
-        
         <!--movies menu-->
         <li class="treeview">
           <a href="#"><span>動画一覧</span> <i class="fa fa-caret-down pull-right"></i></a>
@@ -55,9 +50,9 @@
           </ul>
         </li>
   		
-        <li><%= link_to 'Progate進捗入力', progate_path, class: "#{'disabled' unless movie_comp?}" %></li>
-        <li><%= link_to '誰でもわかる勤怠システム', railstutorial_path, class: "#{'disabled' unless progatetask_tutolialday_comp?}" %></li>
-        <li><%= link_to 'ポートフォリオの作り方', portfolio_mv_path, class: "#{'disabled' unless railstutorial_comp? }" %></li>
+        <li><%= link_to 'プログラミングの基礎編', basic_programming_path, class: "#{'disabled' unless movie_comp?}" %></li>
+        <li><%= link_to '誰でもわかる勤怠システム', attendance_system_path, class: "#{'disabled' unless progatetask_tutolialday_comp?}" %></li>
+        <!--<li><#%= link_to 'ポートフォリオの作り方', portfolio_mv_path, class: "#{'disabled' unless railstutorial_comp? }" %></li>-->
         <li><%= link_to 'よくある質問', faq_index_path, class: "#{'disabled' if current_user.try(:guest) }" %></li>
         <li><%= link_to 'Qiita投稿まとめ', qiita_posts_path, class: "#{'disabled' if current_user.try(:guest) }" %></li>
         <li><%= link_to '面談内容共有', interview_posts_path, class: "#{'disabled' if current_user.try(:guest) }" %></li>

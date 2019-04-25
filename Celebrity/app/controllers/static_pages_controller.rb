@@ -9,7 +9,6 @@ class StaticPagesController < ApplicationController
   before_action :comp_railstutorial, only: :railstutorial
   before_action :check_guest_user
 
-  
   def portfolio_mv
   end
   
@@ -50,7 +49,7 @@ class StaticPagesController < ApplicationController
     def comp_portfolio
       if railstutorial_comp?
       else 
-        flash[:danger] = "先に 誰でも分かる勤怠システム を完了させて下さい"
+        flash[:danger] = "先に【誰でも分かる勤怠チュートリアル】を完了させて下さい"
         redirect_to root_url
       end
     end
@@ -77,7 +76,7 @@ class StaticPagesController < ApplicationController
     def comp_railstutorial
       if progatetask_tutolialday_comp?
       else
-        flash[:danger] = "先に Progate を完了させて下さい"
+        flash[:danger] = "まずは【プログラミングの基礎編】を完了させて下さい"
         redirect_to root_url
       end
     end

@@ -47,6 +47,6 @@ environment ENV.fetch("RAILS_ENV") { "production" }
 plugin :tmp_restart
 
 # if Rails.env == 'production'
-  bind "unix:///home/ec2-user/rails/Celebrity/Celebrity/tmp/sockets/puma.sock"
-  pidfile "/home/ec2-user/rails/Celebrity/Celebrity/tmp/sockets/puma.pid"
+  # bind "unix:///home/ec2-user/rails/Celebrity/Celebrity/tmp/sockets/puma.sock"
+  # pidfile "/home/ec2-user/rails/Celebrity/Celebrity/tmp/sockets/puma.pid"
 # end

@@ -1,19 +1,19 @@
 <div class="staticpages-railstutorial--wrapper">
   <p class="txt2 text-center">
-    <a href="https://qiita.com/Nukioman/private/754f0538e4b33aa56d2d/" target="_blank">
-      誰でもわかる勤怠システムはこちら
+    <a href="https://qiita.com/Tech_Leaders/private/c612216617f7f070d771#rails%E9%96%8B%E7%99%BA%E5%AE%9F%E8%B7%B5%E5%AD%A6%E7%BF%92" target="_blank">
+      誰でもわかる勤怠システムチュートリアル
     </a>
   </p>
   <table class="txt1 table table-bordered table-striped table-condensed table-status">
     <thead>
       <tr>
-        <th class="table-header">章</th>
-        <th class="table-header">ステータス</th>
+        <th class="table-header attendance-system-course">章</th>
+        <th class="table-header attendance-system-status">ステータス</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td class="center">1章</td>
+        <td>【第１章】勤怠システムの開発を始めよう</td>
         <td id="chapter1">
           <% if !@railstutorial_status.chapter1 %>
             <%= render 'railstutorial_statuses/complete', course: 'chapter1' %>
@@ -23,7 +23,7 @@
         </td>
       </tr>
       <tr>
-        <td class="center">2章</td>
+        <td>【第２章】トップページをつくろう</td>
         <td id="chapter2">
           <% if !@railstutorial_status.chapter2 %>
             <%= render 'railstutorial_statuses/complete', course: 'chapter2' %>
@@ -33,7 +33,7 @@
         </td>
       </tr>
       <tr>
-        <td class="center">3章</td>
+        <td>【第３章】ページのレイアウトを整えよう</td>
         <td id="chapter3">
           <% if !@railstutorial_status.chapter3 %>
             <%= render 'railstutorial_statuses/complete', course: 'chapter3' %>
@@ -43,7 +43,7 @@
         </td>
       </tr>
       <tr>
-        <td class="center">4章</td>
+        <td>【第４章】ユーザーモデル（Model）を作成しよう</td>
         <td id="chapter4">
           <% if !@railstutorial_status.chapter4 %>
             <%= render 'railstutorial_statuses/complete', course: 'chapter4' %>
@@ -53,7 +53,7 @@
         </td>
       </tr>
       <tr>
-        <td class="center">5章</td>
+        <td>【第５章】ユーザーをデータベースに登録しよう</td>
         <td id="chapter5">
           <% if !@railstutorial_status.chapter5 %>
             <%= render 'railstutorial_statuses/complete', course: 'chapter5' %>
@@ -63,7 +63,7 @@
         </td>
       </tr>
       <tr>
-        <td class="center">6章</td>
+        <td>【第６章】ログイン機構を学習しよう</td>
         <td id="chapter6">
           <% if !@railstutorial_status.chapter6 %>
             <%= render 'railstutorial_statuses/complete', course: 'chapter6' %>
@@ -73,7 +73,7 @@
         </td>
       </tr>
       <tr>
-        <td class="center">7章</td>
+        <td>【第７章】ユーザーを編集・削除・一覧表示しよう</td>
         <td id="chapter7">
           <% if !@railstutorial_status.chapter7 %>
             <%= render 'railstutorial_statuses/complete', course: 'chapter7' %>
@@ -83,7 +83,7 @@
         </td>
       </tr>
       <tr>
-        <td class="center">8章</td>
+        <td>【第８章】ユーザーモデルに勤怠基本情報を追加しよう</td>
         <td id="chapter8">
           <% if !@railstutorial_status.chapter8 %>
             <%= render 'railstutorial_statuses/complete', course: 'chapter8' %>
@@ -93,7 +93,7 @@
         </td>
       </tr>
       <tr>
-        <td class="center">9章</td>
+        <td>【第９章】勤怠情報の表示＆出勤・退勤できる画面を作ろう</td>
         <td id="chapter9">
           <% if !@railstutorial_status.chapter9 %>
             <%= render 'railstutorial_statuses/complete', course: 'chapter9' %>
@@ -103,7 +103,7 @@
         </td>
       </tr>
       <tr>
-        <td class="center">10章</td>
+        <td>【第１０章】勤怠情報をまとめて編集する機能を実装しよう</td>
         <td id="chapter10">
           <% if !@railstutorial_status.chapter10 %>
             <%= render 'railstutorial_statuses/complete', course: 'chapter10' %>
@@ -118,7 +118,10 @@
   <% hide = 'hide' %>
   <div id="link_portfolio_mv" class="<%= hide unless railstutorial_comp? %> next-btn">
     <p class="text-center">
-      <%= link_to "NEXT：ポートフォリオの作り方", portfolio_mv_path, class: "txt1 btn btn-lg btn-default active"%>
+      <%#= link_to "NEXT：ポートフォリオの作り方", portfolio_mv_path, class: "txt1 btn btn-lg btn-default active"%>
+      <%= link_to "NEXT：勤怠システム（B）個人開発へ",
+      "https://qiita.com/Tech_Leaders/private/c612216617f7f070d771#rails%E9%96%8B%E7%99%BA%E3%83%91%E3%83%BC%E3%83%88",
+      class: "txt1 btn btn-lg btn-default active"%>
     </p>
   </div>
   
