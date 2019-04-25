@@ -175,10 +175,13 @@
   <script>
     let current_status1 = <%= count_html_css(@user) %>;
     let total_course_num1 = document.getElementById('html_css_progress').max;
-    
     function countup() {
       document.getElementById('html_css_progress').value = current_status1;
-      document.getElementById('html_css_output').value = '進捗率：' + (current_status1 / total_course_num1 * 100).toFixed() + '%';
+      let num = (current_status1 / total_course_num1 * 100).toFixed();
+      if(num >= 100){
+        num = 100;
+      }
+      document.getElementById('html_css_output').value = '進捗率：' + num + '%';
     }
 
     setInterval(countup, 1000);
@@ -333,10 +336,13 @@
   <script>
       let current_status2 = <%= count_javascript(@user) %>;
       let total_course_num2 = document.getElementById('javascript_progress').max;
-      
       function countup() {
           document.getElementById('javascript_progress').value = current_status2;
-          document.getElementById('javascript_output').value = '進捗率：' + (current_status2 / total_course_num2 * 100).toFixed() + '%';
+          let num =  (current_status2 / total_course_num2 * 100).toFixed();
+          if(num >= 100){
+            num = 100;
+          }
+          document.getElementById('javascript_output').value = '進捗率：' +num + '%';
       }
   
       setInterval(countup, 1000);
@@ -449,7 +455,11 @@
         
         function countup() {
             document.getElementById('ruby_progress').value = current_status3;
-            document.getElementById('ruby_output').value = '進捗率：' + (current_status3 / total_course_num3 * 100).toFixed() + '%';
+            let num = (current_status3 / total_course_num3 * 100).toFixed();
+            if(num >= 100){
+              num = 100;
+            }
+            document.getElementById('ruby_output').value = '進捗率：' + num + '%';
         }
     
         setInterval(countup, 1000);
@@ -562,7 +572,11 @@
       
       function countup() {
           document.getElementById('rubyonrails_progress').value = current_status4;
-          document.getElementById('rubyonrails_output').value = '進捗率：' + (current_status4 / total_course_num4 * 100).toFixed() + '%';
+          let num = (current_status4 / total_course_num4 * 100).toFixed();
+          if(num >= 100){
+            num = 100;
+          }
+          document.getElementById('rubyonrails_output').value = '進捗率：' + num + '%';
       }
   
       setInterval(countup, 1000);
@@ -850,7 +864,11 @@
       
       function countup() {
           document.getElementById('rails_tutorial_progress').value = current_status5;
-          document.getElementById('rails_tutorial_output').value = '進捗率：' + (current_status5 / total_course_num5 * 100).toFixed() + '%';
+          let num = (current_status5 / total_course_num5 * 100).toFixed();
+          if(num >= 100){
+            num = 100;
+          }
+          document.getElementById('rails_tutorial_output').value = '進捗率：' + num + '%';
       }
   
       setInterval(countup, 1000);
@@ -894,7 +912,11 @@
       function countup() {
           document.getElementById('movie_progress').max = movie_status[0];
           document.getElementById('movie_progress').value = movie_status[1];
-          document.getElementById('movie_output').value = '進捗率：' + (movie_status[1] / movie_status[0] * 100).toFixed() + '%';
+          let num = (movie_status[1] / movie_status[0] * 100).toFixed();
+          if(num >= 100){
+            num = 100;
+          }
+          document.getElementById('movie_output').value = '進捗率：' + num + '%';
       }
   
       setInterval(countup, 1000);
