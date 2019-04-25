@@ -372,6 +372,7 @@
   margin-bottom: 50px;
 }
 */
+
 .table-header {
   background-color: black;
   color: white;
@@ -380,6 +381,19 @@
   white-space: nowrap;
 }
 
+// プログラミングの基礎編進捗入力ページ
+.basic-course { 
+  width: 60%;
+}
+.basic-status {
+  width: 40%;
+}
+.attendance-system-course {
+  width: 60%;
+}
+.attendance-system-status {
+  width: 40%;
+}
 
 .top-index--wrapper {
   width: 97.0%;

@@ -89,28 +89,44 @@ module ApplicationHelper
     current_user_rubyonrails = current_user.rubyonrails_status
     current_user_railstutorial = current_user.railstutorial_status
     
-    if ((current_user_html.ga_beginner && current_user_html.ga_middle && 
-      current_user_html.ga_advanced && current_user_html.do_beginner && 
-      current_user_html.do_middle && current_user_html.do_advanced && 
-      current_user_html.ji_1 && current_user_html.ji_2 &&
-      current_user_javascript.ga_1 && current_user_javascript.ga_2 &&
-      current_user_javascript.ga_3 && current_user_javascript.ga_4 &&
-      current_user_javascript.do_1 &&
-      current_user_ruby.ga_1 && current_user_ruby.ga_2 && 
-      current_user_ruby.ga_3 && current_user_ruby.ga_4 && 
-      current_user_ruby.ga_5 &&current_user_rubyonrails.ga_1 &&
-      current_user_rubyonrails.ga_2 && current_user_rubyonrails.ga_3 &&
-      current_user_rubyonrails.ga_4 && current_user_rubyonrails.ga_5 &&
-      current_user_rubyonrails.ga_6 && current_user_rubyonrails.ga_7 &&
-      current_user_rubyonrails.ga_8 && current_user_rubyonrails.ga_9 &&
-      current_user_rubyonrails.ga_10 && current_user_rubyonrails.ga_11) &&
+    if (
+      (current_user_html.ga_beginner &&
+      current_user_html.ga_middle &&
+      # current_user_html.ga_advanced &&
+      # current_user_html.do_beginner &&
+      # current_user_html.do_middle &&
+      # current_user_html.do_advanced &&
+      # current_user_html.ji_1 &&
+      # current_user_html.ji_2 &&
+      current_user_javascript.ga_1 &&
+      # current_user_javascript.ga_2 &&
+      # current_user_javascript.ga_3 &&
+      # current_user_javascript.ga_4 &&
+      # current_user_javascript.do_1 &&
+      current_user_ruby.ga_1 &&
+      current_user_ruby.ga_2 &&
+      # current_user_ruby.ga_3 &&
+      # current_user_ruby.ga_4 &&
+      # current_user_ruby.ga_5 &&
+      current_user_rubyonrails.ga_1 &&
+      current_user_rubyonrails.ga_2 &&
+      current_user_rubyonrails.ga_3 &&
+      current_user_rubyonrails.ga_4 &&
+      current_user_rubyonrails.ga_5 &&
+      current_user_rubyonrails.ga_6 &&
+      current_user_rubyonrails.ga_7 &&
+      current_user_rubyonrails.ga_8 &&
+      current_user_rubyonrails.ga_9 &&
+      current_user_rubyonrails.ga_10 &&
+      current_user_rubyonrails.ga_11) &&
       # current_user_rubyonrails.do_1 && current_user_rubyonrails.do_2 &&
       # current_user_rubyonrails.do_3 && current_user_rubyonrails.do_4) &&
       (current_user_railstutorial.schedule_date || current_user.railstutorial_status.chapter1 || current_user.railstutorial_status.chapter2 || 
       current_user.railstutorial_status.chapter3 || current_user.railstutorial_status.chapter4 || 
       current_user.railstutorial_status.chapter5 || current_user.railstutorial_status.chapter6 || 
       current_user.railstutorial_status.chapter7 || current_user.railstutorial_status.chapter8 ||
-      current_user.railstutorial_status.chapter9 || current_user.railstutorial_status.chapter10))
+      current_user.railstutorial_status.chapter9 || current_user.railstutorial_status.chapter10)
+      )
       return true
     else
       return false

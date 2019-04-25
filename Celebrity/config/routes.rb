@@ -78,9 +78,11 @@ Rails.application.routes.draw do
   patch '/information', to: 'information#update'
   delete '/information', to: 'information#destroy'
 
-  get '/progate', to: 'static_pages#progate'
-  post '/progate', to: 'static_pages#progate'
-  get '/railstutorial', to: 'static_pages#railstutorial'
+  get '/basic_programming', to: 'static_pages#progate' # progate代替えとして代用修正
+  post '/basic_programming', to: 'static_pages#progate' # progate代替えとして代用修正
+  
+  get '/attendance_system', to: 'static_pages#railstutorial' # Railsチュートリアルの代替えとして追加
+  
   get '/portfolio', to: 'portfolio_comments#portfolio'
   post '/comments/create', to: 'portfolio_comments#create'
   post '/comments/:id/destroy', to: 'portfolio_comments#destroy'

@@ -109,7 +109,7 @@ class UsersController < ApplicationController
       UserMovieStatus.create(user_id: @user.id)
       
       log_in @user
-      flash[:success] = 'Welcome to the セレブエンジニアサロン'
+      flash[:success] = 'Welcome to the セレブエンジニアサロン！'
       redirect_to root_path
     elsif
       render 'new'
