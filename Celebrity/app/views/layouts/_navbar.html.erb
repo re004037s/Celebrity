@@ -47,13 +47,13 @@
             
             <% unless current_user.try(:guest) %>
               <!-- Menu Body -->
-              <!--<li class="user-body">-->
-              <!--  <div class="row">-->
-              <!--    <div class="col-xs-10 col-xs-offset-1 text-center">-->
-              <!--      <#%= link_to 'SALON MEMBER', users_path %>-->
-              <!--    </div>-->
-              <!--  </div>-->
-              <!--</li>-->
+              <li class="user-body">
+                <div class="row">
+                  <div class="col-xs-10 col-xs-offset-1 text-center">
+                    <%= link_to 'SALON MEMBER', users_path %>
+                  </div>
+                </div>
+              </li>
             
               <li class="user-body">
                 <div class="row">
