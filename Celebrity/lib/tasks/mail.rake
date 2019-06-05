@@ -62,9 +62,8 @@ namespace :mail do
                   st5.chapter3 && st5.chapter4 &&
                   st5.chapter5 && st5.chapter6 &&
                   st5.chapter7 && st5.chapter8 &&
-                  st5.chapter9 && st5.chapter10 &&
-                  st5.chapter11 && st5.chapter12 &&
-                  st5.chapter13 && st5.chapter14) != true
+                  st5.chapter9 && st5.chapter10 
+                  ) != true
                   if st5.schedule_date < Date.today
                       no_complete_tasks << "Railsチュートリアル"
                   end
