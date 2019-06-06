@@ -13,7 +13,7 @@ namespace :mail do
                   st1.do_middle && st1.ga_advanced &&
                   st1.ji_1 && st1.ji_2) != true
                   if st1.schedule_date < Date.today
-                      no_complete_tasks << "Progate(HTML&CSS)"
+                      no_complete_tasks << "プログラミングの基礎(HTML&CSS)"
                   end        
               end
           end
@@ -24,7 +24,7 @@ namespace :mail do
                   st2.ga_3 && st2.ga_4 &&
                   st2.do_1) != true
                   if st2.schedule_date < Date.today
-                      no_complete_tasks << "Progate(Javascript)"
+                      no_complete_tasks << "プログラミングの基礎(Javascript)"
                   end        
               end
           end
@@ -35,7 +35,7 @@ namespace :mail do
                   st3.ga_3 && st3.ga_4 &&
                   st3.ga_5) != true                
                   if st3.schedule_date < Date.today
-                      no_complete_tasks << "Progate(Ruby)"
+                      no_complete_tasks << "プログラミングの基礎(Ruby)"
                   end        
               end
           end
@@ -51,7 +51,7 @@ namespace :mail do
                   st4.do_2 && st4.do_3 &&   
                   st4.do_4) != true                       
                   if st4.schedule_date < Date.today
-                      no_complete_tasks << "Progate(RubyonRails)"
+                      no_complete_tasks << "プログラミングの基礎(RubyonRails)"
                   end    
               end
           end
@@ -62,11 +62,10 @@ namespace :mail do
                   st5.chapter3 && st5.chapter4 &&
                   st5.chapter5 && st5.chapter6 &&
                   st5.chapter7 && st5.chapter8 &&
-                  st5.chapter9 && st5.chapter10 &&
-                  st5.chapter11 && st5.chapter12 &&
-                  st5.chapter13 && st5.chapter14) != true
+                  st5.chapter9 && st5.chapter10 
+                  ) != true
                   if st5.schedule_date < Date.today
-                      no_complete_tasks << "Railsチュートリアル"
+                      no_complete_tasks << "誰でも分かる勤怠システム"
                   end
               end
           end
