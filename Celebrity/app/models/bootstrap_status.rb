@@ -1,0 +1,2 @@
+class BootstrapStatus < ApplicationRecord
+end

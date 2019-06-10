@@ -233,6 +233,8 @@
           </td>
         </tr>
         
+
+        
         <%# rails新教材のレッスン数と合わせるため以下非表示 %>
         
         <!--<tr>-->
@@ -278,6 +280,38 @@
         <!--    <%# end %>-->
         <!--  </td>-->
         <!--</tr>-->
+      </tbody>
+    </table>
+    
+    <h3 class="txt3 status-name">bootstrap</h3>
+    <table class="txt1 table table-bordered table-striped table-condensed table-status">
+      <thead>
+        <tr>
+          <th class="table-header basic-course">コース</th>
+          <th class="table-header">ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>bootstrap 基礎編</td>
+          <td id="ruby_ga_1">
+            <% if !@ruby_status.ga_1 %>
+              <%= render 'ruby_statuses/complete', course: 'ruby_ga_1' %>
+            <% else %>
+              <%= render 'ruby_statuses/incomplete', course: 'ruby_ga_1' %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td>bootstrap 実践編</td>
+          <td id="ruby_ga_2">
+            <% if !@ruby_status.ga_2 %>
+              <%= render 'ruby_statuses/complete', course: 'ruby_ga_2' %>
+            <% else %>
+              <%= render 'ruby_statuses/incomplete', course: 'ruby_ga_2' %>
+            <% end %>
+          </td>
+        </tr>
       </tbody>
     </table>
     
