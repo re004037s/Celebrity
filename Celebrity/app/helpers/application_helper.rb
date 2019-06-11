@@ -88,6 +88,7 @@ module ApplicationHelper
     current_user_ruby = current_user.ruby_status
     current_user_rubyonrails = current_user.rubyonrails_status
     current_user_railstutorial = current_user.railstutorial_status
+    current_user_bootstrap = current_user.bootstrap 
     
     if (
       (current_user_html.ga_beginner &&
@@ -118,7 +119,9 @@ module ApplicationHelper
       current_user_rubyonrails.ga_8 &&
       current_user_rubyonrails.ga_9 &&
       current_user_rubyonrails.ga_10 &&
-      current_user_rubyonrails.ga_11) &&
+      current_user_rubyonrails.ga_11 &&
+      current_user_bootstrap.ga_1 &&
+      current_user_bootstrap.ga_2 ) &&
       # current_user_rubyonrails.do_1 && current_user_rubyonrails.do_2 &&
       # current_user_rubyonrails.do_3 && current_user_rubyonrails.do_4) &&
       (current_user_railstutorial.schedule_date || current_user.railstutorial_status.chapter1 || current_user.railstutorial_status.chapter2 || 
@@ -172,11 +175,13 @@ module ApplicationHelper
       rails.ga_8_completion.nil? &&
       rails.ga_9_completion.nil? &&
       rails.ga_10_completion.nil? &&
-      rails.ga_11_completion.nil?
+      rails.ga_11_completion.nil? &&
       # rails.do_1_completion.nil? &&
       # rails.do_2_completion.nil? && 
       # rails.do_3_completion.nil? && 
       # rails.do_4_completion.nil?
+      bootstrap.ga_1_completion.nil? &&
+      bootstrap.ga_1_completion.nil?
       return true
     else
       return false
@@ -218,7 +223,9 @@ module ApplicationHelper
     current_user_rubyonrails.ga_8 &&
     current_user_rubyonrails.ga_9 &&
     current_user_rubyonrails.ga_10 &&
-    current_user_rubyonrails.ga_11
+    current_user_rubyonrails.ga_11 &&
+    current_user_bootstrap.ga_1 &&
+    current_user_bootstrap.ga_2 
     # current_user_rubyonrails.do_1 &&
     # current_user_rubyonrails.do_2 &&
     # current_user_rubyonrails.do_3 &&
