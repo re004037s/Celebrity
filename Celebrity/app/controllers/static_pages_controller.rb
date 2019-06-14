@@ -17,6 +17,7 @@ class StaticPagesController < ApplicationController
     @javascript_status = JavascriptStatus.find_or_create_by(user_id: current_user.id)
     @ruby_status = RubyStatus.find_or_create_by(user_id: current_user.id)
     @rubyonrails_status = RubyonrailsStatus.find_or_create_by(user_id: current_user.id)
+    @bootstrap_status = BootstrapStatus.find_or_create_by(user_id: current_user.id)
   end
   
   def railstutorial
@@ -34,7 +35,8 @@ class StaticPagesController < ApplicationController
       if current_user.html_css_status.ji_2 \
         && current_user.javascript_status.do_1 \
         && current_user.ruby_status.ga_5 \
-        && current_user.rubyonrails_status.do_4
+        && current_user.rubyonrails_status.do_4 \
+        && current_user.bootstrap_status.ga_2
           @progate_comp_flag = true
       else
           @progate_comp_flag = false

@@ -266,6 +266,7 @@ User.where(id: 1..2).each do |user|
     RubyStatus.create(user_id: user.id)
     RubyonrailsStatus.create(user_id: user.id)
     RailstutorialStatus.create(user_id: user.id)
+    BootstrapStatus.create(user_id: user.id)
     UserMovieStatus.create(user_id: user.id)
 end
 
@@ -281,6 +282,7 @@ User.where(id: 3..9).each do |user|
     ga_1_completion: '2019-01-01', ga_2_completion: '2019-01-01', ga_3_completion: '2019-01-01', ga_4_completion: '2019-01-01', do_1_completion: '2019-01-01')
     RubyStatus.create(user_id: user.id, ga_1: true,  ga_2: true, ga_3: true, ga_4: true, ga_5: true, schedule_date: '2019-01-01',
     ga_1_completion: '2019-01-01', ga_2_completion: '2019-01-01', ga_3_completion: '2019-01-01', ga_4_completion: '2019-01-01', ga_5_completion: '2019-01-01')
+    BootstrapStatus.create(user_id: user.id, ga_1: true,  ga_2: true,ga_1_completion: '2019-01-01', ga_2_completion: '2019-01-01')
     RubyonrailsStatus.create(user_id: user.id, ga_1: true, ga_2: true, ga_3: true, ga_4: true, ga_5: true, ga_6: true, ga_7: true,
       ga_8: true, ga_9: true, ga_10: true, ga_11: true, do_1: true, do_2: true, do_3: true, do_4: true, schedule_date: '2019-01-01',
       ga_1_completion: '2019-01-01', ga_2_completion: '2019-01-01', ga_3_completion: '2019-01-01', ga_4_completion: '2019-01-01', ga_5_completion: '2019-01-01',

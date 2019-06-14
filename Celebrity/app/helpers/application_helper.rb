@@ -88,7 +88,7 @@ module ApplicationHelper
     current_user_ruby = current_user.ruby_status
     current_user_rubyonrails = current_user.rubyonrails_status
     current_user_railstutorial = current_user.railstutorial_status
-    current_user_bootstrap = current_user.bootstrap 
+    current_user_bootstrap = current_user.bootstrap_status
     
     if (
       (current_user_html.ga_beginner &&
@@ -147,6 +147,7 @@ module ApplicationHelper
     js = current_user.javascript_status
     ruby = current_user.ruby_status
     rails = current_user.rubyonrails_status
+    bootstrap = current_user.bootstrap_status
     if html.ga_beginner_completion.nil? &&
       html.ga_middle_completion.nil? &&
       # html.ga_advanced_completion.nil? &&
@@ -193,6 +194,7 @@ module ApplicationHelper
     current_user_html = current_user.html_css_status
     current_user_javascript = current_user.javascript_status
     current_user_ruby = current_user.ruby_status
+    current_user_bootstrap = current_user.bootstrap_status
     current_user_rubyonrails = current_user.rubyonrails_status
     
     if current_user_html.ga_beginner &&

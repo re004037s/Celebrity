@@ -29,6 +29,7 @@ class User < ApplicationRecord
     has_one :javascript_status
     has_one :ruby_status
     has_one :rubyonrails_status
+    has_one :bootstrap_status
     has_one :railstutorial_status
     has_one :user_movie_status
     has_many :feedbacks

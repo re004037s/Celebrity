@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190610002554) do
+ActiveRecord::Schema.define(version: 20190614001209) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,10 +27,14 @@ ActiveRecord::Schema.define(version: 20190610002554) do
 
   create_table "bootstrap_statuses", force: :cascade do |t|
     t.integer  "user_id"
-    t.boolean  "ga_1",       default: false
-    t.boolean  "ga_2",       default: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.boolean  "ga_1",            default: false
+    t.boolean  "ga_2",            default: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.date     "ga_1_compd"
+    t.date     "ga_2_compd"
+    t.date     "ga_1_completion"
+    t.date     "ga_2_completion"
     t.index ["user_id"], name: "index_bootstrap_statuses_on_user_id", using: :btree
   end
 

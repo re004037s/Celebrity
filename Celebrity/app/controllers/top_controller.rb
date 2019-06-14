@@ -22,6 +22,7 @@ class TopController < ApplicationController
     current_user_html = current_user.html_css_status
     current_user_javascript = current_user.javascript_status
     current_user_ruby = current_user.ruby_status
+    current_user_bootstrap = current_user.bootstrap_status
     current_user_railstutorial = current_user.railstutorial_status
     if (current_user_html.ga_beginner && current_user_html.ga_middle && 
       current_user_html.ga_advanced && current_user_html.do_beginner && 
@@ -32,6 +33,7 @@ class TopController < ApplicationController
       current_user_javascript.do_1 &&         
       current_user_ruby.ga_1 && current_user_ruby.ga_2 && 
       current_user_ruby.ga_3 && current_user_ruby.ga_4 && 
+      current_user_bootstrap.ga_1 && current_user_bootstrap.ga_2 &&
       current_user_ruby.ga_5 &&current_user_rubyonrails.ga_1 &&
       current_user_rubyonrails.ga_2 && current_user_rubyonrails.ga_3 &&
       current_user_rubyonrails.ga_4 && current_user_rubyonrails.ga_5 &&
@@ -387,6 +389,45 @@ class TopController < ApplicationController
           @ruby_ga_5_completion = "完了予定日を過ぎています"
         else
           @ruby_ga_5_completion = ""
+        end
+      end
+    end
+    
+    # [Progate] bootstrapのパート
+    current_user_bootstrap = current_user.bootstrap_status
+    if current_user_bootstrap.ga_1_completion
+      if current_user_bootstrap.ga_1 != true
+        if current_user_bootstrap.ga_1_completion == Date.today + 3
+          @ruby_ga_1_completion = "完了予定日まであと3日です"
+        elsif current_user_bootstrap.ga_1_completion == Date.today + 2
+          @ruby_ga_1_completion = "完了予定日まであと2日です"
+        elsif current_user_bootstrap.ga_1_completion == Date.today + 1
+          @ruby_ga_1_completion = "完了予定日まであと1日です"
+        elsif current_user_bootstrap.ga_1_completion == Date.today
+          @ruby_ga_1_completion = "今日が完了予定日です"
+        elsif current_user_bootstrap.ga_1_completion < Date.today
+          @ruby_ga_1_completion = "完了予定日を過ぎています"
+        else
+          @ruby_ga_1_completion = ""
+        end
+      end
+    end
+
+    current_user_bootstrap = current_user.bootstrap_status
+    if current_user_bootstrap.ga_2_completion
+      if current_user_bootstrap.ga_2 != true
+        if current_user_bootstrap.ga_2_completion == Date.today + 3
+          @bootstrap_ga_2_completion = "完了予定日まであと3日です"
+        elsif current_user_bootstrap.ga_2_completion == Date.today + 2
+          @bootstrap_ga_2_completion = "完了予定日まであと2日です"
+        elsif current_user_bootstrap.ga_2_completion == Date.today + 1
+          @bootstrap_ga_2_completion = "完了予定日まであと1日です"
+        elsif current_user_bootstrap.ga_2_completion == Date.today
+          @bootstrap_ga_2_completion = "今日が完了予定日です"
+        elsif current_user_bootstrap.ga_2_completion < Date.today
+          @bootstrap_ga_2_completion = "完了予定日を過ぎています"
+        else
+          @bootstrap_ga_2_completion = ""
         end
       end
     end
