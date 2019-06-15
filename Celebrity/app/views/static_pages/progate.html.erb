@@ -294,21 +294,22 @@
       <tbody>
         <tr>
           <td>bootstrap 基礎編</td>
-          <td id="ruby_ga_1">
-            <% if !@ruby_status.ga_1 %>
-              <%= render 'ruby_statuses/complete', course: 'ruby_ga_1' %>
+          <td id="bootstrap_ga_1">
+            <% if !@bootstrap_status.ga_1 %>
+              <%= render 'bootstrap_statuses/complete', course: 'bootstrap_ga_1' %>
             <% else %>
-              <%= render 'ruby_statuses/incomplete', course: 'ruby_ga_1' %>
+              <%= render 'bootstrap_statuses/incomplete', course: 'bootstrap_ga_1' %>
             <% end %>
           </td>
         </tr>
+        
         <tr>
           <td>bootstrap 実践編</td>
-          <td id="ruby_ga_2">
-            <% if !@ruby_status.ga_2 %>
-              <%= render 'ruby_statuses/complete', course: 'ruby_ga_2' %>
+          <td id="bootstrap_ga_2">
+            <% if !@bootstrap_status.ga_2 %>
+              <%= render 'bootstrap_statuses/complete', course: 'bootstrap_ga_2' %>
             <% else %>
-              <%= render 'ruby_statuses/incomplete', course: 'ruby_ga_2' %>
+              <%= render 'bootstrap_statuses/incomplete', course: 'bootstrap_ga_2' %>
             <% end %>
           </td>
         </tr>
