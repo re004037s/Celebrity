@@ -98,7 +98,7 @@ Rails.application.routes.draw do
   patch '/ruby_status', to: 'ruby_statuses#update'
   patch '/ruby_status_schedule', to: 'ruby_statuses#update_schedule', as: 'ruby_schedule'
   patch '/ruby_status_completion', to: 'ruby_statuses#update_completion', as: 'ruby_completion'
-  patch '/bootstrap_status', to: 'ruby_statuses#update'
+  patch '/bootstrap_status', to: 'bootstrap_status#update'
   patch '/bootstrap_status_schedule', to: 'bootstrap_statuses#update_schedule', as: 'bootstrap_schedule'
   patch '/bootstrap_status_completion', to: 'bootstrap_statuses#update_completion', as: 'bootstrap_completion'
   patch '/rubyonrails_status', to: 'rubyonrails_statuses#update'

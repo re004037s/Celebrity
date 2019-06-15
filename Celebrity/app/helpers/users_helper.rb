@@ -68,12 +68,24 @@ module UsersHelper
     end
   end
   
+    def count_bootstrap(user)
+    if user.bootstrap_status.nil?
+      return 0
+    else
+      sum = 0
+      sum += 1 if user.bootstrap_status.ga_1
+      sum += 1 if user.bootstrap_status.ga_2
+      return sum
+    end
+  end
+  
   def percent_progate(user)
     sum = 0
     sum += count_html_css(user)
     sum += count_javascript(user)
     sum += count_ruby(user)
     sum += count_ruby_on_rails(user)
+    sum += count_bootstrap(user)
     return sum * 100 / 33
   end
   

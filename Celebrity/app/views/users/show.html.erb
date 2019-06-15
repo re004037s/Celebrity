@@ -835,6 +835,80 @@
     </tbody>
   </table>
   
+   <table class="txt1 table-condensed table-status-schedule">
+     <tr valign="baseline">
+      <td width="60%">
+        <h3 class="txt3">bootstrap</h3>
+      </td>
+    </tr>
+  </table>
+  
+  <!--進捗線を表示-->
+  <progress id="bootstrap_progress" value="0" max="2"></progress>
+  <output id="bootstrap_output"></output>
+
+  <script>
+      let current_status7 = <%= count_bootstrap(@user) %>;
+      let total_course_num7 = document.getElementById('bootstrap_progress').max;
+      
+      function countup() {
+          document.getElementById('bootstrap_progress').value = current_status7;
+          let num = (current_status7 / total_course_num7 * 100).toFixed();
+          if(num >= 100){
+            num = 100;
+          }
+          document.getElementById('bootstrap_output').value = '進捗率：' + num + '%';
+      }
+  
+      setInterval(countup, 1000);
+  </script>
+  
+    <table class="txt1 table table-bordered table-striped table-condensed table-status">
+    <thead>
+      <tr>
+        <th class="table-header">コース</th>
+        <th class="table-header">状況</th>
+        <th class="table-header">完了予定日</th>
+        <th class="table-header">目安(日)</th>
+        <th class="table-header">完了日</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>bootstrapの基礎</td>
+        <td class="center"><%= @user.bootstrap_status.try(:ga_1) ? '完了' : '未' %></td>
+        <td>
+          <%= @user.bootstrap_status.try(:ga_1_completion) if @user.bootstrap_status.ga_1_completion.present? %><span class="font-schedule">
+          <%= form_for(@user.bootstrap_status, url: bootstrap_completion_path ) do |f| %>
+            <input style="width:60%" type="date" name="date">
+            <%= f.submit "登録", class: "btn btn-default active" %>
+            <%= f.hidden_field :id, :value => "#{@user.id}"%>
+            <%= f.hidden_field :course, :value => "bootstrap_ga_1"%>
+          <% end %>
+        </td>
+        <td class="center">約2日</td>
+        <td><%= @user.bootstrap_status.try(:ga_1_compd)%></td>
+      </tr>
+      
+        <tr>
+        <td>bootstrapの実践</td>
+        <td class="center"><%= @user.bootstrap_status.try(:ga_2) ? '完了' : '未' %></td>
+        <td>
+          <%= @user.bootstrap_status.try(:ga_2_completion) if @user.bootstrap_status.ga_2_completion.present? %><span class="font-schedule">
+          <%= form_for(@user.bootstrap_status, url:  bootstrap_completion_path ) do |f| %>
+            <input style="width:60%" type="date" name="date">
+            <%= f.submit "登録", class: "btn btn-default active" %>
+            <%= f.hidden_field :id, :value => "#{@user.id}"%>
+            <%= f.hidden_field :course, :value => "bootstrap_ga_2"%>
+          <% end %>
+        </td>
+        <td class="center">約2日</td>
+        <td><%= @user.bootstrap_status.try(:ga_2_compd)%></td>
+      </tr>
+
+    </tbody>
+  </table>
+  
   <table class="txt1 table-condensed table-status-schedule">
      <tr valign="baseline">
       <td width="60%">

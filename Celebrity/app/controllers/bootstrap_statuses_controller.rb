@@ -8,7 +8,7 @@ class RubyonrailsStatusesController < ApplicationController
       flash[:danger] = "完了予定日がブランクです。完了予定日を選択してください"
       redirect_to current_user
     else
-      @status = current_user.rubyonrails_status
+      @status = current_user.bootstrap_status
       @status.update_attributes(schedule_date: @schedule_date)
       flash[:info] = "完了予定日を #{params[:date]} に設定しました"
       redirect_to current_user
@@ -23,7 +23,7 @@ class RubyonrailsStatusesController < ApplicationController
       redirect_to current_user
     else
       @course = params[:bootstrap_status][:course]
-      @status = current_user.rubyonrails_status
+      @status = current_user.bootstrap_status
       if @course == 'bootstrap_ga_1'
         @status.update_attributes(ga_1_completion: @completion_date)
       end
@@ -76,7 +76,7 @@ class RubyonrailsStatusesController < ApplicationController
     
     #adminがedit,updateをするのを制限する 
     def correct_user_for_edit
-      @user = User.find(params[:rubyonrails_status][:id])
+      @user = User.find(params[:bootstrap_status][:id])
       if current_user?(@user)
       else
         flash[:danger] = "アドミンは一般ユーザーの個別情報を編集できません"
