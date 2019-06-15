@@ -1,4 +1,4 @@
-class RubyonrailsStatusesController < ApplicationController
+class BootstrapStatusesController < ApplicationController
    before_action :progate_check
    before_action :correct_user_for_edit, only:[:update_schedule, :update_completion]
 
