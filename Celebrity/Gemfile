@@ -9,7 +9,7 @@ gem 'roo'# Excelファイルを参照するため
 gem 'spreadsheet'# 既存Excelファイルを参照するため
 gem 'pg', '~> 0.18'
 gem 'bootstrap-sass', '3.3.7'
-gem 'puma',         '3.10.0'
+gem 'puma',         '3.12.3'
 gem 'sass-rails',   '5.0.6'
 gem 'uglifier',     '3.2.0'
 gem 'coffee-rails', '4.2.2'
